@@ -106,7 +106,7 @@ export const RealtimeAudioFormatsPCMAudioFormat = /*@__PURE__*/ S.suspend(() =>
 export type RealtimeAudioFormatsPCMUAudioFormatType = "audio/pcmu";
 export const RealtimeAudioFormatsPCMUAudioFormatType = S.String;
 
-/** The G.711 μ-law format. */
+/** The G.711 U+03BC-law format. */
 export interface RealtimeAudioFormatsPCMUAudioFormat {
   /** The audio format. Always `audio/pcmu`. */
   type?: RealtimeAudioFormatsPCMUAudioFormatType | (string & {});

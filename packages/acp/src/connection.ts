@@ -2,10 +2,10 @@
  * Connect to an ACP agent over a transport.
  *
  * An ACP agent (`opencode acp`, `gemini --experimental-acp`,
- * `claude-code-acp`, …) speaks newline-delimited JSON-RPC. This SDK only
- * speaks the protocol: you hand it the endpoint — a spawned process's stdio
+ * `claude-code-acp`, ...) speaks newline-delimited JSON-RPC. This SDK only
+ * speaks the protocol: you hand it the endpoint -- a spawned process's stdio
  * via `JsonRpc.fromStreams`, a socket via `JsonRpc.fromSocket`, or one end of
- * `JsonRpc.memoryPair` in tests — and it never spawns or hosts anything.
+ * `JsonRpc.memoryPair` in tests -- and it never spawns or hosts anything.
  *
  * Inbound methods (the agent calling the client: permission prompts, file
  * system, terminals, elicitation) are answered by the typed `handlers`; a

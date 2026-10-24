@@ -1,5 +1,5 @@
 /**
- * OpenAI-specific error types — hand-written.
+ * OpenAI-specific error types -- hand-written.
  *
  * Re-exports the common HTTP errors from core and adds:
  *
@@ -15,7 +15,7 @@
  *
  * Operation-specific typed errors (e.g. `ContextLengthExceeded` on the
  * inference operations) are patched into the spec and generated into the
- * service modules — see `patches/`.
+ * service modules -- see `patches/`.
  */
 export {
   BadGateway,
@@ -38,10 +38,10 @@ export {
 export type { DefaultErrors } from "@distilled.cloud/core/errors";
 
 import * as Category from "@distilled.cloud/core/category";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 import { applyErrorMatchers } from "@distilled.cloud/core/trait";
-import * as Schema from "effect/Schema";
 
-/** Unknown OpenAI error — returned when nothing else matches the failure. */
+/** Unknown OpenAI error -- returned when nothing else matches the failure. */
 export class UnknownOpenAIError extends Schema.TaggedError<UnknownOpenAIError>()(
   "UnknownOpenAIError",
   {
@@ -59,7 +59,7 @@ export class OpenAIParseError extends Schema.TaggedError<OpenAIParseError>()("Op
 
 /**
  * The key an operation authenticates with is not configured: Admin-API
- * operations need `OPENAI_ADMIN_KEY` (an `sk-admin-…` key), everything else
+ * operations need `OPENAI_ADMIN_KEY` (an `sk-admin-...` key), everything else
  * needs `OPENAI_API_KEY`. Raised before the request is sent.
  */
 export class MissingCredentials extends Schema.TaggedError<MissingCredentials>()(
@@ -71,9 +71,9 @@ export class MissingCredentials extends Schema.TaggedError<MissingCredentials>()
 ).pipe(Category.withConfigurationError) {}
 
 /**
- * 401 `invalid_api_key` — the key is malformed, revoked, or belongs to
+ * 401 `invalid_api_key` -- the key is malformed, revoked, or belongs to
  * another environment. Observed: `{"error":{"type":"invalid_request_error",
- * "code":"invalid_api_key","message":"Incorrect API key provided: …"}}`.
+ * "code":"invalid_api_key","message":"Incorrect API key provided: ..."}}`.
  */
 export class InvalidApiKey extends applyErrorMatchers(
   Schema.TaggedError<InvalidApiKey>()("InvalidApiKey", {
@@ -83,7 +83,7 @@ export class InvalidApiKey extends applyErrorMatchers(
 ) {}
 
 /**
- * 429 with `type: "insufficient_quota"` — the organization is out of credits
+ * 429 with `type: "insufficient_quota"` -- the organization is out of credits
  * or over its billing limit (codes `insufficient_quota`,
  * `credit_balance_exhausted`). NOT retryable, unlike a rate limit: waiting
  * does not help until billing changes.
@@ -96,7 +96,7 @@ export class InsufficientQuota extends applyErrorMatchers(
 ) {}
 
 /**
- * 429 `rate_limit_exceeded` — a requests- or tokens-per-minute limit was
+ * 429 `rate_limit_exceeded` -- a requests- or tokens-per-minute limit was
  * hit. Retryable as throttling.
  */
 export class RateLimitExceeded extends applyErrorMatchers(
@@ -107,7 +107,7 @@ export class RateLimitExceeded extends applyErrorMatchers(
 ) {}
 
 /**
- * 404 `model_not_found` — the model does not exist or the key has no access
+ * 404 `model_not_found` -- the model does not exist or the key has no access
  * to it. Returned by every operation that takes a `model` (observed on
  * responses, chat completions and getModel).
  */

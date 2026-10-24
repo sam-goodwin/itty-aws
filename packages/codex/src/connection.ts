@@ -1,13 +1,13 @@
 /**
- * Connect to a Codex app-server over a transport — hand-written.
+ * Connect to a Codex app-server over a transport -- hand-written.
  *
  * `codex app-server` speaks JSON-RPC as newline-delimited JSON, WITHOUT the
  * `"jsonrpc": "2.0"` member, so the peer runs with `omitVersion: true`. This
- * SDK only speaks the protocol: you hand it the endpoint — a spawned
+ * SDK only speaks the protocol: you hand it the endpoint -- a spawned
  * process's stdio via `JsonRpc.fromStreams`, a socket via
  * `JsonRpc.fromSocket`, or one end of `JsonRpc.memoryPair` in tests.
  *
- * Inbound requests (approvals, user input, dynamic tool calls, …) are
+ * Inbound requests (approvals, user input, dynamic tool calls, ...) are
  * answered by the typed `handlers`; a request with no handler is answered
  * `MethodNotFound`.
  */
@@ -17,7 +17,7 @@ import type * as Scope from "effect/Scope";
 import { handlers as bindHandlers, type InboundHandlers } from "./services/codex.ts";
 
 export interface ConnectOptions<R = never> {
-  /** Typed implementations of the server→client requests. */
+  /** Typed implementations of the server->client requests. */
   readonly handlers?: InboundHandlers<R>;
 }
 

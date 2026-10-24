@@ -1162,9 +1162,9 @@ export const ImplementationMetaMap = /*@__PURE__*/ S.Record(
 
 /** Metadata about the implementation of the client or agent. Describes the name and version of an ACP implementation, with an optional title for UI representation. */
 export interface Implementation {
-  /** Intended for programmatic or logical use, but can be used as a display name fallback if title isn’t present. */
+  /** Intended for programmatic or logical use, but can be used as a display name fallback if title isn't present. */
   name: string;
-  /** Intended for UI and end-user contexts — optimized to be human-readable and easily understood. If not provided, the name should be used for display. */
+  /** Intended for UI and end-user contexts -- optimized to be human-readable and easily understood. If not provided, the name should be used for display. */
   title?: string | null;
   /** Version of the implementation. Can be displayed to the user or used for debugging or metrics purposes. (e.g. "1.0.0"). */
   version: string;
@@ -2653,7 +2653,7 @@ export const ContentBlockCase4 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContentBlockCase4" }) as any as S.Schema<ContentBlockCase4>;
 
-/** Content blocks represent displayable information in the Agent Client Protocol. They provide a structured way to handle various types of user-facing content—whether it's text from language models, images for analysis, or embedded resources for context. Content blocks appear in: - User prompts sent via `session/prompt` - Language model output streamed through `session/update` notifications - Progress updates and results from tool calls This structure is compatible with the Model Context Protocol (MCP), enabling agents to seamlessly forward content from MCP tool outputs without transformation. See protocol docs: [Content](https://agentclientprotocol.com/protocol/content) */
+/** Content blocks represent displayable information in the Agent Client Protocol. They provide a structured way to handle various types of user-facing content--whether it's text from language models, images for analysis, or embedded resources for context. Content blocks appear in: - User prompts sent via `session/prompt` - Language model output streamed through `session/update` notifications - Progress updates and results from tool calls This structure is compatible with the Model Context Protocol (MCP), enabling agents to seamlessly forward content from MCP tool outputs without transformation. See protocol docs: [Content](https://agentclientprotocol.com/protocol/content) */
 export type ContentBlock =
   | ContentBlockCase0
   | ContentBlockCase1

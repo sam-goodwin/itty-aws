@@ -2202,7 +2202,7 @@ export const BetaOutputMessageContentList = /*@__PURE__*/ S.Array(
   BetaOutputMessageContent,
 ) as any as S.Schema<BetaOutputMessageContentList>;
 
-/** Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages. */
+/** Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages -- dropping it can degrade performance. Not used for user messages. */
 export type BetaMessagePhase = "commentary" | "final_answer";
 export const BetaMessagePhase = S.String;
 
@@ -6546,7 +6546,7 @@ export const CreateResponseRequestContextManagementList = /*@__PURE__*/ S.Array(
 export interface BetaMultiAgentParam {
   /** Whether to enable server-hosted multi-agent execution for this response. */
   enabled: boolean;
-  /** `max_concurrent_subagents` sets the maximum number of subagents that can be active simultaneously across the entire agent tree. It includes all descendants—children, grandchildren, and deeper subagents—but excludes the root agent. The API does not impose a fixed upper bound on this setting. The default is `3`, which is recommended for most workloads. Multi-agent runs also have no fixed limit on tree depth or the total number of subagents created during a run. */
+  /** `max_concurrent_subagents` sets the maximum number of subagents that can be active simultaneously across the entire agent tree. It includes all descendants--children, grandchildren, and deeper subagents--but excludes the root agent. The API does not impose a fixed upper bound on this setting. The default is `3`, which is recommended for most workloads. Multi-agent runs also have no fixed limit on tree depth or the total number of subagents created during a run. */
   max_concurrent_subagents?: number;
 }
 export const BetaMultiAgentParam = /*@__PURE__*/ S.suspend(() =>

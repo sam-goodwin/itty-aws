@@ -1,5 +1,5 @@
 /**
- * OpenRouterProtocol — hand-written.
+ * OpenRouterProtocol -- hand-written.
  *
  * OpenRouter speaks plain JSON REST, so the protocol is core's
  * `makeRestProtocol` plus two OpenRouter specifics:
@@ -8,7 +8,7 @@
  *             base URL (default https://openrouter.ai/api/v1); optional
  *             `HTTP-Referer` / `X-Title` attribution headers; and
  *             `Authorization: Bearer <key>` where the KEY IS CHOSEN PER
- *             OPERATION — the management key for the account-administration
+ *             OPERATION -- the management key for the account-administration
  *             routes in {@link MANAGEMENT_ROUTE_PREFIXES}, the API key for
  *             everything else, each falling back to the other when only one
  *             is configured (no header when neither is: public routes).
@@ -57,7 +57,7 @@ export type OpenRouterOpError =
 export type OpenRouterOpContext = Credentials | HttpClient.HttpClient;
 
 /**
- * Routes that require a management (provisioning) key — every operation
+ * Routes that require a management (provisioning) key -- every operation
  * whose spec description says "Management key required", plus the API-key
  * administration endpoints under `/keys`. `/key` (singular: inspect the
  * calling key) and `/auth/keys` (OAuth PKCE exchange) are NOT management
@@ -91,14 +91,14 @@ export const selectKey = (creds: Config, uri: string): Redacted.Redacted<string>
     ? (creds.managementKey ?? creds.apiKey)
     : (creds.apiKey ?? creds.managementKey);
 
-// The Credentials service holds an effect — resolving it here (per request,
+// The Credentials service holds an effect -- resolving it here (per request,
 // on the calling fiber) picks up context-provided credentials.
 const resolveCredentials = Effect.gen(function* () {
   const resolve = yield* Credentials;
   return yield* resolve;
 });
 
-/** `{ error: { code, message } }` → `{ code, message }`, tolerating flat bodies. */
+/** `{ error: { code, message } }` -> `{ code, message }`, tolerating flat bodies. */
 const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   if (body === null || typeof body !== "object") return undefined;
   const b = body as Record<string, unknown>;
@@ -149,7 +149,9 @@ const RestProtocol = makeRestProtocol<Config>({
 export const OpenRouterProtocol: Layer.Layer<API.Protocol> = Layer.effect(
   API.Protocol,
   Effect.gen(function* () {
-    const rest = yield* API.Protocol;
+    // Without REST's whole-call fast path, so every call runs the
+    // encode/decode overrides below.
+    const { call: _call, ...rest } = yield* API.Protocol;
     return API.Protocol.of({
       ...rest,
       encode: (args) =>

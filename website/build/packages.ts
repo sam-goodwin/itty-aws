@@ -163,7 +163,7 @@ export const SEARCH_HINTS: Record<string, string> = {
   workos: "auth sso",
   okta: "auth sso",
   "better-auth": "auth sessions self-hosted",
-  onepassword: "secrets 1password",
+  onepassword: "secrets 1password connect events audit users partnership",
   doppler: "secrets env",
   infisical: "secrets env",
   unkey: "api keys",

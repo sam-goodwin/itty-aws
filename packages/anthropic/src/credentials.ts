@@ -1,20 +1,20 @@
 /**
- * Anthropic credentials — hand-written.
+ * Anthropic credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol resolves it per request on the
  * calling fiber). The protocol picks the credential per operation:
  *
- *   • Admin API routes (`/v1/organizations/*`) send the ADMIN key
- *     (`sk-ant-admin…`) as `x-api-key`, falling back to the OAuth bearer
- *     token. Neither configured → `MissingAnthropicCredentials`.
- *   • Every other route sends the API key as `x-api-key`, falling back to the
- *     OAuth bearer token (`Authorization: Bearer`). Neither configured →
+ *   * Admin API routes (`/v1/organizations/*`) send the ADMIN key
+ *     (`sk-ant-admin...`) as `x-api-key`, falling back to the OAuth bearer
+ *     token. Neither configured -> `MissingAnthropicCredentials`.
+ *   * Every other route sends the API key as `x-api-key`, falling back to the
+ *     OAuth bearer token (`Authorization: Bearer`). Neither configured ->
  *     `MissingAnthropicCredentials`.
  *
  * Every request also carries `anthropic-version` (default
  * {@link DEFAULT_API_VERSION}) and, when `betas` is set, a default
- * `anthropic-beta` header — an operation's own `anthropicBeta` input member
+ * `anthropic-beta` header -- an operation's own `anthropicBeta` input member
  * overrides it per call.
  */
 import * as EffectConfig from "effect/Config";
@@ -28,9 +28,9 @@ export const DEFAULT_API_BASE_URL = "https://api.anthropic.com";
 export const DEFAULT_API_VERSION = "2023-06-01";
 
 export interface Config {
-  /** Inference API key (`sk-ant-api…`), sent as `x-api-key`. */
+  /** Inference API key (`sk-ant-api...`), sent as `x-api-key`. */
   readonly apiKey?: Redacted.Redacted<string>;
-  /** Admin API key (`sk-ant-admin…`), sent as `x-api-key` on `/v1/organizations/*`. */
+  /** Admin API key (`sk-ant-admin...`), sent as `x-api-key` on `/v1/organizations/*`. */
   readonly adminKey?: Redacted.Redacted<string>;
   /** OAuth access token, sent as `Authorization: Bearer` when no key applies. */
   readonly authToken?: Redacted.Redacted<string>;
@@ -100,7 +100,7 @@ const envConfig = EffectConfig.all({
 
 /**
  * Reads `ANTHROPIC_API_KEY`, `ANTHROPIC_ADMIN_KEY` and `ANTHROPIC_AUTH_TOKEN`
- * (each optional — an operation whose credential is missing fails with
+ * (each optional -- an operation whose credential is missing fails with
  * `MissingAnthropicCredentials`), and `ANTHROPIC_BASE_URL` (default
  * {@link DEFAULT_API_BASE_URL}).
  */
@@ -109,7 +109,7 @@ export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
   envConfig.pipe(
     Effect.map((env) => toConfig(env)),
     // Every key is optional and the base URL has a default, so the only way
-    // to fail here is a malformed ConfigProvider — a defect, not a typed
+    // to fail here is a malformed ConfigProvider -- a defect, not a typed
     // API error.
     Effect.orDie,
   ),

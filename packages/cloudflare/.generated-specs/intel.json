@@ -427,6 +427,23 @@
         }
       }
     },
+    "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemSource": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare"
+          }
+        },
+        "RISKRECON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "riskrecon"
+          }
+        }
+      }
+    },
     "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemStatus": {
       "type": "enum",
       "members": {
@@ -502,6 +519,12 @@
         },
         "since": {
           "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemSource",
+          "traits": {
+            "smithy.api#documentation": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner."
+          }
         },
         "status": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemStatus",

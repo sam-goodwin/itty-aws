@@ -1,5 +1,5 @@
 /**
- * OpenRouter credentials — hand-written.
+ * OpenRouter credentials -- hand-written.
  *
  * The `Credentials` service holds an *effect* that resolves the current
  * credentials on every request (the protocol resolves it per request on the
@@ -8,16 +8,16 @@
  * OpenRouter issues two kinds of key, both sent as `Authorization: Bearer`:
  *
  * - an **API key** (`OPENROUTER_API_KEY`) for inference and everything an
- *   application does at runtime — chat completions, responses, messages,
- *   embeddings, images, generations, files, presets, …
+ *   application does at runtime -- chat completions, responses, messages,
+ *   embeddings, images, generations, files, presets, ...
  * - a **management key** (`OPENROUTER_MANAGEMENT_KEY`, a.k.a. provisioning
- *   key) for account administration — API keys, guardrails, workspaces, BYOK,
- *   credits, analytics, … Management keys cannot call the inference
+ *   key) for account administration -- API keys, guardrails, workspaces, BYOK,
+ *   credits, analytics, ... Management keys cannot call the inference
  *   endpoints.
  *
  * The protocol picks the key per operation from its route (see
  * `MANAGEMENT_ROUTE_PREFIXES` in protocol.ts), falling back to whichever key
- * is configured. Public endpoints (`listModels`, `listProviders`, …) work
+ * is configured. Public endpoints (`listModels`, `listProviders`, ...) work
  * with no key at all.
  *
  * `referer` / `title` are OpenRouter's optional app-attribution headers
@@ -31,14 +31,14 @@ import * as Redacted from "effect/Redacted";
 export const DEFAULT_API_BASE_URL = "https://openrouter.ai/api/v1";
 
 export interface Config {
-  /** Inference API key (`sk-or-v1-…`). */
+  /** Inference API key (`sk-or-v1-...`). */
   readonly apiKey?: Redacted.Redacted<string>;
   /** Management (provisioning) key for the account-administration routes. */
   readonly managementKey?: Redacted.Redacted<string>;
   readonly apiBaseUrl: string;
-  /** Sent as `HTTP-Referer` — your app's URL, for OpenRouter attribution. */
+  /** Sent as `HTTP-Referer` -- your app's URL, for OpenRouter attribution. */
   readonly referer?: string;
-  /** Sent as `X-Title` — your app's display name, for OpenRouter attribution. */
+  /** Sent as `X-Title` -- your app's display name, for OpenRouter attribution. */
   readonly title?: string;
 }
 
@@ -91,7 +91,7 @@ const env = (name: string): string | undefined => {
 };
 
 /**
- * Reads `OPENROUTER_API_KEY` and `OPENROUTER_MANAGEMENT_KEY` (both optional —
+ * Reads `OPENROUTER_API_KEY` and `OPENROUTER_MANAGEMENT_KEY` (both optional --
  * set whichever the operations you call need), `OPENROUTER_BASE_URL`
  * (default {@link DEFAULT_API_BASE_URL}), and the attribution headers
  * `OPENROUTER_HTTP_REFERER` / `OPENROUTER_X_TITLE`. Read on every request.

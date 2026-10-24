@@ -1,11 +1,11 @@
 /**
- * Anthropic-specific error types — hand-written.
+ * Anthropic-specific error types -- hand-written.
  *
  * Anthropic reports every failure in one envelope,
  *
- *   { "type": "error", "error": { "type": "rate_limit_error", "message": "…" } }
+ *   { "type": "error", "error": { "type": "rate_limit_error", "message": "..." } }
  *
- * and the `error.type` — not the HTTP status — says what went wrong
+ * and the `error.type` -- not the HTTP status -- says what went wrong
  * (https://docs.anthropic.com/en/api/errors). Each type is a class here
  * carrying a body matcher on `/error/type`; generated operations list them
  * all as common error classes, so the REST protocol's typed matcher surfaces
@@ -13,7 +13,7 @@
  * matchers type the `error` events of a message stream (see protocol.ts).
  *
  * A failure with no recognizable envelope falls back to the core status
- * classes (`HTTP_STATUS_MAP`, plus 529 → {@link Overloaded}), then to
+ * classes (`HTTP_STATUS_MAP`, plus 529 -> {@link Overloaded}), then to
  * {@link UnknownAnthropicError}.
  */
 export {
@@ -38,8 +38,8 @@ export type { DefaultErrors } from "@distilled.cloud/core/errors";
 
 import * as Category from "@distilled.cloud/core/category";
 import { DurationSchema } from "@distilled.cloud/core/errors";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 import { applyErrorMatchers } from "@distilled.cloud/core/trait";
-import * as Schema from "effect/Schema";
 
 /**
  * Fields of an `error.type` class. `body` is the parsed envelope and
@@ -59,7 +59,7 @@ const retryableFields = {
 
 const matches = (type: string) => [{ body: { "/error/type": type } }];
 
-/** `invalid_request_error` (400) — the request's format or content is wrong. */
+/** `invalid_request_error` (400) -- the request's format or content is wrong. */
 export class InvalidRequest extends applyErrorMatchers(
   Schema.TaggedError<InvalidRequest>()("InvalidRequest", envelopeFields).pipe(
     Category.withBadRequestError,
@@ -67,7 +67,7 @@ export class InvalidRequest extends applyErrorMatchers(
   matches("invalid_request_error"),
 ) {}
 
-/** `authentication_error` (401) — the API key or token is missing or invalid. */
+/** `authentication_error` (401) -- the API key or token is missing or invalid. */
 export class AuthenticationFailed extends applyErrorMatchers(
   Schema.TaggedError<AuthenticationFailed>()("AuthenticationFailed", envelopeFields).pipe(
     Category.withAuthError,
@@ -75,7 +75,7 @@ export class AuthenticationFailed extends applyErrorMatchers(
   matches("authentication_error"),
 ) {}
 
-/** `billing_error` (402) — a billing or payment problem on the account. */
+/** `billing_error` (402) -- a billing or payment problem on the account. */
 export class PaymentRequired extends applyErrorMatchers(
   Schema.TaggedError<PaymentRequired>()("PaymentRequired", envelopeFields).pipe(
     Category.withQuotaError,
@@ -83,7 +83,7 @@ export class PaymentRequired extends applyErrorMatchers(
   matches("billing_error"),
 ) {}
 
-/** `permission_error` (403) — the credential may not use this resource. */
+/** `permission_error` (403) -- the credential may not use this resource. */
 export class PermissionDenied extends applyErrorMatchers(
   Schema.TaggedError<PermissionDenied>()("PermissionDenied", envelopeFields).pipe(
     Category.withAuthError,
@@ -91,7 +91,7 @@ export class PermissionDenied extends applyErrorMatchers(
   matches("permission_error"),
 ) {}
 
-/** `not_found_error` (404) — the requested resource does not exist. */
+/** `not_found_error` (404) -- the requested resource does not exist. */
 export class ResourceNotFound extends applyErrorMatchers(
   Schema.TaggedError<ResourceNotFound>()("ResourceNotFound", envelopeFields).pipe(
     Category.withNotFoundError,
@@ -99,7 +99,7 @@ export class ResourceNotFound extends applyErrorMatchers(
   matches("not_found_error"),
 ) {}
 
-/** `request_too_large` (413) — the request exceeds the maximum size. */
+/** `request_too_large` (413) -- the request exceeds the maximum size. */
 export class RequestTooLarge extends applyErrorMatchers(
   Schema.TaggedError<RequestTooLarge>()("RequestTooLarge", envelopeFields).pipe(
     Category.withBadRequestError,
@@ -107,7 +107,7 @@ export class RequestTooLarge extends applyErrorMatchers(
   matches("request_too_large"),
 ) {}
 
-/** `rate_limit_error` (429) — the account hit a rate limit. */
+/** `rate_limit_error` (429) -- the account hit a rate limit. */
 export class RateLimited extends applyErrorMatchers(
   Schema.TaggedError<RateLimited>()("RateLimited", retryableFields).pipe(
     Category.withThrottlingError,
@@ -116,7 +116,7 @@ export class RateLimited extends applyErrorMatchers(
   matches("rate_limit_error"),
 ) {}
 
-/** `api_error` (500) — an unexpected error inside Anthropic's systems. */
+/** `api_error` (500) -- an unexpected error inside Anthropic's systems. */
 export class ApiServerError extends applyErrorMatchers(
   Schema.TaggedError<ApiServerError>()("ApiServerError", retryableFields).pipe(
     Category.withServerError,
@@ -125,7 +125,7 @@ export class ApiServerError extends applyErrorMatchers(
   matches("api_error"),
 ) {}
 
-/** `timeout_error` (504) — the request timed out while processing. */
+/** `timeout_error` (504) -- the request timed out while processing. */
 export class RequestTimeout extends applyErrorMatchers(
   Schema.TaggedError<RequestTimeout>()("RequestTimeout", retryableFields).pipe(
     Category.withTimeoutError,
@@ -134,7 +134,7 @@ export class RequestTimeout extends applyErrorMatchers(
   matches("timeout_error"),
 ) {}
 
-/** `overloaded_error` (529) — the API is temporarily overloaded. */
+/** `overloaded_error` (529) -- the API is temporarily overloaded. */
 export class Overloaded extends applyErrorMatchers(
   Schema.TaggedError<Overloaded>()("Overloaded", retryableFields).pipe(
     Category.withServerError,
@@ -144,7 +144,7 @@ export class Overloaded extends applyErrorMatchers(
 ) {}
 
 /**
- * The operation needs a credential the `Credentials` layer does not hold —
+ * The operation needs a credential the `Credentials` layer does not hold --
  * an Admin API route (`/v1/organizations/*`) without `ANTHROPIC_ADMIN_KEY` /
  * `ANTHROPIC_AUTH_TOKEN`, or any other route without `ANTHROPIC_API_KEY` /
  * `ANTHROPIC_AUTH_TOKEN`. Raised before the request is sent.
@@ -158,7 +158,7 @@ export class MissingAnthropicCredentials extends Schema.TaggedError<MissingAnthr
   },
 ).pipe(Category.withConfigurationError) {}
 
-/** Unknown Anthropic error — returned when nothing else matches the failure. */
+/** Unknown Anthropic error -- returned when nothing else matches the failure. */
 export class UnknownAnthropicError extends Schema.TaggedError<UnknownAnthropicError>()(
   "UnknownAnthropicError",
   {

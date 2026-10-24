@@ -4597,7 +4597,7 @@ export const OpenAIResponseFunctionToolCallSubagentItemsItem = /*@__PURE__*/ S.s
   identifier: "OpenAIResponseFunctionToolCallSubagentItemsItem",
 }) as any as S.Schema<OpenAIResponseFunctionToolCallSubagentItemsItem>;
 
-/** EXPERIMENTAL — subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
+/** EXPERIMENTAL -- subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
 export type OpenAIResponseFunctionToolCallSubagentItemsList =
   Array<OpenAIResponseFunctionToolCallSubagentItemsItem>;
 export const OpenAIResponseFunctionToolCallSubagentItemsList = /*@__PURE__*/ S.Array(
@@ -4617,9 +4617,9 @@ export interface OpenAIResponseFunctionToolCall {
   /** Namespace qualifier for tools registered as part of a namespace tool group (e.g. an MCP server) */
   namespace?: string;
   status?: ToolCallStatus;
-  /** EXPERIMENTAL — subject to change without notice. String id that matches the `call_id` of the `openrouter:subagent` server tool call that spawned the subagent. Present on every `function_call` item the subagent projects; absent on ordinary function calls. */
+  /** EXPERIMENTAL -- subject to change without notice. String id that matches the `call_id` of the `openrouter:subagent` server tool call that spawned the subagent. Present on every `function_call` item the subagent projects; absent on ordinary function calls. */
   subagent_id?: string;
-  /** EXPERIMENTAL — subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
+  /** EXPERIMENTAL -- subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
   subagent_items?: OpenAIResponseFunctionToolCallSubagentItemsList;
   type: OpenAIResponseFunctionToolCallType;
 }
@@ -5111,7 +5111,7 @@ export const BaseInputsCase1List = /*@__PURE__*/ S.Array(
 export type BaseInputs = string | BaseInputsCase1List;
 export const BaseInputs = S.Unknown as any as S.Schema<BaseInputs>;
 
-/** Metadata key-value pairs for the request. Keys must be ≤64 characters and cannot contain brackets. Values must be ≤512 characters. Maximum 16 pairs allowed. */
+/** Metadata key-value pairs for the request. Keys must be <=64 characters and cannot contain brackets. Values must be <=512 characters. Maximum 16 pairs allowed. */
 export type RequestMetadata = { [key: string]: string | undefined };
 export const RequestMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -7878,7 +7878,7 @@ export const ORAnthropicShellToolResultType = S.String;
 
 /** Output of an `openrouter:shell` call executed in the OpenRouter sandbox */
 export interface ORAnthropicShellToolResult {
-  /** The canonical container id the command ran under — the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
+  /** The canonical container id the command ran under -- the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
   container_id?: string;
   content: ORAnthropicShellToolResultContentMap;
   /** Citations for the files the sandbox command created or modified, most-recently-touched first (at most 10). Retrieve them via the Container Files API. */
@@ -7939,7 +7939,7 @@ export const ORAnthropicBashToolResultType = S.String;
 
 /** Output of an `openrouter:bash` call executed in the OpenRouter sandbox (`engine: 'openrouter'`) */
 export interface ORAnthropicBashToolResult {
-  /** The canonical container id the command ran under — the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
+  /** The canonical container id the command ran under -- the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
   container_id?: string;
   content: ORAnthropicBashToolResultContentMap;
   /** Citations for the files the sandbox command created or modified, most-recently-touched first (at most 10). Retrieve them via the Container Files API. */
@@ -8720,7 +8720,7 @@ export interface CreateBYOKKeyRequest {
   disabled?: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for every model, including models outside `allowed_models` and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. Defaults to `false`. */
   is_byok_only?: boolean;
-  /** Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
+  /** Whether this credential is treated as a fallback -- used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
   is_fallback?: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for the models this credential applies to (its `allowed_models`, or every model when `null`). Requests for those models run only on your keys; models outside the allowlist may still fall back to shared capacity on this provider. Defaults to `false`. */
   is_required?: boolean;
@@ -8784,7 +8784,7 @@ export interface CreateBYOKKeyResponseData {
   id: string;
   /** Whether OpenRouter's shared endpoints on this provider are removed for every model, including models outside `allowed_models` and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. */
   is_byok_only: boolean;
-  /** Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
+  /** Whether this credential is treated as a fallback -- used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
   is_fallback: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for the models this credential applies to (its `allowed_models`, or every model when `null`). Requests for those models run only on your keys; models outside the allowlist may still fall back to shared capacity on this provider. */
   is_required: boolean;
@@ -8793,9 +8793,9 @@ export interface CreateBYOKKeyResponseData {
   /** Optional human-readable name for the credential. */
   name?: string | null;
   provider: BYOKProviderSlug;
-  /** Position within the provider — credentials are tried in ascending sort order. */
+  /** Position within the provider -- credentials are tried in ascending sort order. */
   sort_order: number;
-  /** The workspace this credential is scoped to, or `null` when it is global — usable across every workspace in the account. A `null` value does not mean the default workspace. */
+  /** The workspace this credential is scoped to, or `null` when it is global -- usable across every workspace in the account. A `null` value does not mean the default workspace. */
   workspace_id: string | null;
 }
 export const CreateBYOKKeyResponseData = /*@__PURE__*/ S.suspend(() =>
@@ -8835,7 +8835,7 @@ export const AnthropicCacheControlTtl = S.String;
 export type AnthropicCacheControlDirectiveType = "ephemeral";
 export const AnthropicCacheControlDirectiveType = S.String;
 
-/** Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching — OpenRouter converts them to the provider's native format. */
+/** Enable automatic prompt caching. When set at the top level, the system automatically applies cache breakpoints to the last cacheable block in the request. When set on an individual content block, it marks an explicit cache breakpoint; block-level markers also work on OpenAI models that support explicit prompt caching -- OpenRouter converts them to the provider's native format. */
 export interface AnthropicCacheControlDirective {
   ttl?: AnthropicCacheControlTtl | (string & {});
   type: AnthropicCacheControlDirectiveType | (string & {});
@@ -9701,7 +9701,7 @@ export interface ParetoRouterPlugin {
   id: ParetoRouterPluginId;
   /** Maximum input price in USD per million tokens. When set, quality-tier selection (min_coding_score) is bypassed: the router computes the Pareto frontier over the top coding models and routes to the best-scoring frontier model priced at or below this cap, falling back through cheaper frontier models, then non-frontier models. Enforced against the price source given by price_source. Returns 404 when no candidate satisfies the cap. */
   max_price?: number;
-  /** Minimum coding quality score between 0 and 1. Maps to internal quality tiers: >= 0.66 → high (top coding models), >= 0.33 → medium (strong modern flagships), < 0.33 → low (capable coders above the median). Omit to default to the highest tier (equivalent to >= 0.66). Not used when max_price is set (price-based selection takes over). */
+  /** Minimum coding quality score between 0 and 1. Maps to internal quality tiers: >= 0.66 -> high (top coding models), >= 0.33 -> medium (strong modern flagships), < 0.33 -> low (capable coders above the median). Omit to default to the highest tier (equivalent to >= 0.66). Not used when max_price is set (price-based selection takes over). */
   min_coding_score?: number;
   /** Price source for the Pareto frontier cost axis and for enforcing max_price. "prompt" uses catalog list price (endpoint.pricing.prompt). "weighted_avg" uses traffic-weighted effective input price from ClickHouse, falling back to prompt price for models without traffic data. Defaults to "prompt". */
   price_source?: ParetoRouterPluginPriceSource | (string & {});
@@ -10498,7 +10498,7 @@ export interface AdvisorServerToolConfig {
   max_completion_tokens?: number;
   /** Slug of the advisor model to consult (any OpenRouter model). When omitted, the executor can choose it via the tool call's `model` argument; if neither is set, the model from the outer API request is used. */
   model?: string;
-  /** Optional name for this advisor. The model sees one tool per named advisor (and one default for an unnamed entry). Names must be unique across advisor entries. Letters, digits, spaces, underscores, and dashes; trimmed; 1–64 chars. */
+  /** Optional name for this advisor. The model sees one tool per named advisor (and one default for an unnamed entry). Names must be unique across advisor entries. Letters, digits, spaces, underscores, and dashes; trimmed; 1-64 chars. */
   name?: string;
   reasoning?: AdvisorReasoning;
   /** When true, the advisor's advice streams incrementally as it is produced. In the Responses API this emits `response.output_text.delta` events targeting the advisor output item; the final `advice` field is still set on the completed item. Has no effect on the Chat Completions API (where the advice arrives only as the final tool result). When false or omitted, the advice arrives only as the final result. */
@@ -10540,7 +10540,7 @@ export const AdvisorServerToolOpenRouter = /*@__PURE__*/ S.suspend(() =>
 export type BashServerToolEngine = "auto" | "native" | "openrouter";
 export const BashServerToolEngine = S.String;
 
-/** Workspace file ids (or_file_…) to attach into the container before the first command runs. Each file is copied to the container home as a writable copy named {last 8 characters of the file id}-{base filename} (a file stored as data/report.csv with id or_file_…NR6q4V8w attaches to ~/NR6q4V8w-report.csv), so same-named files never collide; the source document is never modified. Unknown, foreign, or malformed ids fail the request with a 400 before any command executes. Max 20 ids. */
+/** Workspace file ids (or_file_...) to attach into the container before the first command runs. Each file is copied to the container home as a writable copy named {last 8 characters of the file id}-{base filename} (a file stored as data/report.csv with id or_file_...NR6q4V8w attaches to ~/NR6q4V8w-report.csv), so same-named files never collide; the source document is never modified. Unknown, foreign, or malformed ids fail the request with a 400 before any command executes. Max 20 ids. */
 export type ContainerFileIds = Array<string>;
 export const ContainerFileIds = /*@__PURE__*/ S.Array(
   S.String,
@@ -10562,7 +10562,7 @@ export const ContainerNetworkPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContainerNetworkPolicyCase0",
 }) as any as S.Schema<ContainerNetworkPolicyCase0>;
 
-/** Hostnames the container may reach over ports 80/443 (max 50). Entries are lowercase hostnames or glob patterns where * matches any run of characters (e.g. *.example.com). An exact hostname does not cover its subdomains — use a glob or list each hostname. pip needs both pypi.org and files.pythonhosted.org (or *.pythonhosted.org). */
+/** Hostnames the container may reach over ports 80/443 (max 50). Entries are lowercase hostnames or glob patterns where * matches any run of characters (e.g. *.example.com). An exact hostname does not cover its subdomains -- use a glob or list each hostname. pip needs both pypi.org and files.pythonhosted.org (or *.pythonhosted.org). */
 export type ContainerNetworkPolicyCase1AllowedDomainsList = Array<string>;
 export const ContainerNetworkPolicyCase1AllowedDomainsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -10573,7 +10573,7 @@ export type ContainerNetworkPolicyCase1Type = "allowlist";
 export const ContainerNetworkPolicyCase1Type = S.String;
 
 export interface ContainerNetworkPolicyCase1 {
-  /** Hostnames the container may reach over ports 80/443 (max 50). Entries are lowercase hostnames or glob patterns where * matches any run of characters (e.g. *.example.com). An exact hostname does not cover its subdomains — use a glob or list each hostname. pip needs both pypi.org and files.pythonhosted.org (or *.pythonhosted.org). */
+  /** Hostnames the container may reach over ports 80/443 (max 50). Entries are lowercase hostnames or glob patterns where * matches any run of characters (e.g. *.example.com). An exact hostname does not cover its subdomains -- use a glob or list each hostname. pip needs both pypi.org and files.pythonhosted.org (or *.pythonhosted.org). */
   allowed_domains: ContainerNetworkPolicyCase1AllowedDomainsList;
   /** Outbound access restricted to the listed domains. */
   type: ContainerNetworkPolicyCase1Type;
@@ -10611,9 +10611,9 @@ export const ContainerAutoEnvironment = /*@__PURE__*/ S.suspend(() =>
 export type ContainerReferenceEnvironmentType = "container_reference";
 export const ContainerReferenceEnvironmentType = S.String;
 
-/** Reference to a container by its canonical id — a previously returned container_id or a fresh name to create a persistent container. */
+/** Reference to a container by its canonical id -- a previously returned container_id or a fresh name to create a persistent container. */
 export interface ContainerReferenceEnvironment {
-  /** Canonical container id to reuse (max 40 characters, letters/digits/underscores/hyphens). Any container_id previously returned by a bash or shell tool result works here and reattaches to the same container and files — including session-derived ids (sess_...) and generation-derived ids (gen_...). Note that a session-derived id is always sess_ + the sanitized session key, which is not necessarily the raw session id you sent. Using the same container_id from both the bash and shell tools shares the same files, with last-write-wins when both flush concurrently. A fresh name creates a new persistent container. Containers are always scoped to your account and workspace. */
+  /** Canonical container id to reuse (max 40 characters, letters/digits/underscores/hyphens). Any container_id previously returned by a bash or shell tool result works here and reattaches to the same container and files -- including session-derived ids (sess_...) and generation-derived ids (gen_...). Note that a session-derived id is always sess_ + the sanitized session key, which is not necessarily the raw session id you sent. Using the same container_id from both the bash and shell tools shares the same files, with last-write-wins when both flush concurrently. A fresh name creates a new persistent container. Containers are always scoped to your account and workspace. */
   container_id: string;
   file_ids?: ContainerFileIds;
   network_policy?: ContainerNetworkPolicy;
@@ -10871,7 +10871,7 @@ export const ChatSearchModelsServerTool = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChatSearchModelsServerTool",
 }) as any as S.Schema<ChatSearchModelsServerTool>;
 
-/** EXPERIMENTAL — subject to change without notice. Names of the top-level function tools that the subagent will inherit. Any tool that matches by name will be copied fully into the tools array of the subagent. When `inherit_functions` is `true`, this list does nothing, because every client function will be inherited by default. Names are trimmed before validation, so a whitespace-only name is rejected with a `400`. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. */
+/** EXPERIMENTAL -- subject to change without notice. Names of the top-level function tools that the subagent will inherit. Any tool that matches by name will be copied fully into the tools array of the subagent. When `inherit_functions` is `true`, this list does nothing, because every client function will be inherited by default. Names are trimmed before validation, so a whitespace-only name is rejected with a `400`. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. */
 export type SubagentServerToolConfigInheritedFunctionNamesList = Array<string>;
 export const SubagentServerToolConfigInheritedFunctionNamesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -10920,7 +10920,7 @@ export const SubagentNestedTool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SubagentNestedTool" }) as any as S.Schema<SubagentNestedTool>;
 
-/** Tools the subagent may use while executing a delegated task. The subagent runs as an agentic sub-agent over these tools, then returns its outcome. Only OpenRouter server tools are supported — function tools are rejected — and the list must not include the subagent tool itself. */
+/** Tools the subagent may use while executing a delegated task. The subagent runs as an agentic sub-agent over these tools, then returns its outcome. Only OpenRouter server tools are supported -- function tools are rejected -- and the list must not include the subagent tool itself. */
 export type SubagentServerToolConfigToolsList = Array<SubagentNestedTool>;
 export const SubagentServerToolConfigToolsList = /*@__PURE__*/ S.Array(
   SubagentNestedTool,
@@ -10928,9 +10928,9 @@ export const SubagentServerToolConfigToolsList = /*@__PURE__*/ S.Array(
 
 /** Configuration for one openrouter:subagent server tool entry. */
 export interface SubagentServerToolConfig {
-  /** EXPERIMENTAL — subject to change without notice. When true, the subagent inherits every client function defined in the request's top-level `tools` list. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. */
+  /** EXPERIMENTAL -- subject to change without notice. When true, the subagent inherits every client function defined in the request's top-level `tools` list. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. */
   inherit_functions?: boolean;
-  /** EXPERIMENTAL — subject to change without notice. Names of the top-level function tools that the subagent will inherit. Any tool that matches by name will be copied fully into the tools array of the subagent. When `inherit_functions` is `true`, this list does nothing, because every client function will be inherited by default. Names are trimmed before validation, so a whitespace-only name is rejected with a `400`. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. */
+  /** EXPERIMENTAL -- subject to change without notice. Names of the top-level function tools that the subagent will inherit. Any tool that matches by name will be copied fully into the tools array of the subagent. When `inherit_functions` is `true`, this list does nothing, because every client function will be inherited by default. Names are trimmed before validation, so a whitespace-only name is rejected with a `400`. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. */
   inherited_function_names?: SubagentServerToolConfigInheritedFunctionNamesList;
   /** System instructions for the subagent. When omitted, the subagent responds with no system prompt of its own. */
   instructions?: string;
@@ -10940,12 +10940,12 @@ export interface SubagentServerToolConfig {
   max_tool_calls?: number;
   /** Slug of the model that executes delegated tasks (any OpenRouter model). Typically a smaller, cheaper, faster model than the one delegating. When omitted, the model from the outer API request is used. The subagent tool itself cannot be the subagent model. */
   model?: string;
-  /** Optional name for this subagent. The model sees one tool per named subagent (and one default for an unnamed entry). Names must be unique across subagent entries. Letters, digits, spaces, underscores, and dashes; trimmed; 1–64 chars. */
+  /** Optional name for this subagent. The model sees one tool per named subagent (and one default for an unnamed entry). Names must be unique across subagent entries. Letters, digits, spaces, underscores, and dashes; trimmed; 1-64 chars. */
   name?: string;
   reasoning?: SubagentReasoning;
   /** Sampling temperature forwarded to the subagent call. When omitted, the provider's default applies. */
   temperature?: number;
-  /** Tools the subagent may use while executing a delegated task. The subagent runs as an agentic sub-agent over these tools, then returns its outcome. Only OpenRouter server tools are supported — function tools are rejected — and the list must not include the subagent tool itself. */
+  /** Tools the subagent may use while executing a delegated task. The subagent runs as an agentic sub-agent over these tools, then returns its outcome. Only OpenRouter server tools are supported -- function tools are rejected -- and the list must not include the subagent tool itself. */
   tools?: SubagentServerToolConfigToolsList;
 }
 export const SubagentServerToolConfig = /*@__PURE__*/ S.suspend(() =>
@@ -11051,7 +11051,7 @@ export const WebSearchConfigExcludedDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebSearchConfigExcludedDomainsList>;
 
-/** How much context to retrieve per result. Applies to Exa, Parallel, and Perplexity engines; ignored with native provider search and Firecrawl. For Exa, pins a fixed per-result character cap (low=5,000, medium=15,000, high=30,000); when omitted, Exa picks an adaptive size per query and document (typically ~2,000–4,000 characters per result). For Parallel, controls the total characters across all results; when omitted, Parallel uses its own default size. For Perplexity, maps directly to the Search API's native search_context_size parameter. Overridden by `max_characters` when both are set. */
+/** How much context to retrieve per result. Applies to Exa, Parallel, and Perplexity engines; ignored with native provider search and Firecrawl. For Exa, pins a fixed per-result character cap (low=5,000, medium=15,000, high=30,000); when omitted, Exa picks an adaptive size per query and document (typically ~2,000-4,000 characters per result). For Parallel, controls the total characters across all results; when omitted, Parallel uses its own default size. For Perplexity, maps directly to the Search API's native search_context_size parameter. Overridden by `max_characters` when both are set. */
 export type SearchQualityLevel = "low" | "medium" | "high";
 export const SearchQualityLevel = S.String;
 
@@ -12551,7 +12551,7 @@ export const CreateImageRequestInputReferencesList = /*@__PURE__*/ S.Array(
   ContentPartImage,
 ) as any as S.Schema<CreateImageRequestInputReferencesList>;
 
-/** Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`. */
+/** Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) -- the SVG markup is UTF-8 base64-encoded in `b64_json`. */
 export type CreateImageRequestOutputFormat = "png" | "jpeg" | "webp" | "svg";
 export const CreateImageRequestOutputFormat = S.String;
 
@@ -14168,7 +14168,7 @@ export interface CreateImageRequest {
   n?: number;
   /** Compression level (0-100) for webp/jpeg output. Ignored for png and by providers without a compression knob. */
   output_compression?: number;
-  /** Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) — the SVG markup is UTF-8 base64-encoded in `b64_json`. */
+  /** Encoding of the returned image bytes. Most models produce raster formats (png, jpeg, webp). SVG is supported by vectorization models (e.g. Quiver) -- the SVG markup is UTF-8 base64-encoded in `b64_json`. */
   output_format?: CreateImageRequestOutputFormat | (string & {});
   /** Text description of the desired image */
   prompt: string;
@@ -14181,7 +14181,7 @@ export interface CreateImageRequest {
   seed?: number;
   /** A unique identifier for grouping related requests (e.g., a conversation or agent workflow). Used for observability grouping in Broadcast and private logging; never sent to the provider. If provided in both the request body and the x-session-id header, the body value takes precedence. Maximum of 256 characters. */
   session_id?: string;
-  /** Optional. A convenience shorthand for output dimensions — pass a tier ("2K", "4K") or explicit pixels ("2048x2048") and we normalize it to the right dimensions for the chosen provider. A tier size is equivalent to setting `resolution` and combines with `aspect_ratio`. An explicit pixel size is authoritative: a mismatched `resolution` or `aspect_ratio` alongside it is rejected with a 400. */
+  /** Optional. A convenience shorthand for output dimensions -- pass a tier ("2K", "4K") or explicit pixels ("2048x2048") and we normalize it to the right dimensions for the chosen provider. A tier size is equivalent to setting `resolution` and combines with `aspect_ratio`. An explicit pixel size is authoritative: a mismatched `resolution` or `aspect_ratio` alongside it is rejected with a 400. */
   size?: string;
   /** If true, partial images are streamed as SSE events as they become available. Only supported by providers with native streaming (currently OpenAI). Non-streaming providers ignore this flag and return a buffered response. */
   stream?: boolean;
@@ -14837,7 +14837,7 @@ export const InternChatErrorMetadataReason = S.String;
 export interface InternChatErrorMetadata {
   /** A stable reason a client can branch on. */
   reason: InternChatErrorMetadataReason;
-  /** Whether the same request may be sent again unchanged. Always `true` for the transient refusals — `busy`, `intern_not_ready`, `intern_unreachable`, `rate_limited`, `stream_severed` and `timeout` — and always `false` for the ones a retry cannot fix. For `turn_failed` it varies by failure and is the intern's own classification of what went wrong: `true` for an upstream overload, rate limit, timeout or transport fault, `false` for an authentication or bad-request failure that would be rejected the same way again. Branch on this field rather than on `reason` when deciding whether to retry. A `429`, and a `409` or `503` with reason `busy`, also carry a `Retry-After` header saying how long to wait. */
+  /** Whether the same request may be sent again unchanged. Always `true` for the transient refusals -- `busy`, `intern_not_ready`, `intern_unreachable`, `rate_limited`, `stream_severed` and `timeout` -- and always `false` for the ones a retry cannot fix. For `turn_failed` it varies by failure and is the intern's own classification of what went wrong: `true` for an upstream overload, rate limit, timeout or transport fault, `false` for an authentication or bad-request failure that would be rejected the same way again. Branch on this field rather than on `reason` when deciding whether to retry. A `429`, and a `409` or `503` with reason `busy`, also carry a `Retry-After` header saying how long to wait. */
   retryable: boolean;
 }
 export const InternChatErrorMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -16112,9 +16112,9 @@ export const MessagesShellToolResultBlockFilesList = /*@__PURE__*/ S.Array(
 export type MessagesShellToolResultBlockType = "openrouter_shell_tool_result";
 export const MessagesShellToolResultBlockType = S.String;
 
-/** Output of an `openrouter:shell` call from a prior assistant turn. Accepted on replay and dropped before the provider request — Anthropic has no equivalent block. */
+/** Output of an `openrouter:shell` call from a prior assistant turn. Accepted on replay and dropped before the provider request -- Anthropic has no equivalent block. */
 export interface MessagesShellToolResultBlock {
-  /** The canonical container id the command ran under — the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
+  /** The canonical container id the command ran under -- the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
   container_id?: string;
   content: MessagesShellToolResultBlockContentMap;
   /** Citations for the files the sandbox command created or modified, most-recently-touched first (at most 10). Retrieve them via the Container Files API. */
@@ -16173,9 +16173,9 @@ export const MessagesBashToolResultBlockFilesList = /*@__PURE__*/ S.Array(
 export type MessagesBashToolResultBlockType = "openrouter_bash_tool_result";
 export const MessagesBashToolResultBlockType = S.String;
 
-/** Output of a sandbox-executed `openrouter:bash` call from a prior assistant turn. Accepted on replay and dropped before the provider request — Anthropic has no equivalent block. */
+/** Output of a sandbox-executed `openrouter:bash` call from a prior assistant turn. Accepted on replay and dropped before the provider request -- Anthropic has no equivalent block. */
 export interface MessagesBashToolResultBlock {
-  /** The canonical container id the command ran under — the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
+  /** The canonical container id the command ran under -- the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
   container_id?: string;
   content: MessagesBashToolResultBlockContentMap;
   /** Citations for the files the sandbox command created or modified, most-recently-touched first (at most 10). Retrieve them via the Container Files API. */
@@ -16308,7 +16308,7 @@ export const MessagesOutputConfigFormat = /*@__PURE__*/ S.suspend(() =>
 export type MessagesOutputConfigTaskBudgetType = "tokens";
 export const MessagesOutputConfigTaskBudgetType = S.String;
 
-/** Task budget for an agentic turn. The model sees a countdown of remaining tokens and uses it to prioritize work and wind down gracefully. Advisory — does not enforce a hard cap. */
+/** Task budget for an agentic turn. The model sees a countdown of remaining tokens and uses it to prioritize work and wind down gracefully. Advisory -- does not enforce a hard cap. */
 export interface MessagesOutputConfigTaskBudget {
   remaining?: number | null;
   total: number;
@@ -16330,7 +16330,7 @@ export interface MessagesOutputConfig {
   effort?: MessagesOutputConfigEffort | (string & {}) | null;
   /** A schema to specify Claude's output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). */
   format?: MessagesOutputConfigFormat | null;
-  /** Task budget for an agentic turn. The model sees a countdown of remaining tokens and uses it to prioritize work and wind down gracefully. Advisory — does not enforce a hard cap. */
+  /** Task budget for an agentic turn. The model sees a countdown of remaining tokens and uses it to prioritize work and wind down gracefully. Advisory -- does not enforce a hard cap. */
   task_budget?: MessagesOutputConfigTaskBudget | null;
 }
 export const MessagesOutputConfig = /*@__PURE__*/ S.suspend(() =>
@@ -17809,7 +17809,7 @@ export type CreateOauthTokenRequestSubjectTokenType = "urn:ietf:params:oauth:tok
 export const CreateOauthTokenRequestSubjectTokenType = S.String;
 
 export interface CreateOauthTokenRequest {
-  /** The federation policy to evaluate, from Settings → Workload identity. Binds the exchange to one organization. */
+  /** The federation policy to evaluate, from Settings -> Workload identity. Binds the exchange to one organization. */
   federation_policy_id: string;
   /** Must be `urn:ietf:params:oauth:grant-type:token-exchange`. */
   grant_type: CreateOauthTokenRequestGrantType | (string & {});
@@ -18011,7 +18011,7 @@ export interface CreateObservabilityDestinationRequest {
   filter_rules?: ObservabilityFilterRulesConfigNullable | null;
   /** Human-readable name for the destination. */
   name: string;
-  /** When true, request/response bodies are not forwarded — only metadata. */
+  /** When true, request/response bodies are not forwarded -- only metadata. */
   privacy_mode?: boolean;
   /** Data regions this destination applies to. `eu` is accepted as an alias for `europe` and normalizes to `europe`. Omitting this field defaults to ['global']; the array must be non-empty. */
   regions?: CreateObservabilityDestinationRequestRegionsList;
@@ -18128,7 +18128,7 @@ export interface CreateObservabilityDestinationResponseData {
   id?: string;
   /** Human-readable name for the destination. */
   name?: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode?: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions?: CreateObservabilityDestinationResponseDataRegionsList;
@@ -19456,7 +19456,7 @@ export const InputMessageItem = /*@__PURE__*/ S.suspend(() =>
 export type FunctionCallItemSubagentItemsItem = OpenAIResponseFunctionToolCallSubagentItemsItem;
 export const FunctionCallItemSubagentItemsItem = OpenAIResponseFunctionToolCallSubagentItemsItem;
 
-/** EXPERIMENTAL — subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
+/** EXPERIMENTAL -- subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
 export type FunctionCallItemSubagentItemsList =
   Array<OpenAIResponseFunctionToolCallSubagentItemsItem>;
 export const FunctionCallItemSubagentItemsList = /*@__PURE__*/ S.Array(
@@ -19477,9 +19477,9 @@ export interface FunctionCallItem {
   /** Namespace qualifier for tools registered as part of a namespace tool group (e.g. an MCP server) */
   namespace?: string | null;
   status?: ToolCallStatus | (string & {}) | null;
-  /** EXPERIMENTAL — subject to change without notice. String id that matches the `call_id` of the `openrouter:subagent` server tool call that spawned the subagent. Present on every `function_call` item the subagent projects; absent on ordinary function calls. */
+  /** EXPERIMENTAL -- subject to change without notice. String id that matches the `call_id` of the `openrouter:subagent` server tool call that spawned the subagent. Present on every `function_call` item the subagent projects; absent on ordinary function calls. */
   subagent_id?: string | null;
-  /** EXPERIMENTAL — subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
+  /** EXPERIMENTAL -- subject to change without notice. The subagent's output items produced on this turn. Treat this as an opaque object; you must replay it in the request so that the subagent can continue execution of the tool with the same context. If a subagent created multiple parallel tool calls, only the first tool call will have this field. The other tool calls will only have `subagent_id`. Present only if the tool call originates from a subagent spawned by the `openrouter:subagent` server tool. */
   subagent_items?: FunctionCallItemSubagentItemsList | null;
   type: FunctionCallItemType;
 }
@@ -20113,7 +20113,7 @@ export interface OutputBashServerToolItem {
   /** The model-generated tool call id from the originating turn. */
   call_id?: string | null;
   command?: string;
-  /** The canonical container id the command ran under — the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
+  /** The canonical container id the command ran under -- the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
   container_id?: string;
   /** The error message when the sandbox call failed before producing a result (for example, the per-user container limit was reached). Set together with `status: 'failed'`; absent on a successful call. A non-zero `exitCode` is a command failure, not a tool failure. */
   error?: string;
@@ -20564,12 +20564,12 @@ export const OutputSubagentServerToolItemType = S.String;
 
 /** An openrouter:subagent server tool output item */
 export interface OutputSubagentServerToolItem {
-  /** EXPERIMENTAL — subject to change without notice. The `call_id` of the tool call that spawned this subagent. This id will also be included as the `subagent_id` on any `function_call` items created by the subagent. This must be returned in the request so the `function_call` can be matched with the correct subagent. A suspended `in_progress` item is announced once and never re-emitted or terminally closed — completion arrives as a new item with the same `call_id`. */
+  /** EXPERIMENTAL -- subject to change without notice. The `call_id` of the tool call that spawned this subagent. This id will also be included as the `subagent_id` on any `function_call` items created by the subagent. This must be returned in the request so the `function_call` can be matched with the correct subagent. A suspended `in_progress` item is announced once and never re-emitted or terminally closed -- completion arrives as a new item with the same `call_id`. */
   call_id?: string;
   /** Error message when the subagent task did not produce an outcome. Set together with `status: 'failed'` on the terminal item. */
   error?: string;
   id?: string;
-  /** Provider-safe function name of the specific subagent instance that produced this item (e.g. `openrouter_subagent__1`). Present only on items from non-default instances — the second and later subagent entries in the request `tools` array. The first (default) instance omits it, even when multiple subagents are configured. When a replayed item echoes this field back, the transcript rehydrates the call under that instance's tool. This identity is positional: it is derived from the index of the subagent entry in the request `tools` array, so keep the order of subagent entries stable across requests in a conversation. */
+  /** Provider-safe function name of the specific subagent instance that produced this item (e.g. `openrouter_subagent__1`). Present only on items from non-default instances -- the second and later subagent entries in the request `tools` array. The first (default) instance omits it, even when multiple subagents are configured. When a replayed item echoes this field back, the transcript rehydrates the call under that instance's tool. This identity is positional: it is derived from the index of the subagent entry in the request `tools` array, so keep the order of subagent entries stable across requests in a conversation. */
   instance_name?: string;
   /** Slug of the worker model that executed the task. */
   model?: string;
@@ -20757,7 +20757,7 @@ export interface OutputShellServerToolItem {
   arguments?: string | null;
   /** The model-generated tool call id from the originating turn. */
   call_id?: string | null;
-  /** The canonical container id the command ran under — the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
+  /** The canonical container id the command ran under -- the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
   container_id?: string;
   /** The error message when the sandbox call failed before producing a result (for example, the per-user container limit was reached). Set together with `status: 'failed'`; absent on a successful call. `output` is omitted when `error` is set. */
   error?: string;
@@ -20943,7 +20943,7 @@ export const ShellCallOutputItemType = S.String;
 /** Output from a shell command execution (newer variant) */
 export interface ShellCallOutputItem {
   call_id: string;
-  /** The canonical container id the command ran under — the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
+  /** The canonical container id the command ran under -- the `{container_id}` for the Container Files API, reusable as a `container_reference` in later requests. Present on every sandbox-executed call, even when no files changed. */
   container_id?: string;
   /** The error message when the sandbox call failed before producing a result, as echoed from a failed `shell_call_output` emission. */
   error?: string;
@@ -21141,7 +21141,7 @@ export const McpCallItem = /*@__PURE__*/ S.suspend(() =>
 export type CustomToolCallItemType = "custom_tool_call";
 export const CustomToolCallItemType = S.String;
 
-/** A call to a custom (freeform-grammar) tool created by the model — distinct from `function_call`. Used for tools like Codex CLI's `apply_patch` whose payload is opaque text rather than JSON arguments. */
+/** A call to a custom (freeform-grammar) tool created by the model -- distinct from `function_call`. Used for tools like Codex CLI's `apply_patch` whose payload is opaque text rather than JSON arguments. */
 export interface CustomToolCallItem {
   /** True when the model called a tool declared with `async: true` and may continue its turn before the output is returned. Return the result in a later request as a `function_call_output` with this `call_id`. */
   async?: boolean | null;
@@ -21379,7 +21379,7 @@ export const WebSearchServerToolOpenRouter = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebSearchServerToolOpenRouter",
 }) as any as S.Schema<WebSearchServerToolOpenRouter>;
 
-/** Which apply_patch engine to use. "auto" (default) uses native passthrough when the endpoint advertises native apply_patch support, otherwise falls back to OpenRouter's HITL validator. "native" forces native passthrough — when the endpoint does not support native, the request falls back to HITL. "openrouter" always runs the HITL validator. Native passthrough streams the diff incrementally via `apply_patch_call_operation_diff.delta` events; HITL buffers the diff for atomic delivery as a single delta. */
+/** Which apply_patch engine to use. "auto" (default) uses native passthrough when the endpoint advertises native apply_patch support, otherwise falls back to OpenRouter's HITL validator. "native" forces native passthrough -- when the endpoint does not support native, the request falls back to HITL. "openrouter" always runs the HITL validator. Native passthrough streams the diff incrementally via `apply_patch_call_operation_diff.delta` events; HITL buffers the diff for atomic delivery as a single delta. */
 export type ApplyPatchEngineEnum = "auto" | "native" | "openrouter";
 export const ApplyPatchEngineEnum = S.String;
 
@@ -26038,7 +26038,7 @@ export const FileProvider = S.String;
 
 export interface DeleteFileRequest {
   file_id: string;
-  /** Workspace to scope the request to. Defaults to the caller’s default workspace. */
+  /** Workspace to scope the request to. Defaults to the caller's default workspace. */
   workspace_id?: string;
   /** Store or read this file on the named provider using your own API key for it. Omit to use OpenRouter storage. */
   provider?: FileProvider | (string & {});
@@ -26269,7 +26269,7 @@ export const DeletePrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 export type DeleteScimGroupMappingRequestKeepMembersCase0 = "true" | "false";
 export const DeleteScimGroupMappingRequestKeepMembersCase0 = S.String;
 
-/** Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. There is deliberately no default — omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required. */
+/** Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. There is deliberately no default -- omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required. */
 export type DeleteScimGroupMappingRequestKeepMembers =
   | DeleteScimGroupMappingRequestKeepMembersCase0
   | boolean;
@@ -26278,7 +26278,7 @@ export const DeleteScimGroupMappingRequestKeepMembers =
 
 export interface DeleteScimGroupMappingRequest {
   id: string;
-  /** Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. There is deliberately no default — omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required. */
+  /** Required. Whether to keep workspace members after deleting the mapping. `false` **removes** the members this mapping granted access to; `true` deletes the mapping while leaving membership intact as manually-managed. There is deliberately no default -- omitting it returns `400` so the destructive path cannot be reached by accident. Mirrors the dashboard, whose `DeleteMappingSchema.keepMembers` is likewise required. */
   keep_members: DeleteScimGroupMappingRequestKeepMembers;
 }
 export const DeleteScimGroupMappingRequest = /*@__PURE__*/ S.suspend(() =>
@@ -26319,7 +26319,7 @@ export const DeleteVaultSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct(
 export interface DeleteWorkspaceRequest {
   /** The workspace ID (UUID) or slug */
   id: string;
-  /** Required to delete the default workspace. Deleting it permanently disables the account’s unscoped inference API keys (management/provisioning keys are retained) and its budgets, guardrails, classifiers, and broadcast destinations. Ignored for non-default workspaces. */
+  /** Required to delete the default workspace. Deleting it permanently disables the account's unscoped inference API keys (management/provisioning keys are retained) and its budgets, guardrails, classifiers, and broadcast destinations. Ignored for non-default workspaces. */
   confirm_default_workspace_deletion?: boolean;
 }
 export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -26385,7 +26385,7 @@ export const DisablePrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisablePrivateEndpointRequest>;
 
 export interface DownloadContainerFileContentRequest {
-  /** The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
+  /** The canonical container id, exactly as returned in a bash/shell tool result -- a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
   container_id: string;
   /** Container file id (`cfile_` + base64url of the file path). */
   file_id: string;
@@ -26407,7 +26407,7 @@ export const DownloadContainerFileContentResponse = S.instanceOf(Uint8Array).pip
 ) as any as S.Schema<DownloadContainerFileContentResponse>;
 export interface DownloadFileContentRequest {
   file_id: string;
-  /** Workspace to scope the request to. Defaults to the caller’s default workspace. */
+  /** Workspace to scope the request to. Defaults to the caller's default workspace. */
   workspace_id?: string;
   /** Store or read this file on the named provider using your own API key for it. Omit to use OpenRouter storage. */
   provider?: FileProvider | (string & {});
@@ -26536,7 +26536,7 @@ export const GetAnalyticsMetaResponseDataGranularitiesList = /*@__PURE__*/ S.Arr
   GetAnalyticsMetaResponseDataGranularitiesItem,
 ) as any as S.Schema<GetAnalyticsMetaResponseDataGranularitiesList>;
 
-/** How this metric value should be formatted for display (e.g. percent → multiply by 100 and append %, currency → prefix with $) */
+/** How this metric value should be formatted for display (e.g. percent -> multiply by 100 and append %, currency -> prefix with $) */
 export type GetAnalyticsMetaResponseDataMetricsItemDisplayFormat =
   | "number"
   | "currency"
@@ -26546,7 +26546,7 @@ export type GetAnalyticsMetaResponseDataMetricsItemDisplayFormat =
 export const GetAnalyticsMetaResponseDataMetricsItemDisplayFormat = S.String;
 
 export interface GetAnalyticsMetaResponseDataMetricsItem {
-  /** How this metric value should be formatted for display (e.g. percent → multiply by 100 and append %, currency → prefix with $) */
+  /** How this metric value should be formatted for display (e.g. percent -> multiply by 100 and append %, currency -> prefix with $) */
   display_format: GetAnalyticsMetaResponseDataMetricsItemDisplayFormat;
   /** Human-readable label */
   display_label: string;
@@ -26635,7 +26635,7 @@ export const GetAnalyticsMetaResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetAnalyticsMetaResponse" }) as any as S.Schema<GetAnalyticsMetaResponse>;
 
-/** Marketplace category group to filter by (e.g. `coding`). Only apps tagged with a subcategory inside this group are returned. Mutually combinable with `subcategory` — when both are supplied the `subcategory` must belong to the `category` group. */
+/** Marketplace category group to filter by (e.g. `coding`). Only apps tagged with a subcategory inside this group are returned. Mutually combinable with `subcategory` -- when both are supplied the `subcategory` must belong to the `category` group. */
 export type GetAppRankingsRequestCategory =
   | "coding"
   | "creative"
@@ -26667,7 +26667,7 @@ export type GetAppRankingsRequestSort = "popular" | "trending";
 export const GetAppRankingsRequestSort = S.String;
 
 export interface GetAppRankingsRequest {
-  /** Marketplace category group to filter by (e.g. `coding`). Only apps tagged with a subcategory inside this group are returned. Mutually combinable with `subcategory` — when both are supplied the `subcategory` must belong to the `category` group. */
+  /** Marketplace category group to filter by (e.g. `coding`). Only apps tagged with a subcategory inside this group are returned. Mutually combinable with `subcategory` -- when both are supplied the `subcategory` must belong to the `category` group. */
   category?: GetAppRankingsRequestCategory | (string & {});
   /** Marketplace subcategory to filter by (e.g. `cli-agent`). Takes precedence over `category` for the actual filter; when `category` is also supplied the pair must be consistent. */
   subcategory?: GetAppRankingsRequestSubcategory | (string & {});
@@ -26914,7 +26914,7 @@ export interface UnifiedBenchmarksDAItem {
   source: UnifiedBenchmarksDAItemSource;
   /** Placement distribution from tournament matches. */
   tournament_stats: UnifiedBenchmarksDAItemTournamentStats;
-  /** Win rate as a percentage (0–100). */
+  /** Win rate as a percentage (0-100). */
   win_rate: number;
 }
 export const UnifiedBenchmarksDAItem = /*@__PURE__*/ S.suspend(() =>
@@ -27167,7 +27167,7 @@ export interface GetBYOKKeyResponseData {
   id: string;
   /** Whether OpenRouter's shared endpoints on this provider are removed for every model, including models outside `allowed_models` and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. */
   is_byok_only: boolean;
-  /** Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
+  /** Whether this credential is treated as a fallback -- used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
   is_fallback: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for the models this credential applies to (its `allowed_models`, or every model when `null`). Requests for those models run only on your keys; models outside the allowlist may still fall back to shared capacity on this provider. */
   is_required: boolean;
@@ -27176,9 +27176,9 @@ export interface GetBYOKKeyResponseData {
   /** Optional human-readable name for the credential. */
   name?: string | null;
   provider: BYOKProviderSlug;
-  /** Position within the provider — credentials are tried in ascending sort order. */
+  /** Position within the provider -- credentials are tried in ascending sort order. */
   sort_order: number;
-  /** The workspace this credential is scoped to, or `null` when it is global — usable across every workspace in the account. A `null` value does not mean the default workspace. */
+  /** The workspace this credential is scoped to, or `null` when it is global -- usable across every workspace in the account. A `null` value does not mean the default workspace. */
   workspace_id: string | null;
 }
 export const GetBYOKKeyResponseData = /*@__PURE__*/ S.suspend(() =>
@@ -27211,7 +27211,7 @@ export const GetBYOKKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBYOKKeyResponse" }) as any as S.Schema<GetBYOKKeyResponse>;
 
 export interface GetContainerFileRequest {
-  /** The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
+  /** The canonical container id, exactly as returned in a bash/shell tool result -- a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
   container_id: string;
   /** Container file id (`cfile_` + base64url of the file path). */
   file_id: string;
@@ -27233,7 +27233,7 @@ export const ContainerFileSource = S.String;
 export interface ContainerFile {
   /** File size in bytes. */
   bytes: number;
-  /** The container the file belongs to — echoes the `container_id` path parameter (OpenAI field name). */
+  /** The container the file belongs to -- echoes the `container_id` path parameter (OpenAI field name). */
   container_id: string;
   /** Unix timestamp (seconds) when the file was last synced. */
   created_at: number;
@@ -27435,7 +27435,7 @@ export const GetEndUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetFileMetadataRequest {
   file_id: string;
-  /** Workspace to scope the request to. Defaults to the caller’s default workspace. */
+  /** Workspace to scope the request to. Defaults to the caller's default workspace. */
   workspace_id?: string;
   /** Store or read this file on the named provider using your own API key for it. Omit to use OpenRouter storage. */
   provider?: FileProvider | (string & {});
@@ -27553,7 +27553,7 @@ export const AnthropicFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AnthropicFile" }) as any as S.Schema<AnthropicFile>;
 
-/** A stored file. The shape is negotiated per request — see the endpoint description. */
+/** A stored file. The shape is negotiated per request -- see the endpoint description. */
 export type FileResponse = OpenRouterFile | OpenAIFile | AnthropicFile;
 export const FileResponse = S.Unknown as any as S.Schema<FileResponse>;
 
@@ -28478,7 +28478,7 @@ export const PublicPricing = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PublicPricing" }) as any as S.Schema<PublicPricing>;
 
-/** Allowed reasoning effort values for this model, in descending effort order (highest first). Null means no allowlist — all gateway effort values are accepted. */
+/** Allowed reasoning effort values for this model, in descending effort order (highest first). Null means no allowlist -- all gateway effort values are accepted. */
 export type ModelReasoningSupportedEffortsList = Array<ReasoningEffort | null>;
 export const ModelReasoningSupportedEffortsList = /*@__PURE__*/ S.Array(
   S.NullOr(ReasoningEffort),
@@ -28491,7 +28491,7 @@ export interface ModelReasoning {
   default_enabled?: boolean;
   /** When true, reasoning cannot be disabled and effort "none" is rejected. */
   mandatory: boolean;
-  /** Allowed reasoning effort values for this model, in descending effort order (highest first). Null means no allowlist — all gateway effort values are accepted. */
+  /** Allowed reasoning effort values for this model, in descending effort order (highest first). Null means no allowlist -- all gateway effort values are accepted. */
   supported_efforts?: ModelReasoningSupportedEffortsList | null;
   /** Present and `true` when the model accepts `reasoning.max_tokens` in requests (Anthropic-style) instead of or in addition to `reasoning.effort`. Omitted otherwise. */
   supports_max_tokens?: boolean;
@@ -28709,7 +28709,7 @@ export interface GetObservabilityDestinationResponseData {
   id?: string;
   /** Human-readable name for the destination. */
   name?: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode?: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions?: GetObservabilityDestinationResponseDataRegionsList;
@@ -28890,11 +28890,11 @@ export const PrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PrivateEndpointResponse" }) as any as S.Schema<PrivateEndpointResponse>;
 
-/** Time grain of each row. `day` (default) returns the per-UTC-day series; `week` buckets by ISO week start; `month` buckets by month start. With `category` or `language_type` only `week` (default) and `month` are available — `day` is rejected with a 400 because those datasets are aggregated weekly. For those sampled datasets `period=month` buckets each week by its week-start month, so totals are approximate at month boundaries. */
+/** Time grain of each row. `day` (default) returns the per-UTC-day series; `week` buckets by ISO week start; `month` buckets by month start. With `category` or `language_type` only `week` (default) and `month` are available -- `day` is rejected with a 400 because those datasets are aggregated weekly. For those sampled datasets `period=month` buckets each week by its week-start month, so totals are approximate at month boundaries. */
 export type GetRankingsDailyRequestPeriod = "day" | "week" | "month";
 export const GetRankingsDailyRequestPeriod = S.String;
 
-/** Restrict to models for a modality surface: `text` / `image_output` match output modality, `image` / `audio` match input modality, and `tool_calling` keeps only rows that recorded at least one tool call. Exact dataset — cannot be combined with `category` or `language_type`. */
+/** Restrict to models for a modality surface: `text` / `image_output` match output modality, `image` / `audio` match input modality, and `tool_calling` keeps only rows that recorded at least one tool call. Exact dataset -- cannot be combined with `category` or `language_type`. */
 export type GetRankingsDailyRequestModality =
   | "text"
   | "image"
@@ -28903,7 +28903,7 @@ export type GetRankingsDailyRequestModality =
   | "tool_calling";
 export const GetRankingsDailyRequestModality = S.String;
 
-/** Restrict to requests whose context length falls in this bucket (`1K`, `10K`, `100K`, `1M`, or `10M`). Exact dataset — cannot be combined with `category` or `language_type`. */
+/** Restrict to requests whose context length falls in this bucket (`1K`, `10K`, `100K`, `1M`, or `10M`). Exact dataset -- cannot be combined with `category` or `language_type`. */
 export type GetRankingsDailyRequestContextBucket = "1K" | "10K" | "100K" | "1M" | "10M";
 export const GetRankingsDailyRequestContextBucket = S.String;
 
@@ -28932,11 +28932,11 @@ export interface GetRankingsDailyRequest {
   start_date?: string;
   /** End of the date window in YYYY-MM-DD (UTC), inclusive. Defaults to the most recent completed UTC day. Must be on or after 2025-01-01; earlier values are rejected with a 400. */
   end_date?: string;
-  /** Time grain of each row. `day` (default) returns the per-UTC-day series; `week` buckets by ISO week start; `month` buckets by month start. With `category` or `language_type` only `week` (default) and `month` are available — `day` is rejected with a 400 because those datasets are aggregated weekly. For those sampled datasets `period=month` buckets each week by its week-start month, so totals are approximate at month boundaries. */
+  /** Time grain of each row. `day` (default) returns the per-UTC-day series; `week` buckets by ISO week start; `month` buckets by month start. With `category` or `language_type` only `week` (default) and `month` are available -- `day` is rejected with a 400 because those datasets are aggregated weekly. For those sampled datasets `period=month` buckets each week by its week-start month, so totals are approximate at month boundaries. */
   period?: GetRankingsDailyRequestPeriod | (string & {});
-  /** Restrict to models for a modality surface: `text` / `image_output` match output modality, `image` / `audio` match input modality, and `tool_calling` keeps only rows that recorded at least one tool call. Exact dataset — cannot be combined with `category` or `language_type`. */
+  /** Restrict to models for a modality surface: `text` / `image_output` match output modality, `image` / `audio` match input modality, and `tool_calling` keeps only rows that recorded at least one tool call. Exact dataset -- cannot be combined with `category` or `language_type`. */
   modality?: GetRankingsDailyRequestModality | (string & {});
-  /** Restrict to requests whose context length falls in this bucket (`1K`, `10K`, `100K`, `1M`, or `10M`). Exact dataset — cannot be combined with `category` or `language_type`. */
+  /** Restrict to requests whose context length falls in this bucket (`1K`, `10K`, `100K`, `1M`, or `10M`). Exact dataset -- cannot be combined with `category` or `language_type`. */
   context_bucket?: GetRankingsDailyRequestContextBucket | (string & {});
   /** Restrict to a use-case category (e.g. `programming`, `roleplay`). Sourced from a sampled, upsampled dataset, so `total_tokens` is an estimate and is aggregated weekly (the trailing weekly bucket may include traffic past `end_date`). Cannot be combined with `modality`, `context_bucket`, or `language_type`. */
   category?: GetRankingsDailyRequestCategory | (string & {});
@@ -28958,7 +28958,7 @@ export const GetRankingsDailyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RankingsDailyItem {
   /** UTC calendar date the row is aggregated over (YYYY-MM-DD). */
   date: string;
-  /** Model variant permaslug (e.g. `openai/gpt-4o-2024-05-13`, `openai/gpt-4o-2024-05-13:free`). Non-default variants include a `:variant` suffix and are ranked as their own entry. The reserved value `other` denotes the aggregated row covering every model outside the daily top 50 for that date — always sorted last within its date. */
+  /** Model variant permaslug (e.g. `openai/gpt-4o-2024-05-13`, `openai/gpt-4o-2024-05-13:free`). Non-default variants include a `:variant` suffix and are ranked as their own entry. The reserved value `other` denotes the aggregated row covering every model outside the daily top 50 for that date -- always sorted last within its date. */
   model_permaslug: string;
   /** Sum of `prompt_tokens + completion_tokens` for the day, returned as a decimal string so 64-bit values are not truncated. */
   total_tokens: string;
@@ -28971,14 +28971,14 @@ export const RankingsDailyItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RankingsDailyItem" }) as any as S.Schema<RankingsDailyItem>;
 
-/** Up to 51 rows per day — the top 50 public models by `total_tokens` for each UTC calendar date in the window, plus one aggregated `other` row summing every model outside that top 50 (omitted when the long tail is empty). Rows are sorted by `date` ascending, then by `total_tokens` descending, with `other` pinned last within its date. Ties between real models break alphabetically on `model_permaslug` so the order is stable across requests. */
+/** Up to 51 rows per day -- the top 50 public models by `total_tokens` for each UTC calendar date in the window, plus one aggregated `other` row summing every model outside that top 50 (omitted when the long tail is empty). Rows are sorted by `date` ascending, then by `total_tokens` descending, with `other` pinned last within its date. Ties between real models break alphabetically on `model_permaslug` so the order is stable across requests. */
 export type RankingsDailyResponseDataList = Array<RankingsDailyItem>;
 export const RankingsDailyResponseDataList = /*@__PURE__*/ S.Array(
   RankingsDailyItem,
 ) as any as S.Schema<RankingsDailyResponseDataList>;
 
 export interface RankingsDailyResponse {
-  /** Up to 51 rows per day — the top 50 public models by `total_tokens` for each UTC calendar date in the window, plus one aggregated `other` row summing every model outside that top 50 (omitted when the long tail is empty). Rows are sorted by `date` ascending, then by `total_tokens` descending, with `other` pinned last within its date. Ties between real models break alphabetically on `model_permaslug` so the order is stable across requests. */
+  /** Up to 51 rows per day -- the top 50 public models by `total_tokens` for each UTC calendar date in the window, plus one aggregated `other` row summing every model outside that top 50 (omitted when the long tail is empty). Rows are sorted by `date` ascending, then by `total_tokens` descending, with `other` pinned last within its date. Ties between real models break alphabetically on `model_permaslug` so the order is stable across requests. */
   data: RankingsDailyResponseDataList;
   meta: RankingsDailyMeta;
 }
@@ -29143,9 +29143,9 @@ export const GetTaskClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TaskClassificationModel {
   /** Model identifier (permaslug). */
   id: string;
-  /** Fraction of this classification's sampled token volume attributed to this model (0–1). Sums to ≤1 across the returned models (only top-N are included and unattributed requests are excluded). */
+  /** Fraction of this classification's sampled token volume attributed to this model (0-1). Sums to <=1 across the returned models (only top-N are included and unattributed requests are excluded). */
   tag_token_share: number;
-  /** Fraction of this classification's sampled requests attributed to this model (0–1). Sums to ≤1 across the returned models (only top-N are included and unattributed requests are excluded). */
+  /** Fraction of this classification's sampled requests attributed to this model (0-1). Sums to <=1 across the returned models (only top-N are included and unattributed requests are excluded). */
   tag_usage_share: number;
 }
 export const TaskClassificationModel = /*@__PURE__*/ S.suspend(() =>
@@ -29163,9 +29163,9 @@ export const TaskClassificationItemModelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TaskClassificationItemModelsList>;
 
 export interface TaskClassificationItem {
-  /** Fraction of this classification's token volume within its macro-category (0–1). Sums to 1 across all classifications sharing the same `macro_category`. */
+  /** Fraction of this classification's token volume within its macro-category (0-1). Sums to 1 across all classifications sharing the same `macro_category`. */
   category_token_share: number;
-  /** Fraction of this classification's usage within its macro-category (0–1). Sums to 1 across all classifications sharing the same `macro_category`. */
+  /** Fraction of this classification's usage within its macro-category (0-1). Sums to 1 across all classifications sharing the same `macro_category`. */
   category_usage_share: number;
   /** Human-readable label for the classification. */
   display_name: string;
@@ -29175,9 +29175,9 @@ export interface TaskClassificationItem {
   models: TaskClassificationItemModelsList;
   /** Classification tag identifier (e.g. `code:general_impl`, `agent:web_search`). */
   tag: string;
-  /** Fraction of classified sampled token volume (prompt + completion) attributed to this classification (0–1). The unclassified `other` bucket is excluded from the denominator. */
+  /** Fraction of classified sampled token volume (prompt + completion) attributed to this classification (0-1). The unclassified `other` bucket is excluded from the denominator. */
   token_share: number;
-  /** Fraction of classified sampled requests attributed to this classification (0–1). The unclassified `other` bucket is excluded from the denominator. */
+  /** Fraction of classified sampled requests attributed to this classification (0-1). The unclassified `other` bucket is excluded from the denominator. */
   usage_share: number;
 }
 export const TaskClassificationItem = /*@__PURE__*/ S.suspend(() =>
@@ -29204,9 +29204,9 @@ export interface TaskClassificationMacroCategory {
   key: string;
   /** Human-readable label for the macro-category. */
   label: string;
-  /** Combined token share of all classifications in this macro-category (0–1). */
+  /** Combined token share of all classifications in this macro-category (0-1). */
   token_share: number;
-  /** Combined usage share of all classifications in this macro-category (0–1). */
+  /** Combined usage share of all classifications in this macro-category (0-1). */
   usage_share: number;
 }
 export const TaskClassificationMacroCategory = /*@__PURE__*/ S.suspend(() =>
@@ -29510,7 +29510,7 @@ export const GetToolResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetToolResponse" }) as any as S.Schema<GetToolResponse>;
 
-/** Set to 'workspace' to split each row per workspace and include `workspace_id` on every item. Omitted by default, in which case rows are aggregated across workspaces (by date, model, and endpoint) and `workspace_id` is not returned — preserving the historical response shape. */
+/** Set to 'workspace' to split each row per workspace and include `workspace_id` on every item. Omitted by default, in which case rows are aggregated across workspaces (by date, model, and endpoint) and `workspace_id` is not returned -- preserving the historical response shape. */
 export type GetUserActivityRequestGroupBy = "workspace";
 export const GetUserActivityRequestGroupBy = S.String;
 
@@ -29521,7 +29521,7 @@ export interface GetUserActivityRequest {
   api_key_hash?: string;
   /** Filter by org member user ID. Only applicable for organization accounts. */
   user_id?: string;
-  /** Set to 'workspace' to split each row per workspace and include `workspace_id` on every item. Omitted by default, in which case rows are aggregated across workspaces (by date, model, and endpoint) and `workspace_id` is not returned — preserving the historical response shape. */
+  /** Set to 'workspace' to split each row per workspace and include `workspace_id` on every item. Omitted by default, in which case rows are aggregated across workspaces (by date, model, and endpoint) and `workspace_id` is not returned -- preserving the historical response shape. */
   group_by?: GetUserActivityRequestGroupBy | (string & {});
   /** Filter by workspace ID (UUID). Returns only activity attributed to that workspace. The workspace must belong to the authenticated account. */
   workspace_id?: string;
@@ -30129,7 +30129,7 @@ export interface ListBYOKKeysRequest {
   offset?: number;
   /** Maximum number of records to return (max 100) */
   limit?: number;
-  /** Optional workspace ID to filter by. When omitted, resolves to the account’s default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. */
+  /** Optional workspace ID to filter by. When omitted, resolves to the account's default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. */
   workspace_id?: string;
   /** Optional provider slug to filter by (e.g. `openai`, `anthropic`, `amazon-bedrock`). */
   provider?: ListBYOKKeysRequestProvider | (string & {});
@@ -30178,7 +30178,7 @@ export interface BYOKKey {
   id: string;
   /** Whether OpenRouter's shared endpoints on this provider are removed for every model, including models outside `allowed_models` and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. */
   is_byok_only: boolean;
-  /** Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
+  /** Whether this credential is treated as a fallback -- used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
   is_fallback: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for the models this credential applies to (its `allowed_models`, or every model when `null`). Requests for those models run only on your keys; models outside the allowlist may still fall back to shared capacity on this provider. */
   is_required: boolean;
@@ -30187,9 +30187,9 @@ export interface BYOKKey {
   /** Optional human-readable name for the credential. */
   name?: string | null;
   provider: BYOKProviderSlug;
-  /** Position within the provider — credentials are tried in ascending sort order. */
+  /** Position within the provider -- credentials are tried in ascending sort order. */
   sort_order: number;
-  /** The workspace this credential is scoped to, or `null` when it is global — usable across every workspace in the account. A `null` value does not mean the default workspace. */
+  /** The workspace this credential is scoped to, or `null` when it is global -- usable across every workspace in the account. A `null` value does not mean the default workspace. */
   workspace_id: string | null;
 }
 export const BYOKKey = /*@__PURE__*/ S.suspend(() =>
@@ -30232,11 +30232,11 @@ export const ListBYOKKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBYOKKeysResponse" }) as any as S.Schema<ListBYOKKeysResponse>;
 
 export interface ListContainerFilesRequest {
-  /** The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
+  /** The canonical container id, exactly as returned in a bash/shell tool result -- a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
   container_id: string;
   /** Maximum number of files to return (1-1000). Defaults to 100 when absent. */
   limit?: number;
-  /** Forward cursor: the previous page’s `last_id` (or any container file id); listing resumes strictly after that path. A `last_id` from a page that stopped at the scan bound may name a directory-marker path (trailing `/`) that was never listed as a file; such cursors are accepted. */
+  /** Forward cursor: the previous page's `last_id` (or any container file id); listing resumes strictly after that path. A `last_id` from a page that stopped at the scan bound may name a directory-marker path (trailing `/`) that was never listed as a file; such cursors are accepted. */
   after?: string;
 }
 export const ListContainerFilesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -30262,7 +30262,7 @@ export interface ContainerFileListResponse {
   first_id: string | null;
   /** True when another page can be fetched by passing `after=last_id`; `last_id` is non-null whenever this is true. */
   has_more: boolean;
-  /** Cursor for the next page (pass as `after`). The last entry’s id, except when the page stopped at the per-request scan bound on hidden bookkeeping objects: then it names the scan position and may not appear in `data`. Null only when `has_more` is false and `data` is empty. */
+  /** Cursor for the next page (pass as `after`). The last entry's id, except when the page stopped at the per-request scan bound on hidden bookkeeping objects: then it names the scan position and may not appear in `data`. Null only when `has_more` is false and `data` is empty. */
   last_id: string | null;
   object: ContainerFileListResponseObject;
 }
@@ -30718,11 +30718,11 @@ export type ListFilesRequestOrder = "asc" | "desc";
 export const ListFilesRequestOrder = S.String;
 
 export interface ListFilesRequest {
-  /** Maximum number of files to return (1–1000). */
+  /** Maximum number of files to return (1-1000). */
   limit?: number;
   /** Opaque pagination cursor from a previous response. */
   cursor?: string;
-  /** Workspace to scope the request to. Defaults to the caller’s default workspace. */
+  /** Workspace to scope the request to. Defaults to the caller's default workspace. */
   workspace_id?: string;
   /** Store or read this file on the named provider using your own API key for it. Omit to use OpenRouter storage. */
   provider?: FileProvider | (string & {});
@@ -30933,7 +30933,7 @@ export const GenerationContentDataInputCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerationContentDataInputCase1",
 }) as any as S.Schema<GenerationContentDataInputCase1>;
 
-/** The input to the generation — either a prompt string or an array of messages */
+/** The input to the generation -- either a prompt string or an array of messages */
 export type GenerationContentDataInput =
   | GenerationContentDataInputCase0
   | GenerationContentDataInputCase1;
@@ -30958,7 +30958,7 @@ export const GenerationContentDataOutput = /*@__PURE__*/ S.suspend(() =>
 /** Stored prompt and completion content, plus the failure error when one was stored */
 export interface GenerationContentData {
   error: GenerationContentError | null;
-  /** The input to the generation — either a prompt string or an array of messages */
+  /** The input to the generation -- either a prompt string or an array of messages */
   input: GenerationContentDataInput;
   /** The output from the generation */
   output: GenerationContentDataOutput;
@@ -32114,7 +32114,7 @@ export interface ObservabilityArizeDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityArizeDestinationRegionsList;
@@ -32210,7 +32210,7 @@ export interface ObservabilityBraintrustDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityBraintrustDestinationRegionsList;
@@ -32314,7 +32314,7 @@ export interface ObservabilityClickhouseDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityClickhouseDestinationRegionsList;
@@ -32411,7 +32411,7 @@ export interface ObservabilityDatadogDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityDatadogDestinationRegionsList;
@@ -32505,7 +32505,7 @@ export interface ObservabilityGrafanaDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityGrafanaDestinationRegionsList;
@@ -32601,7 +32601,7 @@ export interface ObservabilityLangfuseDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityLangfuseDestinationRegionsList;
@@ -32701,7 +32701,7 @@ export interface ObservabilityLangsmithDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityLangsmithDestinationRegionsList;
@@ -32798,7 +32798,7 @@ export interface ObservabilityNewrelicDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityNewrelicDestinationRegionsList;
@@ -32892,7 +32892,7 @@ export interface ObservabilityOpikDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityOpikDestinationRegionsList;
@@ -32984,7 +32984,7 @@ export interface ObservabilityOtelCollectorDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityOtelCollectorDestinationRegionsList;
@@ -33076,7 +33076,7 @@ export interface ObservabilityPosthogDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityPosthogDestinationRegionsList;
@@ -33169,7 +33169,7 @@ export interface ObservabilityRampDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityRampDestinationRegionsList;
@@ -33275,7 +33275,7 @@ export interface ObservabilityS3Destination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityS3DestinationRegionsList;
@@ -33367,7 +33367,7 @@ export interface ObservabilitySentryDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilitySentryDestinationRegionsList;
@@ -33472,7 +33472,7 @@ export interface ObservabilitySnowflakeDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilitySnowflakeDestinationRegionsList;
@@ -33568,7 +33568,7 @@ export interface ObservabilityWeaveDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityWeaveDestinationRegionsList;
@@ -33661,7 +33661,7 @@ export interface ObservabilityWebhookDestination {
   id: string;
   /** Human-readable name for the destination. */
   name: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions: ObservabilityWebhookDestinationRegionsList;
@@ -35205,7 +35205,7 @@ export const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWorkspacesResponse" }) as any as S.Schema<ListWorkspacesResponse>;
 
 export interface PromoteContainerFileRequest {
-  /** The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
+  /** The canonical container id, exactly as returned in a bash/shell tool result -- a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. */
   container_id: string;
   /** Container file id (`cfile_` + base64url of the file path). */
   file_id: string;
@@ -35296,7 +35296,7 @@ export const QueryAnalyticsRequestClassifierFiltersFiltersItemValue =
 export interface QueryAnalyticsRequestClassifierFiltersFiltersItem {
   /** Classifier dimension name to filter on (snake_case identifier, e.g. "department", "work_type"). */
   field: string;
-  /** Filter operator. Only equality/set operators are supported (eq, neq, in, not_in) — ordered comparisons are not available because classification values are strings. */
+  /** Filter operator. Only equality/set operators are supported (eq, neq, in, not_in) -- ordered comparisons are not available because classification values are strings. */
   operator: string;
   /** Filter value. Use a scalar (string or number) for eq/neq, or an array for in/not_in. */
   value: QueryAnalyticsRequestClassifierFiltersFiltersItemValue;
@@ -35347,7 +35347,7 @@ export const QueryAnalyticsRequestFiltersItemValueCase2List = /*@__PURE__*/ S.Ar
   QueryAnalyticsRequestFiltersItemValueCase2Item,
 ) as any as S.Schema<QueryAnalyticsRequestFiltersItemValueCase2List>;
 
-/** Filter value (scalar or array depending on operator). Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: `api_key_id` — numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); `user` — Clerk user ID (e.g. "user_abc123"), not the display name; `workspace` — workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); `app` — numeric app ID, not the app title; `model` — permaslug (e.g. "openai/gpt-4o"), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned. */
+/** Filter value (scalar or array depending on operator). Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: `api_key_id` -- numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); `user` -- Clerk user ID (e.g. "user_abc123"), not the display name; `workspace` -- workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); `app` -- numeric app ID, not the app title; `model` -- permaslug (e.g. "openai/gpt-4o"), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned. */
 export type QueryAnalyticsRequestFiltersItemValue =
   | string
   | number
@@ -35362,7 +35362,7 @@ export interface QueryAnalyticsRequestFiltersItem {
   include_unset?: boolean;
   /** Filter operator */
   operator: string;
-  /** Filter value (scalar or array depending on operator). Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: `api_key_id` — numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); `user` — Clerk user ID (e.g. "user_abc123"), not the display name; `workspace` — workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); `app` — numeric app ID, not the app title; `model` — permaslug (e.g. "openai/gpt-4o"), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned. */
+  /** Filter value (scalar or array depending on operator). Several dimensions are enriched in responses (returned as human-readable labels), but filters must use the underlying ID: `api_key_id` -- numeric ID (from generation metadata) or key hash (64-char hex from GET /api/v1/keys, resolved server-side); `user` -- Clerk user ID (e.g. "user_abc123"), not the display name; `workspace` -- workspace UUID, not the workspace name (filtering or grouping by the account default workspace also covers activity recorded before workspace resolution existed, which is attributed to that default workspace); `app` -- numeric app ID, not the app title; `model` -- permaslug (e.g. "openai/gpt-4o"), not the display name. Other dimensions (provider, origin, country, etc.) are not enriched and accept the value as returned. */
   value: QueryAnalyticsRequestFiltersItemValue;
 }
 export const QueryAnalyticsRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
@@ -35667,7 +35667,7 @@ export interface UpdateBYOKKeyRequest {
   disabled?: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for every model, including models outside `allowed_models` and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. Omit to leave the stored value unchanged. */
   is_byok_only?: boolean;
-  /** Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. Omit to leave the stored value unchanged. */
+  /** Whether this credential is treated as a fallback -- used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. Omit to leave the stored value unchanged. */
   is_fallback?: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for the models this credential applies to (its `allowed_models`, or every model when `null`). Requests for those models run only on your keys; models outside the allowlist may still fall back to shared capacity on this provider. Omit to leave the stored value unchanged. */
   is_required?: boolean;
@@ -35727,7 +35727,7 @@ export interface UpdateBYOKKeyResponseData {
   id: string;
   /** Whether OpenRouter's shared endpoints on this provider are removed for every model, including models outside `allowed_models` and after all of your keys for the provider fail. The provider is skipped instead of spending OpenRouter credits. Only valid on non-fallback credentials. */
   is_byok_only: boolean;
-  /** Whether this credential is treated as a fallback — used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
+  /** Whether this credential is treated as a fallback -- used only after non-fallback keys for the same provider have been tried. Cannot be combined with `is_byok_only`. */
   is_fallback: boolean;
   /** Whether OpenRouter's shared endpoints on this provider are removed for the models this credential applies to (its `allowed_models`, or every model when `null`). Requests for those models run only on your keys; models outside the allowlist may still fall back to shared capacity on this provider. */
   is_required: boolean;
@@ -35736,9 +35736,9 @@ export interface UpdateBYOKKeyResponseData {
   /** Optional human-readable name for the credential. */
   name?: string | null;
   provider: BYOKProviderSlug;
-  /** Position within the provider — credentials are tried in ascending sort order. */
+  /** Position within the provider -- credentials are tried in ascending sort order. */
   sort_order: number;
-  /** The workspace this credential is scoped to, or `null` when it is global — usable across every workspace in the account. A `null` value does not mean the default workspace. */
+  /** The workspace this credential is scoped to, or `null` when it is global -- usable across every workspace in the account. A `null` value does not mean the default workspace. */
   workspace_id: string | null;
 }
 export const UpdateBYOKKeyResponseData = /*@__PURE__*/ S.suspend(() =>
@@ -36160,7 +36160,7 @@ export interface UpdateObservabilityDestinationRequest {
   filter_rules?: UpdateObservabilityDestinationRequestFilterRules;
   /** Human-readable name for the destination. */
   name?: string;
-  /** When true, request/response bodies are not forwarded — only metadata. */
+  /** When true, request/response bodies are not forwarded -- only metadata. */
   privacy_mode?: boolean;
   /** Data regions this destination applies to. `eu` is accepted as an alias for `europe` and normalizes to `europe`. Omitting this field keeps the current value; it cannot be cleared. */
   regions?: UpdateObservabilityDestinationRequestRegionsList;
@@ -36250,7 +36250,7 @@ export interface UpdateObservabilityDestinationResponseData {
   id?: string;
   /** Human-readable name for the destination. */
   name?: string | null;
-  /** When true, request/response bodies are not forwarded to this destination — only metadata. */
+  /** When true, request/response bodies are not forwarded to this destination -- only metadata. */
   privacy_mode?: boolean;
   /** Data regions this destination applies to. Requests served in a region only fan out to destinations that include that region. */
   regions?: UpdateObservabilityDestinationResponseDataRegionsList;
@@ -36550,7 +36550,7 @@ export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWorkspaceResponse" }) as any as S.Schema<UpdateWorkspaceResponse>;
 
 export interface UploadFileRequest {
-  /** Workspace to scope the request to. Defaults to the caller’s default workspace. */
+  /** Workspace to scope the request to. Defaults to the caller's default workspace. */
   workspace_id?: string;
   /** Store or read this file on the named provider using your own API key for it. Omit to use OpenRouter storage. */
   provider?: FileProvider | (string & {});
@@ -37552,7 +37552,7 @@ export type CreateOauthTokenError =
   | RateLimited
   | NoAvailableProvider
   | OpenRouterOpError;
-/** Exchange a workload identity token RFC 8693 token exchange. Presents a JWT from an issuer your organization trusts (Settings → Workload identity) and receives a short-lived OpenRouter access token that acts as the API key the matching federation policy targets. */
+/** Exchange a workload identity token RFC 8693 token exchange. Presents a JWT from an issuer your organization trusts (Settings -> Workload identity) and receives a short-lived OpenRouter access token that acts as the API key the matching federation policy targets. */
 export const createOauthToken: API.OperationMethod<
   CreateOauthTokenRequest,
   TokenExchangeResponse,
@@ -38417,7 +38417,7 @@ export const getAnalyticsMeta: API.OperationMethod<
 }));
 
 export type GetAppRankingsError = BadRequest | InvalidApiKey | RateLimited | OpenRouterOpError;
-/** Top apps by token usage Returns the top public apps on OpenRouter ranked by token usage inside the requested date window, matching the public apps marketplace on openrouter.ai/apps. Token totals are `prompt_tokens + completion_tokens`; hidden and private apps are excluded and traffic from related app aliases is merged into the canonical visible app. `sort=popular` (default) ranks by total token volume inside the window. `sort=trending` ranks by absolute excess token growth: window volume minus the average volume of the three equal-length periods immediately preceding the window. Apps with no excess growth are omitted, so `trending` may return fewer than `limit` rows. Filter with `category` (marketplace category group, e.g. `coding`) or `subcategory` (e.g. `cli-agent`). Ranks are re-numbered 1..N after filtering. Page with `offset` — `rank` stays absolute, so the first row of `offset=50` is `rank: 51`. Authenticate with any valid OpenRouter API key (same key used for inference). Rate-limited to 30 requests/minute per key and 500 requests/day per account. When republishing or quoting this dataset, OpenRouter must be cited as: "Source: OpenRouter (openrouter.ai/apps), as of {as_of}." Token counts come from each upstream provider's own tokenizer, so a token attributed to one app is not directly comparable to a token attributed to another app whose traffic flows through a different provider. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter. */
+/** Top apps by token usage Returns the top public apps on OpenRouter ranked by token usage inside the requested date window, matching the public apps marketplace on openrouter.ai/apps. Token totals are `prompt_tokens + completion_tokens`; hidden and private apps are excluded and traffic from related app aliases is merged into the canonical visible app. `sort=popular` (default) ranks by total token volume inside the window. `sort=trending` ranks by absolute excess token growth: window volume minus the average volume of the three equal-length periods immediately preceding the window. Apps with no excess growth are omitted, so `trending` may return fewer than `limit` rows. Filter with `category` (marketplace category group, e.g. `coding`) or `subcategory` (e.g. `cli-agent`). Ranks are re-numbered 1..N after filtering. Page with `offset` -- `rank` stays absolute, so the first row of `offset=50` is `rank: 51`. Authenticate with any valid OpenRouter API key (same key used for inference). Rate-limited to 30 requests/minute per key and 500 requests/day per account. When republishing or quoting this dataset, OpenRouter must be cited as: "Source: OpenRouter (openrouter.ai/apps), as of {as_of}." Token counts come from each upstream provider's own tokenizer, so a token attributed to one app is not directly comparable to a token attributed to another app whose traffic flows through a different provider. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter. */
 export const getAppRankings: API.OperationMethod<
   GetAppRankingsRequest,
   AppRankingsResponse,
@@ -38797,7 +38797,7 @@ export const getPrivateEndpoint: API.OperationMethod<
 }));
 
 export type GetRankingsDailyError = BadRequest | InvalidApiKey | RateLimited | OpenRouterOpError;
-/** Daily token totals for top 50 models Returns the top 50 public models per day by total token usage on OpenRouter, plus a single aggregated `other` row per day that sums every model outside that top 50. Token totals are `prompt_tokens + completion_tokens`, matching the public rankings chart on openrouter.ai/rankings. Each row is a distinct `(date, model_permaslug)` pair. The `other` row uses the reserved permaslug `other` and is always returned last within its date, so callers can compute `top-50 traffic / total daily traffic` without a second request. Optional filters slice the dataset. `period` (`day`/`week`/`month`) sets the time grain. `modality` and `context_bucket` narrow the exact dataset by output/input modality (or tool-calling activity) and request context length. `category` and `language_type` instead read a sampled, upsampled dataset whose `total_tokens` are weekly-grain estimates — they cannot be combined with each other or with the exact filters, and reject `period=day` with a 400. Authenticate with any valid OpenRouter API key (same key used for inference). Rate-limited to 30 requests/minute per key and 500 requests/day per account. When republishing or quoting this dataset, OpenRouter must be cited as: "Source: OpenRouter (openrouter.ai/rankings), as of {as_of}." Token counts come from each upstream provider's own tokenizer (Anthropic counts are as reported by Anthropic, OpenAI counts are as reported by OpenAI, etc.), so a token in one row is not directly comparable to a token in another row from a different provider. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter. */
+/** Daily token totals for top 50 models Returns the top 50 public models per day by total token usage on OpenRouter, plus a single aggregated `other` row per day that sums every model outside that top 50. Token totals are `prompt_tokens + completion_tokens`, matching the public rankings chart on openrouter.ai/rankings. Each row is a distinct `(date, model_permaslug)` pair. The `other` row uses the reserved permaslug `other` and is always returned last within its date, so callers can compute `top-50 traffic / total daily traffic` without a second request. Optional filters slice the dataset. `period` (`day`/`week`/`month`) sets the time grain. `modality` and `context_bucket` narrow the exact dataset by output/input modality (or tool-calling activity) and request context length. `category` and `language_type` instead read a sampled, upsampled dataset whose `total_tokens` are weekly-grain estimates -- they cannot be combined with each other or with the exact filters, and reject `period=day` with a 400. Authenticate with any valid OpenRouter API key (same key used for inference). Rate-limited to 30 requests/minute per key and 500 requests/day per account. When republishing or quoting this dataset, OpenRouter must be cited as: "Source: OpenRouter (openrouter.ai/rankings), as of {as_of}." Token counts come from each upstream provider's own tokenizer (Anthropic counts are as reported by Anthropic, OpenAI counts are as reported by OpenAI, etc.), so a token in one row is not directly comparable to a token in another row from a different provider. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter. */
 export const getRankingsDaily: API.OperationMethod<
   GetRankingsDailyRequest,
   RankingsDailyResponse,
@@ -39069,7 +39069,7 @@ export type ListContainerFilesError =
   | RateLimited
   | NoAvailableProvider
   | OpenRouterOpError;
-/** List container files Lists the files in a container, in lexicographic path order. The container id is the canonical id returned in bash/shell tool results; a restarted session is a separate container with its own id. Paginate with `limit` and `after` (pass the previous page’s `last_id`); `has_more: true` always means the next page is fetchable that way. `last_id` is the resume cursor: it is the last listed file’s id, except when a page ends at the per-request scan bound on hidden bookkeeping objects, where it names the scan position instead and may not appear in `data` (which can then be empty). */
+/** List container files Lists the files in a container, in lexicographic path order. The container id is the canonical id returned in bash/shell tool results; a restarted session is a separate container with its own id. Paginate with `limit` and `after` (pass the previous page's `last_id`); `has_more: true` always means the next page is fetchable that way. `last_id` is the resume cursor: it is the last listed file's id, except when a page ends at the per-request scan bound on hidden bookkeeping objects, where it names the scan position instead and may not appear in `data` (which can then be empty). */
 export const listContainerFiles: API.OperationMethod<
   ListContainerFilesRequest,
   ContainerFileListResponse,
@@ -39464,7 +39464,7 @@ export const listOauthJwks: API.OperationMethod<
 }));
 
 export type ListObservabilityDestinationsError = BadRequest | InvalidApiKey | OpenRouterOpError;
-/** List observability destinations List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced — destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required. */
+/** List observability destinations List the observability destinations configured for the authenticated entity's default workspace. Use the `workspace_id` query parameter to scope the result to a different workspace. Only destinations with stable release status are surfaced -- destinations of other types are excluded. [Management key](/docs/guides/overview/auth/management-api-keys) required. */
 export const listObservabilityDestinations: API.OperationMethod<
   ListObservabilityDestinationsRequest,
   ListObservabilityDestinationsResponse,
@@ -40204,7 +40204,7 @@ export type UploadFileError =
   | ProviderError
   | NoAvailableProvider
   | OpenRouterOpError;
-/** Upload a file Uploads a file to be referenced in future API calls. The file is stored under the workspace of the authenticating API key. Maximum file size: 100 MB; empty files are rejected. The file type is determined from the file contents — not the filename or the declared content type — and must be a PDF, a PNG/JPEG/GIF/WebP image, a DOCX/XLSX/PPTX document, an MP3/WAV/FLAC/OGG audio file, or UTF-8 text. Text is reported by its structure as `application/json`, `application/x-ndjson`, `text/csv`, `text/markdown`, or `text/plain`. */
+/** Upload a file Uploads a file to be referenced in future API calls. The file is stored under the workspace of the authenticating API key. Maximum file size: 100 MB; empty files are rejected. The file type is determined from the file contents -- not the filename or the declared content type -- and must be a PDF, a PNG/JPEG/GIF/WebP image, a DOCX/XLSX/PPTX document, an MP3/WAV/FLAC/OGG audio file, or UTF-8 text. Text is reported by its structure as `application/json`, `application/x-ndjson`, `text/csv`, `text/markdown`, or `text/plain`. */
 export const uploadFile: API.OperationMethod<
   UploadFileRequest,
   UploadFileResponse,

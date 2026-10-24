@@ -1,5 +1,5 @@
 /**
- * OpenRouter pagination — hand-written.
+ * OpenRouter pagination -- hand-written.
  *
  * OpenRouter's list endpoints page with `offset`/`limit` query parameters
  * that the caller drives directly; no operation is generated as an

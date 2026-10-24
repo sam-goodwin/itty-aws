@@ -2,7 +2,31 @@
   "smithy": "2.0",
   "metadata": {
     "note": "Hand-authored: the Containers API is not documented in the Cloudflare API reference (developers.cloudflare.com/api has no containers resource), so spec-to-smithy cannot derive it from docs. Routes and shapes transcribed from the live API / distilled SDK. Delete this file if/when the docs gain a containers resource.",
-    "imagePreparationErrors": "Live API on 2026-09-30: POST /accounts/{account_id}/containers/image-preparations rejects an unpinned image with HTTP 400, code 1000, message {\"error\":\"image must be digest-pinned and hosted in a supported managed registry\"}; a nonexistent managed digest returns HTTP 400, code 1000, message {\"error\":\"image does not exist in this account\"}. A missing image field instead returns HTTP 400, code 1602, VALIDATE_INPUT. Match both status/code and the image-specific message, leaving other 400s as BadRequest. Cloudflare's ContainerImagePreparationsService documents HTTP 403 but provides no code to distinguish entitlement from authorization, so it remains Forbidden. Source: https://github.com/cloudflare/workers-sdk/blob/main/packages/containers-shared/src/client/services/ContainerImagePreparationsService.ts (2026-09-30)."
+    "imagePreparationErrors": "Live API on 2026-09-30: POST /accounts/{account_id}/containers/image-preparations rejects an unpinned image with HTTP 400, code 1000, message {\"error\":\"image must be digest-pinned and hosted in a supported managed registry\"}; a nonexistent managed digest returns HTTP 400, code 1000, message {\"error\":\"image does not exist in this account\"}. A missing image field instead returns HTTP 400, code 1602, VALIDATE_INPUT. Match both status/code and the image-specific message, leaving other 400s as BadRequest. Cloudflare's ContainerImagePreparationsService documents HTTP 403 but provides no code to distinguish entitlement from authorization, so it remains Forbidden. Source: https://github.com/cloudflare/workers-sdk/blob/main/packages/containers-shared/src/client/services/ContainerImagePreparationsService.ts (2026-09-30).",
+    "keyDictionary": {
+      "accountId": "account_id",
+      "activeRolloutId": "active_rollout_id",
+      "artifactDigest": "artifact_digest",
+      "authorizedKeys": "authorized_keys",
+      "createdAt": "created_at",
+      "durableObjects": "durable_objects",
+      "environmentVariables": "environment_variables",
+      "experimentalFlags": "experimental_flags",
+      "expirationMinutes": "expiration_minutes",
+      "instanceType": "instance_type",
+      "maxInstances": "max_instances",
+      "memoryMib": "memory_mib",
+      "namespaceId": "namespace_id",
+      "publicKey": "public_key",
+      "rolloutActiveGracePeriod": "rollout_active_grace_period",
+      "schedulingPolicy": "scheduling_policy",
+      "sshPublicKeyIds": "ssh_public_key_ids",
+      "stepPercentage": "step_percentage",
+      "targetConfiguration": "target_configuration",
+      "updatedAt": "updated_at",
+      "wranglerSsh": "wrangler_ssh"
+    },
+    "keyDictionaryNote": "Fallback wire names for content without member annotations. ContainerApplicationItem is a union, which the Cloudflare generator emits opaque (T.UnionCases); the protocol renames its keys, at every depth, only through this dictionary."
   },
   "shapes": {
     "com.cloudflare.containers#InvalidRoute": {
@@ -805,15 +829,23 @@
       }
     },
     "com.cloudflare.containers#ContainerApplicationItem": {
+      "type": "union",
+      "members": {
+        "DurableObject": {
+          "target": "com.cloudflare.containers#DurableObjectContainerApplication"
+        },
+        "Scheduled": {
+          "target": "com.cloudflare.containers#ScheduledContainerApplication"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Containers application, one case per scheduling policy (CcDurableObjectApplication | CcScheduledApplication). The durable_object case is listed first: its keys are a subset of the scheduled case's, and a key-set tie picks the first case. Source: https://developers.cloudflare.com/api/resources/containers/subresources/applications/methods/get/ (2026-10-22)."
+      }
+    },
+    "com.cloudflare.containers#DurableObjectContainerApplication": {
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -825,35 +857,67 @@
             "smithy.api#required": {}
           }
         },
-        "scheduling_policy": {
+        "created_at": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "instances": {
-          "target": "smithy.api#Integer",
+        "updated_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Fleet-only field; omitted for durable_object applications. Observed 2026-10-01: https://github.com/alchemy-run/distilled/pull/685#issuecomment-5959230924"
+            "smithy.api#required": {}
           }
         },
-        "max_instances": {
-          "target": "smithy.api#Integer"
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
-        "constraints": {
-          "target": "smithy.api#Document"
-        },
-        "affinities": {
-          "target": "smithy.api#Document"
-        },
-        "configuration": {
-          "target": "com.cloudflare.containers#ContainerApplicationConfiguration",
+        "scheduling_policy": {
+          "target": "com.cloudflare.containers#DurableObjectSchedulingPolicy",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "durable_objects": {
-          "target": "com.cloudflare.containers#DurableObjectsRef"
+          "target": "com.cloudflare.containers#DurableObjectsRef",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.containers#DurableObjectContainerConfiguration"
+        },
+        "constraints": {
+          "target": "com.cloudflare.containers#DurableObjectApplicationConstraints"
+        },
+        "health": {
+          "target": "com.cloudflare.containers#DurableObjectApplicationHealth"
+        },
+        "observability": {
+          "target": "com.cloudflare.containers#ContainerApplicationObservability"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An application whose Durable Objects create and manage the lifecycle of its container instances. Deployment configuration, scaling, placement constraints, versions and rollouts do not apply. Source: https://developers.cloudflare.com/api/resources/containers/subresources/applications/methods/get/ (2026-10-22) (CcDurableObjectApplication)."
+      }
+    },
+    "com.cloudflare.containers#ScheduledContainerApplication": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String",
@@ -861,14 +925,179 @@
             "smithy.api#required": {}
           }
         },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scheduling_policy": {
+          "target": "com.cloudflare.containers#ContainerSchedulingPolicy",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.containers#ContainerApplicationConfiguration",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "instances": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "version": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "Fleet-only field; omitted for durable_object applications. Observed 2026-10-01: https://github.com/alchemy-run/distilled/pull/685#issuecomment-5959230924"
+            "smithy.api#required": {}
           }
+        },
+        "max_instances": {
+          "target": "smithy.api#Integer"
+        },
+        "active_rollout_id": {
+          "target": "smithy.api#String"
+        },
+        "rollout_active_grace_period": {
+          "target": "smithy.api#Integer"
+        },
+        "constraints": {
+          "target": "com.cloudflare.containers#ScheduledApplicationConstraints"
+        },
+        "affinities": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Not in the API reference; kept from the earlier transcription of the live API."
+          }
+        },
+        "durable_objects": {
+          "target": "com.cloudflare.containers#DurableObjectsRef"
+        },
+        "health": {
+          "target": "com.cloudflare.containers#ScheduledApplicationHealth"
         },
         "observability": {
           "target": "com.cloudflare.containers#ContainerApplicationObservability"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An application that places its instances through the Containers scheduler. Source: https://developers.cloudflare.com/api/resources/containers/subresources/applications/methods/get/ (2026-10-22) (CcScheduledApplication)."
+      }
+    },
+    "com.cloudflare.containers#ContainerSchedulingPolicy": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "DURABLE_OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "durable_object"
+          }
+        }
+      }
+    },
+    "com.cloudflare.containers#ScheduledApplicationConstraints": {
+      "type": "structure",
+      "members": {
+        "jurisdiction": {
+          "target": "smithy.api#String"
+        },
+        "regions": {
+          "target": "com.cloudflare.containers#StringList"
+        }
+      }
+    },
+    "com.cloudflare.containers#DurableObjectApplicationConstraints": {
+      "type": "structure",
+      "members": {
+        "jurisdiction": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The jurisdiction of the application's primary control-plane object: eu, fedramp or us. Set on create; it cannot change."
+          }
+        }
+      }
+    },
+    "com.cloudflare.containers#ScheduledApplicationHealth": {
+      "type": "structure",
+      "members": {
+        "errors": {
+          "target": "com.cloudflare.containers#DocumentList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "instances": {
+          "target": "com.cloudflare.containers#ScheduledApplicationHealthInstances",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.containers#ScheduledApplicationHealthInstances": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "assigned": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.containers#DurableObjectApplicationHealth": {
+      "type": "structure",
+      "members": {
+        "instances": {
+          "target": "com.cloudflare.containers#DurableObjectApplicationHealthInstances",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.containers#DurableObjectApplicationHealthInstances": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "starting": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       }
     },

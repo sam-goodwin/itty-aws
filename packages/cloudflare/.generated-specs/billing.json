@@ -1784,13 +1784,6 @@
             "smithy.api#required": {}
           }
         },
-        "ConsumedQuantity": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations.",
-            "smithy.api#required": {}
-          }
-        },
         "ConsumedUnit": {
           "target": "smithy.api#String",
           "traits": {
@@ -1866,6 +1859,12 @@
           "target": "com.cloudflare.billing#UsageGetResultItemChargeClass",
           "traits": {
             "smithy.api#documentation": "Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period."
+          }
+        },
+        "ConsumedQuantity": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations."
           }
         },
         "ContractedCost": {
@@ -2470,13 +2469,6 @@
             "smithy.api#required": {}
           }
         },
-        "ConsumedQuantity": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations.",
-            "smithy.api#required": {}
-          }
-        },
         "ConsumedUnit": {
           "target": "smithy.api#String",
           "traits": {
@@ -2552,6 +2544,12 @@
           "target": "com.cloudflare.billing#UsageGetAccountUsageV2ResultItemChargeClass",
           "traits": {
             "smithy.api#documentation": "Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period."
+          }
+        },
+        "ConsumedQuantity": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations."
           }
         },
         "ContractedCost": {
@@ -2699,7 +2697,7 @@
           "uri": "/accounts/{account_id}/billable/usage",
           "code": 200
         },
-        "smithy.api#documentation": "Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days.",
+        "smithy.api#documentation": "Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** This endpoint serves `usage` records only; cost and pricing fields are absent from responses. To retrieve rated costs, use `POST` on the same path with `Metric: cost`. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days.",
         "smithy.api#readonly": {}
       }
     },
@@ -3244,7 +3242,7 @@
           "uri": "/accounts/{account_id}/billable/usage",
           "code": 200
         },
-        "smithy.api#documentation": "Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days.",
+        "smithy.api#documentation": "Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** This endpoint serves `usage` records only; cost and pricing fields are absent from responses. To retrieve rated costs, use `POST` on the same path with `Metric: cost`. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days.",
         "smithy.api#readonly": {}
       }
     },

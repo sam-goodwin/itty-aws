@@ -150,7 +150,7 @@ export const InputMessageContentList = /*@__PURE__*/ S.Array(
 export type EasyInputMessageContent = string | InputMessageContentList;
 export const EasyInputMessageContent = S.Unknown as any as S.Schema<EasyInputMessageContent>;
 
-/** Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages. */
+/** Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages -- dropping it can degrade performance. Not used for user messages. */
 export type MessagePhase = "commentary" | "final_answer";
 export const MessagePhase = S.String;
 

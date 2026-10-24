@@ -21,17 +21,17 @@ const unredact = (value: string | Redacted.Redacted<string>): string =>
 
 /**
  * The region STS is called in: the explicit one, else the environment, else
- * `fallback` (the profile's `region` in the Node build), else `us-east-1` —
+ * `fallback` (the profile's `region` in the Node build), else `us-east-1` --
  * the order of the SDK's `stsRegionDefaultResolver`.
  */
-export const stsRegion = (
+export const stsRegion = <E = never>(
   region: string | undefined,
-  fallback: Effect.Effect<string | undefined> = Effect.succeed(undefined),
-): Effect.Effect<Region.RegionName> =>
+  fallback: Effect.Effect<string | undefined, E> = Effect.succeed(undefined),
+): Effect.Effect<Region.RegionName, E> =>
   region
     ? Effect.succeed(region as Region.RegionName)
     : Region.fromEnvironment.pipe(
-        Effect.catch(() =>
+        Effect.catchTag("ConfigError", () =>
           Effect.map(fallback, (resolved) => (resolved ?? "us-east-1") as Region.RegionName),
         ),
       );

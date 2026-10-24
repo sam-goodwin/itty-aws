@@ -1,8 +1,8 @@
 /**
- * CodexProtocol — hand-written.
+ * CodexProtocol -- hand-written.
  *
  * Codex's app-server speaks JSON-RPC over stdio (newline-delimited, and
- * without the `"jsonrpc": "2.0"` member — see `connection.ts`). Generated
+ * without the `"jsonrpc": "2.0"` member -- see `connection.ts`). Generated
  * operations resolve the running peer from {@link CodexConnection} and map
  * error responses to typed errors through `errorMatchers`, falling back to
  * {@link UnknownCodexError}; results and notifications that fail strict

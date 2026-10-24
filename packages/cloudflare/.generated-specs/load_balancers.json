@@ -7232,7 +7232,7 @@
           "uri": "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
           "code": 200
         },
-        "smithy.api#documentation": "List a single configured monitor for an account.",
+        "smithy.api#documentation": "Fetch a single configured monitor for an account.",
         "smithy.api#readonly": {}
       },
       "errors": [

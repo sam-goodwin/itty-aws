@@ -1,5 +1,5 @@
 /**
- * Anthropic SDK trait surface — hand-written.
+ * Anthropic SDK trait surface -- hand-written.
  *
  * Re-exports the generic protocol traits from core (so generated operations
  * import everything from one place). Anthropic has no success envelope; the

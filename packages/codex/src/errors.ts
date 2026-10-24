@@ -1,5 +1,5 @@
 /**
- * Codex app-server error types — hand-written.
+ * Codex app-server error types -- hand-written.
  *
  * A JSON-RPC error response becomes the operation's typed error when one of
  * its error classes' `errorMatchers` matches the error `code`, and
@@ -21,7 +21,7 @@ const fields = {
 };
 
 /**
- * `-32001` — the app-server's request queue is saturated
+ * `-32001` -- the app-server's request queue is saturated
  * ("Server overloaded; retry later."). Safe to retry with backoff.
  */
 export class CodexServerOverloaded extends T.applyErrorMatchers(
@@ -32,7 +32,7 @@ export class CodexServerOverloaded extends T.applyErrorMatchers(
 ) {}
 
 /**
- * `-32600` — the request is not valid in the connection's current state:
+ * `-32600` -- the request is not valid in the connection's current state:
  * sent before `initialize`, a repeated `initialize`, the server is draining,
  * or the method rejected the request (the message says which).
  */
@@ -43,7 +43,7 @@ export class CodexInvalidRequest extends T.applyErrorMatchers(
   [{ code: -32600 }],
 ) {}
 
-/** `-32601` — the app-server does not implement the method (older `codex` binary). */
+/** `-32601` -- the app-server does not implement the method (older `codex` binary). */
 export class CodexMethodNotFound extends T.applyErrorMatchers(
   Schema.TaggedError<CodexMethodNotFound>()("CodexMethodNotFound", fields).pipe(
     Category.withBadRequestError,
@@ -51,7 +51,7 @@ export class CodexMethodNotFound extends T.applyErrorMatchers(
   [{ code: -32601 }],
 ) {}
 
-/** `-32602` — the params failed the app-server's validation. */
+/** `-32602` -- the params failed the app-server's validation. */
 export class CodexInvalidParams extends T.applyErrorMatchers(
   Schema.TaggedError<CodexInvalidParams>()("CodexInvalidParams", fields).pipe(
     Category.withBadRequestError,
@@ -59,7 +59,7 @@ export class CodexInvalidParams extends T.applyErrorMatchers(
   [{ code: -32602 }],
 ) {}
 
-/** `-32603` — the app-server failed while handling the request. */
+/** `-32603` -- the app-server failed while handling the request. */
 export class CodexInternalError extends T.applyErrorMatchers(
   Schema.TaggedError<CodexInternalError>()("CodexInternalError", fields).pipe(
     Category.withServerError,

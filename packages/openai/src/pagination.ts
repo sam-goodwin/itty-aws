@@ -1,16 +1,16 @@
 /**
- * OpenAI pagination — hand-written.
+ * OpenAI pagination -- hand-written.
  *
  * Two list styles:
  *
- * - **`after` cursors** (most lists): `GET /files?after=<id>&limit=…` returns
- *   `{ data, has_more, … }`. The next cursor is `last_id`, `next` (Admin API
- *   groups/roles), or — where neither is returned (fine-tuning jobs/events)
- *   — the last item's `id`. Unlike a plain cursor, `last_id` is still set on
+ * - **`after` cursors** (most lists): `GET /files?after=<id>&limit=...` returns
+ *   `{ data, has_more, ... }`. The next cursor is `last_id`, `next` (Admin API
+ *   groups/roles), or -- where neither is returned (fine-tuning jobs/events)
+ *   -- the last item's `id`. Unlike a plain cursor, `last_id` is still set on
  *   the final page, so traversal stops on `has_more: false`, not on a
  *   missing cursor. {@link paginateAfter}.
  * - **`page` cursors** (Admin usage/costs): `next_page` comes back as the
- *   next `page` until it is null — core's {@link paginateCursor}.
+ *   next `page` until it is null -- core's {@link paginateCursor}.
  */
 import { getPath, type PaginatedTrait } from "@distilled.cloud/core/pagination";
 import * as Effect from "effect/Effect";

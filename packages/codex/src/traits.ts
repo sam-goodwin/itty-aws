@@ -1,5 +1,5 @@
 /**
- * Codex SDK trait surface — hand-written.
+ * Codex SDK trait surface -- hand-written.
  *
  * Re-exports the generic protocol traits from core so generated operations
  * import everything from one place. The JSON-RPC protocol reads the same

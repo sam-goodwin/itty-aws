@@ -3,15 +3,15 @@ import type { API_ERRORS, ConfigError } from "@distilled.cloud/core/errors";
 import { getAnn } from "@distilled.cloud/core/protocol-http";
 import { makeRestProtocol, type RestErrorEnvelope } from "@distilled.cloud/core/protocol-rest";
 /**
- * OpenAIProtocol — hand-written.
+ * OpenAIProtocol -- hand-written.
  *
  * OpenAI speaks plain JSON REST (no success envelope), so the wire work is
  * one `makeRestProtocol` call from `core/protocol-rest`, wrapped to add what
  * is OpenAI-specific:
  *
  *   request:  `Authorization: Bearer <key>` where the key is chosen per
- *             operation — the admin key for Admin-API operations (inputs
- *             marked `T.AdminAuth()`), the API key otherwise — failing with
+ *             operation -- the admin key for Admin-API operations (inputs
+ *             marked `T.AdminAuth()`), the API key otherwise -- failing with
  *             {@link MissingCredentials} before anything is sent when that
  *             key isn't configured; optional `OpenAI-Organization` /
  *             `OpenAI-Project` headers; base URL from the credentials.
@@ -63,7 +63,7 @@ const resolveCredentials: Effect.Effect<Config> = Effect.gen(function* () {
 }) as Effect.Effect<Config>;
 
 /**
- * `{ "error": { message, type, param, code } }` → `{ code, message }`. The
+ * `{ "error": { message, type, param, code } }` -> `{ code, message }`. The
  * string `code` (e.g. `invalid_api_key`) falls back to the `type`; some
  * Admin-API routes send `{ "error": "<message>" }` instead.
  */
@@ -89,7 +89,7 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 const RestProtocol = makeRestProtocol<Config>({
   credentials: resolveCredentials,
   baseUrl: (creds) => creds.apiBaseUrl,
-  // Authorization is per operation — added by OpenAIProtocol below.
+  // Authorization is per operation -- added by OpenAIProtocol below.
   headers: (creds): Record<string, string> => ({
     ...(creds.organization ? { "OpenAI-Organization": creds.organization } : {}),
     ...(creds.project ? { "OpenAI-Project": creds.project } : {}),
@@ -107,7 +107,9 @@ const RestProtocol = makeRestProtocol<Config>({
 export const OpenAIProtocol: Layer.Layer<API.Protocol> = Layer.effect(
   API.Protocol,
   Effect.gen(function* () {
-    const rest = yield* API.Protocol;
+    // Without REST's whole-call fast path, so every call runs the
+    // encode/decode overrides below.
+    const { call: _call, ...rest } = yield* API.Protocol;
     return API.Protocol.of({
       ...rest,
       encode: (args) =>
@@ -121,7 +123,7 @@ export const OpenAIProtocol: Layer.Layer<API.Protocol> = Layer.effect(
                 ? new MissingCredentials({
                     credential: "OPENAI_ADMIN_KEY",
                     message:
-                      "This is an OpenAI Admin API operation and needs an admin key (sk-admin-…): set OPENAI_ADMIN_KEY or pass credentials({ adminKey })",
+                      "This is an OpenAI Admin API operation and needs an admin key (sk-admin-\u2026): set OPENAI_ADMIN_KEY or pass credentials({ adminKey })",
                   })
                 : new MissingCredentials({
                     credential: "OPENAI_API_KEY",

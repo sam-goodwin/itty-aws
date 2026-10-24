@@ -24,7 +24,7 @@
         "target": "com.azure.cloudhealth#DeleteSignalDefinitionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cloudhealth#DeleteSignalDefinitionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35,6 +35,28 @@
         },
         "smithy.api#documentation": "Delete a SignalDefinition",
         "com.distilled.openapi#apiVersion": "2026-11-01"
+      }
+    },
+    "com.azure.cloudhealth#DeleteSignalDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.cloudhealth#DeleteSignalDefinitionRequest": {
@@ -127,6 +149,20 @@
           "target": "com.azure.cloudhealth#SignalDefinitionProperties",
           "traits": {
             "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -933,7 +969,7 @@
         "target": "com.azure.cloudhealth#DeleteRelationshipRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cloudhealth#DeleteRelationshipResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -944,6 +980,28 @@
         },
         "smithy.api#documentation": "Delete a Relationship",
         "com.distilled.openapi#apiVersion": "2026-11-01"
+      }
+    },
+    "com.azure.cloudhealth#DeleteRelationshipResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.cloudhealth#DeleteRelationshipRequest": {
@@ -1036,6 +1094,20 @@
           "target": "com.azure.cloudhealth#RelationshipProperties",
           "traits": {
             "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -2401,7 +2473,7 @@
         "target": "com.azure.cloudhealth#DeleteEntityRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cloudhealth#DeleteEntityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2412,6 +2484,28 @@
         },
         "smithy.api#documentation": "Delete a Entity",
         "com.distilled.openapi#apiVersion": "2026-11-01"
+      }
+    },
+    "com.azure.cloudhealth#DeleteEntityResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.cloudhealth#DeleteEntityRequest": {
@@ -2504,6 +2598,20 @@
           "target": "com.azure.cloudhealth#EntityProperties",
           "traits": {
             "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -4938,7 +5046,7 @@
         "target": "com.azure.cloudhealth#DeleteDiscoveryRuleRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cloudhealth#DeleteDiscoveryRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4949,6 +5057,28 @@
         },
         "smithy.api#documentation": "Delete a DiscoveryRule",
         "com.distilled.openapi#apiVersion": "2026-11-01"
+      }
+    },
+    "com.azure.cloudhealth#DeleteDiscoveryRuleResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.cloudhealth#DeleteDiscoveryRuleRequest": {
@@ -5041,6 +5171,20 @@
           "target": "com.azure.cloudhealth#DiscoveryRuleProperties",
           "traits": {
             "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -5582,7 +5726,7 @@
         "target": "com.azure.cloudhealth#DeleteAuthenticationSettingsRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cloudhealth#DeleteAuthenticationSettingsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5593,6 +5737,28 @@
         },
         "smithy.api#documentation": "Delete a AuthenticationSetting",
         "com.distilled.openapi#apiVersion": "2026-11-01"
+      }
+    },
+    "com.azure.cloudhealth#DeleteAuthenticationSettingsResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.cloudhealth#DeleteAuthenticationSettingsRequest": {
@@ -5685,6 +5851,20 @@
           "target": "com.azure.cloudhealth#AuthenticationSettingProperties",
           "traits": {
             "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -6022,7 +6202,7 @@
         "target": "com.azure.cloudhealth#DeleteHealthModelRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cloudhealth#DeleteHealthModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6033,6 +6213,28 @@
         },
         "smithy.api#documentation": "Delete a HealthModel",
         "com.distilled.openapi#apiVersion": "2026-11-01"
+      }
+    },
+    "com.azure.cloudhealth#DeleteHealthModelResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.cloudhealth#DeleteHealthModelRequest": {
@@ -6136,6 +6338,20 @@
           "target": "com.azure.cloudhealth#UpdateHealthModelResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -6435,6 +6651,20 @@
           "target": "com.azure.cloudhealth#CreateHealthModelResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },

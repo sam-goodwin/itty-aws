@@ -475,7 +475,7 @@
           "uri": "/accounts/{account_id}/move",
           "code": 200
         },
-        "smithy.api#documentation": "Move an account into a destination organization, either assigning a standalone account to an organization or moving it between organizations in the same hierarchy. Availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)"
+        "smithy.api#documentation": "Move an account into a destination organization, either assigning a standalone account to an organization or moving it between organizations in the same hierarchy. Availability depends on the organization's capabilities."
       }
     },
     "com.cloudflare.accounts#GetAccountProfileRequest": {
@@ -609,7 +609,7 @@
           "uri": "/accounts/{account_id}/profile",
           "code": 200
         },
-        "smithy.api#documentation": "Updates the business profile (name, email, phone, address, and external metadata) associated with this account's parent organization customer record. Changes apply to every account and organization sharing that profile. Omitted or empty fields are left unchanged. Only available to members of an organization that contains the account. Requires Account Settings Write permission.",
+        "smithy.api#documentation": "Updates the business profile (name, email, phone, address, and external metadata) associated with this account's parent organization customer record. Changes apply to every account and organization sharing that profile. Omitted or empty fields are left unchanged. Only available to members of an organization that contains the account.",
         "smithy.api#idempotent": {}
       }
     },

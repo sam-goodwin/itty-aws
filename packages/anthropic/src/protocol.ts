@@ -6,15 +6,15 @@ import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 import { parseServerRetryHint } from "@distilled.cloud/core/retry-after";
 import { httpSymbol, type HttpTrait } from "@distilled.cloud/core/trait";
 /**
- * AnthropicProtocol — hand-written.
+ * AnthropicProtocol -- hand-written.
  *
  * Anthropic speaks plain JSON REST, so the body handling is core's
  * `makeRestProtocol`; this module adds what is Anthropic-specific on top:
  *
  *   request:  `anthropic-version` (+ default `anthropic-beta`) on every call;
- *             the credential chosen per route — the admin key on
+ *             the credential chosen per route -- the admin key on
  *             `/v1/organizations/*`, the API key elsewhere, the OAuth bearer
- *             token as the fallback for both — failing with
+ *             token as the fallback for both -- failing with
  *             {@link MissingAnthropicCredentials} before anything is sent when
  *             none applies; and beta routes' literal `?beta=true` (carried on
  *             the operation's uri, see scripts/convert.ts) folded into the
@@ -24,7 +24,7 @@ import { httpSymbol, type HttpTrait } from "@distilled.cloud/core/trait";
  *             envelope's `error.type` (`{ type: "error", error: { type,
  *             message } }`) to the classes in errors.ts, with the server's
  *             retry hint stamped on the retryable ones; anything else maps
- *             by status (529 → Overloaded), then to
+ *             by status (529 -> Overloaded), then to
  *             {@link UnknownAnthropicError}.
  *
  *   streams:  each SSE `data` payload decodes like a 2xx body; an `error`
@@ -145,7 +145,7 @@ const envelope = (body: unknown): { type?: string; message?: string } | undefine
 const RestProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
   credentials: resolveCredentials,
   baseUrl: (creds) => creds.apiBaseUrl,
-  // Auth is per route — added in `encode` below.
+  // Auth is per route -- added in `encode` below.
   headers: (creds): Record<string, string> => ({
     "anthropic-version": creds.apiVersion,
     ...(creds.betas && creds.betas.length > 0 ? { "anthropic-beta": creds.betas.join(",") } : {}),
@@ -196,7 +196,7 @@ export const AnthropicProtocol: Layer.Layer<API.Protocol> = Layer.effect(
           Effect.mapError(withRetryHint),
         ) as Effect.Effect<unknown>,
       decodeEvent: (args) => {
-        // `event: error` — `{ type: "error", error: { type, message } }`.
+        // `event: error` -- `{ type: "error", error: { type, message } }`.
         const data = args.data as { type?: unknown } | null;
         if (data !== null && typeof data === "object" && data.type === "error") {
           const message = envelope(data)?.message ?? "stream error";

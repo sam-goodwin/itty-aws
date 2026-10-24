@@ -990,7 +990,7 @@
         "target": "com.azure.storagemover#DeleteJobDefinitionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagemover#DeleteJobDefinitionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1001,6 +1001,28 @@
         },
         "smithy.api#documentation": "Deletes a Job Definition resource.",
         "com.distilled.openapi#apiVersion": "2026-05-01"
+      }
+    },
+    "com.azure.storagemover#DeleteJobDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.storagemover#DeleteJobDefinitionRequest": {
@@ -2324,7 +2346,7 @@
         "target": "com.azure.storagemover#DeleteProjectRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagemover#DeleteProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2335,6 +2357,28 @@
         },
         "smithy.api#documentation": "Deletes a Project resource.",
         "com.distilled.openapi#apiVersion": "2026-05-01"
+      }
+    },
+    "com.azure.storagemover#DeleteProjectResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.storagemover#DeleteProjectRequest": {
@@ -2853,7 +2897,7 @@
         "target": "com.azure.storagemover#DeleteEndpointRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagemover#DeleteEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2864,6 +2908,28 @@
         },
         "smithy.api#documentation": "Deletes an Endpoint resource.",
         "com.distilled.openapi#apiVersion": "2026-05-01"
+      }
+    },
+    "com.azure.storagemover#DeleteEndpointResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.storagemover#DeleteEndpointRequest": {
@@ -3975,7 +4041,7 @@
         "target": "com.azure.storagemover#DeleteConnectionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagemover#DeleteConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3986,6 +4052,28 @@
         },
         "smithy.api#documentation": "Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.",
         "com.distilled.openapi#apiVersion": "2026-05-01"
+      }
+    },
+    "com.azure.storagemover#DeleteConnectionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.storagemover#DeleteConnectionRequest": {
@@ -4491,7 +4579,7 @@
         "target": "com.azure.storagemover#DeleteAgentRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagemover#DeleteAgentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4502,6 +4590,28 @@
         },
         "smithy.api#documentation": "Deletes an Agent resource.",
         "com.distilled.openapi#apiVersion": "2026-05-01"
+      }
+    },
+    "com.azure.storagemover#DeleteAgentResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.storagemover#DeleteAgentRequest": {
@@ -5329,7 +5439,7 @@
         "target": "com.azure.storagemover#DeleteStorageMoverRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagemover#DeleteStorageMoverResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5340,6 +5450,28 @@
         },
         "smithy.api#documentation": "Deletes a Storage Mover resource.",
         "com.distilled.openapi#apiVersion": "2026-05-01"
+      }
+    },
+    "com.azure.storagemover#DeleteStorageMoverResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.storagemover#DeleteStorageMoverRequest": {

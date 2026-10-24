@@ -744,7 +744,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.email_security#InvestigateGetResponseValidationDkim": {
+    "com.cloudflare.email_security#InvestigateGetResponseValidationEmailSecurityValidationDkim": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -779,7 +779,7 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateGetResponseValidationDmarc": {
+    "com.cloudflare.email_security#InvestigateGetResponseValidationEmailSecurityValidationDmarc": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -814,7 +814,7 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateGetResponseValidationSpf": {
+    "com.cloudflare.email_security#InvestigateGetResponseValidationEmailSecurityValidationSpf": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -849,20 +849,20 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateGetResponseValidation": {
+    "com.cloudflare.email_security#InvestigateGetResponseValidationEmailSecurityValidation": {
       "type": "structure",
       "members": {
         "comment": {
           "target": "smithy.api#String"
         },
         "dkim": {
-          "target": "com.cloudflare.email_security#InvestigateGetResponseValidationDkim"
+          "target": "com.cloudflare.email_security#InvestigateGetResponseValidationEmailSecurityValidationDkim"
         },
         "dmarc": {
-          "target": "com.cloudflare.email_security#InvestigateGetResponseValidationDmarc"
+          "target": "com.cloudflare.email_security#InvestigateGetResponseValidationEmailSecurityValidationDmarc"
         },
         "spf": {
-          "target": "com.cloudflare.email_security#InvestigateGetResponseValidationSpf"
+          "target": "com.cloudflare.email_security#InvestigateGetResponseValidationEmailSecurityValidationSpf"
         }
       }
     },
@@ -1597,7 +1597,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.email_security#InvestigateListResultItemValidationDkim": {
+    "com.cloudflare.email_security#InvestigateListResultItemValidationEmailSecurityValidationDkim": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -1632,7 +1632,7 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateListResultItemValidationDmarc": {
+    "com.cloudflare.email_security#InvestigateListResultItemValidationEmailSecurityValidationDmarc": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -1667,7 +1667,7 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateListResultItemValidationSpf": {
+    "com.cloudflare.email_security#InvestigateListResultItemValidationEmailSecurityValidationSpf": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -1702,20 +1702,20 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateListResultItemValidation": {
+    "com.cloudflare.email_security#InvestigateListResultItemValidationEmailSecurityValidation": {
       "type": "structure",
       "members": {
         "comment": {
           "target": "smithy.api#String"
         },
         "dkim": {
-          "target": "com.cloudflare.email_security#InvestigateListResultItemValidationDkim"
+          "target": "com.cloudflare.email_security#InvestigateListResultItemValidationEmailSecurityValidationDkim"
         },
         "dmarc": {
-          "target": "com.cloudflare.email_security#InvestigateListResultItemValidationDmarc"
+          "target": "com.cloudflare.email_security#InvestigateListResultItemValidationEmailSecurityValidationDmarc"
         },
         "spf": {
-          "target": "com.cloudflare.email_security#InvestigateListResultItemValidationSpf"
+          "target": "com.cloudflare.email_security#InvestigateListResultItemValidationEmailSecurityValidationSpf"
         }
       }
     },
@@ -1869,7 +1869,7 @@
           "target": "com.cloudflare.email_security#InvestigateListResultItemToNameList"
         },
         "validation": {
-          "target": "com.cloudflare.email_security#InvestigateListResultItemValidation"
+          "target": "smithy.api#Document"
         },
         "x_originating_ip": {
           "target": "smithy.api#String"
@@ -5222,7 +5222,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationDkim": {
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationEmailSecurityValidationDkim": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -5257,7 +5257,7 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationDmarc": {
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationEmailSecurityValidationDmarc": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -5292,7 +5292,7 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationSpf": {
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationEmailSecurityValidationSpf": {
       "type": "enum",
       "members": {
         "PASS": {
@@ -5327,20 +5327,20 @@
         }
       }
     },
-    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidation": {
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationEmailSecurityValidation": {
       "type": "structure",
       "members": {
         "comment": {
           "target": "smithy.api#String"
         },
         "dkim": {
-          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationDkim"
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationEmailSecurityValidationDkim"
         },
         "dmarc": {
-          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationDmarc"
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationEmailSecurityValidationDmarc"
         },
         "spf": {
-          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationSpf"
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidationEmailSecurityValidationSpf"
         }
       }
     },
@@ -5494,7 +5494,7 @@
           "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageToNameList"
         },
         "validation": {
-          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemMessageValidation"
+          "target": "smithy.api#Document"
         },
         "x_originating_ip": {
           "target": "smithy.api#String"
@@ -6867,6 +6867,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -7027,6 +7033,12 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_recipient": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -7116,6 +7128,12 @@
         },
         "comments": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
@@ -7302,6 +7320,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -7425,6 +7449,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -7547,6 +7577,12 @@
         },
         "comments": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
@@ -7917,6 +7953,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -8048,6 +8090,12 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_regex": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -8148,6 +8196,12 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "last_modified": {
           "target": "smithy.api#String",
           "traits": {
@@ -8230,6 +8284,12 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "last_modified": {
           "target": "smithy.api#String",
@@ -8354,6 +8414,12 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_regex": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -8433,6 +8499,12 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_regex": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -8511,6 +8583,12 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_regex": {
           "target": "smithy.api#Boolean",
@@ -8837,6 +8915,12 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_regex": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -8930,6 +9014,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the policy is active."
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
           }
         },
         "modified_at": {
@@ -9030,6 +9120,12 @@
         "created_at": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "modified_at": {
           "target": "smithy.api#String"
         },
@@ -9110,6 +9206,12 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "modified_at": {
           "target": "smithy.api#String"
@@ -9231,6 +9333,12 @@
             "smithy.api#documentation": "Whether the policy is active."
           }
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "modified_at": {
           "target": "smithy.api#String"
         },
@@ -9307,6 +9415,12 @@
             "smithy.api#documentation": "Whether the policy is active."
           }
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "modified_at": {
           "target": "smithy.api#String"
         },
@@ -9381,6 +9495,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the policy is active."
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
           }
         },
         "modified_at": {
@@ -9518,6 +9638,12 @@
             "smithy.api#required": {}
           }
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "notes": {
           "target": "smithy.api#String",
           "traits": {
@@ -9568,6 +9694,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the policy is active."
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
           }
         },
         "modified_at": {
@@ -9726,6 +9858,12 @@
             "smithy.api#documentation": "Whether the policy is active."
           }
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -9794,6 +9932,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the policy is active."
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
           }
         },
         "modified_at": {
@@ -9911,6 +10055,12 @@
             "smithy.api#documentation": "Whether the policy is active."
           }
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "modified_at": {
           "target": "smithy.api#String"
         },
@@ -10021,6 +10171,13 @@
             "smithy.api#httpQuery": "enabled"
           }
         },
+        "expired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.",
+            "smithy.api#httpQuery": "expired"
+          }
+        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -10100,6 +10257,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the policy is active."
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
           }
         },
         "modified_at": {
@@ -17733,6 +17896,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_recipient": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -17781,6 +17950,12 @@
         },
         "comments": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
@@ -17907,6 +18082,12 @@
         },
         "comments": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
         }
       },
       "traits": {
@@ -17927,6 +18108,12 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_regex": {
           "target": "smithy.api#Boolean",
@@ -19153,7 +19340,7 @@
           "target": "com.cloudflare.email_security#InvestigateGetResponseToNameList"
         },
         "validation": {
-          "target": "com.cloudflare.email_security#InvestigateGetResponseValidation"
+          "target": "smithy.api#Document"
         },
         "x_originating_ip": {
           "target": "smithy.api#String"
@@ -19665,6 +19852,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -19798,6 +19991,12 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_regex": {
           "target": "smithy.api#Boolean",
@@ -20871,6 +21070,13 @@
             "smithy.api#httpQuery": "direction"
           }
         },
+        "expired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both.",
+            "smithy.api#httpQuery": "expired"
+          }
+        },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -21010,6 +21216,13 @@
           "traits": {
             "smithy.api#documentation": "The sorting direction.",
             "smithy.api#httpQuery": "direction"
+          }
+        },
+        "expired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both.",
+            "smithy.api#httpQuery": "expired"
           }
         },
         "order": {
@@ -21797,6 +22010,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -21884,6 +22103,12 @@
         },
         "comments": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_acceptable_sender": {
           "target": "smithy.api#Boolean",
@@ -22001,6 +22226,12 @@
         "comments": {
           "target": "smithy.api#String"
         },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
+        },
         "is_regex": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -22038,6 +22269,12 @@
         },
         "created_at": {
           "target": "smithy.api#String"
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration."
+          }
         },
         "is_regex": {
           "target": "smithy.api#Boolean",

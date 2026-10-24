@@ -4,8 +4,8 @@
  *
  * ACP is JSON-RPC 2.0 over newline-delimited JSON on the agent process's
  * stdio. This SDK is the CLIENT side of the protocol: it calls the agent
- * (`initialize`, `session/new`, `session/prompt`, …) and answers the agent's
- * callbacks (`session/request_permission`, `fs/*`, `terminal/*`, …) through
+ * (`initialize`, `session/new`, `session/prompt`, ...) and answers the agent's
+ * callbacks (`session/request_permission`, `fs/*`, `terminal/*`, ...) through
  * typed handlers. See `./connection.ts` for the layers that open a
  * connection.
  */
@@ -22,7 +22,7 @@ import {
 } from "./errors.ts";
 
 /**
- * The ACP major protocol version this SDK speaks — pass it as
+ * The ACP major protocol version this SDK speaks -- pass it as
  * `initialize({ protocolVersion })`. The agent answers with the version it
  * chose; anything else means the two sides cannot talk.
  */
@@ -33,7 +33,7 @@ export class AcpConnection extends JsonRpc.Connection<AcpConnection>()(
   "@distilled.cloud/acp/Connection",
 ) {}
 
-/** ACP's JSON-RPC protocol — referenced by every generated operation. */
+/** ACP's JSON-RPC protocol -- referenced by every generated operation. */
 export const AcpProtocol = JsonRpc.protocol({
   connection: AcpConnection,
   unknownError: ({ method, code, message, data }) =>

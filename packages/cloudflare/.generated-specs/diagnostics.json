@@ -69,7 +69,7 @@
         }
       }
     },
-    "com.cloudflare.diagnostics#EndpointHealthchecksListResponseCheckType": {
+    "com.cloudflare.diagnostics#EndpointHealthchecksListResultItemCheckType": {
       "type": "enum",
       "members": {
         "ICMP": {
@@ -78,6 +78,43 @@
             "smithy.api#enumValue": "icmp"
           }
         }
+      }
+    },
+    "com.cloudflare.diagnostics#EndpointHealthchecksListResultItem": {
+      "type": "structure",
+      "members": {
+        "check_type": {
+          "target": "com.cloudflare.diagnostics#EndpointHealthchecksListResultItemCheckType",
+          "traits": {
+            "smithy.api#documentation": "type of check to perform",
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the IP address of the host to perform checks against",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name associated with this check"
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#EndpointHealthchecksListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.diagnostics#EndpointHealthchecksListResultItem"
       }
     },
     "com.cloudflare.diagnostics#EndpointHealthchecksUpdateRequestCheckType": {
@@ -820,6 +857,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.diagnostics#ListEndpointHealthchecksResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.diagnostics#EndpointHealthchecksListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.cloudflare.diagnostics#UpdateEndpointHealthcheck": {
       "type": "operation",
       "input": {
@@ -834,7 +886,7 @@
           "uri": "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
           "code": 200
         },
-        "smithy.api#documentation": "Update a Endpoint Health Check.",
+        "smithy.api#documentation": "Update an Endpoint Health Check.",
         "smithy.api#idempotent": {}
       },
       "errors": [
@@ -926,62 +978,6 @@
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
-      }
-    },
-    "com.cloudflare.diagnostics#ListEndpointHealthchecksItem": {
-      "type": "structure",
-      "members": {
-        "check_type": {
-          "target": "com.cloudflare.diagnostics#EndpointHealthchecksListResponseCheckType",
-          "traits": {
-            "smithy.api#documentation": "type of check to perform",
-            "smithy.api#required": {}
-          }
-        },
-        "endpoint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "the IP address of the host to perform checks against",
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional name associated with this check"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
-      }
-    },
-    "com.cloudflare.diagnostics#ListEndpointHealthchecksItemsList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.diagnostics#ListEndpointHealthchecksItem"
-      }
-    },
-    "com.cloudflare.diagnostics#ListEndpointHealthchecksResponse": {
-      "type": "structure",
-      "members": {
-        "result": {
-          "target": "com.cloudflare.diagnostics#ListEndpointHealthchecksItemsList",
-          "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The endpoint healthchecks for the account."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     }
   }

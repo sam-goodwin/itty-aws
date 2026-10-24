@@ -6,12 +6,15 @@
     { "path": "./packages/codex/tsconfig.json" },
     { "path": "./packages/codex/tsconfig.scripts.json" },
     { "path": "./packages/acme/tsconfig.json" },
+    { "path": "./packages/acme/tsconfig.test.json" },
     { "path": "./packages/acme/tsconfig.scripts.json" },
     { "path": "./packages/zerossl/tsconfig.json" },
+    { "path": "./packages/zerossl/tsconfig.test.json" },
     { "path": "./packages/zerossl/tsconfig.scripts.json" },
     {
       "path": "./packages/core/tsconfig.json"
     },
+    { "path": "./packages/core/tsconfig.test.json" },
     {
       "path": "./packages/celld/tsconfig.json"
     },
@@ -21,12 +24,18 @@
     {
       "path": "./packages/cloudflare/tsconfig.json"
     },
+    { "path": "./packages/cloudflare/tsconfig.test.json" },
     {
       "path": "./packages/cloudflare/tsconfig.scripts.json"
     },
     {
+      "path": "./packages/aws4signer/tsconfig.json"
+    },
+    { "path": "./packages/aws4signer/tsconfig.test.json" },
+    {
       "path": "./packages/aws/tsconfig.json"
     },
+    { "path": "./packages/aws/tsconfig.test.json" },
     {
       "path": "./packages/aws/tsconfig.scripts.json"
     },
@@ -39,12 +48,14 @@
     {
       "path": "./packages/azure/tsconfig.json"
     },
+    { "path": "./packages/azure/tsconfig.test.json" },
     {
       "path": "./packages/azure/tsconfig.scripts.json"
     },
     {
       "path": "./packages/coinbase/tsconfig.json"
     },
+    { "path": "./packages/coinbase/tsconfig.test.json" },
     {
       "path": "./packages/coinbase/tsconfig.scripts.json"
     },
@@ -57,18 +68,21 @@
     {
       "path": "./packages/expo-eas/tsconfig.json"
     },
+    { "path": "./packages/expo-eas/tsconfig.test.json" },
     {
       "path": "./packages/expo-eas/tsconfig.scripts.json"
     },
     {
       "path": "./packages/fly-io/tsconfig.json"
     },
+    { "path": "./packages/fly-io/tsconfig.test.json" },
     {
       "path": "./packages/fly-io/tsconfig.scripts.json"
     },
     {
       "path": "./packages/gcp/tsconfig.json"
     },
+    { "path": "./packages/gcp/tsconfig.test.json" },
     {
       "path": "./packages/gcp/tsconfig.scripts.json"
     },
@@ -93,6 +107,7 @@
     {
       "path": "./packages/iceberg/tsconfig.json"
     },
+    { "path": "./packages/iceberg/tsconfig.test.json" },
     {
       "path": "./packages/iceberg/tsconfig.scripts.json"
     },
@@ -111,6 +126,7 @@
     {
       "path": "./packages/mongodb-atlas/tsconfig.json"
     },
+    { "path": "./packages/mongodb-atlas/tsconfig.test.json" },
     {
       "path": "./packages/mongodb-atlas/tsconfig.scripts.json"
     },
@@ -141,24 +157,28 @@
     {
       "path": "./packages/prisma/tsconfig.json"
     },
+    { "path": "./packages/prisma/tsconfig.test.json" },
     {
       "path": "./packages/prisma/tsconfig.scripts.json"
     },
     {
       "path": "./packages/railway/tsconfig.json"
     },
+    { "path": "./packages/railway/tsconfig.test.json" },
     {
       "path": "./packages/railway/tsconfig.scripts.json"
     },
     {
       "path": "./packages/stripe/tsconfig.json"
     },
+    { "path": "./packages/stripe/tsconfig.test.json" },
     {
       "path": "./packages/stripe/tsconfig.scripts.json"
     },
     {
       "path": "./packages/supabase/tsconfig.json"
     },
+    { "path": "./packages/supabase/tsconfig.test.json" },
     {
       "path": "./packages/supabase/tsconfig.scripts.json"
     },
@@ -387,6 +407,7 @@
     {
       "path": "./packages/onepassword/tsconfig.json"
     },
+    { "path": "./packages/onepassword/tsconfig.test.json" },
     {
       "path": "./packages/onepassword/tsconfig.scripts.json"
     },
@@ -435,6 +456,7 @@
     {
       "path": "./packages/turbopuffer/tsconfig.json"
     },
+    { "path": "./packages/turbopuffer/tsconfig.test.json" },
     {
       "path": "./packages/turbopuffer/tsconfig.scripts.json"
     },
@@ -501,6 +523,7 @@
     {
       "path": "./packages/google-workspace/tsconfig.json"
     },
+    { "path": "./packages/google-workspace/tsconfig.test.json" },
     {
       "path": "./packages/google-workspace/tsconfig.scripts.json"
     },
@@ -513,6 +536,7 @@
     {
       "path": "./packages/slack/tsconfig.json"
     },
+    { "path": "./packages/slack/tsconfig.test.json" },
     {
       "path": "./packages/slack/tsconfig.scripts.json"
     },
@@ -525,6 +549,7 @@
     {
       "path": "./packages/stackit/tsconfig.json"
     },
+    { "path": "./packages/stackit/tsconfig.test.json" },
     {
       "path": "./packages/stackit/tsconfig.scripts.json"
     },

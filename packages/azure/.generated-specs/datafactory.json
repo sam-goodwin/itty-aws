@@ -24,7 +24,7 @@
         "target": "com.azure.datafactory#UnsubscribeTriggerFromEventsRequest"
       },
       "output": {
-        "target": "com.azure.datafactory#TriggerSubscriptionOperationStatus"
+        "target": "com.azure.datafactory#UnsubscribeTriggerFromEventsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +37,7 @@
         "com.distilled.openapi#apiVersion": "2018-06-01"
       }
     },
-    "com.azure.datafactory#TriggerSubscriptionOperationStatus": {
+    "com.azure.datafactory#UnsubscribeTriggerFromEventsResponse": {
       "type": "structure",
       "members": {
         "triggerName": {
@@ -51,10 +51,25 @@
           "traits": {
             "smithy.api#documentation": "Event Subscription Status."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Defines the response of a trigger subscription operation."
+        "smithy.api#documentation": "Defines the response of a trigger subscription operation.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.datafactory#EventSubscriptionStatus": {
@@ -271,7 +286,7 @@
         "target": "com.azure.datafactory#SubscribeTriggerToEventsRequest"
       },
       "output": {
-        "target": "com.azure.datafactory#TriggerSubscriptionOperationStatus"
+        "target": "com.azure.datafactory#SubscribeTriggerToEventsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -282,6 +297,41 @@
         },
         "smithy.api#documentation": "Subscribe event trigger to events.",
         "com.distilled.openapi#apiVersion": "2018-06-01"
+      }
+    },
+    "com.azure.datafactory#SubscribeTriggerToEventsResponse": {
+      "type": "structure",
+      "members": {
+        "triggerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Trigger name."
+          }
+        },
+        "status": {
+          "target": "com.azure.datafactory#EventSubscriptionStatus",
+          "traits": {
+            "smithy.api#documentation": "Event Subscription Status."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the response of a trigger subscription operation.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.datafactory#SubscribeTriggerToEventsRequest": {
@@ -330,7 +380,7 @@
         "target": "com.azure.datafactory#StopTriggerRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.datafactory#StopTriggerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -341,6 +391,21 @@
         },
         "smithy.api#documentation": "Stops a trigger.",
         "com.distilled.openapi#apiVersion": "2018-06-01"
+      }
+    },
+    "com.azure.datafactory#StopTriggerResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.datafactory#StopTriggerRequest": {
@@ -389,7 +454,7 @@
         "target": "com.azure.datafactory#StartTriggerRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.datafactory#StartTriggerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -400,6 +465,21 @@
         },
         "smithy.api#documentation": "Starts a trigger.",
         "com.distilled.openapi#apiVersion": "2018-06-01"
+      }
+    },
+    "com.azure.datafactory#StartTriggerResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.datafactory#StartTriggerRequest": {
@@ -459,6 +539,26 @@
         },
         "smithy.api#documentation": "Get a trigger's event subscription status.",
         "com.distilled.openapi#apiVersion": "2018-06-01"
+      }
+    },
+    "com.azure.datafactory#TriggerSubscriptionOperationStatus": {
+      "type": "structure",
+      "members": {
+        "triggerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Trigger name."
+          }
+        },
+        "status": {
+          "target": "com.azure.datafactory#EventSubscriptionStatus",
+          "traits": {
+            "smithy.api#documentation": "Event Subscription Status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the response of a trigger subscription operation."
       }
     },
     "com.azure.datafactory#GetTriggerEventSubscriptionStatusRequest": {
@@ -672,7 +772,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Azure data factory nested object which contains information about creating pipeline run"
+        "smithy.api#documentation": "Azure data factory nested object which contains information about creating pipeline run",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#TriggerAnnotationsList": {
@@ -1302,7 +1403,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Trigger runs."
+        "smithy.api#documentation": "Trigger runs.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#TriggerRunDependencyStatusMap": {
@@ -1847,7 +1949,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Information about a pipeline run."
+        "smithy.api#documentation": "Information about a pipeline run.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#PipelineRunInvokedBy": {
@@ -2233,7 +2336,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Data flow debug session info."
+        "smithy.api#documentation": "Data flow debug session info.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#DataFlowDebugSessionQueryByFactoryRequest": {
@@ -3508,7 +3612,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "A pipeline activity."
+        "smithy.api#documentation": "A pipeline activity.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#ActivityUserPropertiesList": {
@@ -3570,7 +3675,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Activity dependency information."
+        "smithy.api#documentation": "Activity dependency information.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#ActivityDependencyDependencyConditionsList": {
@@ -3900,7 +4006,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Pipeline resource type."
+        "smithy.api#documentation": "Pipeline resource type.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#ListPipelineByFactoryRequest": {
@@ -4067,7 +4174,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Information about an activity run in a pipeline."
+        "smithy.api#documentation": "Information about an activity run in a pipeline.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#RunActivityRunsQueryByPipelineRequest": {
@@ -4472,7 +4580,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Properties of a managed private endpoint"
+        "smithy.api#documentation": "Properties of a managed private endpoint",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#ManagedPrivateEndpointFqdnsList": {
@@ -4594,7 +4703,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Properties of a managed private endpoint"
+        "smithy.api#documentation": "Properties of a managed private endpoint",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#ManagedPrivateEndpointInputFqdnsList": {
@@ -4940,7 +5050,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "A managed Virtual Network associated with the Azure Data Factory"
+        "smithy.api#documentation": "A managed Virtual Network associated with the Azure Data Factory",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#ManagedVirtualNetworksCreateOrUpdateRequest": {
@@ -4994,7 +5105,8 @@
       "type": "structure",
       "members": {},
       "traits": {
-        "smithy.api#documentation": "A managed Virtual Network associated with the Azure Data Factory"
+        "smithy.api#documentation": "A managed Virtual Network associated with the Azure Data Factory",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#GetManagedVirtualNetwork": {
@@ -5398,7 +5510,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The nested object which contains the information and credential which can be used to connect with related store or compute resource."
+        "smithy.api#documentation": "The nested object which contains the information and credential which can be used to connect with related store or compute resource.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#LinkedServiceAnnotationsList": {
@@ -5877,7 +5990,7 @@
         "target": "com.azure.datafactory#StopIntegrationRuntimeRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.datafactory#StopIntegrationRuntimeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5888,6 +6001,28 @@
         },
         "smithy.api#documentation": "Stops a ManagedReserved type integration runtime.",
         "com.distilled.openapi#apiVersion": "2018-06-01"
+      }
+    },
+    "com.azure.datafactory#StopIntegrationRuntimeResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.datafactory#StopIntegrationRuntimeRequest": {
@@ -5936,7 +6071,7 @@
         "target": "com.azure.datafactory#StartIntegrationRuntimeRequest"
       },
       "output": {
-        "target": "com.azure.datafactory#IntegrationRuntimeStatusResponse"
+        "target": "com.azure.datafactory#StartIntegrationRuntimeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5949,7 +6084,7 @@
         "com.distilled.openapi#apiVersion": "2018-06-01"
       }
     },
-    "com.azure.datafactory#IntegrationRuntimeStatusResponse": {
+    "com.azure.datafactory#StartIntegrationRuntimeResponse": {
       "type": "structure",
       "members": {
         "name": {
@@ -5964,10 +6099,25 @@
             "smithy.api#documentation": "Integration runtime properties.",
             "smithy.api#required": {}
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Integration runtime status response."
+        "smithy.api#documentation": "Integration runtime status response.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.datafactory#IntegrationRuntimeStatus": {
@@ -5994,7 +6144,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Integration runtime status."
+        "smithy.api#documentation": "Integration runtime status.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#IntegrationRuntimeState": {
@@ -6333,6 +6484,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The operation error message."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -6810,7 +6975,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Properties of Self-hosted integration runtime node."
+        "smithy.api#documentation": "Properties of Self-hosted integration runtime node.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#IntegrationRuntimeUpdateResult": {
@@ -7119,7 +7285,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Monitoring data for integration runtime node."
+        "smithy.api#documentation": "Monitoring data for integration runtime node.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#GetIntegrationRuntimeMonitoringDataRequest": {
@@ -7238,6 +7405,27 @@
         },
         "smithy.api#documentation": "Create a linked integration runtime entry in a shared integration runtime.",
         "com.distilled.openapi#apiVersion": "2018-06-01"
+      }
+    },
+    "com.azure.datafactory#IntegrationRuntimeStatusResponse": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The integration runtime name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datafactory#IntegrationRuntimeStatus",
+          "traits": {
+            "smithy.api#documentation": "Integration runtime properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Integration runtime status response."
       }
     },
     "com.azure.datafactory#CreateIntegrationRuntimeLinkedIntegrationRuntimeRequest": {
@@ -7577,7 +7765,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Connection information for encrypting the on-premises data source credentials."
+        "smithy.api#documentation": "Connection information for encrypting the on-premises data source credentials.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#GetIntegrationRuntimeConnectionInfoRequest": {
@@ -7678,6 +7867,27 @@
           "traits": {
             "smithy.api#documentation": "\"If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.\")"
           }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -7714,7 +7924,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Azure Data Factory nested object which serves as a compute resource for activities."
+        "smithy.api#documentation": "Azure Data Factory nested object which serves as a compute resource for activities.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#EnableIntegrationRuntimeInteractiveQueryRequest": {
@@ -7820,6 +8031,27 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "\"If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.\")"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -9270,6 +9502,20 @@
           "traits": {
             "smithy.api#documentation": "The result data of data preview, statistics or expression preview."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -9635,7 +9881,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents."
+        "smithy.api#documentation": "The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#DatasetFolder": {
@@ -10619,7 +10866,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The Azure Data Factory nested object which contains the information and credential which can be used to connect with related store or compute resource."
+        "smithy.api#documentation": "The Azure Data Factory nested object which contains the information and credential which can be used to connect with related store or compute resource.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#CredentialAnnotationsList": {
@@ -10940,6 +11188,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The ID of data flow debug session."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -12166,7 +12428,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Change data capture resource type."
+        "smithy.api#documentation": "Change data capture resource type.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#ListChangeDataCaptureByFactoryRequest": {
@@ -12372,7 +12635,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Definition of data flow source setting for debug."
+        "smithy.api#documentation": "Definition of data flow source setting for debug.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#DataFlowStagingInfo": {
@@ -13425,7 +13689,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Factory resource type."
+        "smithy.api#documentation": "Factory resource type.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.datafactory#FactoryTagsMap": {

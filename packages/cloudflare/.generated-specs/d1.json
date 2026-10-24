@@ -1124,6 +1124,159 @@
         "target": "com.cloudflare.d1#DatabaseRawResultItem"
       }
     },
+    "com.cloudflare.d1#UndeleteDatabaseRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier tag.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "database_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database identifier (UUID).",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "new_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Restore the database with this name instead of the name it had when it was deleted. Required if another database in the account already uses that name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.d1#UndeleteDatabaseResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#UndeleteDatabaseResponseReadReplicationMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#UndeleteDatabaseResponseReadReplication": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.d1#UndeleteDatabaseResponseReadReplicationMode",
+          "traits": {
+            "smithy.api#documentation": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#UndeleteDatabaseResponse": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
+          }
+        },
+        "file_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The D1 database's size, in bytes."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.d1#UndeleteDatabaseResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database name."
+          }
+        },
+        "num_tables": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of tables in the D1 database. This count is no longer accurate and should not be relied upon."
+          }
+        },
+        "read_replication": {
+          "target": "com.cloudflare.d1#UndeleteDatabaseResponseReadReplication",
+          "traits": {
+            "smithy.api#documentation": "Configuration for D1 read replication."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database identifier (UUID)."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.d1#UndeleteDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.d1#UndeleteDatabaseRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.d1#UndeleteDatabaseResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/d1/database/{database_id}/undelete",
+          "code": 200
+        },
+        "smithy.api#documentation": "Restore a deleted D1 database. The database is restored with the name it had when it was deleted, unless `new_name` is provided. The restored database counts against the account's limits. Undeleting a database that is not deleted succeeds without changes, unless `new_name` differs from its current name which errors. Once a database is undeleted, Time Travel (point-in-time recovery) cannot restore it to a bookmark or timestamp at or before the undeletion. Only states after the undeletion can be restored."
+      }
+    },
     "com.cloudflare.d1#DatabaseUpdateRequestReadReplicationMode": {
       "type": "enum",
       "members": {
@@ -1209,6 +1362,9 @@
       "type": "service",
       "version": "4.0",
       "operations": [
+        {
+          "target": "com.cloudflare.d1#UndeleteDatabase"
+        },
         {
           "target": "com.cloudflare.d1#CreateDatabase"
         },

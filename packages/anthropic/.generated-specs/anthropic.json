@@ -7919,6 +7919,13 @@
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "diagnostics": {
+          "target": "com.anthropic.api#BetaDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "Request-level diagnostics. `null` when no prompt-cache divergence was detected.",
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}

@@ -5946,7 +5946,10 @@
           "target": "com.cloudflare.ai_gateway#ListResultItemSpendLimits"
         },
         "store_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it."
+          }
         },
         "stripe": {
           "target": "com.cloudflare.ai_gateway#ListResultItemStripe"
@@ -8579,6 +8582,7 @@
         "aggregated_value": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "AI Gateway usage cost in the window, in US dollars.",
             "smithy.api#required": {}
           }
         },
@@ -8679,6 +8683,117 @@
           "traits": {
             "smithy.api#enumValue": "pending"
           }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase0": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase1Status": {
+      "type": "enum",
+      "members": {
+        "CONFIGURED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "configured"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase1": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase1Status",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase2Status": {
+      "type": "enum",
+      "members": {
+        "REQUIRES_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "requires_action"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase2": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "client_secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "setup_intent_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase2Status",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "threshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_gateway#BillingTopupConfigCreateResult": {
+      "type": "union",
+      "members": {
+        "BillingTopupConfigCreateResultCase0": {
+          "target": "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase0"
+        },
+        "BillingTopupConfigCreateResultCase1": {
+          "target": "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase1"
+        },
+        "BillingTopupConfigCreateResultCase2": {
+          "target": "com.cloudflare.ai_gateway#BillingTopupConfigCreateResultCase2"
         }
       }
     },
@@ -17945,7 +18060,10 @@
           "target": "com.cloudflare.ai_gateway#CreateRequestSpendLimits"
         },
         "store_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it."
+          }
         },
         "stripe": {
           "target": "com.cloudflare.ai_gateway#CreateRequestStripe"
@@ -18077,7 +18195,10 @@
           "target": "com.cloudflare.ai_gateway#CreateResponseSpendLimits"
         },
         "store_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it."
+          }
         },
         "stripe": {
           "target": "com.cloudflare.ai_gateway#CreateResponseStripe"
@@ -18187,7 +18308,7 @@
           "uri": "/accounts/{account_id}/ai-gateway/billing/topup",
           "code": 200
         },
-        "smithy.api#documentation": "Create a credit top-up for the given account, charged to the account's default payment method."
+        "smithy.api#documentation": "Create a credit top-up for the given account, charged to the account's default payment method. Requires a dashboard session; API token, OAuth, and service credentials receive 403."
       }
     },
     "com.cloudflare.ai_gateway#CreateBillingTopupRequest": {
@@ -18210,7 +18331,7 @@
         "payment_method_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Stripe PaymentMethod to charge instead of the customer's default payment method."
+            "smithy.api#documentation": "Payment method to charge instead of the customer's default payment method."
           }
         }
       },
@@ -18224,7 +18345,7 @@
         "client_secret": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Stripe PaymentIntent client secret.",
+            "smithy.api#documentation": "Client secret used to complete payment authentication.",
             "smithy.api#required": {}
           }
         },
@@ -18238,7 +18359,7 @@
         "payment_intent_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Stripe invoice ID.",
+            "smithy.api#documentation": "Top-up payment identifier.",
             "smithy.api#required": {}
           }
         },
@@ -18274,7 +18395,7 @@
           "uri": "/accounts/{account_id}/ai-gateway/billing/topup/config",
           "code": 200
         },
-        "smithy.api#documentation": "Configure auto top-up with a balance threshold and top-up amount. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403."
+        "smithy.api#documentation": "Configure auto top-up with a balance threshold and top-up amount. Requests that add a payment method first return authentication details. The configuration is saved only after the authenticated setup is submitted. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403."
       }
     },
     "com.cloudflare.ai_gateway#CreateBillingTopupConfigRequest": {
@@ -18300,6 +18421,30 @@
             "smithy.api#documentation": "Balance threshold in cents that triggers auto top-up (min 500).",
             "smithy.api#required": {}
           }
+        },
+        "consent_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the off-session auto-top-up consent accepted by the user."
+          }
+        },
+        "payment_method_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Card to authenticate for future automatic top-ups."
+          }
+        },
+        "setup_idempotency_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Client-generated UUID that makes payment-method setup safe to retry."
+          }
+        },
+        "setup_intent_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Successfully confirmed payment-method setup identifier."
+          }
         }
       },
       "traits": {
@@ -18309,22 +18454,16 @@
     "com.cloudflare.ai_gateway#CreateBillingTopupConfigResponse": {
       "type": "structure",
       "members": {
-        "amount": {
-          "target": "smithy.api#Double",
+        "result": {
+          "target": "com.cloudflare.ai_gateway#BillingTopupConfigCreateResult",
           "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "threshold": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.ai_gateway#CreateCustomProvider": {
@@ -19431,7 +19570,10 @@
           "target": "com.cloudflare.ai_gateway#DeleteResponseSpendLimits"
         },
         "store_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it."
+          }
         },
         "stripe": {
           "target": "com.cloudflare.ai_gateway#DeleteResponseStripe"
@@ -20208,7 +20350,10 @@
           "target": "com.cloudflare.ai_gateway#GetResponseSpendLimits"
         },
         "store_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it."
+          }
         },
         "stripe": {
           "target": "com.cloudflare.ai_gateway#GetResponseStripe"
@@ -22490,7 +22635,7 @@
           "uri": "/accounts/{account_id}/ai-gateway/billing/topup/status",
           "code": 200
         },
-        "smithy.api#documentation": "Get the payment processing status of a top-up by its invoice ID."
+        "smithy.api#documentation": "Get the payment processing status of a top-up by its top-up identifier."
       }
     },
     "com.cloudflare.ai_gateway#StatusBillingTopupRequest": {
@@ -22506,7 +22651,7 @@
         "payment_intent_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Stripe invoice ID to check status for.",
+            "smithy.api#documentation": "Top-up identifier to check status for.",
             "smithy.api#required": {}
           }
         }
@@ -22668,7 +22813,10 @@
           "target": "com.cloudflare.ai_gateway#UpdateRequestSpendLimits"
         },
         "store_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it."
+          }
         },
         "stripe": {
           "target": "com.cloudflare.ai_gateway#UpdateRequestStripe"
@@ -22800,7 +22948,10 @@
           "target": "com.cloudflare.ai_gateway#UpdateResponseSpendLimits"
         },
         "store_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it."
+          }
         },
         "stripe": {
           "target": "com.cloudflare.ai_gateway#UpdateResponseStripe"
@@ -22957,7 +23108,7 @@
           "uri": "/accounts/{account_id}/ai-gateway/billing/usage-history",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieve aggregated usage meter event summaries for the given time range.",
+        "smithy.api#documentation": "Retrieve AI Gateway usage cost, in US dollars, aggregated by hour or day for the given time range.",
         "smithy.api#readonly": {}
       }
     },

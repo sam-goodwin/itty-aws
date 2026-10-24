@@ -187,7 +187,7 @@ export const LiveDelegationReasoningInputParam = /*@__PURE__*/ S.suspend(() =>
 export type LiveTextVerbosity = "low" | "medium" | "high";
 export const LiveTextVerbosity = S.String;
 
-/** Text generation options for the Live session’s Responses backend. */
+/** Text generation options for the Live session's Responses backend. */
 export interface LiveDelegationTextInputParam {
   verbosity?: LiveTextVerbosity | (string & {}) | null;
 }
@@ -236,7 +236,7 @@ export const LiveFunctionToolInputParam = /*@__PURE__*/ S.suspend(() =>
 export type LiveWebSearchToolInputParamType = "web_search";
 export const LiveWebSearchToolInputParamType = S.String;
 
-/** A web search tool available to the Live session’s Responses backend. */
+/** A web search tool available to the Live session's Responses backend. */
 export interface LiveWebSearchToolInputParam {
   /** The tool type. Always `web_search`. */
   type: LiveWebSearchToolInputParamType;
@@ -743,7 +743,7 @@ export const LiveInitialInputTextContentPartParamType = S.String;
 export interface LiveInitialInputTextContentPartParam {
   /** The text content type. Always `input_text`. */
   type?: LiveInitialInputTextContentPartParamType | (string & {});
-  /** The message text to include in the Live session’s initial conversation history. */
+  /** The message text to include in the Live session's initial conversation history. */
   text: string;
 }
 export const LiveInitialInputTextContentPartParam = /*@__PURE__*/ S.suspend(() =>
@@ -839,7 +839,7 @@ export const LiveInitialTextContentPartParamType = S.String;
 export interface LiveInitialTextContentPartParam {
   /** The text content type. Always `text`. */
   type?: LiveInitialTextContentPartParamType | (string & {});
-  /** The message text to include in the Live session’s initial conversation history. */
+  /** The message text to include in the Live session's initial conversation history. */
   text: string;
 }
 export const LiveInitialTextContentPartParam = /*@__PURE__*/ S.suspend(() =>
@@ -859,7 +859,7 @@ export const LiveInitialOutputTextContentPartParamType = S.String;
 export interface LiveInitialOutputTextContentPartParam {
   /** The text content type. Always `output_text`. */
   type: LiveInitialOutputTextContentPartParamType;
-  /** The message text to include in the Live session’s initial conversation history. */
+  /** The message text to include in the Live session's initial conversation history. */
   text: string;
 }
 export const LiveInitialOutputTextContentPartParam = /*@__PURE__*/ S.suspend(() =>

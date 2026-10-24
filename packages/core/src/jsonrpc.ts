@@ -1,24 +1,24 @@
 /**
- * JSON-RPC 2.0 — the runtime half of distilled's JSON-RPC protocol family.
+ * JSON-RPC 2.0 -- the runtime half of distilled's JSON-RPC protocol family.
  *
  * A JSON-RPC API is described along independent axes, each a swappable part
  * here:
  *
- *   • framing    — how messages are delimited on a byte stream
+ *   * framing    -- how messages are delimited on a byte stream
  *                  ({@link ndjson}; `Content-Length` headers for LSP later)
- *   • transport  — the endpoint the messages flow over: any byte stream
+ *   * transport  -- the endpoint the messages flow over: any byte stream
  *                  pair ({@link fromStreams}: stdio, TCP), a socket
  *                  ({@link fromSocket}: WebSocket), or {@link memoryPair}
- *                  for tests. Distilled never spawns or hosts the peer —
+ *                  for tests. Distilled never spawns or hosts the peer --
  *                  callers hand it an endpoint.
- *   • direction  — outbound calls we make ({@link request}, {@link notify})
+ *   * direction  -- outbound calls we make ({@link request}, {@link notify})
  *                  and inbound calls the peer makes back into us
  *                  ({@link bindHandlers}, {@link notifications})
  *
  * A {@link Peer} multiplexes both directions over one transport: outgoing
  * requests are correlated with their responses by id, incoming requests are
  * dispatched to handlers and answered, incoming notifications are published
- * to subscribers. Generated SDKs never touch the peer directly — operations
+ * to subscribers. Generated SDKs never touch the peer directly -- operations
  * are typed callables (like REST operations) that resolve a per-package
  * {@link Connection} service from context.
  *
@@ -141,7 +141,7 @@ export interface Transport {
 /**
  * A transport over any byte-stream endpoint: frames are decoded from
  * `readable` and encoded into `writable`. Stdio of a process the caller
- * spawned, a TCP connection, a pipe — distilled only speaks the protocol.
+ * spawned, a TCP connection, a pipe -- distilled only speaks the protocol.
  */
 export const fromStreams = <RE, WE>(options: {
   readonly readable: Stream.Stream<Uint8Array, RE>;
@@ -172,7 +172,7 @@ export const fromStreams = <RE, WE>(options: {
 const textDecoder = new TextDecoder();
 
 /**
- * A transport over an Effect `Socket` — e.g. a WebSocket endpoint
+ * A transport over an Effect `Socket` -- e.g. a WebSocket endpoint
  * (`Socket.makeWebSocket(url)`). Message-oriented sockets carry one
  * JSON-RPC message per message (the default); pass `framing` for a raw
  * byte socket. The socket's reader and writer live in the ambient `Scope`.
@@ -226,7 +226,7 @@ export const fromSocket = (
   });
 
 /**
- * Two transports wired back to back in memory — what one sends the other
+ * Two transports wired back to back in memory -- what one sends the other
  * receives. For tests: run a fake agent on one end and the SDK on the other.
  */
 export const memoryPair: Effect.Effect<readonly [Transport, Transport]> = Effect.gen(function* () {
@@ -268,13 +268,13 @@ export interface PeerOptions {
   /** Inbound notification callbacks by wire method (in addition to the stream). */
   readonly notifications?: ReadonlyMap<string, (params: unknown) => Effect.Effect<void>>;
   /**
-   * Omit the `"jsonrpc": "2.0"` member on outgoing messages — for peers that
+   * Omit the `"jsonrpc": "2.0"` member on outgoing messages -- for peers that
    * speak JSON-RPC without the version tag (Codex app-server). Incoming
    * messages are accepted either way.
    */
   readonly omitVersion?: boolean;
   /**
-   * What a malformed incoming frame does: end the connection (default — a
+   * What a malformed incoming frame does: end the connection (default -- a
    * peer emitting garbage on its protocol channel can't be trusted to stay
    * in sync) or skip it (for peers that log to stdout).
    */
@@ -540,7 +540,7 @@ export const connect = <HR = never>(
 
 //#region Operations
 
-/** Wire value → TS value for a schema: key mapping, strict validation, sensitive wrap. */
+/** Wire value -> TS value for a schema: key mapping, strict validation, sensitive wrap. */
 const decodeValue = (
   ast: AST.AST,
   value: unknown,
@@ -551,7 +551,7 @@ const decodeValue = (
     Effect.catch((e) => Effect.fail(e) as Effect.Effect<never>),
   );
 
-/** TS value → wire value for a schema. */
+/** TS value -> wire value for a schema. */
 const encodeValue = (ast: AST.AST, value: unknown): unknown =>
   value === undefined ? undefined : mapKeys(ast, unwrapRedactedDeep(value), "encode");
 

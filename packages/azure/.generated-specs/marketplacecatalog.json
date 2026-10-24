@@ -386,7 +386,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Represents a feed of entities that includes additional information that OData formats support."
+        "smithy.api#documentation": "Represents a feed of entities that includes additional information that OData formats support.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.marketplacecatalog#PageResultOfCatalogItemItemsList": {

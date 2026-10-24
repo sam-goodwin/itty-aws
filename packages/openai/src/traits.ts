@@ -1,5 +1,5 @@
 /**
- * OpenAI SDK trait surface — hand-written.
+ * OpenAI SDK trait surface -- hand-written.
  *
  * Re-exports the generic protocol traits from core (so generated operations
  * import everything from one place), the REST-protocol traits

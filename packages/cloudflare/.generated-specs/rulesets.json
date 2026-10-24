@@ -2140,6 +2140,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2483,6 +2489,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -5056,6 +5068,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5399,6 +5417,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -7972,6 +7996,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -9900,6 +9930,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -12473,6 +12509,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -12816,6 +12858,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -15389,6 +15437,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -17152,6 +17206,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -17495,6 +17555,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -20068,6 +20134,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -20411,6 +20483,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -22984,6 +23062,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -23339,6 +23423,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -26259,6 +26349,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -28830,6 +28926,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -29173,6 +29275,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -31746,6 +31854,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -32101,6 +32215,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -34854,6 +34974,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -35030,6 +35156,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -35375,6 +35507,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -37948,6 +38086,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -38291,6 +38435,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -40864,6 +41014,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -41219,6 +41375,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "http_response_compression"
+          }
+        },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
           }
         },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
@@ -43972,6 +44134,12 @@
             "smithy.api#enumValue": "http_response_compression"
           }
         },
+        "HTTP_RESPONSE_FIREWALL_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http_response_firewall_custom"
+          }
+        },
         "HTTP_RESPONSE_FIREWALL_MANAGED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -44422,7 +44590,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#VersionsGetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -46856,7 +47024,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#RulesEditResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -50481,7 +50649,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#RulesDeleteResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -52915,7 +53083,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#RulesCreateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -56593,7 +56761,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#PhasesVersionsGetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -59027,7 +59195,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#PhasesUpdateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -61461,7 +61629,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#PhasesUpdateRequestRulesItemSetConfigRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -63895,7 +64063,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#PhasesGetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -66329,7 +66497,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#UpdateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -68763,7 +68931,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#UpdateRequestRulesItemSetConfigRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -71250,7 +71418,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#GetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -73684,7 +73852,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#CreateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
@@ -76118,7 +76286,7 @@
         "webmcp_packs": {
           "target": "com.cloudflare.rulesets#CreateRequestRulesItemSetConfigRuleActionParametersWebmcpPacksList",
           "traits": {
-            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement."
+            "smithy.api#documentation": "Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself."
           }
         }
       }
