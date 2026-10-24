@@ -17229,6 +17229,9 @@
         },
         {
           "target": "com.amazonaws.ecs#UpdateInProgressException"
+        },
+        {
+          "target": "aws.synthetic#ServiceLinkedRoleNotAssumable"
         }
       ],
       "traits": {
@@ -25309,6 +25312,25 @@
       "type": "list",
       "member": {
         "target": "com.amazonaws.ecs#VpcLatticeConfiguration"
+      }
+    },
+    "aws.synthetic#ServiceLinkedRoleNotAssumable": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "com.amazonaws.ecs#String",
+          "traits": {
+            "smithy.api#documentation": "<p> Message that describes the cause of the exception.</p>"
+          }
+        }
+      },
+      "traits": {
+        "aws.codegen#synthetic": {
+          "from": "InvalidParameterException",
+          "message": {
+            "includes": "Unable to assume the service linked role"
+          }
+        }
       }
     }
   }
