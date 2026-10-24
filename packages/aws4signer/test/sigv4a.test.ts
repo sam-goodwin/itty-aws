@@ -34,13 +34,20 @@ const canonicalOf = (signed: SigV4.SignedRequest, body: string) => {
 };
 
 describe("SigV4A", () => {
-  test("derives the published aws-c-auth signing key", async () => {
-    const key = await Effect.runPromise(SigV4.signingPublicKeyV4a(accessKeyId, secretAccessKey));
-    expect(key).toEqual({
-      x: "b6618f6a65740a99e650b33b6b4b5bd0d43b176d721a3edfea7e7d2d56d936b1",
-      y: "865ed22a7eadc9c5cb9d2cbaca1b3699139fedc5043dc6661864218330c8e518",
-    });
-  });
+  // The platform derives the point from PKCS#8 (node:crypto, WebCrypto);
+  // the JavaScript fallback must agree with both.
+  test.each(["auto", "webcrypto", "javascript"] as const)(
+    "derives the published aws-c-auth signing key (%s)",
+    async (via) => {
+      const key = await Effect.runPromise(
+        SigV4.signingPublicKeyV4a(accessKeyId, secretAccessKey, via),
+      );
+      expect(key).toEqual({
+        x: "b6618f6a65740a99e650b33b6b4b5bd0d43b176d721a3edfea7e7d2d56d936b1",
+        y: "865ed22a7eadc9c5cb9d2cbaca1b3699139fedc5043dc6661864218330c8e518",
+      });
+    },
+  );
 
   test("signs with a region set and a region-less scope, verifiable with the derived key", async () => {
     const body = JSON.stringify({ Entries: [] });

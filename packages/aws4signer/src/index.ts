@@ -548,9 +548,15 @@ export interface SignV4aOptions extends Omit<SignOptions, "region" | "signQuery"
 const SIGV4A = "AWS4-ECDSA-P256-SHA256";
 const encoder = /*@__PURE__*/ new TextEncoder();
 
-/** A SigV4A signing key: the credential-derived P-256 private key, as a JWK. */
+/**
+ * A SigV4A signing key: the credential-derived P-256 private scalar as PKCS#8,
+ * plus the platform key objects imported from it, filled in on first use.
+ */
 interface SigningKeyV4a {
-  readonly jwk: JsonWebKey;
+  readonly d: bigint;
+  readonly der: Uint8Array<ArrayBuffer>;
+  node?: object;
+  web?: CryptoKey;
 }
 
 /** Derived SigV4A keys per secret (by `Redacted` identity) and access key id. */
@@ -591,16 +597,7 @@ const deriveSigningKeyV4a = Effect.fnUntraced(function* (
     const k0 = P256.toBigInt(yield* Effect.mapError(c.hmacSha256(inputKey, fixedInput), fromCore));
     if (k0 > P256.N - 2n) continue;
     const d = k0 + 1n;
-    const point = P256.publicPoint(d);
-    const key: SigningKeyV4a = {
-      jwk: {
-        kty: "EC",
-        crv: "P-256",
-        d: P256.base64Url(P256.toBytes32(d)),
-        x: P256.base64Url(P256.toBytes32(point.x)),
-        y: P256.base64Url(P256.toBytes32(point.y)),
-      },
-    };
+    const key: SigningKeyV4a = { d, der: P256.pkcs8(d) };
     if (scopes.size >= 16) scopes.clear();
     scopes.set(accessKeyId, key);
     return key;
@@ -611,30 +608,58 @@ const deriveSigningKeyV4a = Effect.fnUntraced(function* (
   });
 });
 
-interface NodeSign {
-  createPrivateKey(options: { key: JsonWebKey; format: "jwk" }): object;
+interface NodeEcdsa {
+  createPrivateKey(options: { key: Uint8Array; format: "der"; type: "pkcs8" }): object;
+  createPublicKey(key: object): { export(options: { format: "jwk" }): JsonWebKey };
   sign(algorithm: string, data: Uint8Array, key: { key: object; dsaEncoding: "der" }): Uint8Array;
 }
 
 /** `node:crypto`, found without a static import so this module loads in any runtime. */
-const nodeSign = (): NodeSign | undefined => {
+const nodeEcdsa = (): NodeEcdsa | undefined => {
   try {
     const p = (globalThis as { process?: { getBuiltinModule?: (id: string) => unknown } }).process;
-    return p?.getBuiltinModule?.("node:crypto") as NodeSign | undefined;
+    return p?.getBuiltinModule?.("node:crypto") as NodeEcdsa | undefined;
   } catch {
     return undefined;
   }
 };
 
-/** DER-encoded ECDSA P-256 / SHA-256 signature of `data`. */
+const ECDSA_P256 = { name: "ECDSA", namedCurve: "P-256" } as const;
+
+/** The key's point as a JWK, computed in JavaScript: the last resort. */
+const jwkOf = (d: bigint): JsonWebKey => {
+  const { x, y } = P256.publicPoint(d);
+  return {
+    kty: "EC",
+    crv: "P-256",
+    d: P256.base64Url(P256.toBytes32(d)),
+    x: P256.base64Url(P256.toBytes32(x)),
+    y: P256.base64Url(P256.toBytes32(y)),
+  };
+};
+
+/**
+ * Import into WebCrypto. PKCS#8 without the public point lets the platform
+ * derive it (Bun, workerd, Node all do); a WebCrypto that rejects that gets
+ * a JWK whose point is computed by {@link P256.publicPoint}.
+ */
+const importWebKey = (key: SigningKeyV4a, extractable: boolean): Promise<CryptoKey> =>
+  crypto.subtle
+    .importKey("pkcs8", key.der, ECDSA_P256, extractable, ["sign"])
+    .catch(() => crypto.subtle.importKey("jwk", jwkOf(key.d), ECDSA_P256, extractable, ["sign"]));
+
+/**
+ * DER-encoded ECDSA P-256 / SHA-256 signature of `data`: with `node:crypto`
+ * when the runtime has it, else WebCrypto.
+ */
 const ecdsaSign = (key: SigningKeyV4a, data: string): Effect.Effect<Uint8Array, CryptoError> => {
   const bytes = encoder.encode(data);
-  const node = nodeSign();
+  const node = nodeEcdsa();
   if (node !== undefined) {
     return Effect.try({
       try: () =>
         node.sign("sha256", bytes, {
-          key: node.createPrivateKey({ key: key.jwk, format: "jwk" }),
+          key: (key.node ??= node.createPrivateKey({ key: key.der, format: "der", type: "pkcs8" })),
           dsaEncoding: "der",
         }),
       catch: (cause) => new CryptoError({ operation: "hmac", cause }),
@@ -642,14 +667,8 @@ const ecdsaSign = (key: SigningKeyV4a, data: string): Effect.Effect<Uint8Array, 
   }
   return Effect.tryPromise({
     try: async () => {
-      const k = await crypto.subtle.importKey(
-        "jwk",
-        key.jwk,
-        { name: "ECDSA", namedCurve: "P-256" },
-        false,
-        ["sign"],
-      );
-      const raw = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, k, bytes);
+      const web = (key.web ??= await importWebKey(key, false));
+      const raw = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, web, bytes);
       return P256.p1363ToDer(new Uint8Array(raw));
     },
     catch: (cause) => new CryptoError({ operation: "hmac", cause }),
@@ -695,18 +714,41 @@ export const signV4a: (options: SignV4aOptions) => Effect.Effect<SignedRequest, 
     return canonical.finish(CoreCrypto.hex(yield* ecdsaSign(key, stringToSign)));
   });
 
-/** The SigV4A public key (hex affine coordinates) derived from a credential, e.g. to check it against published test vectors. */
+/**
+ * The SigV4A public key (hex affine coordinates) derived from a credential,
+ * e.g. to check it against published test vectors. `via` picks the
+ * implementation that computes the point; by default the one signing uses.
+ */
 export const signingPublicKeyV4a = (
   accessKeyId: string,
   secretAccessKey: Redacted.Redacted<string>,
+  via: "auto" | "webcrypto" | "javascript" = "auto",
 ): Effect.Effect<{ readonly x: string; readonly y: string }, CryptoError> =>
-  Effect.map(deriveSigningKeyV4a(accessKeyId, secretAccessKey), ({ jwk }) => ({
-    x: CoreCrypto.hex(fromBase64Url(jwk.x!)),
-    y: CoreCrypto.hex(fromBase64Url(jwk.y!)),
-  }));
-
-const fromBase64Url = (s: string): Uint8Array =>
-  Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0));
+  Effect.flatMap(deriveSigningKeyV4a(accessKeyId, secretAccessKey), (key) => {
+    const hexOf = (jwk: JsonWebKey) => ({
+      x: CoreCrypto.hex(P256.fromBase64Url(jwk.x!)),
+      y: CoreCrypto.hex(P256.fromBase64Url(jwk.y!)),
+    });
+    const node = via === "auto" ? nodeEcdsa() : undefined;
+    if (via === "javascript") return Effect.sync(() => hexOf(jwkOf(key.d)));
+    if (node !== undefined) {
+      return Effect.try({
+        try: () =>
+          hexOf(
+            node
+              .createPublicKey(
+                node.createPrivateKey({ key: key.der, format: "der", type: "pkcs8" }),
+              )
+              .export({ format: "jwk" }),
+          ),
+        catch: (cause) => new CryptoError({ operation: "hmac", cause }),
+      });
+    }
+    return Effect.tryPromise({
+      try: async () => hexOf(await crypto.subtle.exportKey("jwk", await importWebKey(key, true))),
+      catch: (cause) => new CryptoError({ operation: "hmac", cause }),
+    });
+  });
 
 //#endregion
 
