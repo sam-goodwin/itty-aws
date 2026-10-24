@@ -142,6 +142,15 @@ export class ConcurrentModificationException
     "ConcurrentModificationException",
     { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withConflictError, C.withRetryableError) {}
+export class EndpointRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedError<EndpointRoleNotAssumable>()(
+    "EndpointRoleNotAssumable",
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "cannot be assumed by principal" },
+    }),
+  ).pipe(C.withRetryableError) {}
 export class EventBusHasRules
   extends /*@__PURE__*/ S.TaggedError<EventBusHasRules>()(
     "EventBusHasRules",
@@ -1552,6 +1561,7 @@ export type CreateEndpointError =
   | InternalException
   | LimitExceededException
   | ResourceAlreadyExistsException
+  | EndpointRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a global endpoint. Global endpoints improve your application's availability by
@@ -1569,7 +1579,12 @@ export const createEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<CreateEndpointRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<CreateEndpointResponse>,
-  errors: [InternalException, LimitExceededException, ResourceAlreadyExistsException],
+  errors: [
+    InternalException,
+    LimitExceededException,
+    ResourceAlreadyExistsException,
+    EndpointRoleNotAssumable,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateEndpoint",
@@ -3073,6 +3088,7 @@ export type UpdateEndpointError =
   | ConcurrentModificationException
   | InternalException
   | ResourceNotFoundException
+  | EndpointRoleNotAssumable
   | CommonErrors;
 /**
  * Update an existing endpoint. For more information about global endpoints, see Making
@@ -3089,7 +3105,12 @@ export const updateEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2240, __c70, 0) as any as S.Schema<UpdateEndpointRequest>,
   output: __S(2241, __c70, 1) as any as S.Schema<UpdateEndpointResponse>,
-  errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
+  errors: [
+    ConcurrentModificationException,
+    InternalException,
+    ResourceNotFoundException,
+    EndpointRoleNotAssumable,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateEndpoint",

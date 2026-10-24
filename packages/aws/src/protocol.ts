@@ -211,6 +211,9 @@ const toHttpRequest = (
   let resolvedRequest = request;
   let signingRegion = region; // Default to context region
   let signingServiceName = serviceName; // Default to service name from sigv4 trait
+  // SigV4A region set, when the endpoint rules require the asymmetric signer
+  // (EventBridge global endpoints, S3 Multi-Region Access Points).
+  let signingRegionSet: readonly string[] | undefined;
 
   if (customEndpoint) {
     // User provided a custom endpoint - use it directly
@@ -233,8 +236,14 @@ const toHttpRequest = (
           name?: string;
           signingName?: string;
           signingRegion?: string;
+          signingRegionSet?: string[];
         }>
       | undefined;
+    // Only when SigV4 is not offered as well: services listing both (e.g.
+    // Sustainability, S3 on Outposts) keep signing with SigV4, as before.
+    if (authSchemes?.[0]?.name === "sigv4a" && !authSchemes.some((s) => s.name === "sigv4")) {
+      signingRegionSet = authSchemes[0].signingRegionSet ?? ["*"];
+    }
     if (authSchemes?.[0]?.signingRegion) {
       signingRegion = authSchemes[0].signingRegion;
     }
@@ -357,6 +366,10 @@ const toHttpRequest = (
   };
   const toRequest = (signed: SigV4.SignedRequest) =>
     httpRequestOf(signed, resolvedRequest.body, isStreamingBody);
+  if (signingRegionSet !== undefined) {
+    const { region: _, ...v4a } = options;
+    return Effect.map(SigV4.signV4a({ ...v4a, regionSet: signingRegionSet }), toRequest);
+  }
   let signed: SigV4.SignedRequest | undefined;
   try {
     signed = SigV4.signSync(options, fiber);
