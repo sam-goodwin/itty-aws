@@ -444,11 +444,17 @@ const lazyModule = (
   let errors = 0;
   /** The class name of each error class, in definition order. */
   const errClass: string[] = [];
+  /** `const b = a`: another name for a definition (`export const b = a;` in the spec). */
+  const aliasOf = new Map<string, string>();
   let exportNode: any;
   for (const n of ast.body) {
     if (n.type === "VariableDeclaration")
       for (const d of n.declarations) {
         const c = d.init;
+        if (n.kind === "const" && c?.type === "Identifier" && d.id.type === "Identifier") {
+          aliasOf.set(d.id.name, c.name);
+          continue;
+        }
         const k =
           c?.type === "CallExpression" &&
           c.callee.type === "Identifier" &&
@@ -487,10 +493,15 @@ const lazyModule = (
   const opNames: string[][] = Array.from({ length: ops.length }, () => []);
   const errNames: string[][] = Array.from({ length: errors }, () => []);
   const reexports = new Map<string, string[]>();
+  const defOf = (local: string) => {
+    for (let i = 0; i <= aliasOf.size && !defs.has(local) && aliasOf.has(local); i++)
+      local = aliasOf.get(local)!;
+    return defs.get(local);
+  };
   for (const s of exportNode.specifiers) {
     const local = idOf(s.local);
     const exported = idOf(s.exported);
-    const def = defs.get(local);
+    const def = defOf(local);
     if (def) {
       (def.kind === "e" ? errNames : opNames)[def.index]!.push(exported);
       continue;

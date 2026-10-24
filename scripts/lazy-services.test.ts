@@ -71,7 +71,9 @@ writeFileSync(
     // The generated shape: data as a template literal, refs as names.
     `function __d2(){return[\`$1\`,[s,__d0]]}`,
     `const dataOp=/*@__PURE__*/i(t=>t===y?[\`{input:$1,output:$1,errors:[$2],operationName:"DataOp",holder:$3}\`,[s,Base,Oops,__d2]]:s(dataOp,t));`,
-    `export{Oops,Other,getThing,listThings,unused as "delete",dataOp};`,
+    // A spec alias (`export const fetchThing = getThing;`), minified.
+    `const g=getThing;`,
+    `export{Oops,Other,getThing,listThings,unused as "delete",dataOp,g as fetchThing};`,
     "",
   ].join(""),
 );
@@ -121,7 +123,7 @@ describe("lazy service modules", () => {
     // One helper import; each export name written once.
     expect(s.startsWith(`import{$L}from"../_bundle/lazy.js";`)).toBe(true);
     expect(s).toContain(
-      `export const{Oops,Other}=$E;\nexport const getThing=$o(),listThings=$o();\nconst _0=$o();\nexport const dataOp=$o();\nexport{_0 as "delete"};`,
+      `export const{Oops,Other}=$E;\nexport const getThing=$o(),listThings=$o();\nconst _0=$o();\nexport const dataOp=$o();\nexport{getThing as fetchThing,_0 as "delete"};`,
     );
     expect(readFileSync(join(pkg, "lib", "_bundle", "lazy.js"), "utf8")).toContain(
       `import*as $0 from"./sdk.js";`,
@@ -147,6 +149,7 @@ describe("lazy service modules", () => {
       "__d0",
       "__d1",
       "__d2",
+      "g",
     ]);
     // Data functions in their generated shape are indexed as data.
     expect(index.split("\n").filter((l) => l.includes("|=")).length).toBe(2);
@@ -166,12 +169,13 @@ describe("lazy service modules", () => {
         ast: s.getThing.input.ast, listAst: s.listThings.input.ast,
         pages: typeof s.listThings.pages, plainPages: "pages" in s.getThing,
         unusedName: s.delete.operationName,
+        alias: s.fetchThing === s.getThing,
         dataOp: [s.dataOp.operationName, s.dataOp.errors[0] === s.Oops, typeof s.dataOp.input],
         otherNeverYet: globalThis.never ?? 0,
       }));
     `);
     expect(r).toEqual({
-      keys: ["Oops", "Other", "dataOp", "delete", "getThing", "listThings"],
+      keys: ["Oops", "Other", "dataOp", "delete", "fetchThing", "getThing", "listThings"],
       name: "GetThing",
       untouchedName: "Other",
       never: 0,
@@ -185,6 +189,7 @@ describe("lazy service modules", () => {
       pages: "function",
       plainPages: false,
       unusedName: "Unused",
+      alias: true,
       dataOp: ["DataOp", true, "function"],
       otherNeverYet: 0,
     });
@@ -337,10 +342,10 @@ describe("lazy service modules", () => {
       }));
     `);
     expect(r).toEqual({
-      keys: ["Oops", "Other", "dataOp", "delete", "getThing", "listThings"],
+      keys: ["Oops", "Other", "dataOp", "delete", "fetchThing", "getThing", "listThings"],
       same: true,
       has: true,
-      spread: ["Oops", "Other", "dataOp", "delete", "getThing", "listThings"],
+      spread: ["Oops", "Other", "dataOp", "delete", "fetchThing", "getThing", "listThings"],
       name: "GetThing",
     });
   });
