@@ -36360,12 +36360,6 @@
             "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened."
           }
         },
-        "foundation_dns": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version."
-          }
-        },
         "internal_dns": {
           "target": "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsInternalDns",
           "traits": {
@@ -36551,8 +36545,7 @@
         "foundation_dns": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version."
           }
         },
         "internal_dns": {
@@ -36747,8 +36740,7 @@
         "foundation_dns": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version."
           }
         },
         "internal_dns": {
@@ -41328,8 +41320,7 @@
         "foundation_dns": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version."
           }
         },
         "internal_dns": {
@@ -42991,12 +42982,6 @@
             "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened."
           }
         },
-        "foundation_dns": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version."
-          }
-        },
         "internal_dns": {
           "target": "com.cloudflare.dns#SettingsZoneEditRequestInternalDns",
           "traits": {
@@ -43057,8 +43042,7 @@
         "foundation_dns": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version."
           }
         },
         "internal_dns": {
