@@ -2337,6 +2337,12 @@
         },
         {
           "target": "aws.patched#InvalidClientTokenId"
+        },
+        {
+          "target": "aws.patched#InvalidAction"
+        },
+        {
+          "target": "aws.synthetic#FifoTopicDataProtectionUnsupported"
         }
       ],
       "traits": {
@@ -4391,6 +4397,12 @@
         },
         {
           "target": "aws.patched#InvalidClientTokenId"
+        },
+        {
+          "target": "aws.patched#InvalidAction"
+        },
+        {
+          "target": "aws.synthetic#FifoTopicDataProtectionUnsupported"
         }
       ],
       "traits": {
@@ -5600,6 +5612,23 @@
       "type": "structure",
       "members": {},
       "traits": {}
+    },
+    "aws.patched#InvalidAction": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "aws.synthetic#FifoTopicDataProtectionUnsupported": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "aws.codegen#synthetic": {
+          "from": "InvalidAction",
+          "message": {
+            "includes": "is not supported on FIFO topics"
+          }
+        }
+      }
     }
   }
 }
