@@ -52,12 +52,22 @@ export const pkcs8 = (d: bigint): Uint8Array<ArrayBuffer> => {
 
 /*
  * The scalar multiplication below is taken from @noble/curves 1.9.7
- * (https://github.com/paulmillr/noble-curves): `mod` and `invert`
- * (abstract/modular.ts), the projective point's Renes-Costello-Batina
- * complete `add` / `double` and `toAffine` (abstract/weierstrass.ts), and the
- * constant-pattern wNAF `calcWOpts` / `calcOffsets` / `precomputeWindow` /
- * `wNAF` (abstract/curve.ts), specialised to P-256 with field operations
- * inlined. Only the code paths `getPublicKey` takes are kept.
+ * (https://github.com/paulmillr/noble-curves, tag 1.9.7 = commit a0ac598),
+ * specialised to P-256 with the field operations inlined. Only the code path
+ * `p256.getPublicKey` takes is kept. Sources, at that commit:
+ *
+ * - `mod`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/modular.ts#L27-L30
+ * - `invert`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/modular.ts#L55-L75
+ * - `toAffine` (toAffineMemo): https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L615-L629
+ * - `negate`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L753-L755
+ * - `double`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L757-L798
+ * - `add`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L800-L852
+ * - `multiply` (normalising the real and fake points): https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L871-L890
+ * - `negateCt`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L149-L152
+ * - `calcWOpts`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L185-L193
+ * - `calcOffsets`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L195-L218
+ * - `precomputeWindow`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L304-L320
+ * - `wNAF`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L322-L358
  *
  * The MIT License (MIT)
  *
@@ -85,11 +95,13 @@ export const pkcs8 = (d: bigint): Uint8Array<ArrayBuffer> => {
 const B = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604bn;
 const B3 = (B * 3n) % P;
 
+// From noble `mod`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/modular.ts#L27-L30
 const mod = (a: bigint, b: bigint = P): bigint => {
   const result = a % b;
   return result >= 0n ? result : b + result;
 };
 
+// From noble `invert`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/modular.ts#L55-L75
 const invert = (number: bigint, modulo: bigint = P): bigint => {
   let a = mod(number, modulo);
   let b = modulo;
@@ -114,8 +126,10 @@ interface Projective {
 const ZERO: Projective = { X: 0n, Y: 1n, Z: 0n };
 const BASE: Projective = { X: G.x, Y: G.y, Z: 1n };
 
+// From noble `negate`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L753-L755
 const negate = (p: Projective): Projective => ({ X: p.X, Y: mod(-p.Y), Z: p.Z });
 
+// From noble `double`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L757-L798
 /** Renes-Costello-Batina exception-free doubling, https://eprint.iacr.org/2015/1060 algorithm 3. */
 const double = ({ X: X1, Y: Y1, Z: Z1 }: Projective): Projective => {
   let X3 = 0n, Y3 = 0n, Z3 = 0n; // prettier-ignore
@@ -153,6 +167,7 @@ const double = ({ X: X1, Y: Y1, Z: Z1 }: Projective): Projective => {
   return { X: X3, Y: Y3, Z: Z3 };
 };
 
+// From noble `add`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L800-L852
 /** Renes-Costello-Batina exception-free addition, https://eprint.iacr.org/2015/1060 algorithm 1. */
 const add = (
   { X: X1, Y: Y1, Z: Z1 }: Projective,
@@ -202,6 +217,7 @@ const add = (
   return { X: X3, Y: Y3, Z: Z3 };
 };
 
+// From noble `toAffine`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L615-L629
 const toAffine = (p: Projective): { x: bigint; y: bigint } => {
   const is0 = p.Z === 0n;
   // Execute every operation even for the identity, with 1 standing in for 1/Z.
@@ -211,6 +227,7 @@ const toAffine = (p: Projective): { x: bigint; y: bigint } => {
   return is0 ? { x: 0n, y: 0n } : { x, y };
 };
 
+// From noble `calcWOpts`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L185-L193
 /** wNAF window size: 2^(W-1) * (ceil(256 / W) + 1) = 520 precomputed points. */
 const W = 4;
 const WINDOWS = Math.ceil(256 / W) + 1;
@@ -219,6 +236,7 @@ const MAX_NUMBER = 2 ** W;
 const MASK = BigInt(MAX_NUMBER - 1);
 const SHIFT_BY = BigInt(W);
 
+// From noble `calcOffsets`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L195-L218
 const calcOffsets = (n: bigint, window: number) => {
   let wbits = Number(n & MASK);
   let nextN = n >> SHIFT_BY;
@@ -238,6 +256,7 @@ const calcOffsets = (n: bigint, window: number) => {
   };
 };
 
+// From noble `precomputeWindow`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L304-L320
 const precomputeWindow = (point: Projective): Projective[] => {
   const points: Projective[] = [];
   let p = point;
@@ -254,11 +273,14 @@ const precomputeWindow = (point: Projective): Projective[] => {
   return points;
 };
 
+// From noble `negateCt`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L149-L152
 const negateCt = (condition: boolean, item: Projective): Projective => {
   const neg = negate(item);
   return condition ? neg : item;
 };
 
+// From noble `wNAF`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/curve.ts#L322-L358
+// and `multiply`: https://github.com/paulmillr/noble-curves/blob/a0ac59846ee76c52f7c18886f4963e1211345d48/src/abstract/weierstrass.ts#L871-L890
 /**
  * `d * G` for a private scalar `d` in [1, n-1], as noble's
  * `p256.getPublicKey`: every window performs one addition, into the real
