@@ -27,6 +27,7 @@ import {
   PRELUDE,
   readIntrospection,
 } from "@distilled.cloud/core/codegen/graphql";
+import { writeModel } from "@distilled.cloud/core/codegen/models";
 import { finalizeConvert } from "@distilled.cloud/core/codegen/patches";
 import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
@@ -74,9 +75,7 @@ const result = convertGraphQLToSmithy({
     BigInt: PRELUDE.String,
   },
 });
-
-fs.mkdirSync(OUT_DIR, { recursive: true });
-fs.writeFileSync(OUT_FILE, `${JSON.stringify(result.model, null, 2)}\n`);
+writeModel(OUT_FILE, result.model);
 
 console.log(
   `✅ Converted ${result.converted} GraphQL operations (${result.failed} failed, ` +

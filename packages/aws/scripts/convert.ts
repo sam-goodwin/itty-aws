@@ -8,6 +8,7 @@
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { writeModel } from "@distilled.cloud/core/codegen/models";
 import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 import { loadServiceSpecPatch } from "./spec-schema.ts";
 import { applyAwsSpecPatches, dropForeignNamespaceShapes } from "./spec.ts";
@@ -40,8 +41,6 @@ if (!fs.existsSync(modelsRoot)) {
     `${modelsRoot} not found — run \`pnpm --filter @distilled.cloud/aws run specs:fetch\``,
   );
 }
-
-fs.mkdirSync(outDir, { recursive: true });
 
 // Region → partition data the endpoint resolver reads at runtime. Not
 // generated code, but it comes from the same mirror as the models.
@@ -77,7 +76,7 @@ for (const service of services) {
   if (hasPatch) patched++;
 
   const outName = `${patchFileBase}.json`;
-  fs.writeFileSync(path.join(outDir, outName), `${JSON.stringify(model, null, 2)}\n`);
+  writeModel(path.join(outDir, outName), model);
   written++;
   if (dropped > 0) {
     console.log(`   ${outName}: dropped ${dropped} foreign-namespace shape(s)`);

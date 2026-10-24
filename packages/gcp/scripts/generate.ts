@@ -102,6 +102,7 @@ const makeGcpSpec = (metadata: { baseUrl?: string }): SdkSpec => ({
 
 runGeneratorCli({
   description: "Generate the GCP Effect SDK from the Smithy models",
+  convert: () => import("./convert.ts"),
   root: `${import.meta.dirname}/..`,
   smithyDir: ".generated-specs/stable",
   outDir: "src/services",

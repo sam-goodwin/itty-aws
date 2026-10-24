@@ -2,7 +2,7 @@
 /**
  * Generate the Railway Query SDK from the complete GraphQL model.
  *
- * Input:  .generated-graphql/railway.json  (convert.ts)
+ * Input:  the GraphQL model scripts/convert.ts converts (in memory)
  * Output: src/graphql.ts — TypeMeta + Railway.me / Railway.project / …
  */
 import * as fs from "node:fs/promises";
@@ -10,11 +10,13 @@ import * as path from "node:path";
 import { stampGeneratedAt } from "../../core/src/codegen/generated-at.ts";
 import { generateGraphQLClient, type GraphQLModel } from "../../core/src/codegen/graphql-client.ts";
 import { toLatin1 } from "../../core/src/codegen/latin1.ts";
+import { collectModels } from "../../core/src/codegen/models.ts";
 
 const root = path.resolve(import.meta.dirname, "..");
-const model: GraphQLModel = JSON.parse(
-  await fs.readFile(path.join(root, ".generated-graphql/railway.json"), "utf8"),
-);
+const models = await collectModels(() => import("./convert.ts"));
+const modelText = models.get(path.join(root, ".generated-graphql/railway.json"));
+if (modelText === undefined) throw new Error("convert.ts wrote no .generated-graphql/railway.json");
+const model: GraphQLModel = JSON.parse(modelText);
 const code = generateGraphQLClient(model, {
   transportImport: "./graphql-transport.ts",
   requirementsImport: "./graphql-transport.ts",

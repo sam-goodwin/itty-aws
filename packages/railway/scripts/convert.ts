@@ -6,6 +6,7 @@ import {
   convertGraphQLClient,
   validateGraphQLModel,
 } from "../../core/src/codegen/graphql-client.ts";
+import { writeModel } from "../../core/src/codegen/models.ts";
 import { applyRfc6902Files, listRfc6902PatchFiles } from "../../core/src/codegen/patches.ts";
 import { resolveSpecPath } from "../../core/src/codegen/spec-path.ts";
 
@@ -25,8 +26,7 @@ const patches = await applyRfc6902Files(
 if (patches.errors.length) throw new Error(patches.errors.join("\n"));
 validateGraphQLModel(model);
 const output = path.join(root, ".generated-graphql/railway.json");
-await fs.mkdir(path.dirname(output), { recursive: true });
-await fs.writeFile(output, JSON.stringify(model, null, 2) + "\n");
+writeModel(output, model);
 console.log(
   `GraphQL: ${Object.keys(model.types).length} complete types; ${patches.applied} patches → ${output}`,
 );

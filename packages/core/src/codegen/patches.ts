@@ -2,8 +2,8 @@
  * RFC-6902 patch application (dev-time only). Every package's convert ends
  * in {@link finalizeConvert}, which applies the Smithy ops (`/shapes`,
  * `/metadata`, `/smithy`) of `patches/<model>/` to the freshly converted
- * model, under the names the spec gives, then the deferred names; so
- * `.generated-specs` is the patched model and generate never patches.
+ * model, under the names the spec gives, then the deferred names; so the
+ * models convert hands generate are patched and generate never patches.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import * as fs from "node:fs/promises";
@@ -15,6 +15,7 @@ import {
   type PatchFile,
 } from "../json-patch.ts";
 import { diffModels } from "./model-diff.ts";
+import { listModels, modelText, readModelText, writeModelText } from "./models.ts";
 import {
   applyDeferredRename,
   RENAME_METADATA_KEY,
@@ -384,13 +385,12 @@ const finalizeModel = (
   return { ok: true, model };
 };
 
-const modelText = (model: unknown): string => `${JSON.stringify(model, null, 2)}\n`;
-
 /**
  * Last step of every convert: Smithy RFC-6902 patches, then verbNoun
  * operation names, then an optional model transform, then a reference
- * check. Writes models back so `.generated-specs` is what generate
- * compiles. `outDir` may be nested (GCP `stable/` / `unstable/`).
+ * check. Reads and writes the models through `./models.ts` — in memory
+ * under generate, on disk under a bare `convert` — so the result is what
+ * generate compiles. `outDir` may be nested (GCP `stable/` / `unstable/`).
  *
  * Input must be FRESHLY converted models. Smithy patches are `move`/`add`
  * ops that are not idempotent, and a `transform` may not be either, so
@@ -403,30 +403,16 @@ const modelText = (model: unknown): string => `${JSON.stringify(model, null, 2)}
 export const finalizeConvert = async (o: FinalizeOptions): Promise<void> => {
   const specsRoot = path.resolve(o.root, ".generated-specs");
   const specsDir = path.resolve(o.root, o.outDir ?? ".generated-specs");
-  if (!(await exists(specsDir))) return;
   const patchesDir =
     o.patchesDir === false ? undefined : path.resolve(o.root, o.patchesDir ?? "patches");
   const audit = patchesDir ? await readAuditRequest() : undefined;
 
-  const walk = async (dir: string): Promise<string[]> => {
-    const out: string[] = [];
-    for (const ent of await fs.readdir(dir, { withFileTypes: true })) {
-      const p = path.join(dir, ent.name);
-      if (ent.isDirectory()) {
-        out.push(...(await walk(p)));
-      } else if (ent.name.endsWith(".json") && !(o.exclude?.(ent.name) ?? false)) {
-        out.push(p);
-      }
-    }
-    return out;
-  };
-
-  const files = (await walk(specsDir)).sort((a, b) => a.localeCompare(b));
+  const files = listModels(specsDir).filter((f) => !(o.exclude?.(path.basename(f)) ?? false));
   const broken: string[] = [];
   for (const modelPath of files) {
     const resource = path.basename(modelPath, ".json");
     if (o.include && !o.include(resource)) continue;
-    const text = await fs.readFile(modelPath, "utf8");
+    const text = readModelText(modelPath);
     const model = JSON.parse(text);
     if (model.metadata?.[FINALIZED_KEY]) {
       throw new Error(
@@ -452,7 +438,7 @@ export const finalizeConvert = async (o: FinalizeOptions): Promise<void> => {
       continue;
     }
     const finalized = modelText(run.model);
-    await fs.writeFile(modelPath, finalized);
+    writeModelText(modelPath, finalized);
     if (audit) auditModel(audit, label, resource, text, patches, o, { ok: true, text: finalized });
   }
   if (broken.length) {
