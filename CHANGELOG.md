@@ -1,3 +1,24 @@
+## v1.0.0-rc.17
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **core**: Remove lazy service stubs &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/916 [<samp>(cd361)</samp>](https://github.com/alchemy-run/distilled/commit/cd36178fa)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **cloudflare**: Type SQL custom alerts and Workers Issues automations &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/923 [<samp>(0a258)</samp>](https://github.com/alchemy-run/distilled/commit/0a25891cc)
+- **core**: Opt-in lazy service stubs behind the distilled-lazy condition &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/917 [<samp>(07830)</samp>](https://github.com/alchemy-run/distilled/commit/07830aae3)
+- **fly-io**: Builders service with ensureDepotRemoteBuilder &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/925 [<samp>(a245b)</samp>](https://github.com/alchemy-run/distilled/commit/a245bf5b9)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **aws**:
+  - **glue**: Type Lake Formation denial on deleteDatabase &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/924 [<samp>(96cf2)</samp>](https://github.com/alchemy-run/distilled/commit/96cf26b6a)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.16...HEAD)
+
+---
+
 ## v1.0.0-rc.16
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes

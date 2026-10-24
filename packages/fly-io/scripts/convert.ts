@@ -25,6 +25,10 @@
  *             → .generated-specs/addons.json
  *             patches: patches/addons/*.patch.json (Smithy)
  *
+ *   builders  GraphQL  the same introspection, reduced to the remote-builder
+ *             mutation in builders-selection.ts
+ *             → .generated-specs/builders.json
+ *
  * Every patch is a Smithy op on upstream names, applied by the
  * finalizeConvert at the end. `scripts/generate.ts` only compiles
  * `.generated-specs`.
@@ -41,6 +45,7 @@ import { runOpenApiConvert } from "@distilled.cloud/core/codegen/openapi-cli";
 import { finalizeConvert } from "@distilled.cloud/core/codegen/patches";
 import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 import { selectAddons } from "./addons-selection.ts";
+import { selectBuilders } from "./builders-selection.ts";
 import { MACHINES_OPERATION_NAMES } from "./machines-operation-ids.ts";
 import { SPRITES_OPERATION_NAMES, stripSpritesV1 } from "./sprites-operation-ids.ts";
 
@@ -222,6 +227,20 @@ const stampSprites = (model: { shapes: Record<string, any> }): string => {
 // addons — GraphQL thin client
 // ---------------------------------------------------------------------------
 
+/** Stamp `smithy.api#sensitive` on every structure member named in `names`. */
+const stampSensitive = (model: any, names: readonly string[]): string | undefined => {
+  let n = 0;
+  for (const def of Object.values(model.shapes ?? {}) as any[]) {
+    if (def?.type !== "structure") continue;
+    for (const [name, member] of Object.entries(def.members ?? {}) as any[]) {
+      if (!names.includes(name)) continue;
+      member.traits = { ...member.traits, "smithy.api#sensitive": {} };
+      n++;
+    }
+  }
+  return n ? `stamped smithy.api#sensitive on ${n} member(s)` : undefined;
+};
+
 const graphqlTraits = {
   operation: "com.flyio.graphql#operation",
   responsePath: "com.flyio.graphql#responsePath",
@@ -230,16 +249,13 @@ const graphqlTraits = {
   payload: "com.flyio.graphql#payload",
 } as const;
 
-const addonsSchema = selectAddons(
-  readIntrospection(
-    JSON.parse(
-      await fs.readFile(
-        resolveSpecPath(root, "specs/spec-mirror-fly-io/specs/graphql.json"),
-        "utf8",
-      ),
-    ),
+const graphqlSchema = readIntrospection(
+  JSON.parse(
+    await fs.readFile(resolveSpecPath(root, "specs/spec-mirror-fly-io/specs/graphql.json"), "utf8"),
   ),
 );
+
+const addonsSchema = selectAddons(graphqlSchema);
 
 const addonsResult = convertGraphQLToSmithy({
   schema: addonsSchema,
@@ -271,10 +287,35 @@ console.log(
     `${addonsResult.shapeCount} shapes) → ${addonsOut}`,
 );
 
+// builders — GraphQL remote builders (Depot)
+const buildersResult = convertGraphQLToSmithy({
+  schema: selectBuilders(graphqlSchema),
+  namespace: "com.flyio.builders",
+  serviceName: "FlyBuilders",
+  serviceTitle: "Fly GraphQL remote builders",
+  serviceDocumentation:
+    "Fly.io remote builders at POST https://api.fly.io/graphql: starts a Depot " +
+    "build for an app and returns its single-use build token. Auth is the same " +
+    "FLY_API_TOKEN bearer as Machines.",
+  endpoint: "/graphql",
+  traits: graphqlTraits,
+  maxDepth: 2,
+  maxNamespaceDepth: 1,
+  skipDeprecated: true,
+});
+
+const buildersOut = path.join(generatedDir, "builders.json");
+await fs.writeFile(buildersOut, `${JSON.stringify(buildersResult.model, null, 2)}\n`);
+console.log(
+  `✅ builders: ${buildersResult.converted} GraphQL operations ` +
+    `(${buildersResult.failed} failed, ${buildersResult.shapeCount} shapes) → ${buildersOut}`,
+);
+
 await finalizeConvert({
   root,
   transform: (model, resource) => {
     if (resource === "sprites") return stampSprites(model);
+    if (resource === "builders") return stampSensitive(model, ["buildToken"]);
     if (resource !== "addons") return;
     let n = 0;
     for (const def of Object.values(model.shapes ?? {}) as any[]) {
