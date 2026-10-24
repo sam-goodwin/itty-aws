@@ -1113,6 +1113,10 @@ export interface ListConsumersResponse {
 export interface ListQueuesRequest {
   /** A Resource identifier. */
   accountId: string;
+  /** Page number. */
+  page?: number;
+  /** Number of queues to return per page. */
+  perPage?: number;
 }
 export type ListResultItemConsumersItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type ListResultItemConsumersItemWorkerType = "worker";
@@ -2155,7 +2159,13 @@ export const listQueues: API.PaginatedOperationMethod<
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
-    pagination: { mode: "single", items: "result" } as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
   }),
   cloudflarePaginate,
 ) as any;
@@ -3114,6 +3124,8 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/queues", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
