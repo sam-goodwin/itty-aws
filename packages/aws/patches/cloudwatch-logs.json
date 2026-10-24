@@ -12,6 +12,20 @@
     "MalformedQueryException": ["BadRequestError"],
     "InvalidSequenceTokenException": ["BadRequestError"],
     "DataAlreadyAcceptedException": ["ConflictError"],
-    "UnrecognizedClientException": ["AuthError"]
+    "UnrecognizedClientException": ["AuthError"],
+    "UnsupportedOperation": ["BadRequestError"]
+  },
+  "operations": {
+    "startLiveTail": {
+      "errors": ["UnsupportedOperation"]
+    }
+  },
+  "errors": {
+    "UnsupportedOperation": {
+      "Message": {
+        "type": "string",
+        "optional": true
+      }
+    }
   }
 }

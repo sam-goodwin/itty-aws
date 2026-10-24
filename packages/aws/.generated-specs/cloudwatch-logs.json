@@ -16008,6 +16008,9 @@
         },
         {
           "target": "com.amazonaws.cloudwatchlogs#ResourceNotFoundException"
+        },
+        {
+          "target": "aws.patched#UnsupportedOperation"
         }
       ],
       "traits": {
@@ -17974,6 +17977,15 @@
           "min": 1
         }
       }
+    },
+    "aws.patched#UnsupportedOperation": {
+      "type": "structure",
+      "members": {
+        "Message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
     }
   }
 }

@@ -172,6 +172,10 @@ export class UnrecognizedClientException
     "UnrecognizedClientException",
     { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
   ).pipe(C.withAuthError) {}
+export class UnsupportedOperation
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperation>()("UnsupportedOperation", {
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+  }).pipe(C.withBadRequestError) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -2445,8 +2449,8 @@ export const associateKmsKey: API.OperationMethod<
   AssociateKmsKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<AssociateKmsKeyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<AssociateKmsKeyResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<AssociateKmsKeyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<AssociateKmsKeyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -2476,8 +2480,8 @@ export const associateSourceToS3TableIntegration: API.OperationMethod<
   AssociateSourceToS3TableIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<AssociateSourceToS3TableIntegrationRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<AssociateSourceToS3TableIntegrationResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<AssociateSourceToS3TableIntegrationRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<AssociateSourceToS3TableIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2507,8 +2511,8 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<CancelExportTaskRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<CancelExportTaskResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CancelExportTaskRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<CancelExportTaskResponse>,
   errors: [
     InvalidOperationException,
     InvalidParameterException,
@@ -2536,8 +2540,8 @@ export const cancelImportTask: API.OperationMethod<
   CancelImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<CancelImportTaskRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<CancelImportTaskResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CancelImportTaskRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<CancelImportTaskResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -2597,8 +2601,8 @@ export const createDelivery: API.OperationMethod<
   CreateDeliveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<CreateDeliveryRequest>,
-  output: __S(1600, __c50, 0) as any as S.Schema<CreateDeliveryResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateDeliveryRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<CreateDeliveryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2657,8 +2661,8 @@ export const createExportTask: API.OperationMethod<
   CreateExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<CreateExportTaskRequest>,
-  output: __S(1633, __c51, 1) as any as S.Schema<CreateExportTaskResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateExportTaskRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<CreateExportTaskResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -2724,8 +2728,8 @@ export const createImportTask: API.OperationMethod<
   CreateImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<CreateImportTaskRequest>,
-  output: __S(1665, __c52, 1) as any as S.Schema<CreateImportTaskResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<CreateImportTaskRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<CreateImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2783,8 +2787,8 @@ export const createLogAnomalyDetector: API.OperationMethod<
   CreateLogAnomalyDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<CreateLogAnomalyDetectorRequest>,
-  output: __S(1729, __c54, 1) as any as S.Schema<CreateLogAnomalyDetectorResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<CreateLogAnomalyDetectorRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<CreateLogAnomalyDetectorResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -2843,8 +2847,8 @@ export const createLogGroup: API.OperationMethod<
   CreateLogGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<CreateLogGroupRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<CreateLogGroupResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<CreateLogGroupRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<CreateLogGroupResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -2886,8 +2890,8 @@ export const createLogStream: API.OperationMethod<
   CreateLogStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<CreateLogStreamRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<CreateLogStreamResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<CreateLogStreamRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<CreateLogStreamResponse>,
   errors: [
     InvalidParameterException,
     ResourceAlreadyExistsException,
@@ -2923,8 +2927,8 @@ export const createLookupTable: API.OperationMethod<
   CreateLookupTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<CreateLookupTableRequest>,
-  output: __S(1825, __c57, 1) as any as S.Schema<CreateLookupTableResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<CreateLookupTableRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<CreateLookupTableResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -2959,8 +2963,8 @@ export const createScheduledQuery: API.OperationMethod<
   CreateScheduledQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<CreateScheduledQueryRequest>,
-  output: __S(1857, __c58, 1) as any as S.Schema<CreateScheduledQueryResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<CreateScheduledQueryRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<CreateScheduledQueryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3019,8 +3023,8 @@ export const deleteAccountPolicy: API.OperationMethod<
   DeleteAccountPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<DeleteAccountPolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteAccountPolicyResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeleteAccountPolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteAccountPolicyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3049,8 +3053,8 @@ export const deleteDataProtectionPolicy: API.OperationMethod<
   DeleteDataProtectionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<DeleteDataProtectionPolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteDataProtectionPolicyResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteDataProtectionPolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteDataProtectionPolicyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3083,8 +3087,8 @@ export const deleteDelivery: API.OperationMethod<
   DeleteDeliveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<DeleteDeliveryRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteDeliveryResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteDeliveryRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteDeliveryResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -3121,8 +3125,8 @@ export const deleteDeliveryDestination: API.OperationMethod<
   DeleteDeliveryDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<DeleteDeliveryDestinationRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteDeliveryDestinationResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DeleteDeliveryDestinationRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteDeliveryDestinationResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -3152,8 +3156,8 @@ export const deleteDeliveryDestinationPolicy: API.OperationMethod<
   DeleteDeliveryDestinationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<DeleteDeliveryDestinationPolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteDeliveryDestinationPolicyResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DeleteDeliveryDestinationPolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteDeliveryDestinationPolicyResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -3188,8 +3192,8 @@ export const deleteDeliverySource: API.OperationMethod<
   DeleteDeliverySourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<DeleteDeliverySourceRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteDeliverySourceResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteDeliverySourceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteDeliverySourceResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -3220,8 +3224,8 @@ export const deleteDestination: API.OperationMethod<
   DeleteDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<DeleteDestinationRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteDestinationResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteDestinationRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteDestinationResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3263,8 +3267,8 @@ export const deleteIndexPolicy: API.OperationMethod<
   DeleteIndexPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<DeleteIndexPolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteIndexPolicyResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteIndexPolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteIndexPolicyResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -3297,8 +3301,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<DeleteIntegrationRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteIntegrationResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeleteIntegrationRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteIntegrationResponse>,
   errors: [
     InvalidParameterException,
     ResourceNotFoundException,
@@ -3325,8 +3329,8 @@ export const deleteLogAnomalyDetector: API.OperationMethod<
   DeleteLogAnomalyDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<DeleteLogAnomalyDetectorRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteLogAnomalyDetectorResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeleteLogAnomalyDetectorRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteLogAnomalyDetectorResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3355,8 +3359,8 @@ export const deleteLogGroup: API.OperationMethod<
   DeleteLogGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<DeleteLogGroupRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteLogGroupResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DeleteLogGroupRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteLogGroupResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3386,8 +3390,8 @@ export const deleteLogStream: API.OperationMethod<
   DeleteLogStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<DeleteLogStreamRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteLogStreamResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<DeleteLogStreamRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteLogStreamResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3418,8 +3422,8 @@ export const deleteLookupTable: API.OperationMethod<
   DeleteLookupTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<DeleteLookupTableRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteLookupTableResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DeleteLookupTableRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteLookupTableResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -3446,8 +3450,8 @@ export const deleteMetricFilter: API.OperationMethod<
   DeleteMetricFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<DeleteMetricFilterRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteMetricFilterResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteMetricFilterRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteMetricFilterResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3479,8 +3483,8 @@ export const deleteQueryDefinition: API.OperationMethod<
   DeleteQueryDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<DeleteQueryDefinitionRequest>,
-  output: __S(2400, __c75, 0) as any as S.Schema<DeleteQueryDefinitionResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteQueryDefinitionRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DeleteQueryDefinitionResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3503,8 +3507,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3534,8 +3538,8 @@ export const deleteRetentionPolicy: API.OperationMethod<
   DeleteRetentionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<DeleteRetentionPolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteRetentionPolicyResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeleteRetentionPolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteRetentionPolicyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3564,8 +3568,8 @@ export const deleteScheduledQuery: API.OperationMethod<
   DeleteScheduledQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<DeleteScheduledQueryRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteScheduledQueryResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteScheduledQueryRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteScheduledQueryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3593,8 +3597,8 @@ export const deleteSubscriptionFilter: API.OperationMethod<
   DeleteSubscriptionFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<DeleteSubscriptionFilterRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteSubscriptionFilterResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteSubscriptionFilterRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteSubscriptionFilterResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3625,8 +3629,8 @@ export const deleteSyslogConfiguration: API.OperationMethod<
   DeleteSyslogConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<DeleteSyslogConfigurationRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteSyslogConfigurationResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteSyslogConfigurationRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteSyslogConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -3663,8 +3667,8 @@ export const deleteTransformer: API.OperationMethod<
   DeleteTransformerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<DeleteTransformerRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DeleteTransformerResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteTransformerRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteTransformerResponse>,
   errors: [
     InvalidOperationException,
     InvalidParameterException,
@@ -3709,8 +3713,8 @@ export const describeAccountPolicies: API.OperationMethod<
   DescribeAccountPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<DescribeAccountPoliciesRequest>,
-  output: __S(2626, __c82, 2) as any as S.Schema<DescribeAccountPoliciesResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<DescribeAccountPoliciesRequest>,
+  output: __S(2658, __c83, 2) as any as S.Schema<DescribeAccountPoliciesResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -3740,8 +3744,8 @@ export const describeConfigurationTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<DescribeConfigurationTemplatesRequest>,
-  output: __S(2697, __c84, 9) as any as S.Schema<DescribeConfigurationTemplatesResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DescribeConfigurationTemplatesRequest>,
+  output: __S(2729, __c85, 9) as any as S.Schema<DescribeConfigurationTemplatesResponse>,
   errors: [
     ResourceNotFoundException,
     ServiceUnavailableException,
@@ -3787,8 +3791,8 @@ export const describeDeliveries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Delivery
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<DescribeDeliveriesRequest>,
-  output: __S(2754, __c86, 2) as any as S.Schema<DescribeDeliveriesResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<DescribeDeliveriesRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<DescribeDeliveriesResponse>,
   errors: [
     ServiceQuotaExceededException,
     ServiceUnavailableException,
@@ -3823,8 +3827,8 @@ export const describeDeliveryDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeliveryDestination
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<DescribeDeliveryDestinationsRequest>,
-  output: __S(2786, __c87, 2) as any as S.Schema<DescribeDeliveryDestinationsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DescribeDeliveryDestinationsRequest>,
+  output: __S(2818, __c88, 2) as any as S.Schema<DescribeDeliveryDestinationsResponse>,
   errors: [
     ServiceQuotaExceededException,
     ServiceUnavailableException,
@@ -3858,8 +3862,8 @@ export const describeDeliverySources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeliverySource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<DescribeDeliverySourcesRequest>,
-  output: __S(2850, __c89, 2) as any as S.Schema<DescribeDeliverySourcesResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<DescribeDeliverySourcesRequest>,
+  output: __S(2882, __c90, 2) as any as S.Schema<DescribeDeliverySourcesResponse>,
   errors: [
     ServiceQuotaExceededException,
     ServiceUnavailableException,
@@ -3892,8 +3896,8 @@ export const describeDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Destination
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<DescribeDestinationsRequest>,
-  output: __S(2914, __c91, 2) as any as S.Schema<DescribeDestinationsResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DescribeDestinationsRequest>,
+  output: __S(2946, __c92, 2) as any as S.Schema<DescribeDestinationsResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3920,8 +3924,8 @@ export const describeExportTasks: API.OperationMethod<
   DescribeExportTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<DescribeExportTasksRequest>,
-  output: __S(2981, __c93, 5) as any as S.Schema<DescribeExportTasksResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DescribeExportTasksRequest>,
+  output: __S(3013, __c94, 5) as any as S.Schema<DescribeExportTasksResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3948,8 +3952,8 @@ export const describeFieldIndexes: API.OperationMethod<
   DescribeFieldIndexesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<DescribeFieldIndexesRequest>,
-  output: __S(3011, __c94, 3) as any as S.Schema<DescribeFieldIndexesResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<DescribeFieldIndexesRequest>,
+  output: __S(3043, __c95, 3) as any as S.Schema<DescribeFieldIndexesResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -3979,8 +3983,8 @@ export const describeImportTaskBatches: API.OperationMethod<
   DescribeImportTaskBatchesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<DescribeImportTaskBatchesRequest>,
-  output: __S(3043, __c95, 3) as any as S.Schema<DescribeImportTaskBatchesResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<DescribeImportTaskBatchesRequest>,
+  output: __S(3075, __c96, 3) as any as S.Schema<DescribeImportTaskBatchesResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -4009,8 +4013,8 @@ export const describeImportTasks: API.OperationMethod<
   DescribeImportTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<DescribeImportTasksRequest>,
-  output: __S(3075, __c96, 3) as any as S.Schema<DescribeImportTasksResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<DescribeImportTasksRequest>,
+  output: __S(3107, __c97, 3) as any as S.Schema<DescribeImportTasksResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -4048,8 +4052,8 @@ export const describeIndexPolicies: API.OperationMethod<
   DescribeIndexPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<DescribeIndexPoliciesRequest>,
-  output: __S(3106, __c97, 2) as any as S.Schema<DescribeIndexPoliciesResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<DescribeIndexPoliciesRequest>,
+  output: __S(3138, __c98, 2) as any as S.Schema<DescribeIndexPoliciesResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -4092,8 +4096,8 @@ export const describeLogGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LogGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<DescribeLogGroupsRequest>,
-  output: __S(3171, __c99, 3) as any as S.Schema<DescribeLogGroupsResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<DescribeLogGroupsRequest>,
+  output: __S(3203, __c100, 3) as any as S.Schema<DescribeLogGroupsResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4133,8 +4137,8 @@ export const describeLogStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LogStream
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<DescribeLogStreamsRequest>,
-  output: __S(3203, __c100, 3) as any as S.Schema<DescribeLogStreamsResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<DescribeLogStreamsRequest>,
+  output: __S(3235, __c101, 3) as any as S.Schema<DescribeLogStreamsResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4163,8 +4167,8 @@ export const describeLookupTables: API.OperationMethod<
   DescribeLookupTablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<DescribeLookupTablesRequest>,
-  output: __S(3235, __c101, 3) as any as S.Schema<DescribeLookupTablesResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<DescribeLookupTablesRequest>,
+  output: __S(3267, __c102, 3) as any as S.Schema<DescribeLookupTablesResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -4193,8 +4197,8 @@ export const describeMetricFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetricFilter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<DescribeMetricFiltersRequest>,
-  output: __S(3267, __c102, 3) as any as S.Schema<DescribeMetricFiltersResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<DescribeMetricFiltersRequest>,
+  output: __S(3299, __c103, 3) as any as S.Schema<DescribeMetricFiltersResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4228,8 +4232,8 @@ export const describeQueries: API.OperationMethod<
   DescribeQueriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<DescribeQueriesRequest>,
-  output: __S(3331, __c104, 3) as any as S.Schema<DescribeQueriesResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<DescribeQueriesRequest>,
+  output: __S(3363, __c105, 3) as any as S.Schema<DescribeQueriesResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4254,8 +4258,8 @@ export const describeQueryDefinitions: API.OperationMethod<
   DescribeQueryDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<DescribeQueryDefinitionsRequest>,
-  output: __S(3363, __c105, 3) as any as S.Schema<DescribeQueryDefinitionsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<DescribeQueryDefinitionsRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<DescribeQueryDefinitionsResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4275,8 +4279,8 @@ export const describeResourcePolicies: API.OperationMethod<
   DescribeResourcePoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<DescribeResourcePoliciesRequest>,
-  output: __S(3426, __c107, 2) as any as S.Schema<DescribeResourcePoliciesResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DescribeResourcePoliciesRequest>,
+  output: __S(3458, __c108, 2) as any as S.Schema<DescribeResourcePoliciesResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4300,8 +4304,8 @@ export const describeSubscriptionFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriptionFilter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<DescribeSubscriptionFiltersRequest>,
-  output: __S(3491, __c109, 3) as any as S.Schema<DescribeSubscriptionFiltersResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<DescribeSubscriptionFiltersRequest>,
+  output: __S(3523, __c110, 3) as any as S.Schema<DescribeSubscriptionFiltersResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4349,8 +4353,8 @@ export const disassociateKmsKey: API.OperationMethod<
   DisassociateKmsKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<DisassociateKmsKeyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<DisassociateKmsKeyResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<DisassociateKmsKeyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DisassociateKmsKeyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -4379,8 +4383,8 @@ export const disassociateSourceFromS3TableIntegration: API.OperationMethod<
   DisassociateSourceFromS3TableIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3552, __c111, 0) as any as S.Schema<DisassociateSourceFromS3TableIntegrationRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<DisassociateSourceFromS3TableIntegrationResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<DisassociateSourceFromS3TableIntegrationRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<DisassociateSourceFromS3TableIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4454,8 +4458,8 @@ export const filterLogEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<FilterLogEventsRequest>,
-  output: __S(3589, __c112, 5) as any as S.Schema<FilterLogEventsResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<FilterLogEventsRequest>,
+  output: __S(3621, __c113, 5) as any as S.Schema<FilterLogEventsResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4478,8 +4482,8 @@ export const getDataProtectionPolicy: API.OperationMethod<
   GetDataProtectionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<GetDataProtectionPolicyRequest>,
-  output: __S(3648, __c114, 0) as any as S.Schema<GetDataProtectionPolicyResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetDataProtectionPolicyRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<GetDataProtectionPolicyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -4521,8 +4525,8 @@ export const getDelivery: API.OperationMethod<
   GetDeliveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<GetDeliveryRequest>,
-  output: __S(1600, __c50, 0) as any as S.Schema<GetDeliveryResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetDeliveryRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GetDeliveryResponse>,
   errors: [
     ResourceNotFoundException,
     ServiceQuotaExceededException,
@@ -4551,8 +4555,8 @@ export const getDeliveryDestination: API.OperationMethod<
   GetDeliveryDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<GetDeliveryDestinationRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<GetDeliveryDestinationResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetDeliveryDestinationRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GetDeliveryDestinationResponse>,
   errors: [
     ResourceNotFoundException,
     ServiceQuotaExceededException,
@@ -4580,8 +4584,8 @@ export const getDeliveryDestinationPolicy: API.OperationMethod<
   GetDeliveryDestinationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3776, __c118, 0) as any as S.Schema<GetDeliveryDestinationPolicyRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<GetDeliveryDestinationPolicyResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetDeliveryDestinationPolicyRequest>,
+  output: __S(3841, __c120, 1) as any as S.Schema<GetDeliveryDestinationPolicyResponse>,
   errors: [ResourceNotFoundException, ServiceUnavailableException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4604,8 +4608,8 @@ export const getDeliverySource: API.OperationMethod<
   GetDeliverySourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<GetDeliverySourceRequest>,
-  output: __S(3872, __c121, 0) as any as S.Schema<GetDeliverySourceResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetDeliverySourceRequest>,
+  output: __S(3904, __c122, 0) as any as S.Schema<GetDeliverySourceResponse>,
   errors: [
     ResourceNotFoundException,
     ServiceQuotaExceededException,
@@ -4632,8 +4636,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<GetIntegrationRequest>,
-  output: __S(3913, __c122, 9) as any as S.Schema<GetIntegrationResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(3945, __c123, 9) as any as S.Schema<GetIntegrationResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4655,8 +4659,8 @@ export const getLogAnomalyDetector: API.OperationMethod<
   GetLogAnomalyDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3936, __c123, 0) as any as S.Schema<GetLogAnomalyDetectorRequest>,
-  output: __S(3937, __c123, 1) as any as S.Schema<GetLogAnomalyDetectorResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetLogAnomalyDetectorRequest>,
+  output: __S(4001, __c125, 1) as any as S.Schema<GetLogAnomalyDetectorResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -4715,8 +4719,8 @@ export const getLogEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OutputLogEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4000, __c125, 0) as any as S.Schema<GetLogEventsRequest>,
-  output: __S(4003, __c125, 3) as any as S.Schema<GetLogEventsResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<GetLogEventsRequest>,
+  output: __S(4035, __c126, 3) as any as S.Schema<GetLogEventsResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4745,8 +4749,8 @@ export const getLogFields: API.OperationMethod<
   GetLogFieldsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4032, __c126, 0) as any as S.Schema<GetLogFieldsRequest>,
-  output: __S(4036, __c126, 4) as any as S.Schema<GetLogFieldsResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetLogFieldsRequest>,
+  output: __S(4068, __c127, 4) as any as S.Schema<GetLogFieldsResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -4794,8 +4798,8 @@ export const getLogGroupFields: API.OperationMethod<
   GetLogGroupFieldsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<GetLogGroupFieldsRequest>,
-  output: __S(4067, __c127, 3) as any as S.Schema<GetLogGroupFieldsResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetLogGroupFieldsRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<GetLogGroupFieldsResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -4838,8 +4842,8 @@ export const getLogObject: API.OperationMethod<
   GetLogObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4096, __c128, 0) as any as S.Schema<GetLogObjectRequest>,
-  output: __S(4099, __c128, 3) as any as S.Schema<GetLogObjectResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetLogObjectRequest>,
+  output: __S(4131, __c129, 3) as any as S.Schema<GetLogObjectResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -4872,8 +4876,8 @@ export const getLogRecord: API.OperationMethod<
   GetLogRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4160, __c130, 0) as any as S.Schema<GetLogRecordRequest>,
-  output: __S(4161, __c130, 1) as any as S.Schema<GetLogRecordResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetLogRecordRequest>,
+  output: __S(4193, __c131, 1) as any as S.Schema<GetLogRecordResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -4900,8 +4904,8 @@ export const getLookupTable: API.OperationMethod<
   GetLookupTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4192, __c131, 0) as any as S.Schema<GetLookupTableRequest>,
-  output: __S(4193, __c131, 1) as any as S.Schema<GetLookupTableResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetLookupTableRequest>,
+  output: __S(4225, __c132, 1) as any as S.Schema<GetLookupTableResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -4954,8 +4958,8 @@ export const getQueryResults: API.OperationMethod<
   GetQueryResultsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4224, __c132, 0) as any as S.Schema<GetQueryResultsRequest>,
-  output: __S(4229, __c132, 5) as any as S.Schema<GetQueryResultsResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<GetQueryResultsRequest>,
+  output: __S(4261, __c133, 5) as any as S.Schema<GetQueryResultsResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4979,8 +4983,8 @@ export const getScheduledQuery: API.OperationMethod<
   GetScheduledQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4256, __c133, 0) as any as S.Schema<GetScheduledQueryRequest>,
-  output: __S(4288, __c134, 0) as any as S.Schema<GetScheduledQueryResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetScheduledQueryRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<GetScheduledQueryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5011,8 +5015,8 @@ export const getScheduledQueryHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TriggerHistoryRecord
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4320, __c135, 0) as any as S.Schema<GetScheduledQueryHistoryRequest>,
-  output: __S(4325, __c135, 5) as any as S.Schema<GetScheduledQueryHistoryResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetScheduledQueryHistoryRequest>,
+  output: __S(4357, __c136, 5) as any as S.Schema<GetScheduledQueryHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5047,8 +5051,8 @@ export const getStorageTierPolicy: API.OperationMethod<
   GetStorageTierPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4352, __c136, 0) as any as S.Schema<GetStorageTierPolicyRequest>,
-  output: __S(4384, __c137, 0) as any as S.Schema<GetStorageTierPolicyResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetStorageTierPolicyRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<GetStorageTierPolicyResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -5079,8 +5083,8 @@ export const getTransformer: API.OperationMethod<
   GetTransformerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4416, __c138, 0) as any as S.Schema<GetTransformerRequest>,
-  output: __S(4417, __c138, 1) as any as S.Schema<GetTransformerResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<GetTransformerRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<GetTransformerResponse>,
   errors: [
     InvalidOperationException,
     InvalidParameterException,
@@ -5118,8 +5122,8 @@ export const listAggregateLogGroupSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AggregateLogGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4480, __c140, 0) as any as S.Schema<ListAggregateLogGroupSummariesRequest>,
-  output: __S(4485, __c140, 5) as any as S.Schema<ListAggregateLogGroupSummariesResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<ListAggregateLogGroupSummariesRequest>,
+  output: __S(4517, __c141, 5) as any as S.Schema<ListAggregateLogGroupSummariesResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5150,8 +5154,8 @@ export const listAnomalies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Anomaly
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4544, __c142, 0) as any as S.Schema<ListAnomaliesRequest>,
-  output: __S(4552, __c142, 8) as any as S.Schema<ListAnomaliesResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ListAnomaliesRequest>,
+  output: __S(4584, __c143, 8) as any as S.Schema<ListAnomaliesResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -5184,8 +5188,8 @@ export const listIntegrations: API.OperationMethod<
   ListIntegrationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4576, __c143, 0) as any as S.Schema<ListIntegrationsRequest>,
-  output: __S(4579, __c143, 3) as any as S.Schema<ListIntegrationsResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<ListIntegrationsRequest>,
+  output: __S(4611, __c144, 3) as any as S.Schema<ListIntegrationsResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5208,8 +5212,8 @@ export const listLogAnomalyDetectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnomalyDetector
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4608, __c144, 0) as any as S.Schema<ListLogAnomalyDetectorsRequest>,
-  output: __S(4611, __c144, 3) as any as S.Schema<ListLogAnomalyDetectorsResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<ListLogAnomalyDetectorsRequest>,
+  output: __S(4643, __c145, 3) as any as S.Schema<ListLogAnomalyDetectorsResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -5251,8 +5255,8 @@ export const listLogGroups: API.OperationMethod<
   ListLogGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4642, __c145, 2) as any as S.Schema<ListLogGroupsRequest>,
-  output: __S(4645, __c145, 5) as any as S.Schema<ListLogGroupsResponse>,
+  input: __S(4674, __c146, 2) as any as S.Schema<ListLogGroupsRequest>,
+  output: __S(4677, __c146, 5) as any as S.Schema<ListLogGroupsResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5281,8 +5285,8 @@ export const listLogGroupsForQuery: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LogGroupIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4672, __c146, 0) as any as S.Schema<ListLogGroupsForQueryRequest>,
-  output: __S(4673, __c146, 1) as any as S.Schema<ListLogGroupsForQueryResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<ListLogGroupsForQueryRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<ListLogGroupsForQueryResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -5317,8 +5321,8 @@ export const listScheduledQueries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduledQuerySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4704, __c147, 0) as any as S.Schema<ListScheduledQueriesRequest>,
-  output: __S(4707, __c147, 3) as any as S.Schema<ListScheduledQueriesResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListScheduledQueriesRequest>,
+  output: __S(4739, __c148, 3) as any as S.Schema<ListScheduledQueriesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5354,8 +5358,8 @@ export const listSourcesForS3TableIntegration: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   S3TableIntegrationSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4736, __c148, 0) as any as S.Schema<ListSourcesForS3TableIntegrationRequest>,
-  output: __S(4739, __c148, 3) as any as S.Schema<ListSourcesForS3TableIntegrationResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<ListSourcesForS3TableIntegrationRequest>,
+  output: __S(4771, __c149, 3) as any as S.Schema<ListSourcesForS3TableIntegrationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5392,8 +5396,8 @@ export const listSyslogConfigurations: API.OperationMethod<
   ListSyslogConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4768, __c149, 0) as any as S.Schema<ListSyslogConfigurationsRequest>,
-  output: __S(4771, __c149, 3) as any as S.Schema<ListSyslogConfigurationsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListSyslogConfigurationsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ListSyslogConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -5422,8 +5426,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5446,8 +5450,8 @@ export const listTagsLogGroup: API.OperationMethod<
   ListTagsLogGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c2, 0) as any as S.Schema<ListTagsLogGroupRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<ListTagsLogGroupResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListTagsLogGroupRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ListTagsLogGroupResponse>,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5823,8 +5827,8 @@ export const putAccountPolicy: API.OperationMethod<
   PutAccountPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c3, 0) as any as S.Schema<PutAccountPolicyRequest>,
-  output: __S(97, __c3, 1) as any as S.Schema<PutAccountPolicyResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<PutAccountPolicyRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<PutAccountPolicyResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -5857,8 +5861,8 @@ export const putBearerTokenAuthentication: API.OperationMethod<
   PutBearerTokenAuthenticationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c4, 0) as any as S.Schema<PutBearerTokenAuthenticationRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutBearerTokenAuthenticationResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<PutBearerTokenAuthenticationRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutBearerTokenAuthenticationResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -5911,8 +5915,8 @@ export const putDataProtectionPolicy: API.OperationMethod<
   PutDataProtectionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c5, 0) as any as S.Schema<PutDataProtectionPolicyRequest>,
-  output: __S(3648, __c114, 0) as any as S.Schema<PutDataProtectionPolicyResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<PutDataProtectionPolicyRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<PutDataProtectionPolicyResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -5975,8 +5979,8 @@ export const putDeliveryDestination: API.OperationMethod<
   PutDeliveryDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<PutDeliveryDestinationRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<PutDeliveryDestinationResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<PutDeliveryDestinationRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<PutDeliveryDestinationResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -6028,8 +6032,8 @@ export const putDeliveryDestinationPolicy: API.OperationMethod<
   PutDeliveryDestinationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<PutDeliveryDestinationPolicyRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<PutDeliveryDestinationPolicyResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<PutDeliveryDestinationPolicyRequest>,
+  output: __S(3841, __c120, 1) as any as S.Schema<PutDeliveryDestinationPolicyResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -6087,8 +6091,8 @@ export const putDeliverySource: API.OperationMethod<
   PutDeliverySourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<PutDeliverySourceRequest>,
-  output: __S(3872, __c121, 0) as any as S.Schema<PutDeliverySourceResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<PutDeliverySourceRequest>,
+  output: __S(3904, __c122, 0) as any as S.Schema<PutDeliverySourceResponse>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -6129,8 +6133,8 @@ export const putDestination: API.OperationMethod<
   PutDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<PutDestinationRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<PutDestinationResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<PutDestinationRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<PutDestinationResponse>,
   errors: [InvalidParameterException, OperationAbortedException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6154,8 +6158,8 @@ export const putDestinationPolicy: API.OperationMethod<
   PutDestinationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<PutDestinationPolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutDestinationPolicyResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<PutDestinationPolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutDestinationPolicyResponse>,
   errors: [InvalidParameterException, OperationAbortedException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6238,8 +6242,8 @@ export const putIndexPolicy: API.OperationMethod<
   PutIndexPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<PutIndexPolicyRequest>,
-  output: __S(353, __c11, 1) as any as S.Schema<PutIndexPolicyResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<PutIndexPolicyRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<PutIndexPolicyResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -6276,8 +6280,8 @@ export const putIntegration: API.OperationMethod<
   PutIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c12, 2) as any as S.Schema<PutIntegrationRequest>,
-  output: __S(387, __c12, 3) as any as S.Schema<PutIntegrationResponse>,
+  input: __S(418, __c13, 2) as any as S.Schema<PutIntegrationRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<PutIntegrationResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -6346,8 +6350,8 @@ export const putLogEvents: API.OperationMethod<
   PutLogEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c13, 3) as any as S.Schema<PutLogEventsRequest>,
-  output: __S(422, __c13, 6) as any as S.Schema<PutLogEventsResponse>,
+  input: __S(451, __c14, 3) as any as S.Schema<PutLogEventsRequest>,
+  output: __S(454, __c14, 6) as any as S.Schema<PutLogEventsResponse>,
   errors: [
     DataAlreadyAcceptedException,
     InvalidParameterException,
@@ -6382,8 +6386,8 @@ export const putLogGroupDeletionProtection: API.OperationMethod<
   PutLogGroupDeletionProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<PutLogGroupDeletionProtectionRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutLogGroupDeletionProtectionResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<PutLogGroupDeletionProtectionRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutLogGroupDeletionProtectionResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -6440,8 +6444,8 @@ export const putMetricFilter: API.OperationMethod<
   PutMetricFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<PutMetricFilterRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutMetricFilterResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<PutMetricFilterRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutMetricFilterResponse>,
   errors: [
     InvalidOperationException,
     InvalidParameterException,
@@ -6482,8 +6486,8 @@ export const putQueryDefinition: API.OperationMethod<
   PutQueryDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<PutQueryDefinitionRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<PutQueryDefinitionResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<PutQueryDefinitionRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<PutQueryDefinitionResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -6528,8 +6532,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -6577,8 +6581,8 @@ export const putRetentionPolicy: API.OperationMethod<
   PutRetentionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<PutRetentionPolicyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutRetentionPolicyResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<PutRetentionPolicyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutRetentionPolicyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -6608,8 +6612,8 @@ export const putStorageTierPolicy: API.OperationMethod<
   PutStorageTierPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<PutStorageTierPolicyRequest>,
-  output: __S(4384, __c137, 0) as any as S.Schema<PutStorageTierPolicyResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<PutStorageTierPolicyRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<PutStorageTierPolicyResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -6671,8 +6675,8 @@ export const putSubscriptionFilter: API.OperationMethod<
   PutSubscriptionFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<PutSubscriptionFilterRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutSubscriptionFilterResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<PutSubscriptionFilterRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutSubscriptionFilterResponse>,
   errors: [
     InvalidOperationException,
     InvalidParameterException,
@@ -6705,8 +6709,8 @@ export const putSyslogConfiguration: API.OperationMethod<
   PutSyslogConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<PutSyslogConfigurationRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutSyslogConfigurationResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<PutSyslogConfigurationRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutSyslogConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
@@ -6768,8 +6772,8 @@ export const putTransformer: API.OperationMethod<
   PutTransformerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<PutTransformerRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<PutTransformerResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<PutTransformerRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<PutTransformerResponse>,
   errors: [
     InvalidOperationException,
     InvalidParameterException,
@@ -6789,6 +6793,7 @@ export type StartLiveTailError =
   | InvalidParameterException
   | LimitExceededException
   | ResourceNotFoundException
+  | UnsupportedOperation
   | CommonErrors;
 /**
  * Starts a Live Tail streaming session for one or more log groups. A Live Tail session
@@ -6841,14 +6846,15 @@ export const startLiveTail: API.OperationMethod<
   StartLiveTailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<StartLiveTailRequest>,
-  output: __S(743, __c23, 7) as any as S.Schema<StartLiveTailResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<StartLiveTailRequest>,
+  output: __S(775, __c24, 7) as any as S.Schema<StartLiveTailResponse>,
   errors: [
     AccessDeniedException,
     InvalidOperationException,
     InvalidParameterException,
     LimitExceededException,
     ResourceNotFoundException,
+    UnsupportedOperation,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6917,8 +6923,8 @@ export const startQuery: API.OperationMethod<
   StartQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<StartQueryRequest>,
-  output: __S(769, __c24, 1) as any as S.Schema<StartQueryResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<StartQueryRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<StartQueryResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -6952,8 +6958,8 @@ export const stopQuery: API.OperationMethod<
   StopQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<StopQueryRequest>,
-  output: __S(2400, __c75, 0) as any as S.Schema<StopQueryResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<StopQueryRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<StopQueryResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6985,8 +6991,8 @@ export const tagLogGroup: API.OperationMethod<
   TagLogGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<TagLogGroupRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<TagLogGroupResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<TagLogGroupRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<TagLogGroupResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7024,8 +7030,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidParameterException,
     ResourceNotFoundException,
@@ -7051,8 +7057,8 @@ export const testMetricFilter: API.OperationMethod<
   TestMetricFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<TestMetricFilterRequest>,
-  output: __S(899, __c28, 3) as any as S.Schema<TestMetricFilterResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<TestMetricFilterRequest>,
+  output: __S(931, __c29, 3) as any as S.Schema<TestMetricFilterResponse>,
   errors: [InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7075,8 +7081,8 @@ export const testTransformer: API.OperationMethod<
   TestTransformerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<TestTransformerRequest>,
-  output: __S(931, __c29, 3) as any as S.Schema<TestTransformerResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<TestTransformerRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<TestTransformerResponse>,
   errors: [InvalidOperationException, InvalidParameterException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7102,8 +7108,8 @@ export const untagLogGroup: API.OperationMethod<
   UntagLogGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<UntagLogGroupRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<UntagLogGroupResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<UntagLogGroupRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UntagLogGroupResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7124,8 +7130,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7158,8 +7164,8 @@ export const updateAnomaly: API.OperationMethod<
   UpdateAnomalyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1025, __c32, 1) as any as S.Schema<UpdateAnomalyRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<UpdateAnomalyResponse>,
+  input: __S(1057, __c33, 1) as any as S.Schema<UpdateAnomalyRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UpdateAnomalyResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -7190,8 +7196,8 @@ export const updateDeliveryConfiguration: API.OperationMethod<
   UpdateDeliveryConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<UpdateDeliveryConfigurationRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<UpdateDeliveryConfigurationResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<UpdateDeliveryConfigurationRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UpdateDeliveryConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -7220,8 +7226,8 @@ export const updateLogAnomalyDetector: API.OperationMethod<
   UpdateLogAnomalyDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<UpdateLogAnomalyDetectorRequest>,
-  output: __S(1216, __c38, 0) as any as S.Schema<UpdateLogAnomalyDetectorResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<UpdateLogAnomalyDetectorRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UpdateLogAnomalyDetectorResponse>,
   errors: [
     InvalidParameterException,
     OperationAbortedException,
@@ -7254,8 +7260,8 @@ export const updateLookupTable: API.OperationMethod<
   UpdateLookupTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<UpdateLookupTableRequest>,
-  output: __S(1121, __c35, 1) as any as S.Schema<UpdateLookupTableResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<UpdateLookupTableRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<UpdateLookupTableResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -7286,8 +7292,8 @@ export const updateScheduledQuery: API.OperationMethod<
   UpdateScheduledQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<UpdateScheduledQueryRequest>,
-  output: __S(4288, __c134, 0) as any as S.Schema<UpdateScheduledQueryResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdateScheduledQueryRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<UpdateScheduledQueryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -7306,21 +7312,52 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({
+          logGroupIdentifier: S.optional(S.String),
+          vpcEndpointId: S.optional(S.String),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListSyslogConfigurationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          logGroupArn: S.optional(S.String),
+          sourceType: S.optional(S.String),
+          vpcEndpointId: S.optional(S.String),
+          createdAt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SyslogConfiguration" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          syslogConfigurations: S.optional(__S(2, __c0, 2)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListSyslogConfigurationsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTagsForResourceRequest" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1472, __c46, 0)) }).pipe(ns)).annotate(
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(1504, __c47, 0)) }).pipe(ns)).annotate(
         { identifier: "ListTagsForResourceResponse" },
       );
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7330,7 +7367,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListTagsLogGroupRequest" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7344,11 +7381,11 @@ function __c3(j: number): any {
       ).annotate({ identifier: "PutAccountPolicyRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ accountPolicy: S.optional(__S(2656, __c83, 0)) }).pipe(ns),
+        S.Struct({ accountPolicy: S.optional(__S(2688, __c84, 0)) }).pipe(ns),
       ).annotate({ identifier: "PutAccountPolicyResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7359,7 +7396,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "PutBearerTokenAuthenticationRequest" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7369,22 +7406,22 @@ function __c5(j: number): any {
       ).annotate({ identifier: "PutDataProtectionPolicyRequest" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           outputFormat: S.optional(S.String),
-          deliveryDestinationConfiguration: S.optional(__S(2816, __c88, 0)),
+          deliveryDestinationConfiguration: S.optional(__S(2848, __c89, 0)),
           deliveryDestinationType: S.optional(S.String),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutDeliveryDestinationRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7394,7 +7431,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "PutDeliveryDestinationPolicyRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7402,13 +7439,13 @@ function __c8(j: number): any {
           name: S.String,
           resourceArn: S.String,
           logType: S.String,
-          tags: S.optional(__S(1472, __c46, 0)),
-          deliverySourceConfiguration: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
+          deliverySourceConfiguration: S.optional(__S(1504, __c47, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutDeliverySourceRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7416,16 +7453,16 @@ function __c9(j: number): any {
           destinationName: S.String,
           targetArn: S.String,
           roleArn: S.String,
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutDestinationRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ destination: S.optional(__S(2944, __c92, 0)) }).pipe(ns),
+        S.Struct({ destination: S.optional(__S(2976, __c93, 0)) }).pipe(ns),
       ).annotate({ identifier: "PutDestinationResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7437,7 +7474,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "PutDestinationPolicyRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7447,29 +7484,29 @@ function __c11(j: number): any {
       ).annotate({ identifier: "PutIndexPolicyRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ indexPolicy: S.optional(__S(3136, __c98, 0)) }).pipe(ns),
+        S.Struct({ indexPolicy: S.optional(__S(3168, __c99, 0)) }).pipe(ns),
       ).annotate({ identifier: "PutIndexPolicyResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           kmsKeyArn: S.optional(S.String),
           dataSourceRoleArn: S.String,
-          dashboardViewerPrincipals: __S(1504, __c47, 0),
+          dashboardViewerPrincipals: __S(1536, __c48, 0),
           applicationArn: S.optional(S.String),
           retentionDays: S.Number,
         }),
       ).annotate({ identifier: "OpenSearchResourceConfig" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ openSearchResourceConfig: __S(384, __c12, 0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ openSearchResourceConfig: __S(416, __c13, 0) })]);
     case 2:
       return S.suspend(() =>
         S.Struct({
           integrationName: S.String,
-          resourceConfig: __S(385, __c12, 1),
+          resourceConfig: __S(417, __c13, 1),
           integrationType: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutIntegrationRequest" });
@@ -7482,19 +7519,19 @@ function __c12(j: number): any {
       ).annotate({ identifier: "PutIntegrationResponse" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ timestamp: S.Number, message: S.String })).annotate({
         identifier: "InputLogEvent",
       });
     case 1:
-      return S.Array(__S(416, __c13, 0));
+      return S.Array(__S(448, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keyAttributes: S.optional(__S(1472, __c46, 0)),
-          attributes: S.optional(__S(1472, __c46, 0)),
+          keyAttributes: S.optional(__S(1504, __c47, 0)),
+          attributes: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "Entity" });
     case 3:
@@ -7502,9 +7539,9 @@ function __c13(j: number): any {
         S.Struct({
           logGroupName: S.String,
           logStreamName: S.String,
-          logEvents: __S(417, __c13, 1),
+          logEvents: __S(449, __c14, 1),
           sequenceToken: S.optional(S.String),
-          entity: S.optional(__S(418, __c13, 2)),
+          entity: S.optional(__S(450, __c14, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutLogEventsRequest" });
     case 4:
@@ -7523,13 +7560,13 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextSequenceToken: S.optional(S.String),
-          rejectedLogEventsInfo: S.optional(__S(420, __c13, 4)),
-          rejectedEntityInfo: S.optional(__S(421, __c13, 5)),
+          rejectedLogEventsInfo: S.optional(__S(452, __c14, 4)),
+          rejectedEntityInfo: S.optional(__S(453, __c14, 5)),
         }).pipe(ns),
       ).annotate({ identifier: "PutLogEventsResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7539,7 +7576,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "PutLogGroupDeletionProtectionRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7547,15 +7584,15 @@ function __c15(j: number): any {
           logGroupName: S.String,
           filterName: S.String,
           filterPattern: S.String,
-          metricTransformations: __S(3297, __c103, 1),
+          metricTransformations: __S(3329, __c104, 1),
           applyOnTransformedLogs: S.optional(S.Boolean),
           fieldSelectionCriteria: S.optional(S.String),
-          emitSystemFieldDimensions: S.optional(__S(1504, __c47, 0)),
+          emitSystemFieldDimensions: S.optional(__S(1536, __c48, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutMetricFilterRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7563,10 +7600,10 @@ function __c16(j: number): any {
           queryLanguage: S.optional(S.String),
           name: S.String,
           queryDefinitionId: S.optional(S.String),
-          logGroupNames: S.optional(__S(1504, __c47, 0)),
+          logGroupNames: S.optional(__S(1536, __c48, 0)),
           queryString: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          parameters: S.optional(__S(3393, __c106, 1)),
+          parameters: S.optional(__S(3425, __c107, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutQueryDefinitionRequest" });
     case 1:
@@ -7575,7 +7612,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "PutQueryDefinitionResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7589,13 +7626,13 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourcePolicy: S.optional(__S(3456, __c108, 0)),
+          resourcePolicy: S.optional(__S(3488, __c109, 0)),
           revisionId: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "PutResourcePolicyResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7605,7 +7642,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "PutRetentionPolicyRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7615,7 +7652,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "PutStorageTierPolicyRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7628,12 +7665,12 @@ function __c20(j: number): any {
           distribution: S.optional(S.String),
           applyOnTransformedLogs: S.optional(S.Boolean),
           fieldSelectionCriteria: S.optional(S.String),
-          emitSystemFields: S.optional(__S(1504, __c47, 0)),
+          emitSystemFields: S.optional(__S(1536, __c48, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutSubscriptionFilterRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7643,24 +7680,24 @@ function __c21(j: number): any {
       ).annotate({ identifier: "PutSyslogConfigurationRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ logGroupIdentifier: S.String, transformerConfig: __S(4476, __c139, 28) }).pipe(
+        S.Struct({ logGroupIdentifier: S.String, transformerConfig: __S(4508, __c140, 28) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutTransformerRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logGroupIdentifiers: __S(1504, __c47, 0),
-          logStreamNames: S.optional(__S(1504, __c47, 0)),
-          logStreamNamePrefixes: S.optional(__S(1504, __c47, 0)),
+          logGroupIdentifiers: __S(1536, __c48, 0),
+          logStreamNames: S.optional(__S(1536, __c48, 0)),
+          logStreamNamePrefixes: S.optional(__S(1536, __c48, 0)),
           logEventFilterPattern: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartLiveTailRequest" });
@@ -7669,9 +7706,9 @@ function __c23(j: number): any {
         S.Struct({
           requestId: S.optional(S.String),
           sessionId: S.optional(S.String),
-          logGroupIdentifiers: S.optional(__S(1504, __c47, 0)),
-          logStreamNames: S.optional(__S(1504, __c47, 0)),
-          logStreamNamePrefixes: S.optional(__S(1504, __c47, 0)),
+          logGroupIdentifiers: S.optional(__S(1536, __c48, 0)),
+          logStreamNames: S.optional(__S(1536, __c48, 0)),
+          logStreamNamePrefixes: S.optional(__S(1536, __c48, 0)),
           logEventFilterPattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiveTailSessionStart" });
@@ -7690,38 +7727,38 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "LiveTailSessionLogEvent" });
     case 4:
-      return S.Array(__S(739, __c23, 3));
+      return S.Array(__S(771, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sessionMetadata: S.optional(__S(738, __c23, 2)),
-          sessionResults: S.optional(__S(740, __c23, 4)),
+          sessionMetadata: S.optional(__S(770, __c24, 2)),
+          sessionResults: S.optional(__S(772, __c24, 4)),
         }),
       ).annotate({ identifier: "LiveTailSessionUpdate" });
     case 6:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ sessionStart: __S(737, __c23, 1) }),
-          /*@__PURE__*/ S.Struct({ sessionUpdate: __S(741, __c23, 5) }),
-          /*@__PURE__*/ S.Struct({ SessionTimeoutException: __S(4128, __c129, 0) }),
-          /*@__PURE__*/ S.Struct({ SessionStreamingException: __S(4128, __c129, 0) }),
+          /*@__PURE__*/ S.Struct({ sessionStart: __S(769, __c24, 1) }),
+          /*@__PURE__*/ S.Struct({ sessionUpdate: __S(773, __c24, 5) }),
+          /*@__PURE__*/ S.Struct({ SessionTimeoutException: __S(4160, __c130, 0) }),
+          /*@__PURE__*/ S.Struct({ SessionStreamingException: __S(4160, __c130, 0) }),
         ]),
       );
     case 7:
       return S.suspend(() =>
-        S.Struct({ responseStream: S.optional(__S(742, __c23, 6)) }).pipe(ns),
+        S.Struct({ responseStream: S.optional(__S(774, __c24, 6)) }).pipe(ns),
       ).annotate({ identifier: "StartLiveTailResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           queryLanguage: S.optional(S.String),
           logGroupName: S.optional(S.String),
-          logGroupNames: S.optional(__S(1504, __c47, 0)),
-          logGroupIdentifiers: S.optional(__S(1504, __c47, 0)),
+          logGroupNames: S.optional(__S(1536, __c48, 0)),
+          logGroupIdentifiers: S.optional(__S(1536, __c48, 0)),
           startTime: S.Number,
           endTime: S.Number,
           queryString: S.String,
@@ -7734,7 +7771,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7744,31 +7781,31 @@ function __c25(j: number): any {
       ).annotate({ identifier: "StopQueryRequest" });
   }
 }
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ logGroupName: S.String, tags: __S(1472, __c46, 0) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagLogGroupRequest" });
-  }
-}
 function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1472, __c46, 0) }).pipe(
+        S.Struct({ logGroupName: S.String, tags: __S(1504, __c47, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "TagResourceRequest" });
+      ).annotate({ identifier: "TagLogGroupRequest" });
   }
 }
 function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ filterPattern: S.String, logEventMessages: __S(1504, __c47, 0) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(1504, __c47, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ filterPattern: S.String, logEventMessages: __S(1536, __c48, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TestMetricFilterRequest" });
@@ -7777,24 +7814,24 @@ function __c28(j: number): any {
         S.Struct({
           eventNumber: S.optional(S.Number),
           eventMessage: S.optional(S.String),
-          extractedValues: S.optional(__S(1472, __c46, 0)),
+          extractedValues: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "MetricFilterMatchRecord" });
     case 2:
-      return S.Array(__S(897, __c28, 1));
+      return S.Array(__S(929, __c29, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ matches: S.optional(__S(898, __c28, 2)) }).pipe(ns),
+        S.Struct({ matches: S.optional(__S(930, __c29, 2)) }).pipe(ns),
       ).annotate({ identifier: "TestMetricFilterResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          transformerConfig: __S(4476, __c139, 28),
-          logEventMessages: __S(1504, __c47, 0),
+          transformerConfig: __S(4508, __c140, 28),
+          logEventMessages: __S(1536, __c48, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TestTransformerRequest" });
     case 1:
@@ -7806,34 +7843,34 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "TransformedLogRecord" });
     case 2:
-      return S.Array(__S(929, __c29, 1));
+      return S.Array(__S(961, __c30, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ transformedLogs: S.optional(__S(930, __c29, 2)) }).pipe(ns),
+        S.Struct({ transformedLogs: S.optional(__S(962, __c30, 2)) }).pipe(ns),
       ).annotate({ identifier: "TestTransformerResponse" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ logGroupName: S.String, tags: __S(1504, __c47, 0) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagLogGroupRequest" });
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(1504, __c47, 0) }).pipe(
+        S.Struct({ logGroupName: S.String, tags: __S(1536, __c48, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagLogGroupRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String, tagKeys: __S(1536, __c48, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7846,26 +7883,26 @@ function __c32(j: number): any {
           patternId: S.optional(S.String),
           anomalyDetectorArn: S.String,
           suppressionType: S.optional(S.String),
-          suppressionPeriod: S.optional(__S(1024, __c32, 0)),
+          suppressionPeriod: S.optional(__S(1056, __c33, 0)),
           baseline: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateAnomalyRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          recordFields: S.optional(__S(1504, __c47, 0)),
+          recordFields: S.optional(__S(1536, __c48, 0)),
           fieldDelimiter: S.optional(S.String),
-          s3DeliveryConfiguration: S.optional(__S(1536, __c48, 0)),
+          s3DeliveryConfiguration: S.optional(__S(1568, __c49, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDeliveryConfigurationRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7879,7 +7916,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "UpdateLogAnomalyDetectorRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7900,7 +7937,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "UpdateLookupTableResponse" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7909,12 +7946,12 @@ function __c36(j: number): any {
           description: S.optional(S.String),
           queryLanguage: S.String,
           queryString: S.String,
-          logGroupIdentifiers: S.optional(__S(1504, __c47, 0)),
+          logGroupIdentifiers: S.optional(__S(1536, __c48, 0)),
           scheduleExpression: S.String,
           timezone: S.optional(S.String),
           startTimeOffset: S.optional(S.Number),
           endTimeOffset: S.optional(S.Number),
-          destinationConfiguration: S.optional(__S(1890, __c59, 2)),
+          destinationConfiguration: S.optional(__S(1922, __c60, 2)),
           scheduleStartTime: S.optional(S.Number),
           scheduleEndTime: S.optional(S.Number),
           executionRoleArn: S.String,
@@ -7923,7 +7960,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "UpdateScheduledQueryRequest" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7935,7 +7972,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "AssociateKmsKeyRequest" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
@@ -7943,17 +7980,17 @@ function __c38(j: number): any {
       });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ integrationArn: S.String, dataSource: __S(1312, __c41, 0) }).pipe(
+        S.Struct({ integrationArn: S.String, dataSource: __S(1344, __c42, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AssociateSourceToS3TableIntegrationRequest" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ identifier: S.optional(S.String) }).pipe(ns)).annotate({
@@ -7961,7 +7998,7 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, type: S.optional(S.String) })).annotate({
@@ -7969,7 +8006,7 @@ function __c41(j: number): any {
       });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7979,7 +8016,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "CancelExportTaskRequest" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7991,7 +8028,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           importId: S.optional(S.String),
-          importStatistics: S.optional(__S(1408, __c44, 0)),
+          importStatistics: S.optional(__S(1440, __c45, 0)),
           importStatus: S.optional(S.String),
           creationTime: S.optional(S.Number),
           lastUpdatedTime: S.optional(S.Number),
@@ -7999,7 +8036,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "CancelImportTaskResponse" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ bytesImported: S.optional(S.Number) })).annotate({
@@ -8007,34 +8044,34 @@ function __c44(j: number): any {
       });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           deliverySourceName: S.String,
           deliveryDestinationArn: S.String,
-          recordFields: S.optional(__S(1504, __c47, 0)),
+          recordFields: S.optional(__S(1536, __c48, 0)),
           fieldDelimiter: S.optional(S.String),
-          s3DeliveryConfiguration: S.optional(__S(1536, __c48, 0)),
-          tags: S.optional(__S(1472, __c46, 0)),
+          s3DeliveryConfiguration: S.optional(__S(1568, __c49, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDeliveryRequest" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8045,7 +8082,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "S3DeliveryConfiguration" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8055,23 +8092,23 @@ function __c49(j: number): any {
           deliverySourceName: S.optional(S.String),
           deliveryDestinationArn: S.optional(S.String),
           deliveryDestinationType: S.optional(S.String),
-          recordFields: S.optional(__S(1504, __c47, 0)),
+          recordFields: S.optional(__S(1536, __c48, 0)),
           fieldDelimiter: S.optional(S.String),
-          s3DeliveryConfiguration: S.optional(__S(1536, __c48, 0)),
-          tags: S.optional(__S(1472, __c46, 0)),
+          s3DeliveryConfiguration: S.optional(__S(1568, __c49, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "Delivery" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ delivery: S.optional(__S(1568, __c49, 0)) }).pipe(ns),
+        S.Struct({ delivery: S.optional(__S(1600, __c50, 0)) }).pipe(ns),
       ).annotate({ identifier: "CreateDeliveryResponse" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8091,14 +8128,14 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           importSourceArn: S.String,
           importRoleArn: S.String,
-          importFilter: S.optional(__S(1696, __c53, 0)),
+          importFilter: S.optional(__S(1728, __c54, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateImportTaskRequest" });
     case 1:
@@ -8111,7 +8148,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "CreateImportTaskResponse" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8119,18 +8156,18 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ImportFilter" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logGroupArnList: __S(1504, __c47, 0),
+          logGroupArnList: __S(1536, __c48, 0),
           detectorName: S.optional(S.String),
           evaluationFrequency: S.optional(S.String),
           filterPattern: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           anomalyVisibilityTime: S.optional(S.Number),
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateLogAnomalyDetectorRequest" });
     case 1:
@@ -8139,21 +8176,21 @@ function __c54(j: number): any {
       ).annotate({ identifier: "CreateLogAnomalyDetectorResponse" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           logGroupName: S.String,
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
           logGroupClass: S.optional(S.String),
           deletionProtectionEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateLogGroupRequest" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8163,7 +8200,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "CreateLogStreamRequest" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8173,7 +8210,7 @@ function __c57(j: number): any {
           tableBody: S.optional(S.String),
           queryId: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateLookupTableRequest" });
     case 1:
@@ -8184,7 +8221,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "CreateLookupTableResponse" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8193,17 +8230,17 @@ function __c58(j: number): any {
           description: S.optional(S.String),
           queryLanguage: S.String,
           queryString: S.String,
-          logGroupIdentifiers: S.optional(__S(1504, __c47, 0)),
+          logGroupIdentifiers: S.optional(__S(1536, __c48, 0)),
           scheduleExpression: S.String,
           timezone: S.optional(S.String),
           startTimeOffset: S.optional(S.Number),
           endTimeOffset: S.optional(S.Number),
-          destinationConfiguration: S.optional(__S(1890, __c59, 2)),
+          destinationConfiguration: S.optional(__S(1922, __c60, 2)),
           scheduleStartTime: S.optional(S.Number),
           scheduleEndTime: S.optional(S.Number),
           executionRoleArn: S.String,
           state: S.optional(S.String),
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateScheduledQueryRequest" });
     case 1:
@@ -8212,7 +8249,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "CreateScheduledQueryResponse" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8230,19 +8267,19 @@ function __c59(j: number): any {
           roleArn: S.String,
           description: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "LookupTableConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          s3Configuration: S.optional(__S(1888, __c59, 0)),
-          lookupTableConfiguration: S.optional(__S(1889, __c59, 1)),
+          s3Configuration: S.optional(__S(1920, __c60, 0)),
+          lookupTableConfiguration: S.optional(__S(1921, __c60, 1)),
         }),
       ).annotate({ identifier: "DestinationConfiguration" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8252,7 +8289,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "DeleteAccountPolicyRequest" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8262,7 +8299,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "DeleteDataProtectionPolicyRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8272,7 +8309,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "DeleteDeliveryRequest" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8282,7 +8319,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "DeleteDeliveryDestinationRequest" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8292,7 +8329,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "DeleteDeliveryDestinationPolicyRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8302,7 +8339,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "DeleteDeliverySourceRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8312,7 +8349,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "DeleteDestinationRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8322,7 +8359,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "DeleteIndexPolicyRequest" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8332,7 +8369,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "DeleteIntegrationRequest" });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8342,7 +8379,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "DeleteLogAnomalyDetectorRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8352,7 +8389,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "DeleteLogGroupRequest" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8362,7 +8399,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "DeleteLogStreamRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8372,7 +8409,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "DeleteLookupTableRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8382,7 +8419,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "DeleteMetricFilterRequest" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8392,7 +8429,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "DeleteQueryDefinitionRequest" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ success: S.optional(S.Boolean) }).pipe(ns)).annotate({
@@ -8400,7 +8437,7 @@ function __c75(j: number): any {
       });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8412,7 +8449,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8422,7 +8459,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "DeleteRetentionPolicyRequest" });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8432,7 +8469,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "DeleteScheduledQueryRequest" });
   }
 }
-function __c79(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8442,7 +8479,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "DeleteSubscriptionFilterRequest" });
   }
 }
-function __c80(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8452,7 +8489,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "DeleteSyslogConfigurationRequest" });
   }
 }
-function __c81(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8462,29 +8499,29 @@ function __c81(j: number): any {
       ).annotate({ identifier: "DeleteTransformerRequest" });
   }
 }
-function __c82(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           policyType: S.String,
           policyName: S.optional(S.String),
-          accountIdentifiers: S.optional(__S(1504, __c47, 0)),
+          accountIdentifiers: S.optional(__S(1536, __c48, 0)),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeAccountPoliciesRequest" });
     case 1:
-      return S.Array(__S(2656, __c83, 0));
+      return S.Array(__S(2688, __c84, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accountPolicies: S.optional(__S(2625, __c82, 1)),
+          accountPolicies: S.optional(__S(2657, __c83, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeAccountPoliciesResponse" });
   }
 }
-function __c83(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8500,15 +8537,15 @@ function __c83(j: number): any {
       ).annotate({ identifier: "AccountPolicy" });
   }
 }
-function __c84(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          logTypes: S.optional(__S(1504, __c47, 0)),
-          resourceTypes: S.optional(__S(1504, __c47, 0)),
-          deliveryDestinationTypes: S.optional(__S(2720, __c85, 0)),
+          logTypes: S.optional(__S(1536, __c48, 0)),
+          resourceTypes: S.optional(__S(1536, __c48, 0)),
+          deliveryDestinationTypes: S.optional(__S(2752, __c86, 0)),
           nextToken: S.optional(S.String),
           limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -8516,9 +8553,9 @@ function __c84(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          recordFields: S.optional(__S(1504, __c47, 0)),
+          recordFields: S.optional(__S(1536, __c48, 0)),
           fieldDelimiter: S.optional(S.String),
-          s3DeliveryConfiguration: S.optional(__S(1536, __c48, 0)),
+          s3DeliveryConfiguration: S.optional(__S(1568, __c49, 0)),
         }),
       ).annotate({ identifier: "ConfigurationTemplateDeliveryConfigValues" });
     case 2:
@@ -8526,20 +8563,20 @@ function __c84(j: number): any {
         S.Struct({ name: S.optional(S.String), mandatory: S.optional(S.Boolean) }),
       ).annotate({ identifier: "RecordField" });
     case 3:
-      return S.Array(__S(2690, __c84, 2));
+      return S.Array(__S(2722, __c85, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           keyName: S.String,
           valueType: S.String,
           defaultValue: S.String,
-          supportedValues: S.optional(__S(1504, __c47, 0)),
+          supportedValues: S.optional(__S(1536, __c48, 0)),
           minValue: S.optional(S.Number),
           maxValue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DeliverySourceConfigurationSchema" });
     case 5:
-      return S.Array(__S(2692, __c84, 4));
+      return S.Array(__S(2724, __c85, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({ datasourceName: S.optional(S.String), datasourceType: S.optional(S.String) }),
@@ -8551,50 +8588,31 @@ function __c84(j: number): any {
           logType: S.optional(S.String),
           resourceType: S.optional(S.String),
           deliveryDestinationType: S.optional(S.String),
-          defaultDeliveryConfigValues: S.optional(__S(2689, __c84, 1)),
-          allowedFields: S.optional(__S(2691, __c84, 3)),
-          allowedOutputFormats: S.optional(__S(2720, __c85, 0)),
+          defaultDeliveryConfigValues: S.optional(__S(2721, __c85, 1)),
+          allowedFields: S.optional(__S(2723, __c85, 3)),
+          allowedOutputFormats: S.optional(__S(2752, __c86, 0)),
           allowedActionForAllowVendedLogsDeliveryForResource: S.optional(S.String),
-          allowedFieldDelimiters: S.optional(__S(1504, __c47, 0)),
-          allowedSuffixPathFields: S.optional(__S(1504, __c47, 0)),
-          deliverySourceConfiguration: S.optional(__S(2693, __c84, 5)),
-          s3TablesIntegration: S.optional(__S(2694, __c84, 6)),
+          allowedFieldDelimiters: S.optional(__S(1536, __c48, 0)),
+          allowedSuffixPathFields: S.optional(__S(1536, __c48, 0)),
+          deliverySourceConfiguration: S.optional(__S(2725, __c85, 5)),
+          s3TablesIntegration: S.optional(__S(2726, __c85, 6)),
         }),
       ).annotate({ identifier: "ConfigurationTemplate" });
     case 8:
-      return S.Array(__S(2695, __c84, 7));
+      return S.Array(__S(2727, __c85, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          configurationTemplates: S.optional(__S(2696, __c84, 8)),
+          configurationTemplates: S.optional(__S(2728, __c85, 8)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeConfigurationTemplatesResponse" });
   }
 }
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-  }
-}
 function __c86(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), limit: S.optional(S.Number) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeDeliveriesRequest" });
-    case 1:
-      return S.Array(__S(1568, __c49, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deliveries: S.optional(__S(2753, __c86, 1)),
-          nextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "DescribeDeliveriesResponse" });
+      return S.Array(S.String);
   }
 }
 function __c87(j: number): any {
@@ -8604,19 +8622,38 @@ function __c87(j: number): any {
         S.Struct({ nextToken: S.optional(S.String), limit: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "DescribeDeliveryDestinationsRequest" });
+      ).annotate({ identifier: "DescribeDeliveriesRequest" });
     case 1:
-      return S.Array(__S(2817, __c88, 1));
+      return S.Array(__S(1600, __c50, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deliveryDestinations: S.optional(__S(2785, __c87, 1)),
+          deliveries: S.optional(__S(2785, __c87, 1)),
+          nextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeDeliveriesResponse" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), limit: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeDeliveryDestinationsRequest" });
+    case 1:
+      return S.Array(__S(2849, __c89, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deliveryDestinations: S.optional(__S(2817, __c88, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeDeliveryDestinationsResponse" });
   }
 }
-function __c88(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ destinationResourceArn: S.String })).annotate({
@@ -8629,14 +8666,14 @@ function __c88(j: number): any {
           arn: S.optional(S.String),
           deliveryDestinationType: S.optional(S.String),
           outputFormat: S.optional(S.String),
-          deliveryDestinationConfiguration: S.optional(__S(2816, __c88, 0)),
+          deliveryDestinationConfiguration: S.optional(__S(2848, __c89, 0)),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "DeliveryDestination" });
   }
 }
-function __c89(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8645,35 +8682,35 @@ function __c89(j: number): any {
         ),
       ).annotate({ identifier: "DescribeDeliverySourcesRequest" });
     case 1:
-      return S.Array(__S(2880, __c90, 0));
+      return S.Array(__S(2912, __c91, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deliverySources: S.optional(__S(2849, __c89, 1)),
+          deliverySources: S.optional(__S(2881, __c90, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeDeliverySourcesResponse" });
   }
 }
-function __c90(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           arn: S.optional(S.String),
-          resourceArns: S.optional(__S(1504, __c47, 0)),
+          resourceArns: S.optional(__S(1536, __c48, 0)),
           service: S.optional(S.String),
           logType: S.optional(S.String),
-          tags: S.optional(__S(1472, __c46, 0)),
-          deliverySourceConfiguration: S.optional(__S(1472, __c46, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
+          deliverySourceConfiguration: S.optional(__S(1504, __c47, 0)),
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeliverySource" });
   }
 }
-function __c91(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8684,17 +8721,17 @@ function __c91(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeDestinationsRequest" });
     case 1:
-      return S.Array(__S(2944, __c92, 0));
+      return S.Array(__S(2976, __c93, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(2913, __c91, 1)),
+          destinations: S.optional(__S(2945, __c92, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeDestinationsResponse" });
   }
 }
-function __c92(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8709,7 +8746,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "Destination" });
   }
 }
-function __c93(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8738,28 +8775,28 @@ function __c93(j: number): any {
           to: S.optional(S.Number),
           destination: S.optional(S.String),
           destinationPrefix: S.optional(S.String),
-          status: S.optional(__S(2977, __c93, 1)),
-          executionInfo: S.optional(__S(2978, __c93, 2)),
+          status: S.optional(__S(3009, __c94, 1)),
+          executionInfo: S.optional(__S(3010, __c94, 2)),
         }),
       ).annotate({ identifier: "ExportTask" });
     case 4:
-      return S.Array(__S(2979, __c93, 3));
+      return S.Array(__S(3011, __c94, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exportTasks: S.optional(__S(2980, __c93, 4)),
+          exportTasks: S.optional(__S(3012, __c94, 4)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeExportTasksResponse" });
   }
 }
-function __c94(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logGroupIdentifiers: __S(1504, __c47, 0),
-          indexCategories: S.optional(__S(2720, __c85, 0)),
+          logGroupIdentifiers: __S(1536, __c48, 0),
+          indexCategories: S.optional(__S(2752, __c86, 0)),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeFieldIndexesRequest" });
@@ -8776,23 +8813,23 @@ function __c94(j: number): any {
         }),
       ).annotate({ identifier: "FieldIndex" });
     case 2:
-      return S.Array(__S(3009, __c94, 1));
+      return S.Array(__S(3041, __c95, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fieldIndexes: S.optional(__S(3010, __c94, 2)),
+          fieldIndexes: S.optional(__S(3042, __c95, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeFieldIndexesResponse" });
   }
 }
-function __c95(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           importId: S.String,
-          batchImportStatus: S.optional(__S(2720, __c85, 0)),
+          batchImportStatus: S.optional(__S(2752, __c86, 0)),
           limit: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -8802,19 +8839,19 @@ function __c95(j: number): any {
         S.Struct({ batchId: S.String, status: S.String, errorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "ImportBatch" });
     case 2:
-      return S.Array(__S(3041, __c95, 1));
+      return S.Array(__S(3073, __c96, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           importSourceArn: S.optional(S.String),
           importId: S.optional(S.String),
-          importBatches: S.optional(__S(3042, __c95, 2)),
+          importBatches: S.optional(__S(3074, __c96, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeImportTaskBatchesResponse" });
   }
 }
-function __c96(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8833,45 +8870,45 @@ function __c96(j: number): any {
           importSourceArn: S.optional(S.String),
           importStatus: S.optional(S.String),
           importDestinationArn: S.optional(S.String),
-          importStatistics: S.optional(__S(1408, __c44, 0)),
-          importFilter: S.optional(__S(1696, __c53, 0)),
+          importStatistics: S.optional(__S(1440, __c45, 0)),
+          importFilter: S.optional(__S(1728, __c54, 0)),
           creationTime: S.optional(S.Number),
           lastUpdatedTime: S.optional(S.Number),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Import" });
     case 2:
-      return S.Array(__S(3073, __c96, 1));
+      return S.Array(__S(3105, __c97, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          imports: S.optional(__S(3074, __c96, 2)),
+          imports: S.optional(__S(3106, __c97, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeImportTasksResponse" });
   }
 }
-function __c97(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logGroupIdentifiers: __S(1504, __c47, 0),
+          logGroupIdentifiers: __S(1536, __c48, 0),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeIndexPoliciesRequest" });
     case 1:
-      return S.Array(__S(3136, __c98, 0));
+      return S.Array(__S(3168, __c99, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          indexPolicies: S.optional(__S(3105, __c97, 1)),
+          indexPolicies: S.optional(__S(3137, __c98, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeIndexPoliciesResponse" });
   }
 }
-function __c98(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8885,19 +8922,19 @@ function __c98(j: number): any {
       ).annotate({ identifier: "IndexPolicy" });
   }
 }
-function __c99(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIdentifiers: S.optional(__S(1504, __c47, 0)),
+          accountIdentifiers: S.optional(__S(1536, __c48, 0)),
           logGroupNamePrefix: S.optional(S.String),
           logGroupNamePattern: S.optional(S.String),
           nextToken: S.optional(S.String),
           limit: S.optional(S.Number),
           includeLinkedAccounts: S.optional(S.Boolean),
           logGroupClass: S.optional(S.String),
-          logGroupIdentifiers: S.optional(__S(1504, __c47, 0)),
+          logGroupIdentifiers: S.optional(__S(1536, __c48, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeLogGroupsRequest" });
     case 1:
@@ -8911,7 +8948,7 @@ function __c99(j: number): any {
           storedBytes: S.optional(S.Number),
           kmsKeyId: S.optional(S.String),
           dataProtectionStatus: S.optional(S.String),
-          inheritedProperties: S.optional(__S(2720, __c85, 0)),
+          inheritedProperties: S.optional(__S(2752, __c86, 0)),
           logGroupClass: S.optional(S.String),
           logGroupArn: S.optional(S.String),
           deletionProtectionEnabled: S.optional(S.Boolean),
@@ -8919,17 +8956,17 @@ function __c99(j: number): any {
         }),
       ).annotate({ identifier: "LogGroup" });
     case 2:
-      return S.Array(__S(3169, __c99, 1));
+      return S.Array(__S(3201, __c100, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          logGroups: S.optional(__S(3170, __c99, 2)),
+          logGroups: S.optional(__S(3202, __c100, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeLogGroupsResponse" });
   }
 }
-function __c100(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8957,17 +8994,17 @@ function __c100(j: number): any {
         }),
       ).annotate({ identifier: "LogStream" });
     case 2:
-      return S.Array(__S(3201, __c100, 1));
+      return S.Array(__S(3233, __c101, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          logStreams: S.optional(__S(3202, __c100, 2)),
+          logStreams: S.optional(__S(3234, __c101, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeLogStreamsResponse" });
   }
 }
-function __c101(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8983,7 +9020,7 @@ function __c101(j: number): any {
           lookupTableArn: S.optional(S.String),
           lookupTableName: S.optional(S.String),
           description: S.optional(S.String),
-          tableFields: S.optional(__S(1504, __c47, 0)),
+          tableFields: S.optional(__S(1536, __c48, 0)),
           recordsCount: S.optional(S.Number),
           sizeBytes: S.optional(S.Number),
           lastUpdatedTime: S.optional(S.Number),
@@ -8991,17 +9028,17 @@ function __c101(j: number): any {
         }),
       ).annotate({ identifier: "LookupTable" });
     case 2:
-      return S.Array(__S(3233, __c101, 1));
+      return S.Array(__S(3265, __c102, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          lookupTables: S.optional(__S(3234, __c101, 2)),
+          lookupTables: S.optional(__S(3266, __c102, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeLookupTablesResponse" });
   }
 }
-function __c102(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9019,26 +9056,26 @@ function __c102(j: number): any {
         S.Struct({
           filterName: S.optional(S.String),
           filterPattern: S.optional(S.String),
-          metricTransformations: S.optional(__S(3297, __c103, 1)),
+          metricTransformations: S.optional(__S(3329, __c104, 1)),
           creationTime: S.optional(S.Number),
           logGroupName: S.optional(S.String),
           applyOnTransformedLogs: S.optional(S.Boolean),
           fieldSelectionCriteria: S.optional(S.String),
-          emitSystemFieldDimensions: S.optional(__S(1504, __c47, 0)),
+          emitSystemFieldDimensions: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({ identifier: "MetricFilter" });
     case 2:
-      return S.Array(__S(3265, __c102, 1));
+      return S.Array(__S(3297, __c103, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metricFilters: S.optional(__S(3266, __c102, 2)),
+          metricFilters: S.optional(__S(3298, __c103, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeMetricFiltersResponse" });
   }
 }
-function __c103(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9047,15 +9084,15 @@ function __c103(j: number): any {
           metricNamespace: S.String,
           metricValue: S.String,
           defaultValue: S.optional(S.Number),
-          dimensions: S.optional(__S(1472, __c46, 0)),
+          dimensions: S.optional(__S(1504, __c47, 0)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricTransformation" });
     case 1:
-      return S.Array(__S(3296, __c103, 0));
+      return S.Array(__S(3328, __c104, 0));
   }
 }
-function __c104(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9082,17 +9119,17 @@ function __c104(j: number): any {
         }),
       ).annotate({ identifier: "QueryInfo" });
     case 2:
-      return S.Array(__S(3329, __c104, 1));
+      return S.Array(__S(3361, __c105, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          queries: S.optional(__S(3330, __c104, 2)),
+          queries: S.optional(__S(3362, __c105, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeQueriesResponse" });
   }
 }
-function __c105(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9111,22 +9148,22 @@ function __c105(j: number): any {
           name: S.optional(S.String),
           queryString: S.optional(S.String),
           lastModified: S.optional(S.Number),
-          logGroupNames: S.optional(__S(1504, __c47, 0)),
-          parameters: S.optional(__S(3393, __c106, 1)),
+          logGroupNames: S.optional(__S(1536, __c48, 0)),
+          parameters: S.optional(__S(3425, __c107, 1)),
         }),
       ).annotate({ identifier: "QueryDefinition" });
     case 2:
-      return S.Array(__S(3361, __c105, 1));
+      return S.Array(__S(3393, __c106, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          queryDefinitions: S.optional(__S(3362, __c105, 2)),
+          queryDefinitions: S.optional(__S(3394, __c106, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeQueryDefinitionsResponse" });
   }
 }
-function __c106(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9137,10 +9174,10 @@ function __c106(j: number): any {
         }),
       ).annotate({ identifier: "QueryParameter" });
     case 1:
-      return S.Array(__S(3392, __c106, 0));
+      return S.Array(__S(3424, __c107, 0));
   }
 }
-function __c107(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9152,17 +9189,17 @@ function __c107(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeResourcePoliciesRequest" });
     case 1:
-      return S.Array(__S(3456, __c108, 0));
+      return S.Array(__S(3488, __c109, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourcePolicies: S.optional(__S(3425, __c107, 1)),
+          resourcePolicies: S.optional(__S(3457, __c108, 1)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeResourcePoliciesResponse" });
   }
 }
-function __c108(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9177,7 +9214,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "ResourcePolicy" });
   }
 }
-function __c109(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9200,21 +9237,21 @@ function __c109(j: number): any {
           applyOnTransformedLogs: S.optional(S.Boolean),
           creationTime: S.optional(S.Number),
           fieldSelectionCriteria: S.optional(S.String),
-          emitSystemFields: S.optional(__S(1504, __c47, 0)),
+          emitSystemFields: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({ identifier: "SubscriptionFilter" });
     case 2:
-      return S.Array(__S(3489, __c109, 1));
+      return S.Array(__S(3521, __c110, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          subscriptionFilters: S.optional(__S(3490, __c109, 2)),
+          subscriptionFilters: S.optional(__S(3522, __c110, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeSubscriptionFiltersResponse" });
   }
 }
-function __c110(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9225,7 +9262,7 @@ function __c110(j: number): any {
       ).annotate({ identifier: "DisassociateKmsKeyRequest" });
   }
 }
-function __c111(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9235,14 +9272,14 @@ function __c111(j: number): any {
       ).annotate({ identifier: "DisassociateSourceFromS3TableIntegrationRequest" });
   }
 }
-function __c112(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           logGroupName: S.optional(S.String),
           logGroupIdentifier: S.optional(S.String),
-          logStreamNames: S.optional(__S(1504, __c47, 0)),
+          logStreamNames: S.optional(__S(1536, __c48, 0)),
           logStreamNamePrefix: S.optional(S.String),
           startTime: S.optional(S.Number),
           endTime: S.optional(S.Number),
@@ -9265,7 +9302,7 @@ function __c112(j: number): any {
         }),
       ).annotate({ identifier: "FilteredLogEvent" });
     case 2:
-      return S.Array(__S(3585, __c112, 1));
+      return S.Array(__S(3617, __c113, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -9274,18 +9311,18 @@ function __c112(j: number): any {
         }),
       ).annotate({ identifier: "SearchedLogStream" });
     case 4:
-      return S.Array(__S(3587, __c112, 3));
+      return S.Array(__S(3619, __c113, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(3586, __c112, 2)),
-          searchedLogStreams: S.optional(__S(3588, __c112, 4)),
+          events: S.optional(__S(3618, __c113, 2)),
+          searchedLogStreams: S.optional(__S(3620, __c113, 4)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "FilterLogEventsResponse" });
   }
 }
-function __c113(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9295,7 +9332,7 @@ function __c113(j: number): any {
       ).annotate({ identifier: "GetDataProtectionPolicyRequest" });
   }
 }
-function __c114(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9307,7 +9344,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "GetDataProtectionPolicyResponse" });
   }
 }
-function __c115(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9317,7 +9354,7 @@ function __c115(j: number): any {
       ).annotate({ identifier: "GetDeliveryRequest" });
   }
 }
-function __c116(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9327,15 +9364,15 @@ function __c116(j: number): any {
       ).annotate({ identifier: "GetDeliveryDestinationRequest" });
   }
 }
-function __c117(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ deliveryDestination: S.optional(__S(2817, __c88, 1)) }).pipe(ns),
+        S.Struct({ deliveryDestination: S.optional(__S(2849, __c89, 1)) }).pipe(ns),
       ).annotate({ identifier: "GetDeliveryDestinationResponse" });
   }
 }
-function __c118(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9345,7 +9382,7 @@ function __c118(j: number): any {
       ).annotate({ identifier: "GetDeliveryDestinationPolicyRequest" });
   }
 }
-function __c119(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9353,11 +9390,11 @@ function __c119(j: number): any {
       ).annotate({ identifier: "Policy" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ policy: S.optional(__S(3808, __c119, 0)) }).pipe(ns),
+        S.Struct({ policy: S.optional(__S(3840, __c120, 0)) }).pipe(ns),
       ).annotate({ identifier: "GetDeliveryDestinationPolicyResponse" });
   }
 }
-function __c120(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9367,15 +9404,15 @@ function __c120(j: number): any {
       ).annotate({ identifier: "GetDeliverySourceRequest" });
   }
 }
-function __c121(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ deliverySource: S.optional(__S(2880, __c90, 0)) }).pipe(ns),
+        S.Struct({ deliverySource: S.optional(__S(2912, __c91, 0)) }).pipe(ns),
       ).annotate({ identifier: "GetDeliverySourceResponse" });
   }
 }
-function __c122(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9391,7 +9428,7 @@ function __c122(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataSourceName: S.optional(S.String),
-          status: S.optional(__S(3905, __c122, 1)),
+          status: S.optional(__S(3937, __c123, 1)),
         }),
       ).annotate({ identifier: "OpenSearchDataSource" });
     case 3:
@@ -9400,7 +9437,7 @@ function __c122(j: number): any {
           applicationEndpoint: S.optional(S.String),
           applicationArn: S.optional(S.String),
           applicationId: S.optional(S.String),
-          status: S.optional(__S(3905, __c122, 1)),
+          status: S.optional(__S(3937, __c123, 1)),
         }),
       ).annotate({ identifier: "OpenSearchApplication" });
     case 4:
@@ -9408,33 +9445,33 @@ function __c122(j: number): any {
         S.Struct({
           collectionEndpoint: S.optional(S.String),
           collectionArn: S.optional(S.String),
-          status: S.optional(__S(3905, __c122, 1)),
+          status: S.optional(__S(3937, __c123, 1)),
         }),
       ).annotate({ identifier: "OpenSearchCollection" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ workspaceId: S.optional(S.String), status: S.optional(__S(3905, __c122, 1)) }),
+        S.Struct({ workspaceId: S.optional(S.String), status: S.optional(__S(3937, __c123, 1)) }),
       ).annotate({ identifier: "OpenSearchWorkspace" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ policyName: S.optional(S.String), status: S.optional(__S(3905, __c122, 1)) }),
+        S.Struct({ policyName: S.optional(S.String), status: S.optional(__S(3937, __c123, 1)) }),
       ).annotate({ identifier: "OpenSearchEncryptionPolicy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataSource: S.optional(__S(3906, __c122, 2)),
-          application: S.optional(__S(3907, __c122, 3)),
-          collection: S.optional(__S(3908, __c122, 4)),
-          workspace: S.optional(__S(3909, __c122, 5)),
-          encryptionPolicy: S.optional(__S(3910, __c122, 6)),
-          networkPolicy: S.optional(__S(3910, __c122, 6)),
-          accessPolicy: S.optional(__S(3910, __c122, 6)),
-          lifecyclePolicy: S.optional(__S(3910, __c122, 6)),
+          dataSource: S.optional(__S(3938, __c123, 2)),
+          application: S.optional(__S(3939, __c123, 3)),
+          collection: S.optional(__S(3940, __c123, 4)),
+          workspace: S.optional(__S(3941, __c123, 5)),
+          encryptionPolicy: S.optional(__S(3942, __c123, 6)),
+          networkPolicy: S.optional(__S(3942, __c123, 6)),
+          accessPolicy: S.optional(__S(3942, __c123, 6)),
+          lifecyclePolicy: S.optional(__S(3942, __c123, 6)),
         }),
       ).annotate({ identifier: "OpenSearchIntegrationDetails" });
     case 8:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ openSearchIntegrationDetails: __S(3911, __c122, 7) }),
+        /*@__PURE__*/ S.Struct({ openSearchIntegrationDetails: __S(3943, __c123, 7) }),
       ]);
     case 9:
       return S.suspend(() =>
@@ -9442,33 +9479,9 @@ function __c122(j: number): any {
           integrationName: S.optional(S.String),
           integrationType: S.optional(S.String),
           integrationStatus: S.optional(S.String),
-          integrationDetails: S.optional(__S(3912, __c122, 8)),
+          integrationDetails: S.optional(__S(3944, __c123, 8)),
         }).pipe(ns),
       ).annotate({ identifier: "GetIntegrationResponse" });
-  }
-}
-function __c123(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ anomalyDetectorArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetLogAnomalyDetectorRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          detectorName: S.optional(S.String),
-          logGroupArnList: S.optional(__S(1504, __c47, 0)),
-          evaluationFrequency: S.optional(S.String),
-          filterPattern: S.optional(S.String),
-          anomalyDetectorStatus: S.optional(S.String),
-          kmsKeyId: S.optional(S.String),
-          creationTimeStamp: S.optional(S.Number),
-          lastModifiedTimeStamp: S.optional(S.Number),
-          anomalyVisibilityTime: S.optional(S.Number),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetLogAnomalyDetectorResponse" });
   }
 }
 function __c124(j: number): any {
@@ -9484,6 +9497,30 @@ function __c124(j: number): any {
   }
 }
 function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ anomalyDetectorArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetLogAnomalyDetectorRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          detectorName: S.optional(S.String),
+          logGroupArnList: S.optional(__S(1536, __c48, 0)),
+          evaluationFrequency: S.optional(S.String),
+          filterPattern: S.optional(S.String),
+          anomalyDetectorStatus: S.optional(S.String),
+          kmsKeyId: S.optional(S.String),
+          creationTimeStamp: S.optional(S.Number),
+          lastModifiedTimeStamp: S.optional(S.Number),
+          anomalyVisibilityTime: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetLogAnomalyDetectorResponse" });
+  }
+}
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9508,18 +9545,18 @@ function __c125(j: number): any {
         }),
       ).annotate({ identifier: "OutputLogEvent" });
     case 2:
-      return S.Array(__S(4001, __c125, 1));
+      return S.Array(__S(4033, __c126, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(4002, __c125, 2)),
+          events: S.optional(__S(4034, __c126, 2)),
           nextForwardToken: S.optional(S.String),
           nextBackwardToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetLogEventsResponse" });
   }
 }
-function __c126(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9532,12 +9569,12 @@ function __c126(j: number): any {
         S.Struct({
           type: S.optional(S.String),
           element: S.optional(
-            S.suspend((): S.Schema<LogFieldType> => __S(4033, __c126, 1)).annotate({
+            S.suspend((): S.Schema<LogFieldType> => __S(4065, __c127, 1)).annotate({
               identifier: "LogFieldType",
             }),
           ),
           fields: S.optional(
-            S.suspend(() => __S(4035, __c126, 3)).annotate({ identifier: "LogFieldsList" }),
+            S.suspend(() => __S(4067, __c127, 3)).annotate({ identifier: "LogFieldsList" }),
           ),
         }),
       ).annotate({ identifier: "LogFieldType" });
@@ -9546,7 +9583,7 @@ function __c126(j: number): any {
         S.Struct({
           logFieldName: S.optional(S.String),
           logFieldType: S.optional(
-            S.suspend((): S.Schema<LogFieldType> => __S(4033, __c126, 1)).annotate({
+            S.suspend((): S.Schema<LogFieldType> => __S(4065, __c127, 1)).annotate({
               identifier: "LogFieldType",
             }),
           ),
@@ -9554,17 +9591,17 @@ function __c126(j: number): any {
       ).annotate({ identifier: "LogFieldsListItem" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<LogFieldsListItem> => __S(4034, __c126, 2)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<LogFieldsListItem> => __S(4066, __c127, 2)).annotate({
           identifier: "LogFieldsListItem",
         }),
       );
     case 4:
       return S.suspend(() =>
-        S.Struct({ logFields: S.optional(__S(4035, __c126, 3)) }).pipe(ns),
+        S.Struct({ logFields: S.optional(__S(4067, __c127, 3)) }).pipe(ns),
       ).annotate({ identifier: "GetLogFieldsResponse" });
   }
 }
-function __c127(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9579,14 +9616,14 @@ function __c127(j: number): any {
         S.Struct({ name: S.optional(S.String), percent: S.optional(S.Number) }),
       ).annotate({ identifier: "LogGroupField" });
     case 2:
-      return S.Array(__S(4065, __c127, 1));
+      return S.Array(__S(4097, __c128, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ logGroupFields: S.optional(__S(4066, __c127, 2)) }).pipe(ns),
+        S.Struct({ logGroupFields: S.optional(__S(4098, __c128, 2)) }).pipe(ns),
       ).annotate({ identifier: "GetLogGroupFieldsResponse" });
   }
 }
-function __c128(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9601,17 +9638,17 @@ function __c128(j: number): any {
     case 2:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ fields: __S(4097, __c128, 1) }),
-          /*@__PURE__*/ S.Struct({ InternalStreamingException: __S(4128, __c129, 0) }),
+          /*@__PURE__*/ S.Struct({ fields: __S(4129, __c129, 1) }),
+          /*@__PURE__*/ S.Struct({ InternalStreamingException: __S(4160, __c130, 0) }),
         ]),
       );
     case 3:
       return S.suspend(() =>
-        S.Struct({ fieldStream: S.optional(__S(4098, __c128, 2)) }).pipe(ns),
+        S.Struct({ fieldStream: S.optional(__S(4130, __c129, 2)) }).pipe(ns),
       ).annotate({ identifier: "GetLogObjectResponse" });
   }
 }
-function __c129(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
@@ -9619,7 +9656,7 @@ function __c129(j: number): any {
       });
   }
 }
-function __c130(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9629,11 +9666,11 @@ function __c130(j: number): any {
       ).annotate({ identifier: "GetLogRecordRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ logRecord: S.optional(__S(1472, __c46, 0)) }).pipe(ns),
+        S.Struct({ logRecord: S.optional(__S(1504, __c47, 0)) }).pipe(ns),
       ).annotate({ identifier: "GetLogRecordResponse" });
   }
 }
-function __c131(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9655,7 +9692,7 @@ function __c131(j: number): any {
       ).annotate({ identifier: "GetLookupTableResponse" });
   }
 }
-function __c132(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9670,9 +9707,9 @@ function __c132(j: number): any {
         S.Struct({ field: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "ResultField" });
     case 2:
-      return S.Array(__S(4225, __c132, 1));
+      return S.Array(__S(4257, __c133, 1));
     case 3:
-      return S.Array(__S(4226, __c132, 2));
+      return S.Array(__S(4258, __c133, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9689,8 +9726,8 @@ function __c132(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queryLanguage: S.optional(S.String),
-          results: S.optional(__S(4227, __c132, 3)),
-          statistics: S.optional(__S(4228, __c132, 4)),
+          results: S.optional(__S(4259, __c133, 3)),
+          statistics: S.optional(__S(4260, __c133, 4)),
           status: S.optional(S.String),
           encryptionKey: S.optional(S.String),
           nextToken: S.optional(S.String),
@@ -9698,7 +9735,7 @@ function __c132(j: number): any {
       ).annotate({ identifier: "GetQueryResultsResponse" });
   }
 }
-function __c133(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9708,7 +9745,7 @@ function __c133(j: number): any {
       ).annotate({ identifier: "GetScheduledQueryRequest" });
   }
 }
-function __c134(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9718,12 +9755,12 @@ function __c134(j: number): any {
           description: S.optional(S.String),
           queryLanguage: S.optional(S.String),
           queryString: S.optional(S.String),
-          logGroupIdentifiers: S.optional(__S(1504, __c47, 0)),
+          logGroupIdentifiers: S.optional(__S(1536, __c48, 0)),
           scheduleExpression: S.optional(S.String),
           timezone: S.optional(S.String),
           startTimeOffset: S.optional(S.Number),
           endTimeOffset: S.optional(S.Number),
-          destinationConfiguration: S.optional(__S(1890, __c59, 2)),
+          destinationConfiguration: S.optional(__S(1922, __c60, 2)),
           state: S.optional(S.String),
           scheduleType: S.optional(S.String),
           lastTriggeredTime: S.optional(S.Number),
@@ -9737,7 +9774,7 @@ function __c134(j: number): any {
       ).annotate({ identifier: "GetScheduledQueryResponse" });
   }
 }
-function __c135(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9745,7 +9782,7 @@ function __c135(j: number): any {
           identifier: S.String,
           startTime: S.Number,
           endTime: S.Number,
-          executionStatuses: S.optional(__S(2720, __c85, 0)),
+          executionStatuses: S.optional(__S(2752, __c86, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -9761,7 +9798,7 @@ function __c135(j: number): any {
         }),
       ).annotate({ identifier: "ScheduledQueryDestination" });
     case 2:
-      return S.Array(__S(4321, __c135, 1));
+      return S.Array(__S(4353, __c136, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -9769,23 +9806,23 @@ function __c135(j: number): any {
           executionStatus: S.optional(S.String),
           triggeredTimestamp: S.optional(S.Number),
           errorMessage: S.optional(S.String),
-          destinations: S.optional(__S(4322, __c135, 2)),
+          destinations: S.optional(__S(4354, __c136, 2)),
         }),
       ).annotate({ identifier: "TriggerHistoryRecord" });
     case 4:
-      return S.Array(__S(4323, __c135, 3));
+      return S.Array(__S(4355, __c136, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           scheduledQueryArn: S.optional(S.String),
-          triggerHistory: S.optional(__S(4324, __c135, 4)),
+          triggerHistory: S.optional(__S(4356, __c136, 4)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetScheduledQueryHistoryResponse" });
   }
 }
-function __c136(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9795,7 +9832,7 @@ function __c136(j: number): any {
       ).annotate({ identifier: "GetStorageTierPolicyRequest" });
   }
 }
-function __c137(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9805,7 +9842,7 @@ function __c137(j: number): any {
       ).annotate({ identifier: "GetStorageTierPolicyResponse" });
   }
 }
-function __c138(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9819,21 +9856,21 @@ function __c138(j: number): any {
           logGroupIdentifier: S.optional(S.String),
           creationTime: S.optional(S.Number),
           lastModifiedTime: S.optional(S.Number),
-          transformerConfig: S.optional(__S(4476, __c139, 28)),
+          transformerConfig: S.optional(__S(4508, __c140, 28)),
         }).pipe(ns),
       ).annotate({ identifier: "GetTransformerResponse" });
   }
 }
-function __c139(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ key: S.String, value: S.String, overwriteIfExists: S.optional(S.Boolean) }),
       ).annotate({ identifier: "AddKeyEntry" });
     case 1:
-      return S.Array(__S(4448, __c139, 0));
+      return S.Array(__S(4480, __c140, 0));
     case 2:
-      return S.suspend(() => S.Struct({ entries: __S(4449, __c139, 1) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(4481, __c140, 1) })).annotate({
         identifier: "AddKeys",
       });
     case 3:
@@ -9841,9 +9878,9 @@ function __c139(j: number): any {
         S.Struct({ source: S.String, target: S.String, overwriteIfExists: S.optional(S.Boolean) }),
       ).annotate({ identifier: "CopyValueEntry" });
     case 4:
-      return S.Array(__S(4451, __c139, 3));
+      return S.Array(__S(4483, __c140, 3));
     case 5:
-      return S.suspend(() => S.Struct({ entries: __S(4452, __c139, 4) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(4484, __c140, 4) })).annotate({
         identifier: "CopyValue",
       });
     case 6:
@@ -9851,7 +9888,7 @@ function __c139(j: number): any {
         S.Struct({
           quoteCharacter: S.optional(S.String),
           delimiter: S.optional(S.String),
-          columns: S.optional(__S(1504, __c47, 0)),
+          columns: S.optional(__S(1536, __c48, 0)),
           source: S.optional(S.String),
           destination: S.optional(S.String),
         }),
@@ -9862,14 +9899,14 @@ function __c139(j: number): any {
           source: S.String,
           target: S.String,
           targetFormat: S.optional(S.String),
-          matchPatterns: __S(1504, __c47, 0),
+          matchPatterns: __S(1536, __c48, 0),
           sourceTimezone: S.optional(S.String),
           targetTimezone: S.optional(S.String),
           locale: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateTimeConverter" });
     case 8:
-      return S.suspend(() => S.Struct({ withKeys: __S(1504, __c47, 0) })).annotate({
+      return S.suspend(() => S.Struct({ withKeys: __S(1536, __c48, 0) })).annotate({
         identifier: "DeleteKeys",
       });
     case 9:
@@ -9921,9 +9958,9 @@ function __c139(j: number): any {
         S.Struct({ key: S.String, renameTo: S.String, overwriteIfExists: S.optional(S.Boolean) }),
       ).annotate({ identifier: "RenameKeyEntry" });
     case 16:
-      return S.Array(__S(4463, __c139, 15));
+      return S.Array(__S(4495, __c140, 15));
     case 17:
-      return S.suspend(() => S.Struct({ entries: __S(4464, __c139, 16) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(4496, __c140, 16) })).annotate({
         identifier: "RenameKeys",
       });
     case 18:
@@ -9931,9 +9968,9 @@ function __c139(j: number): any {
         identifier: "SplitStringEntry",
       });
     case 19:
-      return S.Array(__S(4466, __c139, 18));
+      return S.Array(__S(4498, __c140, 18));
     case 20:
-      return S.suspend(() => S.Struct({ entries: __S(4467, __c139, 19) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(4499, __c140, 19) })).annotate({
         identifier: "SplitString",
       });
     case 21:
@@ -9941,9 +9978,9 @@ function __c139(j: number): any {
         { identifier: "SubstituteStringEntry" },
       );
     case 22:
-      return S.Array(__S(4469, __c139, 21));
+      return S.Array(__S(4501, __c140, 21));
     case 23:
-      return S.suspend(() => S.Struct({ entries: __S(4470, __c139, 22) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(4502, __c140, 22) })).annotate({
         identifier: "SubstituteString",
       });
     case 24:
@@ -9951,53 +9988,53 @@ function __c139(j: number): any {
         identifier: "TypeConverterEntry",
       });
     case 25:
-      return S.Array(__S(4472, __c139, 24));
+      return S.Array(__S(4504, __c140, 24));
     case 26:
-      return S.suspend(() => S.Struct({ entries: __S(4473, __c139, 25) })).annotate({
+      return S.suspend(() => S.Struct({ entries: __S(4505, __c140, 25) })).annotate({
         identifier: "TypeConverter",
       });
     case 27:
       return S.suspend(() =>
         S.Struct({
-          addKeys: S.optional(__S(4450, __c139, 2)),
-          copyValue: S.optional(__S(4453, __c139, 5)),
-          csv: S.optional(__S(4454, __c139, 6)),
-          dateTimeConverter: S.optional(__S(4455, __c139, 7)),
-          deleteKeys: S.optional(__S(4456, __c139, 8)),
-          grok: S.optional(__S(4457, __c139, 9)),
-          listToMap: S.optional(__S(4458, __c139, 10)),
-          lowerCaseString: S.optional(__S(4456, __c139, 8)),
-          moveKeys: S.optional(__S(4453, __c139, 5)),
-          parseCloudfront: S.optional(__S(4459, __c139, 11)),
-          parseJSON: S.optional(__S(4460, __c139, 12)),
-          parseKeyValue: S.optional(__S(4461, __c139, 13)),
-          parseRoute53: S.optional(__S(4459, __c139, 11)),
-          parseToOCSF: S.optional(__S(4462, __c139, 14)),
-          parsePostgres: S.optional(__S(4459, __c139, 11)),
-          parseVPC: S.optional(__S(4459, __c139, 11)),
-          parseWAF: S.optional(__S(4459, __c139, 11)),
-          renameKeys: S.optional(__S(4465, __c139, 17)),
-          splitString: S.optional(__S(4468, __c139, 20)),
-          substituteString: S.optional(__S(4471, __c139, 23)),
-          trimString: S.optional(__S(4456, __c139, 8)),
-          typeConverter: S.optional(__S(4474, __c139, 26)),
-          upperCaseString: S.optional(__S(4456, __c139, 8)),
+          addKeys: S.optional(__S(4482, __c140, 2)),
+          copyValue: S.optional(__S(4485, __c140, 5)),
+          csv: S.optional(__S(4486, __c140, 6)),
+          dateTimeConverter: S.optional(__S(4487, __c140, 7)),
+          deleteKeys: S.optional(__S(4488, __c140, 8)),
+          grok: S.optional(__S(4489, __c140, 9)),
+          listToMap: S.optional(__S(4490, __c140, 10)),
+          lowerCaseString: S.optional(__S(4488, __c140, 8)),
+          moveKeys: S.optional(__S(4485, __c140, 5)),
+          parseCloudfront: S.optional(__S(4491, __c140, 11)),
+          parseJSON: S.optional(__S(4492, __c140, 12)),
+          parseKeyValue: S.optional(__S(4493, __c140, 13)),
+          parseRoute53: S.optional(__S(4491, __c140, 11)),
+          parseToOCSF: S.optional(__S(4494, __c140, 14)),
+          parsePostgres: S.optional(__S(4491, __c140, 11)),
+          parseVPC: S.optional(__S(4491, __c140, 11)),
+          parseWAF: S.optional(__S(4491, __c140, 11)),
+          renameKeys: S.optional(__S(4497, __c140, 17)),
+          splitString: S.optional(__S(4500, __c140, 20)),
+          substituteString: S.optional(__S(4503, __c140, 23)),
+          trimString: S.optional(__S(4488, __c140, 8)),
+          typeConverter: S.optional(__S(4506, __c140, 26)),
+          upperCaseString: S.optional(__S(4488, __c140, 8)),
         }),
       ).annotate({ identifier: "Processor" });
     case 28:
-      return S.Array(__S(4475, __c139, 27));
+      return S.Array(__S(4507, __c140, 27));
   }
 }
-function __c140(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIdentifiers: S.optional(__S(1504, __c47, 0)),
+          accountIdentifiers: S.optional(__S(1536, __c48, 0)),
           includeLinkedAccounts: S.optional(S.Boolean),
           logGroupClass: S.optional(S.String),
           logGroupNamePattern: S.optional(S.String),
-          dataSources: S.optional(__S(4512, __c141, 0)),
+          dataSources: S.optional(__S(4544, __c142, 0)),
           groupBy: S.String,
           nextToken: S.optional(S.String),
           limit: S.optional(S.Number),
@@ -10008,32 +10045,32 @@ function __c140(j: number): any {
         S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "GroupingIdentifier" });
     case 2:
-      return S.Array(__S(4481, __c140, 1));
+      return S.Array(__S(4513, __c141, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           logGroupCount: S.optional(S.Number),
-          groupingIdentifiers: S.optional(__S(4482, __c140, 2)),
+          groupingIdentifiers: S.optional(__S(4514, __c141, 2)),
         }),
       ).annotate({ identifier: "AggregateLogGroupSummary" });
     case 4:
-      return S.Array(__S(4483, __c140, 3));
+      return S.Array(__S(4515, __c141, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          aggregateLogGroupSummaries: S.optional(__S(4484, __c140, 4)),
+          aggregateLogGroupSummaries: S.optional(__S(4516, __c141, 4)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAggregateLogGroupSummariesResponse" });
   }
 }
-function __c141(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1312, __c41, 0));
+      return S.Array(__S(1344, __c42, 0));
   }
 }
-function __c142(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10051,19 +10088,19 @@ function __c142(j: number): any {
         S.Struct({ timestamp: S.optional(S.Number), message: S.optional(S.String) }),
       ).annotate({ identifier: "LogEvent" });
     case 3:
-      return S.Array(__S(4546, __c142, 2));
+      return S.Array(__S(4578, __c143, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           dynamicTokenPosition: S.optional(S.Number),
           isDynamic: S.optional(S.Boolean),
           tokenString: S.optional(S.String),
-          enumerations: S.optional(__S(4545, __c142, 1)),
+          enumerations: S.optional(__S(4577, __c143, 1)),
           inferredTokenName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatternToken" });
     case 5:
-      return S.Array(__S(4548, __c142, 4));
+      return S.Array(__S(4580, __c143, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10078,10 +10115,10 @@ function __c142(j: number): any {
           description: S.String,
           active: S.Boolean,
           state: S.String,
-          histogram: __S(4545, __c142, 1),
-          logSamples: __S(4547, __c142, 3),
-          patternTokens: __S(4549, __c142, 5),
-          logGroupArnList: __S(1504, __c47, 0),
+          histogram: __S(4577, __c143, 1),
+          logSamples: __S(4579, __c143, 3),
+          patternTokens: __S(4581, __c143, 5),
+          logGroupArnList: __S(1536, __c48, 0),
           suppressed: S.optional(S.Boolean),
           suppressedDate: S.optional(S.Number),
           suppressedUntil: S.optional(S.Number),
@@ -10089,17 +10126,17 @@ function __c142(j: number): any {
         }),
       ).annotate({ identifier: "Anomaly" });
     case 7:
-      return S.Array(__S(4550, __c142, 6));
+      return S.Array(__S(4582, __c143, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          anomalies: S.optional(__S(4551, __c142, 7)),
+          anomalies: S.optional(__S(4583, __c143, 7)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAnomaliesResponse" });
   }
 }
-function __c143(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10118,14 +10155,14 @@ function __c143(j: number): any {
         }),
       ).annotate({ identifier: "IntegrationSummary" });
     case 2:
-      return S.Array(__S(4577, __c143, 1));
+      return S.Array(__S(4609, __c144, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ integrationSummaries: S.optional(__S(4578, __c143, 2)) }).pipe(ns),
+        S.Struct({ integrationSummaries: S.optional(__S(4610, __c144, 2)) }).pipe(ns),
       ).annotate({ identifier: "ListIntegrationsResponse" });
   }
 }
-function __c144(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10140,7 +10177,7 @@ function __c144(j: number): any {
         S.Struct({
           anomalyDetectorArn: S.optional(S.String),
           detectorName: S.optional(S.String),
-          logGroupArnList: S.optional(__S(1504, __c47, 0)),
+          logGroupArnList: S.optional(__S(1536, __c48, 0)),
           evaluationFrequency: S.optional(S.String),
           filterPattern: S.optional(S.String),
           anomalyDetectorStatus: S.optional(S.String),
@@ -10151,36 +10188,36 @@ function __c144(j: number): any {
         }),
       ).annotate({ identifier: "AnomalyDetector" });
     case 2:
-      return S.Array(__S(4609, __c144, 1));
+      return S.Array(__S(4641, __c145, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          anomalyDetectors: S.optional(__S(4610, __c144, 2)),
+          anomalyDetectors: S.optional(__S(4642, __c145, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListLogAnomalyDetectorsResponse" });
   }
 }
-function __c145(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ key: S.String, values: S.optional(__S(1504, __c47, 0)) }),
+        S.Struct({ key: S.String, values: S.optional(__S(1536, __c48, 0)) }),
       ).annotate({ identifier: "TagFilter" });
     case 1:
-      return S.Array(__S(4640, __c145, 0));
+      return S.Array(__S(4672, __c146, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           logGroupNamePattern: S.optional(S.String),
           logGroupClass: S.optional(S.String),
           includeLinkedAccounts: S.optional(S.Boolean),
-          accountIdentifiers: S.optional(__S(1504, __c47, 0)),
+          accountIdentifiers: S.optional(__S(1536, __c48, 0)),
           nextToken: S.optional(S.String),
           limit: S.optional(S.Number),
-          dataSources: S.optional(__S(4512, __c141, 0)),
-          fieldIndexNames: S.optional(__S(1504, __c47, 0)),
-          logGroupTags: S.optional(__S(4641, __c145, 1)),
+          dataSources: S.optional(__S(4544, __c142, 0)),
+          fieldIndexNames: S.optional(__S(1536, __c48, 0)),
+          logGroupTags: S.optional(__S(4673, __c146, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListLogGroupsRequest" });
     case 3:
@@ -10192,17 +10229,17 @@ function __c145(j: number): any {
         }),
       ).annotate({ identifier: "LogGroupSummary" });
     case 4:
-      return S.Array(__S(4643, __c145, 3));
+      return S.Array(__S(4675, __c146, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logGroups: S.optional(__S(4644, __c145, 4)),
+          logGroups: S.optional(__S(4676, __c146, 4)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListLogGroupsResponse" });
   }
 }
-function __c146(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10215,13 +10252,13 @@ function __c146(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          logGroupIdentifiers: S.optional(__S(1504, __c47, 0)),
+          logGroupIdentifiers: S.optional(__S(1536, __c48, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListLogGroupsForQueryResponse" });
   }
 }
-function __c147(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10243,23 +10280,23 @@ function __c147(j: number): any {
           lastExecutionStatus: S.optional(S.String),
           scheduleExpression: S.optional(S.String),
           timezone: S.optional(S.String),
-          destinationConfiguration: S.optional(__S(1890, __c59, 2)),
+          destinationConfiguration: S.optional(__S(1922, __c60, 2)),
           creationTime: S.optional(S.Number),
           lastUpdatedTime: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ScheduledQuerySummary" });
     case 2:
-      return S.Array(__S(4705, __c147, 1));
+      return S.Array(__S(4737, __c148, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          scheduledQueries: S.optional(__S(4706, __c147, 2)),
+          scheduledQueries: S.optional(__S(4738, __c148, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "ListScheduledQueriesResponse" });
   }
 }
-function __c148(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10273,7 +10310,7 @@ function __c148(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
-          dataSource: S.optional(__S(1312, __c41, 0)),
+          dataSource: S.optional(__S(1344, __c42, 0)),
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
           createdTimeStamp: S.optional(S.Number),
@@ -10281,45 +10318,14 @@ function __c148(j: number): any {
         }),
       ).annotate({ identifier: "S3TableIntegrationSource" });
     case 2:
-      return S.Array(__S(4737, __c148, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sources: S.optional(__S(4738, __c148, 2)),
-          nextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListSourcesForS3TableIntegrationResponse" });
-  }
-}
-function __c149(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          logGroupIdentifier: S.optional(S.String),
-          vpcEndpointId: S.optional(S.String),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListSyslogConfigurationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          logGroupArn: S.optional(S.String),
-          sourceType: S.optional(S.String),
-          vpcEndpointId: S.optional(S.String),
-          createdAt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SyslogConfiguration" });
-    case 2:
       return S.Array(__S(4769, __c149, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          syslogConfigurations: S.optional(__S(4770, __c149, 2)),
+          sources: S.optional(__S(4770, __c149, 2)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
-      ).annotate({ identifier: "ListSyslogConfigurationsResponse" });
+      ).annotate({ identifier: "ListSourcesForS3TableIntegrationResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.
