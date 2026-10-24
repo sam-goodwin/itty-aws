@@ -1,0 +1,697 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.groupSettings#ListGroupSettingRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#ListGroupSettingRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#ListGroupSettingRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#ListGroupSettingRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.groupSettings#ListGroupSettingRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.groupSettings#ListGroupSettingRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.groupSettings#ListGroupSettingRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#GroupSetting": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of this group of settings, which comes from the associated template.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values": {
+          "target": "com.microsoft.graph.groupSettings#GroupSettingValuesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#SettingValue": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the setting (as defined by the groupSettingTemplate).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the setting.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#GroupSettingValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupSettings#SettingValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+      }
+    },
+    "com.microsoft.graph.groupSettings#ListGroupSettingResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupSettings#GroupSetting"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#ListGroupSettingResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.groupSettings#ListGroupSettingResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#ListGroupSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupSettings#ListGroupSettingRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupSettings#ListGroupSettingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/groupSettings",
+          "code": 200
+        },
+        "smithy.api#documentation": "List settings\n\nRetrieve a list of tenant-level or group-specific group settings objects.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.groupSettings#CreateGroupSettingRequestValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupSettings#SettingValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+      }
+    },
+    "com.microsoft.graph.groupSettings#CreateGroupSettingRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of this group of settings, which comes from the associated template.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values": {
+          "target": "com.microsoft.graph.groupSettings#CreateGroupSettingRequestValuesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#CreateGroupSettingResponseValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupSettings#SettingValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+      }
+    },
+    "com.microsoft.graph.groupSettings#CreateGroupSettingResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of this group of settings, which comes from the associated template.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values": {
+          "target": "com.microsoft.graph.groupSettings#CreateGroupSettingResponseValuesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#CreateGroupSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupSettings#CreateGroupSettingRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupSettings#CreateGroupSettingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/groupSettings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create settings\n\nCreate a new group setting based on the templates available in groupSettingTemplates. These settings can be at the tenant-level or at the group level. The following group setting templates are available for groups:"
+      }
+    },
+    "com.microsoft.graph.groupSettings#GetGroupSettingRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#GetGroupSettingRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupSettings#GetGroupSettingRequest": {
+      "type": "structure",
+      "members": {
+        "groupSettingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupSetting"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.groupSettings#GetGroupSettingRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.groupSettings#GetGroupSettingRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#GetGroupSettingResponseValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupSettings#SettingValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+      }
+    },
+    "com.microsoft.graph.groupSettings#GetGroupSettingResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of this group of settings, which comes from the associated template.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values": {
+          "target": "com.microsoft.graph.groupSettings#GetGroupSettingResponseValuesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#GetGroupSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupSettings#GetGroupSettingRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupSettings#GetGroupSettingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/groupSettings/{groupSettingId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get groupSetting\n\nRetrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting."
+      }
+    },
+    "com.microsoft.graph.groupSettings#UpdateGroupSettingRequestValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupSettings#SettingValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+      }
+    },
+    "com.microsoft.graph.groupSettings#UpdateGroupSettingRequest": {
+      "type": "structure",
+      "members": {
+        "groupSettingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupSetting"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of this group of settings, which comes from the associated template.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values": {
+          "target": "com.microsoft.graph.groupSettings#UpdateGroupSettingRequestValuesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#UpdateGroupSettingResponseValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupSettings#SettingValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+      }
+    },
+    "com.microsoft.graph.groupSettings#UpdateGroupSettingResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of this group of settings, which comes from the associated template.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "values": {
+          "target": "com.microsoft.graph.groupSettings#UpdateGroupSettingResponseValuesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#UpdateGroupSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupSettings#UpdateGroupSettingRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupSettings#UpdateGroupSettingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/groupSettings/{groupSettingId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update groupSetting\n\nUpdate the properties of a groupSetting object for tenant-wide group settings or a specific group setting."
+      }
+    },
+    "com.microsoft.graph.groupSettings#DeleteGroupSettingRequest": {
+      "type": "structure",
+      "members": {
+        "groupSettingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupSetting"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#DeleteGroupSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupSettings#DeleteGroupSettingRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/groupSettings/{groupSettingId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a group setting\n\nDelete a tenant-level or group-specific groupSetting object."
+      }
+    },
+    "com.microsoft.graph.groupSettings#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupSettings#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupSettings#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/groupSettings/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.groupSettings#GroupSettings": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.groupSettings#ListGroupSetting"
+        },
+        {
+          "target": "com.microsoft.graph.groupSettings#CreateGroupSetting"
+        },
+        {
+          "target": "com.microsoft.graph.groupSettings#GetGroupSetting"
+        },
+        {
+          "target": "com.microsoft.graph.groupSettings#UpdateGroupSetting"
+        },
+        {
+          "target": "com.microsoft.graph.groupSettings#DeleteGroupSetting"
+        },
+        {
+          "target": "com.microsoft.graph.groupSettings#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

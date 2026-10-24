@@ -1,0 +1,342 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.eventgrid_data#PublishCustomEventEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_data#PublishCustomEventEventsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/",
+          "code": 200,
+          "host": "https://{topicHostname}",
+          "hostRaw": [
+            "topicHostname"
+          ],
+          "apiVersion": "2018-01-01"
+        },
+        "smithy.api#documentation": "Publishes a batch of events to an Azure Event Grid topic."
+      }
+    },
+    "com.azure.eventgrid_data#PublishCustomEventEventsRequest": {
+      "type": "structure",
+      "members": {
+        "topicHostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the topic, e.g. topic1.westus2-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "body": {
+          "target": "com.azure.eventgrid_data#PublishCustomEventEventsRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_data#PublishCustomEventEventsRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.eventgrid_data#PublishCloudEventEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_data#PublishCloudEventEventsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/",
+          "code": 200,
+          "host": "https://{topicHostname}",
+          "hostRaw": [
+            "topicHostname"
+          ],
+          "apiVersion": "2018-01-01"
+        },
+        "smithy.api#documentation": "Publishes a batch of events to an Azure Event Grid topic."
+      }
+    },
+    "com.azure.eventgrid_data#PublishCloudEventEventsRequest": {
+      "type": "structure",
+      "members": {
+        "topicHostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the topic, e.g. topic1.westus2-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "aegChannelName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "aeg-channel-name",
+            "smithy.api#documentation": "Required only when publishing to partner namespaces with partner topic routing mode ChannelNameHeader."
+          }
+        },
+        "body": {
+          "target": "com.azure.eventgrid_data#PublishCloudEventEventsRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_data#PublishCloudEventEventsRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_data#CloudEventEvent"
+      },
+      "traits": {}
+    },
+    "com.azure.eventgrid_data#CloudEventEvent": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier for the event. The combination of id and source must be unique for each distinct event.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the context in which an event happened. The combination of id and source must be unique for each distinct event.",
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Event data specific to the event type."
+          }
+        },
+        "data_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event data specific to the event type, encoded as a base64 string."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of event related to the originating occurrence.",
+            "smithy.api#required": {}
+          }
+        },
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time (in UTC) the event was generated, in RFC3339 format."
+          }
+        },
+        "specversion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the CloudEvents specification which the event uses.",
+            "smithy.api#required": {}
+          }
+        },
+        "dataschema": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the schema that data adheres to."
+          }
+        },
+        "datacontenttype": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content type of data value."
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This describes the subject of the event in the context of the event producer (identified by source)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an event published to an Event Grid topic using the CloudEvent 1.0 Schema",
+        "com.distilled.openapi#additionalProperties": {}
+      }
+    },
+    "com.azure.eventgrid_data#PublishEventGridEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_data#PublishEventGridEventsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/",
+          "code": 200,
+          "host": "https://{topicHostname}",
+          "hostRaw": [
+            "topicHostname"
+          ],
+          "apiVersion": "2018-01-01"
+        },
+        "smithy.api#documentation": "Publishes a batch of events to an Azure Event Grid topic."
+      }
+    },
+    "com.azure.eventgrid_data#PublishEventGridEventsRequest": {
+      "type": "structure",
+      "members": {
+        "topicHostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the topic, e.g. topic1.westus2-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "body": {
+          "target": "com.azure.eventgrid_data#PublishEventGridEventsRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_data#PublishEventGridEventsRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_data#EventGridEventInput"
+      },
+      "traits": {}
+    },
+    "com.azure.eventgrid_data#EventGridEventInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An unique identifier for the event.",
+            "smithy.api#required": {}
+          }
+        },
+        "topic": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource path of the event source."
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A resource path relative to the topic path.",
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Event data specific to the event type.",
+            "smithy.api#required": {}
+          }
+        },
+        "eventType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the event that occurred.",
+            "smithy.api#required": {}
+          }
+        },
+        "eventTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time (in UTC) the event was generated.",
+            "smithy.api#required": {}
+          }
+        },
+        "dataVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The schema version of the data object.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an event published to an Event Grid topic using the EventGrid Schema."
+      }
+    },
+    "com.azure.eventgrid_data#EventgridData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.eventgrid_data#PublishCustomEventEvents"
+        },
+        {
+          "target": "com.azure.eventgrid_data#PublishCloudEventEvents"
+        },
+        {
+          "target": "com.azure.eventgrid_data#PublishEventGridEvents"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure EventGrid data plane",
+        "smithy.api#documentation": "Azure eventgrid data plane — eventgrid/data-plane/EventGrid (latest stable api-version 2018-01-01).",
+        "com.azure.protocols#host": {
+          "template": "https://{topicHostname}",
+          "parameters": [
+            {
+              "name": "topicHostname",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://eventgrid.azure.net/.default"
+      }
+    }
+  }
+}

@@ -1,0 +1,4341 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.domains#ListDomainRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.domains#ListDomainRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#ListDomainRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#ListDomainRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#Domain": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Microsoft Entra ID performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. Not nullable.  To update this property in delegated scenarios, the calling app must be assigned the Domain-InternalFederation.ReadWrite.All permission."
+          }
+        },
+        "availabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isAdminManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable"
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable."
+          }
+        },
+        "isInitial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable"
+          }
+        },
+        "isRoot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable."
+          }
+        },
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain completed domain ownership verification. Not nullable."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordNotificationWindowInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordValidityPeriodInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.domains#DomainState",
+          "traits": {
+            "smithy.api#documentation": "Status of asynchronous operations scheduled for the domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedServices": {
+          "target": "com.microsoft.graph.domains#DomainSupportedServicesList",
+          "traits": {
+            "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#DomainState": {
+      "type": "structure",
+      "members": {
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp for when the last activity occurred. The value is updated when an operation is scheduled, the asynchronous task starts, and when the operation completes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "operation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of asynchronous operation. The values can be ForceDelete or Verification.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current status of the operation.  Scheduled - Operation is scheduled but hasn't started.  InProgress - Task is in progress.  Failed - The operation failed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#DomainSupportedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+      }
+    },
+    "com.microsoft.graph.domains#ListDomainResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.domains#Domain"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.domains#ListDomainResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#ListDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#ListDomainRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#ListDomainResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains",
+          "code": 200
+        },
+        "smithy.api#documentation": "List domains\n\nRetrieve a list of domain objects.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.domains#CreateDomainRequestSupportedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+      }
+    },
+    "com.microsoft.graph.domains#CreateDomainRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Microsoft Entra ID performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. Not nullable.  To update this property in delegated scenarios, the calling app must be assigned the Domain-InternalFederation.ReadWrite.All permission."
+          }
+        },
+        "availabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isAdminManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable"
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable."
+          }
+        },
+        "isInitial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable"
+          }
+        },
+        "isRoot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable."
+          }
+        },
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain completed domain ownership verification. Not nullable."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordNotificationWindowInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordValidityPeriodInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.domains#DomainState",
+          "traits": {
+            "smithy.api#documentation": "Status of asynchronous operations scheduled for the domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedServices": {
+          "target": "com.microsoft.graph.domains#CreateDomainRequestSupportedServicesList",
+          "traits": {
+            "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateDomainResponseSupportedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+      }
+    },
+    "com.microsoft.graph.domains#CreateDomainResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Microsoft Entra ID performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. Not nullable.  To update this property in delegated scenarios, the calling app must be assigned the Domain-InternalFederation.ReadWrite.All permission."
+          }
+        },
+        "availabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isAdminManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable"
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable."
+          }
+        },
+        "isInitial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable"
+          }
+        },
+        "isRoot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable."
+          }
+        },
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain completed domain ownership verification. Not nullable."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordNotificationWindowInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordValidityPeriodInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.domains#DomainState",
+          "traits": {
+            "smithy.api#documentation": "Status of asynchronous operations scheduled for the domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedServices": {
+          "target": "com.microsoft.graph.domains#CreateDomainResponseSupportedServicesList",
+          "traits": {
+            "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#CreateDomainRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#CreateDomainResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domains",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create domain\n\nAdds a domain to the tenant. Important: You cannot use an associated domain with your Microsoft Entra tenant until ownership is verified. See List verificationDnsRecords for details. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified."
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetDomainRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#GetDomainRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#GetDomainRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainResponseSupportedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Microsoft Entra ID performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. Not nullable.  To update this property in delegated scenarios, the calling app must be assigned the Domain-InternalFederation.ReadWrite.All permission."
+          }
+        },
+        "availabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isAdminManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable"
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable."
+          }
+        },
+        "isInitial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable"
+          }
+        },
+        "isRoot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable."
+          }
+        },
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain completed domain ownership verification. Not nullable."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordNotificationWindowInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordValidityPeriodInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.domains#DomainState",
+          "traits": {
+            "smithy.api#documentation": "Status of asynchronous operations scheduled for the domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedServices": {
+          "target": "com.microsoft.graph.domains#GetDomainResponseSupportedServicesList",
+          "traits": {
+            "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetDomainRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#GetDomainResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get domain\n\nRetrieve the properties and relationships of domain object."
+      }
+    },
+    "com.microsoft.graph.domains#UpdateDomainRequestSupportedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+      }
+    },
+    "com.microsoft.graph.domains#UpdateDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Microsoft Entra ID performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. Not nullable.  To update this property in delegated scenarios, the calling app must be assigned the Domain-InternalFederation.ReadWrite.All permission."
+          }
+        },
+        "availabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isAdminManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable"
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable."
+          }
+        },
+        "isInitial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable"
+          }
+        },
+        "isRoot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable."
+          }
+        },
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain completed domain ownership verification. Not nullable."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordNotificationWindowInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordValidityPeriodInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.domains#DomainState",
+          "traits": {
+            "smithy.api#documentation": "Status of asynchronous operations scheduled for the domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedServices": {
+          "target": "com.microsoft.graph.domains#UpdateDomainRequestSupportedServicesList",
+          "traits": {
+            "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateDomainResponseSupportedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+      }
+    },
+    "com.microsoft.graph.domains#UpdateDomainResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Microsoft Entra ID performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. Not nullable.  To update this property in delegated scenarios, the calling app must be assigned the Domain-InternalFederation.ReadWrite.All permission."
+          }
+        },
+        "availabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isAdminManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable"
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable."
+          }
+        },
+        "isInitial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable"
+          }
+        },
+        "isRoot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable."
+          }
+        },
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain completed domain ownership verification. Not nullable."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordNotificationWindowInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordValidityPeriodInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.domains#DomainState",
+          "traits": {
+            "smithy.api#documentation": "Status of asynchronous operations scheduled for the domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedServices": {
+          "target": "com.microsoft.graph.domains#UpdateDomainResponseSupportedServicesList",
+          "traits": {
+            "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#UpdateDomainRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#UpdateDomainResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/domains/{domainId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update domain\n\nUpdate the properties of domain object. Only verified domains can be updated."
+      }
+    },
+    "com.microsoft.graph.domains#DeleteDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#DeleteDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#DeleteDomainRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/domains/{domainId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete domain\n\nDelete a domain from a tenant."
+      }
+    },
+    "com.microsoft.graph.domains#ListDomainNameReferencesRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainNameReferencesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainNameReferencesRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainNameReferencesRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.domains#ListDomainNameReferencesRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#ListDomainNameReferencesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#ListDomainNameReferencesRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#DirectoryObject": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainNameReferencesResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.domains#DirectoryObject"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListDomainNameReferencesResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.domains#ListDomainNameReferencesResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#ListDomainNameReferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#ListDomainNameReferencesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#ListDomainNameReferencesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/domainNameReferences",
+          "code": 200
+        },
+        "smithy.api#documentation": "List domainNameReferences\n\nRetrieve a list of directoryObject with a reference to the domain. The returned list will contain all directory objects that have a dependency on the domain.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainNameReferencesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetDomainNameReferencesRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetDomainNameReferencesRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "directoryObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryObject"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#GetDomainNameReferencesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#GetDomainNameReferencesRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainNameReferencesResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainNameReferences": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetDomainNameReferencesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#GetDomainNameReferencesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/domainNameReferences/{directoryObjectId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get domainNameReferences from domains\n\nThe objects such as users and groups that reference the domain ID. Read-only, Nullable. Doesn't support $expand. Supports $filter by the OData type of objects returned. For example, /domains/{domainId}/domainNameReferences/microsoft.graph.user and /domains/{domainId}/domainNameReferences/microsoft.graph.group."
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainNameReferencesCountRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetDomainNameReferencesCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetDomainNameReferencesCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/domainNameReferences/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.domains#ListFederationConfigurationRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListFederationConfigurationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListFederationConfigurationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListFederationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.domains#ListFederationConfigurationRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#ListFederationConfigurationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#ListFederationConfigurationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#InternalDomainFederation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity provider.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "issuerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer URI of the federation server.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metadataExchangeUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the metadata exchange endpoint used for authentication from rich client applications.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passiveSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that web-based clients are directed to when signing in to Microsoft Entra services.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAuthenticationProtocol": {
+          "target": "com.microsoft.graph.domains#AuthenticationProtocol",
+          "traits": {
+            "smithy.api#documentation": "Preferred authentication protocol. The possible values are: wsFed, saml, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Microsoft Entra ID updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Microsoft Entra ID monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "activeSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "federatedIdpMfaBehavior": {
+          "target": "com.microsoft.graph.domains#FederatedIdpMfaBehavior",
+          "traits": {
+            "smithy.api#documentation": "Determines whether Microsoft Entra ID accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSignedAuthenticationRequestRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, when SAML authentication requests are sent to the federated SAML IdP, Microsoft Entra ID will sign those requests using the OrgID signing key. If false (default), the SAML authentication requests sent to the federated IdP aren't signed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextSigningCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fallback token signing certificate that can also be used to sign tokens, for example when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordResetUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "promptLoginBehavior": {
+          "target": "com.microsoft.graph.domains#PromptLoginBehavior",
+          "traits": {
+            "smithy.api#documentation": "Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificateUpdateStatus": {
+          "target": "com.microsoft.graph.domains#SigningCertificateUpdateStatus",
+          "traits": {
+            "smithy.api#documentation": "Provides status and timestamp of the last update of the signing certificate.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signOutUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "systemBrowserEnabledOn": {
+          "target": "com.microsoft.graph.domains#SystemBrowserEnabledOn"
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#AuthenticationProtocol": {
+      "type": "enum",
+      "members": {
+        "WSFED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wsFed"
+          }
+        },
+        "SAML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "saml"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#FederatedIdpMfaBehavior": {
+      "type": "enum",
+      "members": {
+        "ACCEPTIFMFADONEBYFEDERATEDIDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acceptIfMfaDoneByFederatedIdp"
+          }
+        },
+        "ENFORCEMFABYFEDERATEDIDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enforceMfaByFederatedIdp"
+          }
+        },
+        "REJECTMFABYFEDERATEDIDP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejectMfaByFederatedIdp"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#PromptLoginBehavior": {
+      "type": "enum",
+      "members": {
+        "TRANSLATETOFRESHPASSWORDAUTHENTICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "translateToFreshPasswordAuthentication"
+          }
+        },
+        "NATIVESUPPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nativeSupport"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#SigningCertificateUpdateStatus": {
+      "type": "structure",
+      "members": {
+        "certificateUpdateResult": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Status of the last certificate update. Read-only. For a list of statuses, see certificateUpdateResult status.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastRunDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time in ISO 8601 format and in UTC time when the certificate was last updated. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#SystemBrowserEnabledOn": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "IOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ios"
+          }
+        },
+        "ANDROID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "android"
+          }
+        },
+        "MAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mac"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linux"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListFederationConfigurationResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.domains#InternalDomainFederation"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListFederationConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.domains#ListFederationConfigurationResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#ListFederationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#ListFederationConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#ListFederationConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/federationConfiguration",
+          "code": 200
+        },
+        "smithy.api#documentation": "List internalDomainFederations\n\nRead the properties of the internalDomainFederation objects for the domain. This API returns only one object in the collection.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.domains#CreateFederationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity provider.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "issuerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer URI of the federation server.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metadataExchangeUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the metadata exchange endpoint used for authentication from rich client applications.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passiveSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that web-based clients are directed to when signing in to Microsoft Entra services.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAuthenticationProtocol": {
+          "target": "com.microsoft.graph.domains#AuthenticationProtocol",
+          "traits": {
+            "smithy.api#documentation": "Preferred authentication protocol. The possible values are: wsFed, saml, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Microsoft Entra ID updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Microsoft Entra ID monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "activeSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "federatedIdpMfaBehavior": {
+          "target": "com.microsoft.graph.domains#FederatedIdpMfaBehavior",
+          "traits": {
+            "smithy.api#documentation": "Determines whether Microsoft Entra ID accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSignedAuthenticationRequestRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, when SAML authentication requests are sent to the federated SAML IdP, Microsoft Entra ID will sign those requests using the OrgID signing key. If false (default), the SAML authentication requests sent to the federated IdP aren't signed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextSigningCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fallback token signing certificate that can also be used to sign tokens, for example when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordResetUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "promptLoginBehavior": {
+          "target": "com.microsoft.graph.domains#PromptLoginBehavior",
+          "traits": {
+            "smithy.api#documentation": "Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificateUpdateStatus": {
+          "target": "com.microsoft.graph.domains#SigningCertificateUpdateStatus",
+          "traits": {
+            "smithy.api#documentation": "Provides status and timestamp of the last update of the signing certificate.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signOutUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "systemBrowserEnabledOn": {
+          "target": "com.microsoft.graph.domains#SystemBrowserEnabledOn"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateFederationConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity provider.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "issuerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer URI of the federation server.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metadataExchangeUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the metadata exchange endpoint used for authentication from rich client applications.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passiveSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that web-based clients are directed to when signing in to Microsoft Entra services.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAuthenticationProtocol": {
+          "target": "com.microsoft.graph.domains#AuthenticationProtocol",
+          "traits": {
+            "smithy.api#documentation": "Preferred authentication protocol. The possible values are: wsFed, saml, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Microsoft Entra ID updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Microsoft Entra ID monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "activeSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "federatedIdpMfaBehavior": {
+          "target": "com.microsoft.graph.domains#FederatedIdpMfaBehavior",
+          "traits": {
+            "smithy.api#documentation": "Determines whether Microsoft Entra ID accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSignedAuthenticationRequestRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, when SAML authentication requests are sent to the federated SAML IdP, Microsoft Entra ID will sign those requests using the OrgID signing key. If false (default), the SAML authentication requests sent to the federated IdP aren't signed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextSigningCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fallback token signing certificate that can also be used to sign tokens, for example when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordResetUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "promptLoginBehavior": {
+          "target": "com.microsoft.graph.domains#PromptLoginBehavior",
+          "traits": {
+            "smithy.api#documentation": "Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificateUpdateStatus": {
+          "target": "com.microsoft.graph.domains#SigningCertificateUpdateStatus",
+          "traits": {
+            "smithy.api#documentation": "Provides status and timestamp of the last update of the signing certificate.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signOutUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "systemBrowserEnabledOn": {
+          "target": "com.microsoft.graph.domains#SystemBrowserEnabledOn"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateFederationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#CreateFederationConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#CreateFederationConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domains/{domainId}/federationConfiguration",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create internalDomainFederation\n\nCreate a new internalDomainFederation object."
+      }
+    },
+    "com.microsoft.graph.domains#GetFederationConfigurationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetFederationConfigurationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetFederationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "internalDomainFederationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of internalDomainFederation"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#GetFederationConfigurationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#GetFederationConfigurationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetFederationConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity provider.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "issuerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer URI of the federation server.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metadataExchangeUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the metadata exchange endpoint used for authentication from rich client applications.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passiveSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that web-based clients are directed to when signing in to Microsoft Entra services.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAuthenticationProtocol": {
+          "target": "com.microsoft.graph.domains#AuthenticationProtocol",
+          "traits": {
+            "smithy.api#documentation": "Preferred authentication protocol. The possible values are: wsFed, saml, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Microsoft Entra ID updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Microsoft Entra ID monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "activeSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "federatedIdpMfaBehavior": {
+          "target": "com.microsoft.graph.domains#FederatedIdpMfaBehavior",
+          "traits": {
+            "smithy.api#documentation": "Determines whether Microsoft Entra ID accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSignedAuthenticationRequestRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, when SAML authentication requests are sent to the federated SAML IdP, Microsoft Entra ID will sign those requests using the OrgID signing key. If false (default), the SAML authentication requests sent to the federated IdP aren't signed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextSigningCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fallback token signing certificate that can also be used to sign tokens, for example when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordResetUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "promptLoginBehavior": {
+          "target": "com.microsoft.graph.domains#PromptLoginBehavior",
+          "traits": {
+            "smithy.api#documentation": "Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificateUpdateStatus": {
+          "target": "com.microsoft.graph.domains#SigningCertificateUpdateStatus",
+          "traits": {
+            "smithy.api#documentation": "Provides status and timestamp of the last update of the signing certificate.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signOutUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "systemBrowserEnabledOn": {
+          "target": "com.microsoft.graph.domains#SystemBrowserEnabledOn"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetFederationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetFederationConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#GetFederationConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/federationConfiguration/{internalDomainFederationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get internalDomainFederation\n\nRead the properties and relationships of an internalDomainFederation object."
+      }
+    },
+    "com.microsoft.graph.domains#UpdateFederationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "internalDomainFederationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of internalDomainFederation"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity provider.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "issuerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer URI of the federation server.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metadataExchangeUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the metadata exchange endpoint used for authentication from rich client applications.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passiveSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that web-based clients are directed to when signing in to Microsoft Entra services.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAuthenticationProtocol": {
+          "target": "com.microsoft.graph.domains#AuthenticationProtocol",
+          "traits": {
+            "smithy.api#documentation": "Preferred authentication protocol. The possible values are: wsFed, saml, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Microsoft Entra ID updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Microsoft Entra ID monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "activeSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "federatedIdpMfaBehavior": {
+          "target": "com.microsoft.graph.domains#FederatedIdpMfaBehavior",
+          "traits": {
+            "smithy.api#documentation": "Determines whether Microsoft Entra ID accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSignedAuthenticationRequestRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, when SAML authentication requests are sent to the federated SAML IdP, Microsoft Entra ID will sign those requests using the OrgID signing key. If false (default), the SAML authentication requests sent to the federated IdP aren't signed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextSigningCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fallback token signing certificate that can also be used to sign tokens, for example when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordResetUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "promptLoginBehavior": {
+          "target": "com.microsoft.graph.domains#PromptLoginBehavior",
+          "traits": {
+            "smithy.api#documentation": "Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificateUpdateStatus": {
+          "target": "com.microsoft.graph.domains#SigningCertificateUpdateStatus",
+          "traits": {
+            "smithy.api#documentation": "Provides status and timestamp of the last update of the signing certificate.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signOutUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "systemBrowserEnabledOn": {
+          "target": "com.microsoft.graph.domains#SystemBrowserEnabledOn"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateFederationConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity provider.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "issuerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer URI of the federation server.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metadataExchangeUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the metadata exchange endpoint used for authentication from rich client applications.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passiveSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that web-based clients are directed to when signing in to Microsoft Entra services.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAuthenticationProtocol": {
+          "target": "com.microsoft.graph.domains#AuthenticationProtocol",
+          "traits": {
+            "smithy.api#documentation": "Preferred authentication protocol. The possible values are: wsFed, saml, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Microsoft Entra ID updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Microsoft Entra ID monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "activeSignInUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Microsoft Entra ID. Corresponds to the ActiveLogOnUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "federatedIdpMfaBehavior": {
+          "target": "com.microsoft.graph.domains#FederatedIdpMfaBehavior",
+          "traits": {
+            "smithy.api#documentation": "Determines whether Microsoft Entra ID accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSignedAuthenticationRequestRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, when SAML authentication requests are sent to the federated SAML IdP, Microsoft Entra ID will sign those requests using the OrgID signing key. If false (default), the SAML authentication requests sent to the federated IdP aren't signed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextSigningCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fallback token signing certificate that can also be used to sign tokens, for example when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordResetUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "promptLoginBehavior": {
+          "target": "com.microsoft.graph.domains#PromptLoginBehavior",
+          "traits": {
+            "smithy.api#documentation": "Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signingCertificateUpdateStatus": {
+          "target": "com.microsoft.graph.domains#SigningCertificateUpdateStatus",
+          "traits": {
+            "smithy.api#documentation": "Provides status and timestamp of the last update of the signing certificate.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signOutUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI that clients are redirected to when they sign out of Microsoft Entra services. Corresponds to the LogOffUri property of the Set-EntraDomainFederationSettings PowerShell cmdlet.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "systemBrowserEnabledOn": {
+          "target": "com.microsoft.graph.domains#SystemBrowserEnabledOn"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateFederationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#UpdateFederationConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#UpdateFederationConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/domains/{domainId}/federationConfiguration/{internalDomainFederationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update internalDomainFederation\n\nUpdate the properties of an internalDomainFederation object."
+      }
+    },
+    "com.microsoft.graph.domains#DeleteFederationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "internalDomainFederationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of internalDomainFederation"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#DeleteFederationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#DeleteFederationConfigurationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/domains/{domainId}/federationConfiguration/{internalDomainFederationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete internalDomainFederation\n\nDelete an internalDomainFederation object."
+      }
+    },
+    "com.microsoft.graph.domains#GetFederationConfigurationCountRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetFederationConfigurationCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetFederationConfigurationCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/federationConfiguration/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.domains#DeleteForceRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "disableUserAccounts": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#DeleteForce": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#DeleteForceRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domains/{domainId}/forceDelete",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action forceDelete\n\nDelete a domain using an asynchronous long-running operation. Before performing this operation, you must update or remove any references to Exchange as the provisioning service. The following actions are performed as part of this operation: After the domain deletion completes, API operations for the deleted domain return an HTTP 404 status code. To verify deletion of a domain, you can perform a get domain operation."
+      }
+    },
+    "com.microsoft.graph.domains#PromoteRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#PromoteResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#Promote": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#PromoteRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#PromoteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domains/{domainId}/promote",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action promote\n\nPromote a verified subdomain to the root domain. A verified domain has its isVerified property set to true."
+      }
+    },
+    "com.microsoft.graph.domains#VerifyRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#VerifyResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.microsoft.graph.domains#Domain",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#Verify": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#VerifyRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#VerifyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domains/{domainId}/verify",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action verify\n\nValidate the ownership of a domain. This operation only applies to an unverified domain. For an unverified domain, the isVerified property is false."
+      }
+    },
+    "com.microsoft.graph.domains#GetRootDomainRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetRootDomainRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetRootDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#GetRootDomainRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#GetRootDomainRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetRootDomainResponseSupportedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+      }
+    },
+    "com.microsoft.graph.domains#GetRootDomainResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Microsoft Entra ID performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. Not nullable.  To update this property in delegated scenarios, the calling app must be assigned the Domain-InternalFederation.ReadWrite.All permission."
+          }
+        },
+        "availabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isAdminManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value of the property is false if the DNS record management of the domain is delegated to Microsoft 365. Otherwise, the value is true. Not nullable"
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the default domain that is used for user creation. There's only one default domain per company. Not nullable."
+          }
+        },
+        "isInitial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this is the initial domain created by Microsoft Online Services (contoso.com). There's only one initial domain per company. Not nullable"
+          }
+        },
+        "isRoot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable."
+          }
+        },
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the domain completed domain ownership verification. Not nullable."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordNotificationWindowInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days before a user receives notification that their password expires. If the property isn't set, a default value of 14 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordValidityPeriodInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the length of time that a password is valid before it must be changed. If the property isn't set, a default value of 90 days is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.domains#DomainState",
+          "traits": {
+            "smithy.api#documentation": "Status of asynchronous operations scheduled for the domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedServices": {
+          "target": "com.microsoft.graph.domains#GetRootDomainResponseSupportedServicesList",
+          "traits": {
+            "smithy.api#documentation": "The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values that you can add or remove using the API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetRootDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetRootDomainRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#GetRootDomainResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/rootDomain",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get rootDomain\n\nGet the root domain of a subdomain. This API returns a single object."
+      }
+    },
+    "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#DomainDnsRecord": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListServiceConfigurationRecordsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.domains#DomainDnsRecord"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListServiceConfigurationRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.domains#ListServiceConfigurationRecordsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#ListServiceConfigurationRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#ListServiceConfigurationRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#ListServiceConfigurationRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/serviceConfigurationRecords",
+          "code": 200
+        },
+        "smithy.api#documentation": "List serviceConfigurationRecords\n\nRetrieves a list of domainDnsRecord objects needed to enable services for the domain. Use the returned list to add records to the zone file of the domain. This can be done through the domain registrar or DNS server configuration.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.domains#CreateServiceConfigurationRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateServiceConfigurationRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateServiceConfigurationRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#CreateServiceConfigurationRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#CreateServiceConfigurationRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domains/{domainId}/serviceConfigurationRecords",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to serviceConfigurationRecords for domains"
+      }
+    },
+    "com.microsoft.graph.domains#GetServiceConfigurationRecordsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetServiceConfigurationRecordsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetServiceConfigurationRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#GetServiceConfigurationRecordsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#GetServiceConfigurationRecordsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetServiceConfigurationRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetServiceConfigurationRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetServiceConfigurationRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#GetServiceConfigurationRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/serviceConfigurationRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get serviceConfigurationRecords from domains\n\nDNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Doesn't support $expand."
+      }
+    },
+    "com.microsoft.graph.domains#UpdateServiceConfigurationRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateServiceConfigurationRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateServiceConfigurationRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#UpdateServiceConfigurationRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#UpdateServiceConfigurationRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/domains/{domainId}/serviceConfigurationRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property serviceConfigurationRecords in domains"
+      }
+    },
+    "com.microsoft.graph.domains#DeleteServiceConfigurationRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#DeleteServiceConfigurationRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#DeleteServiceConfigurationRecordsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/domains/{domainId}/serviceConfigurationRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property serviceConfigurationRecords for domains"
+      }
+    },
+    "com.microsoft.graph.domains#GetServiceConfigurationRecordsCountRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetServiceConfigurationRecordsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetServiceConfigurationRecordsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/serviceConfigurationRecords/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.domains#ListVerificationDnsRecordsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListVerificationDnsRecordsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListVerificationDnsRecordsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListVerificationDnsRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.domains#ListVerificationDnsRecordsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#ListVerificationDnsRecordsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#ListVerificationDnsRecordsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#ListVerificationDnsRecordsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.domains#DomainDnsRecord"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#ListVerificationDnsRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.domains#ListVerificationDnsRecordsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#ListVerificationDnsRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#ListVerificationDnsRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#ListVerificationDnsRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/verificationDnsRecords",
+          "code": 200
+        },
+        "smithy.api#documentation": "List verificationDnsRecords\n\nRetrieve a list of domainDnsRecord objects. You cannot use an associated domain with your Microsoft Entra tenant until ownership is verified. To verify the ownership of the domain, retrieve the domain verification records and add the details to the zone file of the domain. This can be done through the domain registrar or DNS server configuration. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.domains#CreateVerificationDnsRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateVerificationDnsRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#CreateVerificationDnsRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#CreateVerificationDnsRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#CreateVerificationDnsRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domains/{domainId}/verificationDnsRecords",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to verificationDnsRecords for domains"
+      }
+    },
+    "com.microsoft.graph.domains#GetVerificationDnsRecordsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetVerificationDnsRecordsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domains#GetVerificationDnsRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domains#GetVerificationDnsRecordsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domains#GetVerificationDnsRecordsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetVerificationDnsRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetVerificationDnsRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetVerificationDnsRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#GetVerificationDnsRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/verificationDnsRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get verificationDnsRecords from domains\n\nDNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Microsoft Entra ID. Read-only, Nullable. Doesn't support $expand."
+      }
+    },
+    "com.microsoft.graph.domains#UpdateVerificationDnsRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateVerificationDnsRecordsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domains#UpdateVerificationDnsRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#UpdateVerificationDnsRecordsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domains#UpdateVerificationDnsRecordsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/domains/{domainId}/verificationDnsRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property verificationDnsRecords in domains"
+      }
+    },
+    "com.microsoft.graph.domains#DeleteVerificationDnsRecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#DeleteVerificationDnsRecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#DeleteVerificationDnsRecordsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/domains/{domainId}/verificationDnsRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property verificationDnsRecords for domains"
+      }
+    },
+    "com.microsoft.graph.domains#GetVerificationDnsRecordsCountRequest": {
+      "type": "structure",
+      "members": {
+        "domainId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domain"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetVerificationDnsRecordsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetVerificationDnsRecordsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/{domainId}/verificationDnsRecords/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.domains#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domains#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domains#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.domains#Domains": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.domains#ListDomain"
+        },
+        {
+          "target": "com.microsoft.graph.domains#CreateDomain"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetDomain"
+        },
+        {
+          "target": "com.microsoft.graph.domains#UpdateDomain"
+        },
+        {
+          "target": "com.microsoft.graph.domains#DeleteDomain"
+        },
+        {
+          "target": "com.microsoft.graph.domains#ListDomainNameReferences"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetDomainNameReferences"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetDomainNameReferencesCount"
+        },
+        {
+          "target": "com.microsoft.graph.domains#ListFederationConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.domains#CreateFederationConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetFederationConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.domains#UpdateFederationConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.domains#DeleteFederationConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetFederationConfigurationCount"
+        },
+        {
+          "target": "com.microsoft.graph.domains#DeleteForce"
+        },
+        {
+          "target": "com.microsoft.graph.domains#Promote"
+        },
+        {
+          "target": "com.microsoft.graph.domains#Verify"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetRootDomain"
+        },
+        {
+          "target": "com.microsoft.graph.domains#ListServiceConfigurationRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#CreateServiceConfigurationRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetServiceConfigurationRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#UpdateServiceConfigurationRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#DeleteServiceConfigurationRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetServiceConfigurationRecordsCount"
+        },
+        {
+          "target": "com.microsoft.graph.domains#ListVerificationDnsRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#CreateVerificationDnsRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetVerificationDnsRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#UpdateVerificationDnsRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#DeleteVerificationDnsRecords"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetVerificationDnsRecordsCount"
+        },
+        {
+          "target": "com.microsoft.graph.domains#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

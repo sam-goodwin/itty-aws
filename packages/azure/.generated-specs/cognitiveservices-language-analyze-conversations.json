@@ -1,0 +1,1087 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsCancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsCancelJobRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsCancelJobResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyze-conversations/jobs/{jobId}:cancel",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-01"
+        },
+        "smithy.api#documentation": "Cancel a long-running Text Analysis conversations job.\n\nCancel a long-running job for text analysis of conversations."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsCancelJobResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsCancelJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID to cancel."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsJobStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsJobStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/analyze-conversations/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-01"
+        },
+        "smithy.api#documentation": "Get analysis status and results\n\nGet the status of an analysis job. A job can consist of one or more tasks. After all tasks succeed, the job transitions to the succeeded state and results are available for each task."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationJobState": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "display name"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time job created",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time job expires"
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "job ID",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last updated date and time",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#State",
+          "traits": {
+            "smithy.api#documentation": "status",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "errors"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "next link"
+          }
+        },
+        "tasks": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#Tasks",
+          "traits": {
+            "smithy.api#documentation": "Contains the state for the tasks that are being executed as part of the submitted job for analyzing a conversation.",
+            "smithy.api#required": {}
+          }
+        },
+        "statistics": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#ConversationRequestStatistics",
+          "traits": {
+            "smithy.api#documentation": "Contains the statistics for the submitted job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the status of the submitted job for analyzing a conversation, along with related statistics."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#ConversationRequestStatistics": {
+      "type": "structure",
+      "members": {
+        "documentsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of documents submitted in the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "validDocumentsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of valid documents. This excludes empty, over-size limit or non-supported languages documents.",
+            "smithy.api#required": {}
+          }
+        },
+        "erroneousDocumentsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of invalid documents. This includes empty, over-size limit or non-supported languages documents.",
+            "smithy.api#required": {}
+          }
+        },
+        "transactionsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of transactions for the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "conversationsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of conversations submitted in the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "validConversationsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of conversation documents. This excludes documents that are empty, over the size limit, or in unsupported languages.",
+            "smithy.api#required": {}
+          }
+        },
+        "erroneousConversationsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of invalid documents. This includes documents that are empty, over the size limit, or in unsupported languages.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "if showStats=true was specified in the request, this field contains information about the request payload."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#Tasks": {
+      "type": "structure",
+      "members": {
+        "completed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of tasks that finished successfully.",
+            "smithy.api#required": {}
+          }
+        },
+        "failed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of tasks that failed.",
+            "smithy.api#required": {}
+          }
+        },
+        "inProgress": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of tasks that are currently in progress.",
+            "smithy.api#required": {}
+          }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total count of tasks submitted as part of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "items": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#TasksItemsList",
+          "traits": {
+            "smithy.api#documentation": "List of results from tasks (if available)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the state for the tasks that are being executed as part of the submitted job for analyzing a conversation."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#TasksItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationJobResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of results from tasks (if available)."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationJobResult": {
+      "type": "structure",
+      "members": {
+        "lastUpdateDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last updated time in UTC for the task.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#State",
+          "traits": {
+            "smithy.api#documentation": "The status of the task at the mentioned last update time.",
+            "smithy.api#required": {}
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "task name"
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationResultsKind",
+          "traits": {
+            "smithy.api#documentation": "discriminator kind",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container for results of all tasks in the conversation job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationResultsKind": {
+      "type": "enum",
+      "members": {
+        "CONVERSATIONALSUMMARIZATIONRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversationalSummarizationResults"
+          }
+        },
+        "CONVERSATIONALPIIRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "conversationalPIIResults"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumeration of results for supported conversation analysis Results."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#State": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "PARTIALLYCOMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "partiallyCompleted"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelling"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the task at the mentioned last update time."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#Error"
+      },
+      "traits": {
+        "smithy.api#documentation": "errors"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#Error": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#ErrorCode",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#ErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#InnerErrorModel",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#InnerErrorModel": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#InnerErrorCode",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#InnerErrorModelDetailsMap",
+          "traits": {
+            "smithy.api#documentation": "Error details."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error target."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#InnerErrorModel",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Microsoft One API guidelines - https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#InnerErrorModelDetailsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Error details."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#InnerErrorCode": {
+      "type": "enum",
+      "members": {
+        "INVALIDREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidRequest"
+          }
+        },
+        "INVALIDPARAMETERVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidParameterValue"
+          }
+        },
+        "KNOWLEDGEBASENOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KnowledgeBaseNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHTHROTTLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchThrottling"
+          }
+        },
+        "EXTRACTIONFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ExtractionFailure"
+          }
+        },
+        "INVALIDREQUESTBODYFORMAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidRequestBodyFormat"
+          }
+        },
+        "EMPTYREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EmptyRequest"
+          }
+        },
+        "MISSINGINPUTDOCUMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MissingInputDocuments"
+          }
+        },
+        "INVALIDDOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidDocument"
+          }
+        },
+        "MODELVERSIONINCORRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ModelVersionIncorrect"
+          }
+        },
+        "INVALIDDOCUMENTBATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidDocumentBatch"
+          }
+        },
+        "UNSUPPORTEDLANGUAGECODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnsupportedLanguageCode"
+          }
+        },
+        "INVALIDCOUNTRYHINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidCountryHint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Human-readable error code."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#ErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#Error"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#ErrorCode": {
+      "type": "enum",
+      "members": {
+        "INVALIDREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidRequest"
+          }
+        },
+        "INVALIDARGUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidArgument"
+          }
+        },
+        "UNAUTHORIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unauthorized"
+          }
+        },
+        "FORBIDDEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Forbidden"
+          }
+        },
+        "NOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotFound"
+          }
+        },
+        "PROJECTNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProjectNotFound"
+          }
+        },
+        "OPERATIONNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OperationNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHINDEXNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchIndexNotFound"
+          }
+        },
+        "TOOMANYREQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TooManyRequests"
+          }
+        },
+        "AZURECOGNITIVESEARCHTHROTTLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchThrottling"
+          }
+        },
+        "AZURECOGNITIVESEARCHINDEXLIMITREACHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchIndexLimitReached"
+          }
+        },
+        "INTERNALSERVERERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InternalServerError"
+          }
+        },
+        "SERVICEUNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServiceUnavailable"
+          }
+        },
+        "TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Timeout"
+          }
+        },
+        "QUOTAEXCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QuotaExceeded"
+          }
+        },
+        "CONFLICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Conflict"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Human-readable error code."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsJobStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "job ID"
+          }
+        },
+        "showStats": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "showStats",
+            "smithy.api#documentation": "(Optional) if set to true, response will contain request and document level statistics."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJobRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJobResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyze-conversations/jobs",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-01"
+        },
+        "smithy.api#documentation": "Analyzes the input conversation utterance."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJobResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the analysis job."
+          }
+        },
+        "analysisInput": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#MultiLanguageConversationAnalysisInput",
+          "traits": {
+            "smithy.api#documentation": "Analysis Input",
+            "smithy.api#required": {}
+          }
+        },
+        "tasks": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJobRequestTasksList",
+          "traits": {
+            "smithy.api#documentation": "Set of tasks to execute on the input conversation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJobRequestTasksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationLROTask"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of tasks to execute on the input conversation."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationLROTask": {
+      "type": "structure",
+      "members": {
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "task name"
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationLROTaskKind",
+          "traits": {
+            "smithy.api#documentation": "Enumeration of supported analysis tasks on a collection of conversations.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base class for a long-running conversation input task."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationLROTaskKind": {
+      "type": "enum",
+      "members": {
+        "CONVERSATIONALSUMMARIZATIONTASK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConversationalSummarizationTask"
+          }
+        },
+        "CONVERSATIONALPIITASK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConversationalPIITask"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumeration of supported analysis tasks on a collection of conversations."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#MultiLanguageConversationAnalysisInput": {
+      "type": "structure",
+      "members": {
+        "conversations": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#MultiLanguageConversationAnalysisInputConversationsList",
+          "traits": {
+            "smithy.api#documentation": "Array of conversation items",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Multi Language Conversation Analysis Input"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#MultiLanguageConversationAnalysisInputConversationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#Conversation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of conversation items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#Conversation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the conversation.",
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of the conversation item in BCP-47 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "modality": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#InputModality",
+          "traits": {
+            "smithy.api#documentation": "modality",
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#ConversationDomain",
+          "traits": {
+            "smithy.api#documentation": "domain"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Complete ordered set of utterances (spoken or written) by one or more speakers to be used for analysis."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#ConversationDomain": {
+      "type": "enum",
+      "members": {
+        "FINANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "finance"
+          }
+        },
+        "HEALTHCARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthcare"
+          }
+        },
+        "GENERIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generic"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumeration of supported conversational domains."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#InputModality": {
+      "type": "enum",
+      "members": {
+        "TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transcript"
+          }
+        },
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumeration of supported conversational modalities."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversations": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationTaskResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/:analyze-conversations",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-01"
+        },
+        "smithy.api#documentation": "Analyzes the input conversation utterance."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationTaskResult": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationTaskResultsKind",
+          "traits": {
+            "smithy.api#documentation": "The base class of a conversation input task result.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The base class of a conversation input task result."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationTaskResultsKind": {
+      "type": "enum",
+      "members": {
+        "CONVERSATIONRESULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConversationResult"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumeration of supported conversational task results."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationTaskKind",
+          "traits": {
+            "smithy.api#documentation": "The base class of a conversation input task.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationTaskKind": {
+      "type": "enum",
+      "members": {
+        "CONVERSATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Conversation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumeration of supported Conversation tasks."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_conversations#CognitiveservicesLanguageAnalyzeConversations": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsCancelJob"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsJobStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversationsSubmitJob"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_conversations#AnalyzeConversations"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure LanguageAnalyzeConversations data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/LanguageAnalyzeConversations (latest stable api-version 2024-11-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/language",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

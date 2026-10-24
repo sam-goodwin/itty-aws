@@ -1,0 +1,893 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#DataPolicyOperation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "completedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "progress": {
+          "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationProgress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the progress of an operation."
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "The possible values are: notStarted, running, complete, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL location to where data is being exported for export requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "submittedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id for the user on whom the operation is performed."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#ReferenceNumeric": {
+      "type": "enum",
+      "members": {
+        "INF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-INF"
+          }
+        },
+        "INF_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INF"
+          }
+        },
+        "NAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NaN"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationProgress": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the progress of an operation."
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperation"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/dataPolicyOperations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get dataPolicyOperation\n\nRetrieve the properties of a dataPolicyOperation object.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationRequestProgress": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the progress of an operation."
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "completedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "progress": {
+          "target": "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationRequestProgress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the progress of an operation."
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "The possible values are: notStarted, running, complete, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL location to where data is being exported for export requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "submittedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id for the user on whom the operation is performed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationResponseProgress": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the progress of an operation."
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "completedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "progress": {
+          "target": "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationResponseProgress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the progress of an operation."
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "The possible values are: notStarted, running, complete, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL location to where data is being exported for export requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "submittedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id for the user on whom the operation is performed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/dataPolicyOperations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to dataPolicyOperations"
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationRequest": {
+      "type": "structure",
+      "members": {
+        "dataPolicyOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of dataPolicyOperation"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationResponseProgress": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the progress of an operation."
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "completedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "progress": {
+          "target": "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationResponseProgress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the progress of an operation."
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "The possible values are: notStarted, running, complete, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL location to where data is being exported for export requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "submittedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id for the user on whom the operation is performed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/dataPolicyOperations/{dataPolicyOperationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get dataPolicyOperation\n\nRetrieve the properties of a dataPolicyOperation object."
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationRequestProgress": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the progress of an operation."
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationRequest": {
+      "type": "structure",
+      "members": {
+        "dataPolicyOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of dataPolicyOperation"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "completedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "progress": {
+          "target": "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationRequestProgress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the progress of an operation."
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "The possible values are: notStarted, running, complete, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL location to where data is being exported for export requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "submittedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id for the user on whom the operation is performed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationResponseProgress": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.dataPolicyOperations#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the progress of an operation."
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "completedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "progress": {
+          "target": "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationResponseProgress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the progress of an operation."
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.dataPolicyOperations#DataPolicyOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "The possible values are: notStarted, running, complete, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL location to where data is being exported for export requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "submittedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z"
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id for the user on whom the operation is performed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/dataPolicyOperations/{dataPolicyOperationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in dataPolicyOperations"
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#DeleteDataPolicyOperationRequest": {
+      "type": "structure",
+      "members": {
+        "dataPolicyOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of dataPolicyOperation"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#DeleteDataPolicyOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.dataPolicyOperations#DeleteDataPolicyOperationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/dataPolicyOperations/{dataPolicyOperationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from dataPolicyOperations"
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.dataPolicyOperations#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/dataPolicyOperations/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.dataPolicyOperations#DataPolicyOperations": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.dataPolicyOperations#ListDataPolicyOperation"
+        },
+        {
+          "target": "com.microsoft.graph.dataPolicyOperations#CreateDataPolicyOperation"
+        },
+        {
+          "target": "com.microsoft.graph.dataPolicyOperations#GetDataPolicyOperation"
+        },
+        {
+          "target": "com.microsoft.graph.dataPolicyOperations#UpdateDataPolicyOperation"
+        },
+        {
+          "target": "com.microsoft.graph.dataPolicyOperations#DeleteDataPolicyOperation"
+        },
+        {
+          "target": "com.microsoft.graph.dataPolicyOperations#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

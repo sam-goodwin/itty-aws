@@ -15,16 +15,82 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.vmwarecloudsimple#VirtualMachinesStop": "com.azure.vmwarecloudsimple#StopVirtualMachine",
+      "com.azure.vmwarecloudsimple#VirtualMachinesStopResponse": "com.azure.vmwarecloudsimple#StopVirtualMachineResponse",
+      "com.azure.vmwarecloudsimple#VirtualMachinesStopRequest": "com.azure.vmwarecloudsimple#StopVirtualMachineRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachinesStopRequestMode": "com.azure.vmwarecloudsimple#StopVirtualMachineRequestMode",
+      "com.azure.vmwarecloudsimple#VirtualMachinesStart": "com.azure.vmwarecloudsimple#StartVirtualMachine",
+      "com.azure.vmwarecloudsimple#VirtualMachinesStartResponse": "com.azure.vmwarecloudsimple#StartVirtualMachineResponse",
+      "com.azure.vmwarecloudsimple#VirtualMachinesStartRequest": "com.azure.vmwarecloudsimple#StartVirtualMachineRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachinesDelete": "com.azure.vmwarecloudsimple#DeleteVirtualMachine",
+      "com.azure.vmwarecloudsimple#VirtualMachinesDeleteResponse": "com.azure.vmwarecloudsimple#DeleteVirtualMachineResponse",
+      "com.azure.vmwarecloudsimple#VirtualMachinesDeleteRequest": "com.azure.vmwarecloudsimple#DeleteVirtualMachineRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachinesUpdate": "com.azure.vmwarecloudsimple#UpdateVirtualMachine",
+      "com.azure.vmwarecloudsimple#VirtualMachinesUpdateRequest": "com.azure.vmwarecloudsimple#UpdateVirtualMachineRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachinesGet": "com.azure.vmwarecloudsimple#GetVirtualMachine",
+      "com.azure.vmwarecloudsimple#VirtualMachinesGetRequest": "com.azure.vmwarecloudsimple#GetVirtualMachineRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachinesListByResourceGroup": "com.azure.vmwarecloudsimple#ListVirtualMachineByResourceGroup",
+      "com.azure.vmwarecloudsimple#VirtualMachinesListByResourceGroupRequest": "com.azure.vmwarecloudsimple#ListVirtualMachineByResourceGroupRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesDelete": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudService",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesDeleteRequest": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudServiceRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesUpdate": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudService",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesUpdateRequest": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudServiceRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesGet": "com.azure.vmwarecloudsimple#GetDedicatedCloudService",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesGetRequest": "com.azure.vmwarecloudsimple#GetDedicatedCloudServiceRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesListByResourceGroup": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceByResourceGroup",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesListByResourceGroupRequest": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceByResourceGroupRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesDelete": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudNode",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesDeleteRequest": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudNodeRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesUpdate": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudNode",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesUpdateRequest": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudNodeRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesGet": "com.azure.vmwarecloudsimple#GetDedicatedCloudNode",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesGetRequest": "com.azure.vmwarecloudsimple#GetDedicatedCloudNodeRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesListByResourceGroup": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeByResourceGroup",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesListByResourceGroupRequest": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeByResourceGroupRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachinesListBySubscription": "com.azure.vmwarecloudsimple#ListVirtualMachineBySubscription",
+      "com.azure.vmwarecloudsimple#VirtualMachinesListBySubscriptionRequest": "com.azure.vmwarecloudsimple#ListVirtualMachineBySubscriptionRequest",
+      "com.azure.vmwarecloudsimple#UsagesList": "com.azure.vmwarecloudsimple#ListUsages",
+      "com.azure.vmwarecloudsimple#UsagesListRequest": "com.azure.vmwarecloudsimple#ListUsagesRequest",
+      "com.azure.vmwarecloudsimple#VirtualNetworksGet": "com.azure.vmwarecloudsimple#GetVirtualNetwork",
+      "com.azure.vmwarecloudsimple#VirtualNetworksGetRequest": "com.azure.vmwarecloudsimple#GetVirtualNetworkRequest",
+      "com.azure.vmwarecloudsimple#VirtualNetworksList": "com.azure.vmwarecloudsimple#ListVirtualNetworks",
+      "com.azure.vmwarecloudsimple#VirtualNetworksListRequest": "com.azure.vmwarecloudsimple#ListVirtualNetworksRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachineTemplatesGet": "com.azure.vmwarecloudsimple#GetVirtualMachineTemplate",
+      "com.azure.vmwarecloudsimple#VirtualMachineTemplatesGetRequest": "com.azure.vmwarecloudsimple#GetVirtualMachineTemplateRequest",
+      "com.azure.vmwarecloudsimple#VirtualMachineTemplatesList": "com.azure.vmwarecloudsimple#ListVirtualMachineTemplates",
+      "com.azure.vmwarecloudsimple#VirtualMachineTemplatesListRequest": "com.azure.vmwarecloudsimple#ListVirtualMachineTemplatesRequest",
+      "com.azure.vmwarecloudsimple#ResourcePoolsGet": "com.azure.vmwarecloudsimple#GetResourcePool",
+      "com.azure.vmwarecloudsimple#ResourcePoolsGetRequest": "com.azure.vmwarecloudsimple#GetResourcePoolRequest",
+      "com.azure.vmwarecloudsimple#ResourcePoolsList": "com.azure.vmwarecloudsimple#ListResourcePools",
+      "com.azure.vmwarecloudsimple#ResourcePoolsListRequest": "com.azure.vmwarecloudsimple#ListResourcePoolsRequest",
+      "com.azure.vmwarecloudsimple#CustomizationPoliciesGet": "com.azure.vmwarecloudsimple#GetCustomizationPolicy",
+      "com.azure.vmwarecloudsimple#CustomizationPoliciesGetRequest": "com.azure.vmwarecloudsimple#GetCustomizationPolicyRequest",
+      "com.azure.vmwarecloudsimple#CustomizationPoliciesList": "com.azure.vmwarecloudsimple#ListCustomizationPolicies",
+      "com.azure.vmwarecloudsimple#CustomizationPoliciesListRequest": "com.azure.vmwarecloudsimple#ListCustomizationPoliciesRequest",
+      "com.azure.vmwarecloudsimple#PrivateCloudsGet": "com.azure.vmwarecloudsimple#GetPrivateCloud",
+      "com.azure.vmwarecloudsimple#PrivateCloudsGetRequest": "com.azure.vmwarecloudsimple#GetPrivateCloudRequest",
+      "com.azure.vmwarecloudsimple#PrivateCloudsList": "com.azure.vmwarecloudsimple#ListPrivateClouds",
+      "com.azure.vmwarecloudsimple#PrivateCloudsListRequest": "com.azure.vmwarecloudsimple#ListPrivateCloudsRequest",
+      "com.azure.vmwarecloudsimple#OperationsGet": "com.azure.vmwarecloudsimple#GetOperation",
+      "com.azure.vmwarecloudsimple#OperationsGetRequest": "com.azure.vmwarecloudsimple#GetOperationRequest",
+      "com.azure.vmwarecloudsimple#SkusAvailabilityList": "com.azure.vmwarecloudsimple#ListSkusAvailability",
+      "com.azure.vmwarecloudsimple#SkusAvailabilityListRequest": "com.azure.vmwarecloudsimple#ListSkusAvailabilityRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscription": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceBySubscription",
+      "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscriptionRequest": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceBySubscriptionRequest",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscription": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscription",
+      "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscriptionRequest": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscriptionRequest",
+      "com.azure.vmwarecloudsimple#OperationsList": "com.azure.vmwarecloudsimple#ListOperations"
+    }
   },
   "shapes": {
-    "com.azure.vmwarecloudsimple#StopVirtualMachine": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesStop": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#StopVirtualMachineRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesStopRequest"
       },
       "output": {
-        "target": "com.azure.vmwarecloudsimple#StopVirtualMachineResponse"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesStopResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +103,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#StopVirtualMachineResponse": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesStopResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -63,7 +129,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vmwarecloudsimple#StopVirtualMachineRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesStopRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -91,7 +157,7 @@
           }
         },
         "mode": {
-          "target": "com.azure.vmwarecloudsimple#StopVirtualMachineRequestMode",
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesStopRequestMode",
           "traits": {
             "smithy.api#httpQuery": "mode",
             "smithy.api#documentation": "query stop mode parameter (reboot, shutdown, etc...)"
@@ -102,7 +168,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#StopVirtualMachineRequestMode": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesStopRequestMode": {
       "type": "enum",
       "members": {
         "REBOOT": {
@@ -132,13 +198,13 @@
       },
       "traits": {}
     },
-    "com.azure.vmwarecloudsimple#StartVirtualMachine": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesStart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#StartVirtualMachineRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesStartRequest"
       },
       "output": {
-        "target": "com.azure.vmwarecloudsimple#StartVirtualMachineResponse"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesStartResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -151,7 +217,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#StartVirtualMachineResponse": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesStartResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -177,7 +243,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vmwarecloudsimple#StartVirtualMachineRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesStartRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -209,13 +275,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#DeleteVirtualMachine": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#DeleteVirtualMachineRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.vmwarecloudsimple#DeleteVirtualMachineResponse"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -228,7 +294,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#DeleteVirtualMachineResponse": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -254,7 +320,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vmwarecloudsimple#DeleteVirtualMachineRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -286,10 +352,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#UpdateVirtualMachine": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#UpdateVirtualMachineRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesUpdateRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualMachine"
@@ -1076,7 +1142,7 @@
         "smithy.api#documentation": "Virtual disk controller model"
       }
     },
-    "com.azure.vmwarecloudsimple#UpdateVirtualMachineRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1569,10 +1635,10 @@
         "smithy.api#documentation": "Disk's independence mode type"
       }
     },
-    "com.azure.vmwarecloudsimple#GetVirtualMachine": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetVirtualMachineRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualMachine"
@@ -1588,7 +1654,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#GetVirtualMachineRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1620,10 +1686,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualMachineByResourceGroup": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListVirtualMachineByResourceGroupRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualMachineListResponse"
@@ -1668,7 +1734,7 @@
         "smithy.api#documentation": "Results of the VirtualMachine list"
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualMachineByResourceGroupRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1713,10 +1779,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#DeleteDedicatedCloudService": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudServiceRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1732,7 +1798,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#DeleteDedicatedCloudServiceRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1764,10 +1830,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#UpdateDedicatedCloudService": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudServiceRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesUpdateRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudService"
@@ -1893,7 +1959,7 @@
         "smithy.api#documentation": "indicates whether account onboarded or not in a given region"
       }
     },
-    "com.azure.vmwarecloudsimple#UpdateDedicatedCloudServiceRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2016,10 +2082,10 @@
         "smithy.api#documentation": "Properties of dedicated cloud service"
       }
     },
-    "com.azure.vmwarecloudsimple#GetDedicatedCloudService": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetDedicatedCloudServiceRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudService"
@@ -2035,7 +2101,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#GetDedicatedCloudServiceRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2067,10 +2133,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceByResourceGroup": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceByResourceGroupRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudServiceListResponse"
@@ -2115,7 +2181,7 @@
         "smithy.api#documentation": "Results of the DedicatedCloudService list"
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceByResourceGroupRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2160,10 +2226,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#DeleteDedicatedCloudNode": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudNodeRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2179,7 +2245,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#DeleteDedicatedCloudNodeRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2211,10 +2277,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#UpdateDedicatedCloudNode": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudNodeRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesUpdateRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudNode"
@@ -2458,7 +2524,7 @@
         "smithy.api#documentation": "The purchase SKU for CloudSimple paid resources"
       }
     },
-    "com.azure.vmwarecloudsimple#UpdateDedicatedCloudNodeRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2684,10 +2750,10 @@
         "smithy.api#documentation": "Properties of dedicated cloud node"
       }
     },
-    "com.azure.vmwarecloudsimple#GetDedicatedCloudNode": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetDedicatedCloudNodeRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudNode"
@@ -2703,7 +2769,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#GetDedicatedCloudNodeRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2735,10 +2801,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeByResourceGroup": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeByResourceGroupRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodeListResponse"
@@ -2783,7 +2849,7 @@
         "smithy.api#documentation": "Results of the DedicatedCloudNode list"
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeByResourceGroupRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2828,10 +2894,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualMachineBySubscription": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListVirtualMachineBySubscriptionRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachinesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualMachineListResponse"
@@ -2847,7 +2913,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualMachineBySubscriptionRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachinesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2884,10 +2950,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListUsages": {
+    "com.azure.vmwarecloudsimple#UsagesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListUsagesRequest"
+        "target": "com.azure.vmwarecloudsimple#UsagesListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#UsageListResponse"
@@ -3030,7 +3096,7 @@
         "smithy.api#documentation": "User name model"
       }
     },
-    "com.azure.vmwarecloudsimple#ListUsagesRequest": {
+    "com.azure.vmwarecloudsimple#UsagesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3061,10 +3127,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#GetVirtualNetwork": {
+    "com.azure.vmwarecloudsimple#VirtualNetworksGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetVirtualNetworkRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualNetworksGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualNetwork"
@@ -3080,7 +3146,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#GetVirtualNetworkRequest": {
+    "com.azure.vmwarecloudsimple#VirtualNetworksGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3120,10 +3186,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualNetworks": {
+    "com.azure.vmwarecloudsimple#VirtualNetworksList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListVirtualNetworksRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualNetworksListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualNetworkListResponse"
@@ -3168,7 +3234,7 @@
         "smithy.api#documentation": "Results of the VirtualNetwork list"
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualNetworksRequest": {
+    "com.azure.vmwarecloudsimple#VirtualNetworksListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3208,10 +3274,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#GetVirtualMachineTemplate": {
+    "com.azure.vmwarecloudsimple#VirtualMachineTemplatesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetVirtualMachineTemplateRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachineTemplatesGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualMachineTemplate"
@@ -3403,7 +3469,7 @@
         "smithy.api#documentation": "The list of Virtual Disk Controllers"
       }
     },
-    "com.azure.vmwarecloudsimple#GetVirtualMachineTemplateRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachineTemplatesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3443,10 +3509,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualMachineTemplates": {
+    "com.azure.vmwarecloudsimple#VirtualMachineTemplatesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListVirtualMachineTemplatesRequest"
+        "target": "com.azure.vmwarecloudsimple#VirtualMachineTemplatesListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#VirtualMachineTemplateListResponse"
@@ -3491,7 +3557,7 @@
         "smithy.api#documentation": "Results of the VM template list"
       }
     },
-    "com.azure.vmwarecloudsimple#ListVirtualMachineTemplatesRequest": {
+    "com.azure.vmwarecloudsimple#VirtualMachineTemplatesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3531,10 +3597,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#GetResourcePool": {
+    "com.azure.vmwarecloudsimple#ResourcePoolsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetResourcePoolRequest"
+        "target": "com.azure.vmwarecloudsimple#ResourcePoolsGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#ResourcePool"
@@ -3550,7 +3616,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#GetResourcePoolRequest": {
+    "com.azure.vmwarecloudsimple#ResourcePoolsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3590,10 +3656,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListResourcePools": {
+    "com.azure.vmwarecloudsimple#ResourcePoolsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListResourcePoolsRequest"
+        "target": "com.azure.vmwarecloudsimple#ResourcePoolsListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#ResourcePoolsListResponse"
@@ -3638,7 +3704,7 @@
         "smithy.api#documentation": "Results of the Resource pools list"
       }
     },
-    "com.azure.vmwarecloudsimple#ListResourcePoolsRequest": {
+    "com.azure.vmwarecloudsimple#ResourcePoolsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3670,10 +3736,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#GetCustomizationPolicy": {
+    "com.azure.vmwarecloudsimple#CustomizationPoliciesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetCustomizationPolicyRequest"
+        "target": "com.azure.vmwarecloudsimple#CustomizationPoliciesGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#CustomizationPolicy"
@@ -4046,7 +4112,7 @@
         "smithy.api#documentation": "Type of host name"
       }
     },
-    "com.azure.vmwarecloudsimple#GetCustomizationPolicyRequest": {
+    "com.azure.vmwarecloudsimple#CustomizationPoliciesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4086,10 +4152,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListCustomizationPolicies": {
+    "com.azure.vmwarecloudsimple#CustomizationPoliciesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListCustomizationPoliciesRequest"
+        "target": "com.azure.vmwarecloudsimple#CustomizationPoliciesListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#CustomizationPoliciesListResponse"
@@ -4134,7 +4200,7 @@
         "smithy.api#documentation": "List of the customization policies"
       }
     },
-    "com.azure.vmwarecloudsimple#ListCustomizationPoliciesRequest": {
+    "com.azure.vmwarecloudsimple#CustomizationPoliciesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4173,10 +4239,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#GetPrivateCloud": {
+    "com.azure.vmwarecloudsimple#PrivateCloudsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetPrivateCloudRequest"
+        "target": "com.azure.vmwarecloudsimple#PrivateCloudsGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#PrivateCloud"
@@ -4432,7 +4498,7 @@
         "smithy.api#documentation": "Array of DNS servers"
       }
     },
-    "com.azure.vmwarecloudsimple#GetPrivateCloudRequest": {
+    "com.azure.vmwarecloudsimple#PrivateCloudsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4464,10 +4530,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListPrivateClouds": {
+    "com.azure.vmwarecloudsimple#PrivateCloudsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListPrivateCloudsRequest"
+        "target": "com.azure.vmwarecloudsimple#PrivateCloudsListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#PrivateCloudList"
@@ -4512,7 +4578,7 @@
         "smithy.api#documentation": "the list of private clouds"
       }
     },
-    "com.azure.vmwarecloudsimple#ListPrivateCloudsRequest": {
+    "com.azure.vmwarecloudsimple#PrivateCloudsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4536,10 +4602,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#GetOperation": {
+    "com.azure.vmwarecloudsimple#OperationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#GetOperationRequest"
+        "target": "com.azure.vmwarecloudsimple#OperationsGetRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#OperationResource"
@@ -4631,7 +4697,7 @@
         "smithy.api#documentation": "Operation error model"
       }
     },
-    "com.azure.vmwarecloudsimple#GetOperationRequest": {
+    "com.azure.vmwarecloudsimple#OperationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4663,10 +4729,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListSkusAvailability": {
+    "com.azure.vmwarecloudsimple#SkusAvailabilityList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListSkusAvailabilityRequest"
+        "target": "com.azure.vmwarecloudsimple#SkusAvailabilityListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#SkuAvailabilityListResponse"
@@ -4768,7 +4834,7 @@
         "smithy.api#documentation": "SKU availability model"
       }
     },
-    "com.azure.vmwarecloudsimple#ListSkusAvailabilityRequest": {
+    "com.azure.vmwarecloudsimple#SkusAvailabilityListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4799,10 +4865,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceBySubscription": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceBySubscriptionRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudServiceListResponse"
@@ -4818,7 +4884,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceBySubscriptionRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4855,10 +4921,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscription": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscriptionRequest"
+        "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodeListResponse"
@@ -4874,7 +4940,7 @@
         "com.distilled.openapi#apiVersion": "2019-04-01"
       }
     },
-    "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscriptionRequest": {
+    "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4911,7 +4977,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vmwarecloudsimple#ListOperations": {
+    "com.azure.vmwarecloudsimple#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -5160,106 +5226,106 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.vmwarecloudsimple#StopVirtualMachine"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesStop"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#StartVirtualMachine"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesStart"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#DeleteVirtualMachine"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesDelete"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#UpdateVirtualMachine"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesUpdate"
         },
         {
           "target": "com.azure.vmwarecloudsimple#VirtualMachinesCreateOrUpdate"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetVirtualMachine"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListVirtualMachineByResourceGroup"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesListByResourceGroup"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudService"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesDelete"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudService"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesUpdate"
         },
         {
           "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetDedicatedCloudService"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceByResourceGroup"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesListByResourceGroup"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#DeleteDedicatedCloudNode"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesDelete"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#UpdateDedicatedCloudNode"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesUpdate"
         },
         {
           "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesCreateOrUpdate"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetDedicatedCloudNode"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeByResourceGroup"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesListByResourceGroup"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListVirtualMachineBySubscription"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachinesListBySubscription"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListUsages"
+          "target": "com.azure.vmwarecloudsimple#UsagesList"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetVirtualNetwork"
+          "target": "com.azure.vmwarecloudsimple#VirtualNetworksGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListVirtualNetworks"
+          "target": "com.azure.vmwarecloudsimple#VirtualNetworksList"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetVirtualMachineTemplate"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachineTemplatesGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListVirtualMachineTemplates"
+          "target": "com.azure.vmwarecloudsimple#VirtualMachineTemplatesList"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetResourcePool"
+          "target": "com.azure.vmwarecloudsimple#ResourcePoolsGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListResourcePools"
+          "target": "com.azure.vmwarecloudsimple#ResourcePoolsList"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetCustomizationPolicy"
+          "target": "com.azure.vmwarecloudsimple#CustomizationPoliciesGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListCustomizationPolicies"
+          "target": "com.azure.vmwarecloudsimple#CustomizationPoliciesList"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetPrivateCloud"
+          "target": "com.azure.vmwarecloudsimple#PrivateCloudsGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListPrivateClouds"
+          "target": "com.azure.vmwarecloudsimple#PrivateCloudsList"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#GetOperation"
+          "target": "com.azure.vmwarecloudsimple#OperationsGet"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListSkusAvailability"
+          "target": "com.azure.vmwarecloudsimple#SkusAvailabilityList"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceBySubscription"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscription"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscription"
+          "target": "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscription"
         },
         {
-          "target": "com.azure.vmwarecloudsimple#ListOperations"
+          "target": "com.azure.vmwarecloudsimple#OperationsList"
         }
       ],
       "traits": {

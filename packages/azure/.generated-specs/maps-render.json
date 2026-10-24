@@ -1,0 +1,2044 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.maps_render#RenderGetMapTileset": "com.azure.maps_render#GetRenderMapTileset",
+      "com.azure.maps_render#RenderGetMapTilesetRequest": "com.azure.maps_render#GetRenderMapTilesetRequest",
+      "com.azure.maps_render#RenderGetMapTilesetRequestTilesetId": "com.azure.maps_render#GetRenderMapTilesetRequestTilesetId",
+      "com.azure.maps_render#RenderGetMapTile": "com.azure.maps_render#GetRenderMapTile",
+      "com.azure.maps_render#RenderGetMapTileResponse": "com.azure.maps_render#GetRenderMapTileResponse",
+      "com.azure.maps_render#RenderGetMapTileRequest": "com.azure.maps_render#GetRenderMapTileRequest",
+      "com.azure.maps_render#RenderGetMapTileRequestView": "com.azure.maps_render#GetRenderMapTileRequestView",
+      "com.azure.maps_render#RenderGetMapTileRequestTileSize": "com.azure.maps_render#GetRenderMapTileRequestTileSize",
+      "com.azure.maps_render#RenderGetMapTileRequestTilesetId": "com.azure.maps_render#GetRenderMapTileRequestTilesetId",
+      "com.azure.maps_render#RenderGetMapStaticImage": "com.azure.maps_render#GetRenderMapStaticImage",
+      "com.azure.maps_render#RenderGetMapStaticImageResponse": "com.azure.maps_render#GetRenderMapStaticImageResponse",
+      "com.azure.maps_render#RenderGetMapStaticImageRequest": "com.azure.maps_render#GetRenderMapStaticImageRequest",
+      "com.azure.maps_render#RenderGetMapStaticImageRequestPathList": "com.azure.maps_render#GetRenderMapStaticImageRequestPathList",
+      "com.azure.maps_render#RenderGetMapStaticImageRequestPinsList": "com.azure.maps_render#GetRenderMapStaticImageRequestPinsList",
+      "com.azure.maps_render#RenderGetMapStaticImageRequestView": "com.azure.maps_render#GetRenderMapStaticImageRequestView",
+      "com.azure.maps_render#RenderGetMapStaticImageRequestBboxList": "com.azure.maps_render#GetRenderMapStaticImageRequestBboxList",
+      "com.azure.maps_render#RenderGetMapStaticImageRequestCenterList": "com.azure.maps_render#GetRenderMapStaticImageRequestCenterList",
+      "com.azure.maps_render#RenderGetMapStaticImageRequestTrafficLayer": "com.azure.maps_render#GetRenderMapStaticImageRequestTrafficLayer",
+      "com.azure.maps_render#RenderGetMapStaticImageRequestTilesetId": "com.azure.maps_render#GetRenderMapStaticImageRequestTilesetId",
+      "com.azure.maps_render#RenderGetMapStateTile": "com.azure.maps_render#GetRenderMapStateTile",
+      "com.azure.maps_render#RenderGetMapStateTileResponse": "com.azure.maps_render#GetRenderMapStateTileResponse",
+      "com.azure.maps_render#RenderGetMapStateTileRequest": "com.azure.maps_render#GetRenderMapStateTileRequest",
+      "com.azure.maps_render#RenderGetCopyrightForWorld": "com.azure.maps_render#GetRenderCopyrightForWorld",
+      "com.azure.maps_render#RenderGetCopyrightForWorldRequest": "com.azure.maps_render#GetRenderCopyrightForWorldRequest",
+      "com.azure.maps_render#RenderGetCopyrightForWorldRequestText": "com.azure.maps_render#GetRenderCopyrightForWorldRequestText",
+      "com.azure.maps_render#RenderGetCopyrightForWorldRequestFormat": "com.azure.maps_render#GetRenderCopyrightForWorldRequestFormat",
+      "com.azure.maps_render#RenderGetCopyrightForTile": "com.azure.maps_render#GetRenderCopyrightForTile",
+      "com.azure.maps_render#RenderGetCopyrightForTileRequest": "com.azure.maps_render#GetRenderCopyrightForTileRequest",
+      "com.azure.maps_render#RenderGetCopyrightForTileRequestText": "com.azure.maps_render#GetRenderCopyrightForTileRequestText",
+      "com.azure.maps_render#RenderGetCopyrightForTileRequestFormat": "com.azure.maps_render#GetRenderCopyrightForTileRequestFormat",
+      "com.azure.maps_render#RenderGetCopyrightCaption": "com.azure.maps_render#GetRenderCopyrightCaption",
+      "com.azure.maps_render#RenderGetCopyrightCaptionRequest": "com.azure.maps_render#GetRenderCopyrightCaptionRequest",
+      "com.azure.maps_render#RenderGetCopyrightCaptionRequestFormat": "com.azure.maps_render#GetRenderCopyrightCaptionRequestFormat",
+      "com.azure.maps_render#RenderGetCopyrightFromBoundingBox": "com.azure.maps_render#GetRenderCopyrightFromBoundingBox",
+      "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequest": "com.azure.maps_render#GetRenderCopyrightFromBoundingBoxRequest",
+      "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestText": "com.azure.maps_render#GetRenderCopyrightFromBoundingBoxRequestText",
+      "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestMaxcoordinatesList": "com.azure.maps_render#GetRenderCopyrightFromBoundingBoxRequestMaxcoordinatesList",
+      "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestMincoordinatesList": "com.azure.maps_render#GetRenderCopyrightFromBoundingBoxRequestMincoordinatesList",
+      "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestFormat": "com.azure.maps_render#GetRenderCopyrightFromBoundingBoxRequestFormat",
+      "com.azure.maps_render#RenderGetMapAttribution": "com.azure.maps_render#GetRenderMapAttribution",
+      "com.azure.maps_render#RenderGetMapAttributionRequest": "com.azure.maps_render#GetRenderMapAttributionRequest",
+      "com.azure.maps_render#RenderGetMapAttributionRequestBoundsList": "com.azure.maps_render#GetRenderMapAttributionRequestBoundsList",
+      "com.azure.maps_render#RenderGetMapAttributionRequestTilesetId": "com.azure.maps_render#GetRenderMapAttributionRequestTilesetId"
+    }
+  },
+  "shapes": {
+    "com.azure.maps_render#RenderGetMapTileset": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetMapTilesetRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#MapTileset"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/tileset",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to get metadata for a tileset.\n\nThe Get Map Tileset API allows users to request metadata for a tileset."
+      }
+    },
+    "com.azure.maps_render#MapTileset": {
+      "type": "structure",
+      "members": {
+        "tilejson": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes the version of the TileJSON spec that is implemented by this JSON\nobject."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A name describing the tileset. The name can contain any legal character.\nImplementations SHOULD NOT interpret the name as HTML."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text description of the tileset. The description can contain any legal\ncharacter. Implementations SHOULD NOT interpret the description as HTML."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A semver.org style version number for the tiles contained within the tileset.\nWhen changes across tiles are introduced, the minor version MUST change."
+          }
+        },
+        "attribution": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Copyright attribution to be displayed on the map. Implementations MAY decide to\ntreat this as HTML or literal text. For security reasons, make absolutely sure\nthat this field can't be abused as a vector for XSS or beacon tracking."
+          }
+        },
+        "template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A mustache template to be used to format data from grids for interaction."
+          }
+        },
+        "legend": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A legend to be displayed with the map. Implementations MAY decide to treat this\nas HTML or literal text. For security reasons, make absolutely sure that this\nfield can't be abused as a vector for XSS or beacon tracking."
+          }
+        },
+        "scheme": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Default: \"xyz\". Either \"xyz\" or \"tms\". Influences the y direction of the tile\ncoordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
+          }
+        },
+        "tiles": {
+          "target": "com.azure.maps_render#MapTilesetTilesList",
+          "traits": {
+            "smithy.api#documentation": "An array of tile endpoints. If multiple endpoints are specified, clients may\nuse any combination of endpoints. All endpoints MUST return the same content\nfor the same URL. The array MUST contain at least one endpoint."
+          }
+        },
+        "grids": {
+          "target": "com.azure.maps_render#MapTilesetGridsList",
+          "traits": {
+            "smithy.api#documentation": "An array of interactivity endpoints."
+          }
+        },
+        "data": {
+          "target": "com.azure.maps_render#MapTilesetDataList",
+          "traits": {
+            "smithy.api#documentation": "An array of data files in GeoJSON format."
+          }
+        },
+        "minzoom": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum zoom level."
+          }
+        },
+        "maxzoom": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum zoom level."
+          }
+        },
+        "bounds": {
+          "target": "com.azure.maps_render#MapTilesetBoundsList",
+          "traits": {
+            "smithy.api#documentation": "The maximum extent of available map tiles. Bounds MUST define an area covered\nby all zoom levels. The bounds are represented in WGS:84 latitude and longitude\nvalues, in the order left, bottom, right, top. Values may be integers or\nfloating point numbers."
+          }
+        },
+        "center": {
+          "target": "com.azure.maps_render#MapTilesetCenterList",
+          "traits": {
+            "smithy.api#documentation": "The default location of the tileset in the form [longitude, latitude, zoom].\nThe zoom level MUST be between minzoom and maxzoom. Implementations can use\nthis value to set the default location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata for a tileset in the TileJSON format."
+      }
+    },
+    "com.azure.maps_render#MapTilesetCenterList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "The default location of the tileset in the form [longitude, latitude, zoom].\nThe zoom level MUST be between minzoom and maxzoom. Implementations can use\nthis value to set the default location."
+      }
+    },
+    "com.azure.maps_render#MapTilesetBoundsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "The maximum extent of available map tiles. Bounds MUST define an area covered\nby all zoom levels. The bounds are represented in WGS:84 latitude and longitude\nvalues, in the order left, bottom, right, top. Values may be integers or\nfloating point numbers."
+      }
+    },
+    "com.azure.maps_render#MapTilesetDataList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of data files in GeoJSON format."
+      }
+    },
+    "com.azure.maps_render#MapTilesetGridsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of interactivity endpoints."
+      }
+    },
+    "com.azure.maps_render#MapTilesetTilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of tile endpoints. If multiple endpoints are specified, clients may\nuse any combination of endpoints. All endpoints MUST return the same content\nfor the same URL. The array MUST contain at least one endpoint."
+      }
+    },
+    "com.azure.maps_render#RenderGetMapTilesetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "tilesetId": {
+          "target": "com.azure.maps_render#RenderGetMapTilesetRequestTilesetId",
+          "traits": {
+            "smithy.api#httpQuery": "tilesetId",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A tileset is a collection of raster or vector data broken up into a uniform\ngrid of square tiles at preset zoom levels. Every tileset has a **tilesetId**\nto use when making requests. The ready-to-use tilesets supplied by Azure Maps\nare listed below. For example, microsoft.base."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetMapTilesetRequestTilesetId": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_BASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base"
+          }
+        },
+        "MICROSOFT_BASE_LABELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid"
+          }
+        },
+        "MICROSOFT_TERRA_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.terra.main"
+          }
+        },
+        "MICROSOFT_BASE_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.road"
+          }
+        },
+        "MICROSOFT_BASE_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.darkgrey"
+          }
+        },
+        "MICROSOFT_BASE_LABELS_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels.road"
+          }
+        },
+        "MICROSOFT_BASE_LABELS_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels.darkgrey"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid.road"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid.darkgrey"
+          }
+        },
+        "MICROSOFT_IMAGERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.imagery"
+          }
+        },
+        "MICROSOFT_WEATHER_RADAR_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.weather.radar.main"
+          }
+        },
+        "MICROSOFT_WEATHER_INFRARED_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.weather.infrared.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_ABSOLUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.absolute"
+          }
+        },
+        "MICROSOFT_TRAFFIC_ABSOLUTE_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.absolute.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE_DARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative.dark"
+          }
+        },
+        "MICROSOFT_TRAFFIC_DELAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.delay"
+          }
+        },
+        "MICROSOFT_TRAFFIC_DELAY_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.delay.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_REDUCED_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.reduced.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_INCIDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.incident"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapTile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetMapTileRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#RenderGetMapTileResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/tile",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to request map tiles in vector or raster format.\n\nThe `Get Map Tiles` API enables users to request map tiles in either vector or\nraster formats, typically for integration into a map control or SDK. Supported\ntile types include Azure Maps road tiles and real-time Weather Radar tiles. By\ndefault, the Azure Maps [Web SDK](/azure/azure-maps/about-azure-maps#web-sdk)\nuses vector tiles for rendering its web map control.\n\n> [!Important]\n>\n> When using the **Get Map Tile** API, you must also call the [Get Map Attribution](/rest/api/maps/render/get-map-attribution) API to retrieve the required map data attribution text.\n>\n> The returned attribution must be displayed wherever tiles retrieved from **Get Map Tile** are rendered, including in third-party map controls or custom rendering implementations."
+      }
+    },
+    "com.azure.maps_render#RenderGetMapTileResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetMapTileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "tilesetId": {
+          "target": "com.azure.maps_render#RenderGetMapTileRequestTilesetId",
+          "traits": {
+            "smithy.api#httpQuery": "tilesetId",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A tileset is a collection of raster or vector data broken up into a uniform\ngrid of square tiles at preset zoom levels. Every tileset has a **tilesetId**\nto use when making requests. The ready-to-use tilesets supplied by Azure Maps\nare listed below. For example, microsoft.base."
+          }
+        },
+        "zoom": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "zoom",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Zoom level for the desired tile.\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "x",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "X coordinate of the tile on zoom grid. Value must be in the range [0,\n2<sup>`zoom`</sup> -1].\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "y",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Y coordinate of the tile on zoom grid. Value must be in the range [0,\n2<sup>`zoom`</sup> -1].\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "timeStamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "timeStamp",
+            "smithy.api#documentation": "The desired date and time of the requested tile. This parameter must be\nspecified in the standard date-time format (e.g. 2019-11-14T16:03:00-08:00), as\ndefined by [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). This parameter\nis only supported when tilesetId parameter is set to one of the values below.\n\n* microsoft.weather.infrared.main: We provide tiles up to 3 hours in the past.\nTiles are available in 10-minute intervals. We round the timeStamp value to the\nnearest 10-minute time frame.\n* microsoft.weather.radar.main: We provide tiles up to 1.5 hours in the past\nand up to 2 hours in the future. Tiles are available in 5-minute intervals. We\nround the timeStamp value to the nearest 5-minute time frame."
+          }
+        },
+        "tileSize": {
+          "target": "com.azure.maps_render#RenderGetMapTileRequestTileSize",
+          "traits": {
+            "smithy.api#httpQuery": "tileSize",
+            "smithy.api#documentation": "The size of the returned map tile in pixels."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#documentation": "Language in which search results should be returned. Should be one of supported\nIETF language tags, case insensitive. When data in specified language is not\navailable for a specific field, default language is used.\n\nPlease refer to [Supported\nLanguages](https://docs.microsoft.com/azure/azure-maps/supported-languages) for\ndetails."
+          }
+        },
+        "view": {
+          "target": "com.azure.maps_render#RenderGetMapTileRequestView",
+          "traits": {
+            "smithy.api#httpQuery": "view",
+            "smithy.api#documentation": "The View parameter (also called the \"user region\" parameter) allows you to show\nthe correct maps for a certain country/region for geopolitically disputed\nregions. Different countries/regions have different views of such regions, and\nthe View parameter allows your application to comply with the view required by\nthe country/region your application will be serving. By default, the View\nparameter is set to “Unified” even if you haven’t defined it in  the request.\nIt is your responsibility to determine the location of your users, and then set\nthe View parameter correctly for that location. Alternatively, you have the\noption to set ‘View=Auto’, which will return the map data based on the IP\naddress of the request. The View parameter in Azure Maps must be used in\ncompliance with applicable laws, including those  regarding mapping, of the\ncountry/region where maps, images and other data and third party content that\nyou are authorized to  access via Azure Maps is made available. Example:\nview=IN.\n\nPlease refer to [Supported Views](https://aka.ms/AzureMapsLocalizationViews)\nfor details and to see the available Views."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetMapTileRequestView": {
+      "type": "enum",
+      "members": {
+        "AE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AE"
+          }
+        },
+        "AR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AR"
+          }
+        },
+        "BH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BH"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "IQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IQ"
+          }
+        },
+        "JO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JO"
+          }
+        },
+        "KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KW"
+          }
+        },
+        "LB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LB"
+          }
+        },
+        "MA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MA"
+          }
+        },
+        "OM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OM"
+          }
+        },
+        "PK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PK"
+          }
+        },
+        "PS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS"
+          }
+        },
+        "QA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QA"
+          }
+        },
+        "SA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SA"
+          }
+        },
+        "SY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SY"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "US"
+          }
+        },
+        "YE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "YE"
+          }
+        },
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Auto"
+          }
+        },
+        "UNIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unified"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapTileRequestTileSize": {
+      "type": "enum",
+      "members": {
+        "_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "256"
+          }
+        },
+        "_512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "512"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapTileRequestTilesetId": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_BASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base"
+          }
+        },
+        "MICROSOFT_BASE_LABELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid"
+          }
+        },
+        "MICROSOFT_TERRA_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.terra.main"
+          }
+        },
+        "MICROSOFT_BASE_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.road"
+          }
+        },
+        "MICROSOFT_BASE_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.darkgrey"
+          }
+        },
+        "MICROSOFT_BASE_LABELS_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels.road"
+          }
+        },
+        "MICROSOFT_BASE_LABELS_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels.darkgrey"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid.road"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid.darkgrey"
+          }
+        },
+        "MICROSOFT_IMAGERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.imagery"
+          }
+        },
+        "MICROSOFT_WEATHER_RADAR_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.weather.radar.main"
+          }
+        },
+        "MICROSOFT_WEATHER_INFRARED_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.weather.infrared.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_ABSOLUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.absolute"
+          }
+        },
+        "MICROSOFT_TRAFFIC_ABSOLUTE_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.absolute.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE_DARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative.dark"
+          }
+        },
+        "MICROSOFT_TRAFFIC_DELAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.delay"
+          }
+        },
+        "MICROSOFT_TRAFFIC_DELAY_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.delay.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_REDUCED_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.reduced.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_INCIDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.incident"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStaticImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetMapStaticImageRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#RenderGetMapStaticImageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/static",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "This rendering API produces static, rasterized map views of a user-defined\narea. It's suitable for lightweight web applications, when the desired user\nexperience doesn't require interactive map controls, or when bandwidth is\nlimited. This API is also useful for embedding maps in applications outside of\nthe browser, in backend services, report generation, or desktop applications.\n\nThis API includes parameters for basic data visualization:\n\n- Labeled pushpins in multiple styles.\n- Render circle, path, and polygon geometry types.\n\nFor more information and detailed examples, see [Render custom data on a raster\nmap](/azure/azure-maps/how-to-render-custom-data).\n<br><br>\nThe dimensions of the bbox parameter are constrained, depending on the zoom\nlevel. This ensures the resulting image has an appropriate level of detail.\n<br><br>\n\nZoom Level | Min Lon Range   | Max Lon Range   | Min Lat Range | Max Lat Range\n:----------|:----------------|:----------------|:--------------|:---------------\n0          | 56.25           | 360.0           | 30.1105585173 | 180.0\n1          | 28.125          | 360.0           | 14.87468995   | 180.0\n2          | 14.063          | 351.5625        | 7.4130741851  | 137.9576312246\n3          | 7.03125         | 175.78125       | 3.7034501005  | 73.6354071932\n4          | 3.515625        | 87.890625       | 1.8513375155  | 35.4776115315\n5          | 1.7578125       | 43.9453125      | 0.925620264   | 17.4589959239\n6          | 0.87890625      | 21.97265625     | 0.4628040687  | 8.6907788223\n7          | 0.439453125     | 10.986328125    | 0.2314012764  | 4.3404320789\n8          | 0.2197265625    | 5.4931640625    | 0.1157005434  | 2.1695927024\n9          | 0.1098632812    | 2.7465820312    | 0.0578502599  | 1.0847183194\n10         | 0.0549316406    | 1.3732910156    | 0.0289251285  | 0.5423494021\n11         | 0.0274658203    | 0.6866455078    | 0.014462564   | 0.2711734813\n12         | 0.0137329102    | 0.3433227539    | 0.007231282   | 0.1355865882\n13         | 0.0068664551    | 0.171661377     | 0.003615641   | 0.067793275\n14         | 0.0034332275    | 0.0858306885    | 0.0018078205  | 0.0338966351\n15         | 0.0017166138    | 0.0429153442    | 0.0009039102  | 0.0169483173\n16         | 0.0008583069    | 0.0214576721    | 0.0004519551  | 0.0084741586\n17         | 0.0004291534    | 0.0107288361    | 0.0002259776  | 0.0042370793\n18         | 0.0002145767    | 0.005364418     | 0.0001129888  | 0.0021185396\n19         | 0.0001072884    | 0.002682209     | 5.64944E-05   | 0.0010592698\n20         | 5.36442E-05     | 0.0013411045    | 2.82472E-05   | 0.0005296349\n\n_Note_ : Either **center** or **bbox** parameter must be supplied to the API."
+      }
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "tilesetId": {
+          "target": "com.azure.maps_render#RenderGetMapStaticImageRequestTilesetId",
+          "traits": {
+            "smithy.api#httpQuery": "tilesetId",
+            "smithy.api#documentation": "Map style to be returned. Possible values are microsoft.base.road,\nmicrosoft.base.darkgrey, and microsoft.imagery.  Default value is set to be\nmicrosoft.base.road. For more information, see [Render\nTilesetId](https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tileset?view=rest-maps-2023-06-01&tabs=HTTP#tilesetid)."
+          }
+        },
+        "trafficLayer": {
+          "target": "com.azure.maps_render#RenderGetMapStaticImageRequestTrafficLayer",
+          "traits": {
+            "smithy.api#httpQuery": "trafficLayer",
+            "smithy.api#documentation": "Optional Value, indicating no traffic flow overlaid on the image result.\nPossible values are microsoft.traffic.relative.main and none. Default value is\nnone, indicating no traffic flow returned. If traffic related tilesetId is\nprovided, will return map image with corresponding traffic layer. For more\ninformation, see [Render\nTilesetId](https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tileset?view=rest-maps-2023-06-01&tabs=HTTP#tilesetid)."
+          }
+        },
+        "zoom": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "zoom",
+            "smithy.api#documentation": "Desired zoom level of the map. Support zoom value range from 0-20 (inclusive)\nfor tilesetId being microsoft.base.road or microsoft.base.darkgrey. Support\nzoom value range from 0-19 (inclusive) for tilesetId being microsoft.imagery.\nDefault value is 12.<br><br>For more information, see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)."
+          }
+        },
+        "center": {
+          "target": "com.azure.maps_render#RenderGetMapStaticImageRequestCenterList",
+          "traits": {
+            "smithy.api#httpQuery": "center",
+            "smithy.api#documentation": "Coordinates of the center point in double. Format: 'lon,lat'. Longitude range:\n-180 to 180. Latitude range: -90 to 90.\n\nNote: Either center or bbox are required parameters. They are\nmutually exclusive."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_render#RenderGetMapStaticImageRequestBboxList",
+          "traits": {
+            "smithy.api#httpQuery": "bbox",
+            "smithy.api#documentation": "A bounding box is defined by two latitudes and two longitudes that represent\nthe four sides of a rectangular area on the Earth. Format : 'minLon, minLat,\nmaxLon, maxLat' (in double).\n\nNote: Either bbox or center are required\nparameters. They are mutually exclusive. bbox shouldn’t be used with\nheight or width.\n\nThe maximum and minimum allowed ranges for Lat and Lon are defined for each\nzoom level\nin the table at the top of this page."
+          }
+        },
+        "height": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "height",
+            "smithy.api#documentation": "Height of the resulting image in pixels. Range from 80 to 1500. Default\nis 512. It shouldn’t be used with bbox."
+          }
+        },
+        "width": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "width",
+            "smithy.api#documentation": "Width of the resulting image in pixels. Range from 80 to 2000. Default is 512.\nIt should not be used with bbox."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#documentation": "Language in which search results should be returned. Should be one of supported\nIETF language tags, case insensitive. When data in specified language is not\navailable for a specific field, default language is used.\n\nPlease refer to [Supported\nLanguages](https://docs.microsoft.com/azure/azure-maps/supported-languages) for\ndetails."
+          }
+        },
+        "view": {
+          "target": "com.azure.maps_render#RenderGetMapStaticImageRequestView",
+          "traits": {
+            "smithy.api#httpQuery": "view",
+            "smithy.api#documentation": "The View parameter (also called the \"user region\" parameter) allows you to show\nthe correct maps for a certain country/region for geopolitically disputed\nregions. Different countries/regions have different views of such regions, and\nthe View parameter allows your application to comply with the view required by\nthe country/region your application will be serving. By default, the View\nparameter is set to “Unified” even if you haven’t defined it in  the request.\nIt is your responsibility to determine the location of your users, and then set\nthe View parameter correctly for that location. Alternatively, you have the\noption to set ‘View=Auto’, which will return the map data based on the IP\naddress of the request. The View parameter in Azure Maps must be used in\ncompliance with applicable laws, including those  regarding mapping, of the\ncountry/region where maps, images and other data and third party content that\nyou are authorized to  access via Azure Maps is made available. Example:\nview=IN.\n\nPlease refer to [Supported Views](https://aka.ms/AzureMapsLocalizationViews)\nfor details and to see the available Views."
+          }
+        },
+        "pins": {
+          "target": "com.azure.maps_render#RenderGetMapStaticImageRequestPinsList",
+          "traits": {
+            "smithy.api#httpQuery": "pins",
+            "smithy.api#documentation": "Pushpin style and instances. Use this parameter to optionally add pushpins to\nthe image.\nThe pushpin style describes the appearance of the pushpins, and the instances\nspecify\nthe coordinates of the pushpins (in double) and optional labels for each pin.\n(Be sure to properly URL-encode values of this\nparameter since it will contain reserved characters such as pipes and\npunctuation.)\n\nYou can specify up to 25 instances of the pins parameter to use multiple pin\nstyles. Each instance supports up to 50 locations.\n\nTo render a pushpin at latitude 45°N and longitude 122°W using the default\nbuilt-in pushpin style, add the\nquerystring parameter\n\n`pins=default||-122 45`\n\nNote that the longitude comes before the latitude.\nAfter URL encoding this will look like\n\n`pins=default%7C%7C-122+45`\n\nAll of the examples here show the pins\nparameter without URL encoding, for clarity.\n\nTo render a pin at multiple locations, separate each location with a pipe\ncharacter. For example, use\n\n`pins=default||-122 45|-119.5 43.2|-121.67 47.12`\n\n### Style Modifiers\n\nYou can modify the appearance of the pins by adding style modifiers. These are\nadded after the style but before\nthe locations and labels. Style modifiers each have a two-letter name. These\nabbreviated names are used to help\nreduce the length of the URL.\n\nTo change the color of the pushpin, use the 'co' style modifier and specify the\ncolor using the HTML/CSS RGB color\nformat which is a six-digit hexadecimal number (the three-digit form is not\nsupported). For example, to use\na deep pink color which you would specify as #FF1493 in CSS, use\n\n`pins=default|coFF1493||-122 45`\n\n### Pushpin Labels\n\nTo add a label to the pins, put the label in single quotes just before the\ncoordinates. Avoid using special character such as `|` or `||` in label. For\nexample, to label\nthree pins with the values '1', '2', and '3', use\n\n`pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`\n\nThere is a built-in pushpin style called 'none' that does not display a pushpin\nimage. You can use this if\nyou want to display labels without any pin image. For example,\n\n`pins=none||'A'-122 45|'B'-119.5 43.2`\n\nTo change the color of the pushpin labels, use the 'lc' label color style\nmodifier. For example, to use pink\npushpins with black labels, use\n\n`pins=default|coFF1493|lc000000||-122 45`\n\nTo change the size of the labels, use the 'ls' label size style modifier. The\nlabel size represents the approximate\nheight of the label text in pixels. For example, to increase the label size to\n12, use\n\n`pins=default|ls12||'A'-122 45|'B'-119 43`\n\nThe labels are centered at the pushpin 'label anchor.' The anchor location is\npredefined for built-in pushpins and\nis at the top center of custom pushpins (see below). To override the label\nanchor, using the 'la' style modifier\nand provide X and Y pixel coordinates for the anchor. These coordinates are\nrelative to the top left corner of the\npushpin image. Positive X values move the anchor to the right, and positive Y\nvalues move the anchor down. For example,\nto position the label anchor 10 pixels right and 4 pixels above the top left\ncorner of the pushpin image,\nuse\n\n`pins=default|la10 -4||'A'-122 45|'B'-119 43`\n\n### Custom Pushpins\n\nTo use a custom pushpin image, use the word 'custom' as the pin style name, and\nthen specify a URL after the\nlocation and label information. The maximum allowed size for a customized label\nimage is 65,536 pixels. Use two pipe characters to indicate that you're done\nspecifying locations and are\nstarting the URL. For example,\n\n`pins=custom||-122 45||http://contoso.com/pushpins/red.png`\n\nAfter URL encoding, this would look like\n\n`pins=custom%7C%7C-122+45%7C%7Chttp%3A%2F%2Fcontoso.com%2Fpushpins%2Fred.png`\n\nBy default, custom pushpin images are drawn centered at the pin coordinates.\nThis usually isn't ideal as it obscures\nthe location that you're trying to highlight. To override the anchor location\nof the pin image, use the 'an'\nstyle modifier. This uses the same format as the 'la' label anchor style\nmodifier. For example, if your custom\npin image has the tip of the pin at the top left corner of the image, you can\nset the anchor to that spot by\nusing\n\n`pins=custom|an0 0||-122 45||http://contoso.com/pushpins/red.png`\n\nNote: If you use the 'co' color modifier with a custom pushpin image, the\nspecified color will replace the RGB\nchannels of the pixels in the image but will leave the alpha (opacity) channel\nunchanged. This would usually\nonly be done with a solid-color custom image.\n\n### Scale, Rotation, and Opacity\n\nYou can make pushpins and their labels larger or smaller by using the 'sc'\nscale style modifier. This is a\nvalue greater than zero. A value of 1 is the standard scale. Values larger than\n1 will make the pins larger, and\nvalues smaller than 1 will make them smaller. For example, to draw the pushpins\n50% larger than normal, use\n\n`pins=default|sc1.5||-122 45`\n\nYou can rotate pushpins and their labels by using the 'ro' rotation style\nmodifier. This is a number of degrees\nof clockwise rotation. Use a negative number to rotate counter-clockwise. For\nexample, to rotate the pushpins\n90 degrees clockwise and double their size, use\n\n`pins=default|ro90|sc2||-122 45`\n\nYou can make pushpins and their labels partially transparent by specifying the\n'al' alpha style modifier.\nThis is a number between 0 and 1 indicating the opacity of the pushpins. Zero\nmakes them completely transparent\n(and not visible) and 1 makes them completely opaque (which is the default).\nFor example, to make pushpins\nand their labels only 67% opaque, use\n\n`pins=default|al.67||-122 45`\n\n### Style Modifier Summary\n\nModifier  | Description     | Type           | Range\n:--------:|-----------------|----------------|------------------\nal        | Alpha (opacity) | float          | 0 to 1\nan        | Pin anchor      | <int32, int32> | *\nco        | Pin color       | string         | 000000 to FFFFFF\nla        | Label anchor    | <int32, int32> | *\nlc        | Label color     | string         | 000000 to FFFFFF\nls        | Label size      | float          | Greater than 0\nro        | Rotation        | float          | -360 to 360\nsc        | Scale           | float          | Greater than 0\n\n* X and Y coordinates can be anywhere within pin image or a margin around it.\nThe margin size is the minimum of the pin width and height."
+          }
+        },
+        "path": {
+          "target": "com.azure.maps_render#RenderGetMapStaticImageRequestPathList",
+          "traits": {
+            "smithy.api#httpQuery": "path",
+            "smithy.api#documentation": "Path style and locations (in double). Use this parameter to optionally add\nlines, polygons or circles to the image.\nThe path style describes the appearance of the line and fill. (Be sure to\nproperly URL-encode values of this\nparameter since it will contain reserved characters such as pipes and\npunctuation.)\n\nYou can specify multiple instances of the path parameter to render multiple\ngeometries with different styles. A request supports up to 10 path parameters\nand up to 100 locations per path.\n\nTo render a circle with radius 100 meters and center point at latitude 45°N and\nlongitude 122°W using the default style, add the\nquerystring parameter\n\n`path=ra100||-122 45`\n\nNote that the longitude comes before the latitude.\nAfter URL encoding this will look like\n\n`path=ra100%7C%7C-122+45`\n\nAll of the examples here show the path parameter without URL encoding, for\nclarity.\n\nTo render a line, separate each location with a pipe character. For example,\nuse\n\n`path=||-122 45|-119.5 43.2|-121.67 47.12`\n\nA polygon is specified with a closed path, where the first and last points are\nequal. For example, use\n\n`path=||-122 45|-119.5 43.2|-121.67 47.12|-122 45`\n\nLongitude value for locations of lines and polygons can be in the range from\n-360 to 360 to allow for rendering of geometries crossing the anti-meridian.\n\n### Style Modifiers\n\nYou can modify the appearance of the path by adding style modifiers. These are\nadded before the locations.\nStyle modifiers each have a two-letter name. These abbreviated names are used\nto help reduce the length\nof the URL.\n\nTo change the color of the outline, use the 'lc' style modifier and specify the\ncolor using the HTML/CSS RGB color\nformat which is a six-digit hexadecimal number (the three-digit form is not\nsupported). For example, to use\na deep pink color which you would specify as #FF1493 in CSS, use\n\n`path=lcFF1493||-122 45|-119.5 43.2`\n\nMultiple style modifiers may be combined to create a more complex visual style.\n\n`lc0000FF|lw3|la0.60|fa0.50||-122.2 47.6|-122.2 47.7|-122.3 47.7|-122.3 47.6|-122.2 47.6`\n\n### Style Modifier Summary\n\nModifier | Description            | Type   | Range\n:-------:|------------------------|--------|-----------------\nlc       | Line color             | string | 000000 to FFFFFF\nfc       | Fill color             | string | 000000 to FFFFFF\nla       | Line alpha (opacity)   | float  | 0 to 1\nfa       | Fill alpha (opacity)   | float  | 0 to 1\nlw       | Line width             | int32  | (0, 50]\nra       | Circle radius (meters) | float  | Greater than 0"
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequestPathList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequestPinsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequestView": {
+      "type": "enum",
+      "members": {
+        "AE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AE"
+          }
+        },
+        "AR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AR"
+          }
+        },
+        "BH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BH"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "IQ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IQ"
+          }
+        },
+        "JO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JO"
+          }
+        },
+        "KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KW"
+          }
+        },
+        "LB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LB"
+          }
+        },
+        "MA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MA"
+          }
+        },
+        "OM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OM"
+          }
+        },
+        "PK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PK"
+          }
+        },
+        "PS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS"
+          }
+        },
+        "QA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QA"
+          }
+        },
+        "SA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SA"
+          }
+        },
+        "SY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SY"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "US"
+          }
+        },
+        "YE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "YE"
+          }
+        },
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Auto"
+          }
+        },
+        "UNIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unified"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequestBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequestCenterList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequestTrafficLayer": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_TRAFFIC_RELATIVE_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative.main"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStaticImageRequestTilesetId": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_BASE_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.road"
+          }
+        },
+        "MICROSOFT_BASE_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.darkgrey"
+          }
+        },
+        "MICROSOFT_IMAGERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.imagery"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapStateTile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetMapStateTileRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#RenderGetMapStateTileResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/statetile",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to get state tiles in vector format that can then be used to display\nfeature state information in an indoor map.\n\nFetches state tiles in vector format typically to be integrated into indoor\nmaps module of map control or SDK. The map control will call this API after\nuser turns on dynamic styling. For more information, see [Zoom Levels and Tile\nGrid](/azure/location-based-services/zoom-levels-and-tile-grid)."
+      }
+    },
+    "com.azure.maps_render#RenderGetMapStateTileResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetMapStateTileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "zoom": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "zoom",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Zoom level for the desired tile.\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "x",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "X coordinate of the tile on zoom grid. Value must be in the range [0,\n2<sup>`zoom`</sup> -1].\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "y",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Y coordinate of the tile on zoom grid. Value must be in the range [0,\n2<sup>`zoom`</sup> -1].\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "statesetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "statesetId",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The stateset id."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightForWorld": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetCopyrightForWorldRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#Copyright"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/copyright/world/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to get copyright information for for the world.\n\nReturns the copyright information for the world. To obtain the default\ncopyright information for the whole world, don't specify a tile or bounding\nbox.\n\nCopyrights API is designed to serve copyright information for Render service.\nIn addition to basic copyright for the whole map, API is serving specific\ngroups of copyrights for some countries/regions."
+      }
+    },
+    "com.azure.maps_render#Copyright": {
+      "type": "structure",
+      "members": {
+        "formatVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Format Version property"
+          }
+        },
+        "generalCopyrights": {
+          "target": "com.azure.maps_render#CopyrightGeneralCopyrightsList",
+          "traits": {
+            "smithy.api#documentation": "General Copyrights array"
+          }
+        },
+        "regions": {
+          "target": "com.azure.maps_render#CopyrightRegionsList",
+          "traits": {
+            "smithy.api#documentation": "Regions array"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful copyright request"
+      }
+    },
+    "com.azure.maps_render#CopyrightRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_render#RegionCopyrights"
+      },
+      "traits": {
+        "smithy.api#documentation": "Regions array"
+      }
+    },
+    "com.azure.maps_render#RegionCopyrights": {
+      "type": "structure",
+      "members": {
+        "copyrights": {
+          "target": "com.azure.maps_render#RegionCopyrightsCopyrightsList",
+          "traits": {
+            "smithy.api#documentation": "Copyrights array"
+          }
+        },
+        "country": {
+          "target": "com.azure.maps_render#RegionCopyrightsCountry",
+          "traits": {
+            "smithy.api#documentation": "Country property"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Region copyrights"
+      }
+    },
+    "com.azure.maps_render#RegionCopyrightsCountry": {
+      "type": "structure",
+      "members": {
+        "ISO3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO3 property"
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Label property"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Country property"
+      }
+    },
+    "com.azure.maps_render#RegionCopyrightsCopyrightsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Copyrights array"
+      }
+    },
+    "com.azure.maps_render#CopyrightGeneralCopyrightsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "General Copyrights array"
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightForWorldRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_render#RenderGetCopyrightForWorldRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Value can be either _json_ or _xml_."
+          }
+        },
+        "text": {
+          "target": "com.azure.maps_render#RenderGetCopyrightForWorldRequestText",
+          "traits": {
+            "smithy.api#httpQuery": "text",
+            "smithy.api#documentation": "Yes/no value to exclude textual data from response. Only images and\ncountry/region names will be in response."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightForWorldRequestText": {
+      "type": "enum",
+      "members": {
+        "YES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yes"
+          }
+        },
+        "NO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "no"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightForWorldRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "XML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xml"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightForTile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetCopyrightForTileRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#Copyright"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/copyright/tile/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to get copyright information.\n\nTo obtain the copyright information for a particular tile, the request should\nspecify the tile's zoom level and x and y coordinates. For more information,\nsee [Zoom Levels and Tile Grid](/azure/azure-maps/zoom-levels-and-tile-grid).\n\nCopyrights API is designed to serve copyright information for Render service.\nIn addition to basic copyright for the whole map, API is serving specific\ngroups of copyrights for some countries/regions."
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightForTileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_render#RenderGetCopyrightForTileRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Value can be either _json_ or _xml_."
+          }
+        },
+        "zoom": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "zoom",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Zoom level for the desired tile.\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "x",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "X coordinate of the tile on zoom grid. Value must be in the range [0,\n2<sup>`zoom`</sup> -1].\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "y",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Y coordinate of the tile on zoom grid. Value must be in the range [0,\n2<sup>`zoom`</sup> -1].\n\nPlease see [Zoom Levels and Tile\nGrid](https://docs.microsoft.com/azure/location-based-services/zoom-levels-and-tile-grid)\nfor details."
+          }
+        },
+        "text": {
+          "target": "com.azure.maps_render#RenderGetCopyrightForTileRequestText",
+          "traits": {
+            "smithy.api#httpQuery": "text",
+            "smithy.api#documentation": "Yes/no value to exclude textual data from response. Only images and\ncountry/region names will be in response."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightForTileRequestText": {
+      "type": "enum",
+      "members": {
+        "YES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yes"
+          }
+        },
+        "NO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "no"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightForTileRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "XML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xml"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightCaption": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetCopyrightCaptionRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#CopyrightCaption"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/copyright/caption/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to get copyright information to use when rendering a tile.\n\nThe `Get Copyright Caption` API is an HTTP GET request designed to serve\ncopyright information to be used with tiles requested from the Render service.\nIn addition to a basic copyright for the whole map, it can serve specific\ngroups of copyrights for some countries/regions.\n\nAs an alternative to copyrights for map request, it can also return captions\nfor displaying provider information on the map."
+      }
+    },
+    "com.azure.maps_render#CopyrightCaption": {
+      "type": "structure",
+      "members": {
+        "formatVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Format Version property"
+          }
+        },
+        "copyrightsCaption": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Copyrights Caption property"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful copyright call"
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightCaptionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_render#RenderGetCopyrightCaptionRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Value can be either _json_ or _xml_."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightCaptionRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "XML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xml"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightFromBoundingBox": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#Copyright"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/copyright/bounding/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to get copyright information for the specified bounding box.\n\nReturns copyright information for a given bounding box. Bounding-box requests\nshould specify the minimum and maximum longitude and latitude (EPSG-3857)\ncoordinates"
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Value can be either _json_ or _xml_."
+          }
+        },
+        "mincoordinates": {
+          "target": "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestMincoordinatesList",
+          "traits": {
+            "smithy.api#httpQuery": "mincoordinates",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Minimum coordinates (south-west point) of bounding box in latitude longitude\ncoordinate system. E.g. 52.41064,4.84228"
+          }
+        },
+        "maxcoordinates": {
+          "target": "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestMaxcoordinatesList",
+          "traits": {
+            "smithy.api#httpQuery": "maxcoordinates",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Maximum coordinates (north-east point) of bounding box in latitude longitude\ncoordinate system. E.g. 52.41064,4.84228"
+          }
+        },
+        "text": {
+          "target": "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestText",
+          "traits": {
+            "smithy.api#httpQuery": "text",
+            "smithy.api#documentation": "Yes/no value to exclude textual data from response. Only images and\ncountry/region names will be in response."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestText": {
+      "type": "enum",
+      "members": {
+        "YES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yes"
+          }
+        },
+        "NO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "no"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestMaxcoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestMincoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetCopyrightFromBoundingBoxRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "XML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xml"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapAttribution": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_render#RenderGetMapAttributionRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_render#MapAttribution"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/map/attribution",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2024-04-01"
+        },
+        "smithy.api#documentation": "Use to get map copyright attribution information.\n\nThe `Get Map Attribution` API allows users to request map copyright attribution\ninformation for a section of a tileset."
+      }
+    },
+    "com.azure.maps_render#MapAttribution": {
+      "type": "structure",
+      "members": {
+        "copyrights": {
+          "target": "com.azure.maps_render#MapAttributionCopyrightsList",
+          "traits": {
+            "smithy.api#documentation": "A list of copyright strings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Copyright attribution for the requested section of a tileset."
+      }
+    },
+    "com.azure.maps_render#MapAttributionCopyrightsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of copyright strings."
+      }
+    },
+    "com.azure.maps_render#RenderGetMapAttributionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "tilesetId": {
+          "target": "com.azure.maps_render#RenderGetMapAttributionRequestTilesetId",
+          "traits": {
+            "smithy.api#httpQuery": "tilesetId",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A tileset is a collection of raster or vector data broken up into a uniform\ngrid of square tiles at preset zoom levels. Every tileset has a **tilesetId**\nto use when making requests. The ready-to-use tilesets supplied by Azure Maps\nare listed below. For example, microsoft.base."
+          }
+        },
+        "zoom": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "zoom",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Zoom level for the desired map attribution."
+          }
+        },
+        "bounds": {
+          "target": "com.azure.maps_render#RenderGetMapAttributionRequestBoundsList",
+          "traits": {
+            "smithy.api#httpQuery": "bounds",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The string that represents the rectangular area of a bounding box. The bounds\nparameter is defined by the 4 bounding box coordinates, with WGS84 longitude\nand latitude of the southwest corner followed by  WGS84 longitude and latitude\nof the northeast corner. The string is presented in the following  format:\n`[SouthwestCorner_Longitude, SouthwestCorner_Latitude, NortheastCorner_Longitude,  NortheastCorner_Latitude]`."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_render#RenderGetMapAttributionRequestBoundsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#RenderGetMapAttributionRequestTilesetId": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_BASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base"
+          }
+        },
+        "MICROSOFT_BASE_LABELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid"
+          }
+        },
+        "MICROSOFT_TERRA_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.terra.main"
+          }
+        },
+        "MICROSOFT_BASE_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.road"
+          }
+        },
+        "MICROSOFT_BASE_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.darkgrey"
+          }
+        },
+        "MICROSOFT_BASE_LABELS_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels.road"
+          }
+        },
+        "MICROSOFT_BASE_LABELS_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.labels.darkgrey"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID_ROAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid.road"
+          }
+        },
+        "MICROSOFT_BASE_HYBRID_DARKGREY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.base.hybrid.darkgrey"
+          }
+        },
+        "MICROSOFT_IMAGERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.imagery"
+          }
+        },
+        "MICROSOFT_WEATHER_RADAR_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.weather.radar.main"
+          }
+        },
+        "MICROSOFT_WEATHER_INFRARED_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.weather.infrared.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_ABSOLUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.absolute"
+          }
+        },
+        "MICROSOFT_TRAFFIC_ABSOLUTE_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.absolute.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_RELATIVE_DARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.relative.dark"
+          }
+        },
+        "MICROSOFT_TRAFFIC_DELAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.delay"
+          }
+        },
+        "MICROSOFT_TRAFFIC_DELAY_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.delay.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_REDUCED_MAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.reduced.main"
+          }
+        },
+        "MICROSOFT_TRAFFIC_INCIDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft.traffic.incident"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_render#MapsRender": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.maps_render#RenderGetMapTileset"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetMapTile"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetMapStaticImage"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetMapStateTile"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetCopyrightForWorld"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetCopyrightForTile"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetCopyrightCaption"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetCopyrightFromBoundingBox"
+        },
+        {
+          "target": "com.azure.maps_render#RenderGetMapAttribution"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Render data plane",
+        "smithy.api#documentation": "Azure maps data plane — maps/data-plane/Render (latest stable api-version 2024-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true,
+              "default": "https://atlas.microsoft.com"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://atlas.microsoft.com/.default"
+      }
+    }
+  }
+}

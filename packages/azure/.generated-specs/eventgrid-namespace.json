@@ -1,0 +1,1044 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.eventgrid_namespace#PublishCloudEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_namespace#PublishCloudEventsRequest"
+      },
+      "output": {
+        "target": "com.azure.eventgrid_namespace#PublishCloudEventsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/topics/{topicName}:publish",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-01"
+        },
+        "smithy.api#documentation": "Publish a batch of Cloud Events to a namespace topic."
+      }
+    },
+    "com.azure.eventgrid_namespace#PublishCloudEventsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#PublishCloudEventsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the namespace, e.g. namespaceName1.westus-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Topic Name."
+          }
+        },
+        "body": {
+          "target": "com.azure.eventgrid_namespace#PublishCloudEventsRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#PublishCloudEventsRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_namespace#CloudEvent"
+      },
+      "traits": {}
+    },
+    "com.azure.eventgrid_namespace#CloudEvent": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier for the event. The combination of id and source must be unique for each distinct event.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the context in which an event happened. The combination of id and source must be unique for each distinct event.",
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Event data specific to the event type."
+          }
+        },
+        "data_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event data specific to the event type, encoded as a base64 string."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of event related to the originating occurrence.",
+            "smithy.api#required": {}
+          }
+        },
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time (in UTC) the event was generated, in RFC3339 format."
+          }
+        },
+        "specversion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the CloudEvents specification which the event uses.",
+            "smithy.api#required": {}
+          }
+        },
+        "dataschema": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the schema that data adheres to."
+          }
+        },
+        "datacontenttype": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content type of data value."
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This describes the subject of the event in the context of the event producer (identified by source)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an event published to an Azure Messaging EventGrid Namespace topic using the CloudEvent 1.0 Schema."
+      }
+    },
+    "com.azure.eventgrid_namespace#RenewCloudEventLocks": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_namespace#RenewCloudEventLocksRequest"
+      },
+      "output": {
+        "target": "com.azure.eventgrid_namespace#RenewCloudEventLocksResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/topics/{topicName}/eventsubscriptions/{eventSubscriptionName}:renewLock",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-01"
+        },
+        "smithy.api#documentation": "Renew locks for a batch of Cloud Events. The response will include the set of successfully renewed lock tokens, along with other failed lock tokens with their corresponding error information. Successfully renewed locks will ensure that the associated event is only available to the consumer that holds the renewed lock."
+      }
+    },
+    "com.azure.eventgrid_namespace#RenewCloudEventLocksResult": {
+      "type": "structure",
+      "members": {
+        "failedLockTokens": {
+          "target": "com.azure.eventgrid_namespace#RenewCloudEventLocksResultFailedLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description).",
+            "smithy.api#required": {}
+          }
+        },
+        "succeededLockTokens": {
+          "target": "com.azure.eventgrid_namespace#RenewCloudEventLocksResultSucceededLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens for the successfully renewed locks.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of the RenewLock operation."
+      }
+    },
+    "com.azure.eventgrid_namespace#RenewCloudEventLocksResultSucceededLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens for the successfully renewed locks."
+      }
+    },
+    "com.azure.eventgrid_namespace#RenewCloudEventLocksResultFailedLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_namespace#FailedLockToken"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description)."
+      }
+    },
+    "com.azure.eventgrid_namespace#FailedLockToken": {
+      "type": "structure",
+      "members": {
+        "lockToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lock token of an entry in the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.eventgrid_namespace#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error information of the failed operation result for the lock token in the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Failed LockToken information."
+      }
+    },
+    "com.azure.eventgrid_namespace#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.eventgrid_namespace#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.eventgrid_namespace#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.eventgrid_namespace#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.eventgrid_namespace#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.eventgrid_namespace#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_namespace#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.eventgrid_namespace#RenewCloudEventLocksRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the namespace, e.g. namespaceName1.westus-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Topic Name."
+          }
+        },
+        "eventSubscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Event Subscription Name."
+          }
+        },
+        "lockTokens": {
+          "target": "com.azure.eventgrid_namespace#RenewCloudEventLocksRequestLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#RenewCloudEventLocksRequestLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens."
+      }
+    },
+    "com.azure.eventgrid_namespace#RejectCloudEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_namespace#RejectCloudEventsRequest"
+      },
+      "output": {
+        "target": "com.azure.eventgrid_namespace#RejectResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/topics/{topicName}/eventsubscriptions/{eventSubscriptionName}:reject",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-01"
+        },
+        "smithy.api#documentation": "Reject a batch of Cloud Events. The response will include the set of successfully rejected lock tokens, along with other failed lock tokens with their corresponding error information. Successfully rejected events will be dead-lettered and can no longer be received by a consumer."
+      }
+    },
+    "com.azure.eventgrid_namespace#RejectResult": {
+      "type": "structure",
+      "members": {
+        "failedLockTokens": {
+          "target": "com.azure.eventgrid_namespace#RejectResultFailedLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description).",
+            "smithy.api#required": {}
+          }
+        },
+        "succeededLockTokens": {
+          "target": "com.azure.eventgrid_namespace#RejectResultSucceededLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens for the successfully rejected cloud events.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of the Reject operation."
+      }
+    },
+    "com.azure.eventgrid_namespace#RejectResultSucceededLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens for the successfully rejected cloud events."
+      }
+    },
+    "com.azure.eventgrid_namespace#RejectResultFailedLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_namespace#FailedLockToken"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description)."
+      }
+    },
+    "com.azure.eventgrid_namespace#RejectCloudEventsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the namespace, e.g. namespaceName1.westus-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Topic Name."
+          }
+        },
+        "eventSubscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Event Subscription Name."
+          }
+        },
+        "lockTokens": {
+          "target": "com.azure.eventgrid_namespace#RejectCloudEventsRequestLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#RejectCloudEventsRequestLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReleaseCloudEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_namespace#ReleaseCloudEventsRequest"
+      },
+      "output": {
+        "target": "com.azure.eventgrid_namespace#ReleaseResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/topics/{topicName}/eventsubscriptions/{eventSubscriptionName}:release",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-01"
+        },
+        "smithy.api#documentation": "Release a batch of Cloud Events. The response will include the set of successfully released lock tokens, along with other failed lock tokens with their corresponding error information. Successfully released events can be received by consumers."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReleaseResult": {
+      "type": "structure",
+      "members": {
+        "failedLockTokens": {
+          "target": "com.azure.eventgrid_namespace#ReleaseResultFailedLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description).",
+            "smithy.api#required": {}
+          }
+        },
+        "succeededLockTokens": {
+          "target": "com.azure.eventgrid_namespace#ReleaseResultSucceededLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens for the successfully released cloud events.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of the Release operation."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReleaseResultSucceededLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens for the successfully released cloud events."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReleaseResultFailedLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_namespace#FailedLockToken"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description)."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReleaseCloudEventsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the namespace, e.g. namespaceName1.westus-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Topic Name."
+          }
+        },
+        "eventSubscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Event Subscription Name."
+          }
+        },
+        "releaseDelayInSeconds": {
+          "target": "com.azure.eventgrid_namespace#ReleaseCloudEventsRequestReleaseDelayInSeconds",
+          "traits": {
+            "smithy.api#httpQuery": "releaseDelayInSeconds",
+            "smithy.api#documentation": "Release cloud events with the specified delay in seconds."
+          }
+        },
+        "lockTokens": {
+          "target": "com.azure.eventgrid_namespace#ReleaseCloudEventsRequestLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#ReleaseCloudEventsRequestLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReleaseCloudEventsRequestReleaseDelayInSeconds": {
+      "type": "enum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0"
+          }
+        },
+        "_10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "10"
+          }
+        },
+        "_60": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "60"
+          }
+        },
+        "_600": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "600"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "3600"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.eventgrid_namespace#AcknowledgeCloudEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_namespace#AcknowledgeCloudEventsRequest"
+      },
+      "output": {
+        "target": "com.azure.eventgrid_namespace#AcknowledgeResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/topics/{topicName}/eventsubscriptions/{eventSubscriptionName}:acknowledge",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-01"
+        },
+        "smithy.api#documentation": "Acknowledge a batch of Cloud Events. The response will include the set of successfully acknowledged lock tokens, along with other failed lock tokens with their corresponding error information. Successfully acknowledged events will no longer be available to be received by any consumer."
+      }
+    },
+    "com.azure.eventgrid_namespace#AcknowledgeResult": {
+      "type": "structure",
+      "members": {
+        "failedLockTokens": {
+          "target": "com.azure.eventgrid_namespace#AcknowledgeResultFailedLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description).",
+            "smithy.api#required": {}
+          }
+        },
+        "succeededLockTokens": {
+          "target": "com.azure.eventgrid_namespace#AcknowledgeResultSucceededLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens for the successfully acknowledged cloud events.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of the Acknowledge operation."
+      }
+    },
+    "com.azure.eventgrid_namespace#AcknowledgeResultSucceededLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens for the successfully acknowledged cloud events."
+      }
+    },
+    "com.azure.eventgrid_namespace#AcknowledgeResultFailedLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_namespace#FailedLockToken"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of FailedLockToken for failed cloud events. Each FailedLockToken includes the lock token along with the related error information (namely, the error code and description)."
+      }
+    },
+    "com.azure.eventgrid_namespace#AcknowledgeCloudEventsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the namespace, e.g. namespaceName1.westus-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Topic Name."
+          }
+        },
+        "eventSubscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Event Subscription Name."
+          }
+        },
+        "lockTokens": {
+          "target": "com.azure.eventgrid_namespace#AcknowledgeCloudEventsRequestLockTokensList",
+          "traits": {
+            "smithy.api#documentation": "Array of lock tokens.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#AcknowledgeCloudEventsRequestLockTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of lock tokens."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReceiveCloudEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_namespace#ReceiveCloudEventsRequest"
+      },
+      "output": {
+        "target": "com.azure.eventgrid_namespace#ReceiveResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/topics/{topicName}/eventsubscriptions/{eventSubscriptionName}:receive",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-01"
+        },
+        "smithy.api#documentation": "Receive a batch of Cloud Events from a subscription."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReceiveResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.eventgrid_namespace#ReceiveResultValueList",
+          "traits": {
+            "smithy.api#documentation": "Array of receive responses, one per cloud event.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the Receive operation response."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReceiveResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid_namespace#ReceiveDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of receive responses, one per cloud event."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReceiveDetails": {
+      "type": "structure",
+      "members": {
+        "brokerProperties": {
+          "target": "com.azure.eventgrid_namespace#BrokerProperties",
+          "traits": {
+            "smithy.api#documentation": "The Event Broker details.",
+            "smithy.api#required": {}
+          }
+        },
+        "event": {
+          "target": "com.azure.eventgrid_namespace#CloudEvent",
+          "traits": {
+            "smithy.api#documentation": "Cloud Event details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Receive operation details per Cloud Event."
+      }
+    },
+    "com.azure.eventgrid_namespace#BrokerProperties": {
+      "type": "structure",
+      "members": {
+        "lockToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The token of the lock on the event.",
+            "smithy.api#required": {}
+          }
+        },
+        "deliveryCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The attempt count for delivering the event.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Event Broker operation."
+      }
+    },
+    "com.azure.eventgrid_namespace#ReceiveCloudEventsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the namespace, e.g. namespaceName1.westus-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Topic Name."
+          }
+        },
+        "eventSubscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Event Subscription Name."
+          }
+        },
+        "maxEvents": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxEvents",
+            "smithy.api#documentation": "Max Events count to be received. Minimum value is 1, while maximum value is 100 events. If not specified, the default value is 1."
+          }
+        },
+        "maxWaitTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxWaitTime",
+            "smithy.api#documentation": "Max wait time value for receive operation in Seconds. It is the time in seconds that the server approximately waits for the availability of an event and responds to the request. If an event is available, the broker responds immediately to the client. Minimum value is 10 seconds, while maximum value is 120 seconds. If not specified, the default value is 60 seconds."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#PublishCloudEvent": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.eventgrid_namespace#PublishCloudEventRequest"
+      },
+      "output": {
+        "target": "com.azure.eventgrid_namespace#PublishCloudEventResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/topics/{topicName}:publish",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-01"
+        },
+        "smithy.api#documentation": "Publish a single Cloud Event to a namespace topic."
+      }
+    },
+    "com.azure.eventgrid_namespace#PublishCloudEventResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#PublishCloudEventRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the namespace, e.g. namespaceName1.westus-1.eventgrid.azure.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Topic Name."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier for the event. The combination of id and source must be unique for each distinct event.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the context in which an event happened. The combination of id and source must be unique for each distinct event.",
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Event data specific to the event type."
+          }
+        },
+        "data_base64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event data specific to the event type, encoded as a base64 string."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of event related to the originating occurrence.",
+            "smithy.api#required": {}
+          }
+        },
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time (in UTC) the event was generated, in RFC3339 format."
+          }
+        },
+        "specversion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the CloudEvents specification which the event uses.",
+            "smithy.api#required": {}
+          }
+        },
+        "dataschema": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the schema that data adheres to."
+          }
+        },
+        "datacontenttype": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content type of data value."
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This describes the subject of the event in the context of the event producer (identified by source)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid_namespace#EventgridNamespace": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.eventgrid_namespace#PublishCloudEvents"
+        },
+        {
+          "target": "com.azure.eventgrid_namespace#RenewCloudEventLocks"
+        },
+        {
+          "target": "com.azure.eventgrid_namespace#RejectCloudEvents"
+        },
+        {
+          "target": "com.azure.eventgrid_namespace#ReleaseCloudEvents"
+        },
+        {
+          "target": "com.azure.eventgrid_namespace#AcknowledgeCloudEvents"
+        },
+        {
+          "target": "com.azure.eventgrid_namespace#ReceiveCloudEvents"
+        },
+        {
+          "target": "com.azure.eventgrid_namespace#PublishCloudEvent"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure EventGridNamespace data plane",
+        "smithy.api#documentation": "Azure eventgrid data plane — eventgrid/data-plane/EventGridNamespace (latest stable api-version 2024-06-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://eventgrid.azure.net/.default"
+      }
+    }
+  }
+}

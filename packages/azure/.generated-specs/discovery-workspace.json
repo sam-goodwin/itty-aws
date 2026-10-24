@@ -1,0 +1,4150 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.discovery_workspace#ToolsCancelRunLro": "com.azure.discovery_workspace#CancelToolRunLro",
+      "com.azure.discovery_workspace#ToolsCancelRunLroResponse": "com.azure.discovery_workspace#CancelToolRunLroResponse",
+      "com.azure.discovery_workspace#ToolsCancelRunLroRequest": "com.azure.discovery_workspace#CancelToolRunLroRequest",
+      "com.azure.discovery_workspace#ToolsGetRunStatus": "com.azure.discovery_workspace#GetToolRunStatus",
+      "com.azure.discovery_workspace#ToolsGetRunStatusResponse": "com.azure.discovery_workspace#GetToolRunStatusResponse",
+      "com.azure.discovery_workspace#ToolsGetRunStatusRequest": "com.azure.discovery_workspace#GetToolRunStatusRequest",
+      "com.azure.discovery_workspace#ToolsGetOperations": "com.azure.discovery_workspace#GetToolOperations",
+      "com.azure.discovery_workspace#ToolsGetOperationsRequest": "com.azure.discovery_workspace#GetToolOperationsRequest",
+      "com.azure.discovery_workspace#ToolsGetComputeUsage": "com.azure.discovery_workspace#GetToolComputeUsage",
+      "com.azure.discovery_workspace#ToolsGetComputeUsageRequest": "com.azure.discovery_workspace#GetToolComputeUsageRequest",
+      "com.azure.discovery_workspace#ToolsRun": "com.azure.discovery_workspace#RunTool",
+      "com.azure.discovery_workspace#ToolsRunResponse": "com.azure.discovery_workspace#RunToolResponse",
+      "com.azure.discovery_workspace#ToolsRunRequest": "com.azure.discovery_workspace#RunToolRequest",
+      "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesList": "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesList",
+      "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesItem": "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesItem",
+      "com.azure.discovery_workspace#ToolsRunRequestNodePoolIdsList": "com.azure.discovery_workspace#RunToolRequestNodePoolIdsList",
+      "com.azure.discovery_workspace#ToolsRunRequestOutputDataList": "com.azure.discovery_workspace#RunToolRequestOutputDataList",
+      "com.azure.discovery_workspace#ToolsRunRequestInputDataList": "com.azure.discovery_workspace#RunToolRequestInputDataList",
+      "com.azure.discovery_workspace#ToolsRunRequestInlineFilesList": "com.azure.discovery_workspace#RunToolRequestInlineFilesList",
+      "com.azure.discovery_workspace#TasksAddExecutionHistory": "com.azure.discovery_workspace#AddTaskExecutionHistory",
+      "com.azure.discovery_workspace#TasksAddExecutionHistoryRequest": "com.azure.discovery_workspace#AddTaskExecutionHistoryRequest",
+      "com.azure.discovery_workspace#TasksAddExecutionHistoryRequestAdditionalDetailsMap": "com.azure.discovery_workspace#AddTaskExecutionHistoryRequestAdditionalDetailsMap",
+      "com.azure.discovery_workspace#TasksAddComment": "com.azure.discovery_workspace#AddTaskComment",
+      "com.azure.discovery_workspace#TasksAddCommentRequest": "com.azure.discovery_workspace#AddTaskCommentRequest",
+      "com.azure.discovery_workspace#TasksStart": "com.azure.discovery_workspace#StartTask",
+      "com.azure.discovery_workspace#TasksStartRequest": "com.azure.discovery_workspace#StartTaskRequest",
+      "com.azure.discovery_workspace#TasksDelete": "com.azure.discovery_workspace#DeleteTask",
+      "com.azure.discovery_workspace#TasksDeleteRequest": "com.azure.discovery_workspace#DeleteTaskRequest",
+      "com.azure.discovery_workspace#TasksUpdate": "com.azure.discovery_workspace#UpdateTask",
+      "com.azure.discovery_workspace#TasksUpdateRequest": "com.azure.discovery_workspace#UpdateTaskRequest",
+      "com.azure.discovery_workspace#TasksUpdateRequestStorageAssetIdsList": "com.azure.discovery_workspace#UpdateTaskRequestStorageAssetIdsList",
+      "com.azure.discovery_workspace#TasksUpdateRequestCommentsList": "com.azure.discovery_workspace#UpdateTaskRequestCommentsList",
+      "com.azure.discovery_workspace#TasksUpdateRequestRelatedToList": "com.azure.discovery_workspace#UpdateTaskRequestRelatedToList",
+      "com.azure.discovery_workspace#TasksUpdateRequestDependsOnList": "com.azure.discovery_workspace#UpdateTaskRequestDependsOnList",
+      "com.azure.discovery_workspace#TasksUpdateRequestValidationRequirementsList": "com.azure.discovery_workspace#UpdateTaskRequestValidationRequirementsList",
+      "com.azure.discovery_workspace#TasksGet": "com.azure.discovery_workspace#GetTask",
+      "com.azure.discovery_workspace#TasksGetRequest": "com.azure.discovery_workspace#GetTaskRequest",
+      "com.azure.discovery_workspace#TasksCreate": "com.azure.discovery_workspace#CreateTask",
+      "com.azure.discovery_workspace#TasksCreateRequest": "com.azure.discovery_workspace#CreateTaskRequest",
+      "com.azure.discovery_workspace#TasksCreateRequestStorageAssetIdsList": "com.azure.discovery_workspace#CreateTaskRequestStorageAssetIdsList",
+      "com.azure.discovery_workspace#TasksCreateRequestCommentsList": "com.azure.discovery_workspace#CreateTaskRequestCommentsList",
+      "com.azure.discovery_workspace#TasksCreateRequestRelatedToList": "com.azure.discovery_workspace#CreateTaskRequestRelatedToList",
+      "com.azure.discovery_workspace#TasksCreateRequestDependsOnList": "com.azure.discovery_workspace#CreateTaskRequestDependsOnList",
+      "com.azure.discovery_workspace#TasksCreateRequestValidationRequirementsList": "com.azure.discovery_workspace#CreateTaskRequestValidationRequirementsList",
+      "com.azure.discovery_workspace#TasksList": "com.azure.discovery_workspace#ListTasks",
+      "com.azure.discovery_workspace#TasksListRequest": "com.azure.discovery_workspace#ListTasksRequest",
+      "com.azure.discovery_workspace#InvestigationsGetOperationStatus": "com.azure.discovery_workspace#GetInvestigationOperationStatus",
+      "com.azure.discovery_workspace#InvestigationsGetOperationStatusRequest": "com.azure.discovery_workspace#GetInvestigationOperationStatusRequest",
+      "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngine": "com.azure.discovery_workspace#StopInvestigationDiscoveryEngine",
+      "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngineRequest": "com.azure.discovery_workspace#StopInvestigationDiscoveryEngineRequest",
+      "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngine": "com.azure.discovery_workspace#StartInvestigationDiscoveryEngine",
+      "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngineRequest": "com.azure.discovery_workspace#StartInvestigationDiscoveryEngineRequest",
+      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemory": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemory",
+      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemoryRequest": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemoryRequest",
+      "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngine": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngine",
+      "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequest": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequest",
+      "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequestConfigurationMap": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequestConfigurationMap",
+      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngine": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngine",
+      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineRequest": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineRequest",
+      "com.azure.discovery_workspace#InvestigationsDelete": "com.azure.discovery_workspace#DeleteInvestigation",
+      "com.azure.discovery_workspace#InvestigationsDeleteResponse": "com.azure.discovery_workspace#DeleteInvestigationResponse",
+      "com.azure.discovery_workspace#InvestigationsDeleteRequest": "com.azure.discovery_workspace#DeleteInvestigationRequest",
+      "com.azure.discovery_workspace#InvestigationsUpdate": "com.azure.discovery_workspace#UpdateInvestigation",
+      "com.azure.discovery_workspace#InvestigationsUpdateRequest": "com.azure.discovery_workspace#UpdateInvestigationRequest",
+      "com.azure.discovery_workspace#InvestigationsUpdateRequestTagsList": "com.azure.discovery_workspace#UpdateInvestigationRequestTagsList",
+      "com.azure.discovery_workspace#InvestigationsGet": "com.azure.discovery_workspace#GetInvestigation",
+      "com.azure.discovery_workspace#InvestigationsGetRequest": "com.azure.discovery_workspace#GetInvestigationRequest",
+      "com.azure.discovery_workspace#InvestigationsList": "com.azure.discovery_workspace#ListInvestigations",
+      "com.azure.discovery_workspace#InvestigationsListRequest": "com.azure.discovery_workspace#ListInvestigationsRequest",
+      "com.azure.discovery_workspace#ConversationsDelete": "com.azure.discovery_workspace#DeleteConversation",
+      "com.azure.discovery_workspace#ConversationsDeleteRequest": "com.azure.discovery_workspace#DeleteConversationRequest",
+      "com.azure.discovery_workspace#ConversationsUpdate": "com.azure.discovery_workspace#UpdateConversation",
+      "com.azure.discovery_workspace#ConversationsUpdateRequest": "com.azure.discovery_workspace#UpdateConversationRequest",
+      "com.azure.discovery_workspace#ConversationsGet": "com.azure.discovery_workspace#GetConversation",
+      "com.azure.discovery_workspace#ConversationsGetRequest": "com.azure.discovery_workspace#GetConversationRequest",
+      "com.azure.discovery_workspace#ConversationsCreate": "com.azure.discovery_workspace#CreateConversation",
+      "com.azure.discovery_workspace#ConversationsCreateRequest": "com.azure.discovery_workspace#CreateConversationRequest",
+      "com.azure.discovery_workspace#ConversationsList": "com.azure.discovery_workspace#ListConversations",
+      "com.azure.discovery_workspace#ConversationsListRequest": "com.azure.discovery_workspace#ListConversationsRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.discovery_workspace#ToolsCancelRunLro": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ToolsCancelRunLroRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#ToolsCancelRunLroResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/tools/projects/{projectName}/operations/{operationId}:cancel",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Cancel an ongoing tool run."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsCancelRunLroResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_workspace#ToolsCancelRunLroRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the associated Project."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the operation to cancel."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ToolsGetRunStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ToolsGetRunStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#ToolsGetRunStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/tools/projects/{projectName}/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Used for to poll status of a Tool run."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsGetRunStatusResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_workspace#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "The status of the operation",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.discovery_workspace#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is \"Failed\"."
+          }
+        },
+        "result": {
+          "target": "com.azure.discovery_workspace#RunResult",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_workspace#RunResult": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Status of the run."
+          }
+        },
+        "runtimeDetails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable details about the run status.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created"
+          }
+        },
+        "completedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the run completed."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user that started the tool run."
+          }
+        },
+        "toolReport": {
+          "target": "com.azure.discovery_workspace#RunResultToolReport",
+          "traits": {
+            "smithy.api#documentation": "Details provided by the tool (rather than the platform)."
+          }
+        },
+        "outputData": {
+          "target": "com.azure.discovery_workspace#RunResultOutputDataList",
+          "traits": {
+            "smithy.api#documentation": "Output data URIs.",
+            "smithy.api#required": {}
+          }
+        },
+        "debugInfo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Debugging information.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Run result"
+      }
+    },
+    "com.azure.discovery_workspace#RunResultOutputDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#OutputDataUri"
+      },
+      "traits": {
+        "smithy.api#documentation": "Output data URIs."
+      }
+    },
+    "com.azure.discovery_workspace#OutputDataUri": {
+      "type": "structure",
+      "members": {
+        "storageUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI of the output data.",
+            "smithy.api#required": {}
+          }
+        },
+        "mountPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path within the container from which the output was collected.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model for providing the URI of the output collected from a specific container path."
+      }
+    },
+    "com.azure.discovery_workspace#RunResultToolReport": {
+      "type": "structure",
+      "members": {
+        "percentageComplete": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Percentage compete",
+            "smithy.api#required": {}
+          }
+        },
+        "statusInformation": {
+          "target": "smithy.api#Document"
+        },
+        "logs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Logs from the tool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details provided by the tool (rather than the platform)."
+      }
+    },
+    "com.azure.discovery_workspace#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.discovery_workspace#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.discovery_workspace#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.discovery_workspace#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.discovery_workspace#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.discovery_workspace#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.discovery_workspace#AzureCoreFoundationsOperationState": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum describing allowed operation states."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsGetRunStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the associated Project."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the operation."
+          }
+        },
+        "logCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "logCount",
+            "smithy.api#documentation": "Number of log lines to return (0-2500)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ToolsGetOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ToolsGetOperationsRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#PagedOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/tools/projects/{projectName}/operations",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List tool runs."
+      }
+    },
+    "com.azure.discovery_workspace#PagedOperation": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.discovery_workspace#PagedOperationValueList",
+          "traits": {
+            "smithy.api#documentation": "The Operation items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Operation items"
+      }
+    },
+    "com.azure.discovery_workspace#PagedOperationValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#Operation"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Operation items on this page"
+      }
+    },
+    "com.azure.discovery_workspace#Operation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation id.",
+            "smithy.api#required": {}
+          }
+        },
+        "nodepoolId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The nodepool the operation targets.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_workspace#RunStatus",
+          "traits": {
+            "smithy.api#documentation": "Current status of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "runtimeDetails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable details about the run status.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the operation was submitted.",
+            "smithy.api#required": {}
+          }
+        },
+        "completedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the operation completed."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Summary information for an operation."
+      }
+    },
+    "com.azure.discovery_workspace#RunStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum for run status"
+      }
+    },
+    "com.azure.discovery_workspace#ToolsGetOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the associated Project."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ToolsGetComputeUsage": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ToolsGetComputeUsageRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#ComputeUsage"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/tools/projects/{projectName}/computeUsage",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Examine compute usage."
+      }
+    },
+    "com.azure.discovery_workspace#ComputeUsage": {
+      "type": "structure",
+      "members": {
+        "supercomputers": {
+          "target": "com.azure.discovery_workspace#ComputeUsageSupercomputersMap",
+          "traits": {
+            "smithy.api#documentation": "Index of information for each supercomputer in the workspace of a project.\nIndexed by the (short) name of the supercomputer.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Overview of compute usage for a project."
+      }
+    },
+    "com.azure.discovery_workspace#ComputeUsageSupercomputersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.discovery_workspace#SupercomputerUsage"
+      },
+      "traits": {
+        "smithy.api#documentation": "Index of information for each supercomputer in the workspace of a project.\nIndexed by the (short) name of the supercomputer."
+      }
+    },
+    "com.azure.discovery_workspace#SupercomputerUsage": {
+      "type": "structure",
+      "members": {
+        "activeJobs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of active jobs on the supercomputer.",
+            "smithy.api#required": {}
+          }
+        },
+        "pendingJobs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of pending jobs on the supercomputer.",
+            "smithy.api#required": {}
+          }
+        },
+        "nodepools": {
+          "target": "com.azure.discovery_workspace#SupercomputerUsageNodepoolsMap",
+          "traits": {
+            "smithy.api#documentation": "Nodepool utilization for each nodepool for a supercomputer.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Overview of compute usage for a supercomputer."
+      }
+    },
+    "com.azure.discovery_workspace#SupercomputerUsageNodepoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.discovery_workspace#NodepoolUsage"
+      },
+      "traits": {
+        "smithy.api#documentation": "Nodepool utilization for each nodepool for a supercomputer."
+      }
+    },
+    "com.azure.discovery_workspace#NodepoolUsage": {
+      "type": "structure",
+      "members": {
+        "reservedCPUs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CPUs in use (e.g. 1, or 500m for 500 milli-CPUs)\nacross all nodes in the nodepool.",
+            "smithy.api#required": {}
+          }
+        },
+        "allocatableCPUs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CPUs which are free to use (e.g. 1, or 500m for 500 milli-CPUs)\nacross all nodes in the nodepool.",
+            "smithy.api#required": {}
+          }
+        },
+        "reservedMemory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Memory which is in use (e.g. 500Mi or 1Gi).",
+            "smithy.api#required": {}
+          }
+        },
+        "allocatableMemory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Memory which is free to use (e.g. 500Mi or 1Gi).",
+            "smithy.api#required": {}
+          }
+        },
+        "reservedGPUs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GPUs which are in use.",
+            "smithy.api#required": {}
+          }
+        },
+        "allocatableGPUs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GPUs which are free to use.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Overview of compute usage for a nodepool."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsGetComputeUsageRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the associated Project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRun": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ToolsRunRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#ToolsRunResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/tools/projects/{projectName}:run",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Run the specified tool in the context of the specified project."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the associated Project."
+          }
+        },
+        "toolId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the tool to execute",
+            "smithy.api#required": {}
+          }
+        },
+        "command": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Command to pass to tool container entrypoint.\n\nIf the tool has multiple containers defined, this command is executed on all of them.\n\nIf omitted, all containers execute their raw entrypoints.\n\nThis command is parsed into an argument list which is passed to the underlying container runtime.\nFor example, if the command is \"python /code/wrapper.py --input /inputs/abcdef-input-1/input.txt --output /outputs/abcdef-output-1\",\nthen the container runtime will receive the following argument list:\n[\"python\", \"/code/wrapper.py\", \"--input\", \"/inputs/abcdef-input-1/input.txt\", \"--output\", \"/outputs/abcdef-output-1\"]\n\nThe container's entrypoint is not overridden. In Docker terminology, the above argument list becomes\nthe CMD, not the ENTRYPOINT of the launched container.\n\nOur parsing includes the following limited interpretation of special characters:\n- The only special characters are \" ' and \\.\n- Backslashes `\\` escape the next character if that character is a special character, preserving its literal value.\n- Double quotes `\"` preserve everything inside them literally, with the exception of the characters \" and \\, which must be escaped with a backslash `\\`. Unmatched quotes will throw an error.\n- Single quotes `'` preserve everything inside them literally. A single-quote cannot occur within single-quotes. Unmatched quotes will throw an error.\n\nIf you wish to run a command that relies on shell features such as globbing or output redirection, you either need to:\n- use a container with an entrypoint that is a shell (e.g. `/bin/sh` or `/bin/bash`) and pass a command which is valid for that shell e.g.\n`-c 'python /code/wrapper.py --input /inputs/abcdef-input-1/* --output /outputs/abcdef-output-1'`\n- use a container which has a shell installed, and include the shell in the command, e.g.\n`sh -c \"python /code/wrapper.py --input /inputs/abcdef-input-1/* --output /outputs/abcdef-output-1\"`"
+          }
+        },
+        "inlineFiles": {
+          "target": "com.azure.discovery_workspace#ToolsRunRequestInlineFilesList",
+          "traits": {
+            "smithy.api#documentation": "Encoded inline files to be mounted into the container, e.g. for generated code."
+          }
+        },
+        "inputData": {
+          "target": "com.azure.discovery_workspace#ToolsRunRequestInputDataList",
+          "traits": {
+            "smithy.api#documentation": "Input data references and mount paths."
+          }
+        },
+        "outputData": {
+          "target": "com.azure.discovery_workspace#ToolsRunRequestOutputDataList",
+          "traits": {
+            "smithy.api#documentation": "Output data references and mount paths."
+          }
+        },
+        "nodePoolIds": {
+          "target": "com.azure.discovery_workspace#ToolsRunRequestNodePoolIdsList",
+          "traits": {
+            "smithy.api#documentation": "IDs of NodePools to use for this run.",
+            "smithy.api#required": {}
+          }
+        },
+        "infraOverrides": {
+          "target": "com.azure.discovery_workspace#InfraOverrides",
+          "traits": {
+            "smithy.api#documentation": "Override the infrastructure requirements in the tool definitions."
+          }
+        },
+        "environmentVariables": {
+          "target": "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesList",
+          "traits": {
+            "smithy.api#documentation": "Optional environment variables to set in the tool container. This must not contain any secrets."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional environment variables to set in the tool container. This must not contain any secrets."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the environment variable. This must not contain any secrets.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the environment variable. This must not contain any secrets."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.discovery_workspace#InfraOverrides": {
+      "type": "structure",
+      "members": {
+        "cpu": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override CPU requirements (e.g. 1, or 500m for 500 milli-CPUs)"
+          }
+        },
+        "ram": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override RAM requirements (e.g. 500Mi or 1Gi)."
+          }
+        },
+        "gpu": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override GPU count requirements."
+          }
+        },
+        "replicaCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Override the number of replicas of the tool image to run."
+          }
+        },
+        "imageUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the image to use for this tool run."
+          }
+        },
+        "maxCpu": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the maximum CPU allowed for the tool run (e.g. 1, or 500m for 500 milli-CPUs)"
+          }
+        },
+        "maxRam": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the maximum RAM allowed for the tool run (e.g. 500Mi or 1Gi)"
+          }
+        },
+        "maxGpu": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the maximum GPU count allowed for the tool run"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Explicitly set tool run requirements - overrides the tool definition."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunRequestNodePoolIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of NodePools to use for this run."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunRequestOutputDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#OutputDataMount"
+      },
+      "traits": {
+        "smithy.api#documentation": "Output data references and mount paths."
+      }
+    },
+    "com.azure.discovery_workspace#OutputDataMount": {
+      "type": "structure",
+      "members": {
+        "storageUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of location to persist output to.",
+            "smithy.api#required": {}
+          }
+        },
+        "mountPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Absolute path within the container from which to collect output data.",
+            "smithy.api#required": {}
+          }
+        },
+        "mountProtocol": {
+          "target": "com.azure.discovery_workspace#StorageMountProtocol",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for mounting this storage. Overrides any value specified on the storage container."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of a mount for collecting tool output data."
+      }
+    },
+    "com.azure.discovery_workspace#StorageMountProtocol": {
+      "type": "enum",
+      "members": {
+        "NFS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NFS"
+          }
+        },
+        "BLOBFUSECACHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BlobfuseCaching"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The protocol to use for mounting an storage container."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunRequestInputDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#InputDataMount"
+      },
+      "traits": {
+        "smithy.api#documentation": "Input data references and mount paths."
+      }
+    },
+    "com.azure.discovery_workspace#InputDataMount": {
+      "type": "structure",
+      "members": {
+        "storageUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of input data to mount.",
+            "smithy.api#required": {}
+          }
+        },
+        "mountPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Absolute path within the container at which to mount this input.",
+            "smithy.api#required": {}
+          }
+        },
+        "mountProtocol": {
+          "target": "com.azure.discovery_workspace#StorageMountProtocol",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for mounting this storage. Overrides any value specified on the storage container."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data URI and path where it will be mounted in the tool container."
+      }
+    },
+    "com.azure.discovery_workspace#ToolsRunRequestInlineFilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#InlineFile"
+      },
+      "traits": {
+        "smithy.api#documentation": "Encoded inline files to be mounted into the container, e.g. for generated code."
+      }
+    },
+    "com.azure.discovery_workspace#InlineFile": {
+      "type": "structure",
+      "members": {
+        "mountPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Absolute path within the container at which to mount this file.",
+            "smithy.api#required": {}
+          }
+        },
+        "encodedFile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "File contents: Compressed using .gz then base64-encoded.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A file to be included in the input data for a tool run and the path where it will be mounted, relative to the working directory."
+      }
+    },
+    "com.azure.discovery_workspace#TasksAddExecutionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksAddExecutionHistoryRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Task"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks/{taskName}:addExecutionHistory",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Add an execution history entry to a task."
+      }
+    },
+    "com.azure.discovery_workspace#Task": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the task.",
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of the task."
+          }
+        },
+        "priority": {
+          "target": "com.azure.discovery_workspace#TaskPriority",
+          "traits": {
+            "smithy.api#documentation": "The priority of the task."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the task."
+          }
+        },
+        "validationRequirements": {
+          "target": "com.azure.discovery_workspace#TaskValidationRequirementsList",
+          "traits": {
+            "smithy.api#documentation": "Array of validation requirements for the task."
+          }
+        },
+        "parentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the parent task if this is a subtask."
+          }
+        },
+        "dependsOn": {
+          "target": "com.azure.discovery_workspace#TaskDependsOnList",
+          "traits": {
+            "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
+          }
+        },
+        "relatedTo": {
+          "target": "com.azure.discovery_workspace#TaskRelatedToList",
+          "traits": {
+            "smithy.api#documentation": "IDs of tasks that are related to this task."
+          }
+        },
+        "assignedTo": {
+          "target": "com.azure.discovery_workspace#TaskAssignee",
+          "traits": {
+            "smithy.api#documentation": "Application or user assigned to this task."
+          }
+        },
+        "comments": {
+          "target": "com.azure.discovery_workspace#TaskCommentsList",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the task."
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_workspace#TaskStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the task."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created"
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created this resource."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of entity that created the resource (User, Application, System, or custom type)."
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was last updated"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who updated this resource."
+          }
+        },
+        "lastModifiedByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who updated this resource."
+          }
+        },
+        "executionHistory": {
+          "target": "com.azure.discovery_workspace#TaskExecutionHistoryList",
+          "traits": {
+            "smithy.api#documentation": "History of execution events for this task."
+          }
+        },
+        "investigationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The investigation identifier associated with the task."
+          }
+        },
+        "taskResult": {
+          "target": "com.azure.discovery_workspace#TaskResult",
+          "traits": {
+            "smithy.api#documentation": "Task execution result with text and storage assets."
+          }
+        },
+        "storageAssetIds": {
+          "target": "com.azure.discovery_workspace#TaskStorageAssetIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of storage assets related to the task."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task resource."
+      }
+    },
+    "com.azure.discovery_workspace#TaskStorageAssetIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of storage assets related to the task."
+      }
+    },
+    "com.azure.discovery_workspace#TaskResult": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text content of the task result."
+          }
+        },
+        "storageAssetIds": {
+          "target": "com.azure.discovery_workspace#TaskResultStorageAssetIdsList",
+          "traits": {
+            "smithy.api#documentation": "Array of storage asset identifiers related to the result."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task execution result."
+      }
+    },
+    "com.azure.discovery_workspace#TaskResultStorageAssetIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of storage asset identifiers related to the result."
+      }
+    },
+    "com.azure.discovery_workspace#TaskExecutionHistoryList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#ExecutionHistoryEntry"
+      },
+      "traits": {
+        "smithy.api#documentation": "History of execution events for this task."
+      }
+    },
+    "com.azure.discovery_workspace#ExecutionHistoryEntry": {
+      "type": "structure",
+      "members": {
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when the entry was created (ISO 8601 UTC format).",
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The action that was performed (controlled vocabulary; semi-open).",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of who created this entry (GUID for user | resourceId for application | arbitrary string for other types).",
+            "smithy.api#required": {}
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of entity that created this entry (User, Application, System, or custom type).",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief summary of the execution event."
+          }
+        },
+        "responseMessageText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Detailed completion message."
+          }
+        },
+        "responseMessageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Run or message ID for full details."
+          }
+        },
+        "additionalDetails": {
+          "target": "com.azure.discovery_workspace#ExecutionHistoryEntryAdditionalDetailsMap",
+          "traits": {
+            "smithy.api#documentation": "Freeform key-value pairs for additional details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution history entry for a task."
+      }
+    },
+    "com.azure.discovery_workspace#ExecutionHistoryEntryAdditionalDetailsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Freeform key-value pairs for additional details."
+      }
+    },
+    "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "User"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Application"
+          }
+        },
+        "SYSTEM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "System"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum for entity type"
+      }
+    },
+    "com.azure.discovery_workspace#TaskStatus": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "New"
+          }
+        },
+        "ONHOLD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OnHold"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Complete"
+          }
+        },
+        "REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Removed"
+          }
+        },
+        "FLAGGEDHUMAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FlaggedHuman"
+          }
+        },
+        "FLAGGEDAI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FlaggedAi"
+          }
+        },
+        "EXECUTING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Executing"
+          }
+        },
+        "EXECUTIONDONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ExecutionDone"
+          }
+        },
+        "STALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Stale"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "INCOMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Incomplete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task status enumeration."
+      }
+    },
+    "com.azure.discovery_workspace#TaskCommentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#TaskComment"
+      },
+      "traits": {
+        "smithy.api#documentation": "Comments or notes about the task."
+      }
+    },
+    "com.azure.discovery_workspace#TaskComment": {
+      "type": "structure",
+      "members": {
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the comment was created."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the user or application who created the comment.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of creator (User, Application, System, or custom type).",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The comment text content.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task comment."
+      }
+    },
+    "com.azure.discovery_workspace#TaskAssignee": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the assignee.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of assignee (User, Application, System, or custom type).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task assignee information."
+      }
+    },
+    "com.azure.discovery_workspace#TaskRelatedToList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of tasks that are related to this task."
+      }
+    },
+    "com.azure.discovery_workspace#TaskDependsOnList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
+      }
+    },
+    "com.azure.discovery_workspace#TaskValidationRequirementsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of validation requirements for the task."
+      }
+    },
+    "com.azure.discovery_workspace#TaskPriority": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task priority level."
+      }
+    },
+    "com.azure.discovery_workspace#TasksAddExecutionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The task name."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when the entry was created (ISO 8601 UTC format).",
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The action that was performed (controlled vocabulary; semi-open).",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of who created this entry (GUID for user | resourceId for application | arbitrary string for other types).",
+            "smithy.api#required": {}
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of entity that created this entry (User, Application, System, or custom type).",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief summary of the execution event."
+          }
+        },
+        "responseMessageText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Detailed completion message."
+          }
+        },
+        "responseMessageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Run or message ID for full details."
+          }
+        },
+        "additionalDetails": {
+          "target": "com.azure.discovery_workspace#TasksAddExecutionHistoryRequestAdditionalDetailsMap",
+          "traits": {
+            "smithy.api#documentation": "Freeform key-value pairs for additional details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#TasksAddExecutionHistoryRequestAdditionalDetailsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Freeform key-value pairs for additional details."
+      }
+    },
+    "com.azure.discovery_workspace#TasksAddComment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksAddCommentRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Task"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks/{taskName}:addComment",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Add a comment to a task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksAddCommentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The task name."
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the comment was created."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the user or application who created the comment.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of creator (User, Application, System, or custom type).",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The comment text content.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#TasksStart": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksStartRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Task"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks/{taskName}:start",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Start execution of a task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksStartRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The task name."
+          }
+        },
+        "assignee": {
+          "target": "com.azure.discovery_workspace#TaskAssignee",
+          "traits": {
+            "smithy.api#documentation": "Assignee that will execute the task. Optional."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#TasksDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks/{taskName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Delete a task by ID."
+      }
+    },
+    "com.azure.discovery_workspace#TasksDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the task."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#TasksUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Task"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks/{taskName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Patch (partial update) a task (e.g. status, description, validation requirements, dependencies, result)."
+      }
+    },
+    "com.azure.discovery_workspace#TasksUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the task."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of the task."
+          }
+        },
+        "priority": {
+          "target": "com.azure.discovery_workspace#TaskPriority",
+          "traits": {
+            "smithy.api#documentation": "The priority of the task."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the task."
+          }
+        },
+        "validationRequirements": {
+          "target": "com.azure.discovery_workspace#TasksUpdateRequestValidationRequirementsList",
+          "traits": {
+            "smithy.api#documentation": "Array of validation requirements for the task."
+          }
+        },
+        "parentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the parent task if this is a subtask."
+          }
+        },
+        "dependsOn": {
+          "target": "com.azure.discovery_workspace#TasksUpdateRequestDependsOnList",
+          "traits": {
+            "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
+          }
+        },
+        "relatedTo": {
+          "target": "com.azure.discovery_workspace#TasksUpdateRequestRelatedToList",
+          "traits": {
+            "smithy.api#documentation": "IDs of tasks that are related to this task."
+          }
+        },
+        "assignedTo": {
+          "target": "com.azure.discovery_workspace#TaskAssigneeUpdate",
+          "traits": {
+            "smithy.api#documentation": "Application or user assigned to this task."
+          }
+        },
+        "comments": {
+          "target": "com.azure.discovery_workspace#TasksUpdateRequestCommentsList",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the task."
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_workspace#TaskStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the task."
+          }
+        },
+        "taskResult": {
+          "target": "com.azure.discovery_workspace#TaskResult",
+          "traits": {
+            "smithy.api#documentation": "Task execution result with text and storage assets."
+          }
+        },
+        "storageAssetIds": {
+          "target": "com.azure.discovery_workspace#TasksUpdateRequestStorageAssetIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of storage assets related to the task."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#TasksUpdateRequestStorageAssetIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of storage assets related to the task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksUpdateRequestCommentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#TaskComment"
+      },
+      "traits": {
+        "smithy.api#documentation": "Comments or notes about the task."
+      }
+    },
+    "com.azure.discovery_workspace#TaskAssigneeUpdate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the assignee."
+          }
+        },
+        "type": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of assignee (User, Application, System, or custom type)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task assignee information."
+      }
+    },
+    "com.azure.discovery_workspace#TasksUpdateRequestRelatedToList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of tasks that are related to this task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksUpdateRequestDependsOnList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
+      }
+    },
+    "com.azure.discovery_workspace#TasksUpdateRequestValidationRequirementsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of validation requirements for the task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksGetRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Task"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks/{taskName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Get a task by ID."
+      }
+    },
+    "com.azure.discovery_workspace#TasksGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the task."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#TasksCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Task"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Create a new task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of the task."
+          }
+        },
+        "priority": {
+          "target": "com.azure.discovery_workspace#TaskPriority",
+          "traits": {
+            "smithy.api#documentation": "The priority of the task."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the task."
+          }
+        },
+        "validationRequirements": {
+          "target": "com.azure.discovery_workspace#TasksCreateRequestValidationRequirementsList",
+          "traits": {
+            "smithy.api#documentation": "Array of validation requirements for the task."
+          }
+        },
+        "parentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the parent task if this is a subtask."
+          }
+        },
+        "dependsOn": {
+          "target": "com.azure.discovery_workspace#TasksCreateRequestDependsOnList",
+          "traits": {
+            "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
+          }
+        },
+        "relatedTo": {
+          "target": "com.azure.discovery_workspace#TasksCreateRequestRelatedToList",
+          "traits": {
+            "smithy.api#documentation": "IDs of tasks that are related to this task."
+          }
+        },
+        "assignedTo": {
+          "target": "com.azure.discovery_workspace#TaskAssignee",
+          "traits": {
+            "smithy.api#documentation": "Application or user assigned to this task."
+          }
+        },
+        "comments": {
+          "target": "com.azure.discovery_workspace#TasksCreateRequestCommentsList",
+          "traits": {
+            "smithy.api#documentation": "Comments or notes about the task."
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_workspace#TaskStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the task."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "Type of entity that created the resource (User, Application, System, or custom type)."
+          }
+        },
+        "investigationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The investigation identifier associated with the task."
+          }
+        },
+        "taskResult": {
+          "target": "com.azure.discovery_workspace#TaskResult",
+          "traits": {
+            "smithy.api#documentation": "Task execution result with text and storage assets."
+          }
+        },
+        "storageAssetIds": {
+          "target": "com.azure.discovery_workspace#TasksCreateRequestStorageAssetIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of storage assets related to the task."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#TasksCreateRequestStorageAssetIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of storage assets related to the task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksCreateRequestCommentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#TaskComment"
+      },
+      "traits": {
+        "smithy.api#documentation": "Comments or notes about the task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksCreateRequestRelatedToList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of tasks that are related to this task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksCreateRequestDependsOnList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
+      }
+    },
+    "com.azure.discovery_workspace#TasksCreateRequestValidationRequirementsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of validation requirements for the task."
+      }
+    },
+    "com.azure.discovery_workspace#TasksList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#TasksListRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#PagedTask"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/tasks",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List tasks with optional OData filters."
+      }
+    },
+    "com.azure.discovery_workspace#PagedTask": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.discovery_workspace#PagedTaskValueList",
+          "traits": {
+            "smithy.api#documentation": "The Task items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Task items"
+      }
+    },
+    "com.azure.discovery_workspace#PagedTaskValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#Task"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Task items on this page"
+      }
+    },
+    "com.azure.discovery_workspace#TasksListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "OData filter expression. Supported fields: investigationId, status, createdByType, priority, createdAt, lastModifiedAt. Example: status eq 'new' or status eq 'executing'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGetOperationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsGetOperationStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#InvestigationOperationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Get the status of a long-running operation."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationOperationStatus": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_workspace#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "The status of the operation",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.discovery_workspace#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is \"Failed\"."
+          }
+        },
+        "result": {
+          "target": "com.azure.discovery_workspace#Investigation",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of a long-running Investigation operation."
+      }
+    },
+    "com.azure.discovery_workspace#Investigation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The investigation name.",
+            "smithy.api#required": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parent project name.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created"
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created this resource."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who created this resource."
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was last updated"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who updated this resource."
+          }
+        },
+        "lastModifiedByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who updated this resource."
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_workspace#InvestigationStatus",
+          "traits": {
+            "smithy.api#documentation": "The status"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description"
+          }
+        },
+        "tags": {
+          "target": "com.azure.discovery_workspace#InvestigationTagsList",
+          "traits": {
+            "smithy.api#documentation": "The tags"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A investigation list item."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags"
+      }
+    },
+    "com.azure.discovery_workspace#MicrosoftDiscoveryCommonTag": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Property key"
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Property value"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of Tag"
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationStatus": {
+      "type": "enum",
+      "members": {
+        "CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Created"
+          }
+        },
+        "VALIDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Validated"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status"
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGetOperationStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngine": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngineRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#DiscoveryEngine"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/discoveryEngine:stop",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Stop the discovery engine for an investigation."
+      }
+    },
+    "com.azure.discovery_workspace#DiscoveryEngine": {
+      "type": "structure",
+      "members": {
+        "discoveryEngineStatus": {
+          "target": "com.azure.discovery_workspace#DiscoveryEngineStatus",
+          "traits": {
+            "smithy.api#documentation": "The Discovery Engine status.",
+            "smithy.api#required": {}
+          }
+        },
+        "systemPrompt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The system prompt."
+          }
+        },
+        "configuration": {
+          "target": "com.azure.discovery_workspace#DiscoveryEngineConfigurationMap",
+          "traits": {
+            "smithy.api#documentation": "The Discovery Engine configuration."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created this resource."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who created this resource."
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was last updated"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who updated this resource."
+          }
+        },
+        "lastModifiedByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who updated this resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Discovery engine instance."
+      }
+    },
+    "com.azure.discovery_workspace#DiscoveryEngineConfigurationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Discovery Engine configuration."
+      }
+    },
+    "com.azure.discovery_workspace#DiscoveryEngineStatus": {
+      "type": "enum",
+      "members": {
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Discovery Engine Status"
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngineRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngine": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngineRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#DiscoveryEngine"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/discoveryEngine:start",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Start the discovery engine for an investigation."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngineRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemory": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemoryRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#PagedWorkingMemoryEntry"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/discoveryEngine/workingMemory",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List discovery engine working memory entries for an investigation."
+      }
+    },
+    "com.azure.discovery_workspace#PagedWorkingMemoryEntry": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.discovery_workspace#PagedWorkingMemoryEntryValueList",
+          "traits": {
+            "smithy.api#documentation": "The WorkingMemoryEntry items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of WorkingMemoryEntry items"
+      }
+    },
+    "com.azure.discovery_workspace#PagedWorkingMemoryEntryValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#WorkingMemoryEntry"
+      },
+      "traits": {
+        "smithy.api#documentation": "The WorkingMemoryEntry items on this page"
+      }
+    },
+    "com.azure.discovery_workspace#WorkingMemoryEntry": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the working memory entry.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.discovery_workspace#WorkingMemoryEntryType",
+          "traits": {
+            "smithy.api#documentation": "The type of the working memory entry.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Working memory entry."
+      }
+    },
+    "com.azure.discovery_workspace#WorkingMemoryEntryType": {
+      "type": "enum",
+      "members": {
+        "THOUGHT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thought"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Working memory entry type."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemoryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngine": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#DiscoveryEngine"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/discoveryEngine",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Update the discovery engine for an investigation. This will create the discovery engine if it does not already exist."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "systemPrompt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The system prompt."
+          }
+        },
+        "configuration": {
+          "target": "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequestConfigurationMap",
+          "traits": {
+            "smithy.api#documentation": "The Discovery Engine configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequestConfigurationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Discovery Engine configuration."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngine": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#DiscoveryEngine"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{projectName}/investigations/{investigationName}/discoveryEngine",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Get the discovery engine for an investigation."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#InvestigationsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/projects/{projectName}/investigations/{investigationName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Delete a Investigation."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Investigation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/projects/{projectName}/investigations/{investigationName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Updates an Investigation."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description"
+          }
+        },
+        "tags": {
+          "target": "com.azure.discovery_workspace#InvestigationsUpdateRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "The tags"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsUpdateRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags"
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsCreateOrReplace": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsCreateOrReplaceRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Investigation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/projects/{projectName}/investigations/{investigationName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Creates an Investigation."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsCreateOrReplaceRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description"
+          }
+        },
+        "tags": {
+          "target": "com.azure.discovery_workspace#InvestigationsCreateOrReplaceRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "The tags"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsCreateOrReplaceRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags"
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Investigation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{projectName}/investigations/{investigationName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Fetch a Investigation by name."
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The investigation name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#InvestigationsListRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#PagedInvestigation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{projectName}/investigations",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List Investigation resources"
+      }
+    },
+    "com.azure.discovery_workspace#PagedInvestigation": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.discovery_workspace#PagedInvestigationValueList",
+          "traits": {
+            "smithy.api#documentation": "The Investigation items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Investigation items"
+      }
+    },
+    "com.azure.discovery_workspace#PagedInvestigationValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#Investigation"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Investigation items on this page"
+      }
+    },
+    "com.azure.discovery_workspace#InvestigationsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project name."
+          }
+        },
+        "createdSince": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdSince",
+            "smithy.api#documentation": "The oldest creation timestamp to keep"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ConversationsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/conversations/{conversationName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Deletes a Conversation."
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "conversationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The conversation name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ConversationsUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Conversation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/conversations/{conversationName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Updates a Conversation."
+      }
+    },
+    "com.azure.discovery_workspace#Conversation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The conversation name.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created this resource."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who created this resource."
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was last updated"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who updated this resource."
+          }
+        },
+        "lastModifiedByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who updated this resource."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title"
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Name of the associated Investigation"
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the associated Project"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A conversation."
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "conversationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The conversation name."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created this resource."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who created this resource."
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was last updated"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who updated this resource."
+          }
+        },
+        "lastModifiedByType": {
+          "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who updated this resource."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ConversationsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Conversation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/conversations/{conversationName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Fetch a Conversation by name."
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "conversationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The conversation name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ConversationsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#Conversation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/conversations",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Creates a Conversation."
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the associated Project",
+            "smithy.api#required": {}
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Name of the associated Investigation"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_workspace#ConversationsListRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_workspace#PagedConversation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/conversations",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List Conversation resources"
+      }
+    },
+    "com.azure.discovery_workspace#PagedConversation": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.discovery_workspace#PagedConversationValueList",
+          "traits": {
+            "smithy.api#documentation": "The Conversation items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Conversation items"
+      }
+    },
+    "com.azure.discovery_workspace#PagedConversationValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_workspace#Conversation"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Conversation items on this page"
+      }
+    },
+    "com.azure.discovery_workspace#ConversationsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Discovery Workspace Services endpoints (protocol and hostname, for example: https://{workspaceName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "investigationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "investigationName",
+            "smithy.api#documentation": "The name of the associated Investigation"
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectName",
+            "smithy.api#documentation": "The name of the associated Project"
+          }
+        },
+        "createdSince": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdSince",
+            "smithy.api#documentation": "The oldest creation timestamp to keep"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_workspace#DiscoveryWorkspace": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.discovery_workspace#ToolsCancelRunLro"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ToolsGetRunStatus"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ToolsGetOperations"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ToolsGetComputeUsage"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ToolsRun"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksAddExecutionHistory"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksAddComment"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksStart"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksDelete"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksUpdate"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksGet"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksCreate"
+        },
+        {
+          "target": "com.azure.discovery_workspace#TasksList"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsGetOperationStatus"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngine"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngine"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemory"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngine"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngine"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsDelete"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsUpdate"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsCreateOrReplace"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsGet"
+        },
+        {
+          "target": "com.azure.discovery_workspace#InvestigationsList"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ConversationsDelete"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ConversationsUpdate"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ConversationsGet"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ConversationsCreate"
+        },
+        {
+          "target": "com.azure.discovery_workspace#ConversationsList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Microsoft.Discovery.Workspace data plane",
+        "smithy.api#documentation": "Azure discovery data plane — discovery/data-plane/Microsoft.Discovery.Workspace (latest stable api-version 2026-06-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://discovery.azure.com/.default"
+      }
+    }
+  }
+}

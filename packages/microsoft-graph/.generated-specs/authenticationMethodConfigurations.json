@@ -1,0 +1,692 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodConfiguration": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "excludeTargets": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodConfigurationExcludeTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Groups of users that are excluded from a policy."
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodState",
+          "traits": {
+            "smithy.api#documentation": "The state of the policy. The possible values are: enabled, disabled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#ExcludeTarget": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object identifier of a Microsoft Entra user or group."
+          }
+        },
+        "targetType": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodTargetType"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodTargetType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodConfigurationExcludeTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ExcludeTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "Groups of users that are excluded from a policy."
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodConfiguration"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authenticationMethodConfigurations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from authenticationMethodConfigurations",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationRequestExcludeTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ExcludeTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "Groups of users that are excluded from a policy."
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "excludeTargets": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationRequestExcludeTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Groups of users that are excluded from a policy."
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodState",
+          "traits": {
+            "smithy.api#documentation": "The state of the policy. The possible values are: enabled, disabled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationResponseExcludeTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ExcludeTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "Groups of users that are excluded from a policy."
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "excludeTargets": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationResponseExcludeTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Groups of users that are excluded from a policy."
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodState",
+          "traits": {
+            "smithy.api#documentation": "The state of the policy. The possible values are: enabled, disabled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authenticationMethodConfigurations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to authenticationMethodConfigurations"
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "authenticationMethodConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of authenticationMethodConfiguration"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationResponseExcludeTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ExcludeTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "Groups of users that are excluded from a policy."
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "excludeTargets": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationResponseExcludeTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Groups of users that are excluded from a policy."
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodState",
+          "traits": {
+            "smithy.api#documentation": "The state of the policy. The possible values are: enabled, disabled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authenticationMethodConfigurations/{authenticationMethodConfigurationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from authenticationMethodConfigurations by key"
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationRequestExcludeTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ExcludeTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "Groups of users that are excluded from a policy."
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "authenticationMethodConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of authenticationMethodConfiguration"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "excludeTargets": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationRequestExcludeTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Groups of users that are excluded from a policy."
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodState",
+          "traits": {
+            "smithy.api#documentation": "The state of the policy. The possible values are: enabled, disabled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationResponseExcludeTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#ExcludeTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "Groups of users that are excluded from a policy."
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "excludeTargets": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationResponseExcludeTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Groups of users that are excluded from a policy."
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodState",
+          "traits": {
+            "smithy.api#documentation": "The state of the policy. The possible values are: enabled, disabled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/authenticationMethodConfigurations/{authenticationMethodConfigurationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in authenticationMethodConfigurations"
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#DeleteAuthenticationMethodConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "authenticationMethodConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of authenticationMethodConfiguration"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#DeleteAuthenticationMethodConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#DeleteAuthenticationMethodConfigurationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/authenticationMethodConfigurations/{authenticationMethodConfigurationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from authenticationMethodConfigurations"
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.authenticationMethodConfigurations#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authenticationMethodConfigurations/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.authenticationMethodConfigurations#AuthenticationMethodConfigurations": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#ListAuthenticationMethodConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#CreateAuthenticationMethodConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#GetAuthenticationMethodConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#UpdateAuthenticationMethodConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#DeleteAuthenticationMethodConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.authenticationMethodConfigurations#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

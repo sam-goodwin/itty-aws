@@ -1,0 +1,491 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.keyvault_security_domain#HSMSecurityDomainUploadPending": "com.azure.keyvault_security_domain#UploadHSMSecurityDomainPending",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainUploadPendingRequest": "com.azure.keyvault_security_domain#UploadHSMSecurityDomainPendingRequest",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainUpload": "com.azure.keyvault_security_domain#UploadHSMSecurityDomain",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainUploadResponse": "com.azure.keyvault_security_domain#UploadHSMSecurityDomainResponse",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainUploadRequest": "com.azure.keyvault_security_domain#UploadHSMSecurityDomainRequest",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainTransferKey": "com.azure.keyvault_security_domain#TransferHSMSecurityDomainKey",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainTransferKeyRequest": "com.azure.keyvault_security_domain#TransferHSMSecurityDomainKeyRequest",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadPending": "com.azure.keyvault_security_domain#DownloadHSMSecurityDomainPending",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadPendingRequest": "com.azure.keyvault_security_domain#DownloadHSMSecurityDomainPendingRequest",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainDownload": "com.azure.keyvault_security_domain#DownloadHSMSecurityDomain",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadResponse": "com.azure.keyvault_security_domain#DownloadHSMSecurityDomainResponse",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadRequest": "com.azure.keyvault_security_domain#DownloadHSMSecurityDomainRequest",
+      "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadRequestCertificatesList": "com.azure.keyvault_security_domain#DownloadHSMSecurityDomainRequestCertificatesList"
+    }
+  },
+  "shapes": {
+    "com.azure.keyvault_security_domain#HSMSecurityDomainUploadPending": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_security_domain#HSMSecurityDomainUploadPendingRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_security_domain#SecurityDomainOperationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/securitydomain/upload/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Get Security Domain upload operation status"
+      }
+    },
+    "com.azure.keyvault_security_domain#SecurityDomainOperationStatus": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.keyvault_security_domain#OperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Operation status."
+          }
+        },
+        "status_details": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Details of the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Security Domain operation status."
+      }
+    },
+    "com.azure.keyvault_security_domain#OperationStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Success"
+          }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InProgress"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operation status."
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainUploadPendingRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_security_domain#HSMSecurityDomainUploadRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_security_domain#HSMSecurityDomainUploadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/securitydomain/upload",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Restore the provided Security Domain."
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainUploadResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URI to poll for completion status."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainUploadRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Security Domain.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainTransferKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_security_domain#HSMSecurityDomainTransferKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_security_domain#TransferKey"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/securitydomain/upload",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Retrieve Security Domain transfer key"
+      }
+    },
+    "com.azure.keyvault_security_domain#TransferKey": {
+      "type": "structure",
+      "members": {
+        "key_format": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of the transfer key."
+          }
+        },
+        "transfer_key": {
+          "target": "com.azure.keyvault_security_domain#SecurityDomainJsonWebKey",
+          "traits": {
+            "smithy.api#documentation": "Specifies the transfer key in JWK format.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Security Domain transfer key."
+      }
+    },
+    "com.azure.keyvault_security_domain#SecurityDomainJsonWebKey": {
+      "type": "structure",
+      "members": {
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "kty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "JsonWebKey Key Type (kty), as defined in https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. For Security Domain this value must be RSA.",
+            "smithy.api#required": {}
+          }
+        },
+        "key_ops": {
+          "target": "com.azure.keyvault_security_domain#SecurityDomainJsonWebKeyKeyOpsList",
+          "traits": {
+            "smithy.api#documentation": "Supported key operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus.",
+            "smithy.api#required": {}
+          }
+        },
+        "e": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA public exponent.",
+            "smithy.api#required": {}
+          }
+        },
+        "x5c": {
+          "target": "com.azure.keyvault_security_domain#SecurityDomainJsonWebKeyX5cList",
+          "traits": {
+            "smithy.api#documentation": "X509 certificate chain parameter.",
+            "smithy.api#required": {}
+          }
+        },
+        "use": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Public Key Use Parameter. This is optional and if present must be enc."
+          }
+        },
+        "x5t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X509 certificate SHA1 thumbprint. This is optional."
+          }
+        },
+        "x5t_S256": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X509 certificate SHA256 thumbprint.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "x5t#S256"
+          }
+        },
+        "alg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Algorithm intended for use with the key.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A JSON Web Key (JWK) for use in a security domain operation."
+      }
+    },
+    "com.azure.keyvault_security_domain#SecurityDomainJsonWebKeyX5cList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "X509 certificate chain parameter."
+      }
+    },
+    "com.azure.keyvault_security_domain#SecurityDomainJsonWebKeyKeyOpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported key operations."
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainTransferKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadPending": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadPendingRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_security_domain#SecurityDomainOperationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/securitydomain/download/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Retrieves the Security Domain download operation status"
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadPendingRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainDownload": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/securitydomain/download",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Retrieves the Security Domain from the managed HSM. Calling this endpoint can be used to activate a provisioned managed HSM resource."
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URI to poll for completion status."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificates": {
+          "target": "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadRequestCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "Certificates needed from customer.",
+            "smithy.api#required": {}
+          }
+        },
+        "required": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Customer to specify the number of certificates (minimum 2 and maximum 10) to restore Security Domain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadRequestCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_security_domain#SecurityDomainJsonWebKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "Certificates needed from customer."
+      }
+    },
+    "com.azure.keyvault_security_domain#KeyvaultSecurityDomain": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.keyvault_security_domain#HSMSecurityDomainUploadPending"
+        },
+        {
+          "target": "com.azure.keyvault_security_domain#HSMSecurityDomainUpload"
+        },
+        {
+          "target": "com.azure.keyvault_security_domain#HSMSecurityDomainTransferKey"
+        },
+        {
+          "target": "com.azure.keyvault_security_domain#HSMSecurityDomainDownloadPending"
+        },
+        {
+          "target": "com.azure.keyvault_security_domain#HSMSecurityDomainDownload"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure SecurityDomain data plane",
+        "smithy.api#documentation": "Azure keyvault data plane — keyvault/data-plane/SecurityDomain (latest stable api-version 2026-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{vaultBaseUrl}",
+          "parameters": [
+            {
+              "name": "vaultBaseUrl",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://vault.azure.net/.default"
+      }
+    }
+  }
+}

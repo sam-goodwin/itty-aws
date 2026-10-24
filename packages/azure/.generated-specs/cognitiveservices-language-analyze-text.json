@@ -1,0 +1,1207 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextCancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextCancelJobRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextCancelJobResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyze-text/jobs/{jobId}:cancel",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-05-01"
+        },
+        "smithy.api#documentation": "Cancel a long-running Text Analysis job.\n\nCancel a long-running Text Analysis job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextCancelJobResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextCancelJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID to cancel."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/analyze-text/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-05-01"
+        },
+        "smithy.api#documentation": "Get analysis status and results\n\nGet the status of an analysis job. A job can consist of one or more tasks. After all tasks succeed, the job transitions to the succeeded state and results are available for each task."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobState": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "display name"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time job created",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time job expires"
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "job ID",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last updated date and time",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#State",
+          "traits": {
+            "smithy.api#documentation": "status",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "errors"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "next link"
+          }
+        },
+        "tasks": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#Tasks",
+          "traits": {
+            "smithy.api#documentation": "List of tasks.",
+            "smithy.api#required": {}
+          }
+        },
+        "statistics": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#RequestStatistics",
+          "traits": {
+            "smithy.api#documentation": "if showStats=true was specified in the request this field will contain information about the request payload."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object containing the analyze job LRO job state."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#RequestStatistics": {
+      "type": "structure",
+      "members": {
+        "documentsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of documents submitted in the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "validDocumentsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of valid documents. This excludes empty, over-size limit or non-supported languages documents.",
+            "smithy.api#required": {}
+          }
+        },
+        "erroneousDocumentsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of invalid documents. This includes empty, over-size limit or non-supported languages documents.",
+            "smithy.api#required": {}
+          }
+        },
+        "transactionsCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of transactions for the request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "if showStats=true was specified in the request this field will contain information about the request payload."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#Tasks": {
+      "type": "structure",
+      "members": {
+        "completed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of completed tasks.",
+            "smithy.api#required": {}
+          }
+        },
+        "failed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of failed tasks.",
+            "smithy.api#required": {}
+          }
+        },
+        "inProgress": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of inprogress tasks.",
+            "smithy.api#required": {}
+          }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of total tasks.",
+            "smithy.api#required": {}
+          }
+        },
+        "items": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#TasksItemsList",
+          "traits": {
+            "smithy.api#documentation": "Enumerable of Analyze text job results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container for the tasks status for the LRO job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#TasksItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumerable of Analyze text job results."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROResult": {
+      "type": "structure",
+      "members": {
+        "lastUpdateDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last updated time in UTC for the task.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#State",
+          "traits": {
+            "smithy.api#documentation": "The status of the task at the mentioned last update time.",
+            "smithy.api#required": {}
+          }
+        },
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "task name"
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROResultsKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the task.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the AnalyzeText long running operation result object."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROResultsKind": {
+      "type": "enum",
+      "members": {
+        "SENTIMENTANALYSISLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SentimentAnalysisLROResults"
+          }
+        },
+        "ENTITYRECOGNITIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityRecognitionLROResults"
+          }
+        },
+        "PIIENTITYRECOGNITIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PiiEntityRecognitionLROResults"
+          }
+        },
+        "KEYPHRASEEXTRACTIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KeyPhraseExtractionLROResults"
+          }
+        },
+        "ENTITYLINKINGLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityLinkingLROResults"
+          }
+        },
+        "HEALTHCARELRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HealthcareLROResults"
+          }
+        },
+        "CUSTOMENTITYRECOGNITIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomEntityRecognitionLROResults"
+          }
+        },
+        "CUSTOMSINGLELABELCLASSIFICATIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomSingleLabelClassificationLROResults"
+          }
+        },
+        "CUSTOMMULTILABELCLASSIFICATIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomMultiLabelClassificationLROResults"
+          }
+        },
+        "EXTRACTIVESUMMARIZATIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ExtractiveSummarizationLROResults"
+          }
+        },
+        "ABSTRACTIVESUMMARIZATIONLRORESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AbstractiveSummarizationLROResults"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the response object returned by the analyze-text long running task."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#State": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "PARTIALLYCOMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "partiallyCompleted"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelling"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the task at the mentioned last update time."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#Error"
+      },
+      "traits": {
+        "smithy.api#documentation": "errors"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#Error": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#ErrorCode",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#ErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#InnerErrorModel",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error response object returned when the service encounters some errors during processing the request."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#InnerErrorModel": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#InnerErrorCode",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#InnerErrorModelDetailsMap",
+          "traits": {
+            "smithy.api#documentation": "Error details."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error target."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#InnerErrorModel",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Microsoft One API guidelines - https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#InnerErrorModelDetailsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Error details."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#InnerErrorCode": {
+      "type": "enum",
+      "members": {
+        "INVALIDREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidRequest"
+          }
+        },
+        "INVALIDPARAMETERVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidParameterValue"
+          }
+        },
+        "KNOWLEDGEBASENOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KnowledgeBaseNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHTHROTTLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchThrottling"
+          }
+        },
+        "EXTRACTIONFAILURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ExtractionFailure"
+          }
+        },
+        "INVALIDREQUESTBODYFORMAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidRequestBodyFormat"
+          }
+        },
+        "EMPTYREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EmptyRequest"
+          }
+        },
+        "MISSINGINPUTDOCUMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MissingInputDocuments"
+          }
+        },
+        "INVALIDDOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidDocument"
+          }
+        },
+        "MODELVERSIONINCORRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ModelVersionIncorrect"
+          }
+        },
+        "INVALIDDOCUMENTBATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidDocumentBatch"
+          }
+        },
+        "UNSUPPORTEDLANGUAGECODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnsupportedLanguageCode"
+          }
+        },
+        "INVALIDCOUNTRYHINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidCountryHint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Human-readable error code."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#ErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#Error"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#ErrorCode": {
+      "type": "enum",
+      "members": {
+        "INVALIDREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidRequest"
+          }
+        },
+        "INVALIDARGUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidArgument"
+          }
+        },
+        "UNAUTHORIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unauthorized"
+          }
+        },
+        "FORBIDDEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Forbidden"
+          }
+        },
+        "NOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotFound"
+          }
+        },
+        "PROJECTNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProjectNotFound"
+          }
+        },
+        "OPERATIONNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OperationNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchNotFound"
+          }
+        },
+        "AZURECOGNITIVESEARCHINDEXNOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchIndexNotFound"
+          }
+        },
+        "TOOMANYREQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TooManyRequests"
+          }
+        },
+        "AZURECOGNITIVESEARCHTHROTTLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchThrottling"
+          }
+        },
+        "AZURECOGNITIVESEARCHINDEXLIMITREACHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureCognitiveSearchIndexLimitReached"
+          }
+        },
+        "INTERNALSERVERERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InternalServerError"
+          }
+        },
+        "SERVICEUNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServiceUnavailable"
+          }
+        },
+        "TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Timeout"
+          }
+        },
+        "QUOTAEXCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QuotaExceeded"
+          }
+        },
+        "CONFLICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Conflict"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Human-readable error code."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "job ID"
+          }
+        },
+        "showStats": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "showStats",
+            "smithy.api#documentation": "(Optional) if set to true, response will contain request and document level statistics."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of resources to return from the collection."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An offset into the collection of the first resource to be returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJobRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJobResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyze-text/jobs",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-05-01"
+        },
+        "smithy.api#documentation": "Submit a collection of text documents for analysis. Specify one or more unique tasks to be executed as a long-running operation."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJobResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the task."
+          }
+        },
+        "analysisInput": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#MultiLanguageAnalysisInput",
+          "traits": {
+            "smithy.api#documentation": "Contains the input to be analyzed.",
+            "smithy.api#required": {}
+          }
+        },
+        "tasks": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJobRequestTasksList",
+          "traits": {
+            "smithy.api#documentation": "List of tasks to be performed as part of the LRO.",
+            "smithy.api#required": {}
+          }
+        },
+        "cancelAfter": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Optional duration in seconds after which the job will be canceled if not completed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJobRequestTasksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROTask"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tasks to be performed as part of the LRO."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROTask": {
+      "type": "structure",
+      "members": {
+        "taskName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "task name"
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROTaskKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of task to perform.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The long running task to be performed by the service on the input documents."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextLROTaskKind": {
+      "type": "enum",
+      "members": {
+        "SENTIMENTANALYSIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SentimentAnalysis"
+          }
+        },
+        "ENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityRecognition"
+          }
+        },
+        "PIIENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PiiEntityRecognition"
+          }
+        },
+        "KEYPHRASEEXTRACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KeyPhraseExtraction"
+          }
+        },
+        "ENTITYLINKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityLinking"
+          }
+        },
+        "HEALTHCARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Healthcare"
+          }
+        },
+        "CUSTOMENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomEntityRecognition"
+          }
+        },
+        "CUSTOMSINGLELABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomSingleLabelClassification"
+          }
+        },
+        "CUSTOMMULTILABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomMultiLabelClassification"
+          }
+        },
+        "EXTRACTIVESUMMARIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ExtractiveSummarization"
+          }
+        },
+        "ABSTRACTIVESUMMARIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AbstractiveSummarization"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the long running analyze text tasks supported."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#MultiLanguageAnalysisInput": {
+      "type": "structure",
+      "members": {
+        "documents": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#MultiLanguageAnalysisInputDocumentsList",
+          "traits": {
+            "smithy.api#documentation": "The input documents to be analyzed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of input documents to be analyzed by the service."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#MultiLanguageAnalysisInputDocumentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#MultiLanguageInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The input documents to be analyzed."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#MultiLanguageInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique, non-empty document identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The input text to process.",
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(Optional) This is the 2 letter ISO 639-1 representation of a language. For example, use \\\"en\\\" for English; \\\"es\\\" for Spanish etc. If not set, use \\\"en\\\" for English as default. (Following only applies to 2023-04-15-preview and above) For Auto Language Detection, use \\\"auto\\\". If not set, use \\\"en\\\" for English as default."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains an input document to be analyzed by the service."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeText": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextTaskResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/:analyze-text",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-05-01"
+        },
+        "smithy.api#documentation": "Request text analysis over a collection of documents."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextTaskResult": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextTaskResultsKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of task result.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result object for the analyze task."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextTaskResultsKind": {
+      "type": "enum",
+      "members": {
+        "SENTIMENTANALYSISRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SentimentAnalysisResults"
+          }
+        },
+        "ENTITYRECOGNITIONRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityRecognitionResults"
+          }
+        },
+        "PIIENTITYRECOGNITIONRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PiiEntityRecognitionResults"
+          }
+        },
+        "KEYPHRASEEXTRACTIONRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KeyPhraseExtractionResults"
+          }
+        },
+        "LANGUAGEDETECTIONRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LanguageDetectionResults"
+          }
+        },
+        "ENTITYLINKINGRESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityLinkingResults"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the response object returned by the analyze-text task."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "showStats": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "showStats",
+            "smithy.api#documentation": "(Optional) if set to true, response will contain request and document level statistics."
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextTaskKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of task to perform.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextTaskKind": {
+      "type": "enum",
+      "members": {
+        "SENTIMENTANALYSIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SentimentAnalysis"
+          }
+        },
+        "ENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityRecognition"
+          }
+        },
+        "PIIENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PiiEntityRecognition"
+          }
+        },
+        "KEYPHRASEEXTRACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KeyPhraseExtraction"
+          }
+        },
+        "LANGUAGEDETECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LanguageDetection"
+          }
+        },
+        "ENTITYLINKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EntityLinking"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the analyze-text tasks supported."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text#CognitiveservicesLanguageAnalyzeText": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextCancelJob"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextJobStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeTextSubmitJob"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text#AnalyzeText"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure LanguageAnalyzeText data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/LanguageAnalyzeText (latest stable api-version 2026-05-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/language",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

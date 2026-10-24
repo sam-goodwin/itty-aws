@@ -15,13 +15,52 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.storageactions#StorageTaskAssignmentList": "com.azure.storageactions#ListStorageTaskAssignment",
+      "com.azure.storageactions#StorageTaskAssignmentListRequest": "com.azure.storageactions#ListStorageTaskAssignmentRequest",
+      "com.azure.storageactions#StorageTasksStopAllAssignments": "com.azure.storageactions#StopStorageTaskAllAssignments",
+      "com.azure.storageactions#StorageTasksStopAllAssignmentsResponse": "com.azure.storageactions#StopStorageTaskAllAssignmentsResponse",
+      "com.azure.storageactions#StorageTasksStopAllAssignmentsRequest": "com.azure.storageactions#StopStorageTaskAllAssignmentsRequest",
+      "com.azure.storageactions#StorageTasksReportList": "com.azure.storageactions#ListStorageTasksReport",
+      "com.azure.storageactions#StorageTasksReportListRequest": "com.azure.storageactions#ListStorageTasksReportRequest",
+      "com.azure.storageactions#StorageTasksDelete": "com.azure.storageactions#DeleteStorageTask",
+      "com.azure.storageactions#StorageTasksDeleteResponse": "com.azure.storageactions#DeleteStorageTaskResponse",
+      "com.azure.storageactions#StorageTasksDeleteRequest": "com.azure.storageactions#DeleteStorageTaskRequest",
+      "com.azure.storageactions#StorageTasksUpdate": "com.azure.storageactions#UpdateStorageTask",
+      "com.azure.storageactions#StorageTasksUpdateResponse": "com.azure.storageactions#UpdateStorageTaskResponse",
+      "com.azure.storageactions#StorageTasksUpdateResponseIdentity": "com.azure.storageactions#UpdateStorageTaskResponseIdentity",
+      "com.azure.storageactions#StorageTasksUpdateResponseTagsMap": "com.azure.storageactions#UpdateStorageTaskResponseTagsMap",
+      "com.azure.storageactions#StorageTasksUpdateRequest": "com.azure.storageactions#UpdateStorageTaskRequest",
+      "com.azure.storageactions#StorageTasksUpdateRequestTagsMap": "com.azure.storageactions#UpdateStorageTaskRequestTagsMap",
+      "com.azure.storageactions#StorageTasksUpdateRequestIdentity": "com.azure.storageactions#UpdateStorageTaskRequestIdentity",
+      "com.azure.storageactions#StorageTasksCreate": "com.azure.storageactions#CreateStorageTask",
+      "com.azure.storageactions#StorageTasksCreateResponse": "com.azure.storageactions#CreateStorageTaskResponse",
+      "com.azure.storageactions#StorageTasksCreateResponseIdentity": "com.azure.storageactions#CreateStorageTaskResponseIdentity",
+      "com.azure.storageactions#StorageTasksCreateResponseTagsMap": "com.azure.storageactions#CreateStorageTaskResponseTagsMap",
+      "com.azure.storageactions#StorageTasksCreateRequest": "com.azure.storageactions#CreateStorageTaskRequest",
+      "com.azure.storageactions#StorageTasksCreateRequestIdentity": "com.azure.storageactions#CreateStorageTaskRequestIdentity",
+      "com.azure.storageactions#StorageTasksCreateRequestTagsMap": "com.azure.storageactions#CreateStorageTaskRequestTagsMap",
+      "com.azure.storageactions#StorageTasksGet": "com.azure.storageactions#GetStorageTask",
+      "com.azure.storageactions#StorageTasksGetResponse": "com.azure.storageactions#GetStorageTaskResponse",
+      "com.azure.storageactions#StorageTasksGetResponseIdentity": "com.azure.storageactions#GetStorageTaskResponseIdentity",
+      "com.azure.storageactions#StorageTasksGetResponseTagsMap": "com.azure.storageactions#GetStorageTaskResponseTagsMap",
+      "com.azure.storageactions#StorageTasksGetRequest": "com.azure.storageactions#GetStorageTaskRequest",
+      "com.azure.storageactions#StorageTasksListByResourceGroup": "com.azure.storageactions#ListStorageTaskByResourceGroup",
+      "com.azure.storageactions#StorageTasksListByResourceGroupRequest": "com.azure.storageactions#ListStorageTaskByResourceGroupRequest",
+      "com.azure.storageactions#StorageTasksListBySubscription": "com.azure.storageactions#ListStorageTaskBySubscription",
+      "com.azure.storageactions#StorageTasksListBySubscriptionRequest": "com.azure.storageactions#ListStorageTaskBySubscriptionRequest",
+      "com.azure.storageactions#StorageTasksPreviewActions": "com.azure.storageactions#PreviewStorageTaskActions",
+      "com.azure.storageactions#StorageTasksPreviewActionsRequest": "com.azure.storageactions#PreviewStorageTaskActionsRequest",
+      "com.azure.storageactions#OperationsList": "com.azure.storageactions#ListOperations",
+      "com.azure.storageactions#OperationsListResponse": "com.azure.storageactions#ListOperationsResponse",
+      "com.azure.storageactions#OperationsListResponseValueList": "com.azure.storageactions#ListOperationsResponseValueList"
+    }
   },
   "shapes": {
-    "com.azure.storageactions#ListStorageTaskAssignment": {
+    "com.azure.storageactions#StorageTaskAssignmentList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#ListStorageTaskAssignmentRequest"
+        "target": "com.azure.storageactions#StorageTaskAssignmentListRequest"
       },
       "output": {
         "target": "com.azure.storageactions#StorageTaskAssignmentsListResult"
@@ -31,10 +70,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/storageTaskAssignments",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists Resource IDs of the Storage Task Assignments associated with this Storage Task.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.storageactions#StorageTaskAssignmentsListResult": {
@@ -81,7 +120,7 @@
         "smithy.api#documentation": "Storage Task Assignment associated with this Storage Task."
       }
     },
-    "com.azure.storageactions#ListStorageTaskAssignmentRequest": {
+    "com.azure.storageactions#StorageTaskAssignmentListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -120,26 +159,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#StopStorageTaskAllAssignments": {
+    "com.azure.storageactions#StorageTasksStopAllAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#StopStorageTaskAllAssignmentsRequest"
+        "target": "com.azure.storageactions#StorageTasksStopAllAssignmentsRequest"
       },
       "output": {
-        "target": "com.azure.storageactions#StopStorageTaskAllAssignmentsResponse"
+        "target": "com.azure.storageactions#StorageTasksStopAllAssignmentsResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/stopAllAssignments",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Stops all active running assignments for the storage task",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.storageactions#StopStorageTaskAllAssignmentsResponse": {
+    "com.azure.storageactions#StorageTasksStopAllAssignmentsResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -168,7 +207,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storageactions#StopStorageTaskAllAssignmentsRequest": {
+    "com.azure.storageactions#StorageTasksStopAllAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -200,10 +239,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#ListStorageTasksReport": {
+    "com.azure.storageactions#StorageTasksReportList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#ListStorageTasksReportRequest"
+        "target": "com.azure.storageactions#StorageTasksReportListRequest"
       },
       "output": {
         "target": "com.azure.storageactions#StorageTaskReportSummary"
@@ -213,10 +252,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/reports",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Fetch the storage tasks run report summary for each assignment.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.storageactions#StorageTaskReportSummary": {
@@ -527,7 +566,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.storageactions#ListStorageTasksReportRequest": {
+    "com.azure.storageactions#StorageTasksReportListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -573,26 +612,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#DeleteStorageTask": {
+    "com.azure.storageactions#StorageTasksDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#DeleteStorageTaskRequest"
+        "target": "com.azure.storageactions#StorageTasksDeleteRequest"
       },
       "output": {
-        "target": "com.azure.storageactions#DeleteStorageTaskResponse"
+        "target": "com.azure.storageactions#StorageTasksDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete the storage task resource.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.storageactions#DeleteStorageTaskResponse": {
+    "com.azure.storageactions#StorageTasksDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -621,7 +660,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storageactions#DeleteStorageTaskRequest": {
+    "com.azure.storageactions#StorageTasksDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -653,26 +692,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#UpdateStorageTask": {
+    "com.azure.storageactions#StorageTasksUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#UpdateStorageTaskRequest"
+        "target": "com.azure.storageactions#StorageTasksUpdateRequest"
       },
       "output": {
-        "target": "com.azure.storageactions#UpdateStorageTaskResponse"
+        "target": "com.azure.storageactions#StorageTasksUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update storage task properties",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.storageactions#UpdateStorageTaskResponse": {
+    "com.azure.storageactions#StorageTasksUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -700,7 +739,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storageactions#UpdateStorageTaskResponseTagsMap",
+          "target": "com.azure.storageactions#StorageTasksUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -720,7 +759,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storageactions#UpdateStorageTaskResponseIdentity",
+          "target": "com.azure.storageactions#StorageTasksUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)",
             "smithy.api#required": {}
@@ -752,7 +791,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storageactions#UpdateStorageTaskResponseIdentity": {
+    "com.azure.storageactions#StorageTasksUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1150,7 +1189,7 @@
         "smithy.api#documentation": "List of operations to execute when the condition predicate satisfies."
       }
     },
-    "com.azure.storageactions#UpdateStorageTaskResponseTagsMap": {
+    "com.azure.storageactions#StorageTasksUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1162,7 +1201,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storageactions#UpdateStorageTaskRequest": {
+    "com.azure.storageactions#StorageTasksUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1190,13 +1229,13 @@
           }
         },
         "identity": {
-          "target": "com.azure.storageactions#UpdateStorageTaskRequestIdentity",
+          "target": "com.azure.storageactions#StorageTasksUpdateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         },
         "tags": {
-          "target": "com.azure.storageactions#UpdateStorageTaskRequestTagsMap",
+          "target": "com.azure.storageactions#StorageTasksUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters."
           }
@@ -1238,7 +1277,7 @@
         "smithy.api#documentation": "Properties of the storage task."
       }
     },
-    "com.azure.storageactions#UpdateStorageTaskRequestTagsMap": {
+    "com.azure.storageactions#StorageTasksUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1250,7 +1289,7 @@
         "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters."
       }
     },
-    "com.azure.storageactions#UpdateStorageTaskRequestIdentity": {
+    "com.azure.storageactions#StorageTasksUpdateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -1289,26 +1328,26 @@
         "smithy.api#documentation": "User assigned identity properties"
       }
     },
-    "com.azure.storageactions#CreateStorageTask": {
+    "com.azure.storageactions#StorageTasksCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#CreateStorageTaskRequest"
+        "target": "com.azure.storageactions#StorageTasksCreateRequest"
       },
       "output": {
-        "target": "com.azure.storageactions#CreateStorageTaskResponse"
+        "target": "com.azure.storageactions#StorageTasksCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.storageactions#CreateStorageTaskResponse": {
+    "com.azure.storageactions#StorageTasksCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1336,7 +1375,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storageactions#CreateStorageTaskResponseTagsMap",
+          "target": "com.azure.storageactions#StorageTasksCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1356,7 +1395,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storageactions#CreateStorageTaskResponseIdentity",
+          "target": "com.azure.storageactions#StorageTasksCreateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)",
             "smithy.api#required": {}
@@ -1381,7 +1420,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storageactions#CreateStorageTaskResponseIdentity": {
+    "com.azure.storageactions#StorageTasksCreateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1410,7 +1449,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.storageactions#CreateStorageTaskResponseTagsMap": {
+    "com.azure.storageactions#StorageTasksCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1422,7 +1461,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storageactions#CreateStorageTaskRequest": {
+    "com.azure.storageactions#StorageTasksCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1450,7 +1489,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storageactions#CreateStorageTaskRequestTagsMap",
+          "target": "com.azure.storageactions#StorageTasksCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1470,7 +1509,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storageactions#CreateStorageTaskRequestIdentity",
+          "target": "com.azure.storageactions#StorageTasksCreateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)",
             "smithy.api#required": {}
@@ -1481,7 +1520,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#CreateStorageTaskRequestIdentity": {
+    "com.azure.storageactions#StorageTasksCreateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -1527,7 +1566,7 @@
         "smithy.api#documentation": "Properties of the storage task."
       }
     },
-    "com.azure.storageactions#CreateStorageTaskRequestTagsMap": {
+    "com.azure.storageactions#StorageTasksCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1539,26 +1578,26 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storageactions#GetStorageTask": {
+    "com.azure.storageactions#StorageTasksGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#GetStorageTaskRequest"
+        "target": "com.azure.storageactions#StorageTasksGetRequest"
       },
       "output": {
-        "target": "com.azure.storageactions#GetStorageTaskResponse"
+        "target": "com.azure.storageactions#StorageTasksGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get the storage task properties",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.storageactions#GetStorageTaskResponse": {
+    "com.azure.storageactions#StorageTasksGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1586,7 +1625,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storageactions#GetStorageTaskResponseTagsMap",
+          "target": "com.azure.storageactions#StorageTasksGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1606,7 +1645,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storageactions#GetStorageTaskResponseIdentity",
+          "target": "com.azure.storageactions#StorageTasksGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)",
             "smithy.api#required": {}
@@ -1617,7 +1656,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storageactions#GetStorageTaskResponseIdentity": {
+    "com.azure.storageactions#StorageTasksGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1646,7 +1685,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.storageactions#GetStorageTaskResponseTagsMap": {
+    "com.azure.storageactions#StorageTasksGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1658,7 +1697,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storageactions#GetStorageTaskRequest": {
+    "com.azure.storageactions#StorageTasksGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1690,10 +1729,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#ListStorageTaskByResourceGroup": {
+    "com.azure.storageactions#StorageTasksListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#ListStorageTaskByResourceGroupRequest"
+        "target": "com.azure.storageactions#StorageTasksListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.storageactions#StorageTasksListResult"
@@ -1703,10 +1742,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all the storage tasks available under the given resource group.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.storageactions#StorageTasksListResult": {
@@ -1839,7 +1878,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storageactions#ListStorageTaskByResourceGroupRequest": {
+    "com.azure.storageactions#StorageTasksListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1863,10 +1902,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#ListStorageTaskBySubscription": {
+    "com.azure.storageactions#StorageTasksListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#ListStorageTaskBySubscriptionRequest"
+        "target": "com.azure.storageactions#StorageTasksListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.storageactions#StorageTasksListResult"
@@ -1876,13 +1915,13 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/storageTasks",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all the storage tasks available under the subscription.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.storageactions#ListStorageTaskBySubscriptionRequest": {
+    "com.azure.storageactions#StorageTasksListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1898,10 +1937,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#PreviewStorageTaskActions": {
+    "com.azure.storageactions#StorageTasksPreviewActions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageactions#PreviewStorageTaskActionsRequest"
+        "target": "com.azure.storageactions#StorageTasksPreviewActionsRequest"
       },
       "output": {
         "target": "com.azure.storageactions#StorageTaskPreviewAction"
@@ -1911,10 +1950,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/locations/{location}/previewActions",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Runs the input conditions against input object metadata properties and designates matched objects in response.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.storageactions#StorageTaskPreviewAction": {
@@ -2114,7 +2153,7 @@
         "smithy.api#documentation": "metadata key value pairs to be tested for a match against the provided condition."
       }
     },
-    "com.azure.storageactions#PreviewStorageTaskActionsRequest": {
+    "com.azure.storageactions#StorageTasksPreviewActionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2145,30 +2184,30 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageactions#ListOperations": {
+    "com.azure.storageactions#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.storageactions#ListOperationsResponse"
+        "target": "com.azure.storageactions#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.StorageActions/operations",
           "code": 200,
-          "apiVersion": "2023-01-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all of the available Storage Actions Rest API operations.",
-        "com.distilled.openapi#apiVersion": "2023-01-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.storageactions#ListOperationsResponse": {
+    "com.azure.storageactions#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.storageactions#ListOperationsResponseValueList",
+          "target": "com.azure.storageactions#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -2184,7 +2223,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storageactions#ListOperationsResponseValueList": {
+    "com.azure.storageactions#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.storageactions#Operation"
@@ -2308,37 +2347,37 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.storageactions#ListStorageTaskAssignment"
+          "target": "com.azure.storageactions#StorageTaskAssignmentList"
         },
         {
-          "target": "com.azure.storageactions#StopStorageTaskAllAssignments"
+          "target": "com.azure.storageactions#StorageTasksStopAllAssignments"
         },
         {
-          "target": "com.azure.storageactions#ListStorageTasksReport"
+          "target": "com.azure.storageactions#StorageTasksReportList"
         },
         {
-          "target": "com.azure.storageactions#DeleteStorageTask"
+          "target": "com.azure.storageactions#StorageTasksDelete"
         },
         {
-          "target": "com.azure.storageactions#UpdateStorageTask"
+          "target": "com.azure.storageactions#StorageTasksUpdate"
         },
         {
-          "target": "com.azure.storageactions#CreateStorageTask"
+          "target": "com.azure.storageactions#StorageTasksCreate"
         },
         {
-          "target": "com.azure.storageactions#GetStorageTask"
+          "target": "com.azure.storageactions#StorageTasksGet"
         },
         {
-          "target": "com.azure.storageactions#ListStorageTaskByResourceGroup"
+          "target": "com.azure.storageactions#StorageTasksListByResourceGroup"
         },
         {
-          "target": "com.azure.storageactions#ListStorageTaskBySubscription"
+          "target": "com.azure.storageactions#StorageTasksListBySubscription"
         },
         {
-          "target": "com.azure.storageactions#PreviewStorageTaskActions"
+          "target": "com.azure.storageactions#StorageTasksPreviewActions"
         },
         {
-          "target": "com.azure.storageactions#ListOperations"
+          "target": "com.azure.storageactions#OperationsList"
         }
       ],
       "traits": {

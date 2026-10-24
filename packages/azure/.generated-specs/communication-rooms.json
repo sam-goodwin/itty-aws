@@ -1,0 +1,656 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.communication_rooms#ParticipantsUpdate": "com.azure.communication_rooms#UpdateParticipant",
+      "com.azure.communication_rooms#ParticipantsUpdateResponse": "com.azure.communication_rooms#UpdateParticipantResponse",
+      "com.azure.communication_rooms#ParticipantsUpdateRequest": "com.azure.communication_rooms#UpdateParticipantRequest",
+      "com.azure.communication_rooms#ParticipantsUpdateRequestParticipantsMap": "com.azure.communication_rooms#UpdateParticipantRequestParticipantsMap",
+      "com.azure.communication_rooms#ParticipantsList": "com.azure.communication_rooms#ListParticipants",
+      "com.azure.communication_rooms#ParticipantsListRequest": "com.azure.communication_rooms#ListParticipantsRequest",
+      "com.azure.communication_rooms#RoomsDelete": "com.azure.communication_rooms#DeleteRoom",
+      "com.azure.communication_rooms#RoomsDeleteRequest": "com.azure.communication_rooms#DeleteRoomRequest",
+      "com.azure.communication_rooms#RoomsUpdate": "com.azure.communication_rooms#UpdateRoom",
+      "com.azure.communication_rooms#RoomsUpdateRequest": "com.azure.communication_rooms#UpdateRoomRequest",
+      "com.azure.communication_rooms#RoomsGet": "com.azure.communication_rooms#GetRoom",
+      "com.azure.communication_rooms#RoomsGetRequest": "com.azure.communication_rooms#GetRoomRequest",
+      "com.azure.communication_rooms#RoomsCreate": "com.azure.communication_rooms#CreateRoom",
+      "com.azure.communication_rooms#RoomsCreateRequest": "com.azure.communication_rooms#CreateRoomRequest",
+      "com.azure.communication_rooms#RoomsCreateRequestParticipantsMap": "com.azure.communication_rooms#CreateRoomRequestParticipantsMap",
+      "com.azure.communication_rooms#RoomsList": "com.azure.communication_rooms#ListRooms",
+      "com.azure.communication_rooms#RoomsListRequest": "com.azure.communication_rooms#ListRoomsRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.communication_rooms#ParticipantsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_rooms#ParticipantsUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_rooms#ParticipantsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/rooms/{roomId}/participants",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-03-13"
+        },
+        "smithy.api#documentation": "Update participants in a room."
+      }
+    },
+    "com.azure.communication_rooms#ParticipantsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_rooms#ParticipantsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roomId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the room to update the participants in."
+          }
+        },
+        "participants": {
+          "target": "com.azure.communication_rooms#ParticipantsUpdateRequestParticipantsMap",
+          "traits": {
+            "smithy.api#documentation": "Participants to be updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_rooms#ParticipantsUpdateRequestParticipantsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.communication_rooms#ParticipantProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "Participants to be updated."
+      }
+    },
+    "com.azure.communication_rooms#ParticipantProperties": {
+      "type": "structure",
+      "members": {
+        "role": {
+          "target": "com.azure.communication_rooms#Role",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_rooms#Role": {
+      "type": "enum",
+      "members": {
+        "PRESENTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Presenter"
+          }
+        },
+        "ATTENDEE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Attendee"
+          }
+        },
+        "CONSUMER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Consumer"
+          }
+        },
+        "COLLABORATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Collaborator"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The role of a room participant. The default value is Attendee."
+      }
+    },
+    "com.azure.communication_rooms#ParticipantsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_rooms#ParticipantsListRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_rooms#ParticipantsCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/rooms/{roomId}/participants",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-03-13"
+        },
+        "smithy.api#documentation": "Get participants in a room."
+      }
+    },
+    "com.azure.communication_rooms#ParticipantsCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.communication_rooms#ParticipantsCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "A collection of participants.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If there are more participants that can be retrieved, the next link will be populated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of participants in a room."
+      }
+    },
+    "com.azure.communication_rooms#ParticipantsCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_rooms#RoomParticipant"
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of participants."
+      }
+    },
+    "com.azure.communication_rooms#RoomParticipant": {
+      "type": "structure",
+      "members": {
+        "rawId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Raw ID representation of the communication identifier. Please refer to the following document for additional information on Raw ID. <br> https://learn.microsoft.com/azure/communication-services/concepts/identifiers?pivots=programming-language-rest#raw-id-representation",
+            "smithy.api#required": {}
+          }
+        },
+        "role": {
+          "target": "com.azure.communication_rooms#Role",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A participant of the room."
+      }
+    },
+    "com.azure.communication_rooms#ParticipantsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roomId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the room to get participants from."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_rooms#RoomsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_rooms#RoomsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/rooms/{roomId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-03-13"
+        },
+        "smithy.api#documentation": "Delete a room."
+      }
+    },
+    "com.azure.communication_rooms#RoomsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roomId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the room to be deleted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_rooms#RoomsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_rooms#RoomsUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_rooms#RoomModel"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/rooms/{roomId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-03-13"
+        },
+        "smithy.api#documentation": "Update a room with given changes."
+      }
+    },
+    "com.azure.communication_rooms#RoomModel": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier of a room. This id is server generated.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the room was created at the server. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`.",
+            "smithy.api#required": {}
+          }
+        },
+        "validFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp from when the room is open for joining. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`.",
+            "smithy.api#required": {}
+          }
+        },
+        "validUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp from when the room can no longer be joined. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`.",
+            "smithy.api#required": {}
+          }
+        },
+        "pstnDialOutEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true if, at the time of the call, dial out to a PSTN number is enabled in a particular room. By default, this flag is set to false.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The meeting room."
+      }
+    },
+    "com.azure.communication_rooms#RoomsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roomId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the room requested."
+          }
+        },
+        "validFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(Optional) The timestamp from when the room is open for joining. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "validUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(Optional) The timestamp from when the room can no longer be joined. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "pstnDialOutEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "(Optional) Set this flag to true if, at the time of the call, dial out to a PSTN number is enabled in a particular room. By default, this flag is set to false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_rooms#RoomsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_rooms#RoomsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_rooms#RoomModel"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/rooms/{roomId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-03-13"
+        },
+        "smithy.api#documentation": "Retrieves an existing room by id."
+      }
+    },
+    "com.azure.communication_rooms#RoomsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roomId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the room requested."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_rooms#RoomsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_rooms#RoomsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_rooms#RoomModel"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/rooms",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-03-13"
+        },
+        "smithy.api#documentation": "Creates a new room."
+      }
+    },
+    "com.azure.communication_rooms#RoomsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-ID and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-ID is an opaque string representing a client-generated, globally unique for all time, identifier for the request. It is recommended to use version 4 (random) UUIDs."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date."
+          }
+        },
+        "validFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp from when the room is open for joining. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`. The default value is the current date time."
+          }
+        },
+        "validUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp from when the room can no longer be joined. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`. The default value is the current date time plus 180 days."
+          }
+        },
+        "pstnDialOutEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true if, at the time of the call, dial out to a PSTN number is enabled in a particular room. By default, this flag is set to false."
+          }
+        },
+        "participants": {
+          "target": "com.azure.communication_rooms#RoomsCreateRequestParticipantsMap",
+          "traits": {
+            "smithy.api#documentation": "(Optional) Participants to be invited to the room."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_rooms#RoomsCreateRequestParticipantsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.communication_rooms#ParticipantProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "(Optional) Participants to be invited to the room."
+      }
+    },
+    "com.azure.communication_rooms#RoomsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_rooms#RoomsListRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_rooms#RoomsCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/rooms",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-03-13"
+        },
+        "smithy.api#documentation": "Retrieves all created rooms."
+      }
+    },
+    "com.azure.communication_rooms#RoomsCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.communication_rooms#RoomsCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "A collection of rooms.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If there are more rooms that can be retrieved, the next link will be populated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of rooms."
+      }
+    },
+    "com.azure.communication_rooms#RoomsCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_rooms#RoomModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of rooms."
+      }
+    },
+    "com.azure.communication_rooms#RoomsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_rooms#CommunicationRooms": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.communication_rooms#ParticipantsUpdate"
+        },
+        {
+          "target": "com.azure.communication_rooms#ParticipantsList"
+        },
+        {
+          "target": "com.azure.communication_rooms#RoomsDelete"
+        },
+        {
+          "target": "com.azure.communication_rooms#RoomsUpdate"
+        },
+        {
+          "target": "com.azure.communication_rooms#RoomsGet"
+        },
+        {
+          "target": "com.azure.communication_rooms#RoomsCreate"
+        },
+        {
+          "target": "com.azure.communication_rooms#RoomsList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Rooms data plane",
+        "smithy.api#documentation": "Azure communication data plane — communication/data-plane/Rooms (latest stable api-version 2025-03-13).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://communication.azure.com/.default"
+      }
+    }
+  }
+}

@@ -1,0 +1,1583 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#ResourceSpecificPermissionGrant": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource-specific permission. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of permission. The possible values are: Application, Delegated. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resourceAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that is hosting the resource. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.permissionGrants#ResourceSpecificPermissionGrant"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrantResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/permissionGrants",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from permissionGrants",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CreateResourceSpecificPermissionGrantRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource-specific permission. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of permission. The possible values are: Application, Delegated. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resourceAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that is hosting the resource. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CreateResourceSpecificPermissionGrantResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource-specific permission. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of permission. The possible values are: Application, Delegated. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resourceAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that is hosting the resource. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CreateResourceSpecificPermissionGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#CreateResourceSpecificPermissionGrantRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#CreateResourceSpecificPermissionGrantResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to permissionGrants"
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource-specific permission. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of permission. The possible values are: Application, Delegated. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resourceAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that is hosting the resource. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrantResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from permissionGrants by key"
+      }
+    },
+    "com.microsoft.graph.permissionGrants#UpdateResourceSpecificPermissionGrantRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource-specific permission. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of permission. The possible values are: Application, Delegated. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resourceAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that is hosting the resource. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#UpdateResourceSpecificPermissionGrantResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that has been granted access. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource-specific permission. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of permission. The possible values are: Application, Delegated. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resourceAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Microsoft Entra app that is hosting the resource. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#UpdateResourceSpecificPermissionGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#UpdateResourceSpecificPermissionGrantRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#UpdateResourceSpecificPermissionGrantResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in permissionGrants"
+      }
+    },
+    "com.microsoft.graph.permissionGrants#DeleteResourceSpecificPermissionGrantRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#DeleteResourceSpecificPermissionGrant": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#DeleteResourceSpecificPermissionGrantRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from permissionGrants"
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberGroupsRequestGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        },
+        "groupIds": {
+          "target": "com.microsoft.graph.permissionGrants#CheckMemberGroupsRequestGroupIdsList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberGroupsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#CheckMemberGroupsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#CheckMemberGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#CheckMemberGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}/checkMemberGroups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action checkMemberGroups\n\nCheck for membership in a specified list of group IDs, and return from that list the IDs of groups where a specified object is a member. The specified object can be of one of the following types:\n- user\n- group\n- service principal\n- organizational contact\n- device\n- directory object This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Microsoft Entra ID. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberObjectsRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberObjectsRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        },
+        "ids": {
+          "target": "com.microsoft.graph.permissionGrants#CheckMemberObjectsRequestIdsList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberObjectsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberObjectsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#CheckMemberObjectsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#CheckMemberObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#CheckMemberObjectsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#CheckMemberObjectsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}/checkMemberObjects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action checkMemberObjects",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        },
+        "securityEnabledOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberGroupsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#GetMemberGroupsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#GetMemberGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#GetMemberGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}/getMemberGroups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getMemberGroups\n\nReturn all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the DirectoryResultSizeLimitExceeded error code. If you get the DirectoryResultSizeLimitExceeded error code, use the List group transitive memberOf API instead.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberObjectsRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        },
+        "securityEnabledOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberObjectsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberObjectsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#GetMemberObjectsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetMemberObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#GetMemberObjectsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#GetMemberObjectsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}/getMemberObjects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getMemberObjects\n\nReturn all IDs for the groups, administrative units, and directory roles that an object of one of the following types is a member of:\n- user\n- group\n- service principal\n- organizational contact\n- device\n- directory object This function is transitive. Only users and role-enabled groups can be members of directory roles.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#RestoreRequest": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissionGrantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of resourceSpecificPermissionGrant"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#DirectoryObject": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#RestoreResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.microsoft.graph.permissionGrants#DirectoryObject",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#Restore": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#RestoreRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#RestoreResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/{resourceSpecificPermissionGrantId}/restore",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action restore\n\nRestore a recently deleted directory object from deleted items. The following types are supported:\n- administrativeUnit\n- application\n- agentIdentityBlueprint\n- agentIdentity\n- agentIdentityBlueprintPrincipal\n- agentUser\n- certificateBasedAuthPki\n- certificateAuthorityDetail\n- group\n- servicePrincipal\n- user If an item is accidentally deleted, you can fully restore the item. Additionally, restoring an application doesn't automatically restore the associated service principal automatically. You must call this API to explicitly restore the deleted service principal. A recently deleted item remains available for up to 30 days. After 30 days, the item is permanently deleted."
+      }
+    },
+    "com.microsoft.graph.permissionGrants#DeltaRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#DeltaRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#DeltaRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#DeltaRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.permissionGrants#DeltaRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.permissionGrants#DeltaRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.permissionGrants#DeltaRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#DeltaResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.permissionGrants#DirectoryObject"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#DeltaResponse": {
+      "type": "structure",
+      "members": {
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataDeltaLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.deltaLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#DeltaResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#Delta": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#DeltaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#DeltaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/permissionGrants/delta()",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke function delta\n\nGet newly created, updated, or deleted directory objects without performing a full read of the entire directoryObject collection. For more information, see Use delta query to track changes in Microsoft Graph data for details.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetAvailableExtensionPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "isSyncedFromOnPremises": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#ExtensionProperty": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the application object on which this extension property is defined. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "dataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the data type of the value the extension property can hold. Following values are supported. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximumNot nullable. For multivalued directory extensions, these limits apply per value in the collection."
+          }
+        },
+        "isMultiValued": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Defines the directory extension as a multi-valued property. When true, the directory extension property can store a collection of objects of the dataType; for example, a collection of string types such as 'extensionb7b1c57b532f40b8b5ed4b7a7ba67401jobGroupTracker': ['String 1', 'String 2']. The default value is false. Supports $filter (eq)."
+          }
+        },
+        "isSyncedFromOnPremises": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the extension property. Not nullable. Supports $filter (eq)."
+          }
+        },
+        "targetObjects": {
+          "target": "com.microsoft.graph.permissionGrants#ExtensionPropertyTargetObjectsList",
+          "traits": {
+            "smithy.api#documentation": "Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#ExtensionPropertyTargetObjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization"
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetAvailableExtensionPropertiesResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.permissionGrants#ExtensionProperty"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetAvailableExtensionPropertiesResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#GetAvailableExtensionPropertiesResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetAvailableExtensionProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#GetAvailableExtensionPropertiesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#GetAvailableExtensionPropertiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/getAvailableExtensionProperties",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getAvailableExtensionProperties\n\nReturn all directory extension definitions that are registered in a directory, including through multitenant apps. The following entities support extension properties:",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetByIdsRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetByIdsRequestTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetByIdsRequest": {
+      "type": "structure",
+      "members": {
+        "ids": {
+          "target": "com.microsoft.graph.permissionGrants#GetByIdsRequestIdsList"
+        },
+        "types": {
+          "target": "com.microsoft.graph.permissionGrants#GetByIdsRequestTypesList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetByIdsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.permissionGrants#DirectoryObject"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.permissionGrants#GetByIdsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.permissionGrants#GetByIdsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#GetByIds": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#GetByIdsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.permissionGrants#GetByIdsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/getByIds",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getByIds\n\nReturn the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.permissionGrants#ValidatePropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "entityType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mailNickname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onBehalfOfUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.permissionGrants#ValidateProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.permissionGrants#ValidatePropertiesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/permissionGrants/validateProperties",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action validateProperties\n\nValidate that a Microsoft 365 group's display name or mail nickname complies with naming policies. Clients can use this API to determine whether a display name or mail nickname is valid before trying to create a Microsoft 365 group. To validate the properties of an existing group, use the group: validateProperties function. The following policy validations are performed for the display name and mail nickname properties:\n1. Validate the prefix and suffix naming policy\n2. Validate the custom banned words policy\n3. Validate that the mail nickname is unique This API only returns the first validation failure that is encountered. If the properties fail multiple validations, only the first validation failure is returned. However, you can validate both the mail nickname and the display name and receive a collection of validation errors if you're only validating the prefix and suffix naming policy. To learn more about configuring naming policies, see Configure naming policy."
+      }
+    },
+    "com.microsoft.graph.permissionGrants#PermissionGrants": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.permissionGrants#ListResourceSpecificPermissionGrant"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#CreateResourceSpecificPermissionGrant"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#GetResourceSpecificPermissionGrant"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#UpdateResourceSpecificPermissionGrant"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#DeleteResourceSpecificPermissionGrant"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#CheckMemberGroups"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#CheckMemberObjects"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#GetMemberGroups"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#GetMemberObjects"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#Restore"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#Delta"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#GetAvailableExtensionProperties"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#GetByIds"
+        },
+        {
+          "target": "com.microsoft.graph.permissionGrants#ValidateProperties"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

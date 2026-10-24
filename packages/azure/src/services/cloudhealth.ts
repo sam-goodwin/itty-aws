@@ -50,6 +50,8 @@ export interface AuthenticationSettingPropertiesInput {
   displayName?: string;
   /** Kind of the authentication setting */
   authenticationKind: AuthenticationKind | (string & {});
+  /** Name of the managed identity to use (ManagedIdentity). Either 'SystemAssigned' or the resource ID of a user-assigned identity. */
+  managedIdentityName?: string;
 }
 export interface AuthenticationSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -97,6 +99,8 @@ export interface AuthenticationSettingProperties {
   displayName?: string;
   /** Kind of the authentication setting */
   authenticationKind: AuthenticationKind;
+  /** Name of the managed identity to use (ManagedIdentity). Either 'SystemAssigned' or the resource ID of a user-assigned identity. */
+  managedIdentityName?: string;
 }
 export interface AuthenticationSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -306,6 +310,10 @@ export type DiscoveryRuleKind = "ResourceGraphQuery" | "ApplicationInsightsTopol
 export interface DiscoveryRuleSpecification {
   /** Kind of the discovery rule specification */
   kind: DiscoveryRuleKind | (string & {});
+  /** Azure Resource Graph query text in KQL syntax (ResourceGraphQuery). The query must return at least a column named 'id' with the resource ID of each discovered resource. */
+  resourceGraphQuery?: string;
+  /** Application Insights resource ID (ApplicationInsightsTopology). */
+  applicationInsightsResourceId?: string;
 }
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior. */
 export type DiscoveryRulePropertiesInputAddResourceHealthSignal = "Enabled" | "Disabled";
@@ -1387,6 +1395,20 @@ export interface SignalDefinitionProperties {
   dataUnit?: string;
   /** Evaluation rules for the signal definition */
   evaluationRules: EvaluationRule;
+  /** Metric namespace (AzureResourceMetric). */
+  metricNamespace?: string;
+  /** Name of the metric (AzureResourceMetric). */
+  metricName?: string;
+  /** Type of aggregation to apply to the metric (AzureResourceMetric). */
+  aggregationType?: MetricAggregationType;
+  /** Dimension filter to apply to the metric (AzureResourceMetric). */
+  dimensionFilter?: string;
+  /** Query text: KQL (LogAnalyticsQuery) or PromQL (PrometheusMetricsQuery). */
+  queryText?: string;
+  /** Name of the numeric result column evaluated against the thresholds (LogAnalyticsQuery). */
+  valueColumnName?: string;
+  /** Time range of the signal, ISO 8601 duration like PT10M. */
+  timeGrain?: string;
 }
 export interface GetSignalDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1715,6 +1737,20 @@ export interface SignalDefinitionPropertiesInput {
   dataUnit?: string;
   /** Evaluation rules for the signal definition */
   evaluationRules: EvaluationRule;
+  /** Metric namespace (AzureResourceMetric). */
+  metricNamespace?: string;
+  /** Name of the metric (AzureResourceMetric). */
+  metricName?: string;
+  /** Type of aggregation to apply to the metric (AzureResourceMetric). */
+  aggregationType?: MetricAggregationType | (string & {});
+  /** Dimension filter to apply to the metric (AzureResourceMetric). */
+  dimensionFilter?: string;
+  /** Query text: KQL (LogAnalyticsQuery) or PromQL (PrometheusMetricsQuery). */
+  queryText?: string;
+  /** Name of the numeric result column evaluated against the thresholds (LogAnalyticsQuery). */
+  valueColumnName?: string;
+  /** Time range of the signal, ISO 8601 duration like PT10M. */
+  timeGrain?: string;
 }
 export interface SignalDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2350,6 +2386,7 @@ function __c3(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           authenticationKind: S.String,
+          managedIdentityName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationSettingPropertiesInput" });
     case 1:
@@ -2391,6 +2428,7 @@ function __c4(j: number): any {
           provisioningState: S.optional(S.String),
           displayName: S.optional(S.String),
           authenticationKind: S.String,
+          managedIdentityName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationSettingProperties" });
   }
@@ -3319,6 +3357,13 @@ function __c31(j: number): any {
           tags: S.optional(__S(64, __c2, 0)),
           dataUnit: S.optional(S.String),
           evaluationRules: __S(225, __c7, 1),
+          metricNamespace: S.optional(S.String),
+          metricName: S.optional(S.String),
+          aggregationType: S.optional(S.String),
+          dimensionFilter: S.optional(S.String),
+          queryText: S.optional(S.String),
+          valueColumnName: S.optional(S.String),
+          timeGrain: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalDefinitionProperties" });
   }
@@ -3642,6 +3687,13 @@ function __c44(j: number): any {
           tags: S.optional(__S(64, __c2, 0)),
           dataUnit: S.optional(S.String),
           evaluationRules: __S(225, __c7, 1),
+          metricNamespace: S.optional(S.String),
+          metricName: S.optional(S.String),
+          aggregationType: S.optional(S.String),
+          dimensionFilter: S.optional(S.String),
+          queryText: S.optional(S.String),
+          valueColumnName: S.optional(S.String),
+          timeGrain: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalDefinitionPropertiesInput" });
     case 1:
@@ -3866,6 +3918,8 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
+          resourceGraphQuery: S.optional(S.String),
+          applicationInsightsResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryRuleSpecification" });
     case 1:

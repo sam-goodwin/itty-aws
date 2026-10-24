@@ -216,6 +216,48 @@
             "smithy.api#documentation": "Evaluation rules for the signal definition",
             "smithy.api#required": {}
           }
+        },
+        "metricNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metric namespace (AzureResourceMetric)."
+          }
+        },
+        "metricName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the metric (AzureResourceMetric)."
+          }
+        },
+        "aggregationType": {
+          "target": "com.azure.cloudhealth#MetricAggregationType",
+          "traits": {
+            "smithy.api#documentation": "Type of aggregation to apply to the metric (AzureResourceMetric)."
+          }
+        },
+        "dimensionFilter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dimension filter to apply to the metric (AzureResourceMetric)."
+          }
+        },
+        "queryText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query text: KQL (LogAnalyticsQuery) or PromQL (PrometheusMetricsQuery)."
+          }
+        },
+        "valueColumnName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the numeric result column evaluated against the thresholds (LogAnalyticsQuery)."
+          }
+        },
+        "timeGrain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time range of the signal, ISO 8601 duration like PT10M."
+          }
         }
       },
       "traits": {
@@ -671,6 +713,48 @@
           "traits": {
             "smithy.api#documentation": "Evaluation rules for the signal definition",
             "smithy.api#required": {}
+          }
+        },
+        "metricNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metric namespace (AzureResourceMetric)."
+          }
+        },
+        "metricName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the metric (AzureResourceMetric)."
+          }
+        },
+        "aggregationType": {
+          "target": "com.azure.cloudhealth#MetricAggregationType",
+          "traits": {
+            "smithy.api#documentation": "Type of aggregation to apply to the metric (AzureResourceMetric)."
+          }
+        },
+        "dimensionFilter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dimension filter to apply to the metric (AzureResourceMetric)."
+          }
+        },
+        "queryText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query text: KQL (LogAnalyticsQuery) or PromQL (PrometheusMetricsQuery)."
+          }
+        },
+        "valueColumnName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the numeric result column evaluated against the thresholds (LogAnalyticsQuery)."
+          }
+        },
+        "timeGrain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time range of the signal, ISO 8601 duration like PT10M."
           }
         }
       },
@@ -5317,6 +5401,18 @@
             "smithy.api#documentation": "Kind of the discovery rule specification",
             "smithy.api#required": {}
           }
+        },
+        "resourceGraphQuery": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Graph query text in KQL syntax (ResourceGraphQuery). The query must return at least a column named 'id' with the resource ID of each discovered resource."
+          }
+        },
+        "applicationInsightsResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Application Insights resource ID (ApplicationInsightsTopology)."
+          }
         }
       },
       "traits": {
@@ -5893,6 +5989,12 @@
             "smithy.api#documentation": "Kind of the authentication setting",
             "smithy.api#required": {}
           }
+        },
+        "managedIdentityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the managed identity to use (ManagedIdentity). Either 'SystemAssigned' or the resource ID of a user-assigned identity."
+          }
         }
       },
       "traits": {
@@ -5973,6 +6075,12 @@
           "traits": {
             "smithy.api#documentation": "Kind of the authentication setting",
             "smithy.api#required": {}
+          }
+        },
+        "managedIdentityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the managed identity to use (ManagedIdentity). Either 'SystemAssigned' or the resource ID of a user-assigned identity."
           }
         }
       },

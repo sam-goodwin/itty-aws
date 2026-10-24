@@ -15,13 +15,72 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.timeseriesinsights#AccessPoliciesListByEnvironment": "com.azure.timeseriesinsights#ListAccessPolicyByEnvironment",
+      "com.azure.timeseriesinsights#AccessPoliciesListByEnvironmentRequest": "com.azure.timeseriesinsights#ListAccessPolicyByEnvironmentRequest",
+      "com.azure.timeseriesinsights#AccessPoliciesDelete": "com.azure.timeseriesinsights#DeleteAccessPolicy",
+      "com.azure.timeseriesinsights#AccessPoliciesDeleteRequest": "com.azure.timeseriesinsights#DeleteAccessPolicyRequest",
+      "com.azure.timeseriesinsights#AccessPoliciesUpdate": "com.azure.timeseriesinsights#UpdateAccessPolicy",
+      "com.azure.timeseriesinsights#AccessPoliciesUpdateResponse": "com.azure.timeseriesinsights#UpdateAccessPolicyResponse",
+      "com.azure.timeseriesinsights#AccessPoliciesUpdateRequest": "com.azure.timeseriesinsights#UpdateAccessPolicyRequest",
+      "com.azure.timeseriesinsights#AccessPoliciesGet": "com.azure.timeseriesinsights#GetAccessPolicy",
+      "com.azure.timeseriesinsights#AccessPoliciesGetResponse": "com.azure.timeseriesinsights#GetAccessPolicyResponse",
+      "com.azure.timeseriesinsights#AccessPoliciesGetRequest": "com.azure.timeseriesinsights#GetAccessPolicyRequest",
+      "com.azure.timeseriesinsights#ReferenceDataSetsListByEnvironment": "com.azure.timeseriesinsights#ListReferenceDataSetByEnvironment",
+      "com.azure.timeseriesinsights#ReferenceDataSetsListByEnvironmentRequest": "com.azure.timeseriesinsights#ListReferenceDataSetByEnvironmentRequest",
+      "com.azure.timeseriesinsights#ReferenceDataSetsDelete": "com.azure.timeseriesinsights#DeleteReferenceDataSet",
+      "com.azure.timeseriesinsights#ReferenceDataSetsDeleteRequest": "com.azure.timeseriesinsights#DeleteReferenceDataSetRequest",
+      "com.azure.timeseriesinsights#ReferenceDataSetsUpdate": "com.azure.timeseriesinsights#UpdateReferenceDataSet",
+      "com.azure.timeseriesinsights#ReferenceDataSetsUpdateResponse": "com.azure.timeseriesinsights#UpdateReferenceDataSetResponse",
+      "com.azure.timeseriesinsights#ReferenceDataSetsUpdateResponseTagsMap": "com.azure.timeseriesinsights#UpdateReferenceDataSetResponseTagsMap",
+      "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequest": "com.azure.timeseriesinsights#UpdateReferenceDataSetRequest",
+      "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequestTagsMap": "com.azure.timeseriesinsights#UpdateReferenceDataSetRequestTagsMap",
+      "com.azure.timeseriesinsights#ReferenceDataSetsGet": "com.azure.timeseriesinsights#GetReferenceDataSet",
+      "com.azure.timeseriesinsights#ReferenceDataSetsGetResponse": "com.azure.timeseriesinsights#GetReferenceDataSetResponse",
+      "com.azure.timeseriesinsights#ReferenceDataSetsGetResponseTagsMap": "com.azure.timeseriesinsights#GetReferenceDataSetResponseTagsMap",
+      "com.azure.timeseriesinsights#ReferenceDataSetsGetRequest": "com.azure.timeseriesinsights#GetReferenceDataSetRequest",
+      "com.azure.timeseriesinsights#EventSourcesListByEnvironment": "com.azure.timeseriesinsights#ListEventSourceByEnvironment",
+      "com.azure.timeseriesinsights#EventSourcesListByEnvironmentRequest": "com.azure.timeseriesinsights#ListEventSourceByEnvironmentRequest",
+      "com.azure.timeseriesinsights#EventSourcesDelete": "com.azure.timeseriesinsights#DeleteEventSource",
+      "com.azure.timeseriesinsights#EventSourcesDeleteRequest": "com.azure.timeseriesinsights#DeleteEventSourceRequest",
+      "com.azure.timeseriesinsights#EventSourcesUpdate": "com.azure.timeseriesinsights#UpdateEventSource",
+      "com.azure.timeseriesinsights#EventSourcesUpdateResponse": "com.azure.timeseriesinsights#UpdateEventSourceResponse",
+      "com.azure.timeseriesinsights#EventSourcesUpdateResponseKind": "com.azure.timeseriesinsights#UpdateEventSourceResponseKind",
+      "com.azure.timeseriesinsights#EventSourcesUpdateResponseTagsMap": "com.azure.timeseriesinsights#UpdateEventSourceResponseTagsMap",
+      "com.azure.timeseriesinsights#EventSourcesUpdateRequest": "com.azure.timeseriesinsights#UpdateEventSourceRequest",
+      "com.azure.timeseriesinsights#EventSourcesUpdateRequestTagsMap": "com.azure.timeseriesinsights#UpdateEventSourceRequestTagsMap",
+      "com.azure.timeseriesinsights#EventSourcesUpdateRequestKind": "com.azure.timeseriesinsights#UpdateEventSourceRequestKind",
+      "com.azure.timeseriesinsights#EventSourcesGet": "com.azure.timeseriesinsights#GetEventSource",
+      "com.azure.timeseriesinsights#EventSourcesGetResponse": "com.azure.timeseriesinsights#GetEventSourceResponse",
+      "com.azure.timeseriesinsights#EventSourcesGetResponseKind": "com.azure.timeseriesinsights#GetEventSourceResponseKind",
+      "com.azure.timeseriesinsights#EventSourcesGetResponseTagsMap": "com.azure.timeseriesinsights#GetEventSourceResponseTagsMap",
+      "com.azure.timeseriesinsights#EventSourcesGetRequest": "com.azure.timeseriesinsights#GetEventSourceRequest",
+      "com.azure.timeseriesinsights#EnvironmentsListBySubscription": "com.azure.timeseriesinsights#ListEnvironmentBySubscription",
+      "com.azure.timeseriesinsights#EnvironmentsListBySubscriptionRequest": "com.azure.timeseriesinsights#ListEnvironmentBySubscriptionRequest",
+      "com.azure.timeseriesinsights#EnvironmentsListByResourceGroup": "com.azure.timeseriesinsights#ListEnvironmentByResourceGroup",
+      "com.azure.timeseriesinsights#EnvironmentsListByResourceGroupRequest": "com.azure.timeseriesinsights#ListEnvironmentByResourceGroupRequest",
+      "com.azure.timeseriesinsights#EnvironmentsDelete": "com.azure.timeseriesinsights#DeleteEnvironment",
+      "com.azure.timeseriesinsights#EnvironmentsDeleteRequest": "com.azure.timeseriesinsights#DeleteEnvironmentRequest",
+      "com.azure.timeseriesinsights#EnvironmentsUpdate": "com.azure.timeseriesinsights#UpdateEnvironment",
+      "com.azure.timeseriesinsights#EnvironmentsUpdateResponse": "com.azure.timeseriesinsights#UpdateEnvironmentResponse",
+      "com.azure.timeseriesinsights#EnvironmentsUpdateResponseKind": "com.azure.timeseriesinsights#UpdateEnvironmentResponseKind",
+      "com.azure.timeseriesinsights#EnvironmentsUpdateResponseTagsMap": "com.azure.timeseriesinsights#UpdateEnvironmentResponseTagsMap",
+      "com.azure.timeseriesinsights#EnvironmentsUpdateRequest": "com.azure.timeseriesinsights#UpdateEnvironmentRequest",
+      "com.azure.timeseriesinsights#EnvironmentsUpdateRequestTagsMap": "com.azure.timeseriesinsights#UpdateEnvironmentRequestTagsMap",
+      "com.azure.timeseriesinsights#EnvironmentsUpdateRequestKind": "com.azure.timeseriesinsights#UpdateEnvironmentRequestKind",
+      "com.azure.timeseriesinsights#EnvironmentsGet": "com.azure.timeseriesinsights#GetEnvironment",
+      "com.azure.timeseriesinsights#EnvironmentsGetResponse": "com.azure.timeseriesinsights#GetEnvironmentResponse",
+      "com.azure.timeseriesinsights#EnvironmentsGetResponseKind": "com.azure.timeseriesinsights#GetEnvironmentResponseKind",
+      "com.azure.timeseriesinsights#EnvironmentsGetResponseTagsMap": "com.azure.timeseriesinsights#GetEnvironmentResponseTagsMap",
+      "com.azure.timeseriesinsights#EnvironmentsGetRequest": "com.azure.timeseriesinsights#GetEnvironmentRequest",
+      "com.azure.timeseriesinsights#OperationsList": "com.azure.timeseriesinsights#ListOperations"
+    }
   },
   "shapes": {
-    "com.azure.timeseriesinsights#ListAccessPolicyByEnvironment": {
+    "com.azure.timeseriesinsights#AccessPoliciesListByEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#ListAccessPolicyByEnvironmentRequest"
+        "target": "com.azure.timeseriesinsights#AccessPoliciesListByEnvironmentRequest"
       },
       "output": {
         "target": "com.azure.timeseriesinsights#AccessPolicyListResponse"
@@ -142,7 +201,7 @@
         "smithy.api#documentation": "A role defining the data plane operations that a principal can perform on a Time Series Insights client."
       }
     },
-    "com.azure.timeseriesinsights#ListAccessPolicyByEnvironmentRequest": {
+    "com.azure.timeseriesinsights#AccessPoliciesListByEnvironmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -174,10 +233,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#DeleteAccessPolicy": {
+    "com.azure.timeseriesinsights#AccessPoliciesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#DeleteAccessPolicyRequest"
+        "target": "com.azure.timeseriesinsights#AccessPoliciesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -193,7 +252,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#DeleteAccessPolicyRequest": {
+    "com.azure.timeseriesinsights#AccessPoliciesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -233,13 +292,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateAccessPolicy": {
+    "com.azure.timeseriesinsights#AccessPoliciesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#UpdateAccessPolicyRequest"
+        "target": "com.azure.timeseriesinsights#AccessPoliciesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#UpdateAccessPolicyResponse"
+        "target": "com.azure.timeseriesinsights#AccessPoliciesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -252,7 +311,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#UpdateAccessPolicyResponse": {
+    "com.azure.timeseriesinsights#AccessPoliciesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -281,7 +340,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateAccessPolicyRequest": {
+    "com.azure.timeseriesinsights#AccessPoliciesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -467,13 +526,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#GetAccessPolicy": {
+    "com.azure.timeseriesinsights#AccessPoliciesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#GetAccessPolicyRequest"
+        "target": "com.azure.timeseriesinsights#AccessPoliciesGetRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#GetAccessPolicyResponse"
+        "target": "com.azure.timeseriesinsights#AccessPoliciesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -486,7 +545,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#GetAccessPolicyResponse": {
+    "com.azure.timeseriesinsights#AccessPoliciesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -515,7 +574,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#GetAccessPolicyRequest": {
+    "com.azure.timeseriesinsights#AccessPoliciesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -555,10 +614,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#ListReferenceDataSetByEnvironment": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsListByEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#ListReferenceDataSetByEnvironmentRequest"
+        "target": "com.azure.timeseriesinsights#ReferenceDataSetsListByEnvironmentRequest"
       },
       "output": {
         "target": "com.azure.timeseriesinsights#ReferenceDataSetListResponse"
@@ -809,7 +868,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#ListReferenceDataSetByEnvironmentRequest": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsListByEnvironmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -841,10 +900,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#DeleteReferenceDataSet": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#DeleteReferenceDataSetRequest"
+        "target": "com.azure.timeseriesinsights#ReferenceDataSetsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -860,7 +919,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#DeleteReferenceDataSetRequest": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -900,13 +959,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateReferenceDataSet": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#UpdateReferenceDataSetRequest"
+        "target": "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#UpdateReferenceDataSetResponse"
+        "target": "com.azure.timeseriesinsights#ReferenceDataSetsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -919,7 +978,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#UpdateReferenceDataSetResponse": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -948,7 +1007,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#UpdateReferenceDataSetResponseTagsMap",
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -961,7 +1020,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateReferenceDataSetResponseTagsMap": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -973,7 +1032,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#UpdateReferenceDataSetRequest": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1009,7 +1068,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#UpdateReferenceDataSetRequestTagsMap",
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Key-value pairs of additional properties for the reference data set."
           }
@@ -1019,7 +1078,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateReferenceDataSetRequestTagsMap": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1225,13 +1284,13 @@
         "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
       }
     },
-    "com.azure.timeseriesinsights#GetReferenceDataSet": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#GetReferenceDataSetRequest"
+        "target": "com.azure.timeseriesinsights#ReferenceDataSetsGetRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#GetReferenceDataSetResponse"
+        "target": "com.azure.timeseriesinsights#ReferenceDataSetsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1244,7 +1303,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#GetReferenceDataSetResponse": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1273,7 +1332,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#GetReferenceDataSetResponseTagsMap",
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -1286,7 +1345,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#GetReferenceDataSetResponseTagsMap": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1298,7 +1357,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#GetReferenceDataSetRequest": {
+    "com.azure.timeseriesinsights#ReferenceDataSetsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1338,10 +1397,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#ListEventSourceByEnvironment": {
+    "com.azure.timeseriesinsights#EventSourcesListByEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#ListEventSourceByEnvironmentRequest"
+        "target": "com.azure.timeseriesinsights#EventSourcesListByEnvironmentRequest"
       },
       "output": {
         "target": "com.azure.timeseriesinsights#EventSourceListResponse"
@@ -1458,7 +1517,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#ListEventSourceByEnvironmentRequest": {
+    "com.azure.timeseriesinsights#EventSourcesListByEnvironmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1490,10 +1549,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#DeleteEventSource": {
+    "com.azure.timeseriesinsights#EventSourcesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#DeleteEventSourceRequest"
+        "target": "com.azure.timeseriesinsights#EventSourcesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1509,7 +1568,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#DeleteEventSourceRequest": {
+    "com.azure.timeseriesinsights#EventSourcesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1549,13 +1608,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateEventSource": {
+    "com.azure.timeseriesinsights#EventSourcesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#UpdateEventSourceRequest"
+        "target": "com.azure.timeseriesinsights#EventSourcesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#UpdateEventSourceResponse"
+        "target": "com.azure.timeseriesinsights#EventSourcesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1568,7 +1627,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#UpdateEventSourceResponse": {
+    "com.azure.timeseriesinsights#EventSourcesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1597,13 +1656,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#UpdateEventSourceResponseTagsMap",
+          "target": "com.azure.timeseriesinsights#EventSourcesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "kind": {
-          "target": "com.azure.timeseriesinsights#UpdateEventSourceResponseKind",
+          "target": "com.azure.timeseriesinsights#EventSourcesUpdateResponseKind",
           "traits": {
             "smithy.api#documentation": "The kind of the event source.",
             "smithy.api#required": {}
@@ -1614,7 +1673,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateEventSourceResponseKind": {
+    "com.azure.timeseriesinsights#EventSourcesUpdateResponseKind": {
       "type": "enum",
       "members": {
         "MICROSOFT_EVENTHUB": {
@@ -1634,7 +1693,7 @@
         "smithy.api#documentation": "The kind of the event source."
       }
     },
-    "com.azure.timeseriesinsights#UpdateEventSourceResponseTagsMap": {
+    "com.azure.timeseriesinsights#EventSourcesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1646,7 +1705,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#UpdateEventSourceRequest": {
+    "com.azure.timeseriesinsights#EventSourcesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1682,14 +1741,14 @@
           }
         },
         "kind": {
-          "target": "com.azure.timeseriesinsights#UpdateEventSourceRequestKind",
+          "target": "com.azure.timeseriesinsights#EventSourcesUpdateRequestKind",
           "traits": {
             "smithy.api#documentation": "The kind of the event source.",
             "smithy.api#required": {}
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#UpdateEventSourceRequestTagsMap",
+          "target": "com.azure.timeseriesinsights#EventSourcesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Key-value pairs of additional properties for the event source."
           }
@@ -1699,7 +1758,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateEventSourceRequestTagsMap": {
+    "com.azure.timeseriesinsights#EventSourcesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1711,7 +1770,7 @@
         "smithy.api#documentation": "Key-value pairs of additional properties for the event source."
       }
     },
-    "com.azure.timeseriesinsights#UpdateEventSourceRequestKind": {
+    "com.azure.timeseriesinsights#EventSourcesUpdateRequestKind": {
       "type": "enum",
       "members": {
         "MICROSOFT_EVENTHUB": {
@@ -1974,13 +2033,13 @@
         "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
       }
     },
-    "com.azure.timeseriesinsights#GetEventSource": {
+    "com.azure.timeseriesinsights#EventSourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#GetEventSourceRequest"
+        "target": "com.azure.timeseriesinsights#EventSourcesGetRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#GetEventSourceResponse"
+        "target": "com.azure.timeseriesinsights#EventSourcesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1993,7 +2052,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#GetEventSourceResponse": {
+    "com.azure.timeseriesinsights#EventSourcesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2022,13 +2081,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#GetEventSourceResponseTagsMap",
+          "target": "com.azure.timeseriesinsights#EventSourcesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "kind": {
-          "target": "com.azure.timeseriesinsights#GetEventSourceResponseKind",
+          "target": "com.azure.timeseriesinsights#EventSourcesGetResponseKind",
           "traits": {
             "smithy.api#documentation": "The kind of the event source.",
             "smithy.api#required": {}
@@ -2039,7 +2098,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#GetEventSourceResponseKind": {
+    "com.azure.timeseriesinsights#EventSourcesGetResponseKind": {
       "type": "enum",
       "members": {
         "MICROSOFT_EVENTHUB": {
@@ -2059,7 +2118,7 @@
         "smithy.api#documentation": "The kind of the event source."
       }
     },
-    "com.azure.timeseriesinsights#GetEventSourceResponseTagsMap": {
+    "com.azure.timeseriesinsights#EventSourcesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2071,7 +2130,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#GetEventSourceRequest": {
+    "com.azure.timeseriesinsights#EventSourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2111,10 +2170,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#ListEnvironmentBySubscription": {
+    "com.azure.timeseriesinsights#EnvironmentsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#ListEnvironmentBySubscriptionRequest"
+        "target": "com.azure.timeseriesinsights#EnvironmentsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.timeseriesinsights#EnvironmentListResponse"
@@ -2292,7 +2351,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#ListEnvironmentBySubscriptionRequest": {
+    "com.azure.timeseriesinsights#EnvironmentsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2308,10 +2367,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#ListEnvironmentByResourceGroup": {
+    "com.azure.timeseriesinsights#EnvironmentsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#ListEnvironmentByResourceGroupRequest"
+        "target": "com.azure.timeseriesinsights#EnvironmentsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.timeseriesinsights#EnvironmentListResponse"
@@ -2327,7 +2386,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#ListEnvironmentByResourceGroupRequest": {
+    "com.azure.timeseriesinsights#EnvironmentsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2351,10 +2410,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#DeleteEnvironment": {
+    "com.azure.timeseriesinsights#EnvironmentsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#DeleteEnvironmentRequest"
+        "target": "com.azure.timeseriesinsights#EnvironmentsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2370,7 +2429,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#DeleteEnvironmentRequest": {
+    "com.azure.timeseriesinsights#EnvironmentsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2402,13 +2461,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateEnvironment": {
+    "com.azure.timeseriesinsights#EnvironmentsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#UpdateEnvironmentRequest"
+        "target": "com.azure.timeseriesinsights#EnvironmentsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#UpdateEnvironmentResponse"
+        "target": "com.azure.timeseriesinsights#EnvironmentsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2421,7 +2480,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#UpdateEnvironmentResponse": {
+    "com.azure.timeseriesinsights#EnvironmentsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2450,7 +2509,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#UpdateEnvironmentResponseTagsMap",
+          "target": "com.azure.timeseriesinsights#EnvironmentsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -2463,7 +2522,7 @@
           }
         },
         "kind": {
-          "target": "com.azure.timeseriesinsights#UpdateEnvironmentResponseKind",
+          "target": "com.azure.timeseriesinsights#EnvironmentsUpdateResponseKind",
           "traits": {
             "smithy.api#documentation": "The kind of the environment.",
             "smithy.api#required": {}
@@ -2474,7 +2533,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateEnvironmentResponseKind": {
+    "com.azure.timeseriesinsights#EnvironmentsUpdateResponseKind": {
       "type": "enum",
       "members": {
         "GEN1": {
@@ -2494,7 +2553,7 @@
         "smithy.api#documentation": "The kind of the environment."
       }
     },
-    "com.azure.timeseriesinsights#UpdateEnvironmentResponseTagsMap": {
+    "com.azure.timeseriesinsights#EnvironmentsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2506,7 +2565,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#UpdateEnvironmentRequest": {
+    "com.azure.timeseriesinsights#EnvironmentsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2534,14 +2593,14 @@
           }
         },
         "kind": {
-          "target": "com.azure.timeseriesinsights#UpdateEnvironmentRequestKind",
+          "target": "com.azure.timeseriesinsights#EnvironmentsUpdateRequestKind",
           "traits": {
             "smithy.api#documentation": "The kind of the environment.",
             "smithy.api#required": {}
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#UpdateEnvironmentRequestTagsMap",
+          "target": "com.azure.timeseriesinsights#EnvironmentsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Key-value pairs of additional properties for the environment."
           }
@@ -2551,7 +2610,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#UpdateEnvironmentRequestTagsMap": {
+    "com.azure.timeseriesinsights#EnvironmentsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2563,7 +2622,7 @@
         "smithy.api#documentation": "Key-value pairs of additional properties for the environment."
       }
     },
-    "com.azure.timeseriesinsights#UpdateEnvironmentRequestKind": {
+    "com.azure.timeseriesinsights#EnvironmentsUpdateRequestKind": {
       "type": "enum",
       "members": {
         "GEN1": {
@@ -2778,13 +2837,13 @@
         "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
       }
     },
-    "com.azure.timeseriesinsights#GetEnvironment": {
+    "com.azure.timeseriesinsights#EnvironmentsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.timeseriesinsights#GetEnvironmentRequest"
+        "target": "com.azure.timeseriesinsights#EnvironmentsGetRequest"
       },
       "output": {
-        "target": "com.azure.timeseriesinsights#GetEnvironmentResponse"
+        "target": "com.azure.timeseriesinsights#EnvironmentsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2797,7 +2856,7 @@
         "com.distilled.openapi#apiVersion": "2020-05-15"
       }
     },
-    "com.azure.timeseriesinsights#GetEnvironmentResponse": {
+    "com.azure.timeseriesinsights#EnvironmentsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2826,7 +2885,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.timeseriesinsights#GetEnvironmentResponseTagsMap",
+          "target": "com.azure.timeseriesinsights#EnvironmentsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -2839,7 +2898,7 @@
           }
         },
         "kind": {
-          "target": "com.azure.timeseriesinsights#GetEnvironmentResponseKind",
+          "target": "com.azure.timeseriesinsights#EnvironmentsGetResponseKind",
           "traits": {
             "smithy.api#documentation": "The kind of the environment.",
             "smithy.api#required": {}
@@ -2850,7 +2909,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.timeseriesinsights#GetEnvironmentResponseKind": {
+    "com.azure.timeseriesinsights#EnvironmentsGetResponseKind": {
       "type": "enum",
       "members": {
         "GEN1": {
@@ -2870,7 +2929,7 @@
         "smithy.api#documentation": "The kind of the environment."
       }
     },
-    "com.azure.timeseriesinsights#GetEnvironmentResponseTagsMap": {
+    "com.azure.timeseriesinsights#EnvironmentsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2882,7 +2941,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.timeseriesinsights#GetEnvironmentRequest": {
+    "com.azure.timeseriesinsights#EnvironmentsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2921,7 +2980,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.timeseriesinsights#ListOperations": {
+    "com.azure.timeseriesinsights#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3218,70 +3277,70 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.timeseriesinsights#ListAccessPolicyByEnvironment"
+          "target": "com.azure.timeseriesinsights#AccessPoliciesListByEnvironment"
         },
         {
-          "target": "com.azure.timeseriesinsights#DeleteAccessPolicy"
+          "target": "com.azure.timeseriesinsights#AccessPoliciesDelete"
         },
         {
-          "target": "com.azure.timeseriesinsights#UpdateAccessPolicy"
+          "target": "com.azure.timeseriesinsights#AccessPoliciesUpdate"
         },
         {
           "target": "com.azure.timeseriesinsights#AccessPoliciesCreateOrUpdate"
         },
         {
-          "target": "com.azure.timeseriesinsights#GetAccessPolicy"
+          "target": "com.azure.timeseriesinsights#AccessPoliciesGet"
         },
         {
-          "target": "com.azure.timeseriesinsights#ListReferenceDataSetByEnvironment"
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsListByEnvironment"
         },
         {
-          "target": "com.azure.timeseriesinsights#DeleteReferenceDataSet"
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsDelete"
         },
         {
-          "target": "com.azure.timeseriesinsights#UpdateReferenceDataSet"
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsUpdate"
         },
         {
           "target": "com.azure.timeseriesinsights#ReferenceDataSetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.timeseriesinsights#GetReferenceDataSet"
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsGet"
         },
         {
-          "target": "com.azure.timeseriesinsights#ListEventSourceByEnvironment"
+          "target": "com.azure.timeseriesinsights#EventSourcesListByEnvironment"
         },
         {
-          "target": "com.azure.timeseriesinsights#DeleteEventSource"
+          "target": "com.azure.timeseriesinsights#EventSourcesDelete"
         },
         {
-          "target": "com.azure.timeseriesinsights#UpdateEventSource"
+          "target": "com.azure.timeseriesinsights#EventSourcesUpdate"
         },
         {
           "target": "com.azure.timeseriesinsights#EventSourcesCreateOrUpdate"
         },
         {
-          "target": "com.azure.timeseriesinsights#GetEventSource"
+          "target": "com.azure.timeseriesinsights#EventSourcesGet"
         },
         {
-          "target": "com.azure.timeseriesinsights#ListEnvironmentBySubscription"
+          "target": "com.azure.timeseriesinsights#EnvironmentsListBySubscription"
         },
         {
-          "target": "com.azure.timeseriesinsights#ListEnvironmentByResourceGroup"
+          "target": "com.azure.timeseriesinsights#EnvironmentsListByResourceGroup"
         },
         {
-          "target": "com.azure.timeseriesinsights#DeleteEnvironment"
+          "target": "com.azure.timeseriesinsights#EnvironmentsDelete"
         },
         {
-          "target": "com.azure.timeseriesinsights#UpdateEnvironment"
+          "target": "com.azure.timeseriesinsights#EnvironmentsUpdate"
         },
         {
           "target": "com.azure.timeseriesinsights#EnvironmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.timeseriesinsights#GetEnvironment"
+          "target": "com.azure.timeseriesinsights#EnvironmentsGet"
         },
         {
-          "target": "com.azure.timeseriesinsights#ListOperations"
+          "target": "com.azure.timeseriesinsights#OperationsList"
         }
       ],
       "traits": {

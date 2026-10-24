@@ -15,13 +15,109 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.streamanalytics#ClustersListStreamingJobs": "com.azure.streamanalytics#ListClusterStreamingJobs",
+      "com.azure.streamanalytics#ClustersListStreamingJobsRequest": "com.azure.streamanalytics#ListClusterStreamingJobsRequest",
+      "com.azure.streamanalytics#ClustersListByResourceGroup": "com.azure.streamanalytics#ListClusterByResourceGroup",
+      "com.azure.streamanalytics#ClustersListByResourceGroupRequest": "com.azure.streamanalytics#ListClusterByResourceGroupRequest",
+      "com.azure.streamanalytics#ClustersListBySubscription": "com.azure.streamanalytics#ListClusterBySubscription",
+      "com.azure.streamanalytics#ClustersListBySubscriptionRequest": "com.azure.streamanalytics#ListClusterBySubscriptionRequest",
+      "com.azure.streamanalytics#ClustersDelete": "com.azure.streamanalytics#DeleteCluster",
+      "com.azure.streamanalytics#ClustersDeleteRequest": "com.azure.streamanalytics#DeleteClusterRequest",
+      "com.azure.streamanalytics#ClustersUpdate": "com.azure.streamanalytics#UpdateCluster",
+      "com.azure.streamanalytics#ClustersUpdateResponse": "com.azure.streamanalytics#UpdateClusterResponse",
+      "com.azure.streamanalytics#ClustersUpdateResponseTagsMap": "com.azure.streamanalytics#UpdateClusterResponseTagsMap",
+      "com.azure.streamanalytics#ClustersUpdateRequest": "com.azure.streamanalytics#UpdateClusterRequest",
+      "com.azure.streamanalytics#ClustersUpdateRequestTagsMap": "com.azure.streamanalytics#UpdateClusterRequestTagsMap",
+      "com.azure.streamanalytics#ClustersGet": "com.azure.streamanalytics#GetCluster",
+      "com.azure.streamanalytics#ClustersGetResponse": "com.azure.streamanalytics#GetClusterResponse",
+      "com.azure.streamanalytics#ClustersGetResponseTagsMap": "com.azure.streamanalytics#GetClusterResponseTagsMap",
+      "com.azure.streamanalytics#ClustersGetRequest": "com.azure.streamanalytics#GetClusterRequest",
+      "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinition": "com.azure.streamanalytics#GetFunctionDefaultDefinition",
+      "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinitionResponse": "com.azure.streamanalytics#GetFunctionDefaultDefinitionResponse",
+      "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinitionRequest": "com.azure.streamanalytics#GetFunctionDefaultDefinitionRequest",
+      "com.azure.streamanalytics#FunctionsTest": "com.azure.streamanalytics#TestFunction",
+      "com.azure.streamanalytics#FunctionsTestResponse": "com.azure.streamanalytics#TestFunctionResponse",
+      "com.azure.streamanalytics#FunctionsTestRequest": "com.azure.streamanalytics#TestFunctionRequest",
+      "com.azure.streamanalytics#FunctionsListByStreamingJob": "com.azure.streamanalytics#ListFunctionByStreamingJob",
+      "com.azure.streamanalytics#FunctionsListByStreamingJobRequest": "com.azure.streamanalytics#ListFunctionByStreamingJobRequest",
+      "com.azure.streamanalytics#FunctionsDelete": "com.azure.streamanalytics#DeleteFunction",
+      "com.azure.streamanalytics#FunctionsDeleteRequest": "com.azure.streamanalytics#DeleteFunctionRequest",
+      "com.azure.streamanalytics#FunctionsUpdate": "com.azure.streamanalytics#UpdateFunction",
+      "com.azure.streamanalytics#FunctionsUpdateResponse": "com.azure.streamanalytics#UpdateFunctionResponse",
+      "com.azure.streamanalytics#FunctionsUpdateRequest": "com.azure.streamanalytics#UpdateFunctionRequest",
+      "com.azure.streamanalytics#FunctionsGet": "com.azure.streamanalytics#GetFunction",
+      "com.azure.streamanalytics#FunctionsGetResponse": "com.azure.streamanalytics#GetFunctionResponse",
+      "com.azure.streamanalytics#FunctionsGetRequest": "com.azure.streamanalytics#GetFunctionRequest",
+      "com.azure.streamanalytics#InputsTest": "com.azure.streamanalytics#TestInput",
+      "com.azure.streamanalytics#InputsTestRequest": "com.azure.streamanalytics#TestInputRequest",
+      "com.azure.streamanalytics#InputsListByStreamingJob": "com.azure.streamanalytics#ListInputByStreamingJob",
+      "com.azure.streamanalytics#InputsListByStreamingJobRequest": "com.azure.streamanalytics#ListInputByStreamingJobRequest",
+      "com.azure.streamanalytics#InputsDelete": "com.azure.streamanalytics#DeleteInput",
+      "com.azure.streamanalytics#InputsDeleteRequest": "com.azure.streamanalytics#DeleteInputRequest",
+      "com.azure.streamanalytics#InputsUpdate": "com.azure.streamanalytics#UpdateInput",
+      "com.azure.streamanalytics#InputsUpdateResponse": "com.azure.streamanalytics#UpdateInputResponse",
+      "com.azure.streamanalytics#InputsUpdateRequest": "com.azure.streamanalytics#UpdateInputRequest",
+      "com.azure.streamanalytics#InputsGet": "com.azure.streamanalytics#GetInput",
+      "com.azure.streamanalytics#InputsGetResponse": "com.azure.streamanalytics#GetInputResponse",
+      "com.azure.streamanalytics#InputsGetRequest": "com.azure.streamanalytics#GetInputRequest",
+      "com.azure.streamanalytics#OutputsTest": "com.azure.streamanalytics#TestOutput",
+      "com.azure.streamanalytics#OutputsTestResponse": "com.azure.streamanalytics#TestOutputResponse",
+      "com.azure.streamanalytics#OutputsTestRequest": "com.azure.streamanalytics#TestOutputRequest",
+      "com.azure.streamanalytics#OutputsListByStreamingJob": "com.azure.streamanalytics#ListOutputByStreamingJob",
+      "com.azure.streamanalytics#OutputsListByStreamingJobRequest": "com.azure.streamanalytics#ListOutputByStreamingJobRequest",
+      "com.azure.streamanalytics#OutputsDelete": "com.azure.streamanalytics#DeleteOutput",
+      "com.azure.streamanalytics#OutputsDeleteRequest": "com.azure.streamanalytics#DeleteOutputRequest",
+      "com.azure.streamanalytics#OutputsUpdate": "com.azure.streamanalytics#UpdateOutput",
+      "com.azure.streamanalytics#OutputsUpdateResponse": "com.azure.streamanalytics#UpdateOutputResponse",
+      "com.azure.streamanalytics#OutputsUpdateRequest": "com.azure.streamanalytics#UpdateOutputRequest",
+      "com.azure.streamanalytics#OutputsGet": "com.azure.streamanalytics#GetOutput",
+      "com.azure.streamanalytics#OutputsGetResponse": "com.azure.streamanalytics#GetOutputResponse",
+      "com.azure.streamanalytics#OutputsGetRequest": "com.azure.streamanalytics#GetOutputRequest",
+      "com.azure.streamanalytics#PrivateEndpointsListByCluster": "com.azure.streamanalytics#ListPrivateEndpointByCluster",
+      "com.azure.streamanalytics#PrivateEndpointsListByClusterRequest": "com.azure.streamanalytics#ListPrivateEndpointByClusterRequest",
+      "com.azure.streamanalytics#PrivateEndpointsDelete": "com.azure.streamanalytics#DeletePrivateEndpoint",
+      "com.azure.streamanalytics#PrivateEndpointsDeleteRequest": "com.azure.streamanalytics#DeletePrivateEndpointRequest",
+      "com.azure.streamanalytics#PrivateEndpointsGet": "com.azure.streamanalytics#GetPrivateEndpoint",
+      "com.azure.streamanalytics#PrivateEndpointsGetResponse": "com.azure.streamanalytics#GetPrivateEndpointResponse",
+      "com.azure.streamanalytics#PrivateEndpointsGetRequest": "com.azure.streamanalytics#GetPrivateEndpointRequest",
+      "com.azure.streamanalytics#StreamingJobsScale": "com.azure.streamanalytics#ScaleStreamingJob",
+      "com.azure.streamanalytics#StreamingJobsScaleRequest": "com.azure.streamanalytics#ScaleStreamingJobRequest",
+      "com.azure.streamanalytics#StreamingJobsStop": "com.azure.streamanalytics#StopStreamingJob",
+      "com.azure.streamanalytics#StreamingJobsStopRequest": "com.azure.streamanalytics#StopStreamingJobRequest",
+      "com.azure.streamanalytics#StreamingJobsStart": "com.azure.streamanalytics#StartStreamingJob",
+      "com.azure.streamanalytics#StreamingJobsStartRequest": "com.azure.streamanalytics#StartStreamingJobRequest",
+      "com.azure.streamanalytics#StreamingJobsList": "com.azure.streamanalytics#ListStreamingJobs",
+      "com.azure.streamanalytics#StreamingJobsListRequest": "com.azure.streamanalytics#ListStreamingJobsRequest",
+      "com.azure.streamanalytics#StreamingJobsListByResourceGroup": "com.azure.streamanalytics#ListStreamingJobByResourceGroup",
+      "com.azure.streamanalytics#StreamingJobsListByResourceGroupRequest": "com.azure.streamanalytics#ListStreamingJobByResourceGroupRequest",
+      "com.azure.streamanalytics#StreamingJobsDelete": "com.azure.streamanalytics#DeleteStreamingJob",
+      "com.azure.streamanalytics#StreamingJobsDeleteRequest": "com.azure.streamanalytics#DeleteStreamingJobRequest",
+      "com.azure.streamanalytics#StreamingJobsUpdate": "com.azure.streamanalytics#UpdateStreamingJob",
+      "com.azure.streamanalytics#StreamingJobsUpdateResponse": "com.azure.streamanalytics#UpdateStreamingJobResponse",
+      "com.azure.streamanalytics#StreamingJobsUpdateResponseTagsMap": "com.azure.streamanalytics#UpdateStreamingJobResponseTagsMap",
+      "com.azure.streamanalytics#StreamingJobsUpdateRequest": "com.azure.streamanalytics#UpdateStreamingJobRequest",
+      "com.azure.streamanalytics#StreamingJobsUpdateRequestTagsMap": "com.azure.streamanalytics#UpdateStreamingJobRequestTagsMap",
+      "com.azure.streamanalytics#StreamingJobsGet": "com.azure.streamanalytics#GetStreamingJob",
+      "com.azure.streamanalytics#StreamingJobsGetResponse": "com.azure.streamanalytics#GetStreamingJobResponse",
+      "com.azure.streamanalytics#StreamingJobsGetResponseTagsMap": "com.azure.streamanalytics#GetStreamingJobResponseTagsMap",
+      "com.azure.streamanalytics#StreamingJobsGetRequest": "com.azure.streamanalytics#GetStreamingJobRequest",
+      "com.azure.streamanalytics#OperationsList": "com.azure.streamanalytics#ListOperations",
+      "com.azure.streamanalytics#SubscriptionsListQuotas": "com.azure.streamanalytics#ListSubscriptionQuotas",
+      "com.azure.streamanalytics#SubscriptionsListQuotasRequest": "com.azure.streamanalytics#ListSubscriptionQuotasRequest",
+      "com.azure.streamanalytics#TransformationsUpdate": "com.azure.streamanalytics#UpdateTransformation",
+      "com.azure.streamanalytics#TransformationsUpdateResponse": "com.azure.streamanalytics#UpdateTransformationResponse",
+      "com.azure.streamanalytics#TransformationsUpdateRequest": "com.azure.streamanalytics#UpdateTransformationRequest",
+      "com.azure.streamanalytics#TransformationsGet": "com.azure.streamanalytics#GetTransformation",
+      "com.azure.streamanalytics#TransformationsGetResponse": "com.azure.streamanalytics#GetTransformationResponse",
+      "com.azure.streamanalytics#TransformationsGetRequest": "com.azure.streamanalytics#GetTransformationRequest"
+    }
   },
   "shapes": {
-    "com.azure.streamanalytics#ListClusterStreamingJobs": {
+    "com.azure.streamanalytics#ClustersListStreamingJobs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListClusterStreamingJobsRequest"
+        "target": "com.azure.streamanalytics#ClustersListStreamingJobsRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#ClusterJobListResult"
@@ -157,7 +253,7 @@
         "smithy.api#documentation": "The current execution state of the streaming job."
       }
     },
-    "com.azure.streamanalytics#ListClusterStreamingJobsRequest": {
+    "com.azure.streamanalytics#ClustersListStreamingJobsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -189,10 +285,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#ListClusterByResourceGroup": {
+    "com.azure.streamanalytics#ClustersListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListClusterByResourceGroupRequest"
+        "target": "com.azure.streamanalytics#ClustersListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#ClusterListResult"
@@ -403,7 +499,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#ListClusterByResourceGroupRequest": {
+    "com.azure.streamanalytics#ClustersListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -427,10 +523,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#ListClusterBySubscription": {
+    "com.azure.streamanalytics#ClustersListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListClusterBySubscriptionRequest"
+        "target": "com.azure.streamanalytics#ClustersListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#ClusterListResult"
@@ -446,7 +542,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#ListClusterBySubscriptionRequest": {
+    "com.azure.streamanalytics#ClustersListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -462,10 +558,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#DeleteCluster": {
+    "com.azure.streamanalytics#ClustersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#DeleteClusterRequest"
+        "target": "com.azure.streamanalytics#ClustersDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -481,7 +577,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#DeleteClusterRequest": {
+    "com.azure.streamanalytics#ClustersDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -513,13 +609,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#UpdateCluster": {
+    "com.azure.streamanalytics#ClustersUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#UpdateClusterRequest"
+        "target": "com.azure.streamanalytics#ClustersUpdateRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#UpdateClusterResponse"
+        "target": "com.azure.streamanalytics#ClustersUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -532,7 +628,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#UpdateClusterResponse": {
+    "com.azure.streamanalytics#ClustersUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -554,7 +650,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.streamanalytics#UpdateClusterResponseTagsMap",
+          "target": "com.azure.streamanalytics#ClustersUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -585,7 +681,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#UpdateClusterResponseTagsMap": {
+    "com.azure.streamanalytics#ClustersUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -597,7 +693,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#UpdateClusterRequest": {
+    "com.azure.streamanalytics#ClustersUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -625,7 +721,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.streamanalytics#UpdateClusterRequestTagsMap",
+          "target": "com.azure.streamanalytics#ClustersUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -657,7 +753,7 @@
         "smithy.api#documentation": "The properties associated with a Stream Analytics cluster."
       }
     },
-    "com.azure.streamanalytics#UpdateClusterRequestTagsMap": {
+    "com.azure.streamanalytics#ClustersUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -818,13 +914,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#GetCluster": {
+    "com.azure.streamanalytics#ClustersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetClusterRequest"
+        "target": "com.azure.streamanalytics#ClustersGetRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetClusterResponse"
+        "target": "com.azure.streamanalytics#ClustersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -837,7 +933,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetClusterResponse": {
+    "com.azure.streamanalytics#ClustersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -859,7 +955,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.streamanalytics#GetClusterResponseTagsMap",
+          "target": "com.azure.streamanalytics#ClustersGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -890,7 +986,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#GetClusterResponseTagsMap": {
+    "com.azure.streamanalytics#ClustersGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -902,7 +998,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#GetClusterRequest": {
+    "com.azure.streamanalytics#ClustersGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -934,13 +1030,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#GetFunctionDefaultDefinition": {
+    "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetFunctionDefaultDefinitionRequest"
+        "target": "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinitionRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetFunctionDefaultDefinitionResponse"
+        "target": "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinitionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -953,7 +1049,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetFunctionDefaultDefinitionResponse": {
+    "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinitionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1033,12 +1129,6 @@
             "smithy.api#documentation": "Indicates the function binding type.",
             "smithy.api#required": {}
           }
-        },
-        "properties": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Binding-type-specific properties (e.g. `{ script }` for `Microsoft.StreamAnalytics/JavascriptUdf`)."
-          }
         }
       },
       "traits": {
@@ -1086,7 +1176,7 @@
         "smithy.api#documentation": "Describes one input parameter of a function."
       }
     },
-    "com.azure.streamanalytics#GetFunctionDefaultDefinitionRequest": {
+    "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinitionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1133,13 +1223,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#TestFunction": {
+    "com.azure.streamanalytics#FunctionsTest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#TestFunctionRequest"
+        "target": "com.azure.streamanalytics#FunctionsTestRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#TestFunctionResponse"
+        "target": "com.azure.streamanalytics#FunctionsTestResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1152,7 +1242,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#TestFunctionResponse": {
+    "com.azure.streamanalytics#FunctionsTestResponse": {
       "type": "structure",
       "members": {
         "status": {
@@ -1192,7 +1282,7 @@
         "smithy.api#documentation": "Describes the error that occurred."
       }
     },
-    "com.azure.streamanalytics#TestFunctionRequest": {
+    "com.azure.streamanalytics#FunctionsTestRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1262,10 +1352,10 @@
         "smithy.api#documentation": "The properties that are associated with a function."
       }
     },
-    "com.azure.streamanalytics#ListFunctionByStreamingJob": {
+    "com.azure.streamanalytics#FunctionsListByStreamingJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListFunctionByStreamingJobRequest"
+        "target": "com.azure.streamanalytics#FunctionsListByStreamingJobRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#FunctionListResult"
@@ -1342,7 +1432,7 @@
         "smithy.api#documentation": "A function object, containing all information associated with the named function. All functions are contained under a streaming job."
       }
     },
-    "com.azure.streamanalytics#ListFunctionByStreamingJobRequest": {
+    "com.azure.streamanalytics#FunctionsListByStreamingJobRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1381,10 +1471,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#DeleteFunction": {
+    "com.azure.streamanalytics#FunctionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#DeleteFunctionRequest"
+        "target": "com.azure.streamanalytics#FunctionsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1400,7 +1490,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#DeleteFunctionRequest": {
+    "com.azure.streamanalytics#FunctionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1440,13 +1530,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#UpdateFunction": {
+    "com.azure.streamanalytics#FunctionsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#UpdateFunctionRequest"
+        "target": "com.azure.streamanalytics#FunctionsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#UpdateFunctionResponse"
+        "target": "com.azure.streamanalytics#FunctionsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1459,7 +1549,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#UpdateFunctionResponse": {
+    "com.azure.streamanalytics#FunctionsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1491,7 +1581,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#UpdateFunctionRequest": {
+    "com.azure.streamanalytics#FunctionsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1646,13 +1736,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#GetFunction": {
+    "com.azure.streamanalytics#FunctionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetFunctionRequest"
+        "target": "com.azure.streamanalytics#FunctionsGetRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetFunctionResponse"
+        "target": "com.azure.streamanalytics#FunctionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1665,7 +1755,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetFunctionResponse": {
+    "com.azure.streamanalytics#FunctionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1697,7 +1787,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#GetFunctionRequest": {
+    "com.azure.streamanalytics#FunctionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1737,10 +1827,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#TestInput": {
+    "com.azure.streamanalytics#InputsTest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#TestInputRequest"
+        "target": "com.azure.streamanalytics#InputsTestRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#ResourceTestStatus"
@@ -1776,7 +1866,7 @@
         "smithy.api#documentation": "Describes the status of the test operation along with error information, if applicable."
       }
     },
-    "com.azure.streamanalytics#TestInputRequest": {
+    "com.azure.streamanalytics#InputsTestRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1855,12 +1945,6 @@
           "traits": {
             "smithy.api#documentation": "partitionKey Describes a key in the input data which is used for partitioning the input data"
           }
-        },
-        "datasource": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Input data source (polymorphic on `type`, e.g. `Microsoft.Storage/Blob`) with its type-specific `properties`."
-          }
         }
       },
       "traits": {
@@ -1917,12 +2001,6 @@
             "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.",
             "smithy.api#required": {}
           }
-        },
-        "properties": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Serialization-type-specific properties (e.g. `{ encoding: \"UTF8\", format: \"LineSeparated\" }` for Json)."
-          }
         }
       },
       "traits": {
@@ -1961,10 +2039,10 @@
         "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests."
       }
     },
-    "com.azure.streamanalytics#ListInputByStreamingJob": {
+    "com.azure.streamanalytics#InputsListByStreamingJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListInputByStreamingJobRequest"
+        "target": "com.azure.streamanalytics#InputsListByStreamingJobRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#InputListResult"
@@ -2080,12 +2158,6 @@
           "traits": {
             "smithy.api#documentation": "partitionKey Describes a key in the input data which is used for partitioning the input data"
           }
-        },
-        "datasource": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Input data source (polymorphic on `type`, e.g. `Microsoft.Storage/Blob`) with its type-specific `properties`."
-          }
         }
       },
       "traits": {
@@ -2141,7 +2213,7 @@
         "smithy.api#documentation": "Condition applicable to the resource, or to the job overall, that warrant customer attention."
       }
     },
-    "com.azure.streamanalytics#ListInputByStreamingJobRequest": {
+    "com.azure.streamanalytics#InputsListByStreamingJobRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2180,10 +2252,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#DeleteInput": {
+    "com.azure.streamanalytics#InputsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#DeleteInputRequest"
+        "target": "com.azure.streamanalytics#InputsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2199,7 +2271,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#DeleteInputRequest": {
+    "com.azure.streamanalytics#InputsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2239,13 +2311,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#UpdateInput": {
+    "com.azure.streamanalytics#InputsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#UpdateInputRequest"
+        "target": "com.azure.streamanalytics#InputsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#UpdateInputResponse"
+        "target": "com.azure.streamanalytics#InputsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2258,7 +2330,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#UpdateInputResponse": {
+    "com.azure.streamanalytics#InputsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2290,7 +2362,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#UpdateInputRequest": {
+    "com.azure.streamanalytics#InputsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2445,13 +2517,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#GetInput": {
+    "com.azure.streamanalytics#InputsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetInputRequest"
+        "target": "com.azure.streamanalytics#InputsGetRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetInputResponse"
+        "target": "com.azure.streamanalytics#InputsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2464,7 +2536,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetInputResponse": {
+    "com.azure.streamanalytics#InputsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2496,7 +2568,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#GetInputRequest": {
+    "com.azure.streamanalytics#InputsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2536,13 +2608,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#TestOutput": {
+    "com.azure.streamanalytics#OutputsTest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#TestOutputRequest"
+        "target": "com.azure.streamanalytics#OutputsTestRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#TestOutputResponse"
+        "target": "com.azure.streamanalytics#OutputsTestResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2555,7 +2627,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#TestOutputResponse": {
+    "com.azure.streamanalytics#OutputsTestResponse": {
       "type": "structure",
       "members": {
         "status": {
@@ -2575,7 +2647,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#TestOutputRequest": {
+    "com.azure.streamanalytics#OutputsTestRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2681,12 +2753,6 @@
             "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.",
             "smithy.api#required": {}
           }
-        },
-        "properties": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Serialization-type-specific properties."
-          }
         }
       },
       "traits": {
@@ -2702,22 +2768,16 @@
             "smithy.api#documentation": "Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.",
             "smithy.api#required": {}
           }
-        },
-        "properties": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Data-source-type-specific properties (e.g. `storageAccounts`, `container`, `pathPattern` for `Microsoft.Storage/Blob`)."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Describes the data source that output will be written to."
       }
     },
-    "com.azure.streamanalytics#ListOutputByStreamingJob": {
+    "com.azure.streamanalytics#OutputsListByStreamingJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListOutputByStreamingJobRequest"
+        "target": "com.azure.streamanalytics#OutputsListByStreamingJobRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#OutputListResult"
@@ -2870,19 +2930,13 @@
             "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.",
             "smithy.api#required": {}
           }
-        },
-        "properties": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Serialization-type-specific properties."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Describes how data from an input is serialized or how data is serialized when written to an output."
       }
     },
-    "com.azure.streamanalytics#ListOutputByStreamingJobRequest": {
+    "com.azure.streamanalytics#OutputsListByStreamingJobRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2921,10 +2975,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#DeleteOutput": {
+    "com.azure.streamanalytics#OutputsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#DeleteOutputRequest"
+        "target": "com.azure.streamanalytics#OutputsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2940,7 +2994,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#DeleteOutputRequest": {
+    "com.azure.streamanalytics#OutputsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2980,13 +3034,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#UpdateOutput": {
+    "com.azure.streamanalytics#OutputsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#UpdateOutputRequest"
+        "target": "com.azure.streamanalytics#OutputsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#UpdateOutputResponse"
+        "target": "com.azure.streamanalytics#OutputsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2999,7 +3053,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#UpdateOutputResponse": {
+    "com.azure.streamanalytics#OutputsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3031,7 +3085,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#UpdateOutputRequest": {
+    "com.azure.streamanalytics#OutputsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3186,13 +3240,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#GetOutput": {
+    "com.azure.streamanalytics#OutputsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetOutputRequest"
+        "target": "com.azure.streamanalytics#OutputsGetRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetOutputResponse"
+        "target": "com.azure.streamanalytics#OutputsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3205,7 +3259,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetOutputResponse": {
+    "com.azure.streamanalytics#OutputsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3237,7 +3291,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#GetOutputRequest": {
+    "com.azure.streamanalytics#OutputsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3277,10 +3331,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#ListPrivateEndpointByCluster": {
+    "com.azure.streamanalytics#PrivateEndpointsListByCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListPrivateEndpointByClusterRequest"
+        "target": "com.azure.streamanalytics#PrivateEndpointsListByClusterRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#PrivateEndpointListResult"
@@ -3473,7 +3527,7 @@
         "smithy.api#documentation": "The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests."
       }
     },
-    "com.azure.streamanalytics#ListPrivateEndpointByClusterRequest": {
+    "com.azure.streamanalytics#PrivateEndpointsListByClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3505,10 +3559,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#DeletePrivateEndpoint": {
+    "com.azure.streamanalytics#PrivateEndpointsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#DeletePrivateEndpointRequest"
+        "target": "com.azure.streamanalytics#PrivateEndpointsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3524,7 +3578,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#DeletePrivateEndpointRequest": {
+    "com.azure.streamanalytics#PrivateEndpointsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3746,13 +3800,13 @@
         "smithy.api#documentation": "The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests."
       }
     },
-    "com.azure.streamanalytics#GetPrivateEndpoint": {
+    "com.azure.streamanalytics#PrivateEndpointsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetPrivateEndpointRequest"
+        "target": "com.azure.streamanalytics#PrivateEndpointsGetRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetPrivateEndpointResponse"
+        "target": "com.azure.streamanalytics#PrivateEndpointsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3765,7 +3819,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetPrivateEndpointResponse": {
+    "com.azure.streamanalytics#PrivateEndpointsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3803,7 +3857,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#GetPrivateEndpointRequest": {
+    "com.azure.streamanalytics#PrivateEndpointsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3843,10 +3897,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#ScaleStreamingJob": {
+    "com.azure.streamanalytics#StreamingJobsScale": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ScaleStreamingJobRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsScaleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3862,7 +3916,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#ScaleStreamingJobRequest": {
+    "com.azure.streamanalytics#StreamingJobsScaleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3900,10 +3954,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#StopStreamingJob": {
+    "com.azure.streamanalytics#StreamingJobsStop": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#StopStreamingJobRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsStopRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3919,7 +3973,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#StopStreamingJobRequest": {
+    "com.azure.streamanalytics#StreamingJobsStopRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3951,10 +4005,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#StartStreamingJob": {
+    "com.azure.streamanalytics#StreamingJobsStart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#StartStreamingJobRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsStartRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3970,7 +4024,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#StartStreamingJobRequest": {
+    "com.azure.streamanalytics#StreamingJobsStartRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4040,10 +4094,10 @@
         "smithy.api#documentation": "Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time."
       }
     },
-    "com.azure.streamanalytics#ListStreamingJobs": {
+    "com.azure.streamanalytics#StreamingJobsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListStreamingJobsRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsListRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#StreamingJobListResult"
@@ -4712,7 +4766,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#ListStreamingJobsRequest": {
+    "com.azure.streamanalytics#StreamingJobsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4735,10 +4789,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#ListStreamingJobByResourceGroup": {
+    "com.azure.streamanalytics#StreamingJobsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListStreamingJobByResourceGroupRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#StreamingJobListResult"
@@ -4754,7 +4808,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#ListStreamingJobByResourceGroupRequest": {
+    "com.azure.streamanalytics#StreamingJobsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4785,10 +4839,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#DeleteStreamingJob": {
+    "com.azure.streamanalytics#StreamingJobsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#DeleteStreamingJobRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4804,7 +4858,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#DeleteStreamingJobRequest": {
+    "com.azure.streamanalytics#StreamingJobsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4836,13 +4890,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#UpdateStreamingJob": {
+    "com.azure.streamanalytics#StreamingJobsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#UpdateStreamingJobRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#UpdateStreamingJobResponse"
+        "target": "com.azure.streamanalytics#StreamingJobsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4855,7 +4909,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#UpdateStreamingJobResponse": {
+    "com.azure.streamanalytics#StreamingJobsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4877,7 +4931,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.streamanalytics#UpdateStreamingJobResponseTagsMap",
+          "target": "com.azure.streamanalytics#StreamingJobsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4905,7 +4959,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#UpdateStreamingJobResponseTagsMap": {
+    "com.azure.streamanalytics#StreamingJobsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4917,7 +4971,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#UpdateStreamingJobRequest": {
+    "com.azure.streamanalytics#StreamingJobsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4945,7 +4999,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.streamanalytics#UpdateStreamingJobRequestTagsMap",
+          "target": "com.azure.streamanalytics#StreamingJobsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5279,7 +5333,7 @@
         "smithy.api#documentation": "Describes the type of the job. Valid modes are `Cloud` and 'Edge'."
       }
     },
-    "com.azure.streamanalytics#UpdateStreamingJobRequestTagsMap": {
+    "com.azure.streamanalytics#StreamingJobsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5440,13 +5494,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#GetStreamingJob": {
+    "com.azure.streamanalytics#StreamingJobsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetStreamingJobRequest"
+        "target": "com.azure.streamanalytics#StreamingJobsGetRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetStreamingJobResponse"
+        "target": "com.azure.streamanalytics#StreamingJobsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5459,7 +5513,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetStreamingJobResponse": {
+    "com.azure.streamanalytics#StreamingJobsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5481,7 +5535,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.streamanalytics#GetStreamingJobResponseTagsMap",
+          "target": "com.azure.streamanalytics#StreamingJobsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5509,7 +5563,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#GetStreamingJobResponseTagsMap": {
+    "com.azure.streamanalytics#StreamingJobsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5521,7 +5575,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.streamanalytics#GetStreamingJobRequest": {
+    "com.azure.streamanalytics#StreamingJobsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5560,7 +5614,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#ListOperations": {
+    "com.azure.streamanalytics#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -5666,10 +5720,10 @@
         "smithy.api#documentation": "Contains the localized display information for this particular operation / action."
       }
     },
-    "com.azure.streamanalytics#ListSubscriptionQuotas": {
+    "com.azure.streamanalytics#SubscriptionsListQuotas": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#ListSubscriptionQuotasRequest"
+        "target": "com.azure.streamanalytics#SubscriptionsListQuotasRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#SubscriptionQuotasListResult"
@@ -5760,7 +5814,7 @@
         "smithy.api#documentation": "Describes the properties of the quota."
       }
     },
-    "com.azure.streamanalytics#ListSubscriptionQuotasRequest": {
+    "com.azure.streamanalytics#SubscriptionsListQuotasRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5784,13 +5838,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#UpdateTransformation": {
+    "com.azure.streamanalytics#TransformationsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#UpdateTransformationRequest"
+        "target": "com.azure.streamanalytics#TransformationsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#UpdateTransformationResponse"
+        "target": "com.azure.streamanalytics#TransformationsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5803,7 +5857,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#UpdateTransformationResponse": {
+    "com.azure.streamanalytics#TransformationsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5835,7 +5889,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#UpdateTransformationRequest": {
+    "com.azure.streamanalytics#TransformationsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5990,13 +6044,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.streamanalytics#GetTransformation": {
+    "com.azure.streamanalytics#TransformationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.streamanalytics#GetTransformationRequest"
+        "target": "com.azure.streamanalytics#TransformationsGetRequest"
       },
       "output": {
-        "target": "com.azure.streamanalytics#GetTransformationResponse"
+        "target": "com.azure.streamanalytics#TransformationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6009,7 +6063,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.streamanalytics#GetTransformationResponse": {
+    "com.azure.streamanalytics#TransformationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6041,7 +6095,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.streamanalytics#GetTransformationRequest": {
+    "com.azure.streamanalytics#TransformationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6086,136 +6140,136 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.streamanalytics#ListClusterStreamingJobs"
+          "target": "com.azure.streamanalytics#ClustersListStreamingJobs"
         },
         {
-          "target": "com.azure.streamanalytics#ListClusterByResourceGroup"
+          "target": "com.azure.streamanalytics#ClustersListByResourceGroup"
         },
         {
-          "target": "com.azure.streamanalytics#ListClusterBySubscription"
+          "target": "com.azure.streamanalytics#ClustersListBySubscription"
         },
         {
-          "target": "com.azure.streamanalytics#DeleteCluster"
+          "target": "com.azure.streamanalytics#ClustersDelete"
         },
         {
-          "target": "com.azure.streamanalytics#UpdateCluster"
+          "target": "com.azure.streamanalytics#ClustersUpdate"
         },
         {
           "target": "com.azure.streamanalytics#ClustersCreateOrUpdate"
         },
         {
-          "target": "com.azure.streamanalytics#GetCluster"
+          "target": "com.azure.streamanalytics#ClustersGet"
         },
         {
-          "target": "com.azure.streamanalytics#GetFunctionDefaultDefinition"
+          "target": "com.azure.streamanalytics#FunctionsRetrieveDefaultDefinition"
         },
         {
-          "target": "com.azure.streamanalytics#TestFunction"
+          "target": "com.azure.streamanalytics#FunctionsTest"
         },
         {
-          "target": "com.azure.streamanalytics#ListFunctionByStreamingJob"
+          "target": "com.azure.streamanalytics#FunctionsListByStreamingJob"
         },
         {
-          "target": "com.azure.streamanalytics#DeleteFunction"
+          "target": "com.azure.streamanalytics#FunctionsDelete"
         },
         {
-          "target": "com.azure.streamanalytics#UpdateFunction"
+          "target": "com.azure.streamanalytics#FunctionsUpdate"
         },
         {
           "target": "com.azure.streamanalytics#FunctionsCreateOrReplace"
         },
         {
-          "target": "com.azure.streamanalytics#GetFunction"
+          "target": "com.azure.streamanalytics#FunctionsGet"
         },
         {
-          "target": "com.azure.streamanalytics#TestInput"
+          "target": "com.azure.streamanalytics#InputsTest"
         },
         {
-          "target": "com.azure.streamanalytics#ListInputByStreamingJob"
+          "target": "com.azure.streamanalytics#InputsListByStreamingJob"
         },
         {
-          "target": "com.azure.streamanalytics#DeleteInput"
+          "target": "com.azure.streamanalytics#InputsDelete"
         },
         {
-          "target": "com.azure.streamanalytics#UpdateInput"
+          "target": "com.azure.streamanalytics#InputsUpdate"
         },
         {
           "target": "com.azure.streamanalytics#InputsCreateOrReplace"
         },
         {
-          "target": "com.azure.streamanalytics#GetInput"
+          "target": "com.azure.streamanalytics#InputsGet"
         },
         {
-          "target": "com.azure.streamanalytics#TestOutput"
+          "target": "com.azure.streamanalytics#OutputsTest"
         },
         {
-          "target": "com.azure.streamanalytics#ListOutputByStreamingJob"
+          "target": "com.azure.streamanalytics#OutputsListByStreamingJob"
         },
         {
-          "target": "com.azure.streamanalytics#DeleteOutput"
+          "target": "com.azure.streamanalytics#OutputsDelete"
         },
         {
-          "target": "com.azure.streamanalytics#UpdateOutput"
+          "target": "com.azure.streamanalytics#OutputsUpdate"
         },
         {
           "target": "com.azure.streamanalytics#OutputsCreateOrReplace"
         },
         {
-          "target": "com.azure.streamanalytics#GetOutput"
+          "target": "com.azure.streamanalytics#OutputsGet"
         },
         {
-          "target": "com.azure.streamanalytics#ListPrivateEndpointByCluster"
+          "target": "com.azure.streamanalytics#PrivateEndpointsListByCluster"
         },
         {
-          "target": "com.azure.streamanalytics#DeletePrivateEndpoint"
+          "target": "com.azure.streamanalytics#PrivateEndpointsDelete"
         },
         {
           "target": "com.azure.streamanalytics#PrivateEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.streamanalytics#GetPrivateEndpoint"
+          "target": "com.azure.streamanalytics#PrivateEndpointsGet"
         },
         {
-          "target": "com.azure.streamanalytics#ScaleStreamingJob"
+          "target": "com.azure.streamanalytics#StreamingJobsScale"
         },
         {
-          "target": "com.azure.streamanalytics#StopStreamingJob"
+          "target": "com.azure.streamanalytics#StreamingJobsStop"
         },
         {
-          "target": "com.azure.streamanalytics#StartStreamingJob"
+          "target": "com.azure.streamanalytics#StreamingJobsStart"
         },
         {
-          "target": "com.azure.streamanalytics#ListStreamingJobs"
+          "target": "com.azure.streamanalytics#StreamingJobsList"
         },
         {
-          "target": "com.azure.streamanalytics#ListStreamingJobByResourceGroup"
+          "target": "com.azure.streamanalytics#StreamingJobsListByResourceGroup"
         },
         {
-          "target": "com.azure.streamanalytics#DeleteStreamingJob"
+          "target": "com.azure.streamanalytics#StreamingJobsDelete"
         },
         {
-          "target": "com.azure.streamanalytics#UpdateStreamingJob"
+          "target": "com.azure.streamanalytics#StreamingJobsUpdate"
         },
         {
           "target": "com.azure.streamanalytics#StreamingJobsCreateOrReplace"
         },
         {
-          "target": "com.azure.streamanalytics#GetStreamingJob"
+          "target": "com.azure.streamanalytics#StreamingJobsGet"
         },
         {
-          "target": "com.azure.streamanalytics#ListOperations"
+          "target": "com.azure.streamanalytics#OperationsList"
         },
         {
-          "target": "com.azure.streamanalytics#ListSubscriptionQuotas"
+          "target": "com.azure.streamanalytics#SubscriptionsListQuotas"
         },
         {
-          "target": "com.azure.streamanalytics#UpdateTransformation"
+          "target": "com.azure.streamanalytics#TransformationsUpdate"
         },
         {
           "target": "com.azure.streamanalytics#TransformationsCreateOrReplace"
         },
         {
-          "target": "com.azure.streamanalytics#GetTransformation"
+          "target": "com.azure.streamanalytics#TransformationsGet"
         }
       ],
       "traits": {

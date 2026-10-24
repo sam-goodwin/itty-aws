@@ -1,0 +1,1364 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_translator_text#TranslatorTransliterate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorTransliterateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorTransliterateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/transliterate",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "3.0"
+        },
+        "smithy.api#documentation": "Converts the text of a language in one script into another type of script. Example- \nJapanese script \"こんにちは\"\nSame word in Latin script \"konnichiha\""
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTransliterateResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TransliterateResult",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TransliterateResult": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TransliterateResultItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Example of a successful transliterate request"
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TransliterateResultItem": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        },
+        "script": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTransliterateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the text to convert from one script to another. Possible languages are listed in the `transliteration` scope obtained by querying the service for its supported languages.\n"
+          }
+        },
+        "fromScript": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fromScript",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the script used by the input text. Lookup supported languages using the `transliteration` scope, to find input scripts available for the selected language.\n"
+          }
+        },
+        "toScript": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "toScript",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the output script. Lookup supported languages using the `transliteration` scope, to find output scripts available for the selected combination of input language and input script.\n"
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request. Note that you can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTransliterateRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTransliterateRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TransliterateTextInput"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TransliterateTextInput": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text needed for a transliterate request "
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/translate",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "3.0"
+        },
+        "smithy.api#documentation": "Translates text into one or more languages."
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslateResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAll",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAll": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Example of a successful translate request, including all optional parameters."
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItem": {
+      "type": "structure",
+      "members": {
+        "detectedLanguage": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemDetectedLanguage"
+        },
+        "translations": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItem": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        },
+        "transliteration": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemTransliteration"
+        },
+        "to": {
+          "target": "smithy.api#String"
+        },
+        "alignment": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemAlignment"
+        },
+        "sentLen": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLen"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLen": {
+      "type": "structure",
+      "members": {
+        "srcSentLen": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenSrcSentLenList"
+        },
+        "transSentLen": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenTransSentLenList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenTransSentLenList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenTransSentLenItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenTransSentLenItem": {
+      "type": "structure",
+      "members": {
+        "integer": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenSrcSentLenList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenSrcSentLenItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemSentLenSrcSentLenItem": {
+      "type": "structure",
+      "members": {
+        "integer": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemAlignment": {
+      "type": "structure",
+      "members": {
+        "proj": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemTranslationsItemTransliteration": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        },
+        "script": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateResultAllItemDetectedLanguage": {
+      "type": "structure",
+      "members": {
+        "language": {
+          "target": "smithy.api#String"
+        },
+        "score": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "from",
+            "smithy.api#documentation": "Specifies the language of the input text. Find which languages are available to translate from by using the languages method. If the `from` parameter is not specified, automatic language detection is applied to determine the source language.\n"
+          }
+        },
+        "to": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestToList",
+          "traits": {
+            "smithy.api#httpQuery": "to",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the output text. Find which languages are available to translate to by using the languages method. For example, use `to=de` to translate to German.\n  It's possible to translate to multiple languages simultaneously by repeating the `to` parameter in the query string. For example, use `to=de&to=it` to translate to German and Italian in the same request.\n"
+          }
+        },
+        "textType": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestTextType",
+          "traits": {
+            "smithy.api#httpQuery": "textType",
+            "smithy.api#documentation": "Defines whether the text being translated is plain text or HTML text. Any HTML needs to be a well-formed, complete HTML element. Possible values are `plain` (default) or `html`\n"
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "category",
+            "smithy.api#documentation": "A string specifying the category (domain) of the translation. This parameter retrieves translations from a customized system built with Custom Translator. Default value is `general`.\n"
+          }
+        },
+        "profanityAction": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestProfanityAction",
+          "traits": {
+            "smithy.api#httpQuery": "profanityAction",
+            "smithy.api#documentation": "Specifies how profanities should be treated in translations. Possible values are: `NoAction` (default), `Marked` or `Deleted`.\n### Handling Profanity\nNormally the Translator service will retain profanity that is present in the source in the translation. The degree of profanity and the context that makes words profane differ between cultures, and as a result the degree of profanity in the target language may be amplified or reduced.\n\nIf you want to avoid getting profanity in the translation, regardless of the presence of profanity in the source text, you can use the profanity filtering option. The option allows you to choose whether you want to see profanity deleted, whether you want to mark profanities with appropriate tags (giving you the option to add your own post-processing), or you want no action taken. The accepted values of `ProfanityAction` are `Deleted`, `Marked` and `NoAction` (default).\n\n| ProfanityAction | Action                                                                    |\n| ----------      | ----------                                                                |\n| `NoAction`      | This is the default behavior. Profanity will pass from source to target.  |\n|                 | Example Source (Japanese)- 彼はジャッカスです。                           |\n|                 | Example Translation (English)- He is a jackass.                           |\n|                 |                                                                           |\n| `Deleted`       | Profane words will be removed from the output without replacement.        |\n|                 | Example Source (Japanese)- 彼はジャッカスです。                           |\n|                 | Example Translation (English)- He is a.                                   |\n| `Marked`        | Profane words are replaced by a marker in the output. The marker depends on the `ProfanityMarker` parameter.\n|                 | For `ProfanityMarker=Asterisk`, profane words are replaced with `***`     |\n|                 | Example Source (Japanese)- 彼はジャッカスです。                           |\n|                 | Example Translation (English)- He is a ***.                               |\n|                 | For `ProfanityMarker=Tag`, profane words are surrounded by XML tags <profanity> and </profanity>\n|                 | Example Source (Japanese)- 彼はジャッカスです。                           |\n|                 | Example Translation (English)- He is a <profanity>jackass</profanity>.\n"
+          }
+        },
+        "profanityMarker": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "profanityMarker",
+            "smithy.api#documentation": "Specifies how profanities should be marked in translations. Possible values are- `Asterisk` (default) or `Tag`.\n"
+          }
+        },
+        "includeAlignment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeAlignment",
+            "smithy.api#documentation": "Specifies whether to include alignment projection from source text to translated text. Possible values are- `true` or `false` (default).\n"
+          }
+        },
+        "includeSentenceLength": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeSentenceLength",
+            "smithy.api#documentation": "Specifies whether to include sentence boundaries for the input text and the translated text. Possible values are- `true` or `false` (default).\n"
+          }
+        },
+        "suggestedFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "suggestedFrom",
+            "smithy.api#documentation": "Specifies a fallback language if the language of the input text can't be identified. Language auto-detection is applied when the `from` parameter is omitted. If detection fails, the `suggestedFrom` language will be assumed.\n"
+          }
+        },
+        "fromScript": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fromScript",
+            "smithy.api#documentation": "Specifies the script of the input text. Supported scripts are available from the languages method"
+          }
+        },
+        "toScript": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestToScriptList",
+          "traits": {
+            "smithy.api#httpQuery": "toScript",
+            "smithy.api#documentation": "Specifies the script of the translated text. Supported scripts are available from the languages method"
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request. Note that you can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslateTextInput"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslateTextInput": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text needed for a translate request "
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestToScriptList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestProfanityAction": {
+      "type": "enum",
+      "members": {
+        "NOACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoAction"
+          }
+        },
+        "MARKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Marked"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleted"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestTextType": {
+      "type": "enum",
+      "members": {
+        "PLAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "plain"
+          }
+        },
+        "HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "html"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorTranslateRequestToList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorLanguages": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorLanguagesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_translator_text#LanguagesResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/Languages",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "3.0"
+        },
+        "smithy.api#documentation": "Gets the set of languages currently supported by other operations of the Translator Text API.\n**Authentication is not required to get language resources.**\n\n# Response Body\nA client uses the `scope` query parameter to define which groups of languages it is interested in.\n* `scope=translation` provides languages supported to translate text from one language to another language.\n* `scope=transliteration` provides capabilities for converting text in one language from one script to another script.\n* `scope=dictionary` provides language pairs for which `Dictionary` operations return data.\n\nA client may retrieve several groups simultaneously by specifying a comma-separated list of names. For example, `scope=translation,transliteration,dictionary` would return supported languages for all groups.\n\nA successful response is a JSON object with one property for each requested group.\nThe value for each property is as follows.\n\n* `translation` property\n  The value of the `translation` property is a dictionary of (key, value) pairs. Each key is a BCP 47 language tag. A key identifies a language for which text can be translated to or translated from. The value associated with the key is a JSON object with properties that describe the language\n  * `name-` Display name of the language in the locale requested via `Accept-Language` header.\n  * `nativeName-` Display name of the language in the locale native for this language.\n  * `dir-` Directionality, which is `rtl` for right-to-left languages or `ltr` for left-to-right languages.\n```json\n{\n  \"translation\": {\n  ...\n  \"fr\": {\n  \"name\": \"French\",\n  \"nativeName\": \"Français\",\n  \"dir\": \"ltr\"\n  },\n...\n }\n}\n```\n* `transliteration` property\n  The value of the `transliteration` property is a dictionary of (key, value) pairs. Each key is a BCP 47 language tag. A key identifies a language for which text can be converted from one script to another script. The value associated with the key is a JSON object with properties that describe the language and its supported scripts\n  * `name-` Display name of the language in the locale requested via `Accept-Language` header.\n  * `nativeName-` Display name of the language in the locale native for this language.\n  * `scripts-` List of scripts to convert from. Each element of the `scripts` list has properties-\n    * `code-` Code identifying the script.\n    * `name-` Display name of the script in the locale requested via `Accept-Language` header.\n    * `nativeName-` Display name of the language in the locale native for the language.\n    * `dir-` Directionality, which is `rtl` for right-to-left languages or `ltr` for left-to-right languages.\n    * `toScripts-` List of scripts available to convert text to. Each element of the `toScripts` list has properties `code`, `name`, `nativeName`, and `dir` as described earlier.\n\n```json\n{\n  \"transliteration\": {\n    ...\n    \"ja\": {\n      \"name\": \"Japanese\",\n      \"nativeName\": \"日本語\",\n      \"scripts\": [\n        {\n          \"code\": \"Jpan\",\n          \"name\": \"Japanese\",\n          \"nativeName\": \"日本語\",\n          \"dir\": \"ltr\",\n          \"toScripts\": [\n            {\n              \"code\": \"Latn\",\n              \"name\": \"Latin\",\n              \"nativeName\": \"ラテン語\",\n              \"dir\": \"ltr\"\n            }\n          ]\n        },\n        {\n          \"code\": \"Latn\",\n          \"name\": \"Latin\",\n          \"nativeName\": \"ラテン語\",\n          \"dir\": \"ltr\",\n          \"toScripts\": [\n          {\n            \"code\": \"Jpan\",\n            \"name\": \"Japanese\",\n            \"nativeName\": \"日本語\",\n            \"dir\": \"ltr\"\n          }\n          ]\n        }\n      ]\n    },\n  ...\n  }\n}\n\n```\n* `dictionary` property\nThe value of the `dictionary` property is a dictionary of (key, value) pairs. Each key is a BCP 47 language tag. The key identifies a language for which alternative translations and back-translations are available. The value is a JSON object that describes the source language and the target languages with available translations.\n  * `name-` Display name of the source language in the locale requested via `Accept-Language` header.\n  * `nativeName-` Display name of the language in the locale native for this language.\n  * `dir-` Directionality, which is `rtl` for right-to-left languages or `ltr` for left-to-right languages.\n  * `translations-` List of languages with alterative translations and examples for the query expressed in the source language. Each element of the `translations` list has properties\n    * `name-` Display name of the target language in the locale requested via `Accept-Language` header.\n    * `nativeName-` Display name of the target language in the locale native for the target language.\n    * `dir-` Directionality, which is `rtl` for right-to-left languages or `ltr` for left-to-right languages.\n    * `code-` Language code identifying the target language.\n\n```json\n\n\"es\": {\n  \"name\": \"Spanish\",\n  \"nativeName\": \"Español\",\n  \"dir\": \"ltr\",\n  \"translations\": [\n    {\n      \"name\": \"English\",\n      \"nativeName\": \"English\",\n      \"dir\": \"ltr\",\n      \"code\": \"en\"\n    }\n  ]\n},\n\n```\n\nThe structure of the response object will not change without a change in the version of the API. For the same version of the API, the list of available languages may change over time because Microsoft Translator continually extends the list of languages supported by its services.\n\nThe list of supported languages will not change frequently. To save network bandwidth and improve responsiveness, a client application should consider caching language resources and the corresponding entity tag (`ETag`). Then, the client application can periodically (for example, once every 24 hours) query the service to fetch the latest set of supported languages. Passing the current `ETag` value in an `If-None-Match` header field will allow the service to optimize the response. If the resource has not been modified, the service will return status code 304 and an empty response body.\n \n# Response Header\nETag - Current value of the entity tag for the requested groups of supported languages. To make subsequent requests more efficient, the client may send the `ETag` value in an `If-None-Match` header field.\n\nX-RequestId - Value generated by the service to identify the request. It is used for troubleshooting purposes."
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResult": {
+      "type": "structure",
+      "members": {
+        "translation": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTranslation"
+        },
+        "transliteration": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTransliteration"
+        },
+        "dictionary": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultDictionary"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Example of a successful languages request"
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultDictionary": {
+      "type": "structure",
+      "members": {
+        "languageCode": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultDictionaryLanguageCode"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultDictionaryLanguageCode": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "nativeName": {
+          "target": "smithy.api#String"
+        },
+        "dir": {
+          "target": "smithy.api#String"
+        },
+        "translations": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultDictionaryLanguageCodeTranslationsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultDictionaryLanguageCodeTranslationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#LanguagesResultDictionaryLanguageCodeTranslationsItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultDictionaryLanguageCodeTranslationsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "nativeName": {
+          "target": "smithy.api#String"
+        },
+        "dir": {
+          "target": "smithy.api#String"
+        },
+        "code": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTransliteration": {
+      "type": "structure",
+      "members": {
+        "languageCode": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCode"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCode": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "nativeName": {
+          "target": "smithy.api#String"
+        },
+        "scripts": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "nativeName": {
+          "target": "smithy.api#String"
+        },
+        "dir": {
+          "target": "smithy.api#String"
+        },
+        "toScripts": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsItemToScriptsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsItemToScriptsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsItemToScriptsItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTransliterationLanguageCodeScriptsItemToScriptsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "nativeName": {
+          "target": "smithy.api#String"
+        },
+        "dir": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTranslation": {
+      "type": "structure",
+      "members": {
+        "languageCode": {
+          "target": "com.azure.cognitiveservices_translator_text#LanguagesResultTranslationLanguageCode"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#LanguagesResultTranslationLanguageCode": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "nativeName": {
+          "target": "smithy.api#String"
+        },
+        "dir": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorLanguagesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorLanguagesRequestScopeList",
+          "traits": {
+            "smithy.api#httpQuery": "scope",
+            "smithy.api#documentation": "A comma-separated list of names defining the group of languages to return. Allowed group names are- `translation`, `transliteration` and `dictionary`. If no scope is given, then all groups are returned, which is equivalent to passing `scope=translation,transliteration,dictionary`. To decide which set of supported languages is appropriate for your scenario, see the description of the response object."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "The language to use for user interface strings. Some of the fields in the response are names of languages or names of regions. Use this parameter to define the language in which these names are returned. The language is specified by providing a well-formed BCP 47 language tag. For instance, use the value `fr` to request names in French or use the value `zh-Hant` to request names in Chinese Traditional. Names are provided in the English language when a target language is not specified or when localization is not available."
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request. Note that you can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorLanguagesRequestScopeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorLanguagesRequestScopeItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorLanguagesRequestScopeItem": {
+      "type": "enum",
+      "members": {
+        "TRANSLATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "translation"
+          }
+        },
+        "TRANSLITERATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transliteration"
+          }
+        },
+        "DICTIONARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dictionary"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamples": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamplesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamplesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/Dictionary/Examples",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "3.0"
+        },
+        "smithy.api#documentation": "Provides examples that show how terms in the dictionary are used in context. This operation is used in tandem with `Dictionary lookup`."
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamplesResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#DictionaryExampleResult",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryExampleResult": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DictionaryExampleResultItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Example of a successful dictionary example request"
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryExampleResultItem": {
+      "type": "structure",
+      "members": {
+        "normalizedSource": {
+          "target": "smithy.api#String"
+        },
+        "normalizedTarget": {
+          "target": "smithy.api#String"
+        },
+        "examples": {
+          "target": "com.azure.cognitiveservices_translator_text#DictionaryExampleResultItemExamplesList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryExampleResultItemExamplesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DictionaryExampleResultItemExamplesItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryExampleResultItemExamplesItem": {
+      "type": "structure",
+      "members": {
+        "sourcePrefix": {
+          "target": "smithy.api#String"
+        },
+        "sourceTerm": {
+          "target": "smithy.api#String"
+        },
+        "sourceSuffix": {
+          "target": "smithy.api#String"
+        },
+        "targetPrefix": {
+          "target": "smithy.api#String"
+        },
+        "targetTerm": {
+          "target": "smithy.api#String"
+        },
+        "targetSuffix": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamplesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "from",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the input text. The source language must be one of the supported languages included in the `dictionary` scope."
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "to",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the output text. The target language must be one of the supported languages included in the `dictionary` scope."
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request. Note that you can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamplesRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamplesRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DictionaryExampleTextInput"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryExampleTextInput": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        },
+        "translation": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text needed for a dictionary example request "
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/Dictionary/Lookup",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "3.0"
+        },
+        "smithy.api#documentation": "Provides alternative translations for a word and a small number of idiomatic phrases. Each translation has a `part-of-speech` and a list of `back-translations`. The back-translations enable a user to understand the translation in context. The Dictionary Example operation allows further drill down to see example uses of each translation pair."
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupResult",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryLookupResult": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Example of a successful dictionary lookup request"
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItem": {
+      "type": "structure",
+      "members": {
+        "normalizedSource": {
+          "target": "smithy.api#String"
+        },
+        "displaySource": {
+          "target": "smithy.api#String"
+        },
+        "translations": {
+          "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsItem": {
+      "type": "structure",
+      "members": {
+        "normalizedTarget": {
+          "target": "smithy.api#String"
+        },
+        "displayTarget": {
+          "target": "smithy.api#String"
+        },
+        "posTag": {
+          "target": "smithy.api#String"
+        },
+        "confidence": {
+          "target": "smithy.api#Double"
+        },
+        "prefixWord": {
+          "target": "smithy.api#String"
+        },
+        "backTranslations": {
+          "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsItemBackTranslationsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsItemBackTranslationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsItemBackTranslationsItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryLookupResultItemTranslationsItemBackTranslationsItem": {
+      "type": "structure",
+      "members": {
+        "normalizedText": {
+          "target": "smithy.api#String"
+        },
+        "displayText": {
+          "target": "smithy.api#String"
+        },
+        "numExamples": {
+          "target": "smithy.api#Integer"
+        },
+        "frequencyCount": {
+          "target": "smithy.api#Integer"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "from",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the input text. The source language must be one of the supported languages included in the `dictionary` scope."
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "to",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the output text. The target language must be one of the supported languages included in the `dictionary` scope of the Languages resource."
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request. Note that you can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupTextInput"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DictionaryLookupTextInput": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text needed for a dictionary lookup request "
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDetect": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorDetectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorDetectResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/Detect",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "3.0"
+        },
+        "smithy.api#documentation": "Identifies the language of a string of text."
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDetectResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#DetectResult",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#DetectResult": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DetectResultItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Example of a successful detect request"
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#DetectResultItem": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDetectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request. Note that you can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorDetectRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorDetectRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#DetectTextInput"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#DetectTextInput": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text needed for detect request "
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorBreakSentence": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorBreakSentenceRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_translator_text#TranslatorBreakSentenceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/BreakSentence",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "3.0"
+        },
+        "smithy.api#documentation": "Identifies the position of sentence boundaries in a piece of text."
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorBreakSentenceResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#BreakSentenceResult",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#BreakSentenceResult": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#BreakSentenceResultItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Example of a successful break sentence request"
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#BreakSentenceResultItem": {
+      "type": "structure",
+      "members": {
+        "sentLen": {
+          "target": "com.azure.cognitiveservices_translator_text#BreakSentenceResultItemSentLenList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#BreakSentenceResultItemSentLenList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorBreakSentenceRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "Language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "Language",
+            "smithy.api#documentation": "Language tag of the language of the input text. If not specified, Translator will apply automatic language detection."
+          }
+        },
+        "Script": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "Script",
+            "smithy.api#documentation": "Script identifier of the script used by the input text. If a script is not specified, the default script of the language will be assumed."
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request. Note that you can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorBreakSentenceRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#TranslatorBreakSentenceRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_translator_text#BreakSentenceTextInput"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_translator_text#BreakSentenceTextInput": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text needed for break sentence request"
+      }
+    },
+    "com.azure.cognitiveservices_translator_text#CognitiveservicesTranslatorText": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTransliterate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorTranslate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorLanguages"
+        },
+        {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamples"
+        },
+        {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookup"
+        },
+        {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorDetect"
+        },
+        {
+          "target": "com.azure.cognitiveservices_translator_text#TranslatorBreakSentence"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure TranslatorText data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/TranslatorText (latest stable api-version v3.0).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

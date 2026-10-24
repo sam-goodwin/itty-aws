@@ -1,0 +1,663 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.functions#AttributeMappingFunctionSchema": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "parameters": {
+          "target": "com.microsoft.graph.functions#AttributeMappingFunctionSchemaParametersList",
+          "traits": {
+            "smithy.api#documentation": "Collection of function parameters."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#AttributeMappingParameterSchema": {
+      "type": "structure",
+      "members": {
+        "allowMultipleOccurrences": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The given parameter can be provided multiple times (for example, multiple input strings in the Concatenate(string,string,...) function)."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Parameter name.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "required": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the parameter is required; otherwise false."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.functions#AttributeType"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#AttributeType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "String"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Integer"
+          }
+        },
+        "REFERENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reference"
+          }
+        },
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Binary"
+          }
+        },
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Boolean"
+          }
+        },
+        "DATETIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DateTime"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#AttributeMappingFunctionSchemaParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.functions#AttributeMappingParameterSchema"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of function parameters."
+      }
+    },
+    "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.functions#AttributeMappingFunctionSchema"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.functions#ListAttributeMappingFunctionSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.functions#ListAttributeMappingFunctionSchemaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/functions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from functions",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaRequestParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.functions#AttributeMappingParameterSchema"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of function parameters."
+      }
+    },
+    "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "parameters": {
+          "target": "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaRequestParametersList",
+          "traits": {
+            "smithy.api#documentation": "Collection of function parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaResponseParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.functions#AttributeMappingParameterSchema"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of function parameters."
+      }
+    },
+    "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "parameters": {
+          "target": "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaResponseParametersList",
+          "traits": {
+            "smithy.api#documentation": "Collection of function parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchemaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/functions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to functions"
+      }
+    },
+    "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "attributeMappingFunctionSchemaId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of attributeMappingFunctionSchema"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaResponseParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.functions#AttributeMappingParameterSchema"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of function parameters."
+      }
+    },
+    "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "parameters": {
+          "target": "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaResponseParametersList",
+          "traits": {
+            "smithy.api#documentation": "Collection of function parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.functions#GetAttributeMappingFunctionSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.functions#GetAttributeMappingFunctionSchemaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/functions/{attributeMappingFunctionSchemaId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from functions by key"
+      }
+    },
+    "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaRequestParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.functions#AttributeMappingParameterSchema"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of function parameters."
+      }
+    },
+    "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "attributeMappingFunctionSchemaId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of attributeMappingFunctionSchema"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "parameters": {
+          "target": "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaRequestParametersList",
+          "traits": {
+            "smithy.api#documentation": "Collection of function parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaResponseParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.functions#AttributeMappingParameterSchema"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of function parameters."
+      }
+    },
+    "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "parameters": {
+          "target": "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaResponseParametersList",
+          "traits": {
+            "smithy.api#documentation": "Collection of function parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchemaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/functions/{attributeMappingFunctionSchemaId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in functions"
+      }
+    },
+    "com.microsoft.graph.functions#DeleteAttributeMappingFunctionSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "attributeMappingFunctionSchemaId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of attributeMappingFunctionSchema"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.functions#DeleteAttributeMappingFunctionSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.functions#DeleteAttributeMappingFunctionSchemaRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/functions/{attributeMappingFunctionSchemaId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from functions"
+      }
+    },
+    "com.microsoft.graph.functions#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.functions#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.functions#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/functions/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.functions#Functions": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.functions#ListAttributeMappingFunctionSchema"
+        },
+        {
+          "target": "com.microsoft.graph.functions#CreateAttributeMappingFunctionSchema"
+        },
+        {
+          "target": "com.microsoft.graph.functions#GetAttributeMappingFunctionSchema"
+        },
+        {
+          "target": "com.microsoft.graph.functions#UpdateAttributeMappingFunctionSchema"
+        },
+        {
+          "target": "com.microsoft.graph.functions#DeleteAttributeMappingFunctionSchema"
+        },
+        {
+          "target": "com.microsoft.graph.functions#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

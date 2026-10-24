@@ -1,0 +1,971 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_speech_batch_avatar#OperationsGet": "com.azure.cognitiveservices_speech_batch_avatar#GetOperation",
+      "com.azure.cognitiveservices_speech_batch_avatar#OperationsGetRequest": "com.azure.cognitiveservices_speech_batch_avatar#GetOperationRequest",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesDelete": "com.azure.cognitiveservices_speech_batch_avatar#DeleteBatchSynthese",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesDeleteRequest": "com.azure.cognitiveservices_speech_batch_avatar#DeleteBatchSyntheseRequest",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreate": "com.azure.cognitiveservices_speech_batch_avatar#CreateBatchSynthese",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateResponse": "com.azure.cognitiveservices_speech_batch_avatar#CreateBatchSyntheseResponse",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequest": "com.azure.cognitiveservices_speech_batch_avatar#CreateBatchSyntheseRequest",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequestCustomVoicesMap": "com.azure.cognitiveservices_speech_batch_avatar#CreateBatchSyntheseRequestCustomVoicesMap",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequestInputsList": "com.azure.cognitiveservices_speech_batch_avatar#CreateBatchSyntheseRequestInputsList",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesGet": "com.azure.cognitiveservices_speech_batch_avatar#GetBatchSynthese",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesGetRequest": "com.azure.cognitiveservices_speech_batch_avatar#GetBatchSyntheseRequest",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesList": "com.azure.cognitiveservices_speech_batch_avatar#ListBatchSyntheses",
+      "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesListRequest": "com.azure.cognitiveservices_speech_batch_avatar#ListBatchSynthesesRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_speech_batch_avatar#OperationsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#OperationsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#Operation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/operations/{id}",
+          "code": 200,
+          "host": "{endpoint}/avatar",
+          "apiVersion": "2024-08-01"
+        },
+        "smithy.api#documentation": "Gets operation info."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#Operation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#OperationStatus"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of a long running operation."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#OperationStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of an operation."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#OperationsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the operation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/batchsyntheses/{id}",
+          "code": 200,
+          "host": "{endpoint}/avatar",
+          "apiVersion": "2024-08-01"
+        },
+        "smithy.api#documentation": "Deletes the batch synthesis identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/batchsyntheses/{id}",
+          "code": 200,
+          "host": "{endpoint}/avatar",
+          "apiVersion": "2024-08-01"
+        },
+        "smithy.api#documentation": "Creates a batch synthesis job, the max allowed payload content length is 500KB."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "inputKind": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#InputKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "inputs": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisInputsList",
+          "traits": {
+            "smithy.api#documentation": "Text or SSML inputs, it's allowed up to 1000 items."
+          }
+        },
+        "synthesisConfig": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisConfig"
+        },
+        "customVoices": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisCustomVoicesMap",
+          "traits": {
+            "smithy.api#documentation": "The custom voice map of voice name and deployment ID ."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisProperties"
+        },
+        "avatarConfig": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarConfig",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "outputs": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisOutputs"
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#Status"
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time-stamp when the current status was entered."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the batch synthesis task."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time-stamp when the object was created."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location of the batch synthesis job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch synthesis task.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#Status": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of a resource."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisOutputs": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "sas url of the result file. It would be relative path when \"destinationContainerUrl\" is specified."
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Job summary file path will be provided here."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch Synthesis output."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarConfig": {
+      "type": "structure",
+      "members": {
+        "talkingAvatarCharacter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The talking avatar character name.  e.g., Lisa.",
+            "smithy.api#required": {}
+          }
+        },
+        "talkingAvatarStyle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The talking avatar character style. e.g., casual-sitting."
+          }
+        },
+        "videoFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The output video format."
+          }
+        },
+        "videoCodec": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The output video codec."
+          }
+        },
+        "subtitleType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The talking avatar subtitle type."
+          }
+        },
+        "backgroundColor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The talking avatar background color."
+          }
+        },
+        "backgroundImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The talking avatar background image."
+          }
+        },
+        "avatarPosition": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarCoordinateDefinition"
+        },
+        "avatarSize": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarCoordinateDefinition"
+        },
+        "resolution": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarCoordinateDefinition"
+        },
+        "videoCrop": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarVideoCropDefinition"
+        },
+        "bitrateKbps": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The bitrate of video output settings for talking avatar."
+          }
+        },
+        "customized": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the avatar character is a custom avatar or not."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Avatar configuration."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarVideoCropDefinition": {
+      "type": "structure",
+      "members": {
+        "topLeft": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarCoordinateDefinition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bottomRight": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarCoordinateDefinition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Only keep the region defined by this object in original Avatar output video."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarCoordinateDefinition": {
+      "type": "structure",
+      "members": {
+        "x": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the x-axis."
+          }
+        },
+        "y": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the y-axis."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Coordinate definition"
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisProperties": {
+      "type": "structure",
+      "members": {
+        "timeToLiveInHours": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How long the batch task will be kept in the system after it has completed. Once the batch task reaches the time to live after completion (succeeded or failed) it will be automatically deleted. The longest supported duration is 744 hours (31 days). The default value is 744 hours. "
+          }
+        },
+        "destinationContainerUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The requested destination container. It is an URL with Service adhoc SAS to a writeable container in Azure Blob storage."
+          }
+        },
+        "destinationPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination path in destination container, default to null, it only works when \"DestinationContainerUrl\" is specified, the final path prefix of outputs should be {DestinationPath}/{TaskId}/, or {TaskId} if not specified."
+          }
+        },
+        "sizeInBytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The generated video size in bytes."
+          }
+        },
+        "succeededCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of succeeded videos."
+          }
+        },
+        "failedCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of failed videos."
+          }
+        },
+        "durationInMilliseconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The generated video duration in milliseconds."
+          }
+        },
+        "billingDetails": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisBillingDetails"
+        },
+        "error": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisError"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Detailed properties of batch synthesis task."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Top level error code"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch Synthesis Error."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisBillingDetails": {
+      "type": "structure",
+      "members": {
+        "neuralCharacters": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of billable characters for prebuilt neural voices in the input file."
+          }
+        },
+        "customNeuralCharacters": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of billable characters for custom neural voices in the input file."
+          }
+        },
+        "aoaiCharacters": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of billable characters for AOAI voices in the input file."
+          }
+        },
+        "aoaiHDCharacters": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of billable characters for AOAI HD voices in the input file."
+          }
+        },
+        "talkingAvatarDurationSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The duration of the talking avatar generated video."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch synthesis billing details."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisCustomVoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The custom voice map of voice name and deployment ID ."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisConfig": {
+      "type": "structure",
+      "members": {
+        "voice": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice name for PlainText input. You can find platform voice list here https://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "style": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Style name for PlainText input."
+          }
+        },
+        "rate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Speaking rate for PlainText input. For supported values, see https://learn.microsoft.com/azure/ai-services/speech-service/speech-synthesis-markup-voice#adjust-prosody."
+          }
+        },
+        "pitch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pitch for PlainText input. For supported values, see https://learn.microsoft.com/azure/ai-services/speech-service/speech-synthesis-markup-voice#adjust-prosody."
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Volume for PlainText input. For supported values, see https://learn.microsoft.com/azure/ai-services/speech-service/speech-synthesis-markup-voice#adjust-prosody."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text-to-speech configuration for plain text input."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisInputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Text or SSML inputs, it's allowed up to 1000 items."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisInput": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Input content. It could be SSML or plain text.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch Synthesis input."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#InputKind": {
+      "type": "enum",
+      "members": {
+        "PLAINTEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PlainText"
+          }
+        },
+        "SSML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSML"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input kind."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of resource."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches an existing operation and the request is not identical to the prior request, it will fail with a 400 Bad Request."
+          }
+        },
+        "inputKind": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#InputKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "inputs": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequestInputsList",
+          "traits": {
+            "smithy.api#documentation": "Text or SSML inputs, it's allowed up to 1000 items."
+          }
+        },
+        "synthesisConfig": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisConfig"
+        },
+        "customVoices": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequestCustomVoicesMap",
+          "traits": {
+            "smithy.api#documentation": "The custom voice map of voice name and deployment ID ."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisPropertiesInput"
+        },
+        "avatarConfig": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarConfig",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the batch synthesis task."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "timeToLiveInHours": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How long the batch task will be kept in the system after it has completed. Once the batch task reaches the time to live after completion (succeeded or failed) it will be automatically deleted. The longest supported duration is 744 hours (31 days). The default value is 744 hours. "
+          }
+        },
+        "destinationContainerUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The requested destination container. It is an URL with Service adhoc SAS to a writeable container in Azure Blob storage."
+          }
+        },
+        "destinationPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination path in destination container, default to null, it only works when \"DestinationContainerUrl\" is specified, the final path prefix of outputs should be {DestinationPath}/{TaskId}/, or {TaskId} if not specified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Detailed properties of batch synthesis task."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequestCustomVoicesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The custom voice map of voice name and deployment ID ."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreateRequestInputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Text or SSML inputs, it's allowed up to 1000 items."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesis"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/batchsyntheses/{id}",
+          "code": 200,
+          "host": "{endpoint}/avatar",
+          "apiVersion": "2024-08-01"
+        },
+        "smithy.api#documentation": "Gets the batch synthesis identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesis": {
+      "type": "structure",
+      "members": {
+        "inputKind": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#InputKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "inputs": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisInputsList",
+          "traits": {
+            "smithy.api#documentation": "Text or SSML inputs, it's allowed up to 1000 items."
+          }
+        },
+        "synthesisConfig": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisConfig"
+        },
+        "customVoices": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisCustomVoicesMap",
+          "traits": {
+            "smithy.api#documentation": "The custom voice map of voice name and deployment ID ."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisProperties"
+        },
+        "avatarConfig": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchAvatarConfig",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "outputs": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesisOutputs"
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#Status"
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time-stamp when the current status was entered."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the batch synthesis task."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time-stamp when the object was created."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch synthesis task."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#PaginatedBatchSynthesis"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/batchsyntheses",
+          "code": 200,
+          "host": "{endpoint}/avatar",
+          "apiVersion": "2024-08-01"
+        },
+        "smithy.api#documentation": "Gets the list of batch syntheses."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#PaginatedBatchSynthesis": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#PaginatedBatchSynthesisValueList",
+          "traits": {
+            "smithy.api#documentation": "Batch synthesis tasks.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to next page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated batch synthesis task list"
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#PaginatedBatchSynthesisValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesis"
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch synthesis tasks."
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items to include in a single response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_batch_avatar#CognitiveservicesSpeechBatchAvatar": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#OperationsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_batch_avatar#BatchSynthesesList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure SpeechBatchAvatar data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/SpeechBatchAvatar (latest stable api-version 2024-08-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/avatar",
+          "parameters": [
+            {
+              "name": "endpoint"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

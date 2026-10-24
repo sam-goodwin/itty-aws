@@ -1,0 +1,277 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.communication_sip_routing#SipRoutingUpdate": "com.azure.communication_sip_routing#UpdateSipRouting",
+      "com.azure.communication_sip_routing#SipRoutingUpdateRequest": "com.azure.communication_sip_routing#UpdateSipRoutingRequest",
+      "com.azure.communication_sip_routing#SipRoutingUpdateRequestRoutesList": "com.azure.communication_sip_routing#UpdateSipRoutingRequestRoutesList",
+      "com.azure.communication_sip_routing#SipRoutingUpdateRequestTrunksMap": "com.azure.communication_sip_routing#UpdateSipRoutingRequestTrunksMap",
+      "com.azure.communication_sip_routing#SipRoutingGet": "com.azure.communication_sip_routing#GetSipRouting",
+      "com.azure.communication_sip_routing#SipRoutingGetRequest": "com.azure.communication_sip_routing#GetSipRoutingRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.communication_sip_routing#SipRoutingUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_sip_routing#SipRoutingUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_sip_routing#SipConfiguration"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/sip",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-03-01"
+        },
+        "smithy.api#documentation": "Updates SIP configuration for resource."
+      }
+    },
+    "com.azure.communication_sip_routing#SipConfiguration": {
+      "type": "structure",
+      "members": {
+        "trunks": {
+          "target": "com.azure.communication_sip_routing#SipConfigurationTrunksMap",
+          "traits": {
+            "smithy.api#documentation": "SIP trunks for routing calls.\r\nMap key is trunk's FQDN (1-249 characters)."
+          }
+        },
+        "routes": {
+          "target": "com.azure.communication_sip_routing#SipConfigurationRoutesList",
+          "traits": {
+            "smithy.api#documentation": "Trunk routes for routing calls."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a SIP configuration.\r\nWhen a call is being routed the routes are applied in the same order as in the routes list.\r\nA route is matched by its number pattern.\r\nCall is then directed into route's first available trunk, based on the order in the route's trunks list."
+      }
+    },
+    "com.azure.communication_sip_routing#SipConfigurationRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_sip_routing#TrunkRoute"
+      },
+      "traits": {
+        "smithy.api#documentation": "Trunk routes for routing calls."
+      }
+    },
+    "com.azure.communication_sip_routing#TrunkRoute": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets description of the route."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets name of the route.",
+            "smithy.api#required": {}
+          }
+        },
+        "numberPattern": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets regex number pattern for routing calls. .NET regex format is supported.\r\nThe regex should match only digits with an optional '+' prefix without spaces.\r\nI.e. \"^\\+[1-9][0-9]{3,23}$\".",
+            "smithy.api#required": {}
+          }
+        },
+        "trunks": {
+          "target": "com.azure.communication_sip_routing#TrunkRouteTrunksList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets list of SIP trunks for routing calls. Trunks are represented as FQDN."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a trunk route for routing calls."
+      }
+    },
+    "com.azure.communication_sip_routing#TrunkRouteTrunksList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets list of SIP trunks for routing calls. Trunks are represented as FQDN."
+      }
+    },
+    "com.azure.communication_sip_routing#SipConfigurationTrunksMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.communication_sip_routing#Trunk"
+      },
+      "traits": {
+        "smithy.api#documentation": "SIP trunks for routing calls.\r\nMap key is trunk's FQDN (1-249 characters)."
+      }
+    },
+    "com.azure.communication_sip_routing#Trunk": {
+      "type": "structure",
+      "members": {
+        "sipSignalingPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets SIP signaling port of the trunk.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a SIP trunk for routing calls. See RFC 4904."
+      }
+    },
+    "com.azure.communication_sip_routing#SipRoutingUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "trunks": {
+          "target": "com.azure.communication_sip_routing#SipRoutingUpdateRequestTrunksMap",
+          "traits": {
+            "smithy.api#documentation": "SIP trunks for routing calls.\r\nMap key is trunk's FQDN (1-249 characters)."
+          }
+        },
+        "routes": {
+          "target": "com.azure.communication_sip_routing#SipRoutingUpdateRequestRoutesList",
+          "traits": {
+            "smithy.api#documentation": "Trunk routes for routing calls."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_sip_routing#SipRoutingUpdateRequestRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_sip_routing#TrunkRoute"
+      },
+      "traits": {
+        "smithy.api#documentation": "Trunk routes for routing calls."
+      }
+    },
+    "com.azure.communication_sip_routing#SipRoutingUpdateRequestTrunksMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.communication_sip_routing#TrunkUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "SIP trunks for routing calls.\r\nMap key is trunk's FQDN (1-249 characters)."
+      }
+    },
+    "com.azure.communication_sip_routing#TrunkUpdate": {
+      "type": "structure",
+      "members": {
+        "sipSignalingPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets SIP signaling port of the trunk."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a SIP trunk update."
+      }
+    },
+    "com.azure.communication_sip_routing#SipRoutingGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_sip_routing#SipRoutingGetRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_sip_routing#SipConfiguration"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/sip",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-03-01"
+        },
+        "smithy.api#documentation": "Gets SIP configuration for resource."
+      }
+    },
+    "com.azure.communication_sip_routing#SipRoutingGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_sip_routing#CommunicationSipRouting": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.communication_sip_routing#SipRoutingUpdate"
+        },
+        {
+          "target": "com.azure.communication_sip_routing#SipRoutingGet"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure SipRouting data plane",
+        "smithy.api#documentation": "Azure communication data plane — communication/data-plane/SipRouting (latest stable api-version 2023-03-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://communication.azure.com/.default"
+      }
+    }
+  }
+}

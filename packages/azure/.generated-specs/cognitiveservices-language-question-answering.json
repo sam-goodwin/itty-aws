@@ -1,0 +1,718 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromText": "com.azure.cognitiveservices_language_question_answering#GetQuestionAnsweringAnswersFromText",
+      "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequest": "com.azure.cognitiveservices_language_question_answering#GetQuestionAnsweringAnswersFromTextRequest",
+      "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequestStringIndexType": "com.azure.cognitiveservices_language_question_answering#GetQuestionAnsweringAnswersFromTextRequestStringIndexType",
+      "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequestRecordsList": "com.azure.cognitiveservices_language_question_answering#GetQuestionAnsweringAnswersFromTextRequestRecordsList",
+      "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswers": "com.azure.cognitiveservices_language_question_answering#GetQuestionAnsweringAnswers",
+      "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersRequest": "com.azure.cognitiveservices_language_question_answering#GetQuestionAnsweringAnswersRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromText": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering#AnswersFromTextResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/:query-text",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Answers the specified question using the provided text in the body."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#AnswersFromTextResult": {
+      "type": "structure",
+      "members": {
+        "answers": {
+          "target": "com.azure.cognitiveservices_language_question_answering#AnswersFromTextResultAnswersList",
+          "traits": {
+            "smithy.api#documentation": "Represents the answer results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the answer results."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#AnswersFromTextResultAnswersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering#TextAnswer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the answer results."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#TextAnswer": {
+      "type": "structure",
+      "members": {
+        "answer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Answer."
+          }
+        },
+        "confidenceScore": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "answer confidence score, value ranges from 0 to 1."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "record ID."
+          }
+        },
+        "answerSpan": {
+          "target": "com.azure.cognitiveservices_language_question_answering#AnswerSpan",
+          "traits": {
+            "smithy.api#documentation": "Answer span object with respect to user's question."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The sentence offset from the start of the document."
+          }
+        },
+        "length": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The length of the sentence."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents answer result."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#AnswerSpan": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Predicted text of answer span."
+          }
+        },
+        "confidenceScore": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Predicted score of answer span, value ranges from 0 to 1."
+          }
+        },
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The answer span offset from the start of answer."
+          }
+        },
+        "length": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The length of the answer span."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Answer span object of QnA."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "question": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User question to query against the given text records.",
+            "smithy.api#required": {}
+          }
+        },
+        "records": {
+          "target": "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequestRecordsList",
+          "traits": {
+            "smithy.api#documentation": "Text records to be searched for given question.",
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of the text records. This is BCP-47 representation of a language. For\nexample, use \"en\" for English; \"es\" for Spanish etc. If not set, use \"en\" for\nEnglish as default."
+          }
+        },
+        "stringIndexType": {
+          "target": "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequestStringIndexType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the method used to interpret string offsets.  Defaults to Text\nElements (Graphemes) according to Unicode v8.0.0. For additional information\nsee https://aka.ms/text-analytics-offsets."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequestStringIndexType": {
+      "type": "enum",
+      "members": {
+        "TEXTELEMENTS_V8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TextElements_v8"
+          }
+        },
+        "UNICODECODEPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnicodeCodePoint"
+          }
+        },
+        "UTF16CODEUNIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Utf16CodeUnit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the method used to interpret string offsets.  Defaults to Text\nElements (Graphemes) according to Unicode v8.0.0. For additional information\nsee https://aka.ms/text-analytics-offsets."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromTextRequestRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering#TextDocument"
+      },
+      "traits": {
+        "smithy.api#documentation": "Text records to be searched for given question."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#TextDocument": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the text record.",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text contents of the record.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represent input text record to be queried."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering#AnswersResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/:query-knowledgebases",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Answers the specified question using your knowledge base."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#AnswersResult": {
+      "type": "structure",
+      "members": {
+        "answers": {
+          "target": "com.azure.cognitiveservices_language_question_answering#AnswersResultAnswersList",
+          "traits": {
+            "smithy.api#documentation": "Represents Answer Result list."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents List of Question Answers."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#AnswersResultAnswersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents Answer Result list."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswer": {
+      "type": "structure",
+      "members": {
+        "questions": {
+          "target": "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerQuestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of questions associated with the answer."
+          }
+        },
+        "answer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Answer text."
+          }
+        },
+        "confidenceScore": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Answer confidence score, value ranges from 0 to 1."
+          }
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ID of the QnA result."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of QnA result."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+          }
+        },
+        "dialog": {
+          "target": "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerDialog",
+          "traits": {
+            "smithy.api#documentation": "Dialog associated with Answer."
+          }
+        },
+        "answerSpan": {
+          "target": "com.azure.cognitiveservices_language_question_answering#AnswerSpan",
+          "traits": {
+            "smithy.api#documentation": "Answer span object of QnA with respect to user's question."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents knowledge base answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerDialog": {
+      "type": "structure",
+      "members": {
+        "isContextOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "To mark if a prompt is relevant only with a previous question or not. If true,\ndo not include this QnA as search result for queries without context;\notherwise, if false, ignores context and includes this QnA in search result."
+          }
+        },
+        "prompts": {
+          "target": "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerDialogPromptsList",
+          "traits": {
+            "smithy.api#documentation": "List of prompts associated with the answer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dialog associated with Answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerDialogPromptsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerPrompt"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of prompts associated with the answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerPrompt": {
+      "type": "structure",
+      "members": {
+        "displayOrder": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Index of the prompt - used in ordering of the prompts."
+          }
+        },
+        "qnaId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "QnA ID corresponding to the prompt."
+          }
+        },
+        "displayText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text displayed to represent a follow up question prompt."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Prompt for an answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerQuestionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of questions associated with the answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectName",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "deploymentName",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the specific deployment of the project to use."
+          }
+        },
+        "qnaId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Exact QnA ID to fetch from the knowledge base, this field takes priority over\nquestion."
+          }
+        },
+        "question": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User question to query against the knowledge base."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Max number of answers to be returned for the question."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the user."
+          }
+        },
+        "confidenceScoreThreshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minimum threshold score for answers, value ranges from 0 to 1."
+          }
+        },
+        "context": {
+          "target": "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerContext",
+          "traits": {
+            "smithy.api#documentation": "Context object with previous QnA's information."
+          }
+        },
+        "rankerType": {
+          "target": "com.azure.cognitiveservices_language_question_answering#RankerKind",
+          "traits": {
+            "smithy.api#documentation": "Type of ranker to be used."
+          }
+        },
+        "filters": {
+          "target": "com.azure.cognitiveservices_language_question_answering#QueryFilters",
+          "traits": {
+            "smithy.api#documentation": "Filter QnAs based on given metadata list and knowledge base sources."
+          }
+        },
+        "answerSpanRequest": {
+          "target": "com.azure.cognitiveservices_language_question_answering#ShortAnswerOptions",
+          "traits": {
+            "smithy.api#documentation": "To configure Answer span prediction feature."
+          }
+        },
+        "includeUnstructuredSources": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "(Optional) Flag to enable Query over Unstructured Sources."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#ShortAnswerOptions": {
+      "type": "structure",
+      "members": {
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable or disable Answer Span prediction.",
+            "smithy.api#required": {}
+          }
+        },
+        "confidenceScoreThreshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minimum threshold score required to include an answer span, value ranges from 0\nto 1."
+          }
+        },
+        "topAnswersWithSpan": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of Top answers to be considered for span prediction from 1 to 10."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "To configure Answer span prediction feature."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#QueryFilters": {
+      "type": "structure",
+      "members": {
+        "metadataFilter": {
+          "target": "com.azure.cognitiveservices_language_question_answering#MetadataFilter",
+          "traits": {
+            "smithy.api#documentation": "Find QnAs that are associated with the given list of metadata."
+          }
+        },
+        "sourceFilter": {
+          "target": "com.azure.cognitiveservices_language_question_answering#QueryFiltersSourceFilterList",
+          "traits": {
+            "smithy.api#documentation": "Find QnAs that are associated with any of the given list of sources in\nknowledge base."
+          }
+        },
+        "logicalOperation": {
+          "target": "com.azure.cognitiveservices_language_question_answering#LogicalOperationKind",
+          "traits": {
+            "smithy.api#documentation": "Logical operation used to join metadata filter with source filter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "filters over knowledge base."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#LogicalOperationKind": {
+      "type": "enum",
+      "members": {
+        "AND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AND"
+          }
+        },
+        "OR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OR"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Set to 'OR' or 'AND' for using corresponding logical operation."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#QueryFiltersSourceFilterList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Find QnAs that are associated with any of the given list of sources in\nknowledge base."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#MetadataFilter": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.cognitiveservices_language_question_answering#MetadataFilterMetadataList",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of string"
+          }
+        },
+        "logicalOperation": {
+          "target": "com.azure.cognitiveservices_language_question_answering#LogicalOperationKind",
+          "traits": {
+            "smithy.api#documentation": "Operation used to join metadata filters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Find QnAs that are associated with the given list of metadata."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#MetadataFilterMetadataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering#MetadataRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of string"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#MetadataRecord": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata Key from Metadata dictionary used in the QnA.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata Value from Metadata dictionary used in the QnA.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object to provide the key value pair for each metadata."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#RankerKind": {
+      "type": "enum",
+      "members": {
+        "QUESTIONONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QuestionOnly"
+          }
+        },
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of ranker to be used."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#KnowledgeBaseAnswerContext": {
+      "type": "structure",
+      "members": {
+        "previousQnaId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Previous turn top answer result QnA ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "previousUserQuery": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Previous user query."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Context object with previous QnA's information."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering#CognitiveservicesLanguageQuestionAnswering": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswersFromText"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering#QuestionAnsweringGetAnswers"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure LanguageQuestionAnswering data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/LanguageQuestionAnswering (latest stable api-version 2023-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/language",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

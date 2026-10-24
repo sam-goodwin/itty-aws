@@ -15,16 +15,56 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.vi#PrivateLinkResourcesGet": "com.azure.vi#GetPrivateLinkResource",
+      "com.azure.vi#PrivateLinkResourcesGetResponse": "com.azure.vi#GetPrivateLinkResourceResponse",
+      "com.azure.vi#PrivateLinkResourcesGetRequest": "com.azure.vi#GetPrivateLinkResourceRequest",
+      "com.azure.vi#PrivateLinkResourcesListByAccount": "com.azure.vi#ListPrivateLinkResourceByAccount",
+      "com.azure.vi#PrivateLinkResourcesListByAccountResponse": "com.azure.vi#ListPrivateLinkResourceByAccountResponse",
+      "com.azure.vi#PrivateLinkResourcesListByAccountResponseValueList": "com.azure.vi#ListPrivateLinkResourceByAccountResponseValueList",
+      "com.azure.vi#PrivateLinkResourcesListByAccountRequest": "com.azure.vi#ListPrivateLinkResourceByAccountRequest",
+      "com.azure.vi#PrivateEndpointConnectionsDelete": "com.azure.vi#DeletePrivateEndpointConnection",
+      "com.azure.vi#PrivateEndpointConnectionsDeleteResponse": "com.azure.vi#DeletePrivateEndpointConnectionResponse",
+      "com.azure.vi#PrivateEndpointConnectionsDeleteRequest": "com.azure.vi#DeletePrivateEndpointConnectionRequest",
+      "com.azure.vi#PrivateEndpointConnectionsGet": "com.azure.vi#GetPrivateEndpointConnection",
+      "com.azure.vi#PrivateEndpointConnectionsGetResponse": "com.azure.vi#GetPrivateEndpointConnectionResponse",
+      "com.azure.vi#PrivateEndpointConnectionsGetRequest": "com.azure.vi#GetPrivateEndpointConnectionRequest",
+      "com.azure.vi#PrivateEndpointConnectionsListByAccount": "com.azure.vi#ListPrivateEndpointConnectionByAccount",
+      "com.azure.vi#PrivateEndpointConnectionsListByAccountResponse": "com.azure.vi#ListPrivateEndpointConnectionByAccountResponse",
+      "com.azure.vi#PrivateEndpointConnectionsListByAccountResponseValueList": "com.azure.vi#ListPrivateEndpointConnectionByAccountResponseValueList",
+      "com.azure.vi#PrivateEndpointConnectionsListByAccountRequest": "com.azure.vi#ListPrivateEndpointConnectionByAccountRequest",
+      "com.azure.vi#AccountsDelete": "com.azure.vi#DeleteAccount",
+      "com.azure.vi#AccountsDeleteRequest": "com.azure.vi#DeleteAccountRequest",
+      "com.azure.vi#AccountsUpdate": "com.azure.vi#UpdateAccount",
+      "com.azure.vi#AccountsUpdateResponse": "com.azure.vi#UpdateAccountResponse",
+      "com.azure.vi#AccountsUpdateResponseIdentity": "com.azure.vi#UpdateAccountResponseIdentity",
+      "com.azure.vi#AccountsUpdateResponseTagsMap": "com.azure.vi#UpdateAccountResponseTagsMap",
+      "com.azure.vi#AccountsUpdateRequest": "com.azure.vi#UpdateAccountRequest",
+      "com.azure.vi#AccountsUpdateRequestIdentity": "com.azure.vi#UpdateAccountRequestIdentity",
+      "com.azure.vi#AccountsUpdateRequestTagsMap": "com.azure.vi#UpdateAccountRequestTagsMap",
+      "com.azure.vi#AccountsGet": "com.azure.vi#GetAccount",
+      "com.azure.vi#AccountsGetResponse": "com.azure.vi#GetAccountResponse",
+      "com.azure.vi#AccountsGetResponseIdentity": "com.azure.vi#GetAccountResponseIdentity",
+      "com.azure.vi#AccountsGetResponseTagsMap": "com.azure.vi#GetAccountResponseTagsMap",
+      "com.azure.vi#AccountsGetRequest": "com.azure.vi#GetAccountRequest",
+      "com.azure.vi#AccountsListByResourceGroup": "com.azure.vi#ListAccountByResourceGroup",
+      "com.azure.vi#AccountsListByResourceGroupRequest": "com.azure.vi#ListAccountByResourceGroupRequest",
+      "com.azure.vi#AccountsList": "com.azure.vi#ListAccounts",
+      "com.azure.vi#AccountsListRequest": "com.azure.vi#ListAccountsRequest",
+      "com.azure.vi#AccountsCheckNameAvailability": "com.azure.vi#CheckAccountNameAvailability",
+      "com.azure.vi#AccountsCheckNameAvailabilityRequest": "com.azure.vi#CheckAccountNameAvailabilityRequest",
+      "com.azure.vi#AccountsCheckNameAvailabilityRequestType": "com.azure.vi#CheckAccountNameAvailabilityRequestType",
+      "com.azure.vi#OperationsList": "com.azure.vi#ListOperations"
+    }
   },
   "shapes": {
-    "com.azure.vi#GetPrivateLinkResource": {
+    "com.azure.vi#PrivateLinkResourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#GetPrivateLinkResourceRequest"
+        "target": "com.azure.vi#PrivateLinkResourcesGetRequest"
       },
       "output": {
-        "target": "com.azure.vi#GetPrivateLinkResourceResponse"
+        "target": "com.azure.vi#PrivateLinkResourcesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +77,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#GetPrivateLinkResourceResponse": {
+    "com.azure.vi#PrivateLinkResourcesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -227,7 +267,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.vi#GetPrivateLinkResourceRequest": {
+    "com.azure.vi#PrivateLinkResourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -267,13 +307,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#ListPrivateLinkResourceByAccount": {
+    "com.azure.vi#PrivateLinkResourcesListByAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#ListPrivateLinkResourceByAccountRequest"
+        "target": "com.azure.vi#PrivateLinkResourcesListByAccountRequest"
       },
       "output": {
-        "target": "com.azure.vi#ListPrivateLinkResourceByAccountResponse"
+        "target": "com.azure.vi#PrivateLinkResourcesListByAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -286,11 +326,11 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#ListPrivateLinkResourceByAccountResponse": {
+    "com.azure.vi#PrivateLinkResourcesListByAccountResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.vi#ListPrivateLinkResourceByAccountResponseValueList",
+          "target": "com.azure.vi#PrivateLinkResourcesListByAccountResponseValueList",
           "traits": {
             "smithy.api#documentation": "Array of private link resources"
           }
@@ -306,7 +346,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vi#ListPrivateLinkResourceByAccountResponseValueList": {
+    "com.azure.vi#PrivateLinkResourcesListByAccountResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.vi#PrivateLinkResource"
@@ -353,7 +393,7 @@
         "smithy.api#documentation": "A private link resource."
       }
     },
-    "com.azure.vi#ListPrivateLinkResourceByAccountRequest": {
+    "com.azure.vi#PrivateLinkResourcesListByAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -385,13 +425,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#DeletePrivateEndpointConnection": {
+    "com.azure.vi#PrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#DeletePrivateEndpointConnectionRequest"
+        "target": "com.azure.vi#PrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.vi#DeletePrivateEndpointConnectionResponse"
+        "target": "com.azure.vi#PrivateEndpointConnectionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -404,7 +444,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#DeletePrivateEndpointConnectionResponse": {
+    "com.azure.vi#PrivateEndpointConnectionsDeleteResponse": {
       "type": "structure",
       "members": {
         "retryAfter": {
@@ -426,7 +466,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vi#DeletePrivateEndpointConnectionRequest": {
+    "com.azure.vi#PrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -737,13 +777,13 @@
         "smithy.api#documentation": "The private endpoint resource."
       }
     },
-    "com.azure.vi#GetPrivateEndpointConnection": {
+    "com.azure.vi#PrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#GetPrivateEndpointConnectionRequest"
+        "target": "com.azure.vi#PrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.vi#GetPrivateEndpointConnectionResponse"
+        "target": "com.azure.vi#PrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -756,7 +796,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#GetPrivateEndpointConnectionResponse": {
+    "com.azure.vi#PrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -794,7 +834,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vi#GetPrivateEndpointConnectionRequest": {
+    "com.azure.vi#PrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -834,13 +874,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#ListPrivateEndpointConnectionByAccount": {
+    "com.azure.vi#PrivateEndpointConnectionsListByAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#ListPrivateEndpointConnectionByAccountRequest"
+        "target": "com.azure.vi#PrivateEndpointConnectionsListByAccountRequest"
       },
       "output": {
-        "target": "com.azure.vi#ListPrivateEndpointConnectionByAccountResponse"
+        "target": "com.azure.vi#PrivateEndpointConnectionsListByAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -853,11 +893,11 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#ListPrivateEndpointConnectionByAccountResponse": {
+    "com.azure.vi#PrivateEndpointConnectionsListByAccountResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.vi#ListPrivateEndpointConnectionByAccountResponseValueList",
+          "target": "com.azure.vi#PrivateEndpointConnectionsListByAccountResponseValueList",
           "traits": {
             "smithy.api#documentation": "Array of private endpoint connections."
           }
@@ -873,7 +913,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vi#ListPrivateEndpointConnectionByAccountResponseValueList": {
+    "com.azure.vi#PrivateEndpointConnectionsListByAccountResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.vi#PrivateEndpointConnection"
@@ -920,7 +960,7 @@
         "smithy.api#documentation": "The private endpoint connection resource."
       }
     },
-    "com.azure.vi#ListPrivateEndpointConnectionByAccountRequest": {
+    "com.azure.vi#PrivateEndpointConnectionsListByAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1419,10 +1459,10 @@
         "smithy.api#documentation": "The requested permission"
       }
     },
-    "com.azure.vi#DeleteAccount": {
+    "com.azure.vi#AccountsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#DeleteAccountRequest"
+        "target": "com.azure.vi#AccountsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1438,7 +1478,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#DeleteAccountRequest": {
+    "com.azure.vi#AccountsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1470,13 +1510,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#UpdateAccount": {
+    "com.azure.vi#AccountsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#UpdateAccountRequest"
+        "target": "com.azure.vi#AccountsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.vi#UpdateAccountResponse"
+        "target": "com.azure.vi#AccountsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1489,7 +1529,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#UpdateAccountResponse": {
+    "com.azure.vi#AccountsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1517,7 +1557,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.vi#UpdateAccountResponseTagsMap",
+          "target": "com.azure.vi#AccountsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1536,7 +1576,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.vi#UpdateAccountResponseIdentity",
+          "target": "com.azure.vi#AccountsUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -1546,7 +1586,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vi#UpdateAccountResponseIdentity": {
+    "com.azure.vi#AccountsUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1861,7 +1901,7 @@
         "smithy.api#documentation": "The storage services details"
       }
     },
-    "com.azure.vi#UpdateAccountResponseTagsMap": {
+    "com.azure.vi#AccountsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1873,7 +1913,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.vi#UpdateAccountRequest": {
+    "com.azure.vi#AccountsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1901,7 +1941,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.vi#UpdateAccountRequestTagsMap",
+          "target": "com.azure.vi#AccountsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -1913,7 +1953,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.vi#UpdateAccountRequestIdentity",
+          "target": "com.azure.vi#AccountsUpdateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -1923,7 +1963,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#UpdateAccountRequestIdentity": {
+    "com.azure.vi#AccountsUpdateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -2071,7 +2111,7 @@
         "smithy.api#documentation": "The storage services details"
       }
     },
-    "com.azure.vi#UpdateAccountRequestTagsMap": {
+    "com.azure.vi#AccountsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2373,13 +2413,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.vi#GetAccount": {
+    "com.azure.vi#AccountsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#GetAccountRequest"
+        "target": "com.azure.vi#AccountsGetRequest"
       },
       "output": {
-        "target": "com.azure.vi#GetAccountResponse"
+        "target": "com.azure.vi#AccountsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2392,7 +2432,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#GetAccountResponse": {
+    "com.azure.vi#AccountsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2420,7 +2460,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.vi#GetAccountResponseTagsMap",
+          "target": "com.azure.vi#AccountsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2439,7 +2479,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.vi#GetAccountResponseIdentity",
+          "target": "com.azure.vi#AccountsGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -2449,7 +2489,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.vi#GetAccountResponseIdentity": {
+    "com.azure.vi#AccountsGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -2481,7 +2521,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.vi#GetAccountResponseTagsMap": {
+    "com.azure.vi#AccountsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2493,7 +2533,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.vi#GetAccountRequest": {
+    "com.azure.vi#AccountsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2525,10 +2565,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#ListAccountByResourceGroup": {
+    "com.azure.vi#AccountsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#ListAccountByResourceGroupRequest"
+        "target": "com.azure.vi#AccountsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.vi#AccountList"
@@ -2674,7 +2714,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.vi#ListAccountByResourceGroupRequest": {
+    "com.azure.vi#AccountsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2698,10 +2738,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#ListAccounts": {
+    "com.azure.vi#AccountsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#ListAccountsRequest"
+        "target": "com.azure.vi#AccountsListRequest"
       },
       "output": {
         "target": "com.azure.vi#AccountList"
@@ -2717,7 +2757,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.vi#ListAccountsRequest": {
+    "com.azure.vi#AccountsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2733,10 +2773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#CheckAccountNameAvailability": {
+    "com.azure.vi#AccountsCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.vi#CheckAccountNameAvailabilityRequest"
+        "target": "com.azure.vi#AccountsCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.vi#CheckNameAvailabilityResult"
@@ -2792,7 +2832,7 @@
         "smithy.api#documentation": "Gets the reason that a Video Indexer account name could not be used. The Reason element is only returned if NameAvailable is false."
       }
     },
-    "com.azure.vi#CheckAccountNameAvailabilityRequest": {
+    "com.azure.vi#AccountsCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2811,7 +2851,7 @@
           }
         },
         "type": {
-          "target": "com.azure.vi#CheckAccountNameAvailabilityRequestType",
+          "target": "com.azure.vi#AccountsCheckNameAvailabilityRequestType",
           "traits": {
             "smithy.api#documentation": "The type of resource, Microsoft.VideoIndexer/accounts",
             "smithy.api#required": {}
@@ -2822,7 +2862,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.vi#CheckAccountNameAvailabilityRequestType": {
+    "com.azure.vi#AccountsCheckNameAvailabilityRequestType": {
       "type": "enum",
       "members": {
         "MICROSOFT_VIDEOINDEXER_ACCOUNTS": {
@@ -2836,7 +2876,7 @@
         "smithy.api#documentation": "The type of resource, Microsoft.VideoIndexer/accounts"
       }
     },
-    "com.azure.vi#ListOperations": {
+    "com.azure.vi#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -2959,22 +2999,22 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.vi#GetPrivateLinkResource"
+          "target": "com.azure.vi#PrivateLinkResourcesGet"
         },
         {
-          "target": "com.azure.vi#ListPrivateLinkResourceByAccount"
+          "target": "com.azure.vi#PrivateLinkResourcesListByAccount"
         },
         {
-          "target": "com.azure.vi#DeletePrivateEndpointConnection"
+          "target": "com.azure.vi#PrivateEndpointConnectionsDelete"
         },
         {
           "target": "com.azure.vi#PrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.vi#GetPrivateEndpointConnection"
+          "target": "com.azure.vi#PrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.vi#ListPrivateEndpointConnectionByAccount"
+          "target": "com.azure.vi#PrivateEndpointConnectionsListByAccount"
         },
         {
           "target": "com.azure.vi#GenerateExtensionRestrictedViewerAccessToken"
@@ -2989,28 +3029,28 @@
           "target": "com.azure.vi#GenerateAccessToken"
         },
         {
-          "target": "com.azure.vi#DeleteAccount"
+          "target": "com.azure.vi#AccountsDelete"
         },
         {
-          "target": "com.azure.vi#UpdateAccount"
+          "target": "com.azure.vi#AccountsUpdate"
         },
         {
           "target": "com.azure.vi#AccountsCreateOrUpdate"
         },
         {
-          "target": "com.azure.vi#GetAccount"
+          "target": "com.azure.vi#AccountsGet"
         },
         {
-          "target": "com.azure.vi#ListAccountByResourceGroup"
+          "target": "com.azure.vi#AccountsListByResourceGroup"
         },
         {
-          "target": "com.azure.vi#ListAccounts"
+          "target": "com.azure.vi#AccountsList"
         },
         {
-          "target": "com.azure.vi#CheckAccountNameAvailability"
+          "target": "com.azure.vi#AccountsCheckNameAvailability"
         },
         {
-          "target": "com.azure.vi#ListOperations"
+          "target": "com.azure.vi#OperationsList"
         }
       ],
       "traits": {

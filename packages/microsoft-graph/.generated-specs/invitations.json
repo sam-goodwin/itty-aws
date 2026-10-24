@@ -1,0 +1,2976 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.invitations#ListInvitationRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitationRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.invitations#ListInvitationRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.invitations#ListInvitationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.invitations#ListInvitationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#Invitation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "invitedUserDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the user being invited.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "invitedUserEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user being invited. Required. The following special characters aren't permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name, including at the beginning or end of the name."
+          }
+        },
+        "invitedUserMessageInfo": {
+          "target": "com.microsoft.graph.invitations#InvitedUserMessageInfo",
+          "traits": {
+            "smithy.api#documentation": "Contains configuration for the message being sent to the invited user, including customizing message text, language, and cc recipient list.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "invitedUserType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The userType of the user being invited. By default, this is Guest. You can invite as Member if you're a company administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "inviteRedeemUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL the user can use to redeem their invitation. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "inviteRedirectUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL the user should be redirected to after the invitation is redeemed. Required."
+          }
+        },
+        "resetRedemption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. When true, the invitedUser/id relationship is required. For more information about using this property, see Reset redemption status for a guest user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sendInvitationMessage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether an email should be sent to the user being invited. The default is false.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status of the invitation. The possible values are: PendingAcceptance, Completed, InProgress, and Error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#InvitedUserMessageInfo": {
+      "type": "structure",
+      "members": {
+        "ccRecipients": {
+          "target": "com.microsoft.graph.invitations#InvitedUserMessageInfoCcRecipientsList",
+          "traits": {
+            "smithy.api#documentation": "Additional recipients the invitation message should be sent to. Currently only one additional recipient is supported."
+          }
+        },
+        "customizedMessageBody": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customized message body you want to send if you don't want the default message. Only plain text is allowed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "messageLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#Recipient": {
+      "type": "structure",
+      "members": {
+        "emailAddress": {
+          "target": "com.microsoft.graph.invitations#EmailAddress",
+          "traits": {
+            "smithy.api#documentation": "The recipient's email address.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#EmailAddress": {
+      "type": "structure",
+      "members": {
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the person or entity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the person or entity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#InvitedUserMessageInfoCcRecipientsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#Recipient"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional recipients the invitation message should be sent to. Currently only one additional recipient is supported."
+      }
+    },
+    "com.microsoft.graph.invitations#ListInvitationResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#Invitation"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitationResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.invitations#ListInvitationResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.invitations#ListInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#ListInvitationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#ListInvitationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from invitations",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.invitations#CreateInvitationRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "invitedUserDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the user being invited.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "invitedUserEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user being invited. Required. The following special characters aren't permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name, including at the beginning or end of the name."
+          }
+        },
+        "invitedUserMessageInfo": {
+          "target": "com.microsoft.graph.invitations#InvitedUserMessageInfo",
+          "traits": {
+            "smithy.api#documentation": "Contains configuration for the message being sent to the invited user, including customizing message text, language, and cc recipient list.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "invitedUserType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The userType of the user being invited. By default, this is Guest. You can invite as Member if you're a company administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "inviteRedeemUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL the user can use to redeem their invitation. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "inviteRedirectUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL the user should be redirected to after the invitation is redeemed. Required."
+          }
+        },
+        "resetRedemption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. When true, the invitedUser/id relationship is required. For more information about using this property, see Reset redemption status for a guest user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sendInvitationMessage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether an email should be sent to the user being invited. The default is false.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status of the invitation. The possible values are: PendingAcceptance, Completed, InProgress, and Error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#CreateInvitationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "invitedUserDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the user being invited.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "invitedUserEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user being invited. Required. The following special characters aren't permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name, including at the beginning or end of the name."
+          }
+        },
+        "invitedUserMessageInfo": {
+          "target": "com.microsoft.graph.invitations#InvitedUserMessageInfo",
+          "traits": {
+            "smithy.api#documentation": "Contains configuration for the message being sent to the invited user, including customizing message text, language, and cc recipient list.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "invitedUserType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The userType of the user being invited. By default, this is Guest. You can invite as Member if you're a company administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "inviteRedeemUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL the user can use to redeem their invitation. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "inviteRedirectUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL the user should be redirected to after the invitation is redeemed. Required."
+          }
+        },
+        "resetRedemption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. When true, the invitedUser/id relationship is required. For more information about using this property, see Reset redemption status for a guest user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sendInvitationMessage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether an email should be sent to the user being invited. The default is false.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status of the invitation. The possible values are: PendingAcceptance, Completed, InProgress, and Error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.invitations#CreateInvitation": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#CreateInvitationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#CreateInvitationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/invitations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create invitation\n\nUse this API to create a new invitation or reset the redemption status for a guest user who already redeemed their invitation. The invitation adds the external user to the organization as part of B2B collaboration. B2B collaboration is supported in both Microsoft Entra External ID in workforce and external tenants. When creating a new invitation, you have several options available:"
+      }
+    },
+    "com.microsoft.graph.invitations#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#AssignedLicense": {
+      "type": "structure",
+      "members": {
+        "disabledPlans": {
+          "target": "com.microsoft.graph.invitations#AssignedLicenseDisabledPlansList",
+          "traits": {
+            "smithy.api#documentation": "A collection of the unique identifiers for plans that have been disabled. IDs are available in servicePlans > servicePlanId in the tenant's subscribedSkus or serviceStatus > servicePlanId in the tenant's companySubscription."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the SKU. Corresponds to the skuId from subscribedSkus or companySubscription.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#AssignedLicenseDisabledPlansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of the unique identifiers for plans that have been disabled. IDs are available in servicePlans > servicePlanId in the tenant's subscribedSkus or serviceStatus > servicePlanId in the tenant's companySubscription."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseAssignedLicensesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#AssignedLicense"
+      },
+      "traits": {
+        "smithy.api#documentation": "The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate between directly assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly assigned and inherited licenses. Not nullable. Requires $select to retrieve. Supports $filter (eq, not, /$count eq 0, /$count ne 0)."
+      }
+    },
+    "com.microsoft.graph.invitations#AssignedPlan": {
+      "type": "structure",
+      "members": {
+        "assignedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service; for example, exchange.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlanId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseAssignedPlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#AssignedPlan"
+      },
+      "traits": {
+        "smithy.api#documentation": "The plans that are assigned to the user. Read-only. Not nullable. Requires $select to retrieve. Supports $filter (eq and not)."
+      }
+    },
+    "com.microsoft.graph.invitations#AuthorizationInfo": {
+      "type": "structure",
+      "members": {
+        "certificateUserIds": {
+          "target": "com.microsoft.graph.invitations#AuthorizationInfoCertificateUserIdsList"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#AuthorizationInfoCertificateUserIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseBusinessPhonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The telephone numbers for the user. NOTE: Although it's a string collection, only one number can be set for this property. Read-only for users synced from the on-premises directory. Returned by default. Supports $filter (eq, not, ge, le, startsWith). This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it."
+      }
+    },
+    "com.microsoft.graph.invitations#CustomSecurityAttributeValue": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#EmployeeOrgData": {
+      "type": "structure",
+      "members": {
+        "costCenter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cost center associated with the user. Requires $select to retrieve. Supports $filter.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "division": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the division in which the user works. Requires $select to retrieve. Supports $filter.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ObjectIdentity": {
+      "type": "structure",
+      "members": {
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the issuer of the identity, for example facebook.com. 512 character limit. For local accounts (where signInType isn't federated), this property is the local default domain name for the tenant, for example contoso.com.  For guests from other Microsoft Entra organizations, this is the domain of the federated organization, for example contoso.com. For more information about filtering behavior for this property, see Filtering on the identities property of a user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "issuerAssignedId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the unique identifier assigned to the user by the issuer. 64 character limit. The combination of issuer and issuerAssignedId must be unique within the organization. Represents the sign-in name for the user, when signInType is set to emailAddress or userName (also known as local accounts).When signInType is set to: emailAddress (or a custom string that starts with emailAddress like emailAddress1), issuerAssignedId must be a valid email addressuserName, issuerAssignedId must begin with an alphabetical character or number, and can only contain alphanumeric characters and the following symbols: - or _  For more information about filtering behavior for this property, see Filtering on the identities property of a user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signInType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the user sign-in types in your directory, such as emailAddress, userName, federated, or userPrincipalName. federated represents a unique identifier for a user from an issuer that can be in any format chosen by the issuer. Setting or updating a userPrincipalName identity updates the value of the userPrincipalName property on the user object. The validations performed on the userPrincipalName property on the user object, for example, verified domains and acceptable characters, are performed when setting or updating a userPrincipalName identity. Extra validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.  For more information about filtering behavior for this property, see Filtering on the identities property of a user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseIdentitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#ObjectIdentity"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the identities that can be used to sign in to this user account. Microsoft (also known as a local account), organizations, or social identity providers such as Facebook, Google, and Microsoft can provide identity and tie it to a user account. It might contain multiple items with the same signInType value. Requires $select to retrieve.  Supports $filter (eq) with limitations."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseImAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The instant message voice-over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Requires $select to retrieve. Supports $filter (eq, not, ge, le, startsWith)."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseInterestsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list for the user to describe their interests. Requires $select to retrieve."
+      }
+    },
+    "com.microsoft.graph.invitations#LicenseAssignmentState": {
+      "type": "structure",
+      "members": {
+        "assignedByGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the license is directly-assigned or inherited from a group. If directly-assigned, this field is null; if inherited through a group membership, this field contains the ID of the group. Read-Only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "disabledPlans": {
+          "target": "com.microsoft.graph.invitations#LicenseAssignmentStateDisabledPlansList",
+          "traits": {
+            "smithy.api#documentation": "The service plans that are disabled in this assignment. Read-Only."
+          }
+        },
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "License assignment failure error. If the license is assigned successfully, this field will be Null. Read-Only. The possible values are CountViolation, MutuallyExclusiveViolation, DependencyViolation, ProhibitedInUsageLocationViolation, UniquenessViolation, and Other. For more information on how to identify and resolve license assignment errors, see here.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the state of the license assignment was last updated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the SKU. Read-Only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicate the current state of this assignment. Read-Only. The possible values are Active, ActiveWithError, Disabled, and Error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#LicenseAssignmentStateDisabledPlansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The service plans that are disabled in this assignment. Read-Only."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseLicenseAssignmentStatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#LicenseAssignmentState"
+      },
+      "traits": {
+        "smithy.api#documentation": "State of license assignments for this user. Also indicates licenses that are directly assigned or the user inherited through group memberships. Read-only. Requires $select to retrieve."
+      }
+    },
+    "com.microsoft.graph.invitations#MailboxSettings": {
+      "type": "structure",
+      "members": {
+        "archiveFolder": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Folder ID of an archive folder for the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "automaticRepliesSetting": {
+          "target": "com.microsoft.graph.invitations#AutomaticRepliesSetting",
+          "traits": {
+            "smithy.api#documentation": "Configuration settings to automatically notify the sender of an incoming email with a message from the signed-in user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "dateFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date format for the user's mailbox.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "delegateMeetingMessageDeliveryOptions": {
+          "target": "com.microsoft.graph.invitations#DelegateMeetingMessageDeliveryOptions",
+          "traits": {
+            "smithy.api#documentation": "If the user has a calendar delegate, this specifies whether the delegate, mailbox owner, or both receive meeting messages and meeting responses. The possible values are: sendToDelegateAndInformationToPrincipal, sendToDelegateAndPrincipal, sendToDelegateOnly.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "language": {
+          "target": "com.microsoft.graph.invitations#LocaleInfo",
+          "traits": {
+            "smithy.api#documentation": "The locale information for the user, including the preferred language and country/region.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "timeFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time format for the user's mailbox.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default time zone for the user's mailbox.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPurpose": {
+          "target": "com.microsoft.graph.invitations#UserPurpose",
+          "traits": {
+            "smithy.api#documentation": "The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. The possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "workingHours": {
+          "target": "com.microsoft.graph.invitations#WorkingHours",
+          "traits": {
+            "smithy.api#documentation": "The days of the week and hours in a specific time zone that the user works.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#AutomaticRepliesSetting": {
+      "type": "structure",
+      "members": {
+        "externalAudience": {
+          "target": "com.microsoft.graph.invitations#ExternalAudienceScope",
+          "traits": {
+            "smithy.api#documentation": "The set of audience external to the signed-in user's organization who will receive the ExternalReplyMessage, if Status is AlwaysEnabled or Scheduled. The possible values are: none, contactsOnly, all.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalReplyMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The automatic reply to send to the specified external audience, if Status is AlwaysEnabled or Scheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "internalReplyMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The automatic reply to send to the audience internal to the signed-in user's organization, if Status is AlwaysEnabled or Scheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scheduledEndDateTime": {
+          "target": "com.microsoft.graph.invitations#DateTimeTimeZone",
+          "traits": {
+            "smithy.api#documentation": "The date and time that automatic replies are set to end, if Status is set to Scheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scheduledStartDateTime": {
+          "target": "com.microsoft.graph.invitations#DateTimeTimeZone",
+          "traits": {
+            "smithy.api#documentation": "The date and time that automatic replies are set to begin, if Status is set to Scheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.invitations#AutomaticRepliesStatus",
+          "traits": {
+            "smithy.api#documentation": "Configurations status for automatic replies. The possible values are: disabled, alwaysEnabled, scheduled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ExternalAudienceScope": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "CONTACTSONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contactsOnly"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#DateTimeTimeZone": {
+      "type": "structure",
+      "members": {
+        "dateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000)."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#AutomaticRepliesStatus": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ALWAYSENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alwaysEnabled"
+          }
+        },
+        "SCHEDULED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scheduled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#DelegateMeetingMessageDeliveryOptions": {
+      "type": "enum",
+      "members": {
+        "SENDTODELEGATEANDINFORMATIONTOPRINCIPAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sendToDelegateAndInformationToPrincipal"
+          }
+        },
+        "SENDTODELEGATEANDPRINCIPAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sendToDelegateAndPrincipal"
+          }
+        },
+        "SENDTODELEGATEONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sendToDelegateOnly"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#LocaleInfo": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A name representing the user's locale in natural language, for example, 'English (United States)'.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A locale representation for the user, which includes the user's preferred language and country/region. For example, 'en-us'. The language component follows 2-letter codes as defined in ISO 639-1, and the country component follows 2-letter codes as defined in ISO 3166-1 alpha-2.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#UserPurpose": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "LINKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linked"
+          }
+        },
+        "SHARED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shared"
+          }
+        },
+        "ROOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "room"
+          }
+        },
+        "EQUIPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equipment"
+          }
+        },
+        "OTHERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "others"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#WorkingHours": {
+      "type": "structure",
+      "members": {
+        "daysOfWeek": {
+          "target": "com.microsoft.graph.invitations#WorkingHoursDaysOfWeekList",
+          "traits": {
+            "smithy.api#documentation": "The days of the week on which the user works."
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of the day that the user stops working.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of the day that the user starts working.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "timeZone": {
+          "target": "com.microsoft.graph.invitations#TimeZoneBase",
+          "traits": {
+            "smithy.api#documentation": "The time zone to which the working hours apply.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#DayOfWeek": {
+      "type": "enum",
+      "members": {
+        "SUNDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sunday"
+          }
+        },
+        "MONDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monday"
+          }
+        },
+        "TUESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tuesday"
+          }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "saturday"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#WorkingHoursDaysOfWeekList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#DayOfWeek",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The days of the week on which the user works."
+      }
+    },
+    "com.microsoft.graph.invitations#TimeZoneBase": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of a time zone. It can be a standard time zone name such as 'Hawaii-Aleutian Standard Time', or 'Customized Time Zone' for a custom time zone.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#OnPremisesExtensionAttributes": {
+      "type": "structure",
+      "members": {
+        "extensionAttribute1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "First customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute10": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute11": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Eleventh customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute12": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Twelfth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute13": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Thirteenth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute14": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fourteenth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute15": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fifteenth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Second customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Third customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute4": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fourth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute5": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fifth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sixth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute7": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Seventh customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute8": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Eighth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "extensionAttribute9": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Ninth customizable extension attribute.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#OnPremisesProvisioningError": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Category of the provisioning error. Note: Currently, there is only one possible value. Possible value: PropertyConflict - indicates a property value is not unique. Other objects contain the same value for the property.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "occurredDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time at which the error occurred.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "propertyCausingError": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the property causing the error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseOnPremisesProvisioningErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#OnPremisesProvisioningError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Errors when using Microsoft synchronization product during provisioning. Requires $select to retrieve. Supports $filter (eq, not, ge, le)."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseOtherMailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of other email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. Can store up to 250 values, each with a limit of 250 characters. NOTE: This property can't contain accent characters. Requires $select to retrieve. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0). This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it."
+      }
+    },
+    "com.microsoft.graph.invitations#PasswordProfile": {
+      "type": "structure",
+      "members": {
+        "forceChangePasswordNextSignIn": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the user must change their password on the next sign-in; otherwise false.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "forceChangePasswordNextSignInWithMfa": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, at next sign-in, the user must perform a multifactor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multifactor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next sign-in. The password must satisfy minimum requirements as specified by the user's passwordPolicies property. By default, a strong password is required.",
+            "com.distilled.openapi#nullable": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponsePastProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list for the user to enumerate their past projects. Requires $select to retrieve."
+      }
+    },
+    "com.microsoft.graph.invitations#UserPrint": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ProvisionedPlan": {
+      "type": "structure",
+      "members": {
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "provisioningStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The possible values are:Success - Service is fully provisioned.Disabled - Service is disabled.Error - The service plan isn't provisioned and is in an error state.PendingInput - The service isn't provisioned and is awaiting service confirmation.PendingActivation - The service is provisioned but requires explicit activation by an administrator (for example, Intune_O365 service plan)PendingProvisioning - Microsoft has added a new service to the product SKU and it isn't activated in the tenant.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service; for example, 'AccessControlS2S'.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseProvisionedPlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#ProvisionedPlan"
+      },
+      "traits": {
+        "smithy.api#documentation": "The plans that are provisioned for the user. Read-only. Not nullable. Requires $select to retrieve. Supports $filter (eq, not, ge, le)."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseProxyAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address, while those addresses prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of 10 unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Requires $select to retrieve. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0)."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseResponsibilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list for the user to enumerate their responsibilities. Requires $select to retrieve."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseSchoolsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list for the user to enumerate the schools they attended. Requires $select to retrieve."
+      }
+    },
+    "com.microsoft.graph.invitations#ServiceProvisioningError": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time at which the error occurred.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isResolved": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the error has been attended to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "serviceInstance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Qualified service instance (for example, 'SharePoint/Dublin') that published the service error information.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseServiceProvisioningErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#ServiceProvisioningError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Errors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.  Supports $filter (eq, not, for isResolved and serviceInstance)."
+      }
+    },
+    "com.microsoft.graph.invitations#SignInActivity": {
+      "type": "structure",
+      "members": {
+        "lastNonInteractiveSignInDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last non-interactive sign-in date for a specific user. You can use this field to calculate the last time a client attempted (either successfully or unsuccessfully) to sign in to the directory on behalf of a user. Because some users may use clients to access tenant resources rather than signing into your tenant directly, you can use the non-interactive sign-in date to along with lastSignInDateTime to identify inactive users. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Microsoft Entra ID maintains non-interactive sign-ins going back to May 2020. For more information about using the value of this property, see Manage inactive user accounts in Microsoft Entra ID.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastNonInteractiveSignInRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request identifier of the last non-interactive sign-in performed by this user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastSignInDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last interactive sign-in date and time for a specific user. This property records the last time a user attempted an interactive sign-in to the directory—whether the attempt was successful or not. Note: Since unsuccessful attempts are also logged, this value might not accurately reflect actual system usage. For tracking actual account access, please use the lastSuccessfulSignInDateTime property. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastSignInRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request identifier of the last interactive sign-in performed by this user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastSuccessfulSignInDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of the user's most recent successful interactive or non-interactive sign-in. Use this property if you need to determine when the account was truly accessed. This field can be used to build reports, such as inactive users. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Microsoft Entra ID maintains interactive sign-ins going back to April 2020. For more information about using the value of this property, see Manage inactive user accounts in Microsoft Entra ID.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastSuccessfulSignInRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The request ID of the last successful sign-in.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponseSkillsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list for the user to enumerate their skills. Requires $select to retrieve."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "aboutMe": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A freeform text entry field for the user to describe themselves. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "accountEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the account is enabled; otherwise, false. This property is required when a user is created. Requires $select to retrieve. Supports $filter (eq, ne, not, and in). This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ageGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sets the age group of the user. Allowed values: null, Minor, NotAdult, and Adult. For more information, see legal age group property definitions. Requires $select to retrieve. Supports $filter (eq, ne, not, and in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "assignedLicenses": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseAssignedLicensesList",
+          "traits": {
+            "smithy.api#documentation": "The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate between directly assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly assigned and inherited licenses. Not nullable. Requires $select to retrieve. Supports $filter (eq, not, /$count eq 0, /$count ne 0)."
+          }
+        },
+        "assignedPlans": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseAssignedPlansList",
+          "traits": {
+            "smithy.api#documentation": "The plans that are assigned to the user. Read-only. Not nullable. Requires $select to retrieve. Supports $filter (eq and not)."
+          }
+        },
+        "authorizationInfo": {
+          "target": "com.microsoft.graph.invitations#AuthorizationInfo",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "birthday": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z. Requires $select to retrieve."
+          }
+        },
+        "businessPhones": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseBusinessPhonesList",
+          "traits": {
+            "smithy.api#documentation": "The telephone numbers for the user. NOTE: Although it's a string collection, only one number can be set for this property. Read-only for users synced from the on-premises directory. Returned by default. Supports $filter (eq, not, ge, le, startsWith). This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it."
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The city where the user is located. Maximum length is 128 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "companyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the company that the user is associated with. This property can be useful for describing the company that a guest comes from. The maximum length is 64 characters.Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consentProvidedForMinor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sets whether consent was obtained for minors. Allowed values: null, Granted, Denied, and NotRequired. For more information, see legal age group property definitions. Requires $select to retrieve. Supports $filter (eq, ne, not, and in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country or region where the user is located; for example, US or UK. Maximum length is 128 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time the user was created, in ISO 8601 format and UTC. The value can't be modified and is automatically populated when the entity is created. Nullable. For on-premises users, the value represents when they were first created in Microsoft Entra ID. Property is null for some users created before June 2018 and on-premises users that were synced to Microsoft Entra ID before June 2018. Read-only. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "creationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by a guest signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Requires $select to retrieve. Supports $filter (eq, ne, not, in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customSecurityAttributes": {
+          "target": "com.microsoft.graph.invitations#CustomSecurityAttributeValue",
+          "traits": {
+            "smithy.api#documentation": "An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Requires $select to retrieve. Supports $filter (eq, ne, not, startsWith). The filter value is case-sensitive. To read this property, the calling app must be assigned the CustomSecAttributeAssignment.Read.All permission. To write this property, the calling app must be assigned the CustomSecAttributeAssignment.ReadWrite.All permissions. To read or write this property in delegated scenarios, the admin must be assigned the Attribute Assignment Administrator role.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "department": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the department in which the user works. Maximum length is 64 characters. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceEnrollmentLimit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name displayed in the address book for the user. This value is usually the combination of the user's first name, middle initial, and family name. This property is required when a user is created and it can't be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderby, and $search.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "employeeHireDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the user was hired or will start work in a future hire. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "employeeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The employee identifier assigned to the user by the organization. The maximum length is 16 characters. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "employeeLeaveDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the user left or will leave the organization. To read this property, the calling app must be assigned the User-LifeCycleInfo.Read.All permission. To write this property, the calling app must be assigned the User.Read.All and User-LifeCycleInfo.ReadWrite.All permissions. To read this property in delegated scenarios, the admin needs at least one of the following Microsoft Entra roles: Lifecycle Workflows Administrator (least privilege), Global Reader. To write this property in delegated scenarios, the admin needs the Global Administrator role. Supports $filter (eq, ne, not , ge, le, in). For more information, see Configure the employeeLeaveDateTime property for a user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "employeeOrgData": {
+          "target": "com.microsoft.graph.invitations#EmployeeOrgData",
+          "traits": {
+            "smithy.api#documentation": "Represents organization data (for example, division and costCenter) associated with a user. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "employeeType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in, startsWith).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalUserState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For a guest invited to the tenant using the invitation API, this property represents the invited user's invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Requires $select to retrieve. Supports $filter (eq, ne, not , in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalUserStateChangeDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shows the timestamp for the latest change to the externalUserState property. Requires $select to retrieve. Supports $filter (eq, ne, not , in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "faxNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fax number of the user. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "givenName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The given name (first name) of the user. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hireDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z. Requires $select to retrieve.  Note: This property is specific to SharePoint in Microsoft 365. We recommend using the native employeeHireDate property to set and update hire date values using Microsoft Graph APIs."
+          }
+        },
+        "identities": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseIdentitiesList",
+          "traits": {
+            "smithy.api#documentation": "Represents the identities that can be used to sign in to this user account. Microsoft (also known as a local account), organizations, or social identity providers such as Facebook, Google, and Microsoft can provide identity and tie it to a user account. It might contain multiple items with the same signInType value. Requires $select to retrieve.  Supports $filter (eq) with limitations."
+          }
+        },
+        "identityParentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "imAddresses": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseImAddressesList",
+          "traits": {
+            "smithy.api#documentation": "The instant message voice-over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Requires $select to retrieve. Supports $filter (eq, not, ge, le, startsWith)."
+          }
+        },
+        "interests": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseInterestsList",
+          "traits": {
+            "smithy.api#documentation": "A list for the user to describe their interests. Requires $select to retrieve."
+          }
+        },
+        "isManagementRestricted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if the user is a member of a restricted management administrative unit. If not set, the default value is null and the default behavior is false. Read-only.  To manage a user who is a member of a restricted management administrative unit, the administrator or calling app must be assigned a Microsoft Entra role at the scope of the restricted management administrative unit. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isResourceAccount": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Don't use – reserved for future use.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "jobTitle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user's job title. Maximum length is 128 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastPasswordChangeDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time when this Microsoft Entra user last changed their password or when their password was created, whichever date the latest action was performed. The date and time information uses ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "legalAgeGroupClassification": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, Undefined,  MinorWithOutParentalConsent, MinorWithParentalConsent, MinorNoParentalConsentRequired, NotAdult, and Adult. For more information, see legal age group property definitions. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "licenseAssignmentStates": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseLicenseAssignmentStatesList",
+          "traits": {
+            "smithy.api#documentation": "State of license assignments for this user. Also indicates licenses that are directly assigned or the user inherited through group memberships. Read-only. Requires $select to retrieve."
+          }
+        },
+        "mail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SMTP address for the user, for example, jeff@contoso.com. Changes to this property update the user's proxyAddresses collection to include the value as an SMTP address. This property can't contain accent characters.  NOTE: We don't recommend updating this property for Azure AD B2C user profiles. Use the otherMails property instead. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mailboxSettings": {
+          "target": "com.microsoft.graph.invitations#MailboxSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mailNickname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mobilePhone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary cellular telephone number for the user. Read-only for users synced from the on-premises directory. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values) and $search. This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mySite": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL for the user's site. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "officeLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The office location in the user's place of business. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesDistinguishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesDomainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesExtensionAttributes": {
+          "target": "com.microsoft.graph.invitations#OnPremisesExtensionAttributes",
+          "traits": {
+            "smithy.api#documentation": "Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. Each attribute can store up to 1024 characters. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during the creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Requires $select to retrieve. Supports $filter (eq, ne, not, in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesImmutableId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is used to associate an on-premises Active Directory user account to their Microsoft Entra user object. This property must be specified when creating a new user account in the Graph if you're using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters can't be used when specifying this property. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in). This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesLastSyncDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesProvisioningErrors": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseOnPremisesProvisioningErrorsList",
+          "traits": {
+            "smithy.api#documentation": "Errors when using Microsoft synchronization product during provisioning. Requires $select to retrieve. Supports $filter (eq, not, ge, le)."
+          }
+        },
+        "onPremisesSamAccountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesSecurityIdentifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Requires $select to retrieve. Supports $filter (eq including on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesSyncEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Microsoft Entra ID. Read-only. Requires $select to retrieve. Supports $filter (eq, ne, not, in, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onPremisesUserPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "otherMails": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseOtherMailsList",
+          "traits": {
+            "smithy.api#documentation": "A list of other email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. Can store up to 250 values, each with a limit of 250 characters. NOTE: This property can't contain accent characters. Requires $select to retrieve. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0). This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it."
+          }
+        },
+        "passwordPolicies": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two might be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Requires $select to retrieve. For more information on the default password policies, see Microsoft Entra password policies. Supports $filter (ne, not, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordProfile": {
+          "target": "com.microsoft.graph.invitations#PasswordProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Requires $select to retrieve. Supports $filter (eq, ne, not, in, and eq on null values). To update this property:  User-PasswordProfile.ReadWrite.All is the least privileged permission to update this property.  In delegated scenarios, the User Administrator Microsoft Entra role is the least privileged admin role supported to update this property for nonadmin users. Privileged Authentication Administrator is the least privileged role that's allowed to update this property for all administrators in the tenant. In general, the signed-in user must have a higher privileged administrator role as indicated in Who can reset passwords.  In app-only scenarios, the calling app must be assigned a supported permission and at least the User Administrator Microsoft Entra role. This property is also subject to sensitive action restrictions.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "pastProjects": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponsePastProjectsList",
+          "traits": {
+            "smithy.api#documentation": "A list for the user to enumerate their past projects. Requires $select to retrieve."
+          }
+        },
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The postal code for the user's postal address. The postal code is specific to the user's country or region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredDataLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The preferred data location for the user. For more information, see OneDrive Online Multi-Geo.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The preferred language for the user. The preferred language format is based on RFC 4646. The name is a combination of an ISO 639 two-letter lowercase culture code associated with the language, and an ISO 3166 two-letter uppercase subculture code associated with the country or region. Example: 'en-US', or 'es-ES'. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The preferred name for the user. Not Supported. This attribute returns an empty string.Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "print": {
+          "target": "com.microsoft.graph.invitations#UserPrint",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "provisionedPlans": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseProvisionedPlansList",
+          "traits": {
+            "smithy.api#documentation": "The plans that are provisioned for the user. Read-only. Not nullable. Requires $select to retrieve. Supports $filter (eq, not, ge, le)."
+          }
+        },
+        "proxyAddresses": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseProxyAddressesList",
+          "traits": {
+            "smithy.api#documentation": "For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address, while those addresses prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of 10 unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Requires $select to retrieve. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0)."
+          }
+        },
+        "responsibilities": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseResponsibilitiesList",
+          "traits": {
+            "smithy.api#documentation": "A list for the user to enumerate their responsibilities. Requires $select to retrieve."
+          }
+        },
+        "schools": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseSchoolsList",
+          "traits": {
+            "smithy.api#documentation": "A list for the user to enumerate the schools they attended. Requires $select to retrieve."
+          }
+        },
+        "securityIdentifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "serviceProvisioningErrors": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseServiceProvisioningErrorsList",
+          "traits": {
+            "smithy.api#documentation": "Errors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.  Supports $filter (eq, not, for isResolved and serviceInstance)."
+          }
+        },
+        "showInAddressList": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signInActivity": {
+          "target": "com.microsoft.graph.invitations#SignInActivity",
+          "traits": {
+            "smithy.api#documentation": "Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require a Microsoft Entra ID P1 or P2 license and the AuditLog.Read.All permission.This property isn't returned for a user who never signed in or last signed in before April 2020.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "signInSessionsValidFromDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Any refresh tokens or session tokens (session cookies) issued before this time are invalid. Applications get an error when using an invalid refresh or session token to acquire a delegated access token (to access APIs such as Microsoft Graph). If this happens, the application needs to acquire a new refresh token by requesting the authorized endpoint. Read-only. Use revokeSignInSessions to reset. Requires $select to retrieve.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skills": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserResponseSkillsList",
+          "traits": {
+            "smithy.api#documentation": "A list for the user to enumerate their skills. Requires $select to retrieve."
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The state or province in the user's address. Maximum length is 128 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "streetAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The street address of the user's place of business. Maximum length is 1,024 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "surname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user's surname (family name or last name). Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "usageLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A two-letter country code (ISO standard 3166). Required for users that are assigned licenses due to legal requirements to check for availability of services in countries/regions. Examples include: US, JP, and GB. Not nullable. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user principal name (UPN) of the user. The UPN is an Internet-style sign-in name for the user based on the Internet standard RFC 822. By convention, this value should map to the user's email name. The general format is alias@domain, where the domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: This property can't contain accent characters. Only the following characters are allowed A - Z, a - z, 0 - 9, ' . - _ ! # ^ ~. For the complete list of allowed characters, see username policies. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith) and $orderby. This property is subject to sensitive action restrictions; only specific privileged administrator roles can update it.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string value that can be used to classify user types in your directory. The possible values are Member and Guest. Requires $select to retrieve. Supports $filter (eq, ne, not, in, and eq on null values). NOTE: For more information about the permissions for members and guests, see What are the default user permissions in Microsoft Entra ID?",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#GetInvitedUserRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#GetInvitedUserResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/invitedUser",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get invitedUser from invitations\n\nThe user created as part of the invitation creation. Read-only. The id property is required in the request body to reset a redemption status."
+      }
+    },
+    "com.microsoft.graph.invitations#GetMailboxSettingsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetMailboxSettingsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetMailboxSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.invitations#GetMailboxSettingsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.invitations#GetMailboxSettingsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#GetMailboxSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#GetMailboxSettingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#MailboxSettings"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/invitedUser/mailboxSettings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get mailboxSettings property value\n\nSettings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale, and time zone. Requires $select to retrieve."
+      }
+    },
+    "com.microsoft.graph.invitations#UpdateMailboxSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "archiveFolder": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Folder ID of an archive folder for the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "automaticRepliesSetting": {
+          "target": "com.microsoft.graph.invitations#AutomaticRepliesSetting",
+          "traits": {
+            "smithy.api#documentation": "Configuration settings to automatically notify the sender of an incoming email with a message from the signed-in user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "dateFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date format for the user's mailbox.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "delegateMeetingMessageDeliveryOptions": {
+          "target": "com.microsoft.graph.invitations#DelegateMeetingMessageDeliveryOptions",
+          "traits": {
+            "smithy.api#documentation": "If the user has a calendar delegate, this specifies whether the delegate, mailbox owner, or both receive meeting messages and meeting responses. The possible values are: sendToDelegateAndInformationToPrincipal, sendToDelegateAndPrincipal, sendToDelegateOnly.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "language": {
+          "target": "com.microsoft.graph.invitations#LocaleInfo",
+          "traits": {
+            "smithy.api#documentation": "The locale information for the user, including the preferred language and country/region.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "timeFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time format for the user's mailbox.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default time zone for the user's mailbox.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPurpose": {
+          "target": "com.microsoft.graph.invitations#UserPurpose",
+          "traits": {
+            "smithy.api#documentation": "The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. The possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "workingHours": {
+          "target": "com.microsoft.graph.invitations#WorkingHours",
+          "traits": {
+            "smithy.api#documentation": "The days of the week and hours in a specific time zone that the user works.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#UpdateMailboxSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#UpdateMailboxSettingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#MailboxSettings"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/invitations/invitedUser/mailboxSettings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update property mailboxSettings value."
+      }
+    },
+    "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#ListServiceProvisioningErrorsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#ServiceProvisioningError"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListServiceProvisioningErrorsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.invitations#ListServiceProvisioningErrorsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.invitations#ListServiceProvisioningErrors": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#ListServiceProvisioningErrorsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#ListServiceProvisioningErrorsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/invitedUser/serviceProvisioningErrors",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get serviceProvisioningErrors property value\n\nErrors published by a federated service describing a nontransient, service-specific error regarding the properties or link from a user object.  Supports $filter (eq, not, for isResolved and serviceInstance).",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.invitations#GetServiceProvisioningErrorsCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#GetServiceProvisioningErrorsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#GetServiceProvisioningErrorsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/invitedUser/serviceProvisioningErrors/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#DirectoryObject": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitedUserSponsorsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.invitations#DirectoryObject"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#ListInvitedUserSponsorsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.invitations#ListInvitedUserSponsorsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.invitations#ListInvitedUserSponsors": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#ListInvitedUserSponsorsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#ListInvitedUserSponsorsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/invitedUserSponsors",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get invitedUserSponsors from invitations\n\nThe users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserSponsorsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserSponsorsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserSponsorsRequest": {
+      "type": "structure",
+      "members": {
+        "directoryObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryObject"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserSponsorsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserSponsorsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserSponsorsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserSponsors": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#GetInvitedUserSponsorsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.invitations#GetInvitedUserSponsorsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/invitedUserSponsors/{directoryObjectId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get invitedUserSponsors from invitations\n\nThe users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date."
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserSponsorsCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.invitations#GetInvitedUserSponsorsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.invitations#GetInvitedUserSponsorsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/invitations/invitedUserSponsors/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.invitations#Invitations": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.invitations#ListInvitation"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#CreateInvitation"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#GetCount"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#GetInvitedUser"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#GetMailboxSettings"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#UpdateMailboxSettings"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#ListServiceProvisioningErrors"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#GetServiceProvisioningErrorsCount"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#ListInvitedUserSponsors"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserSponsors"
+        },
+        {
+          "target": "com.microsoft.graph.invitations#GetInvitedUserSponsorsCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

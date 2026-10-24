@@ -15,13 +15,128 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.storagesync#WorkflowsAbort": "com.azure.storagesync#AbortWorkflow",
+      "com.azure.storagesync#WorkflowsAbortRequest": "com.azure.storagesync#AbortWorkflowRequest",
+      "com.azure.storagesync#WorkflowsGet": "com.azure.storagesync#GetWorkflow",
+      "com.azure.storagesync#WorkflowsGetResponse": "com.azure.storagesync#GetWorkflowResponse",
+      "com.azure.storagesync#WorkflowsGetRequest": "com.azure.storagesync#GetWorkflowRequest",
+      "com.azure.storagesync#WorkflowsListByStorageSyncService": "com.azure.storagesync#ListWorkflowByStorageSyncService",
+      "com.azure.storagesync#WorkflowsListByStorageSyncServiceRequest": "com.azure.storagesync#ListWorkflowByStorageSyncServiceRequest",
+      "com.azure.storagesync#ServerEndpointsDelete": "com.azure.storagesync#DeleteServerEndpoint",
+      "com.azure.storagesync#ServerEndpointsDeleteResponse": "com.azure.storagesync#DeleteServerEndpointResponse",
+      "com.azure.storagesync#ServerEndpointsDeleteRequest": "com.azure.storagesync#DeleteServerEndpointRequest",
+      "com.azure.storagesync#ServerEndpointsUpdate": "com.azure.storagesync#UpdateServerEndpoint",
+      "com.azure.storagesync#ServerEndpointsUpdateResponse": "com.azure.storagesync#UpdateServerEndpointResponse",
+      "com.azure.storagesync#ServerEndpointsUpdateRequest": "com.azure.storagesync#UpdateServerEndpointRequest",
+      "com.azure.storagesync#ServerEndpointsCreate": "com.azure.storagesync#CreateServerEndpoint",
+      "com.azure.storagesync#ServerEndpointsCreateResponse": "com.azure.storagesync#CreateServerEndpointResponse",
+      "com.azure.storagesync#ServerEndpointsCreateRequest": "com.azure.storagesync#CreateServerEndpointRequest",
+      "com.azure.storagesync#ServerEndpointsGet": "com.azure.storagesync#GetServerEndpoint",
+      "com.azure.storagesync#ServerEndpointsGetResponse": "com.azure.storagesync#GetServerEndpointResponse",
+      "com.azure.storagesync#ServerEndpointsGetRequest": "com.azure.storagesync#GetServerEndpointRequest",
+      "com.azure.storagesync#ServerEndpointsListBySyncGroup": "com.azure.storagesync#ListServerEndpointBySyncGroup",
+      "com.azure.storagesync#ServerEndpointsListBySyncGroupRequest": "com.azure.storagesync#ListServerEndpointBySyncGroupRequest",
+      "com.azure.storagesync#CloudEndpointsTriggerChangeDetection": "com.azure.storagesync#TriggerCloudEndpointChangeDetection",
+      "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionResponse": "com.azure.storagesync#TriggerCloudEndpointChangeDetectionResponse",
+      "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequest": "com.azure.storagesync#TriggerCloudEndpointChangeDetectionRequest",
+      "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequestPathsList": "com.azure.storagesync#TriggerCloudEndpointChangeDetectionRequestPathsList",
+      "com.azure.storagesync#CloudEndpointsPostBackup": "com.azure.storagesync#PostCloudEndpointBackup",
+      "com.azure.storagesync#CloudEndpointsPostBackupRequest": "com.azure.storagesync#PostCloudEndpointBackupRequest",
+      "com.azure.storagesync#CloudEndpointsDelete": "com.azure.storagesync#DeleteCloudEndpoint",
+      "com.azure.storagesync#CloudEndpointsDeleteResponse": "com.azure.storagesync#DeleteCloudEndpointResponse",
+      "com.azure.storagesync#CloudEndpointsDeleteRequest": "com.azure.storagesync#DeleteCloudEndpointRequest",
+      "com.azure.storagesync#CloudEndpointsUpdate": "com.azure.storagesync#UpdateCloudEndpoint",
+      "com.azure.storagesync#CloudEndpointsUpdateResponse": "com.azure.storagesync#UpdateCloudEndpointResponse",
+      "com.azure.storagesync#CloudEndpointsUpdateRequest": "com.azure.storagesync#UpdateCloudEndpointRequest",
+      "com.azure.storagesync#CloudEndpointsCreate": "com.azure.storagesync#CreateCloudEndpoint",
+      "com.azure.storagesync#CloudEndpointsCreateResponse": "com.azure.storagesync#CreateCloudEndpointResponse",
+      "com.azure.storagesync#CloudEndpointsCreateRequest": "com.azure.storagesync#CreateCloudEndpointRequest",
+      "com.azure.storagesync#CloudEndpointsGet": "com.azure.storagesync#GetCloudEndpoint",
+      "com.azure.storagesync#CloudEndpointsGetResponse": "com.azure.storagesync#GetCloudEndpointResponse",
+      "com.azure.storagesync#CloudEndpointsGetRequest": "com.azure.storagesync#GetCloudEndpointRequest",
+      "com.azure.storagesync#CloudEndpointsListBySyncGroup": "com.azure.storagesync#ListCloudEndpointBySyncGroup",
+      "com.azure.storagesync#CloudEndpointsListBySyncGroupRequest": "com.azure.storagesync#ListCloudEndpointBySyncGroupRequest",
+      "com.azure.storagesync#SyncGroupsDelete": "com.azure.storagesync#DeleteSyncGroup",
+      "com.azure.storagesync#SyncGroupsDeleteRequest": "com.azure.storagesync#DeleteSyncGroupRequest",
+      "com.azure.storagesync#SyncGroupsCreate": "com.azure.storagesync#CreateSyncGroup",
+      "com.azure.storagesync#SyncGroupsCreateResponse": "com.azure.storagesync#CreateSyncGroupResponse",
+      "com.azure.storagesync#SyncGroupsCreateRequest": "com.azure.storagesync#CreateSyncGroupRequest",
+      "com.azure.storagesync#SyncGroupsGet": "com.azure.storagesync#GetSyncGroup",
+      "com.azure.storagesync#SyncGroupsGetResponse": "com.azure.storagesync#GetSyncGroupResponse",
+      "com.azure.storagesync#SyncGroupsGetRequest": "com.azure.storagesync#GetSyncGroupRequest",
+      "com.azure.storagesync#SyncGroupsListByStorageSyncService": "com.azure.storagesync#ListSyncGroupByStorageSyncService",
+      "com.azure.storagesync#SyncGroupsListByStorageSyncServiceRequest": "com.azure.storagesync#ListSyncGroupByStorageSyncServiceRequest",
+      "com.azure.storagesync#RegisteredServersTriggerRollover": "com.azure.storagesync#TriggerRegisteredServerRollover",
+      "com.azure.storagesync#RegisteredServersTriggerRolloverResponse": "com.azure.storagesync#TriggerRegisteredServerRolloverResponse",
+      "com.azure.storagesync#RegisteredServersTriggerRolloverRequest": "com.azure.storagesync#TriggerRegisteredServerRolloverRequest",
+      "com.azure.storagesync#RegisteredServersDelete": "com.azure.storagesync#DeleteRegisteredServer",
+      "com.azure.storagesync#RegisteredServersDeleteResponse": "com.azure.storagesync#DeleteRegisteredServerResponse",
+      "com.azure.storagesync#RegisteredServersDeleteRequest": "com.azure.storagesync#DeleteRegisteredServerRequest",
+      "com.azure.storagesync#RegisteredServersUpdate": "com.azure.storagesync#UpdateRegisteredServer",
+      "com.azure.storagesync#RegisteredServersUpdateResponse": "com.azure.storagesync#UpdateRegisteredServerResponse",
+      "com.azure.storagesync#RegisteredServersUpdateRequest": "com.azure.storagesync#UpdateRegisteredServerRequest",
+      "com.azure.storagesync#RegisteredServersCreate": "com.azure.storagesync#CreateRegisteredServer",
+      "com.azure.storagesync#RegisteredServersCreateResponse": "com.azure.storagesync#CreateRegisteredServerResponse",
+      "com.azure.storagesync#RegisteredServersCreateRequest": "com.azure.storagesync#CreateRegisteredServerRequest",
+      "com.azure.storagesync#RegisteredServersGet": "com.azure.storagesync#GetRegisteredServer",
+      "com.azure.storagesync#RegisteredServersGetResponse": "com.azure.storagesync#GetRegisteredServerResponse",
+      "com.azure.storagesync#RegisteredServersGetRequest": "com.azure.storagesync#GetRegisteredServerRequest",
+      "com.azure.storagesync#RegisteredServersListByStorageSyncService": "com.azure.storagesync#ListRegisteredServerByStorageSyncService",
+      "com.azure.storagesync#RegisteredServersListByStorageSyncServiceRequest": "com.azure.storagesync#ListRegisteredServerByStorageSyncServiceRequest",
+      "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncService": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncService",
+      "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceResponse": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceResponse",
+      "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceResponseValueList": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceResponseValueList",
+      "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceRequest": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceRequest",
+      "com.azure.storagesync#PrivateEndpointConnectionsDelete": "com.azure.storagesync#DeletePrivateEndpointConnection",
+      "com.azure.storagesync#PrivateEndpointConnectionsDeleteResponse": "com.azure.storagesync#DeletePrivateEndpointConnectionResponse",
+      "com.azure.storagesync#PrivateEndpointConnectionsDeleteRequest": "com.azure.storagesync#DeletePrivateEndpointConnectionRequest",
+      "com.azure.storagesync#PrivateEndpointConnectionsCreate": "com.azure.storagesync#CreatePrivateEndpointConnection",
+      "com.azure.storagesync#PrivateEndpointConnectionsCreateResponse": "com.azure.storagesync#CreatePrivateEndpointConnectionResponse",
+      "com.azure.storagesync#PrivateEndpointConnectionsCreateRequest": "com.azure.storagesync#CreatePrivateEndpointConnectionRequest",
+      "com.azure.storagesync#PrivateEndpointConnectionsGet": "com.azure.storagesync#GetPrivateEndpointConnection",
+      "com.azure.storagesync#PrivateEndpointConnectionsGetResponse": "com.azure.storagesync#GetPrivateEndpointConnectionResponse",
+      "com.azure.storagesync#PrivateEndpointConnectionsGetRequest": "com.azure.storagesync#GetPrivateEndpointConnectionRequest",
+      "com.azure.storagesync#PrivateEndpointConnectionsListByStorageSyncService": "com.azure.storagesync#ListPrivateEndpointConnectionByStorageSyncService",
+      "com.azure.storagesync#PrivateEndpointConnectionsListByStorageSyncServiceRequest": "com.azure.storagesync#ListPrivateEndpointConnectionByStorageSyncServiceRequest",
+      "com.azure.storagesync#StorageSyncServicesDelete": "com.azure.storagesync#DeleteStorageSyncService",
+      "com.azure.storagesync#StorageSyncServicesDeleteResponse": "com.azure.storagesync#DeleteStorageSyncServiceResponse",
+      "com.azure.storagesync#StorageSyncServicesDeleteRequest": "com.azure.storagesync#DeleteStorageSyncServiceRequest",
+      "com.azure.storagesync#StorageSyncServicesUpdate": "com.azure.storagesync#UpdateStorageSyncService",
+      "com.azure.storagesync#StorageSyncServicesUpdateResponse": "com.azure.storagesync#UpdateStorageSyncServiceResponse",
+      "com.azure.storagesync#StorageSyncServicesUpdateResponseIdentity": "com.azure.storagesync#UpdateStorageSyncServiceResponseIdentity",
+      "com.azure.storagesync#StorageSyncServicesUpdateResponseTagsMap": "com.azure.storagesync#UpdateStorageSyncServiceResponseTagsMap",
+      "com.azure.storagesync#StorageSyncServicesUpdateRequest": "com.azure.storagesync#UpdateStorageSyncServiceRequest",
+      "com.azure.storagesync#StorageSyncServicesUpdateRequestIdentity": "com.azure.storagesync#UpdateStorageSyncServiceRequestIdentity",
+      "com.azure.storagesync#StorageSyncServicesUpdateRequestTagsMap": "com.azure.storagesync#UpdateStorageSyncServiceRequestTagsMap",
+      "com.azure.storagesync#StorageSyncServicesCreate": "com.azure.storagesync#CreateStorageSyncService",
+      "com.azure.storagesync#StorageSyncServicesCreateResponse": "com.azure.storagesync#CreateStorageSyncServiceResponse",
+      "com.azure.storagesync#StorageSyncServicesCreateResponseIdentity": "com.azure.storagesync#CreateStorageSyncServiceResponseIdentity",
+      "com.azure.storagesync#StorageSyncServicesCreateResponseTagsMap": "com.azure.storagesync#CreateStorageSyncServiceResponseTagsMap",
+      "com.azure.storagesync#StorageSyncServicesCreateRequest": "com.azure.storagesync#CreateStorageSyncServiceRequest",
+      "com.azure.storagesync#StorageSyncServicesCreateRequestIdentity": "com.azure.storagesync#CreateStorageSyncServiceRequestIdentity",
+      "com.azure.storagesync#StorageSyncServicesCreateRequestTagsMap": "com.azure.storagesync#CreateStorageSyncServiceRequestTagsMap",
+      "com.azure.storagesync#StorageSyncServicesGet": "com.azure.storagesync#GetStorageSyncService",
+      "com.azure.storagesync#StorageSyncServicesGetResponse": "com.azure.storagesync#GetStorageSyncServiceResponse",
+      "com.azure.storagesync#StorageSyncServicesGetResponseIdentity": "com.azure.storagesync#GetStorageSyncServiceResponseIdentity",
+      "com.azure.storagesync#StorageSyncServicesGetResponseTagsMap": "com.azure.storagesync#GetStorageSyncServiceResponseTagsMap",
+      "com.azure.storagesync#StorageSyncServicesGetRequest": "com.azure.storagesync#GetStorageSyncServiceRequest",
+      "com.azure.storagesync#StorageSyncServicesListByResourceGroup": "com.azure.storagesync#ListStorageSyncServiceByResourceGroup",
+      "com.azure.storagesync#StorageSyncServicesListByResourceGroupRequest": "com.azure.storagesync#ListStorageSyncServiceByResourceGroupRequest",
+      "com.azure.storagesync#OperationStatusGet": "com.azure.storagesync#GetOperationStatus",
+      "com.azure.storagesync#OperationStatusGetRequest": "com.azure.storagesync#GetOperationStatusRequest",
+      "com.azure.storagesync#StorageSyncServicesListBySubscription": "com.azure.storagesync#ListStorageSyncServiceBySubscription",
+      "com.azure.storagesync#StorageSyncServicesListBySubscriptionRequest": "com.azure.storagesync#ListStorageSyncServiceBySubscriptionRequest",
+      "com.azure.storagesync#StorageSyncServicesCheckNameAvailability": "com.azure.storagesync#CheckStorageSyncServiceNameAvailability",
+      "com.azure.storagesync#StorageSyncServicesCheckNameAvailabilityRequest": "com.azure.storagesync#CheckStorageSyncServiceNameAvailabilityRequest",
+      "com.azure.storagesync#OperationsList": "com.azure.storagesync#ListOperations"
+    }
   },
   "shapes": {
-    "com.azure.storagesync#AbortWorkflow": {
+    "com.azure.storagesync#WorkflowsAbort": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#AbortWorkflowRequest"
+        "target": "com.azure.storagesync#WorkflowsAbortRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -37,7 +152,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#AbortWorkflowRequest": {
+    "com.azure.storagesync#WorkflowsAbortRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -77,13 +192,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#GetWorkflow": {
+    "com.azure.storagesync#WorkflowsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetWorkflowRequest"
+        "target": "com.azure.storagesync#WorkflowsGetRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#GetWorkflowResponse"
+        "target": "com.azure.storagesync#WorkflowsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -96,7 +211,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#GetWorkflowResponse": {
+    "com.azure.storagesync#WorkflowsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -362,7 +477,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.storagesync#GetWorkflowRequest": {
+    "com.azure.storagesync#WorkflowsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -402,10 +517,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListWorkflowByStorageSyncService": {
+    "com.azure.storagesync#WorkflowsListByStorageSyncService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListWorkflowByStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#WorkflowsListByStorageSyncServiceRequest"
       },
       "output": {
         "target": "com.azure.storagesync#WorkflowArray"
@@ -488,7 +603,7 @@
         "smithy.api#documentation": "Workflow resource."
       }
     },
-    "com.azure.storagesync#ListWorkflowByStorageSyncServiceRequest": {
+    "com.azure.storagesync#WorkflowsListByStorageSyncServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -621,13 +736,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#DeleteServerEndpoint": {
+    "com.azure.storagesync#ServerEndpointsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#DeleteServerEndpointRequest"
+        "target": "com.azure.storagesync#ServerEndpointsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#DeleteServerEndpointResponse"
+        "target": "com.azure.storagesync#ServerEndpointsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -640,7 +755,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#DeleteServerEndpointResponse": {
+    "com.azure.storagesync#ServerEndpointsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -662,7 +777,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#DeleteServerEndpointRequest": {
+    "com.azure.storagesync#ServerEndpointsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -710,13 +825,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#UpdateServerEndpoint": {
+    "com.azure.storagesync#ServerEndpointsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#UpdateServerEndpointRequest"
+        "target": "com.azure.storagesync#ServerEndpointsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#UpdateServerEndpointResponse"
+        "target": "com.azure.storagesync#ServerEndpointsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -729,7 +844,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#UpdateServerEndpointResponse": {
+    "com.azure.storagesync#ServerEndpointsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1962,7 +2077,7 @@
         "smithy.api#documentation": "Type of the sync activity state"
       }
     },
-    "com.azure.storagesync#UpdateServerEndpointRequest": {
+    "com.azure.storagesync#ServerEndpointsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2080,13 +2195,13 @@
         "smithy.api#documentation": "Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access."
       }
     },
-    "com.azure.storagesync#CreateServerEndpoint": {
+    "com.azure.storagesync#ServerEndpointsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CreateServerEndpointRequest"
+        "target": "com.azure.storagesync#ServerEndpointsCreateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#CreateServerEndpointResponse"
+        "target": "com.azure.storagesync#ServerEndpointsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2099,7 +2214,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#CreateServerEndpointResponse": {
+    "com.azure.storagesync#ServerEndpointsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2158,7 +2273,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#CreateServerEndpointRequest": {
+    "com.azure.storagesync#ServerEndpointsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2352,13 +2467,13 @@
         "smithy.api#documentation": "Policy for how namespace and files are recalled during FastDr."
       }
     },
-    "com.azure.storagesync#GetServerEndpoint": {
+    "com.azure.storagesync#ServerEndpointsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetServerEndpointRequest"
+        "target": "com.azure.storagesync#ServerEndpointsGetRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#GetServerEndpointResponse"
+        "target": "com.azure.storagesync#ServerEndpointsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2371,7 +2486,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#GetServerEndpointResponse": {
+    "com.azure.storagesync#ServerEndpointsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2409,7 +2524,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#GetServerEndpointRequest": {
+    "com.azure.storagesync#ServerEndpointsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2457,10 +2572,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListServerEndpointBySyncGroup": {
+    "com.azure.storagesync#ServerEndpointsListBySyncGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListServerEndpointBySyncGroupRequest"
+        "target": "com.azure.storagesync#ServerEndpointsListBySyncGroupRequest"
       },
       "output": {
         "target": "com.azure.storagesync#ServerEndpointArray"
@@ -2550,7 +2665,7 @@
         "smithy.api#documentation": "Server Endpoint object."
       }
     },
-    "com.azure.storagesync#ListServerEndpointBySyncGroupRequest": {
+    "com.azure.storagesync#ServerEndpointsListBySyncGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2590,13 +2705,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#TriggerCloudEndpointChangeDetection": {
+    "com.azure.storagesync#CloudEndpointsTriggerChangeDetection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#TriggerCloudEndpointChangeDetectionRequest"
+        "target": "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#TriggerCloudEndpointChangeDetectionResponse"
+        "target": "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2609,7 +2724,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#TriggerCloudEndpointChangeDetectionResponse": {
+    "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2631,7 +2746,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#TriggerCloudEndpointChangeDetectionRequest": {
+    "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2687,7 +2802,7 @@
           }
         },
         "paths": {
-          "target": "com.azure.storagesync#TriggerCloudEndpointChangeDetectionRequestPathsList",
+          "target": "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequestPathsList",
           "traits": {
             "smithy.api#documentation": "Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories."
           }
@@ -2697,7 +2812,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#TriggerCloudEndpointChangeDetectionRequestPathsList": {
+    "com.azure.storagesync#CloudEndpointsTriggerChangeDetectionRequestPathsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2793,13 +2908,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#RestoreCloudEndpointsPre": {
+    "com.azure.storagesync#CloudEndpointsPreRestore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#RestoreCloudEndpointsPreRequest"
+        "target": "com.azure.storagesync#CloudEndpointsPreRestoreRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#RestoreCloudEndpointsPreResponse"
+        "target": "com.azure.storagesync#CloudEndpointsPreRestoreResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2812,7 +2927,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#RestoreCloudEndpointsPreResponse": {
+    "com.azure.storagesync#CloudEndpointsPreRestoreResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2834,7 +2949,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#RestoreCloudEndpointsPreRequest": {
+    "com.azure.storagesync#CloudEndpointsPreRestoreRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2920,7 +3035,7 @@
           }
         },
         "restoreFileSpec": {
-          "target": "com.azure.storagesync#RestoreCloudEndpointsPreRequestRestoreFileSpecList",
+          "target": "com.azure.storagesync#CloudEndpointsPreRestoreRequestRestoreFileSpecList",
           "traits": {
             "smithy.api#documentation": "Pre Restore restore file spec array."
           }
@@ -2936,7 +3051,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#RestoreCloudEndpointsPreRequestRestoreFileSpecList": {
+    "com.azure.storagesync#CloudEndpointsPreRestoreRequestRestoreFileSpecList": {
       "type": "list",
       "member": {
         "target": "com.azure.storagesync#RestoreFileSpec"
@@ -3206,10 +3321,10 @@
         "smithy.api#documentation": "Post Restore restore file spec array."
       }
     },
-    "com.azure.storagesync#PostCloudEndpointBackup": {
+    "com.azure.storagesync#CloudEndpointsPostBackup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#PostCloudEndpointBackupRequest"
+        "target": "com.azure.storagesync#CloudEndpointsPostBackupRequest"
       },
       "output": {
         "target": "com.azure.storagesync#PostBackupResponse"
@@ -3267,7 +3382,7 @@
         "smithy.api#documentation": "Post Backup Response Properties object."
       }
     },
-    "com.azure.storagesync#PostCloudEndpointBackupRequest": {
+    "com.azure.storagesync#CloudEndpointsPostBackupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3408,13 +3523,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#DeleteCloudEndpoint": {
+    "com.azure.storagesync#CloudEndpointsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#DeleteCloudEndpointRequest"
+        "target": "com.azure.storagesync#CloudEndpointsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#DeleteCloudEndpointResponse"
+        "target": "com.azure.storagesync#CloudEndpointsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3427,7 +3542,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#DeleteCloudEndpointResponse": {
+    "com.azure.storagesync#CloudEndpointsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -3456,7 +3571,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#DeleteCloudEndpointRequest": {
+    "com.azure.storagesync#CloudEndpointsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3504,13 +3619,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#UpdateCloudEndpoint": {
+    "com.azure.storagesync#CloudEndpointsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#UpdateCloudEndpointRequest"
+        "target": "com.azure.storagesync#CloudEndpointsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#UpdateCloudEndpointResponse"
+        "target": "com.azure.storagesync#CloudEndpointsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3523,7 +3638,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#UpdateCloudEndpointResponse": {
+    "com.azure.storagesync#CloudEndpointsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3852,7 +3967,7 @@
         "smithy.api#documentation": "Cloud endpoint change enumeration status object"
       }
     },
-    "com.azure.storagesync#UpdateCloudEndpointRequest": {
+    "com.azure.storagesync#CloudEndpointsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3920,13 +4035,13 @@
         "smithy.api#documentation": "CloudEndpoint Update Properties object."
       }
     },
-    "com.azure.storagesync#CreateCloudEndpoint": {
+    "com.azure.storagesync#CloudEndpointsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CreateCloudEndpointRequest"
+        "target": "com.azure.storagesync#CloudEndpointsCreateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#CreateCloudEndpointResponse"
+        "target": "com.azure.storagesync#CloudEndpointsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3939,7 +4054,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#CreateCloudEndpointResponse": {
+    "com.azure.storagesync#CloudEndpointsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3998,7 +4113,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#CreateCloudEndpointRequest": {
+    "com.azure.storagesync#CloudEndpointsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4090,13 +4205,13 @@
         "smithy.api#documentation": "CloudEndpoint Properties object."
       }
     },
-    "com.azure.storagesync#GetCloudEndpoint": {
+    "com.azure.storagesync#CloudEndpointsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetCloudEndpointRequest"
+        "target": "com.azure.storagesync#CloudEndpointsGetRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#GetCloudEndpointResponse"
+        "target": "com.azure.storagesync#CloudEndpointsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4109,7 +4224,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#GetCloudEndpointResponse": {
+    "com.azure.storagesync#CloudEndpointsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4147,7 +4262,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#GetCloudEndpointRequest": {
+    "com.azure.storagesync#CloudEndpointsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4195,10 +4310,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListCloudEndpointBySyncGroup": {
+    "com.azure.storagesync#CloudEndpointsListBySyncGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListCloudEndpointBySyncGroupRequest"
+        "target": "com.azure.storagesync#CloudEndpointsListBySyncGroupRequest"
       },
       "output": {
         "target": "com.azure.storagesync#CloudEndpointArray"
@@ -4281,7 +4396,7 @@
         "smithy.api#documentation": "Cloud Endpoint object."
       }
     },
-    "com.azure.storagesync#ListCloudEndpointBySyncGroupRequest": {
+    "com.azure.storagesync#CloudEndpointsListBySyncGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4321,10 +4436,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#DeleteSyncGroup": {
+    "com.azure.storagesync#SyncGroupsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#DeleteSyncGroupRequest"
+        "target": "com.azure.storagesync#SyncGroupsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4340,7 +4455,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#DeleteSyncGroupRequest": {
+    "com.azure.storagesync#SyncGroupsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4380,13 +4495,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#CreateSyncGroup": {
+    "com.azure.storagesync#SyncGroupsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CreateSyncGroupRequest"
+        "target": "com.azure.storagesync#SyncGroupsCreateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#CreateSyncGroupResponse"
+        "target": "com.azure.storagesync#SyncGroupsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4399,7 +4514,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#CreateSyncGroupResponse": {
+    "com.azure.storagesync#SyncGroupsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4457,7 +4572,7 @@
         "smithy.api#documentation": "SyncGroup Properties object."
       }
     },
-    "com.azure.storagesync#CreateSyncGroupRequest": {
+    "com.azure.storagesync#SyncGroupsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4503,13 +4618,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#GetSyncGroup": {
+    "com.azure.storagesync#SyncGroupsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetSyncGroupRequest"
+        "target": "com.azure.storagesync#SyncGroupsGetRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#GetSyncGroupResponse"
+        "target": "com.azure.storagesync#SyncGroupsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4522,7 +4637,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#GetSyncGroupResponse": {
+    "com.azure.storagesync#SyncGroupsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4560,7 +4675,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#GetSyncGroupRequest": {
+    "com.azure.storagesync#SyncGroupsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4600,10 +4715,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListSyncGroupByStorageSyncService": {
+    "com.azure.storagesync#SyncGroupsListByStorageSyncService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListSyncGroupByStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#SyncGroupsListByStorageSyncServiceRequest"
       },
       "output": {
         "target": "com.azure.storagesync#SyncGroupArray"
@@ -4686,7 +4801,7 @@
         "smithy.api#documentation": "Sync Group object."
       }
     },
-    "com.azure.storagesync#ListSyncGroupByStorageSyncServiceRequest": {
+    "com.azure.storagesync#SyncGroupsListByStorageSyncServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4718,13 +4833,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#TriggerRegisteredServerRollover": {
+    "com.azure.storagesync#RegisteredServersTriggerRollover": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#TriggerRegisteredServerRolloverRequest"
+        "target": "com.azure.storagesync#RegisteredServersTriggerRolloverRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#TriggerRegisteredServerRolloverResponse"
+        "target": "com.azure.storagesync#RegisteredServersTriggerRolloverResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4737,7 +4852,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#TriggerRegisteredServerRolloverResponse": {
+    "com.azure.storagesync#RegisteredServersTriggerRolloverResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -4759,7 +4874,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#TriggerRegisteredServerRolloverRequest": {
+    "com.azure.storagesync#RegisteredServersTriggerRolloverRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4805,13 +4920,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#DeleteRegisteredServer": {
+    "com.azure.storagesync#RegisteredServersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#DeleteRegisteredServerRequest"
+        "target": "com.azure.storagesync#RegisteredServersDeleteRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#DeleteRegisteredServerResponse"
+        "target": "com.azure.storagesync#RegisteredServersDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4824,7 +4939,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#DeleteRegisteredServerResponse": {
+    "com.azure.storagesync#RegisteredServersDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -4846,7 +4961,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#DeleteRegisteredServerRequest": {
+    "com.azure.storagesync#RegisteredServersDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4886,13 +5001,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#UpdateRegisteredServer": {
+    "com.azure.storagesync#RegisteredServersUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#UpdateRegisteredServerRequest"
+        "target": "com.azure.storagesync#RegisteredServersUpdateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#UpdateRegisteredServerResponse"
+        "target": "com.azure.storagesync#RegisteredServersUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4905,7 +5020,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#UpdateRegisteredServerResponse": {
+    "com.azure.storagesync#RegisteredServersUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5186,7 +5301,7 @@
         "smithy.api#documentation": "Type of the registered server agent version status"
       }
     },
-    "com.azure.storagesync#UpdateRegisteredServerRequest": {
+    "com.azure.storagesync#RegisteredServersUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5252,13 +5367,13 @@
         "smithy.api#documentation": "RegisteredServer Update Properties object."
       }
     },
-    "com.azure.storagesync#CreateRegisteredServer": {
+    "com.azure.storagesync#RegisteredServersCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CreateRegisteredServerRequest"
+        "target": "com.azure.storagesync#RegisteredServersCreateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#CreateRegisteredServerResponse"
+        "target": "com.azure.storagesync#RegisteredServersCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5271,7 +5386,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#CreateRegisteredServerResponse": {
+    "com.azure.storagesync#RegisteredServersCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5330,7 +5445,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#CreateRegisteredServerRequest": {
+    "com.azure.storagesync#RegisteredServersCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5450,13 +5565,13 @@
         "smithy.api#documentation": "RegisteredServer Create Properties object."
       }
     },
-    "com.azure.storagesync#GetRegisteredServer": {
+    "com.azure.storagesync#RegisteredServersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetRegisteredServerRequest"
+        "target": "com.azure.storagesync#RegisteredServersGetRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#GetRegisteredServerResponse"
+        "target": "com.azure.storagesync#RegisteredServersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5469,7 +5584,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#GetRegisteredServerResponse": {
+    "com.azure.storagesync#RegisteredServersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5507,7 +5622,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#GetRegisteredServerRequest": {
+    "com.azure.storagesync#RegisteredServersGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5547,10 +5662,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListRegisteredServerByStorageSyncService": {
+    "com.azure.storagesync#RegisteredServersListByStorageSyncService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListRegisteredServerByStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#RegisteredServersListByStorageSyncServiceRequest"
       },
       "output": {
         "target": "com.azure.storagesync#RegisteredServerArray"
@@ -5633,7 +5748,7 @@
         "smithy.api#documentation": "Registered Server resource."
       }
     },
-    "com.azure.storagesync#ListRegisteredServerByStorageSyncServiceRequest": {
+    "com.azure.storagesync#RegisteredServersListByStorageSyncServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5665,13 +5780,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncService": {
+    "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceResponse"
+        "target": "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5684,11 +5799,11 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceResponse": {
+    "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceResponseValueList",
+          "target": "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceResponseValueList",
           "traits": {
             "smithy.api#documentation": "Array of private link resources"
           }
@@ -5698,7 +5813,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceResponseValueList": {
+    "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.storagesync#PrivateLinkResource"
@@ -5789,7 +5904,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncServiceRequest": {
+    "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5821,13 +5936,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#DeletePrivateEndpointConnection": {
+    "com.azure.storagesync#PrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#DeletePrivateEndpointConnectionRequest"
+        "target": "com.azure.storagesync#PrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#DeletePrivateEndpointConnectionResponse"
+        "target": "com.azure.storagesync#PrivateEndpointConnectionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5840,7 +5955,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#DeletePrivateEndpointConnectionResponse": {
+    "com.azure.storagesync#PrivateEndpointConnectionsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -5869,7 +5984,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#DeletePrivateEndpointConnectionRequest": {
+    "com.azure.storagesync#PrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5909,13 +6024,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#CreatePrivateEndpointConnection": {
+    "com.azure.storagesync#PrivateEndpointConnectionsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CreatePrivateEndpointConnectionRequest"
+        "target": "com.azure.storagesync#PrivateEndpointConnectionsCreateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#CreatePrivateEndpointConnectionResponse"
+        "target": "com.azure.storagesync#PrivateEndpointConnectionsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5928,7 +6043,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#CreatePrivateEndpointConnectionResponse": {
+    "com.azure.storagesync#PrivateEndpointConnectionsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6127,7 +6242,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.storagesync#CreatePrivateEndpointConnectionRequest": {
+    "com.azure.storagesync#PrivateEndpointConnectionsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6201,13 +6316,13 @@
         "smithy.api#documentation": "The private endpoint resource."
       }
     },
-    "com.azure.storagesync#GetPrivateEndpointConnection": {
+    "com.azure.storagesync#PrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetPrivateEndpointConnectionRequest"
+        "target": "com.azure.storagesync#PrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#GetPrivateEndpointConnectionResponse"
+        "target": "com.azure.storagesync#PrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6220,7 +6335,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#GetPrivateEndpointConnectionResponse": {
+    "com.azure.storagesync#PrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6258,7 +6373,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#GetPrivateEndpointConnectionRequest": {
+    "com.azure.storagesync#PrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6298,10 +6413,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListPrivateEndpointConnectionByStorageSyncService": {
+    "com.azure.storagesync#PrivateEndpointConnectionsListByStorageSyncService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListPrivateEndpointConnectionByStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#PrivateEndpointConnectionsListByStorageSyncServiceRequest"
       },
       "output": {
         "target": "com.azure.storagesync#PrivateEndpointConnectionListResult"
@@ -6384,7 +6499,7 @@
         "smithy.api#documentation": "The private endpoint connection resource."
       }
     },
-    "com.azure.storagesync#ListPrivateEndpointConnectionByStorageSyncServiceRequest": {
+    "com.azure.storagesync#PrivateEndpointConnectionsListByStorageSyncServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6416,13 +6531,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#DeleteStorageSyncService": {
+    "com.azure.storagesync#StorageSyncServicesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#DeleteStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#StorageSyncServicesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#DeleteStorageSyncServiceResponse"
+        "target": "com.azure.storagesync#StorageSyncServicesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6435,7 +6550,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#DeleteStorageSyncServiceResponse": {
+    "com.azure.storagesync#StorageSyncServicesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -6464,7 +6579,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#DeleteStorageSyncServiceRequest": {
+    "com.azure.storagesync#StorageSyncServicesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6496,13 +6611,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#UpdateStorageSyncService": {
+    "com.azure.storagesync#StorageSyncServicesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#UpdateStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#StorageSyncServicesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#UpdateStorageSyncServiceResponse"
+        "target": "com.azure.storagesync#StorageSyncServicesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6515,7 +6630,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#UpdateStorageSyncServiceResponse": {
+    "com.azure.storagesync#StorageSyncServicesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6543,7 +6658,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storagesync#UpdateStorageSyncServiceResponseTagsMap",
+          "target": "com.azure.storagesync#StorageSyncServicesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -6562,7 +6677,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storagesync#UpdateStorageSyncServiceResponseIdentity",
+          "target": "com.azure.storagesync#StorageSyncServicesUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -6593,7 +6708,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#UpdateStorageSyncServiceResponseIdentity": {
+    "com.azure.storagesync#StorageSyncServicesUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -6812,7 +6927,7 @@
         "smithy.api#documentation": "Type of the Incoming Traffic Policy"
       }
     },
-    "com.azure.storagesync#UpdateStorageSyncServiceResponseTagsMap": {
+    "com.azure.storagesync#StorageSyncServicesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6824,7 +6939,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storagesync#UpdateStorageSyncServiceRequest": {
+    "com.azure.storagesync#StorageSyncServicesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6852,13 +6967,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.storagesync#UpdateStorageSyncServiceRequestTagsMap",
+          "target": "com.azure.storagesync#StorageSyncServicesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "The user-specified tags associated with the storage sync service."
           }
         },
         "identity": {
-          "target": "com.azure.storagesync#UpdateStorageSyncServiceRequestIdentity",
+          "target": "com.azure.storagesync#StorageSyncServicesUpdateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -6894,7 +7009,7 @@
         "smithy.api#documentation": "StorageSyncService Properties object."
       }
     },
-    "com.azure.storagesync#UpdateStorageSyncServiceRequestIdentity": {
+    "com.azure.storagesync#StorageSyncServicesUpdateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -6933,7 +7048,7 @@
         "smithy.api#documentation": "User assigned identity properties"
       }
     },
-    "com.azure.storagesync#UpdateStorageSyncServiceRequestTagsMap": {
+    "com.azure.storagesync#StorageSyncServicesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6945,13 +7060,13 @@
         "smithy.api#documentation": "The user-specified tags associated with the storage sync service."
       }
     },
-    "com.azure.storagesync#CreateStorageSyncService": {
+    "com.azure.storagesync#StorageSyncServicesCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CreateStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#StorageSyncServicesCreateRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#CreateStorageSyncServiceResponse"
+        "target": "com.azure.storagesync#StorageSyncServicesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6964,7 +7079,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#CreateStorageSyncServiceResponse": {
+    "com.azure.storagesync#StorageSyncServicesCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6992,7 +7107,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storagesync#CreateStorageSyncServiceResponseTagsMap",
+          "target": "com.azure.storagesync#StorageSyncServicesCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -7011,7 +7126,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storagesync#CreateStorageSyncServiceResponseIdentity",
+          "target": "com.azure.storagesync#StorageSyncServicesCreateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -7042,7 +7157,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#CreateStorageSyncServiceResponseIdentity": {
+    "com.azure.storagesync#StorageSyncServicesCreateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -7071,7 +7186,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.storagesync#CreateStorageSyncServiceResponseTagsMap": {
+    "com.azure.storagesync#StorageSyncServicesCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7083,7 +7198,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storagesync#CreateStorageSyncServiceRequest": {
+    "com.azure.storagesync#StorageSyncServicesCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7111,7 +7226,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storagesync#CreateStorageSyncServiceRequestTagsMap",
+          "target": "com.azure.storagesync#StorageSyncServicesCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -7124,7 +7239,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storagesync#CreateStorageSyncServiceRequestIdentity",
+          "target": "com.azure.storagesync#StorageSyncServicesCreateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -7160,7 +7275,7 @@
         "smithy.api#documentation": "StorageSyncService Properties object."
       }
     },
-    "com.azure.storagesync#CreateStorageSyncServiceRequestIdentity": {
+    "com.azure.storagesync#StorageSyncServicesCreateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -7177,7 +7292,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.storagesync#CreateStorageSyncServiceRequestTagsMap": {
+    "com.azure.storagesync#StorageSyncServicesCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7189,13 +7304,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storagesync#GetStorageSyncService": {
+    "com.azure.storagesync#StorageSyncServicesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetStorageSyncServiceRequest"
+        "target": "com.azure.storagesync#StorageSyncServicesGetRequest"
       },
       "output": {
-        "target": "com.azure.storagesync#GetStorageSyncServiceResponse"
+        "target": "com.azure.storagesync#StorageSyncServicesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7208,7 +7323,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#GetStorageSyncServiceResponse": {
+    "com.azure.storagesync#StorageSyncServicesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7236,7 +7351,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.storagesync#GetStorageSyncServiceResponseTagsMap",
+          "target": "com.azure.storagesync#StorageSyncServicesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -7255,7 +7370,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.storagesync#GetStorageSyncServiceResponseIdentity",
+          "target": "com.azure.storagesync#StorageSyncServicesGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -7265,7 +7380,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.storagesync#GetStorageSyncServiceResponseIdentity": {
+    "com.azure.storagesync#StorageSyncServicesGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -7294,7 +7409,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.storagesync#GetStorageSyncServiceResponseTagsMap": {
+    "com.azure.storagesync#StorageSyncServicesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7306,7 +7421,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storagesync#GetStorageSyncServiceRequest": {
+    "com.azure.storagesync#StorageSyncServicesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7338,10 +7453,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListStorageSyncServiceByResourceGroup": {
+    "com.azure.storagesync#StorageSyncServicesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListStorageSyncServiceByResourceGroupRequest"
+        "target": "com.azure.storagesync#StorageSyncServicesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.storagesync#StorageSyncServiceArray"
@@ -7484,7 +7599,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.storagesync#ListStorageSyncServiceByResourceGroupRequest": {
+    "com.azure.storagesync#StorageSyncServicesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7508,10 +7623,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#GetOperationStatus": {
+    "com.azure.storagesync#OperationStatusGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#GetOperationStatusRequest"
+        "target": "com.azure.storagesync#OperationStatusGetRequest"
       },
       "output": {
         "target": "com.azure.storagesync#OperationStatus"
@@ -7691,7 +7806,7 @@
         "smithy.api#documentation": "Error Details object."
       }
     },
-    "com.azure.storagesync#GetOperationStatusRequest": {
+    "com.azure.storagesync#OperationStatusGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7739,10 +7854,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#ListStorageSyncServiceBySubscription": {
+    "com.azure.storagesync#StorageSyncServicesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#ListStorageSyncServiceBySubscriptionRequest"
+        "target": "com.azure.storagesync#StorageSyncServicesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.storagesync#StorageSyncServiceArray"
@@ -7758,7 +7873,7 @@
         "com.distilled.openapi#apiVersion": "2025-12-01"
       }
     },
-    "com.azure.storagesync#ListStorageSyncServiceBySubscriptionRequest": {
+    "com.azure.storagesync#StorageSyncServicesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7875,10 +7990,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storagesync#CheckStorageSyncServiceNameAvailability": {
+    "com.azure.storagesync#StorageSyncServicesCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storagesync#CheckStorageSyncServiceNameAvailabilityRequest"
+        "target": "com.azure.storagesync#StorageSyncServicesCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.storagesync#CheckNameAvailabilityResult"
@@ -7940,7 +8055,7 @@
         "smithy.api#documentation": "Gets the reason that a Storage Sync Service name could not be used. The Reason element is only returned if NameAvailable is false."
       }
     },
-    "com.azure.storagesync#CheckStorageSyncServiceNameAvailabilityRequest": {
+    "com.azure.storagesync#StorageSyncServicesCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7990,7 +8105,7 @@
       },
       "traits": {}
     },
-    "com.azure.storagesync#ListOperations": {
+    "com.azure.storagesync#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -8251,40 +8366,40 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.storagesync#AbortWorkflow"
+          "target": "com.azure.storagesync#WorkflowsAbort"
         },
         {
-          "target": "com.azure.storagesync#GetWorkflow"
+          "target": "com.azure.storagesync#WorkflowsGet"
         },
         {
-          "target": "com.azure.storagesync#ListWorkflowByStorageSyncService"
+          "target": "com.azure.storagesync#WorkflowsListByStorageSyncService"
         },
         {
           "target": "com.azure.storagesync#ServerEndpointsRecallAction"
         },
         {
-          "target": "com.azure.storagesync#DeleteServerEndpoint"
+          "target": "com.azure.storagesync#ServerEndpointsDelete"
         },
         {
-          "target": "com.azure.storagesync#UpdateServerEndpoint"
+          "target": "com.azure.storagesync#ServerEndpointsUpdate"
         },
         {
-          "target": "com.azure.storagesync#CreateServerEndpoint"
+          "target": "com.azure.storagesync#ServerEndpointsCreate"
         },
         {
-          "target": "com.azure.storagesync#GetServerEndpoint"
+          "target": "com.azure.storagesync#ServerEndpointsGet"
         },
         {
-          "target": "com.azure.storagesync#ListServerEndpointBySyncGroup"
+          "target": "com.azure.storagesync#ServerEndpointsListBySyncGroup"
         },
         {
-          "target": "com.azure.storagesync#TriggerCloudEndpointChangeDetection"
+          "target": "com.azure.storagesync#CloudEndpointsTriggerChangeDetection"
         },
         {
           "target": "com.azure.storagesync#CloudEndpointsRestoreheartbeat"
         },
         {
-          "target": "com.azure.storagesync#RestoreCloudEndpointsPre"
+          "target": "com.azure.storagesync#CloudEndpointsPreRestore"
         },
         {
           "target": "com.azure.storagesync#CloudEndpointsPreBackup"
@@ -8293,100 +8408,100 @@
           "target": "com.azure.storagesync#CloudEndpointsPostRestore"
         },
         {
-          "target": "com.azure.storagesync#PostCloudEndpointBackup"
+          "target": "com.azure.storagesync#CloudEndpointsPostBackup"
         },
         {
           "target": "com.azure.storagesync#CloudEndpointsAfsShareMetadataCertificatePublicKeys"
         },
         {
-          "target": "com.azure.storagesync#DeleteCloudEndpoint"
+          "target": "com.azure.storagesync#CloudEndpointsDelete"
         },
         {
-          "target": "com.azure.storagesync#UpdateCloudEndpoint"
+          "target": "com.azure.storagesync#CloudEndpointsUpdate"
         },
         {
-          "target": "com.azure.storagesync#CreateCloudEndpoint"
+          "target": "com.azure.storagesync#CloudEndpointsCreate"
         },
         {
-          "target": "com.azure.storagesync#GetCloudEndpoint"
+          "target": "com.azure.storagesync#CloudEndpointsGet"
         },
         {
-          "target": "com.azure.storagesync#ListCloudEndpointBySyncGroup"
+          "target": "com.azure.storagesync#CloudEndpointsListBySyncGroup"
         },
         {
-          "target": "com.azure.storagesync#DeleteSyncGroup"
+          "target": "com.azure.storagesync#SyncGroupsDelete"
         },
         {
-          "target": "com.azure.storagesync#CreateSyncGroup"
+          "target": "com.azure.storagesync#SyncGroupsCreate"
         },
         {
-          "target": "com.azure.storagesync#GetSyncGroup"
+          "target": "com.azure.storagesync#SyncGroupsGet"
         },
         {
-          "target": "com.azure.storagesync#ListSyncGroupByStorageSyncService"
+          "target": "com.azure.storagesync#SyncGroupsListByStorageSyncService"
         },
         {
-          "target": "com.azure.storagesync#TriggerRegisteredServerRollover"
+          "target": "com.azure.storagesync#RegisteredServersTriggerRollover"
         },
         {
-          "target": "com.azure.storagesync#DeleteRegisteredServer"
+          "target": "com.azure.storagesync#RegisteredServersDelete"
         },
         {
-          "target": "com.azure.storagesync#UpdateRegisteredServer"
+          "target": "com.azure.storagesync#RegisteredServersUpdate"
         },
         {
-          "target": "com.azure.storagesync#CreateRegisteredServer"
+          "target": "com.azure.storagesync#RegisteredServersCreate"
         },
         {
-          "target": "com.azure.storagesync#GetRegisteredServer"
+          "target": "com.azure.storagesync#RegisteredServersGet"
         },
         {
-          "target": "com.azure.storagesync#ListRegisteredServerByStorageSyncService"
+          "target": "com.azure.storagesync#RegisteredServersListByStorageSyncService"
         },
         {
-          "target": "com.azure.storagesync#ListPrivateLinkResourceByStorageSyncService"
+          "target": "com.azure.storagesync#PrivateLinkResourcesListByStorageSyncService"
         },
         {
-          "target": "com.azure.storagesync#DeletePrivateEndpointConnection"
+          "target": "com.azure.storagesync#PrivateEndpointConnectionsDelete"
         },
         {
-          "target": "com.azure.storagesync#CreatePrivateEndpointConnection"
+          "target": "com.azure.storagesync#PrivateEndpointConnectionsCreate"
         },
         {
-          "target": "com.azure.storagesync#GetPrivateEndpointConnection"
+          "target": "com.azure.storagesync#PrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.storagesync#ListPrivateEndpointConnectionByStorageSyncService"
+          "target": "com.azure.storagesync#PrivateEndpointConnectionsListByStorageSyncService"
         },
         {
-          "target": "com.azure.storagesync#DeleteStorageSyncService"
+          "target": "com.azure.storagesync#StorageSyncServicesDelete"
         },
         {
-          "target": "com.azure.storagesync#UpdateStorageSyncService"
+          "target": "com.azure.storagesync#StorageSyncServicesUpdate"
         },
         {
-          "target": "com.azure.storagesync#CreateStorageSyncService"
+          "target": "com.azure.storagesync#StorageSyncServicesCreate"
         },
         {
-          "target": "com.azure.storagesync#GetStorageSyncService"
+          "target": "com.azure.storagesync#StorageSyncServicesGet"
         },
         {
-          "target": "com.azure.storagesync#ListStorageSyncServiceByResourceGroup"
+          "target": "com.azure.storagesync#StorageSyncServicesListByResourceGroup"
         },
         {
-          "target": "com.azure.storagesync#GetOperationStatus"
+          "target": "com.azure.storagesync#OperationStatusGet"
         },
         {
-          "target": "com.azure.storagesync#ListStorageSyncServiceBySubscription"
+          "target": "com.azure.storagesync#StorageSyncServicesListBySubscription"
         },
         {
           "target": "com.azure.storagesync#LocationOperationStatus2"
         },
         {
-          "target": "com.azure.storagesync#CheckStorageSyncServiceNameAvailability"
+          "target": "com.azure.storagesync#StorageSyncServicesCheckNameAvailability"
         },
         {
-          "target": "com.azure.storagesync#ListOperations"
+          "target": "com.azure.storagesync#OperationsList"
         }
       ],
       "traits": {

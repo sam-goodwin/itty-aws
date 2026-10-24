@@ -1,0 +1,114 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.confidentialledger_identity#GetLedgerIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_identity#GetLedgerIdentityRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_identity#LedgerIdentityInformation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/ledgerIdentity/{ledgerId}",
+          "code": 200,
+          "host": "{certificateEndpoint}",
+          "hostRaw": [
+            "certificateEndpoint"
+          ],
+          "hostDefaults": {
+            "certificateEndpoint": "https://identity.confidential-ledger.core.azure.com"
+          },
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets identity information for a Confidential Ledger instance.\n\nGets identity information for a Confidential Ledger instance."
+      }
+    },
+    "com.azure.confidentialledger_identity#LedgerIdentityInformation": {
+      "type": "structure",
+      "members": {
+        "ledgerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id for the ledger."
+          }
+        },
+        "ledgerTlsCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PEM-encoded certificate used for TLS by the Confidential Ledger.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the information about a Confidential Ledger."
+      }
+    },
+    "com.azure.confidentialledger_identity#GetLedgerIdentityRequest": {
+      "type": "structure",
+      "members": {
+        "certificateEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate endpoint (or \"Identity Service Endpoint\" in the Azure portal), for example https://identity.confidential-ledger.core.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "ledgerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Id of the Confidential Ledger instance to get information for"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_identity#ConfidentialledgerIdentity": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.confidentialledger_identity#GetLedgerIdentity"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure ConfidentialLedgerIdentity data plane",
+        "smithy.api#documentation": "Azure confidentialledger data plane — confidentialledger/data-plane/ConfidentialLedgerIdentity (latest stable api-version 2026-02-23).",
+        "com.azure.protocols#host": {
+          "template": "{certificateEndpoint}",
+          "parameters": [
+            {
+              "name": "certificateEndpoint",
+              "skipUrlEncoding": true,
+              "default": "https://identity.confidential-ledger.core.azure.com"
+            }
+          ]
+        },
+        "com.azure.protocols#anonymous": true
+      }
+    }
+  }
+}

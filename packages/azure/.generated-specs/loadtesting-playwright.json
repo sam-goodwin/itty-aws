@@ -1,0 +1,984 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.loadtesting_playwright#TestRunsList": "com.azure.loadtesting_playwright#ListTestRuns",
+      "com.azure.loadtesting_playwright#TestRunsListRequest": "com.azure.loadtesting_playwright#ListTestRunsRequest",
+      "com.azure.loadtesting_playwright#WorkspacesGetBrowsers": "com.azure.loadtesting_playwright#GetWorkspaceBrowsers",
+      "com.azure.loadtesting_playwright#WorkspacesGetBrowsersRequest": "com.azure.loadtesting_playwright#GetWorkspaceBrowsersRequest",
+      "com.azure.loadtesting_playwright#WorkspacesGetBrowsersRequestOs": "com.azure.loadtesting_playwright#GetWorkspaceBrowsersRequestOs",
+      "com.azure.loadtesting_playwright#AccessTokensDelete": "com.azure.loadtesting_playwright#DeleteAccessToken",
+      "com.azure.loadtesting_playwright#AccessTokensDeleteRequest": "com.azure.loadtesting_playwright#DeleteAccessTokenRequest",
+      "com.azure.loadtesting_playwright#AccessTokensGet": "com.azure.loadtesting_playwright#GetAccessToken",
+      "com.azure.loadtesting_playwright#AccessTokensGetRequest": "com.azure.loadtesting_playwright#GetAccessTokenRequest",
+      "com.azure.loadtesting_playwright#AccessTokensList": "com.azure.loadtesting_playwright#ListAccessTokens",
+      "com.azure.loadtesting_playwright#AccessTokensListRequest": "com.azure.loadtesting_playwright#ListAccessTokensRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.loadtesting_playwright#TestRunsCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.loadtesting_playwright#TestRunsCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.loadtesting_playwright#TestRun"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/playwrightworkspaces/{workspaceId}/test-runs/{runId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Creates or updates a test run for the workspace with the specified test run ID. Requires Bearer JWT access token provided by Entra ID or Playwright Service."
+      }
+    },
+    "com.azure.loadtesting_playwright#TestRun": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test run ID in GUID format.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test run display name.",
+            "smithy.api#required": {}
+          }
+        },
+        "creatorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test run creator's ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "creatorName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test run creator's name."
+          }
+        },
+        "config": {
+          "target": "com.azure.loadtesting_playwright#RunConfig",
+          "traits": {
+            "smithy.api#documentation": "The test run configuration."
+          }
+        },
+        "ciConfig": {
+          "target": "com.azure.loadtesting_playwright#CiConfig",
+          "traits": {
+            "smithy.api#documentation": "The test run CI configuration."
+          }
+        },
+        "summary": {
+          "target": "com.azure.loadtesting_playwright#RunSummary",
+          "traits": {
+            "smithy.api#documentation": "The test run summary.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model of a test run used for tracking purposes."
+      }
+    },
+    "com.azure.loadtesting_playwright#RunSummary": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.loadtesting_playwright#RunStatus",
+          "traits": {
+            "smithy.api#documentation": "The test run status.",
+            "smithy.api#required": {}
+          }
+        },
+        "billableTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The test run billable time in milliseconds."
+          }
+        },
+        "numBrowserSessions": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of browser sessions allocated to the test run."
+          }
+        },
+        "maxConcurrentBrowserSessions": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The highest number of browser sessions that were running concurrently during the test run."
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test run start time in UTC.",
+            "smithy.api#required": {}
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test run end time in UTC."
+          }
+        },
+        "duration": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The test run duration in milliseconds."
+          }
+        },
+        "errorMessages": {
+          "target": "com.azure.loadtesting_playwright#RunSummaryErrorMessagesList",
+          "traits": {
+            "smithy.api#documentation": "The list of error messages corresponding to the test run."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The test run summary."
+      }
+    },
+    "com.azure.loadtesting_playwright#RunSummaryErrorMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of error messages corresponding to the test run."
+      }
+    },
+    "com.azure.loadtesting_playwright#RunStatus": {
+      "type": "enum",
+      "members": {
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RUNNING"
+          }
+        },
+        "CLIENT_COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CLIENT_COMPLETE"
+          }
+        },
+        "SERVER_COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SERVER_COMPLETE"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The test run status."
+      }
+    },
+    "com.azure.loadtesting_playwright#CiConfig": {
+      "type": "structure",
+      "members": {
+        "providerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CI provider name."
+          }
+        },
+        "branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CI branch name."
+          }
+        },
+        "author": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CI commit author."
+          }
+        },
+        "commitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CI commit ID."
+          }
+        },
+        "revisionUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CI revision URL."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The test run CI configuration."
+      }
+    },
+    "com.azure.loadtesting_playwright#RunConfig": {
+      "type": "structure",
+      "members": {
+        "framework": {
+          "target": "com.azure.loadtesting_playwright#RunFramework",
+          "traits": {
+            "smithy.api#documentation": "The framework used for the test run."
+          }
+        },
+        "sdkLanguage": {
+          "target": "com.azure.loadtesting_playwright#SDKLanguage",
+          "traits": {
+            "smithy.api#documentation": "The SDK language used for the test run."
+          }
+        },
+        "maxWorkers": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of workers required for the test run."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The run configuration."
+      }
+    },
+    "com.azure.loadtesting_playwright#SDKLanguage": {
+      "type": "enum",
+      "members": {
+        "JAVASCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JAVASCRIPT"
+          }
+        },
+        "TYPESCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TYPESCRIPT"
+          }
+        },
+        "CSHARP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CSHARP"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SDK language used for the test run."
+      }
+    },
+    "com.azure.loadtesting_playwright#RunFramework": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The framework name."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The framework version."
+          }
+        },
+        "runnerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The framework runner name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The test run framework information."
+      }
+    },
+    "com.azure.loadtesting_playwright#TestRunsCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Playwright Service API endpoint (protocol and hostname) formatted as https://{region}.api.playwright.microsoft.com.\nThe region corresponds to your Azure Playwright workspace location. You can find this value in your Azure Playwright workspace properties under `dataplaneUri`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace ID in GUID format."
+          }
+        },
+        "runId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The test run ID in GUID format."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "xMsUseragent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-useragent",
+            "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The test run display name."
+          }
+        },
+        "config": {
+          "target": "com.azure.loadtesting_playwright#RunConfig",
+          "traits": {
+            "smithy.api#documentation": "The test run configuration."
+          }
+        },
+        "ciConfig": {
+          "target": "com.azure.loadtesting_playwright#CiConfig",
+          "traits": {
+            "smithy.api#documentation": "The test run CI configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtesting_playwright#TestRunsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.loadtesting_playwright#TestRunsListRequest"
+      },
+      "output": {
+        "target": "com.azure.loadtesting_playwright#PagedTestRun"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/playwrightworkspaces/{workspaceId}/test-runs",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Lists test runs for the specified workspace ID. Supports OData query parameters such as $filter and $top. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID or Playwright Service."
+      }
+    },
+    "com.azure.loadtesting_playwright#PagedTestRun": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.loadtesting_playwright#PagedTestRunValueList",
+          "traits": {
+            "smithy.api#documentation": "The TestRun items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TestRun items"
+      }
+    },
+    "com.azure.loadtesting_playwright#PagedTestRunValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.loadtesting_playwright#TestRun"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TestRun items on this page"
+      }
+    },
+    "com.azure.loadtesting_playwright#TestRunsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Playwright Service API endpoint (protocol and hostname) formatted as https://{region}.api.playwright.microsoft.com.\nThe region corresponds to your Azure Playwright workspace location. You can find this value in your Azure Playwright workspace properties under `dataplaneUri`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace ID in GUID format."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "xMsUseragent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-useragent",
+            "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtesting_playwright#WorkspacesGetBrowsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.loadtesting_playwright#WorkspacesGetBrowsersRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/playwrightworkspaces/{workspaceId}/browsers",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Gets remote browsers for the specified workspace ID and redirects the client to execute Playwright scripts. Requires Bearer JWT access token provided by Entra ID or Playwright Service."
+      }
+    },
+    "com.azure.loadtesting_playwright#WorkspacesGetBrowsersRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Playwright Service API endpoint (protocol and hostname) formatted as https://{region}.api.playwright.microsoft.com.\nThe region corresponds to your Azure Playwright workspace location. You can find this value in your Azure Playwright workspace properties under `dataplaneUri`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace ID in GUID format."
+          }
+        },
+        "os": {
+          "target": "com.azure.loadtesting_playwright#WorkspacesGetBrowsersRequestOs",
+          "traits": {
+            "smithy.api#httpQuery": "os",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The operating system for remote script execution."
+          }
+        },
+        "runId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "runId",
+            "smithy.api#documentation": "The run ID in GUID format."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "xMsUseragent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-useragent",
+            "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtesting_playwright#WorkspacesGetBrowsersRequestOs": {
+      "type": "enum",
+      "members": {
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.loadtesting_playwright#AccessTokensDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.loadtesting_playwright#AccessTokensDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/playwrightworkspaces/{workspaceId}/access-tokens/{accessTokenId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Deletes an access token for the workspace with the specified access token ID. Requires Bearer JWT access token provided by Entra ID."
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokensDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Playwright Service API endpoint (protocol and hostname) formatted as https://{region}.api.playwright.microsoft.com.\nThe region corresponds to your Azure Playwright workspace location. You can find this value in your Azure Playwright workspace properties under `dataplaneUri`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace ID in GUID format."
+          }
+        },
+        "accessTokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The access token ID in GUID format."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "xMsUseragent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-useragent",
+            "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokensCreateOrReplace": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.loadtesting_playwright#AccessTokensCreateOrReplaceRequest"
+      },
+      "output": {
+        "target": "com.azure.loadtesting_playwright#AccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/playwrightworkspaces/{workspaceId}/access-tokens/{accessTokenId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Creates an access token for the workspace with the specified access token ID and name. The ID and name must be unique among active access tokens for the user within a Playwright workspace. Requires Bearer JWT access token provided by Entra ID."
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessToken": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token ID in GUID format.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token name.",
+            "smithy.api#required": {}
+          }
+        },
+        "jwtToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token value in JWT format."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token creation timestamp in UTC.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiryAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token expiration timestamp in UTC.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.loadtesting_playwright#AccessTokenState",
+          "traits": {
+            "smithy.api#documentation": "The access token state.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model of an access token linked to a workspace."
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokenState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Expired"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The access token state."
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokensCreateOrReplaceRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Playwright Service API endpoint (protocol and hostname) formatted as https://{region}.api.playwright.microsoft.com.\nThe region corresponds to your Azure Playwright workspace location. You can find this value in your Azure Playwright workspace properties under `dataplaneUri`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace ID in GUID format."
+          }
+        },
+        "accessTokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The access token ID in GUID format."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "xMsUseragent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-useragent",
+            "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token name.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiryAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token expiration timestamp in UTC.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokensGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.loadtesting_playwright#AccessTokensGetRequest"
+      },
+      "output": {
+        "target": "com.azure.loadtesting_playwright#AccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/playwrightworkspaces/{workspaceId}/access-tokens/{accessTokenId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Gets an access token for the workspace with the specified access token ID. Requires Bearer JWT access token provided by Entra ID."
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokensGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Playwright Service API endpoint (protocol and hostname) formatted as https://{region}.api.playwright.microsoft.com.\nThe region corresponds to your Azure Playwright workspace location. You can find this value in your Azure Playwright workspace properties under `dataplaneUri`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace ID in GUID format."
+          }
+        },
+        "accessTokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The access token ID in GUID format."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "xMsUseragent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-useragent",
+            "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokensList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.loadtesting_playwright#AccessTokensListRequest"
+      },
+      "output": {
+        "target": "com.azure.loadtesting_playwright#PagedAccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/playwrightworkspaces/{workspaceId}/access-tokens",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Lists access tokens for the specified workspace ID. Supports OData query parameters: $select, $filter, $orderby, $top, and $skip. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID."
+      }
+    },
+    "com.azure.loadtesting_playwright#PagedAccessToken": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.loadtesting_playwright#PagedAccessTokenValueList",
+          "traits": {
+            "smithy.api#documentation": "The AccessToken items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of AccessToken items"
+      }
+    },
+    "com.azure.loadtesting_playwright#PagedAccessTokenValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.loadtesting_playwright#AccessToken"
+      },
+      "traits": {
+        "smithy.api#documentation": "The AccessToken items on this page"
+      }
+    },
+    "com.azure.loadtesting_playwright#AccessTokensListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Playwright Service API endpoint (protocol and hostname) formatted as https://{region}.api.playwright.microsoft.com.\nThe region corresponds to your Azure Playwright workspace location. You can find this value in your Azure Playwright workspace properties under `dataplaneUri`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace ID in GUID format."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "xMsUseragent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-useragent",
+            "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.loadtesting_playwright#LoadtestingPlaywright": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.loadtesting_playwright#TestRunsCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.loadtesting_playwright#TestRunsList"
+        },
+        {
+          "target": "com.azure.loadtesting_playwright#WorkspacesGetBrowsers"
+        },
+        {
+          "target": "com.azure.loadtesting_playwright#AccessTokensDelete"
+        },
+        {
+          "target": "com.azure.loadtesting_playwright#AccessTokensCreateOrReplace"
+        },
+        {
+          "target": "com.azure.loadtesting_playwright#AccessTokensGet"
+        },
+        {
+          "target": "com.azure.loadtesting_playwright#AccessTokensList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure playwright data plane",
+        "smithy.api#documentation": "Azure loadtestservice data plane — loadtestservice/data-plane/playwright (latest stable api-version 2025-09-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://playwright.microsoft.com/.default"
+      }
+    }
+  }
+}

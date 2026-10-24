@@ -1,0 +1,5483 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.copilot#GetCopilotRootRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetCopilotRootRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetCopilotRootRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetCopilotRootRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetCopilotRootRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CopilotRoot": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetCopilotRoot": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetCopilotRootRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#CopilotRoot"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateCopilotRootRequest": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateCopilotRoot": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateCopilotRootRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#CopilotRoot"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetAdminRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAdminRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAdminRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetAdminRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetAdminRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetAdminResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetAdmin": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetAdminRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetAdminResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get admin from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateAdminRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateAdminResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateAdmin": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateAdminRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateAdminResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/admin",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property admin in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteAdminRequest": {
+      "type": "structure",
+      "members": {
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteAdmin": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteAdminRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/admin",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property admin for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetCatalogRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetCatalogRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetCatalogRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetCatalogRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetCatalogRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetCatalogResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetCatalogRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetCatalogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin/catalog",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get catalog from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateCatalogRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateCatalogResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateCatalogRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateCatalogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/admin/catalog",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property catalog in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteCatalogRequest": {
+      "type": "structure",
+      "members": {
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteCatalog": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteCatalogRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/admin/catalog",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property catalog for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#ListPackagesRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListPackagesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListPackagesRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListPackagesRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.copilot#ListPackagesRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#ListPackagesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#ListPackagesRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetail": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agentIdentityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "assetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "availableTo": {
+          "target": "com.microsoft.graph.copilot#PackageStatus"
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deployedTo": {
+          "target": "com.microsoft.graph.copilot#PackageStatus"
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "elementTypes": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailElementTypesList"
+        },
+        "governanceMetadata": {
+          "target": "smithy.api#Document"
+        },
+        "isBlocked": {
+          "target": "smithy.api#Boolean"
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "manifestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "manifestVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "platform": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "requestStatus": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageRequestStatus",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "requestType": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageRequestType",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedHosts": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailSupportedHostsList"
+        },
+        "type": {
+          "target": "com.microsoft.graph.copilot#PackageType"
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "zipFile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "acquireUsersAndGroups": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailAcquireUsersAndGroupsList"
+        },
+        "activeUsers": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of distinct users who actively used the package during the reporting period.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "allowedUsersAndGroups": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailAllowedUsersAndGroupsList"
+        },
+        "categories": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailCategoriesList"
+        },
+        "elementDetails": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailElementDetailsList"
+        },
+        "exceptionRate": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailExceptionRate",
+          "traits": {
+            "smithy.api#documentation": "The fraction of sessions that resulted in an exception, expressed as a value between 0 and 1."
+          }
+        },
+        "lastUsedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the package was last used, in ISO 8601 format and UTC.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "longDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sensitivity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sharedWithUsersAndGroups": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailSharedWithUsersAndGroupsList"
+        },
+        "totalRunTimeInHours": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageDetailTotalRunTimeInHours",
+          "traits": {
+            "smithy.api#documentation": "Total hours worked by the agent."
+          }
+        },
+        "totalSessions": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of sessions served by the package during the reporting period.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#PackageStatus": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "SOME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "some"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailElementTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageRequestStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "approved"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The lifecycle status of a package governance request."
+      }
+    },
+    "com.microsoft.graph.copilot#CopilotPackageRequestType": {
+      "type": "enum",
+      "members": {
+        "PUBLISH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "publish"
+          }
+        },
+        "ACTIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "activate"
+          }
+        },
+        "ACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access"
+          }
+        },
+        "UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "update"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of a package governance request."
+      }
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailSupportedHostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#PackageType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoft"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "SHARED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shared"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#PackageAccessEntity": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String"
+        },
+        "resourceType": {
+          "target": "com.microsoft.graph.copilot#AccessEntityType"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AccessEntityType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailAcquireUsersAndGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageAccessEntity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailAllowedUsersAndGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageAccessEntity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#PackageElementDetail": {
+      "type": "structure",
+      "members": {
+        "elements": {
+          "target": "com.microsoft.graph.copilot#PackageElementDetailElementsList"
+        },
+        "elementType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#PackageElement": {
+      "type": "structure",
+      "members": {
+        "definition": {
+          "target": "smithy.api#Document"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#PackageElementDetailElementsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageElement"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailElementDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageElementDetail"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ReferenceNumeric": {
+      "type": "enum",
+      "members": {
+        "INF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-INF"
+          }
+        },
+        "INF_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INF"
+          }
+        },
+        "NAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NaN"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailExceptionRate": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.copilot#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The fraction of sessions that resulted in an exception, expressed as a value between 0 and 1."
+      }
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailSharedWithUsersAndGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageAccessEntity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CopilotPackageDetailTotalRunTimeInHours": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.copilot#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Total hours worked by the agent."
+      }
+    },
+    "com.microsoft.graph.copilot#ListPackagesResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#CopilotPackageDetail"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListPackagesResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.copilot#ListPackagesResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#ListPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#ListPackagesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#ListPackagesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin/catalog/packages",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get packages from copilot",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesRequest": {
+      "type": "structure",
+      "members": {
+        "copilotPackageDetailId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of copilotPackageDetail"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetPackagesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetPackagesRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseElementTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseSupportedHostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseAcquireUsersAndGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageAccessEntity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseAllowedUsersAndGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageAccessEntity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseElementDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageElementDetail"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseExceptionRate": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.copilot#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The fraction of sessions that resulted in an exception, expressed as a value between 0 and 1."
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseSharedWithUsersAndGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#PackageAccessEntity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponseTotalRunTimeInHours": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.copilot#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Total hours worked by the agent."
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agentIdentityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "assetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "availableTo": {
+          "target": "com.microsoft.graph.copilot#PackageStatus"
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deployedTo": {
+          "target": "com.microsoft.graph.copilot#PackageStatus"
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "elementTypes": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseElementTypesList"
+        },
+        "governanceMetadata": {
+          "target": "smithy.api#Document"
+        },
+        "isBlocked": {
+          "target": "smithy.api#Boolean"
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "manifestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "manifestVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "platform": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "requestStatus": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageRequestStatus",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "requestType": {
+          "target": "com.microsoft.graph.copilot#CopilotPackageRequestType",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedHosts": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseSupportedHostsList"
+        },
+        "type": {
+          "target": "com.microsoft.graph.copilot#PackageType"
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "zipFile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "acquireUsersAndGroups": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseAcquireUsersAndGroupsList"
+        },
+        "activeUsers": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of distinct users who actively used the package during the reporting period.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "allowedUsersAndGroups": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseAllowedUsersAndGroupsList"
+        },
+        "categories": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseCategoriesList"
+        },
+        "elementDetails": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseElementDetailsList"
+        },
+        "exceptionRate": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseExceptionRate",
+          "traits": {
+            "smithy.api#documentation": "The fraction of sessions that resulted in an exception, expressed as a value between 0 and 1."
+          }
+        },
+        "lastUsedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the package was last used, in ISO 8601 format and UTC.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "longDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sensitivity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sharedWithUsersAndGroups": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseSharedWithUsersAndGroupsList"
+        },
+        "totalRunTimeInHours": {
+          "target": "com.microsoft.graph.copilot#GetPackagesResponseTotalRunTimeInHours",
+          "traits": {
+            "smithy.api#documentation": "Total hours worked by the agent."
+          }
+        },
+        "totalSessions": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total number of sessions served by the package during the reporting period.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetPackagesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetPackagesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin/catalog/packages/{copilotPackageDetailId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get packages from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesZipFileRequest": {
+      "type": "structure",
+      "members": {
+        "copilotPackageDetailId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of copilotPackageDetail"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesZipFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetPackagesZipFileRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin/catalog/packages/{copilotPackageDetailId}/zipFile",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get zipFile for the navigation property packages from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdatePackagesZipFileRequest": {
+      "type": "structure",
+      "members": {
+        "copilotPackageDetailId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of copilotPackageDetail"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdatePackagesZipFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdatePackagesZipFileRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/copilot/admin/catalog/packages/{copilotPackageDetailId}/zipFile",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update zipFile for the navigation property packages in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeletePackagesZipFileRequest": {
+      "type": "structure",
+      "members": {
+        "copilotPackageDetailId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of copilotPackageDetail"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeletePackagesZipFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeletePackagesZipFileRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/admin/catalog/packages/{copilotPackageDetailId}/zipFile",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete zipFile for the navigation property packages in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetPackagesCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetPackagesCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin/catalog/packages/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.copilot#GetSettingsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetSettingsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetSettingsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetSettingsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetSettingsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetSettingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetSettingsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get settings from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateSettingsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateSettingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateSettingsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/admin/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property settings in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteSettingsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/admin/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property settings for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetLimitedModeRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetLimitedModeRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetLimitedModeRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetLimitedModeRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetLimitedModeRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetLimitedModeResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isEnabledForGroup": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetLimitedMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetLimitedModeRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetLimitedModeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/admin/settings/limitedMode",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get limitedMode from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateLimitedModeRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isEnabledForGroup": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateLimitedModeResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isEnabledForGroup": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateLimitedMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateLimitedModeRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateLimitedModeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/admin/settings/limitedMode",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property limitedMode in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteLimitedModeRequest": {
+      "type": "structure",
+      "members": {
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteLimitedMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteLimitedModeRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/admin/settings/limitedMode",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property limitedMode for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistoryRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistoryRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetInteractionHistoryRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetInteractionHistoryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/interactionHistory",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get interactionHistory from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateInteractionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateInteractionHistoryResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateInteractionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateInteractionHistoryRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateInteractionHistoryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/interactionHistory",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property interactionHistory in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteInteractionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteInteractionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteInteractionHistoryRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/interactionHistory",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property interactionHistory for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#AiInteraction": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "appClass": {
+          "target": "smithy.api#String"
+        },
+        "attachments": {
+          "target": "com.microsoft.graph.copilot#AiInteractionAttachmentsList"
+        },
+        "body": {
+          "target": "com.microsoft.graph.copilot#ItemBody",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contexts": {
+          "target": "com.microsoft.graph.copilot#AiInteractionContextsList"
+        },
+        "conversationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "from": {
+          "target": "com.microsoft.graph.copilot#IdentitySet"
+        },
+        "interactionType": {
+          "target": "com.microsoft.graph.copilot#AiInteractionType"
+        },
+        "links": {
+          "target": "com.microsoft.graph.copilot#AiInteractionLinksList"
+        },
+        "locale": {
+          "target": "smithy.api#String"
+        },
+        "mentions": {
+          "target": "com.microsoft.graph.copilot#AiInteractionMentionsList"
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sessionId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionAttachment": {
+      "type": "structure",
+      "members": {
+        "attachmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionAttachmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiInteractionAttachment"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ItemBody": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the item.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentType": {
+          "target": "com.microsoft.graph.copilot#BodyType",
+          "traits": {
+            "smithy.api#documentation": "The type of the content. Possible values are text and html.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#BodyType": {
+      "type": "enum",
+      "members": {
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "html"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionContext": {
+      "type": "structure",
+      "members": {
+        "contextReference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contextType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionContextsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiInteractionContext"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#IdentitySet": {
+      "type": "structure",
+      "members": {
+        "application": {
+          "target": "com.microsoft.graph.copilot#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The application associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "device": {
+          "target": "com.microsoft.graph.copilot#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The device associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "user": {
+          "target": "com.microsoft.graph.copilot#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The user associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#Identity": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity.For drive items, the display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as changed when using delta.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the identity or actor. For example, in the access reviews decisions API, this property might record the id of the principal, that is, the group, user, or application that's subject to review.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionType": {
+      "type": "enum",
+      "members": {
+        "USERPROMPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userPrompt"
+          }
+        },
+        "AIRESPONSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aiResponse"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionLink": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "linkType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "linkUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionLinksList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiInteractionLink"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionMention": {
+      "type": "structure",
+      "members": {
+        "mentioned": {
+          "target": "com.microsoft.graph.copilot#AiInteractionMentionedIdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mentionId": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mentionText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionMentionedIdentitySet": {
+      "type": "structure",
+      "members": {
+        "application": {
+          "target": "com.microsoft.graph.copilot#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The application associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "device": {
+          "target": "com.microsoft.graph.copilot#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The device associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "user": {
+          "target": "com.microsoft.graph.copilot#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The user associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "conversation": {
+          "target": "com.microsoft.graph.copilot#TeamworkConversationIdentity",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tag": {
+          "target": "com.microsoft.graph.copilot#TeamworkTagIdentity",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#TeamworkConversationIdentity": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity.For drive items, the display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as changed when using delta.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the identity or actor. For example, in the access reviews decisions API, this property might record the id of the principal, that is, the group, user, or application that's subject to review.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "conversationIdentityType": {
+          "target": "com.microsoft.graph.copilot#TeamworkConversationIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of conversation. The possible values are: team, channel, chat, and unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#TeamworkConversationIdentityType": {
+      "type": "enum",
+      "members": {
+        "TEAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "team"
+          }
+        },
+        "CHANNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "channel"
+          }
+        },
+        "CHAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chat"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#TeamworkTagIdentity": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity.For drive items, the display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as changed when using delta.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the identity or actor. For example, in the access reviews decisions API, this property might record the id of the principal, that is, the group, user, or application that's subject to review.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#AiInteractionMentionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiInteractionMention"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiInteraction"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetAllEnterpriseInteractions": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetAllEnterpriseInteractionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/interactionHistory/getAllEnterpriseInteractions()",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke function getAllEnterpriseInteractions",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.copilot#GetReportsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetReportsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetReportsRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetReportsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetReportsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetReportsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetReportsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetReportsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/reports",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get reports from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateReportsRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateReportsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateReportsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateReportsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/reports",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property reports in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteReportsRequest": {
+      "type": "structure",
+      "members": {
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteReports": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteReportsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/reports",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property reports for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetMicrosoft365CopilotUsageUserDetailRequest": {
+      "type": "structure",
+      "members": {
+        "period": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Usage: period='{period}'"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "version",
+            "smithy.api#documentation": "Usage: version='@version'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetMicrosoft365CopilotUsageUserDetail": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetMicrosoft365CopilotUsageUserDetailRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/reports/getMicrosoft365CopilotUsageUserDetail(period='{period}',version='@version')",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke function getMicrosoft365CopilotUsageUserDetail"
+      }
+    },
+    "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountSummaryRequest": {
+      "type": "structure",
+      "members": {
+        "period": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Usage: period='{period}'"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "version",
+            "smithy.api#documentation": "Usage: version='@version'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountSummaryRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/reports/getMicrosoft365CopilotUserCountSummary(period='{period}',version='@version')",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke function getMicrosoft365CopilotUserCountSummary"
+      }
+    },
+    "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountTrendRequest": {
+      "type": "structure",
+      "members": {
+        "period": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Usage: period='{period}'"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "version",
+            "smithy.api#documentation": "Usage: version='@version'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountTrend": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountTrendRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/reports/getMicrosoft365CopilotUserCountTrend(period='{period}',version='@version')",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke function getMicrosoft365CopilotUserCountTrend"
+      }
+    },
+    "com.microsoft.graph.copilot#ListUsersRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListUsersRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListUsersRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListUsersRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.copilot#ListUsersRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#ListUsersRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#ListUsersRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#AiUser": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListUsersResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiUser"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListUsersResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.copilot#ListUsersResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#ListUsersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#ListUsersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get users from copilot",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.copilot#CreateUsersRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CreateUsersResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CreateUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#CreateUsersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#CreateUsersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/copilot/users",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to users for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetUsersRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetUsersRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetUsersRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetUsersRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetUsersRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetUsersResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetUsersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetUsersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get users from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateUsersRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateUsersResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateUsersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateUsersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/users/{aiUserId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property users in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteUsersRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteUsersRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/users/{aiUserId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property users for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetUsersInteractionHistoryRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetUsersInteractionHistoryRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetUsersInteractionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetUsersInteractionHistoryRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetUsersInteractionHistoryRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetUsersInteractionHistoryResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetUsersInteractionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetUsersInteractionHistoryRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetUsersInteractionHistoryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/interactionHistory",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get interactionHistory from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateUsersInteractionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateUsersInteractionHistoryResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateUsersInteractionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateUsersInteractionHistoryRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateUsersInteractionHistoryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/users/{aiUserId}/interactionHistory",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property interactionHistory in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteUsersInteractionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteUsersInteractionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteUsersInteractionHistoryRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/users/{aiUserId}/interactionHistory",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property interactionHistory for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiInteraction"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractions": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/interactionHistory/getAllEnterpriseInteractions()",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke function getAllEnterpriseInteractions",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.copilot#ListOnlineMeetingsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListOnlineMeetingsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListOnlineMeetingsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListOnlineMeetingsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.copilot#ListOnlineMeetingsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#ListOnlineMeetingsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#ListOnlineMeetingsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#AiOnlineMeeting": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListOnlineMeetingsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#AiOnlineMeeting"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListOnlineMeetingsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.copilot#ListOnlineMeetingsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#ListOnlineMeetings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#ListOnlineMeetingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#ListOnlineMeetingsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get onlineMeetings from copilot",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.copilot#CreateOnlineMeetingsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CreateOnlineMeetingsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CreateOnlineMeetings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#CreateOnlineMeetingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#CreateOnlineMeetingsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to onlineMeetings for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetOnlineMeetingsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetOnlineMeetingsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetOnlineMeetingsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetOnlineMeetingsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetOnlineMeetingsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetOnlineMeetingsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetOnlineMeetings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetOnlineMeetingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetOnlineMeetingsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get onlineMeetings from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateOnlineMeetingsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateOnlineMeetingsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateOnlineMeetings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateOnlineMeetingsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateOnlineMeetingsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property onlineMeetings in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteOnlineMeetingsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteOnlineMeetings": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteOnlineMeetingsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property onlineMeetings for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#ListAiInsightsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListAiInsightsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListAiInsightsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListAiInsightsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.copilot#ListAiInsightsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#ListAiInsightsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#ListAiInsightsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CallAiInsight": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "actionItems": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightActionItemsList"
+        },
+        "callId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCorrelationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "meetingNotes": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightMeetingNotesList"
+        },
+        "viewpoint": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightViewPoint",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ActionItem": {
+      "type": "structure",
+      "members": {
+        "ownerDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CallAiInsightActionItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#ActionItem"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#MeetingNote": {
+      "type": "structure",
+      "members": {
+        "subpoints": {
+          "target": "com.microsoft.graph.copilot#MeetingNoteSubpointsList"
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#MeetingNoteSubpoint": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#MeetingNoteSubpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MeetingNoteSubpoint"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CallAiInsightMeetingNotesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MeetingNote"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CallAiInsightViewPoint": {
+      "type": "structure",
+      "members": {
+        "mentionEvents": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightViewPointMentionEventsList"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#MentionEvent": {
+      "type": "structure",
+      "members": {
+        "eventDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "speaker": {
+          "target": "com.microsoft.graph.copilot#IdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transcriptUtterance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CallAiInsightViewPointMentionEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MentionEvent"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListAiInsightsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#CallAiInsight"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#ListAiInsightsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.copilot#ListAiInsightsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#ListAiInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#ListAiInsightsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#ListAiInsightsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}/aiInsights",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get aiInsights from copilot",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.copilot#CreateAiInsightsRequestActionItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#ActionItem"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CreateAiInsightsRequestMeetingNotesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MeetingNote"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CreateAiInsightsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "actionItems": {
+          "target": "com.microsoft.graph.copilot#CreateAiInsightsRequestActionItemsList"
+        },
+        "callId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCorrelationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "meetingNotes": {
+          "target": "com.microsoft.graph.copilot#CreateAiInsightsRequestMeetingNotesList"
+        },
+        "viewpoint": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightViewPoint",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CreateAiInsightsResponseActionItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#ActionItem"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CreateAiInsightsResponseMeetingNotesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MeetingNote"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#CreateAiInsightsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "actionItems": {
+          "target": "com.microsoft.graph.copilot#CreateAiInsightsResponseActionItemsList"
+        },
+        "callId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCorrelationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "meetingNotes": {
+          "target": "com.microsoft.graph.copilot#CreateAiInsightsResponseMeetingNotesList"
+        },
+        "viewpoint": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightViewPoint",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#CreateAiInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#CreateAiInsightsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#CreateAiInsightsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}/aiInsights",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to aiInsights for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "callAiInsightId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of callAiInsight"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.copilot#GetAiInsightsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.copilot#GetAiInsightsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsResponseActionItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#ActionItem"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsResponseMeetingNotesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MeetingNote"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "actionItems": {
+          "target": "com.microsoft.graph.copilot#GetAiInsightsResponseActionItemsList"
+        },
+        "callId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCorrelationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "meetingNotes": {
+          "target": "com.microsoft.graph.copilot#GetAiInsightsResponseMeetingNotesList"
+        },
+        "viewpoint": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightViewPoint",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetAiInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetAiInsightsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#GetAiInsightsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}/aiInsights/{callAiInsightId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get aiInsights from copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateAiInsightsRequestActionItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#ActionItem"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#UpdateAiInsightsRequestMeetingNotesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MeetingNote"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#UpdateAiInsightsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "callAiInsightId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of callAiInsight"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "actionItems": {
+          "target": "com.microsoft.graph.copilot#UpdateAiInsightsRequestActionItemsList"
+        },
+        "callId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCorrelationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "meetingNotes": {
+          "target": "com.microsoft.graph.copilot#UpdateAiInsightsRequestMeetingNotesList"
+        },
+        "viewpoint": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightViewPoint",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateAiInsightsResponseActionItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#ActionItem"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#UpdateAiInsightsResponseMeetingNotesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.copilot#MeetingNote"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.copilot#UpdateAiInsightsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "actionItems": {
+          "target": "com.microsoft.graph.copilot#UpdateAiInsightsResponseActionItemsList"
+        },
+        "callId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCorrelationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "meetingNotes": {
+          "target": "com.microsoft.graph.copilot#UpdateAiInsightsResponseMeetingNotesList"
+        },
+        "viewpoint": {
+          "target": "com.microsoft.graph.copilot#CallAiInsightViewPoint",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.copilot#UpdateAiInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#UpdateAiInsightsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.copilot#UpdateAiInsightsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}/aiInsights/{callAiInsightId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property aiInsights in copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteAiInsightsRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "callAiInsightId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of callAiInsight"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#DeleteAiInsights": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#DeleteAiInsightsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}/aiInsights/{callAiInsightId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property aiInsights for copilot"
+      }
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsCountRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "aiOnlineMeetingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiOnlineMeeting"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetAiInsightsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetAiInsightsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/{aiOnlineMeetingId}/aiInsights/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.copilot#GetOnlineMeetingsCountRequest": {
+      "type": "structure",
+      "members": {
+        "aiUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of aiUser"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetOnlineMeetingsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetOnlineMeetingsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/{aiUserId}/onlineMeetings/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.copilot#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.copilot#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.copilot#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/copilot/users/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.copilot#Copilot": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.copilot#GetCopilotRoot"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateCopilotRoot"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetAdmin"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateAdmin"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteAdmin"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetCatalog"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateCatalog"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteCatalog"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#ListPackages"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetPackages"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetPackagesZipFile"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdatePackagesZipFile"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeletePackagesZipFile"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetPackagesCount"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetSettings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateSettings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteSettings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetLimitedMode"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateLimitedMode"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteLimitedMode"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistory"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateInteractionHistory"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteInteractionHistory"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetAllEnterpriseInteractions"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetReports"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateReports"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteReports"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetMicrosoft365CopilotUsageUserDetail"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountSummary"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetMicrosoft365CopilotUserCountTrend"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#ListUsers"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#CreateUsers"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetUsers"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateUsers"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteUsers"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetUsersInteractionHistory"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateUsersInteractionHistory"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteUsersInteractionHistory"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetInteractionHistoryAllEnterpriseInteractions"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#ListOnlineMeetings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#CreateOnlineMeetings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetOnlineMeetings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateOnlineMeetings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteOnlineMeetings"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#ListAiInsights"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#CreateAiInsights"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetAiInsights"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#UpdateAiInsights"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#DeleteAiInsights"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetAiInsightsCount"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetOnlineMeetingsCount"
+        },
+        {
+          "target": "com.microsoft.graph.copilot#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

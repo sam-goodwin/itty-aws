@@ -1,0 +1,793 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListActivationPhrases": "com.azure.cognitiveservices_speaker_recognition_identification#ListTextIndependentActivationPhrases",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListActivationPhrasesRequest": "com.azure.cognitiveservices_speaker_recognition_identification#ListTextIndependentActivationPhrasesRequest",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateEnrollment": "com.azure.cognitiveservices_speaker_recognition_identification#CreateTextIndependentEnrollment",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateEnrollmentRequest": "com.azure.cognitiveservices_speaker_recognition_identification#CreateTextIndependentEnrollmentRequest",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfile": "com.azure.cognitiveservices_speaker_recognition_identification#ResetTextIndependentProfile",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfileResponse": "com.azure.cognitiveservices_speaker_recognition_identification#ResetTextIndependentProfileResponse",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfileRequest": "com.azure.cognitiveservices_speaker_recognition_identification#ResetTextIndependentProfileRequest",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentDeleteProfile": "com.azure.cognitiveservices_speaker_recognition_identification#DeleteTextIndependentProfile",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentDeleteProfileRequest": "com.azure.cognitiveservices_speaker_recognition_identification#DeleteTextIndependentProfileRequest",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentGetProfile": "com.azure.cognitiveservices_speaker_recognition_identification#GetTextIndependentProfile",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentGetProfileRequest": "com.azure.cognitiveservices_speaker_recognition_identification#GetTextIndependentProfileRequest",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfile": "com.azure.cognitiveservices_speaker_recognition_identification#CreateTextIndependentProfile",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfileResponse": "com.azure.cognitiveservices_speaker_recognition_identification#CreateTextIndependentProfileResponse",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfileRequest": "com.azure.cognitiveservices_speaker_recognition_identification#CreateTextIndependentProfileRequest",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListProfiles": "com.azure.cognitiveservices_speaker_recognition_identification#ListTextIndependentProfiles",
+      "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListProfilesRequest": "com.azure.cognitiveservices_speaker_recognition_identification#ListTextIndependentProfilesRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListActivationPhrases": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListActivationPhrasesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#ActivationPhraseInfo"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/text-independent/phrases/{locale}",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "Activation Phrases\n\nRetrieves list of supported passphrases for a specific locale."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#ActivationPhraseInfo": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#ActivationPhraseInfoValueList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Activation phrase list"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#ActivationPhraseInfoValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#ActivationPhraseInfoValueItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#ActivationPhraseInfoValueItem": {
+      "type": "structure",
+      "members": {
+        "activationPhrase": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListActivationPhrasesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A combination of language code and country code."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentIdentifySingleSpeaker": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentIdentifySingleSpeakerRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#IdentifiedSingleSpeakerInfo"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text-independent/profiles:identifySingleSpeaker",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "Identify Single Speaker Profile\n\nIdentifies who is speaking in input audio among a list of candidate profiles.\n\nLimitations:\n* Minimum audio input length is **1 second**\n* Maximum audio input length is **120 seconds**\n* Minimum candidate speakers count is **1**\n* Maximum candidate speakers count is **50**\n* Minimum effective speech length (excluding silence and other non-speech frames) is **4 seconds**\n  This limitation can be disabled by setting \"ignoreMinLength\" to **true**.\n\n* Minimum audio Signal-to-noise ratio (SNR) is **2dB**"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#IdentifiedSingleSpeakerInfo": {
+      "type": "structure",
+      "members": {
+        "identifiedProfile": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#IdentifyInfo",
+          "traits": {
+            "smithy.api#documentation": "Object containing data of identified profile."
+          }
+        },
+        "profilesRanking": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#IdentifiedSingleSpeakerInfoProfilesRankingList",
+          "traits": {
+            "smithy.api#documentation": "Object containing data of the top 5 profiles (including identified profile) sorted in descending order by score."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#IdentifiedSingleSpeakerInfoProfilesRankingList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#IdentifyInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Object containing data of the top 5 profiles (including identified profile) sorted in descending order by score."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#IdentifyInfo": {
+      "type": "structure",
+      "members": {
+        "profileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of identified of profile. If no candidate is identified as the right speaker, the value is set to empty GUID."
+          }
+        },
+        "score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A float number indicating the similarity between input audio and targeted voice print. This number must be between 0 and 1. A higher number means higher similarity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identified speaker info"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentIdentifySingleSpeakerRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "profileIds": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentIdentifySingleSpeakerRequestProfileIdsList",
+          "traits": {
+            "smithy.api#httpQuery": "profileIds",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Comma-delimited profile IDs. Maximum supported number is 50 IDs."
+          }
+        },
+        "ignoreMinLength": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "ignoreMinLength",
+            "smithy.api#documentation": "If true, the minimum amount of speech needed for identification is skipped. Default is false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentIdentifySingleSpeakerRequestProfileIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateEnrollment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateEnrollmentRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TiEnrollmentInfo"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text-independent/profiles/{profileId}/enrollments",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "Enroll Profile\n\nAdds an enrollment to existing profile.\nThe first enrollment must be a predefined activation phrase which can be listed using the /phrases/{locale} api.\nIf the minimum number of requested enrollment audios is reached, a voice print is created.\nAny further enrollment will be used to improve the voice print.\n\nLimitations:\n* Minimum audio input length per request is **1 second**\n* Maximum audio input length per request is **120 seconds**\n* Minimum total effective speech length (excluding silence and other non-speech frames) for creating a voiceprint is **20 seconds**\n  This limitation can be disabled by setting ignoreMinLength to **true**.\n\n* Maximum total audio input length allowed for creating a voiceprint is **300 seconds**\n* Minimum audio Signal-to-noise ratio (SNR) is **2dB**"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TiEnrollmentInfo": {
+      "type": "structure",
+      "members": {
+        "profileId": {
+          "target": "smithy.api#String"
+        },
+        "enrollmentStatus": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#EnrollmentStatus"
+        },
+        "enrollmentsCount": {
+          "target": "smithy.api#Integer"
+        },
+        "enrollmentsLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "enrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "remainingEnrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "audioLengthInSec": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "This enrollment audio length in seconds."
+          }
+        },
+        "audioSpeechLengthInSec": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "This enrollment audio pure speech (which is the amount of audio after removing silence and non-speech segments) length in seconds."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Speaker profile enrollment info"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#EnrollmentStatus": {
+      "type": "enum",
+      "members": {
+        "ENROLLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enrolling"
+          }
+        },
+        "TRAINING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Training"
+          }
+        },
+        "ENROLLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enrolled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status representing the current state of the profile enrollment. Available values are:\n* Enrolling: profile has no voice print and not ready for recognition requests.\n* Training: voice print of profile is being created and can’t be used for recognition at the moment.\n* Enrolled: profile has a voice print and ready for recognition requests."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateEnrollmentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "profileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Unique identifier for profile id (guid)."
+          }
+        },
+        "ignoreMinLength": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "ignoreMinLength",
+            "smithy.api#documentation": "If true, a voice print will be created immediately for this profile regardless of how much speech is supplied or stored. Default is false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfileRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfileResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text-independent/profiles/{profileId}:reset",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "Reset Profile\n\nResets existing profile to its original creation state. The reset operation does the following:\n* Updates enrollmentStatus to Enrolling.\n* Updates lastUpdatedDateTime.\n* Updates enrollmentsCount to 0.\n* Updates enrollmentsLength to 0.\n* Updates enrollmentsSpeechLength to 0.\n* Updates remainingEnrollmentsSpeechLength to the required number.\n* Removes all associated enrollments from storage.\n* Removes chosen passphrase association.\n* Resets value of modelVersion."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfileResponse": {
+      "type": "structure",
+      "members": {
+        "profileId": {
+          "target": "smithy.api#String"
+        },
+        "locale": {
+          "target": "smithy.api#String"
+        },
+        "profileStatus": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#ProfileStatus"
+        },
+        "enrollmentStatus": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#EnrollmentStatus"
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String"
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String"
+        },
+        "enrollmentsCount": {
+          "target": "smithy.api#Integer"
+        },
+        "enrollmentsLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "enrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "remainingEnrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "modelVersion": {
+          "target": "smithy.api#String"
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "url location of the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text-Independent Speaker profile info",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#ProfileStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status representing the current state of the profile activation. Available values are:\n* Active: profile is active and can be used if the enrollment status is 'Enrolled'.\n* Inactive: profile has not been activated and an activation phrase must be submitted."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "profileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Unique identifier for profile id (guid)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentDeleteProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentDeleteProfileRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/text-independent/profiles/{profileId}",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "Delete Profile\n\nDeletes an existing profile."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentDeleteProfileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "profileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Unique identifier for profile id (guid)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentGetProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentGetProfileRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TiProfileInfo"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/text-independent/profiles/{profileId}",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "Retrieve Single Profile\n\nRetrieves a single profile by ID."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TiProfileInfo": {
+      "type": "structure",
+      "members": {
+        "profileId": {
+          "target": "smithy.api#String"
+        },
+        "locale": {
+          "target": "smithy.api#String"
+        },
+        "profileStatus": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#ProfileStatus"
+        },
+        "enrollmentStatus": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#EnrollmentStatus"
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String"
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String"
+        },
+        "enrollmentsCount": {
+          "target": "smithy.api#Integer"
+        },
+        "enrollmentsLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "enrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "remainingEnrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "modelVersion": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text-Independent Speaker profile info"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentGetProfileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "profileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Unique identifier for profile id (guid)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfileRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfileResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text-independent/profiles",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "Create Profile\n\nCreates a new speaker profile with specified locale."
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfileResponse": {
+      "type": "structure",
+      "members": {
+        "profileId": {
+          "target": "smithy.api#String"
+        },
+        "locale": {
+          "target": "smithy.api#String"
+        },
+        "profileStatus": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#ProfileStatus"
+        },
+        "enrollmentStatus": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#EnrollmentStatus"
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String"
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String"
+        },
+        "enrollmentsCount": {
+          "target": "smithy.api#Integer"
+        },
+        "enrollmentsLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "enrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "remainingEnrollmentsSpeechLengthInSec": {
+          "target": "smithy.api#Double"
+        },
+        "modelVersion": {
+          "target": "smithy.api#String"
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "url location of new resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text-Independent Speaker profile info",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListProfiles": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListProfilesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TiProfileInfoList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/text-independent/profiles",
+          "code": 200,
+          "host": "{endpoint}/speaker-recognition/identification",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-09-05"
+        },
+        "smithy.api#documentation": "List Profile\n\nRetrieves a set of profiles.\nProfiles are sorted alphabetically by ProfileId"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TiProfileInfoList": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TiProfileInfoListValueList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text-Independent Speaker profile info list"
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TiProfileInfoListValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speaker_recognition_identification#TiProfileInfo"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListProfilesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The number of profiles to return. Default is 100 and the maximum is 500"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speaker_recognition_identification#CognitiveservicesSpeakerRecognitionIdentification": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListActivationPhrases"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentIdentifySingleSpeaker"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateEnrollment"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentResetProfile"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentDeleteProfile"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentGetProfile"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentCreateProfile"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speaker_recognition_identification#TextIndependentListProfiles"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure SpeakerRecognitionIdentification data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/SpeakerRecognitionIdentification (latest stable api-version 2021-09-05).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/speaker-recognition/identification",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

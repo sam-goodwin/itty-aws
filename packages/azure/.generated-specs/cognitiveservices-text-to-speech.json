@@ -1,0 +1,4094 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadData": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetData",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataResponse": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataResponse",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataRequest": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataRequest",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSet",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSetRequest",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreate": "com.azure.cognitiveservices_text_to_speech#CreateTrainingSet",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateTrainingSetRequest",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsGet": "com.azure.cognitiveservices_text_to_speech#GetTrainingSet",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetTrainingSetRequest",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsList": "com.azure.cognitiveservices_text_to_speech#ListTrainingSets",
+      "com.azure.cognitiveservices_text_to_speech#TrainingSetsListRequest": "com.azure.cognitiveservices_text_to_speech#ListTrainingSetsRequest",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteProject",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteProjectRequest",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsCreate": "com.azure.cognitiveservices_text_to_speech#CreateProject",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateProjectRequest",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsGet": "com.azure.cognitiveservices_text_to_speech#GetProject",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetProjectRequest",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsList": "com.azure.cognitiveservices_text_to_speech#ListProjects",
+      "com.azure.cognitiveservices_text_to_speech#ProjectsListRequest": "com.azure.cognitiveservices_text_to_speech#ListProjectsRequest",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDelete": "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoice",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoiceRequest",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFile": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFile",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileResponse": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileResponse",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileRequest": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileRequest",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreate": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoice",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceResponse",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceRequest",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGet": "com.azure.cognitiveservices_text_to_speech#GetPersonalVoice",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGetRequest": "com.azure.cognitiveservices_text_to_speech#GetPersonalVoiceRequest",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesList": "com.azure.cognitiveservices_text_to_speech#ListPersonalVoices",
+      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesListRequest": "com.azure.cognitiveservices_text_to_speech#ListPersonalVoicesRequest",
+      "com.azure.cognitiveservices_text_to_speech#OperationsGet": "com.azure.cognitiveservices_text_to_speech#GetOperation",
+      "com.azure.cognitiveservices_text_to_speech#OperationsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetOperationRequest",
+      "com.azure.cognitiveservices_text_to_speech#ModelsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteModel",
+      "com.azure.cognitiveservices_text_to_speech#ModelsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteModelRequest",
+      "com.azure.cognitiveservices_text_to_speech#ModelsCreate": "com.azure.cognitiveservices_text_to_speech#CreateModel",
+      "com.azure.cognitiveservices_text_to_speech#ModelsCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreateModelResponse",
+      "com.azure.cognitiveservices_text_to_speech#ModelsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateModelRequest",
+      "com.azure.cognitiveservices_text_to_speech#ModelsGet": "com.azure.cognitiveservices_text_to_speech#GetModel",
+      "com.azure.cognitiveservices_text_to_speech#ModelsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetModelRequest",
+      "com.azure.cognitiveservices_text_to_speech#ModelsList": "com.azure.cognitiveservices_text_to_speech#ListModels",
+      "com.azure.cognitiveservices_text_to_speech#ModelsListRequest": "com.azure.cognitiveservices_text_to_speech#ListModelsRequest",
+      "com.azure.cognitiveservices_text_to_speech#ModelsListRecipes": "com.azure.cognitiveservices_text_to_speech#ListModelRecipes",
+      "com.azure.cognitiveservices_text_to_speech#ModelsListRecipesRequest": "com.azure.cognitiveservices_text_to_speech#ListModelRecipesRequest",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsSuspend": "com.azure.cognitiveservices_text_to_speech#SuspendEndpoint",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendResponse": "com.azure.cognitiveservices_text_to_speech#SuspendEndpointResponse",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendRequest": "com.azure.cognitiveservices_text_to_speech#SuspendEndpointRequest",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsResume": "com.azure.cognitiveservices_text_to_speech#ResumeEndpoint",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsResumeResponse": "com.azure.cognitiveservices_text_to_speech#ResumeEndpointResponse",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsResumeRequest": "com.azure.cognitiveservices_text_to_speech#ResumeEndpointRequest",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteEndpoint",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteEndpointRequest",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsCreate": "com.azure.cognitiveservices_text_to_speech#CreateEndpoint",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreateEndpointResponse",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateEndpointRequest",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsGet": "com.azure.cognitiveservices_text_to_speech#GetEndpoint",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetEndpointRequest",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsList": "com.azure.cognitiveservices_text_to_speech#ListEndpoints",
+      "com.azure.cognitiveservices_text_to_speech#EndpointsListRequest": "com.azure.cognitiveservices_text_to_speech#ListEndpointsRequest",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteConsent",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteConsentRequest",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFile": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFile",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileResponse": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileResponse",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileRequest": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileRequest",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsCreate": "com.azure.cognitiveservices_text_to_speech#CreateConsent",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreateConsentResponse",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateConsentRequest",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsGet": "com.azure.cognitiveservices_text_to_speech#GetConsent",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetConsentRequest",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsList": "com.azure.cognitiveservices_text_to_speech#ListConsents",
+      "com.azure.cognitiveservices_text_to_speech#ConsentsListRequest": "com.azure.cognitiveservices_text_to_speech#ListConsentsRequest",
+      "com.azure.cognitiveservices_text_to_speech#BaseModelsList": "com.azure.cognitiveservices_text_to_speech#ListBaseModels",
+      "com.azure.cognitiveservices_text_to_speech#BaseModelsListRequest": "com.azure.cognitiveservices_text_to_speech#ListBaseModelsRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadData": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/trainingsets/{id}:upload",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Uploads data to the specified training set."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the resource."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of this dataset."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description of this dataset."
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_text_to_speech#DatasetKind",
+          "traits": {
+            "smithy.api#documentation": "Dataset kind",
+            "smithy.api#required": {}
+          }
+        },
+        "processAs": {
+          "target": "com.azure.cognitiveservices_text_to_speech#DatasetProcessAs",
+          "traits": {
+            "smithy.api#documentation": "Dataset processing method. If not specified, the default processing method will\nbe used."
+          }
+        },
+        "audios": {
+          "target": "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSource",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob Storage content. With the examples below, it represents files\nhttps://contoso.blob.core.windows.net/voicecontainer/jessica/*.wav",
+            "smithy.api#required": {}
+          }
+        },
+        "scripts": {
+          "target": "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSource",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob Storage content. With the examples below, it represents files\nhttps://contoso.blob.core.windows.net/voicecontainer/jessica/*.wav"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSource": {
+      "type": "structure",
+      "members": {
+        "containerUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob Storage container URL with\n[SAS](https://learn.microsoft.com/azure/storage/common/storage-sas-overview).\nNeed both read and list permissions.",
+            "smithy.api#required": {}
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Blob name prefix."
+          }
+        },
+        "extensions": {
+          "target": "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSourceExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "File name extensions.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Blob Storage content. With the examples below, it represents files\nhttps://contoso.blob.core.windows.net/voicecontainer/jessica/*.wav"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSourceExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "File name extensions."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#DatasetProcessAs": {
+      "type": "enum",
+      "members": {
+        "SEGMENTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Segmented"
+          }
+        },
+        "CONTEXTUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Contextual"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dataset processing method. If not specified, the default processing method will\nbe used."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#DatasetKind": {
+      "type": "enum",
+      "members": {
+        "AUDIOANDSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AudioAndScript"
+          }
+        },
+        "LONGAUDIO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LongAudio"
+          }
+        },
+        "AUDIOONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AudioOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dataset kind"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/trainingsets/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Deletes the training set identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSet"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/trainingsets/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new training set."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSet": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Training set name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Training set description"
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of the training dataset. Locale code follows BCP-47. You can find\nthe text to speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "voiceKind": {
+          "target": "com.azure.cognitiveservices_text_to_speech#VoiceKind",
+          "traits": {
+            "smithy.api#documentation": "Voice kind"
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetProperties",
+          "traits": {
+            "smithy.api#documentation": "Training set properties"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Training set"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#Status": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "DISABLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabling"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of a resource."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetProperties": {
+      "type": "structure",
+      "members": {
+        "utteranceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Utterance count in this training set"
+          }
+        },
+        "durationInSeconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total duration of audio in seconds in this training set"
+          }
+        },
+        "isContextual": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the training set is composed of contextual data"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Training set properties"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#VoiceKind": {
+      "type": "enum",
+      "members": {
+        "MALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Male"
+          }
+        },
+        "FEMALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Female"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Voice kind"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the resource."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Training set name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Training set description"
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of the training dataset. Locale code follows BCP-47. You can find\nthe text to speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "voiceKind": {
+          "target": "com.azure.cognitiveservices_text_to_speech#VoiceKind",
+          "traits": {
+            "smithy.api#documentation": "Voice kind"
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetProperties",
+          "traits": {
+            "smithy.api#documentation": "Training set properties"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSet"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/trainingsets/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets the training set identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedTrainingSet"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/trainingsets",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets a list of training sets for the authenticated Speech service resource."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedTrainingSet": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedTrainingSetValueList",
+          "traits": {
+            "smithy.api#documentation": "The TrainingSet items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TrainingSet items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedTrainingSetValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSet"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TrainingSet items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#TrainingSetsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of items to include in a single response."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/projects/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Deletes the project identified by the given ID. All data (like consent,\ntraining set) in this project will be deleted automatically."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the resource."
+          }
+        },
+        "forceDelete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "forceDelete",
+            "smithy.api#documentation": "Set this to true if you want to delete a project with model and endpoint.\nOtherwise, the delete operation will fail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Project"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/projects/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new project."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#Project": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project description"
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ProjectKind",
+          "traits": {
+            "smithy.api#documentation": "Project kind",
+            "smithy.api#required": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this project. Locale code follows BCP-47. You can find the text\nto speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Project object. Consents, training sets, models, and endpoints are organized in\na project."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectKind": {
+      "type": "enum",
+      "members": {
+        "PROFESSIONALVOICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProfessionalVoice"
+          }
+        },
+        "PERSONALVOICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PersonalVoice"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Project kind"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the resource."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project description"
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ProjectKind",
+          "traits": {
+            "smithy.api#documentation": "Project kind",
+            "smithy.api#required": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this project. Locale code follows BCP-47. You can find the text\nto speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Project"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets the project identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedProject"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/projects",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets a list of projects for the authenticated Speech service resource."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedProject": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedProjectValueList",
+          "traits": {
+            "smithy.api#documentation": "The Project items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Project items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedProjectValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Project"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Project items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ProjectsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of items to include in a single response."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/personalvoices/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Deletes the personal voice identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/personalvoices/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new personal voice with audio files in the client."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "speakerProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal voice speaker profile id. Fill this property in SSML."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of personal voice"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal voice description"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "consentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "audios": {
+          "target": "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSource",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob Storage content. With the examples below, it represents files\nhttps://contoso.blob.core.windows.net/voicecontainer/jessica/*.wav"
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoiceProperties",
+          "traits": {
+            "smithy.api#documentation": "Personal voice properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Personal voice object",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoiceProperties": {
+      "type": "structure",
+      "members": {
+        "failureReason": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelFailureReason",
+          "traits": {
+            "smithy.api#documentation": "Model training failure reason"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Personal voice properties"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelFailureReason": {
+      "type": "enum",
+      "members": {
+        "INACCESSIBLECUSTOMERSTORAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InaccessibleCustomerStorage"
+          }
+        },
+        "SPEAKERVERIFICATIONFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SpeakerVerificationFailed"
+          }
+        },
+        "TERMINATEBYUSER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TerminateByUser"
+          }
+        },
+        "INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Internal"
+          }
+        },
+        "DATANOTREADY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataNotReady"
+          }
+        },
+        "DATANOTENOUGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataNotEnough"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model training failure reason"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the resource."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/personalvoices/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new personal voice with audio files in Azure Blob Storage."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "speakerProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal voice speaker profile id. Fill this property in SSML."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of personal voice"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal voice description"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "consentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "audios": {
+          "target": "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSource",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob Storage content. With the examples below, it represents files\nhttps://contoso.blob.core.windows.net/voicecontainer/jessica/*.wav"
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoiceProperties",
+          "traits": {
+            "smithy.api#documentation": "Personal voice properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Personal voice object",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of personal voice"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal voice description"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "consentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "audios": {
+          "target": "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSource",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob Storage content. With the examples below, it represents files\nhttps://contoso.blob.core.windows.net/voicecontainer/jessica/*.wav"
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoiceProperties",
+          "traits": {
+            "smithy.api#documentation": "Personal voice properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoice"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/personalvoices/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets the personal voice identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoice": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "speakerProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal voice speaker profile id. Fill this property in SSML."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of personal voice"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal voice description"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "consentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "audios": {
+          "target": "com.azure.cognitiveservices_text_to_speech#AzureBlobContentSource",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob Storage content. With the examples below, it represents files\nhttps://contoso.blob.core.windows.net/voicecontainer/jessica/*.wav"
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoiceProperties",
+          "traits": {
+            "smithy.api#documentation": "Personal voice properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Personal voice object"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedPersonalVoice"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/personalvoices",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets a list of personal voices for the authenticated Speech service resource."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedPersonalVoice": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedPersonalVoiceValueList",
+          "traits": {
+            "smithy.api#documentation": "The PersonalVoice items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of PersonalVoice items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedPersonalVoiceValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoice"
+      },
+      "traits": {
+        "smithy.api#documentation": "The PersonalVoice items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of items to include in a single response."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#OperationsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#OperationsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Operation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/operations/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets operation info."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#Operation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique operation ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#OperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of an operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of a long running operation."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#OperationStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of an operation."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#OperationsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Unique operation ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ModelsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/models/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Deletes the model identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ModelsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ModelsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/models/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new voice model."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "voiceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Model description"
+          }
+        },
+        "recipe": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Recipe",
+          "traits": {
+            "smithy.api#documentation": "Recipe for model building. Different recipes have different capability.",
+            "smithy.api#required": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this model. Locale code follows BCP-47. You can find the text to\nspeech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "consentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "trainingSetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "engineVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Engine version. Update this version can get the latest pronunciation bug fixing."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelProperties",
+          "traits": {
+            "smithy.api#documentation": "Model properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model object",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelProperties": {
+      "type": "structure",
+      "members": {
+        "presetStyles": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesPresetStylesList",
+          "traits": {
+            "smithy.api#documentation": "Preset styles of this model."
+          }
+        },
+        "styleTrainingSetIds": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesStyleTrainingSetIdsMap",
+          "traits": {
+            "smithy.api#documentation": "Customized styles and associated training sets."
+          }
+        },
+        "voiceStyles": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesVoiceStylesList",
+          "traits": {
+            "smithy.api#documentation": "All styles supported by this model."
+          }
+        },
+        "failureReason": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelFailureReason",
+          "traits": {
+            "smithy.api#documentation": "Model training failure reason"
+          }
+        },
+        "failedTrainingsets": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesFailedTrainingsetsList",
+          "traits": {
+            "smithy.api#documentation": "IDs of failed training sets."
+          }
+        },
+        "secondaryLocales": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesSecondaryLocalesList",
+          "traits": {
+            "smithy.api#documentation": "Secondary locales that this model can speak. Locale code follows BCP-47."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model properties"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesSecondaryLocalesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Secondary locales that this model can speak. Locale code follows BCP-47."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesFailedTrainingsetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of failed training sets."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesVoiceStylesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "All styles supported by this model."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesStyleTrainingSetIdsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Customized styles and associated training sets."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesPresetStylesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Preset styles of this model."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#Recipe": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recipe kind"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recipe version"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recipe description"
+          }
+        },
+        "minUtteranceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum utterance count required to train a voice model with this recipe."
+          }
+        },
+        "minStyleUtteranceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum utterance count required to train each customized style."
+          }
+        },
+        "maxCustomStyleNum": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum customized style number supported in one voice model."
+          }
+        },
+        "datasetLocales": {
+          "target": "com.azure.cognitiveservices_text_to_speech#RecipeDatasetLocalesList",
+          "traits": {
+            "smithy.api#documentation": "The locale of the training dataset. Locale code follows BCP-47. You can find\nthe text to speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+          }
+        },
+        "modelLocales": {
+          "target": "com.azure.cognitiveservices_text_to_speech#RecipeModelLocalesList",
+          "traits": {
+            "smithy.api#documentation": "The locale that a voice model can speak with this recipe. Locale code follows\nBCP-47. You can find the text to speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+          }
+        },
+        "presetStyles": {
+          "target": "com.azure.cognitiveservices_text_to_speech#RecipePresetStylesMap",
+          "traits": {
+            "smithy.api#documentation": "Preset styles supported by this recipe per locale. You can get these styles\nwithout any style training set."
+          }
+        },
+        "minDurationInSeconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minimum audio duration in seconds required to train a voice model with this\nrecipe."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recipe for model building. Different recipes have different capability."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#RecipePresetStylesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PresetStyleItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Preset styles supported by this recipe per locale. You can get these styles\nwithout any style training set."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PresetStyleItem": {
+      "type": "structure",
+      "members": {
+        "male": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PresetStyleItemMaleList",
+          "traits": {
+            "smithy.api#documentation": "Preset styles supported on male voice model."
+          }
+        },
+        "female": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PresetStyleItemFemaleList",
+          "traits": {
+            "smithy.api#documentation": "Preset styles supported on female voice model."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Preset styles supported by the recipe. The voice model can support these styles\nwithout any style training set."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PresetStyleItemFemaleList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Preset styles supported on female voice model."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PresetStyleItemMaleList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Preset styles supported on male voice model."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#RecipeModelLocalesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The locale that a voice model can speak with this recipe. Locale code follows\nBCP-47. You can find the text to speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#RecipeDatasetLocalesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The locale of the training dataset. Locale code follows BCP-47. You can find\nthe text to speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        },
+        "voiceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Model description"
+          }
+        },
+        "recipe": {
+          "target": "com.azure.cognitiveservices_text_to_speech#RecipeInput",
+          "traits": {
+            "smithy.api#documentation": "Recipe for model building. Different recipes have different capability.",
+            "smithy.api#required": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this model. Locale code follows BCP-47. You can find the text to\nspeech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "consentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "trainingSetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Model properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "presetStyles": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesInputPresetStylesList",
+          "traits": {
+            "smithy.api#documentation": "Preset styles of this model."
+          }
+        },
+        "styleTrainingSetIds": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelPropertiesInputStyleTrainingSetIdsMap",
+          "traits": {
+            "smithy.api#documentation": "Customized styles and associated training sets."
+          }
+        },
+        "failureReason": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelFailureReason",
+          "traits": {
+            "smithy.api#documentation": "Model training failure reason"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model properties"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesInputStyleTrainingSetIdsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Customized styles and associated training sets."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelPropertiesInputPresetStylesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Preset styles of this model."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#RecipeInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recipe kind"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recipe version"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recipe for model building. Different recipes have different capability."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ModelsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Model"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/models/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets the model identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#Model": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "voiceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Model description"
+          }
+        },
+        "recipe": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Recipe",
+          "traits": {
+            "smithy.api#documentation": "Recipe for model building. Different recipes have different capability.",
+            "smithy.api#required": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this model. Locale code follows BCP-47. You can find the text to\nspeech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "consentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "trainingSetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "engineVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Engine version. Update this version can get the latest pronunciation bug fixing."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelProperties",
+          "traits": {
+            "smithy.api#documentation": "Model properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model object"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ModelsListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedModel"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/models",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets the list of models for the authenticated Speech service resource."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedModel": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedModelValueList",
+          "traits": {
+            "smithy.api#documentation": "The Model items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Model items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedModelValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Model"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Model items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of items to include in a single response."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsListRecipes": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ModelsListRecipesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedRecipe"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/modelrecipes",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Get a list of supported recipes for model building. Different recipes have\ndifferent capabilities such as support for multi-style voice models."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedRecipe": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedRecipeValueList",
+          "traits": {
+            "smithy.api#documentation": "The Recipe items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Recipe items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedRecipeValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Recipe"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Recipe items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelsListRecipesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsSuspend": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/endpoints/{id}:suspend",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Suspends the endpoint identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The resource ID, which should be UUID."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsResume": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsResumeRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsResumeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/endpoints/{id}:resume",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Resumes the endpoint identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsResumeResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsResumeRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The resource ID, which should be UUID."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/endpoints/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Deletes the endpoint identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Endpoint Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/endpoints/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new endpoint."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint Id",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint description"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "modelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Endpoint properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoint object",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointProperties": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointKind",
+          "traits": {
+            "smithy.api#documentation": "Endpoint kind"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoint properties"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointKind": {
+      "type": "enum",
+      "members": {
+        "HIGHPERFORMANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HighPerformance"
+          }
+        },
+        "FASTRESUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FastResume"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoint kind"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Endpoint Id"
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint description"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "modelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Endpoint properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Endpoint"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/endpoints/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets the endpoint identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#Endpoint": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint Id",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint name"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint description"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "modelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Endpoint properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoint object"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Endpoint Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedEndpoint"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/endpoints",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets a list of endpoints for the authenticated Speech service resource."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedEndpoint": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedEndpointValueList",
+          "traits": {
+            "smithy.api#documentation": "The Endpoint items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Endpoint items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedEndpointValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Endpoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Endpoint items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#EndpointsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of items to include in a single response."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/consents/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Deletes the consent identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/consents/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new voice talent consent with the provided audio file."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of consent."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of consent."
+          }
+        },
+        "voiceTalentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice talent name. Must match the voice talent name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "companyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Company name. Must match the company name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "audioUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public accessible URL of the consent audio file. It's recommended to be an\nAzure blob URL with\n[SAS](https://learn.microsoft.com/azure/storage/common/storage-sas-overview).\nThis property is only available in request."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this consent. Locale code follows BCP-47. You can find the text\nto speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentProperties",
+          "traits": {
+            "smithy.api#documentation": "Consent properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)"
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Consent object",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentProperties": {
+      "type": "structure",
+      "members": {
+        "failureReason": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentFailureReason",
+          "traits": {
+            "smithy.api#documentation": "Consent creation failure reason"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Consent properties"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentFailureReason": {
+      "type": "enum",
+      "members": {
+        "AUDIOANDSCRIPTNOTMATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AudioAndScriptNotMatch"
+          }
+        },
+        "INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Internal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Consent creation failure reason"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the resource."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/consents/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Creates a new voice talent consent with the provided audio URL."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of consent."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of consent."
+          }
+        },
+        "voiceTalentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice talent name. Must match the voice talent name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "companyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Company name. Must match the company name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "audioUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public accessible URL of the consent audio file. It's recommended to be an\nAzure blob URL with\n[SAS](https://learn.microsoft.com/azure/storage/common/storage-sas-overview).\nThis property is only available in request."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this consent. Locale code follows BCP-47. You can find the text\nto speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentProperties",
+          "traits": {
+            "smithy.api#documentation": "Consent properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)"
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Consent object",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "ID of the status monitor for the operation. If the Operation-Id header matches\nan existing operation and the request is not identical to the prior request, it\nwill fail with a 400 Bad Request."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of consent."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of consent."
+          }
+        },
+        "voiceTalentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice talent name. Must match the voice talent name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "companyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Company name. Must match the company name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "audioUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public accessible URL of the consent audio file. It's recommended to be an\nAzure blob URL with\n[SAS](https://learn.microsoft.com/azure/storage/common/storage-sas-overview).\nThis property is only available in request."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this consent. Locale code follows BCP-47. You can find the text\nto speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentProperties",
+          "traits": {
+            "smithy.api#documentation": "Consent properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Consent"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/consents/{id}",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets the consent identified by the given ID."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#Consent": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of consent."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of consent."
+          }
+        },
+        "voiceTalentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice talent name. Must match the voice talent name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "companyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Company name. Must match the company name in the consent audio file.",
+            "smithy.api#required": {}
+          }
+        },
+        "audioUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public accessible URL of the consent audio file. It's recommended to be an\nAzure blob URL with\n[SAS](https://learn.microsoft.com/azure/storage/common/storage-sas-overview).\nThis property is only available in request."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locale of this consent. Locale code follows BCP-47. You can find the text\nto speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentProperties",
+          "traits": {
+            "smithy.api#documentation": "Consent properties"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_text_to_speech#Status",
+          "traits": {
+            "smithy.api#documentation": "Status of a resource."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601\ndate and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)"
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as\nISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Consent object"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Resource id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedConsent"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/consents",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets a list of consents for the authenticated Speech service resource."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedConsent": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedConsentValueList",
+          "traits": {
+            "smithy.api#documentation": "The Consent items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Consent items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedConsentValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#Consent"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Consent items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ConsentsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of items to include in a single response."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#BaseModelsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_text_to_speech#BaseModelsListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_text_to_speech#PagedBaseModel"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/basemodels",
+          "code": 200,
+          "host": "{endpoint}/customvoice",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Gets a list of base models."
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedBaseModel": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_text_to_speech#PagedBaseModelValueList",
+          "traits": {
+            "smithy.api#documentation": "The BaseModel items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of BaseModel items"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#PagedBaseModelValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#BaseModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "The BaseModel items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#BaseModel": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base model name",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base model description"
+          }
+        },
+        "releaseDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The stamp when the base model was released. The timestamp is encoded as ISO\n8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when TTS service will stop serving this base model. The timestamp\nis encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see\nhttps://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.cognitiveservices_text_to_speech#BaseModelCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "Capabilities of base model"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base model"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#BaseModelCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_text_to_speech#ModelCapability"
+      },
+      "traits": {
+        "smithy.api#documentation": "Capabilities of base model"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#ModelCapability": {
+      "type": "enum",
+      "members": {
+        "PERSONALVOICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PersonalVoice"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model capability"
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#BaseModelsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_text_to_speech#CognitiveservicesTextToSpeech": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadData"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFile"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#OperationsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelsDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelsCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelsList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ModelsListRecipes"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsSuspend"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsResume"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFile"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_text_to_speech#BaseModelsList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure TextToSpeech data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/TextToSpeech (latest stable api-version 2026-01-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/customvoice",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

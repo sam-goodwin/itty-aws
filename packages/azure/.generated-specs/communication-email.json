@@ -1,0 +1,593 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.communication_email#EmailSend": "com.azure.communication_email#SendEmail",
+      "com.azure.communication_email#EmailSendResponse": "com.azure.communication_email#SendEmailResponse",
+      "com.azure.communication_email#EmailSendRequest": "com.azure.communication_email#SendEmailRequest",
+      "com.azure.communication_email#EmailSendRequestReplyToList": "com.azure.communication_email#SendEmailRequestReplyToList",
+      "com.azure.communication_email#EmailSendRequestAttachmentsList": "com.azure.communication_email#SendEmailRequestAttachmentsList",
+      "com.azure.communication_email#EmailSendRequestHeadersMap": "com.azure.communication_email#SendEmailRequestHeadersMap"
+    }
+  },
+  "shapes": {
+    "com.azure.communication_email#EmailSend": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_email#EmailSendRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_email#EmailSendResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/emails:send",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Queues an email message to be sent to one or more recipients"
+      }
+    },
+    "com.azure.communication_email#EmailSendResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "Location url of where to poll the status of this operation from."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "retry-after",
+            "smithy.api#documentation": "This header will only be present when the operation status is a non-terminal status. It indicates the minimum amount of time in seconds to wait before polling for operation status again."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_email#EmailSendRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#documentation": "This is the ID provided by the customer to identify the long running operation. If an ID is not provided by the customer, the service will generate one."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Tracking ID sent with the request to help with debugging."
+          }
+        },
+        "headers": {
+          "target": "com.azure.communication_email#EmailSendRequestHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Custom email headers to be passed."
+          }
+        },
+        "senderAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sender email address from a verified domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "com.azure.communication_email#EmailContent",
+          "traits": {
+            "smithy.api#documentation": "Email content to be sent.",
+            "smithy.api#required": {}
+          }
+        },
+        "recipients": {
+          "target": "com.azure.communication_email#EmailRecipients",
+          "traits": {
+            "smithy.api#documentation": "Recipients for the email.",
+            "smithy.api#required": {}
+          }
+        },
+        "attachments": {
+          "target": "com.azure.communication_email#EmailSendRequestAttachmentsList",
+          "traits": {
+            "smithy.api#documentation": "List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB."
+          }
+        },
+        "replyTo": {
+          "target": "com.azure.communication_email#EmailSendRequestReplyToList",
+          "traits": {
+            "smithy.api#documentation": "Email addresses where recipients' replies will be sent to."
+          }
+        },
+        "userEngagementTrackingDisabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether user engagement tracking should be disabled for this request if the resource-level user engagement tracking setting was already enabled in the control plane."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_email#EmailSendRequestReplyToList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#EmailAddress"
+      },
+      "traits": {
+        "smithy.api#documentation": "Email addresses where recipients' replies will be sent to."
+      }
+    },
+    "com.azure.communication_email#EmailAddress": {
+      "type": "structure",
+      "members": {
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email display name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object representing the email address and its display name"
+      }
+    },
+    "com.azure.communication_email#EmailSendRequestAttachmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#EmailAttachment"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB."
+      }
+    },
+    "com.azure.communication_email#EmailAttachment": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the attachment",
+            "smithy.api#required": {}
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "MIME type of the content being attached.",
+            "smithy.api#required": {}
+          }
+        },
+        "contentInBase64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64 encoded contents of the attachment",
+            "smithy.api#required": {}
+          }
+        },
+        "contentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier (CID) to reference an inline attachment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attachment to the email."
+      }
+    },
+    "com.azure.communication_email#EmailRecipients": {
+      "type": "structure",
+      "members": {
+        "to": {
+          "target": "com.azure.communication_email#EmailRecipientsToList",
+          "traits": {
+            "smithy.api#documentation": "Email To recipients",
+            "smithy.api#required": {}
+          }
+        },
+        "cc": {
+          "target": "com.azure.communication_email#EmailRecipientsCcList",
+          "traits": {
+            "smithy.api#documentation": "Email CC recipients"
+          }
+        },
+        "bcc": {
+          "target": "com.azure.communication_email#EmailRecipientsBccList",
+          "traits": {
+            "smithy.api#documentation": "Email BCC recipients"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recipients of the email"
+      }
+    },
+    "com.azure.communication_email#EmailRecipientsBccList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#EmailAddress"
+      },
+      "traits": {
+        "smithy.api#documentation": "Email BCC recipients"
+      }
+    },
+    "com.azure.communication_email#EmailRecipientsCcList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#EmailAddress"
+      },
+      "traits": {
+        "smithy.api#documentation": "Email CC recipients"
+      }
+    },
+    "com.azure.communication_email#EmailRecipientsToList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#EmailAddress"
+      },
+      "traits": {
+        "smithy.api#documentation": "Email To recipients"
+      }
+    },
+    "com.azure.communication_email#EmailContent": {
+      "type": "structure",
+      "members": {
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subject of the email message",
+            "smithy.api#required": {}
+          }
+        },
+        "plainText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Plain text version of the email message.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "html": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Html version of the email message."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Content of the email."
+      }
+    },
+    "com.azure.communication_email#EmailSendRequestHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom email headers to be passed."
+      }
+    },
+    "com.azure.communication_email#EmailGetSendResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_email#EmailGetSendResultRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_email#EmailSendResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/emails/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-09-01"
+        },
+        "smithy.api#documentation": "Gets the status of the email send operation."
+      }
+    },
+    "com.azure.communication_email#EmailSendResult": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique id of the operation. Use a UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.communication_email#EmailSendResultStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.communication_email#EmailSendResultError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "retry-after",
+            "smithy.api#documentation": "This header will only be present when the status is a non-terminal status. It indicates the minimum amount of time in seconds to wait before polling for operation status again."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of the long running operation"
+      }
+    },
+    "com.azure.communication_email#EmailSendResultError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error target."
+          }
+        },
+        "details": {
+          "target": "com.azure.communication_email#EmailSendResultErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The error details."
+          }
+        },
+        "additionalInfo": {
+          "target": "com.azure.communication_email#EmailSendResultErrorAdditionalInfoList",
+          "traits": {
+            "smithy.api#documentation": "The error additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.communication_email#EmailSendResultErrorAdditionalInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#ErrorAdditionalInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error additional info."
+      }
+    },
+    "com.azure.communication_email#ErrorAdditionalInfo": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional info type."
+          }
+        },
+        "info": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource management error additional info."
+      }
+    },
+    "com.azure.communication_email#EmailSendResultErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#ErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error details."
+      }
+    },
+    "com.azure.communication_email#ErrorDetail": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error target."
+          }
+        },
+        "details": {
+          "target": "com.azure.communication_email#ErrorDetailDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The error details."
+          }
+        },
+        "additionalInfo": {
+          "target": "com.azure.communication_email#ErrorDetailAdditionalInfoList",
+          "traits": {
+            "smithy.api#documentation": "The error additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.communication_email#ErrorDetailAdditionalInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#ErrorAdditionalInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error additional info."
+      }
+    },
+    "com.azure.communication_email#ErrorDetailDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_email#ErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error details."
+      }
+    },
+    "com.azure.communication_email#EmailSendResultStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of operation."
+      }
+    },
+    "com.azure.communication_email#EmailGetSendResultRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the long running operation (GUID) returned from a previous call to send email"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_email#CommunicationEmail": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.communication_email#EmailSend"
+        },
+        {
+          "target": "com.azure.communication_email#EmailGetSendResult"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Email data plane",
+        "smithy.api#documentation": "Azure communication data plane — communication/data-plane/Email (latest stable api-version 2025-09-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://communication.azure.com/.default"
+      }
+    }
+  }
+}

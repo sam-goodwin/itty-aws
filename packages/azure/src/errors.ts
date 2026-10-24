@@ -676,6 +676,19 @@ export class ConnectedCacheCustomerCacheNodesExist
   ).pipe(Category.withDependencyViolationError) {}
 
 /**
+ * Returned by Microsoft.ConnectedCache when creating an ISP cache node under
+ * an ISP customer whose signup (ASN verification through PeeringDB) has not
+ * completed. Matched by message: the response is a bare 400 ("Customer
+ * signup is not complete. Please complete customer signup before creating a
+ * cache node.").
+ */
+export class ConnectedCacheIspSignupIncomplete
+  extends /*@__PURE__*/ Schema.TaggedError<ConnectedCacheIspSignupIncomplete>()(
+    "ConnectedCacheIspSignupIncomplete",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
  * Returned by Microsoft.NetApp when the subscription may not create NetApp
  * accounts in the region (e.g. free-trial subscriptions, or regions closed
  * to new Azure NetApp Files customers). Azure error code:
@@ -1372,6 +1385,19 @@ export class SiteRecoveryNoRegisteredServers
   ).pipe(Category.withBadRequestError) {}
 
 /**
+ * Microsoft.RecoveryServices (Site Recovery) rejects an ASR write with
+ * `BadRequest` "Failed to start operation. Verify input and try operation
+ * again." when its job cannot start: for rejected input (e.g. a protection
+ * cluster without nodes) and while another job on the same vault is
+ * starting (e.g. two fabrics created at once). Matched by message.
+ */
+export class SiteRecoveryOperationNotStarted
+  extends /*@__PURE__*/ Schema.TaggedError<SiteRecoveryOperationNotStarted>()(
+    "SiteRecoveryOperationNotStarted",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
  * Microsoft.ServiceFabric (managed clusters) refuses to delete a cluster's
  * last primary node type: `InvalidParameter` "Cluster must have at least
  * one active primary node type." (matched by message). The node type goes
@@ -1451,7 +1477,237 @@ export class ContainerAppsEnvironmentQuotaExceeded
     AzureErrorFields,
   ).pipe(Category.withConflictError) {}
 
+/**
+ * Microsoft.Sql rejects a SQL vulnerability assessment (express
+ * configuration) baseline until the first scan of the database has
+ * finished: HTTP 400 `BadRequest` "SQL vulnerability assessment results are
+ * not available yet, please try again later." (matched by message).
+ * Transient; retry.
+ */
+export class SqlVulnerabilityAssessmentResultsNotReady
+  extends /*@__PURE__*/ Schema.TaggedError<SqlVulnerabilityAssessmentResultsNotReady>()(
+    "SqlVulnerabilityAssessmentResultsNotReady",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/**
+ * Microsoft.Sql answers a GET of a missing SQL vulnerability assessment
+ * (express configuration) rule baseline with HTTP 400 `SqlVulnerabilityAssessmentNoRuleBaseline`
+ * "No SQL vulnerability assessment baseline was found for rule '...'".
+ */
+export class SqlVulnerabilityAssessmentBaselineNotFound
+  extends /*@__PURE__*/ Schema.TaggedError<SqlVulnerabilityAssessmentBaselineNotFound>()(
+    "SqlVulnerabilityAssessmentBaselineNotFound",
+    AzureErrorFields,
+  ).pipe(Category.withNotFoundError) {}
+
+/**
+ * Microsoft.AppComplianceAutomation refuses the request: HTTP 502
+ * `BearerFallbackDisabled` ("Server failed to process the request."). It is
+ * returned for every operation sent without the `x-ms-aad-user-token`
+ * header, and for writes (report PUT, onboard, triggerEvaluation) sent with
+ * an app-only (service principal) token in that header. Not transient.
+ */
+export class AppComplianceAutomationBearerFallbackDisabled
+  extends /*@__PURE__*/ Schema.TaggedError<AppComplianceAutomationBearerFallbackDisabled>()(
+    "AppComplianceAutomationBearerFallbackDisabled",
+    AzureErrorFields,
+  ).pipe(Category.withAuthError) {}
+
+// ---------------------------------------------------------------------------
+// Storage data planes (Blob, Queue, File, Data Lake). Codes arrive in the
+// XML `<Error><Code>` body, Data Lake's JSON `error.code`, or the
+// `x-ms-error-code` header. `ContainerNotFound`, `QueueNotFound`,
+// `ShareNotFound`, `ResourceNotFound`, `ConditionNotMet` and
+// `AuthorizationPermissionMismatch` reuse the classes above.
+// ---------------------------------------------------------------------------
+
+/** Storage: the blob does not exist. Code `BlobNotFound`. */
+export class BlobNotFound
+  extends /*@__PURE__*/ Schema.TaggedError<BlobNotFound>()("BlobNotFound", AzureErrorFields).pipe(
+    Category.withNotFoundError,
+  ) {}
+
+/** Storage: the queue message does not exist (or was already deleted). Code `MessageNotFound`. */
+export class MessageNotFound
+  extends /*@__PURE__*/ Schema.TaggedError<MessageNotFound>()(
+    "MessageNotFound",
+    AzureErrorFields,
+  ).pipe(Category.withNotFoundError) {}
+
+/** Data Lake: the file or directory does not exist. Code `PathNotFound`. */
+export class PathNotFound
+  extends /*@__PURE__*/ Schema.TaggedError<PathNotFound>()("PathNotFound", AzureErrorFields).pipe(
+    Category.withNotFoundError,
+  ) {}
+
+/** Data Lake: the filesystem does not exist. Code `FilesystemNotFound`. */
+export class FilesystemNotFound
+  extends /*@__PURE__*/ Schema.TaggedError<FilesystemNotFound>()(
+    "FilesystemNotFound",
+    AzureErrorFields,
+  ).pipe(Category.withNotFoundError) {}
+
+/** Storage (File, Data Lake): the parent directory does not exist. Code `ParentNotFound`. */
+export class ParentNotFound
+  extends /*@__PURE__*/ Schema.TaggedError<ParentNotFound>()(
+    "ParentNotFound",
+    AzureErrorFields,
+  ).pipe(Category.withNotFoundError) {}
+
+/** Storage: the blob already exists (a conditional create). Code `BlobAlreadyExists`. */
+export class BlobAlreadyExists
+  extends /*@__PURE__*/ Schema.TaggedError<BlobAlreadyExists>()(
+    "BlobAlreadyExists",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Storage: the container already exists. Code `ContainerAlreadyExists`. */
+export class ContainerAlreadyExists
+  extends /*@__PURE__*/ Schema.TaggedError<ContainerAlreadyExists>()(
+    "ContainerAlreadyExists",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Storage: a queue with other metadata already exists. Code `QueueAlreadyExists`. */
+export class QueueAlreadyExists
+  extends /*@__PURE__*/ Schema.TaggedError<QueueAlreadyExists>()(
+    "QueueAlreadyExists",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Storage: the file share already exists. Code `ShareAlreadyExists`. */
+export class ShareAlreadyExists
+  extends /*@__PURE__*/ Schema.TaggedError<ShareAlreadyExists>()(
+    "ShareAlreadyExists",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Data Lake: the filesystem already exists. Code `FilesystemAlreadyExists`. */
+export class FilesystemAlreadyExists
+  extends /*@__PURE__*/ Schema.TaggedError<FilesystemAlreadyExists>()(
+    "FilesystemAlreadyExists",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Data Lake: the path already exists (a conditional create). Code `PathAlreadyExists`. */
+export class PathAlreadyExists
+  extends /*@__PURE__*/ Schema.TaggedError<PathAlreadyExists>()(
+    "PathAlreadyExists",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Storage (File): the directory or file already exists. Code `ResourceAlreadyExists`. */
+export class StorageResourceAlreadyExists
+  extends /*@__PURE__*/ Schema.TaggedError<StorageResourceAlreadyExists>()(
+    "StorageResourceAlreadyExists",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/**
+ * Storage: the container, queue, share or filesystem is still being deleted,
+ * so a create with the same name fails; retry after a delay. Codes
+ * `ContainerBeingDeleted`, `QueueBeingDeleted`, `ShareBeingDeleted`,
+ * `FilesystemBeingDeleted`.
+ */
+export class StorageBeingDeleted
+  extends /*@__PURE__*/ Schema.TaggedError<StorageBeingDeleted>()(
+    "StorageBeingDeleted",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Storage (File, Data Lake): the directory still has entries. Code `DirectoryNotEmpty`. */
+export class DirectoryNotEmpty
+  extends /*@__PURE__*/ Schema.TaggedError<DirectoryNotEmpty>()(
+    "DirectoryNotEmpty",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/** Storage: the pop receipt does not match the message's current one. Code `PopReceiptMismatch`. */
+export class PopReceiptMismatch
+  extends /*@__PURE__*/ Schema.TaggedError<PopReceiptMismatch>()(
+    "PopReceiptMismatch",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
+ * Storage: a lease blocks the operation, or the request names the wrong
+ * lease. Codes `LeaseAlreadyPresent`, `LeaseIdMissing`,
+ * `LeaseIdMismatchWithBlobOperation`, `LeaseIdMismatchWithContainerOperation`,
+ * `LeaseNotPresentWithBlobOperation`, `LeaseNotPresentWithContainerOperation`.
+ */
+export class StorageLeaseConflict
+  extends /*@__PURE__*/ Schema.TaggedError<StorageLeaseConflict>()(
+    "StorageLeaseConflict",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
+/**
+ * Storage: the request carries no valid credential (missing, malformed or
+ * expired token, bad SAS signature). Codes `AuthenticationFailed`,
+ * `NoAuthenticationInformation`, `InvalidAuthenticationInfo`.
+ */
+export class StorageAuthenticationFailed
+  extends /*@__PURE__*/ Schema.TaggedError<StorageAuthenticationFailed>()(
+    "StorageAuthenticationFailed",
+    AzureAuthErrorFields,
+  ).pipe(Category.withAuthError) {}
+
+/**
+ * Storage: the account refuses the request regardless of role (network
+ * rules, disabled shared-key or SAS access). Codes `AuthorizationFailure`,
+ * `KeyBasedAuthenticationNotPermitted`.
+ */
+export class StorageAuthorizationFailure
+  extends /*@__PURE__*/ Schema.TaggedError<StorageAuthorizationFailure>()(
+    "StorageAuthorizationFailure",
+    AzureAuthErrorFields,
+  ).pipe(Category.withAuthError) {}
+
+/**
+ * Microsoft.Storage: a Blob Access Point, data share, or storage connector
+ * is written to an account whose data collaboration policy does not allow
+ * it. HTTP 409 "... The 'allowBlobAccessPoints' property in the data
+ * collaboration policy is not set or is set to false." (matched by
+ * message). Set the flag on the account; retrying does not help.
+ */
+export class StorageDataCollaborationNotAllowed
+  extends /*@__PURE__*/ Schema.TaggedError<StorageDataCollaborationNotAllowed>()(
+    "StorageDataCollaborationNotAllowed",
+    AzureErrorFields,
+  ).pipe(Category.withConflictError) {}
+
 export const AZURE_ERROR_CODE_MAP: Record<string, new (props: any) => unknown> = {
+  // Storage data planes
+  BlobNotFound: BlobNotFound,
+  MessageNotFound: MessageNotFound,
+  PathNotFound: PathNotFound,
+  FilesystemNotFound: FilesystemNotFound,
+  ParentNotFound: ParentNotFound,
+  BlobAlreadyExists: BlobAlreadyExists,
+  ContainerAlreadyExists: ContainerAlreadyExists,
+  QueueAlreadyExists: QueueAlreadyExists,
+  ShareAlreadyExists: ShareAlreadyExists,
+  FilesystemAlreadyExists: FilesystemAlreadyExists,
+  PathAlreadyExists: PathAlreadyExists,
+  ResourceAlreadyExists: StorageResourceAlreadyExists,
+  ContainerBeingDeleted: StorageBeingDeleted,
+  QueueBeingDeleted: StorageBeingDeleted,
+  ShareBeingDeleted: StorageBeingDeleted,
+  FilesystemBeingDeleted: StorageBeingDeleted,
+  DirectoryNotEmpty: DirectoryNotEmpty,
+  PopReceiptMismatch: PopReceiptMismatch,
+  LeaseAlreadyPresent: StorageLeaseConflict,
+  LeaseIdMissing: StorageLeaseConflict,
+  LeaseIdMismatchWithBlobOperation: StorageLeaseConflict,
+  LeaseIdMismatchWithContainerOperation: StorageLeaseConflict,
+  LeaseNotPresentWithBlobOperation: StorageLeaseConflict,
+  LeaseNotPresentWithContainerOperation: StorageLeaseConflict,
+  AuthenticationFailed: StorageAuthenticationFailed,
+  NoAuthenticationInformation: StorageAuthenticationFailed,
+  InvalidAuthenticationInfo: StorageAuthenticationFailed,
+  AuthorizationFailure: StorageAuthorizationFailure,
+  KeyBasedAuthenticationNotPermitted: StorageAuthorizationFailure,
   TenantNotOnboardedToLegacy: DevBoxTenantNotOnboarded,
   MaxNumberOfGlobalEnvironmentsInSubExceeded: ContainerAppsEnvironmentQuotaExceeded,
   MaxNumberOfRegionalEnvironmentsInSubExceeded: ContainerAppsEnvironmentQuotaExceeded,
@@ -1561,6 +1817,8 @@ export const AZURE_ERROR_CODE_MAP: Record<string, new (props: any) => unknown> =
   ResourceCreationValidateFailed: DatadogMonitorCreationValidateFailed,
   ConcurrentFederatedIdentityCredentialsWritesForSingleManagedIdentity:
     FederatedIdentityCredentialWriteConflict,
+  SqlVulnerabilityAssessmentNoRuleBaseline: SqlVulnerabilityAssessmentBaselineNotFound,
+  BearerFallbackDisabled: AppComplianceAutomationBearerFallbackDisabled,
 };
 
 /**
@@ -2025,6 +2283,20 @@ export class EdgeContextCapabilityMissing
   ).pipe(Category.withBadRequestError) {}
 
 /**
+ * Returned by Microsoft.Edge when a dynamic configuration names a config
+ * or solution template (by unique identifier) the service cannot resolve
+ * yet; seen briefly after the template, its versions, or its hierarchy
+ * link were written. HTTP 400 "No solution template or config template
+ * found with name or unique identifier matching ..." without an error
+ * code (matched by message).
+ */
+export class EdgeTemplateNotResolved
+  extends /*@__PURE__*/ Schema.TaggedError<EdgeTemplateNotResolved>()(
+    "EdgeTemplateNotResolved",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
  * Returned by Microsoft.Migrate when an assessment is created in a group
  * whose machines do not support that assessment type (an empty group
  * supports none). HTTP 400 "Assessment Type: ... is not supported in this
@@ -2199,6 +2471,18 @@ export class RedisCacheRetiring
   ).pipe(Category.withBadRequestError) {}
 
 /**
+ * Returned by Microsoft.Cache when an Azure Managed Redis cluster is deleted
+ * while an earlier delete of it is still running. HTTP 400 `BadRequest` "A
+ * delete operation is already in progress for resource 'x'. Please wait for
+ * it to complete." (matched by message). Wait for the cluster to go away.
+ */
+export class RedisEnterpriseDeleteInProgress
+  extends /*@__PURE__*/ Schema.TaggedError<RedisEnterpriseDeleteInProgress>()(
+    "RedisEnterpriseDeleteInProgress",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
  * Returned by Microsoft.Automanage when the subscription may not create
  * configuration profiles or assignments (e.g. free-trial subscriptions,
  * Automanage Machine Best Practices onboarding closed). HTTP 400 "The
@@ -2303,6 +2587,28 @@ export class ManagedHsmArmKeyManagementDisabled
   ).pipe(Category.withBadRequestError) {}
 
 /**
+ * Returned by Microsoft.Network for `Hypernet` IP allocations when the
+ * subscription is not allow-listed for Hypernet. Matched by message.
+ */
+export class HypernetNotOnboarded
+  extends /*@__PURE__*/ Schema.TaggedError<HypernetNotOnboarded>()(
+    "HypernetNotOnboarded",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
+ * Returned by Microsoft.MachineLearningServices for any read, write, or
+ * delete of an asset version (e.g. an environment version) that was
+ * deleted: Azure never restores or reuses a deleted version id. Matched by
+ * message: the response is a bare 400.
+ */
+export class MachineLearningAssetVersionDeleted
+  extends /*@__PURE__*/ Schema.TaggedError<MachineLearningAssetVersionDeleted>()(
+    "MachineLearningAssetVersionDeleted",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
  * Errors whose ARM `code` is too generic to type on its own (e.g.
  * Microsoft.Web reports exhausted SKU quota as `Unauthorized`). Checked
  * before {@link AZURE_ERROR_CODE_MAP}; the first matcher whose code (if
@@ -2336,6 +2642,10 @@ export const AZURE_ERROR_MESSAGE_MATCHERS: ReadonlyArray<{
   {
     includes: "enable the setting 'AllowKeyManagementOperationsThroughARM'",
     error: ManagedHsmArmKeyManagementDisabled,
+  },
+  {
+    includes: "not onboard to hypernet",
+    error: HypernetNotOnboarded,
   },
   {
     includes: "Sequence contains no matching element",
@@ -2679,6 +2989,10 @@ export const AZURE_ERROR_MESSAGE_MATCHERS: ReadonlyArray<{
     error: EdgeContextCapabilityMissing,
   },
   {
+    includes: "No solution template or config template found with name or unique identifier",
+    error: EdgeTemplateNotResolved,
+  },
+  {
     includes: "Operations on Agent Space are not allowed for tenant",
     error: AgentSpaceNotAllowed,
   },
@@ -2844,6 +3158,11 @@ export const AZURE_ERROR_MESSAGE_MATCHERS: ReadonlyArray<{
     error: SiteRecoveryNoRegisteredServers,
   },
   {
+    code: "BadRequest",
+    includes: "Failed to start operation. Verify input and try operation again",
+    error: SiteRecoveryOperationNotStarted,
+  },
+  {
     code: "InvalidParameter",
     includes: "Cluster must have at least one active primary node type",
     error: ServiceFabricPrimaryNodeTypeRequired,
@@ -2867,6 +3186,26 @@ export const AZURE_ERROR_MESSAGE_MATCHERS: ReadonlyArray<{
   {
     includes: "does not have SQL IaaS extension installed",
     error: SqlVirtualMachineExtensionMissing,
+  },
+  {
+    includes: "SQL vulnerability assessment results are not available yet",
+    error: SqlVulnerabilityAssessmentResultsNotReady,
+  },
+  {
+    includes: "was previously deleted and cannot be restored",
+    error: MachineLearningAssetVersionDeleted,
+  },
+  {
+    includes: "Customer signup is not complete",
+    error: ConnectedCacheIspSignupIncomplete,
+  },
+  {
+    includes: "A delete operation is already in progress for resource",
+    error: RedisEnterpriseDeleteInProgress,
+  },
+  {
+    includes: "property in the data collaboration policy is not set or is set to false",
+    error: StorageDataCollaborationNotAllowed,
   },
 ];
 
@@ -2902,6 +3241,24 @@ export class AzureParseError
 
 /** Union of every ARM-code-mapped typed error class. */
 export type AzureApiError =
+  | BlobNotFound
+  | MessageNotFound
+  | PathNotFound
+  | FilesystemNotFound
+  | ParentNotFound
+  | BlobAlreadyExists
+  | ContainerAlreadyExists
+  | QueueAlreadyExists
+  | ShareAlreadyExists
+  | FilesystemAlreadyExists
+  | PathAlreadyExists
+  | StorageResourceAlreadyExists
+  | StorageBeingDeleted
+  | DirectoryNotEmpty
+  | PopReceiptMismatch
+  | StorageLeaseConflict
+  | StorageAuthenticationFailed
+  | StorageAuthorizationFailure
   | AttestationComplianceDataNotFound
   | PowerBITenantNotSignedUp
   | FabricCapacityPrincipalNotFound
@@ -2966,6 +3323,7 @@ export type AzureApiError =
   | NetworkInterfaceInUse
   | CannotDeleteResource
   | ConnectedCacheCustomerCacheNodesExist
+  | ConnectedCacheIspSignupIncomplete
   | NetAppCreationRestricted
   | NetAppVolumeGroupNotReadable
   | SubscriptionFeatureNotRegistered
@@ -2994,6 +3352,7 @@ export type AzureApiError =
   | AvdServicePrincipalAccessDenied
   | AutomationAccountRegionLimit
   | RedisCacheRetiring
+  | RedisEnterpriseDeleteInProgress
   | AutomationLocationNotAllowed
   | MongoClusterPrincipalNotFound
   | AutomationSourceControlTokenInvalid
@@ -3022,6 +3381,7 @@ export type AzureApiError =
   | EdgeSiteScopeTaken
   | EdgeContextAlreadyExists
   | EdgeContextCapabilityMissing
+  | EdgeTemplateNotResolved
   | AgentSpaceNotAllowed
   | FrontDoorFreeTrialForbidden
   | FrontDoorProfileQuotaExceeded
@@ -3077,8 +3437,15 @@ export type AzureApiError =
   | CosmosAccountBeingCreated
   | SiteRecoveryVaultNotRegistered
   | SiteRecoveryNoRegisteredServers
+  | SiteRecoveryOperationNotStarted
   | ServiceFabricPrimaryNodeTypeRequired
   | ManagedHsmPoolUpdating
   | ManagedHsmAlreadyBeingDeleted
   | ManagedHsmArmKeyManagementDisabled
-  | HttpResponsePayloadAPISpecValidationFailed;
+  | HypernetNotOnboarded
+  | SqlVulnerabilityAssessmentResultsNotReady
+  | SqlVulnerabilityAssessmentBaselineNotFound
+  | AppComplianceAutomationBearerFallbackDisabled
+  | MachineLearningAssetVersionDeleted
+  | HttpResponsePayloadAPISpecValidationFailed
+  | StorageDataCollaborationNotAllowed;

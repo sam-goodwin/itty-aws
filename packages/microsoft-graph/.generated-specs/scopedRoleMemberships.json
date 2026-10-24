@@ -1,0 +1,613 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ScopedRoleMembership": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "administrativeUnitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the administrative unit that the directory role is scoped to"
+          }
+        },
+        "roleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the directory role that the member is in."
+          }
+        },
+        "roleMemberInfo": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#Identity"
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#Identity": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity.For drive items, the display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as changed when using delta.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the identity or actor. For example, in the access reviews decisions API, this property might record the id of the principal, that is, the group, user, or application that's subject to review.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#ScopedRoleMembership"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembershipResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/scopedRoleMemberships",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from scopedRoleMemberships",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#CreateScopedRoleMembershipRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "administrativeUnitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the administrative unit that the directory role is scoped to"
+          }
+        },
+        "roleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the directory role that the member is in."
+          }
+        },
+        "roleMemberInfo": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#Identity"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#CreateScopedRoleMembershipResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "administrativeUnitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the administrative unit that the directory role is scoped to"
+          }
+        },
+        "roleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the directory role that the member is in."
+          }
+        },
+        "roleMemberInfo": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#Identity"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#CreateScopedRoleMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#CreateScopedRoleMembershipRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#CreateScopedRoleMembershipResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/scopedRoleMemberships",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to scopedRoleMemberships"
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipRequest": {
+      "type": "structure",
+      "members": {
+        "scopedRoleMembershipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of scopedRoleMembership"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "administrativeUnitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the administrative unit that the directory role is scoped to"
+          }
+        },
+        "roleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the directory role that the member is in."
+          }
+        },
+        "roleMemberInfo": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#Identity"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembershipResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/scopedRoleMemberships/{scopedRoleMembershipId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from scopedRoleMemberships by key"
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#UpdateScopedRoleMembershipRequest": {
+      "type": "structure",
+      "members": {
+        "scopedRoleMembershipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of scopedRoleMembership"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "administrativeUnitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the administrative unit that the directory role is scoped to"
+          }
+        },
+        "roleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the directory role that the member is in."
+          }
+        },
+        "roleMemberInfo": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#Identity"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#UpdateScopedRoleMembershipResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "administrativeUnitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the administrative unit that the directory role is scoped to"
+          }
+        },
+        "roleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the directory role that the member is in."
+          }
+        },
+        "roleMemberInfo": {
+          "target": "com.microsoft.graph.scopedRoleMemberships#Identity"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#UpdateScopedRoleMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#UpdateScopedRoleMembershipRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#UpdateScopedRoleMembershipResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/scopedRoleMemberships/{scopedRoleMembershipId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in scopedRoleMemberships"
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#DeleteScopedRoleMembershipRequest": {
+      "type": "structure",
+      "members": {
+        "scopedRoleMembershipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of scopedRoleMembership"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#DeleteScopedRoleMembership": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#DeleteScopedRoleMembershipRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/scopedRoleMemberships/{scopedRoleMembershipId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from scopedRoleMemberships"
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.scopedRoleMemberships#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/scopedRoleMemberships/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.scopedRoleMemberships#ScopedRoleMemberships": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.scopedRoleMemberships#ListScopedRoleMembership"
+        },
+        {
+          "target": "com.microsoft.graph.scopedRoleMemberships#CreateScopedRoleMembership"
+        },
+        {
+          "target": "com.microsoft.graph.scopedRoleMemberships#GetScopedRoleMembership"
+        },
+        {
+          "target": "com.microsoft.graph.scopedRoleMemberships#UpdateScopedRoleMembership"
+        },
+        {
+          "target": "com.microsoft.graph.scopedRoleMemberships#DeleteScopedRoleMembership"
+        },
+        {
+          "target": "com.microsoft.graph.scopedRoleMemberships#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,2020 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.synapse_data#GetSyMSOperationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#GetSyMSOperationStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Get the status of validation by operation Id.\n\nGet the status of validation by operation Id"
+      }
+    },
+    "com.azure.synapse_data#QueryArtifactsResponse": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.azure.synapse_data#QueryArtifactsResponseItemsList"
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Query artifacts response."
+      }
+    },
+    "com.azure.synapse_data#QueryArtifactsResponseItemsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#GetSyMSOperationStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Operation Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#DeleteArtifactFromSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#DeleteArtifactFromSchemaRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/databases/{databaseName}/schemas/{schemaName}/{artifactType}s/{artifactName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Delete an artifact from Schema.\n\nDelete an artifact from Schema"
+      }
+    },
+    "com.azure.synapse_data#DeleteArtifactFromSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Schema name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#DeleteArtifactFromSchemaRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type."
+          }
+        },
+        "artifactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#DeleteArtifactFromSchemaRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#PutArtifactInSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#PutArtifactInSchemaRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#SyMSAPIDDLResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/databases/{databaseName}/schemas/{schemaName}/{artifactType}s/{artifactName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Create or Update an artifact in a schema.\n\nCreate or Update an artifact in a schema"
+      }
+    },
+    "com.azure.synapse_data#SyMSAPIDDLResponse": {
+      "type": "structure",
+      "members": {
+        "ddlType": {
+          "target": "com.azure.synapse_data#DDLType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "entityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity name.",
+            "smithy.api#required": {}
+          }
+        },
+        "entityType": {
+          "target": "com.azure.synapse_data#ArtifactType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "publishStatus": {
+          "target": "com.azure.synapse_data#PublishStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "originObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object id maintained by Origin Catalog.",
+            "smithy.api#required": {}
+          }
+        },
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object id maintained by SyMS.",
+            "smithy.api#required": {}
+          }
+        },
+        "objectVersion": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Object version maintained by SyMS.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the response for create/publish operation on DDL payload."
+      }
+    },
+    "com.azure.synapse_data#PublishStatus": {
+      "type": "enum",
+      "members": {
+        "PUBLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUBLISHED"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Publish status."
+      }
+    },
+    "com.azure.synapse_data#ArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Artifact type."
+      }
+    },
+    "com.azure.synapse_data#DDLType": {
+      "type": "enum",
+      "members": {
+        "CREATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CREATE"
+          }
+        },
+        "ALTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALTER"
+          }
+        },
+        "DROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DROP"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DDL type."
+      }
+    },
+    "com.azure.synapse_data#PutArtifactInSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Schema name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#PutArtifactInSchemaRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type."
+          }
+        },
+        "artifactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact name."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.synapse_data#ArtifactType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#PutArtifactInSchemaRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#GetArtifactFromSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#GetArtifactFromSchemaRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#MDEntity"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/schemas/{schemaName}/{artifactType}s/{artifactName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Get an artifact from schema.\n\nGet an artifact from schema"
+      }
+    },
+    "com.azure.synapse_data#MDEntity": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.synapse_data#ArtifactType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Resource Id."
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "MD Entity"
+      }
+    },
+    "com.azure.synapse_data#GetArtifactFromSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Schema name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#GetArtifactFromSchemaRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type."
+          }
+        },
+        "artifactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#GetArtifactFromSchemaRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#DeleteArtifactForDB": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#DeleteArtifactForDBRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/databases/{databaseName}/{artifactType}s/{artifactName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Delete an artifact in a Database.\n\nDelete an artifact in a Database"
+      }
+    },
+    "com.azure.synapse_data#DeleteArtifactForDBRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#DeleteArtifactForDBRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type"
+          }
+        },
+        "artifactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#DeleteArtifactForDBRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#PutArtifactInDB": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#PutArtifactInDBRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#SyMSAPIDDLResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/databases/{databaseName}/{artifactType}s/{artifactName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Put an artifact in a Database.\n\nPut an artifact in a Database"
+      }
+    },
+    "com.azure.synapse_data#PutArtifactInDBRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#PutArtifactInDBRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type."
+          }
+        },
+        "artifactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact name."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.synapse_data#ArtifactType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#PutArtifactInDBRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#GetArtifactFromDB": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#GetArtifactFromDBRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#MDEntity"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/{artifactType}s/{artifactName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Get an artifact from database.\n\nGet an artifact from database"
+      }
+    },
+    "com.azure.synapse_data#GetArtifactFromDBRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#GetArtifactFromDBRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type."
+          }
+        },
+        "artifactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#GetArtifactFromDBRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#DeleteDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#DeleteDatabaseRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/databases/{databaseName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Delete a database.\n\nDelete a database"
+      }
+    },
+    "com.azure.synapse_data#DeleteDatabaseRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#PutDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#PutDatabaseRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#SyMSAPIDDLResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/databases/{databaseName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Put a database.\n\nPut a database"
+      }
+    },
+    "com.azure.synapse_data#PutDatabaseRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.synapse_data#ArtifactType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#GetDatabase": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#GetDatabaseRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#GetDatabaseResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Get details about a database.\n\nGet details about a database"
+      }
+    },
+    "com.azure.synapse_data#GetDatabaseResponse": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.synapse_data#ArtifactType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Resource Id."
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.synapse_data#GetDatabaseRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForSchemaAndView": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ListPartitionInfosForSchemaAndViewRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/schemas/{schemaName}/views/{viewName}/partitionInfos",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "List all partition information for a view in schema.\n\nList all partition information for a view in schema"
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForSchemaAndViewRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Schema name."
+          }
+        },
+        "viewName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "View name."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForSchemaAndTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ListPartitionInfosForSchemaAndTableRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/partitionInfos",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "List all partition information for table in schema.\n\nList all partition information for a table in schema"
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForSchemaAndTableRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Schema name."
+          }
+        },
+        "tableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Table name."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForView": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ListPartitionInfosForViewRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/views/{viewName}/partitionInfos",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "List all partition information for a view.\n\nList all partition information for a view"
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForViewRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "viewName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "View name."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForTable": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ListPartitionInfosForTableRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/tables/{tableName}/partitionInfos",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "List all partition information for a table.\n\nList all partition information for a table"
+      }
+    },
+    "com.azure.synapse_data#ListPartitionInfosForTableRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "tableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Table name."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ListArtifactsInSchemaByType": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ListArtifactsInSchemaByTypeRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/schemas/{schemaName}/{artifactType}s",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "List all artifacts in schema by type.\n\nList all Artifacts in schema by type"
+      }
+    },
+    "com.azure.synapse_data#ListArtifactsInSchemaByTypeRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Schema name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#ListArtifactsInSchemaByTypeRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ListArtifactsInSchemaByTypeRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#ListArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ListArtifactsRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases/{databaseName}/{artifactType}s",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "List all Artifacts of a type in a database.\n\nList all Artifacts of a type in a database"
+      }
+    },
+    "com.azure.synapse_data#ListArtifactsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Database name."
+          }
+        },
+        "artifactType": {
+          "target": "com.azure.synapse_data#ListArtifactsRequestArtifactType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Artifact type."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ListArtifactsRequestArtifactType": {
+      "type": "enum",
+      "members": {
+        "DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DATABASE"
+          }
+        },
+        "TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TABLE"
+          }
+        },
+        "SCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SCHEMA"
+          }
+        },
+        "VIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW"
+          }
+        },
+        "FUNCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FUNCTION"
+          }
+        },
+        "PARTITIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTITIONINFO"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELATIONSHIP"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#ListDatabases": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ListDatabasesRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#QueryArtifactsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/databases",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Get all databases in a workspace.\n\nGet all databases in a workspace"
+      }
+    },
+    "com.azure.synapse_data#ListDatabasesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Continuation token to get next page."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "Max page size."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ExecuteChangeWithValidation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ExecuteChangeWithValidationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/databases/ExecuteChangeWithValidation",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Batch execution of DDL Payload.\n\nBatch execution of DDL Payload"
+      }
+    },
+    "com.azure.synapse_data#ExecuteChangeWithValidationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "validationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "validationType",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Validation Type - Currently only IDWValidation is supported"
+          }
+        },
+        "ddls": {
+          "target": "com.azure.synapse_data#ExecuteChangeWithValidationRequestDdlsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ExecuteChangeWithValidationRequestDdlsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse_data#DDLPayloadInput"
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#DDLPayloadInput": {
+      "type": "structure",
+      "members": {
+        "actionType": {
+          "target": "com.azure.synapse_data#DDLType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "oldEntity": {
+          "target": "com.azure.synapse_data#MDEntityInput"
+        },
+        "newEntity": {
+          "target": "com.azure.synapse_data#MDEntityInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DDL payload"
+      }
+    },
+    "com.azure.synapse_data#MDEntityInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.synapse_data#ArtifactType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "MD Entity"
+      }
+    },
+    "com.azure.synapse_data#ExecuteChange": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.synapse_data#ExecuteChangeRequest"
+      },
+      "output": {
+        "target": "com.azure.synapse_data#SyMSAPIDDLResponses"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/databases/ExecuteChange",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-04-01"
+        },
+        "smithy.api#documentation": "Batch execution of DDL Payload.\n\nBatch execution of DDL Payload"
+      }
+    },
+    "com.azure.synapse_data#SyMSAPIDDLResponses": {
+      "type": "structure",
+      "members": {
+        "syMsApiDdlResponse": {
+          "target": "com.azure.synapse_data#SyMSAPIDDLResponsesSyMsApiDdlResponseList",
+          "traits": {
+            "smithy.api#documentation": "List of DDL response.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the publish response."
+      }
+    },
+    "com.azure.synapse_data#SyMSAPIDDLResponsesSyMsApiDdlResponseList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse_data#SyMSAPIDDLResponse"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of DDL response."
+      }
+    },
+    "com.azure.synapse_data#ExecuteChangeRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The workspace development endpoint, for example `https://myworkspace.dev.azuresynapse.net`.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "ddls": {
+          "target": "com.azure.synapse_data#ExecuteChangeRequestDdlsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse_data#ExecuteChangeRequestDdlsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse_data#DDLPayloadInput"
+      },
+      "traits": {}
+    },
+    "com.azure.synapse_data#SynapseData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.synapse_data#GetSyMSOperationStatus"
+        },
+        {
+          "target": "com.azure.synapse_data#DeleteArtifactFromSchema"
+        },
+        {
+          "target": "com.azure.synapse_data#PutArtifactInSchema"
+        },
+        {
+          "target": "com.azure.synapse_data#GetArtifactFromSchema"
+        },
+        {
+          "target": "com.azure.synapse_data#DeleteArtifactForDB"
+        },
+        {
+          "target": "com.azure.synapse_data#PutArtifactInDB"
+        },
+        {
+          "target": "com.azure.synapse_data#GetArtifactFromDB"
+        },
+        {
+          "target": "com.azure.synapse_data#DeleteDatabase"
+        },
+        {
+          "target": "com.azure.synapse_data#PutDatabase"
+        },
+        {
+          "target": "com.azure.synapse_data#GetDatabase"
+        },
+        {
+          "target": "com.azure.synapse_data#ListPartitionInfosForSchemaAndView"
+        },
+        {
+          "target": "com.azure.synapse_data#ListPartitionInfosForSchemaAndTable"
+        },
+        {
+          "target": "com.azure.synapse_data#ListPartitionInfosForView"
+        },
+        {
+          "target": "com.azure.synapse_data#ListPartitionInfosForTable"
+        },
+        {
+          "target": "com.azure.synapse_data#ListArtifactsInSchemaByType"
+        },
+        {
+          "target": "com.azure.synapse_data#ListArtifacts"
+        },
+        {
+          "target": "com.azure.synapse_data#ListDatabases"
+        },
+        {
+          "target": "com.azure.synapse_data#ExecuteChangeWithValidation"
+        },
+        {
+          "target": "com.azure.synapse_data#ExecuteChange"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Microsoft.Synapse data plane",
+        "smithy.api#documentation": "Azure synapse data plane — synapse/data-plane/Microsoft.Synapse (latest stable api-version 2021-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://dev.azuresynapse.net/.default"
+      }
+    }
+  }
+}

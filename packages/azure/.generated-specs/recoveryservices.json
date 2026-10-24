@@ -2632,7 +2632,12 @@
         },
         "smithy.api#documentation": "Update vault extended info.",
         "com.distilled.openapi#apiVersion": "2026-07-01"
-      }
+      },
+      "errors": [
+        {
+          "target": "com.azure.recoveryservices#VaultExtendedInfoAlreadySet"
+        }
+      ]
     },
     "com.azure.recoveryservices#UpdateVaultExtendedInfoResponse": {
       "type": "structure",
@@ -2748,6 +2753,13 @@
           "traits": {
             "smithy.api#documentation": "etag for the resource."
           }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Etag of the current extended info (from a GET); \"*\" matches any version."
+          }
         }
       },
       "traits": {
@@ -2771,7 +2783,12 @@
         },
         "smithy.api#documentation": "Create vault extended info.",
         "com.distilled.openapi#apiVersion": "2026-07-01"
-      }
+      },
+      "errors": [
+        {
+          "target": "com.azure.recoveryservices#VaultExtendedInfoAlreadySet"
+        }
+      ]
     },
     "com.azure.recoveryservices#VaultExtendedInfoCreateOrUpdateResponse": {
       "type": "structure",
@@ -2854,6 +2871,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "etag for the resource."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Etag of the current extended info (from a GET); \"*\" matches any version."
           }
         }
       },
@@ -4995,6 +5019,27 @@
       "traits": {
         "smithy.api#title": "Azure Recoveryservices",
         "smithy.api#documentation": "Azure Recoveryservices API — merged from the recoveryservices resource-manager specs (latest stable api-version per resource provider)."
+      }
+    },
+    "com.azure.recoveryservices#VaultExtendedInfoAlreadySet": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service's error detail (empty for this error)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 412,
+        "smithy.api#documentation": "The vault's extended info is already set; Azure does not allow changing it (HTTP 412 with an empty body).",
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 412
+          }
+        ]
       }
     }
   }

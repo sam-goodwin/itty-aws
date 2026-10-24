@@ -1,0 +1,5793 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.external#GetExternalRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetExternalRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetExternalRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.external#GetExternalRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetExternalRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternal": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetExternal": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetExternalRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternal"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get external"
+      }
+    },
+    "com.microsoft.graph.external#UpdateExternalRequest": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateExternal": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#UpdateExternalRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternal"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/external",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update external"
+      }
+    },
+    "com.microsoft.graph.external#ListConnectionsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListConnectionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListConnectionsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.external#ListConnectionsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#ListConnectionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#ListConnectionsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalConnection": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "activitySettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsActivitySettings",
+          "traits": {
+            "smithy.api#documentation": "Collects configurable settings related to activities involving connector content.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "configuration": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Teams app ID. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCategory": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsContentCategory"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the connection displayed in the Microsoft 365 admin center. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "searchSettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsSearchSettings",
+          "traits": {
+            "smithy.api#documentation": "The settings configuring the search experience for content in this connection, such as the display templates for search results.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current state of the connection. The possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsActivitySettings": {
+      "type": "structure",
+      "members": {
+        "urlToItemResolvers": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsActivitySettingsUrlToItemResolversList",
+          "traits": {
+            "smithy.api#documentation": "Specifies configurations to identify an externalItem based on a shared URL."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsUrlToItemResolverBase": {
+      "type": "structure",
+      "members": {
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority which defines the sequence in which the urlToItemResolverBase instances are evaluated.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsActivitySettingsUrlToItemResolversList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsUrlToItemResolverBase"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies configurations to identify an externalItem based on a shared URL."
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsConfiguration": {
+      "type": "structure",
+      "members": {
+        "authorizedAppIds": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConfigurationAuthorizedAppIdsList",
+          "traits": {
+            "smithy.api#documentation": "A collection of application IDs for registered Microsoft Entra apps that are allowed to manage the externalConnection and to index content in the externalConnection."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsConfigurationAuthorizedAppIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of application IDs for registered Microsoft Entra apps that are allowed to manage the externalConnection and to index content in the externalConnection."
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsContentCategory": {
+      "type": "enum",
+      "members": {
+        "UNCATEGORIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uncategorized"
+          }
+        },
+        "KNOWLEDGEBASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "knowledgeBase"
+          }
+        },
+        "WIKIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wikis"
+          }
+        },
+        "FILEREPOSITORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fileRepository"
+          }
+        },
+        "QNA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qna"
+          }
+        },
+        "CRM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crm"
+          }
+        },
+        "DASHBOARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dashboard"
+          }
+        },
+        "PEOPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "people"
+          }
+        },
+        "MEDIA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "media"
+          }
+        },
+        "EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email"
+          }
+        },
+        "MESSAGING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "messaging"
+          }
+        },
+        "MEETINGTRANSCRIPTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meetingTranscripts"
+          }
+        },
+        "TASKMANAGEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "taskManagement"
+          }
+        },
+        "LEARNINGMANAGEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "learningManagement"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsSearchSettings": {
+      "type": "structure",
+      "members": {
+        "searchResultTemplates": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsSearchSettingsSearchResultTemplatesList",
+          "traits": {
+            "smithy.api#documentation": "Enables the developer to define the appearance of the content and configure conditions that dictate when the template should be displayed. Maximum of 2 search result templates per connection."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsDisplayTemplate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text identifier for the display template; for example, contosoTickets. Maximum 16 characters. Only alphanumeric characters allowed."
+          }
+        },
+        "layout": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The definition of the content's appearance, represented by an Adaptive Card, which is a JSON-serialized card object model."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the priority of a display template. A display template with priority 1 is evaluated before a template with priority 4. Gaps in priority values are supported. Must be positive value."
+          }
+        },
+        "rules": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsDisplayTemplateRulesList",
+          "traits": {
+            "smithy.api#documentation": "Specifies additional rules for selecting this display template based on the item schema. Optional."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsPropertyRule": {
+      "type": "structure",
+      "members": {
+        "operation": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsRuleOperation"
+        },
+        "property": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The property from the externalItem schema. Required."
+          }
+        },
+        "values": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsPropertyRuleValuesList",
+          "traits": {
+            "smithy.api#documentation": "A collection with one or many strings. One or more specified strings are matched with the specified property using the specified operation. Required."
+          }
+        },
+        "valuesJoinedBy": {
+          "target": "com.microsoft.graph.external#BinaryOperator"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsRuleOperation": {
+      "type": "enum",
+      "members": {
+        "NULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "null"
+          }
+        },
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        },
+        "NOTEQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notEquals"
+          }
+        },
+        "CONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "contains"
+          }
+        },
+        "NOTCONTAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notContains"
+          }
+        },
+        "LESSTHAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lessThan"
+          }
+        },
+        "GREATERTHAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "greaterThan"
+          }
+        },
+        "STARTSWITH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "startsWith"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsPropertyRuleValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection with one or many strings. One or more specified strings are matched with the specified property using the specified operation. Required."
+      }
+    },
+    "com.microsoft.graph.external#BinaryOperator": {
+      "type": "enum",
+      "members": {
+        "OR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "or"
+          }
+        },
+        "AND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "and"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsDisplayTemplateRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsPropertyRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies additional rules for selecting this display template based on the item schema. Optional."
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsSearchSettingsSearchResultTemplatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsDisplayTemplate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Enables the developer to define the appearance of the content and configure conditions that dictate when the template should be displayed. Maximum of 2 search result templates per connection."
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsConnectionState": {
+      "type": "enum",
+      "members": {
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draft"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "OBSOLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "obsolete"
+          }
+        },
+        "LIMITEXCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "limitExceeded"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListConnectionsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternalConnection"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListConnectionsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.external#ListConnectionsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#ListConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#ListConnectionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ListConnectionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections",
+          "code": 200
+        },
+        "smithy.api#documentation": "List externalConnections\n\nGet a list of the externalConnection objects and their properties.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.external#CreateConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "activitySettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsActivitySettings",
+          "traits": {
+            "smithy.api#documentation": "Collects configurable settings related to activities involving connector content.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "configuration": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Teams app ID. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCategory": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsContentCategory"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the connection displayed in the Microsoft 365 admin center. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "searchSettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsSearchSettings",
+          "traits": {
+            "smithy.api#documentation": "The settings configuring the search experience for content in this connection, such as the display templates for search results.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateConnectionsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "activitySettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsActivitySettings",
+          "traits": {
+            "smithy.api#documentation": "Collects configurable settings related to activities involving connector content.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "configuration": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Teams app ID. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCategory": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsContentCategory"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the connection displayed in the Microsoft 365 admin center. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "searchSettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsSearchSettings",
+          "traits": {
+            "smithy.api#documentation": "The settings configuring the search experience for content in this connection, such as the display templates for search results.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current state of the connection. The possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#CreateConnectionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#CreateConnectionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/external/connections",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create externalConnection\n\nCreate a new externalConnection object."
+      }
+    },
+    "com.microsoft.graph.external#GetConnectionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetConnectionsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetConnectionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetConnectionsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetConnectionsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "activitySettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsActivitySettings",
+          "traits": {
+            "smithy.api#documentation": "Collects configurable settings related to activities involving connector content.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "configuration": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Teams app ID. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCategory": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsContentCategory"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the connection displayed in the Microsoft 365 admin center. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "searchSettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsSearchSettings",
+          "traits": {
+            "smithy.api#documentation": "The settings configuring the search experience for content in this connection, such as the display templates for search results.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current state of the connection. The possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetConnectionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetConnectionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get externalConnection\n\nRead the properties and relationships of an externalConnection object."
+      }
+    },
+    "com.microsoft.graph.external#UpdateConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "activitySettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsActivitySettings",
+          "traits": {
+            "smithy.api#documentation": "Collects configurable settings related to activities involving connector content.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "configuration": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Teams app ID. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCategory": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsContentCategory"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the connection displayed in the Microsoft 365 admin center. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "searchSettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsSearchSettings",
+          "traits": {
+            "smithy.api#documentation": "The settings configuring the search experience for content in this connection, such as the display templates for search results.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateConnectionsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "activitySettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsActivitySettings",
+          "traits": {
+            "smithy.api#documentation": "Collects configurable settings related to activities involving connector content.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "configuration": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Teams app ID. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "contentCategory": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsContentCategory"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the connection displayed in the Microsoft 365 admin center. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "searchSettings": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsSearchSettings",
+          "traits": {
+            "smithy.api#documentation": "The settings configuring the search experience for content in this connection, such as the display templates for search results.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current state of the connection. The possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#UpdateConnectionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#UpdateConnectionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/external/connections/{externalConnectionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update externalConnection\n\nUpdate the properties of an externalConnection object."
+      }
+    },
+    "com.microsoft.graph.external#DeleteConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#DeleteConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#DeleteConnectionsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/external/connections/{externalConnectionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete externalConnection\n\nDeletes an externalConnection object."
+      }
+    },
+    "com.microsoft.graph.external#ListGroupsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListGroupsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListGroupsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.external#ListGroupsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#ListGroupsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#ListGroupsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalGroup": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListGroupsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternalGroup"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.external#ListGroupsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#ListGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#ListGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ListGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get externalGroup\n\nGet an externalGroup object.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.external#CreateGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#CreateGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#CreateGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/external/connections/{externalConnectionId}/groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create externalGroup\n\nCreate a new externalGroup object."
+      }
+    },
+    "com.microsoft.graph.external#GetGroupsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetGroupsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetGroupsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetGroupsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get externalGroup\n\nGet an externalGroup object."
+      }
+    },
+    "com.microsoft.graph.external#UpdateGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the external group. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#UpdateGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#UpdateGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update externalGroup\n\nUpdate the properties of an externalGroup object."
+      }
+    },
+    "com.microsoft.graph.external#DeleteGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#DeleteGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#DeleteGroupsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete externalGroup\n\nDelete an externalGroup object."
+      }
+    },
+    "com.microsoft.graph.external#ListMembersRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListMembersRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListMembersRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListMembersRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.external#ListMembersRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#ListMembersRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#ListMembersRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsIdentity": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsIdentityType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group"
+          }
+        },
+        "EXTERNALGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "externalGroup"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListMembersResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsIdentity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListMembersResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.external#ListMembersResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#ListMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#ListMembersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ListMembersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}/members",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get members from external\n\nA member added to an externalGroup. You can add Microsoft Entra users, Microsoft Entra groups, or an externalGroup as members.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.external#CreateMembersRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateMembersResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#CreateMembersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#CreateMembersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}/members",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create identity\n\nCreate an identity resource for a new member in an externalGroup."
+      }
+    },
+    "com.microsoft.graph.external#GetMembersRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetMembersRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetMembersRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "identityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of identity"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetMembersRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetMembersRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetMembersResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetMembersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetMembersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}/members/{identityId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get members from external\n\nA member added to an externalGroup. You can add Microsoft Entra users, Microsoft Entra groups, or an externalGroup as members."
+      }
+    },
+    "com.microsoft.graph.external#UpdateMembersRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "identityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of identity"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateMembersResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#UpdateMembersRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#UpdateMembersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}/members/{identityId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property members in external"
+      }
+    },
+    "com.microsoft.graph.external#DeleteMembersRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "identityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of identity"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#DeleteMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#DeleteMembersRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}/members/{identityId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete identity\n\nDelete an identity resource to remove the corresponding member from an externalGroup."
+      }
+    },
+    "com.microsoft.graph.external#GetMembersCountRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalGroup"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetMembersCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetMembersCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/groups/{externalGroupId}/members/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.external#GetGroupsCountRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetGroupsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetGroupsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/groups/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.external#ListItemsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListItemsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListItemsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListItemsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.external#ListItemsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#ListItemsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#ListItemsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "acl": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemAclList",
+          "traits": {
+            "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+          }
+        },
+        "content": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemContent",
+          "traits": {
+            "smithy.api#documentation": "A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "informationProtectionLabel": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemInformationProtectionLabel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsProperties",
+          "traits": {
+            "smithy.api#documentation": "A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsAcl": {
+      "type": "structure",
+      "members": {
+        "accessType": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsAccessType"
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsAclType"
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifer of the identity. For Microsoft Entra identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. For external groups value is set to the ID of the externalGroup"
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsAccessType": {
+      "type": "enum",
+      "members": {
+        "GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "grant"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsAclType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group"
+          }
+        },
+        "EVERYONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "everyone"
+          }
+        },
+        "EVERYONEEXCEPTGUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "everyoneExceptGuests"
+          }
+        },
+        "EXTERNALGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "externalGroup"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalItemAclList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsAcl"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalItemContent": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemContentType"
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content for the externalItem. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalItemContentType": {
+      "type": "enum",
+      "members": {
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "html"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalItemInformationProtectionLabel": {
+      "type": "structure",
+      "members": {
+        "sensitivityLabelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsProperties": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListItemsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternalItem"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListItemsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.external#ListItemsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#ListItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#ListItemsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ListItemsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/items",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get externalItem\n\nRead the properties and relationships of an externalItem object.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.external#CreateItemsRequestAclList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsAcl"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+      }
+    },
+    "com.microsoft.graph.external#CreateItemsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "acl": {
+          "target": "com.microsoft.graph.external#CreateItemsRequestAclList",
+          "traits": {
+            "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+          }
+        },
+        "content": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemContent",
+          "traits": {
+            "smithy.api#documentation": "A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "informationProtectionLabel": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemInformationProtectionLabel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsProperties",
+          "traits": {
+            "smithy.api#documentation": "A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateItemsResponseAclList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsAcl"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+      }
+    },
+    "com.microsoft.graph.external#CreateItemsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "acl": {
+          "target": "com.microsoft.graph.external#CreateItemsResponseAclList",
+          "traits": {
+            "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+          }
+        },
+        "content": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemContent",
+          "traits": {
+            "smithy.api#documentation": "A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "informationProtectionLabel": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemInformationProtectionLabel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsProperties",
+          "traits": {
+            "smithy.api#documentation": "A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#CreateItemsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#CreateItemsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/external/connections/{externalConnectionId}/items",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to items for external"
+      }
+    },
+    "com.microsoft.graph.external#GetItemsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetItemsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetItemsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetItemsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetItemsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetItemsResponseAclList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsAcl"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+      }
+    },
+    "com.microsoft.graph.external#GetItemsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "acl": {
+          "target": "com.microsoft.graph.external#GetItemsResponseAclList",
+          "traits": {
+            "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+          }
+        },
+        "content": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemContent",
+          "traits": {
+            "smithy.api#documentation": "A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "informationProtectionLabel": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemInformationProtectionLabel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsProperties",
+          "traits": {
+            "smithy.api#documentation": "A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetItemsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetItemsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get externalItem\n\nRead the properties and relationships of an externalItem object."
+      }
+    },
+    "com.microsoft.graph.external#SetItemsRequestAclList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsAcl"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+      }
+    },
+    "com.microsoft.graph.external#SetItemsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "acl": {
+          "target": "com.microsoft.graph.external#SetItemsRequestAclList",
+          "traits": {
+            "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+          }
+        },
+        "content": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemContent",
+          "traits": {
+            "smithy.api#documentation": "A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "informationProtectionLabel": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemInformationProtectionLabel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsProperties",
+          "traits": {
+            "smithy.api#documentation": "A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#SetItemsResponseAclList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsAcl"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+      }
+    },
+    "com.microsoft.graph.external#SetItemsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "acl": {
+          "target": "com.microsoft.graph.external#SetItemsResponseAclList",
+          "traits": {
+            "smithy.api#documentation": "An array of access control entries. Each entry specifies the access granted to a user or group. Required."
+          }
+        },
+        "content": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemContent",
+          "traits": {
+            "smithy.api#documentation": "A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "informationProtectionLabel": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalItemInformationProtectionLabel",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsProperties",
+          "traits": {
+            "smithy.api#documentation": "A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#SetItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#SetItemsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#SetItemsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create externalItem\n\nCreate a new externalItem object."
+      }
+    },
+    "com.microsoft.graph.external#DeleteItemsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#DeleteItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#DeleteItemsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete externalItem\n\nDelete an externalItem object."
+      }
+    },
+    "com.microsoft.graph.external#ListActivitiesRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListActivitiesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListActivitiesRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListActivitiesRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.external#ListActivitiesRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#ListActivitiesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#ListActivitiesRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalActivity": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityType"
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalActivityType": {
+      "type": "enum",
+      "members": {
+        "VIEWED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "viewed"
+          }
+        },
+        "MODIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "modified"
+          }
+        },
+        "CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created"
+          }
+        },
+        "COMMENTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "commented"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListActivitiesResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListActivitiesResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.external#ListActivitiesResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#ListActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#ListActivitiesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ListActivitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/activities",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get activities from external\n\nReturns a list of activities performed on the item. Write-only.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.external#CreateActivitiesRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityType"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateActivitiesResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityType"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#CreateActivitiesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#CreateActivitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/activities",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to activities for external"
+      }
+    },
+    "com.microsoft.graph.external#GetActivitiesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetActivitiesRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetActivitiesRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "externalActivityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalActivity"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetActivitiesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetActivitiesRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetActivitiesResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityType"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetActivitiesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetActivitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/activities/{externalActivityId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get activities from external\n\nReturns a list of activities performed on the item. Write-only."
+      }
+    },
+    "com.microsoft.graph.external#UpdateActivitiesRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "externalActivityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalActivity"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityType"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateActivitiesResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityType"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#UpdateActivitiesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#UpdateActivitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/activities/{externalActivityId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property activities in external"
+      }
+    },
+    "com.microsoft.graph.external#DeleteActivitiesRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "externalActivityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalActivity"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#DeleteActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#DeleteActivitiesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/activities/{externalActivityId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property activities for external"
+      }
+    },
+    "com.microsoft.graph.external#GetPerformedByRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetPerformedByRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetPerformedByRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "externalActivityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalActivity"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetPerformedByRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetPerformedByRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetPerformedByResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity. The possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetPerformedBy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetPerformedByRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetPerformedByResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/activities/{externalActivityId}/performedBy",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get performedBy from external\n\nRepresents an identity used to identify who is responsible for the activity."
+      }
+    },
+    "com.microsoft.graph.external#GetActivitiesCountRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetActivitiesCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetActivitiesCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/activities/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.external#AddActivitiesRequestActivitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivity"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#AddActivitiesRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "externalItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalItem"
+          }
+        },
+        "activities": {
+          "target": "com.microsoft.graph.external#AddActivitiesRequestActivitiesList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsExternalActivityResult": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityType"
+        },
+        "error": {
+          "target": "com.microsoft.graph.external#PublicError",
+          "traits": {
+            "smithy.api#documentation": "Error information that explains the failure to process an external activity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#PublicError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the error code.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "details": {
+          "target": "com.microsoft.graph.external#PublicErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Details of the error."
+          }
+        },
+        "innerError": {
+          "target": "com.microsoft.graph.external#PublicInnerError",
+          "traits": {
+            "smithy.api#documentation": "Details of the inner error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A non-localized message for the developer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#PublicErrorDetail": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#PublicErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#PublicErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the error."
+      }
+    },
+    "com.microsoft.graph.external#PublicInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "details": {
+          "target": "com.microsoft.graph.external#PublicInnerErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "A collection of error details."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#PublicInnerErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#PublicErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of error details."
+      }
+    },
+    "com.microsoft.graph.external#AddActivitiesResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsExternalActivityResult"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#AddActivitiesResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.external#AddActivitiesResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#AddActivities": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#AddActivitiesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#AddActivitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/external/connections/{externalConnectionId}/items/{externalItemId}/microsoft.graph.externalConnectors.addActivities",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action addActivities\n\nAppend additional instances of externalActivity objects on an externalItem.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.external#GetItemsCountRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetItemsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetItemsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/items/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.external#ListOperationsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListOperationsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListOperationsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.external#ListOperationsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#ListOperationsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#ListOperationsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsConnectionOperation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "error": {
+          "target": "com.microsoft.graph.external#PublicError",
+          "traits": {
+            "smithy.api#documentation": "If status is failed, provides more information about the error that caused the failure.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the asynchronous operation. The possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsConnectionOperationStatus": {
+      "type": "enum",
+      "members": {
+        "UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unspecified"
+          }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inprogress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListOperationsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsConnectionOperation"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ListOperationsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.external#ListOperationsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#ListOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#ListOperationsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#ListOperationsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/operations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get connectionOperation\n\nRead the properties and relationships of a connectionOperation object.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.external#CreateOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "error": {
+          "target": "com.microsoft.graph.external#PublicError",
+          "traits": {
+            "smithy.api#documentation": "If status is failed, provides more information about the error that caused the failure.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the asynchronous operation. The possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateOperationsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "error": {
+          "target": "com.microsoft.graph.external#PublicError",
+          "traits": {
+            "smithy.api#documentation": "If status is failed, provides more information about the error that caused the failure.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the asynchronous operation. The possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#CreateOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#CreateOperationsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#CreateOperationsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/external/connections/{externalConnectionId}/operations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to operations for external"
+      }
+    },
+    "com.microsoft.graph.external#GetOperationsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetOperationsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "connectionOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of connectionOperation"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetOperationsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetOperationsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetOperationsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "error": {
+          "target": "com.microsoft.graph.external#PublicError",
+          "traits": {
+            "smithy.api#documentation": "If status is failed, provides more information about the error that caused the failure.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the asynchronous operation. The possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetOperationsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetOperationsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/operations/{connectionOperationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get connectionOperation\n\nRead the properties and relationships of a connectionOperation object."
+      }
+    },
+    "com.microsoft.graph.external#UpdateOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "connectionOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of connectionOperation"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "error": {
+          "target": "com.microsoft.graph.external#PublicError",
+          "traits": {
+            "smithy.api#documentation": "If status is failed, provides more information about the error that caused the failure.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the asynchronous operation. The possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateOperationsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "error": {
+          "target": "com.microsoft.graph.external#PublicError",
+          "traits": {
+            "smithy.api#documentation": "If status is failed, provides more information about the error that caused the failure.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsConnectionOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the asynchronous operation. The possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#UpdateOperationsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#UpdateOperationsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/external/connections/{externalConnectionId}/operations/{connectionOperationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property operations in external"
+      }
+    },
+    "com.microsoft.graph.external#DeleteOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "connectionOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of connectionOperation"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#DeleteOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#DeleteOperationsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/external/connections/{externalConnectionId}/operations/{connectionOperationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property operations for external"
+      }
+    },
+    "com.microsoft.graph.external#GetOperationsCountRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetOperationsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetOperationsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/operations/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.external#GetSchemaRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetSchemaRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.external#GetSchemaRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.external#GetSchemaRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsProperty": {
+      "type": "structure",
+      "members": {
+        "aliases": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsPropertyAliasesList",
+          "traits": {
+            "smithy.api#documentation": "A set of aliases or a friendly name for the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^. Optional."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies a human-readable description that explains the purpose, usage, or guidance related to the property. This property enhances semantic understanding by helping Copilot interpret queries and accurately map them to properties that results in more relevant and precise responses. Optional but we recommend that you use this property for queryable properties. The maximum supported length is 200 characters.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isQueryable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if the property is queryable. Queryable properties can be used in Keyword Query Language (KQL) queries. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isRefinable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if the property is refinable.  Refinable properties can be used to filter search results in the Search API and add a refiner control in the Microsoft Search user experience. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isRetrievable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if the property is retrievable. Retrievable properties are returned in the result set when items are returned by the search API. Retrievable properties are also available to add to the display template used to render search results. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSearchable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Nonsearchable properties aren't added to the search index. Optional.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "labels": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsPropertyLabelsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (for example, better relevance). Optional..The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue, containerName, containerUrl, iconUrl, assignedTo, dueDate, closedDate, closedBy, reportedBy, sprintName, severity, state, priority, secondaryId, itemParentId, parentUrl, tags, itemType, itemPath, numReactions. Use the Prefer: include-unknown-enum-members request header to retrieve additional values defined in this evolvable enum,For People Connectors you can include : personEmails, personAddresses, personAnniversaries, personName, personNote, personPhones, personCurrentPosition, personWebAccounts, personWebSite, personSkills, personProjects, personAccount, personAwards, personCertifications, personAssistants, personColleagues, personManager, personAlternateContacts, personEmergencyContacts."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required."
+          }
+        },
+        "type": {
+          "target": "com.microsoft.graph.external#ExternalConnectorsPropertyType"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsPropertyAliasesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of aliases or a friendly name for the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^. Optional."
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsLabel": {
+      "type": "enum",
+      "members": {
+        "TITLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "title"
+          }
+        },
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        },
+        "CREATEDBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "createdBy"
+          }
+        },
+        "LASTMODIFIEDBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lastModifiedBy"
+          }
+        },
+        "AUTHORS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authors"
+          }
+        },
+        "CREATEDDATETIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "createdDateTime"
+          }
+        },
+        "LASTMODIFIEDDATETIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lastModifiedDateTime"
+          }
+        },
+        "FILENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fileName"
+          }
+        },
+        "FILEEXTENSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fileExtension"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        },
+        "CONTAINERNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "containerName"
+          }
+        },
+        "CONTAINERURL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "containerUrl"
+          }
+        },
+        "ICONURL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iconUrl"
+          }
+        },
+        "ASSIGNEDTOPEOPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assignedToPeople"
+          }
+        },
+        "CLOSEDBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "closedBy"
+          }
+        },
+        "CLOSEDDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "closedDate"
+          }
+        },
+        "PRIORITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "priority"
+          }
+        },
+        "SPRINTNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sprintName"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "SEVERITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "severity"
+          }
+        },
+        "STATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "state"
+          }
+        },
+        "DUEDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dueDate"
+          }
+        },
+        "ITEMPARENTID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "itemParentId"
+          }
+        },
+        "ITEMPATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "itemPath"
+          }
+        },
+        "ITEMTYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "itemType"
+          }
+        },
+        "NUMBEROFREACTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "numberOfReactions"
+          }
+        },
+        "PARENTURL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parentUrl"
+          }
+        },
+        "PRIORITYNORMALIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "priorityNormalized"
+          }
+        },
+        "REPORTEDBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reportedBy"
+          }
+        },
+        "SECONDARYID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondaryId"
+          }
+        },
+        "PERSONEMAILS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personEmails"
+          }
+        },
+        "PERSONADDRESSES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personAddresses"
+          }
+        },
+        "PERSONANNIVERSARIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personAnniversaries"
+          }
+        },
+        "PERSONNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personName"
+          }
+        },
+        "PERSONNOTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personNote"
+          }
+        },
+        "PERSONPHONES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personPhones"
+          }
+        },
+        "PERSONCURRENTPOSITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personCurrentPosition"
+          }
+        },
+        "PERSONWEBACCOUNTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personWebAccounts"
+          }
+        },
+        "PERSONWEBSITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personWebSite"
+          }
+        },
+        "PERSONSKILLS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personSkills"
+          }
+        },
+        "PERSONPROJECTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personProjects"
+          }
+        },
+        "PERSONACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personAccount"
+          }
+        },
+        "PERSONAWARDS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personAwards"
+          }
+        },
+        "PERSONCERTIFICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personCertifications"
+          }
+        },
+        "PERSONASSISTANTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personAssistants"
+          }
+        },
+        "PERSONCOLLEAGUES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personColleagues"
+          }
+        },
+        "PERSONMANAGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personManager"
+          }
+        },
+        "PERSONALTERNATECONTACTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personAlternateContacts"
+          }
+        },
+        "PERSONEMERGENCYCONTACTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personEmergencyContacts"
+          }
+        },
+        "PERSONEDUCATIONALACTIVITIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personEducationalActivities"
+          }
+        },
+        "PERSONINTERESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personInterests"
+          }
+        },
+        "PERSONLANGUAGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personLanguages"
+          }
+        },
+        "PERSONPUBLICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personPublications"
+          }
+        },
+        "PERSONPATENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personPatents"
+          }
+        },
+        "PERSONWORKPOSITIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personWorkPositions"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#ExternalConnectorsPropertyLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsLabel",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (for example, better relevance). Optional..The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue, containerName, containerUrl, iconUrl, assignedTo, dueDate, closedDate, closedBy, reportedBy, sprintName, severity, state, priority, secondaryId, itemParentId, parentUrl, tags, itemType, itemPath, numReactions. Use the Prefer: include-unknown-enum-members request header to retrieve additional values defined in this evolvable enum,For People Connectors you can include : personEmails, personAddresses, personAnniversaries, personName, personNote, personPhones, personCurrentPosition, personWebAccounts, personWebSite, personSkills, personProjects, personAccount, personAwards, personCertifications, personAssistants, personColleagues, personManager, personAlternateContacts, personEmergencyContacts."
+      }
+    },
+    "com.microsoft.graph.external#ExternalConnectorsPropertyType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        },
+        "DOUBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "double"
+          }
+        },
+        "DATETIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dateTime"
+          }
+        },
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRINGCOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stringCollection"
+          }
+        },
+        "INT64COLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64Collection"
+          }
+        },
+        "DOUBLECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "doubleCollection"
+          }
+        },
+        "DATETIMECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dateTimeCollection"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        },
+        "PRINCIPAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "principal"
+          }
+        },
+        "PRINCIPALCOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "principalCollection"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.external#GetSchemaResponsePropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128."
+      }
+    },
+    "com.microsoft.graph.external#GetSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "baseType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Must be set to microsoft.graph.externalConnector.externalItem. Required."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#GetSchemaResponsePropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#GetSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetSchemaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#GetSchemaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/{externalConnectionId}/schema",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get schema\n\nRead the properties and relationships of a schema object."
+      }
+    },
+    "com.microsoft.graph.external#UpdateSchemaRequestPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128."
+      }
+    },
+    "com.microsoft.graph.external#UpdateSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "externalConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of externalConnection"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "baseType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Must be set to microsoft.graph.externalConnector.externalItem. Required."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#UpdateSchemaRequestPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateSchemaResponsePropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.external#ExternalConnectorsProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128."
+      }
+    },
+    "com.microsoft.graph.external#UpdateSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "baseType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Must be set to microsoft.graph.externalConnector.externalItem. Required."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.external#UpdateSchemaResponsePropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.external#UpdateSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#UpdateSchemaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.external#UpdateSchemaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/external/connections/{externalConnectionId}/schema",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create or update schema\n\nCreate a new or update an existing schema for a Microsoft Search connection."
+      }
+    },
+    "com.microsoft.graph.external#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.external#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.external#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/external/connections/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.external#External": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.external#GetExternal"
+        },
+        {
+          "target": "com.microsoft.graph.external#UpdateExternal"
+        },
+        {
+          "target": "com.microsoft.graph.external#ListConnections"
+        },
+        {
+          "target": "com.microsoft.graph.external#CreateConnections"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetConnections"
+        },
+        {
+          "target": "com.microsoft.graph.external#UpdateConnections"
+        },
+        {
+          "target": "com.microsoft.graph.external#DeleteConnections"
+        },
+        {
+          "target": "com.microsoft.graph.external#ListGroups"
+        },
+        {
+          "target": "com.microsoft.graph.external#CreateGroups"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetGroups"
+        },
+        {
+          "target": "com.microsoft.graph.external#UpdateGroups"
+        },
+        {
+          "target": "com.microsoft.graph.external#DeleteGroups"
+        },
+        {
+          "target": "com.microsoft.graph.external#ListMembers"
+        },
+        {
+          "target": "com.microsoft.graph.external#CreateMembers"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetMembers"
+        },
+        {
+          "target": "com.microsoft.graph.external#UpdateMembers"
+        },
+        {
+          "target": "com.microsoft.graph.external#DeleteMembers"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetMembersCount"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetGroupsCount"
+        },
+        {
+          "target": "com.microsoft.graph.external#ListItems"
+        },
+        {
+          "target": "com.microsoft.graph.external#CreateItems"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetItems"
+        },
+        {
+          "target": "com.microsoft.graph.external#SetItems"
+        },
+        {
+          "target": "com.microsoft.graph.external#DeleteItems"
+        },
+        {
+          "target": "com.microsoft.graph.external#ListActivities"
+        },
+        {
+          "target": "com.microsoft.graph.external#CreateActivities"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetActivities"
+        },
+        {
+          "target": "com.microsoft.graph.external#UpdateActivities"
+        },
+        {
+          "target": "com.microsoft.graph.external#DeleteActivities"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetPerformedBy"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetActivitiesCount"
+        },
+        {
+          "target": "com.microsoft.graph.external#AddActivities"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetItemsCount"
+        },
+        {
+          "target": "com.microsoft.graph.external#ListOperations"
+        },
+        {
+          "target": "com.microsoft.graph.external#CreateOperations"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetOperations"
+        },
+        {
+          "target": "com.microsoft.graph.external#UpdateOperations"
+        },
+        {
+          "target": "com.microsoft.graph.external#DeleteOperations"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetOperationsCount"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetSchema"
+        },
+        {
+          "target": "com.microsoft.graph.external#UpdateSchema"
+        },
+        {
+          "target": "com.microsoft.graph.external#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

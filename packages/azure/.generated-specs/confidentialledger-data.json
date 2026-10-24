@@ -1,0 +1,3200 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.confidentialledger_data#DeleteUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#DeleteUserRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/app/users/{userId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Deletes a user from the Confidential Ledger.\n\nDeletes a user from the Confidential Ledger."
+      }
+    },
+    "com.azure.confidentialledger_data#DeleteUserRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user id, either an AAD object ID or certificate fingerprint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateOrUpdateUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#CreateOrUpdateUserRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#LedgerUser"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/app/users/{userId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Adds a user or updates a user's fields.\n\nA JSON merge patch is applied for existing users"
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerUser": {
+      "type": "structure",
+      "members": {
+        "assignedRole": {
+          "target": "com.azure.confidentialledger_data#ConfidentialLedgerUserRoleName",
+          "traits": {
+            "smithy.api#documentation": "Represents an assignable role.",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the user. This must either be an AAD object id or a certificate\nfingerprint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details about a Confidential Ledger user."
+      }
+    },
+    "com.azure.confidentialledger_data#ConfidentialLedgerUserRoleName": {
+      "type": "enum",
+      "members": {
+        "ADMINISTRATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Administrator"
+          }
+        },
+        "CONTRIBUTOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Contributor"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reader"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an assignable role."
+      }
+    },
+    "com.azure.confidentialledger_data#CreateOrUpdateUserRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user id, either an AAD object ID or certificate fingerprint."
+          }
+        },
+        "assignedRole": {
+          "target": "com.azure.confidentialledger_data#ConfidentialLedgerUserRoleName",
+          "traits": {
+            "smithy.api#documentation": "Represents an assignable role.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetUserRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#LedgerUser"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/users/{userId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets a user.\n\nGets a user."
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user id, either an AAD object ID or certificate fingerprint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ListUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ListUsersRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#PagedUsers"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/users",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets details on a list of users.\n\nAll users' object IDs and single role per user will be returned."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedUsers": {
+      "type": "structure",
+      "members": {
+        "ledgerUsers": {
+          "target": "com.azure.confidentialledger_data#PagedUsersLedgerUsersList",
+          "traits": {
+            "smithy.api#documentation": "Ledger users."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path from which to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated users returned in response to a query."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedUsersLedgerUsersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#LedgerUser"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ledger users."
+      }
+    },
+    "com.azure.confidentialledger_data#ListUsersRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ExecuteUserDefinedFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ExecuteUserDefinedFunctionRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunctionExecutionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/app/userDefinedFunctions/{functionId}:execute",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Executes a user defined function.\n\nExecutes the user defined function in the Confidential Ledger"
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunctionExecutionResponse": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.azure.confidentialledger_data#UserDefinedFunctionExecutionError",
+          "traits": {
+            "smithy.api#documentation": "The error object of a user defined function execution. This is returned only\nwhen the user defined function execution throws an exception."
+          }
+        },
+        "result": {
+          "target": "com.azure.confidentialledger_data#UserDefinedFunctionExecutionResult",
+          "traits": {
+            "smithy.api#documentation": "The result object of a user defined function execution. This is returned only\nwhen the user defined function executes successfully."
+          }
+        },
+        "status": {
+          "target": "com.azure.confidentialledger_data#UserDefinedFunctionExecutionStatus",
+          "traits": {
+            "smithy.api#documentation": "Represents the status of a user defined function execution.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of a user defined function execution."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunctionExecutionStatus": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the status of a user defined function execution."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunctionExecutionResult": {
+      "type": "structure",
+      "members": {
+        "returnValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String-encoded value returned by the user defined function execution. If the\nfunction does not return any value, this is set to an empty string."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result object of a user defined function execution. This is returned only\nwhen the user defined function executes successfully."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunctionExecutionError": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Message indicating the error thrown when executing the function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object of a user defined function execution. This is returned only\nwhen the user defined function execution throws an exception."
+      }
+    },
+    "com.azure.confidentialledger_data#ExecuteUserDefinedFunctionRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "functionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifies a user defined function."
+          }
+        },
+        "arguments": {
+          "target": "com.azure.confidentialledger_data#ExecuteUserDefinedFunctionRequestArgumentsList",
+          "traits": {
+            "smithy.api#documentation": "Runtime arguments of the user defined function. Defaults to an empty list."
+          }
+        },
+        "exportedFunctionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the exported function to execute in the code of the user defined\nfunction. Defaults to main."
+          }
+        },
+        "runtimeOptions": {
+          "target": "com.azure.confidentialledger_data#JsRuntimeOptions",
+          "traits": {
+            "smithy.api#documentation": "JS runtime options for user defined endpoints and functions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#JsRuntimeOptions": {
+      "type": "structure",
+      "members": {
+        "log_exception_details": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to log exception details in the runtime."
+          }
+        },
+        "max_cached_interpreters": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of cached interpreters."
+          }
+        },
+        "max_execution_time_ms": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum execution time in milliseconds."
+          }
+        },
+        "max_heap_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum heap size in bytes."
+          }
+        },
+        "max_stack_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum stack size in bytes."
+          }
+        },
+        "return_exception_details": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to return exception details in the response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "JS runtime options for user defined endpoints and functions"
+      }
+    },
+    "com.azure.confidentialledger_data#ExecuteUserDefinedFunctionRequestArgumentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Runtime arguments of the user defined function. Defaults to an empty list."
+      }
+    },
+    "com.azure.confidentialledger_data#DeleteUserDefinedFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#DeleteUserDefinedFunctionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/app/userDefinedFunctions/{functionId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Deletes a user defined function from the Confidential Ledger.\n\nDeletes a user defined function from the Confidential Ledger."
+      }
+    },
+    "com.azure.confidentialledger_data#DeleteUserDefinedFunctionRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "functionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifies a user defined function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#CreateUserDefinedFunctionRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/app/userDefinedFunctions/{functionId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Creates a user defined function.\n\nCreates the user defined function in the Confidential Ledger"
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunction": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Code of the user defined function in JavaScript.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the user defined function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A user defined function in the ledger."
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedFunctionRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "functionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifies a user defined function."
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Code of the user defined function in JavaScript.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedFunction": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetUserDefinedFunctionRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/userDefinedFunctions/{functionId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets a user defined function.\n\nReturns the user defined function in the Confidential Ledger"
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedFunctionRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "functionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifies a user defined function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ListUserDefinedFunctions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ListUserDefinedFunctionsRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#PagedUserDefinedFunctions"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/userDefinedFunctions",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Retrieves a list of user defined functions present in the Confidential Ledger\n\nUser defined functions stored in the Confidential Ledger"
+      }
+    },
+    "com.azure.confidentialledger_data#PagedUserDefinedFunctions": {
+      "type": "structure",
+      "members": {
+        "functions": {
+          "target": "com.azure.confidentialledger_data#PagedUserDefinedFunctionsFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "User-defined functions.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path from which to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated user defined functions returned in response to a query."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedUserDefinedFunctionsFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunction"
+      },
+      "traits": {
+        "smithy.api#documentation": "User-defined functions."
+      }
+    },
+    "com.azure.confidentialledger_data#ListUserDefinedFunctionsRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#UpdateRuntimeOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#UpdateRuntimeOptionsRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#JsRuntimeOptions"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/app/userDefinedEndpoints/runtimeOptions",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Runtime options for user defined endpoints.\n\nUpdates the runtime options."
+      }
+    },
+    "com.azure.confidentialledger_data#UpdateRuntimeOptionsRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "log_exception_details": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to log exception details in the runtime."
+          }
+        },
+        "max_cached_interpreters": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of cached interpreters."
+          }
+        },
+        "max_execution_time_ms": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum execution time in milliseconds."
+          }
+        },
+        "max_heap_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum heap size in bytes."
+          }
+        },
+        "max_stack_bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum stack size in bytes."
+          }
+        },
+        "return_exception_details": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to return exception details in the response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetRuntimeOptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetRuntimeOptionsRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#JsRuntimeOptions"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/userDefinedEndpoints/runtimeOptions",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Runtime options for user defined endpoints.\n\nIt returns the runtime options"
+      }
+    },
+    "com.azure.confidentialledger_data#GetRuntimeOptionsRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedEndpointsModule": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetUserDefinedEndpointsModuleRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#ModuleDef"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/userDefinedEndpoints/modules",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Module for user defined endpoints.\n\nIt gets the module for the user defined endpoint."
+      }
+    },
+    "com.azure.confidentialledger_data#ModuleDef": {
+      "type": "structure",
+      "members": {
+        "module": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Module",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Module definition"
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedEndpointsModuleRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "module_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "module_name",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "module name of the user defined endpoint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#CreateUserDefinedEndpointRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/app/userDefinedEndpoints",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Creates a user defined endpoint.\n\nCreates the user defined endpoint in the ACL instance"
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedEndpointRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "metadata": {
+          "target": "com.azure.confidentialledger_data#Metadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata information for the bundle.",
+            "smithy.api#required": {}
+          }
+        },
+        "modules": {
+          "target": "com.azure.confidentialledger_data#CreateUserDefinedEndpointRequestModulesList",
+          "traits": {
+            "smithy.api#documentation": "Any object",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedEndpointRequestModulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#ModuleDef"
+      },
+      "traits": {
+        "smithy.api#documentation": "Any object"
+      }
+    },
+    "com.azure.confidentialledger_data#Metadata": {
+      "type": "structure",
+      "members": {
+        "endpoints": {
+          "target": "com.azure.confidentialledger_data#MetadataEndpointsMap",
+          "traits": {
+            "smithy.api#documentation": "A map of path to method endpoints for the path",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata for endpoints."
+      }
+    },
+    "com.azure.confidentialledger_data#MetadataEndpointsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.confidentialledger_data#MethodToEndpointProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "A map of path to method endpoints for the path"
+      }
+    },
+    "com.azure.confidentialledger_data#MethodToEndpointProperties": {
+      "type": "structure",
+      "members": {
+        "get": {
+          "target": "com.azure.confidentialledger_data#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for GET method endpoint."
+          }
+        },
+        "put": {
+          "target": "com.azure.confidentialledger_data#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for PUT method endpoint."
+          }
+        },
+        "patch": {
+          "target": "com.azure.confidentialledger_data#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for PATCH method endpoint."
+          }
+        },
+        "delete": {
+          "target": "com.azure.confidentialledger_data#EndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for DELETE method endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maps methods to their corresponding endpoint properties."
+      }
+    },
+    "com.azure.confidentialledger_data#EndpointProperties": {
+      "type": "structure",
+      "members": {
+        "authn_policies": {
+          "target": "com.azure.confidentialledger_data#EndpointPropertiesAuthnPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "Authentication policies for the endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "forwarding_required": {
+          "target": "com.azure.confidentialledger_data#ForwardingRequired",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether request forwarding is required for this endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "interpreter_reuse": {
+          "target": "com.azure.confidentialledger_data#InterpreterReusePolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy for interpreter reuse."
+          }
+        },
+        "js_function": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The JavaScript function."
+          }
+        },
+        "js_module": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The JavaScript module."
+          }
+        },
+        "mode": {
+          "target": "com.azure.confidentialledger_data#Mode",
+          "traits": {
+            "smithy.api#documentation": "The operation mode for this endpoint."
+          }
+        },
+        "openapi": {
+          "target": "com.azure.confidentialledger_data#EndpointPropertiesOpenapiMap",
+          "traits": {
+            "smithy.api#documentation": "Anything"
+          }
+        },
+        "openapi_hidden": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Openapi hidden"
+          }
+        },
+        "redirection_strategy": {
+          "target": "com.azure.confidentialledger_data#RedirectionStrategy",
+          "traits": {
+            "smithy.api#documentation": "Redirection strategy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoint properties."
+      }
+    },
+    "com.azure.confidentialledger_data#RedirectionStrategy": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "TO_PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "to_primary"
+          }
+        },
+        "TO_BACKUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "to_backup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the redirection strategy for the endpoint."
+      }
+    },
+    "com.azure.confidentialledger_data#EndpointPropertiesOpenapiMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Anything"
+      }
+    },
+    "com.azure.confidentialledger_data#Mode": {
+      "type": "enum",
+      "members": {
+        "READWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "readwrite"
+          }
+        },
+        "READONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "readonly"
+          }
+        },
+        "HISTORICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "historical"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the operation mode of the endpoint."
+      }
+    },
+    "com.azure.confidentialledger_data#InterpreterReusePolicy": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key for the interpreter reuse policy.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy for interpreter reuse."
+      }
+    },
+    "com.azure.confidentialledger_data#ForwardingRequired": {
+      "type": "enum",
+      "members": {
+        "SOMETIMES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sometimes"
+          }
+        },
+        "ALWAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always"
+          }
+        },
+        "NEVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "never"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates whether request forwarding is required for this operation."
+      }
+    },
+    "com.azure.confidentialledger_data#EndpointPropertiesAuthnPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#EndpointPropertiesAuthnPoliciesItemMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Authentication policies for the endpoint."
+      }
+    },
+    "com.azure.confidentialledger_data#EndpointPropertiesAuthnPoliciesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetUserDefinedEndpointRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#Bundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/userDefinedEndpoints",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets a user defined endpoint.\n\nReturns the user defined endpoint in the ACL instance"
+      }
+    },
+    "com.azure.confidentialledger_data#Bundle": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.confidentialledger_data#Metadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata information for the bundle.",
+            "smithy.api#required": {}
+          }
+        },
+        "modules": {
+          "target": "com.azure.confidentialledger_data#BundleModulesList",
+          "traits": {
+            "smithy.api#documentation": "Any object",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "bundle for the user defined endpoints"
+      }
+    },
+    "com.azure.confidentialledger_data#BundleModulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#ModuleDef"
+      },
+      "traits": {
+        "smithy.api#documentation": "Any object"
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedEndpointRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetCurrentLedgerEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetCurrentLedgerEntryRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#LedgerEntry"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/transactions/current",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets the current value available in the ledger.\n\nA collection id may optionally be specified."
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerEntry": {
+      "type": "structure",
+      "members": {
+        "contents": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contents of the ledger entry.",
+            "smithy.api#required": {}
+          }
+        },
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The collection identifier for this ledger entry."
+          }
+        },
+        "transactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the state of the ledger. If returned as part of a\nLedgerEntry, it indicates the state from which the entry was read."
+          }
+        },
+        "preHooks": {
+          "target": "com.azure.confidentialledger_data#LedgerEntryPreHooksList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined function hooks to be executed before the ledger entry is\nwritten."
+          }
+        },
+        "postHooks": {
+          "target": "com.azure.confidentialledger_data#LedgerEntryPostHooksList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined function hooks to be executed after the ledger entry is\nwritten."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An entry in the ledger."
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerEntryPostHooksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunctionHook"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined function hooks to be executed after the ledger entry is\nwritten."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunctionHook": {
+      "type": "structure",
+      "members": {
+        "functionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the user defined function to execute.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.confidentialledger_data#UserDefinedFunctionExecutionProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties for executing a user defined function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Hook for a user defined function execution."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunctionExecutionProperties": {
+      "type": "structure",
+      "members": {
+        "arguments": {
+          "target": "com.azure.confidentialledger_data#UserDefinedFunctionExecutionPropertiesArgumentsList",
+          "traits": {
+            "smithy.api#documentation": "Runtime arguments of the user defined function. Defaults to an empty list."
+          }
+        },
+        "exportedFunctionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the exported function to execute in the code of the user defined\nfunction. Defaults to main."
+          }
+        },
+        "runtimeOptions": {
+          "target": "com.azure.confidentialledger_data#JsRuntimeOptions",
+          "traits": {
+            "smithy.api#documentation": "JS runtime options for user defined endpoints and functions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for executing a user defined function."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedFunctionExecutionPropertiesArgumentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Runtime arguments of the user defined function. Defaults to an empty list."
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerEntryPreHooksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunctionHook"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined function hooks to be executed before the ledger entry is\nwritten."
+      }
+    },
+    "com.azure.confidentialledger_data#GetCurrentLedgerEntryRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "collectionId",
+            "smithy.api#documentation": "The collection id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetTransactionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetTransactionStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#TransactionStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/transactions/{transactionId}/status",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets the status of an entry identified by a transaction id.\n\nGets the status of an entry identified by a transaction id."
+      }
+    },
+    "com.azure.confidentialledger_data#TransactionStatus": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.confidentialledger_data#TransactionState",
+          "traits": {
+            "smithy.api#documentation": "Represents the state of the transaction.",
+            "smithy.api#required": {}
+          }
+        },
+        "transactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the state of the ledger. If returned as part of a\nLedgerEntry, it indicates the state from which the entry was read.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response returned to a query for the transaction status"
+      }
+    },
+    "com.azure.confidentialledger_data#TransactionState": {
+      "type": "enum",
+      "members": {
+        "COMMITTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Committed"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of the transaction."
+      }
+    },
+    "com.azure.confidentialledger_data#GetTransactionStatusRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "transactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifies a write transaction."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetReceipt": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetReceiptRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#TransactionReceipt"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/transactions/{transactionId}/receipt",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets a receipt certifying ledger contents at a particular transaction id.\n\nGets a receipt certifying ledger contents at a particular transaction id."
+      }
+    },
+    "com.azure.confidentialledger_data#TransactionReceipt": {
+      "type": "structure",
+      "members": {
+        "applicationClaims": {
+          "target": "com.azure.confidentialledger_data#TransactionReceiptApplicationClaimsList",
+          "traits": {
+            "smithy.api#documentation": "List of application claims."
+          }
+        },
+        "receipt": {
+          "target": "com.azure.confidentialledger_data#ReceiptContents",
+          "traits": {
+            "smithy.api#documentation": "The receipt contents for the transaction."
+          }
+        },
+        "state": {
+          "target": "com.azure.confidentialledger_data#ConfidentialLedgerQueryState",
+          "traits": {
+            "smithy.api#documentation": "State of a ledger query.",
+            "smithy.api#required": {}
+          }
+        },
+        "transactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the state of the ledger. If returned as part of a\nLedgerEntry, it indicates the state from which the entry was read.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A receipt certifying the transaction at the specified id."
+      }
+    },
+    "com.azure.confidentialledger_data#ConfidentialLedgerQueryState": {
+      "type": "enum",
+      "members": {
+        "LOADING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Loading"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ready"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State of a ledger query."
+      }
+    },
+    "com.azure.confidentialledger_data#ReceiptContents": {
+      "type": "structure",
+      "members": {
+        "cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate"
+          }
+        },
+        "leaf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Leaf"
+          }
+        },
+        "leafComponents": {
+          "target": "com.azure.confidentialledger_data#ReceiptLeafComponents",
+          "traits": {
+            "smithy.api#documentation": "Leaf components of the receipt"
+          }
+        },
+        "nodeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Node identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "proof": {
+          "target": "com.azure.confidentialledger_data#ReceiptContentsProofList",
+          "traits": {
+            "smithy.api#documentation": "Proof",
+            "smithy.api#required": {}
+          }
+        },
+        "root": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Root"
+          }
+        },
+        "serviceEndorsements": {
+          "target": "com.azure.confidentialledger_data#ReceiptContentsServiceEndorsementsList",
+          "traits": {
+            "smithy.api#documentation": "Service endorsements"
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The signature of the receipt",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The contents of a receipt"
+      }
+    },
+    "com.azure.confidentialledger_data#ReceiptContentsServiceEndorsementsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Service endorsements"
+      }
+    },
+    "com.azure.confidentialledger_data#ReceiptContentsProofList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#ReceiptElement"
+      },
+      "traits": {
+        "smithy.api#documentation": "Proof"
+      }
+    },
+    "com.azure.confidentialledger_data#ReceiptElement": {
+      "type": "structure",
+      "members": {
+        "left": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Left"
+          }
+        },
+        "right": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Right"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Receipt element"
+      }
+    },
+    "com.azure.confidentialledger_data#ReceiptLeafComponents": {
+      "type": "structure",
+      "members": {
+        "claimsDigest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Claims digest"
+          }
+        },
+        "commitEvidence": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Commit evidence"
+          }
+        },
+        "writeSetDigest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Write set digest"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Components that make up a receipt leaf node."
+      }
+    },
+    "com.azure.confidentialledger_data#TransactionReceiptApplicationClaimsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#ApplicationClaim"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of application claims."
+      }
+    },
+    "com.azure.confidentialledger_data#ApplicationClaim": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "com.azure.confidentialledger_data#ClaimDigest",
+          "traits": {
+            "smithy.api#documentation": "An application claim in digested form."
+          }
+        },
+        "kind": {
+          "target": "com.azure.confidentialledger_data#ApplicationClaimKind",
+          "traits": {
+            "smithy.api#documentation": "Represents the kind of an application claim.",
+            "smithy.api#required": {}
+          }
+        },
+        "ledgerEntry": {
+          "target": "com.azure.confidentialledger_data#LedgerEntryClaim",
+          "traits": {
+            "smithy.api#documentation": "An application claim derived from ledger entry data."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A claim of a ledger application."
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerEntryClaim": {
+      "type": "structure",
+      "members": {
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a collection."
+          }
+        },
+        "contents": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contents of a ledger entry."
+          }
+        },
+        "secretKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded secret key.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "protocol": {
+          "target": "com.azure.confidentialledger_data#ApplicationClaimProtocol",
+          "traits": {
+            "smithy.api#documentation": "Represents the protocol to be used to compute the digest of a claim from the\ngiven claim data.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An application claim derived from ledger entry data."
+      }
+    },
+    "com.azure.confidentialledger_data#ApplicationClaimProtocol": {
+      "type": "enum",
+      "members": {
+        "LEDGERENTRYV1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LedgerEntryV1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the protocol to be used to compute the digest of a claim from the\ngiven claim data."
+      }
+    },
+    "com.azure.confidentialledger_data#ApplicationClaimKind": {
+      "type": "enum",
+      "members": {
+        "LEDGERENTRY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LedgerEntry"
+          }
+        },
+        "CLAIMDIGEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ClaimDigest"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the kind of an application claim."
+      }
+    },
+    "com.azure.confidentialledger_data#ClaimDigest": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The digest of the application claim, in hexadecimal form."
+          }
+        },
+        "protocol": {
+          "target": "com.azure.confidentialledger_data#ApplicationClaimProtocol",
+          "traits": {
+            "smithy.api#documentation": "Represents the protocol to be used to compute the digest of a claim from the\ngiven claim data.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An application claim in digested form."
+      }
+    },
+    "com.azure.confidentialledger_data#GetReceiptRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "transactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifies a write transaction."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetLedgerEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetLedgerEntryRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#LedgerQueryResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/transactions/{transactionId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets the ledger entry at the specified transaction id. A collection id may\noptionally be specified to indicate the collection from which to fetch the\nvalue.\n\nTo return older ledger entries, the relevant sections of the ledger must be\nread from disk and validated. To prevent blocking within the enclave, the\nresponse will indicate whether the entry is ready and part of the response, or\nif the loading is still ongoing."
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerQueryResult": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.confidentialledger_data#ConfidentialLedgerQueryState",
+          "traits": {
+            "smithy.api#documentation": "State of a ledger query.",
+            "smithy.api#required": {}
+          }
+        },
+        "entry": {
+          "target": "com.azure.confidentialledger_data#LedgerEntry",
+          "traits": {
+            "smithy.api#documentation": "The ledger entry found as a result of the query. This is only available if the\nquery is in Ready state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of querying for a ledger entry from an older transaction id. The\nledger entry is available in the response only if the returned state is Ready."
+      }
+    },
+    "com.azure.confidentialledger_data#GetLedgerEntryRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "transactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifies a write transaction."
+          }
+        },
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "collectionId",
+            "smithy.api#documentation": "The collection id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateLedgerEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#CreateLedgerEntryRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#LedgerWriteResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/app/transactions",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Writes a ledger entry.\n\nA collection id may optionally be specified."
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerWriteResult": {
+      "type": "structure",
+      "members": {
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The collection identifier of the ledger entry.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Returned as a result of a write to the Confidential Ledger, the transaction id\nin the response indicates when the write will become durable."
+      }
+    },
+    "com.azure.confidentialledger_data#CreateLedgerEntryRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "collectionId",
+            "smithy.api#documentation": "The collection id."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "Comma separated tags."
+          }
+        },
+        "contents": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contents of the ledger entry.",
+            "smithy.api#required": {}
+          }
+        },
+        "preHooks": {
+          "target": "com.azure.confidentialledger_data#CreateLedgerEntryRequestPreHooksList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined function hooks to be executed before the ledger entry is\nwritten."
+          }
+        },
+        "postHooks": {
+          "target": "com.azure.confidentialledger_data#CreateLedgerEntryRequestPostHooksList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined function hooks to be executed after the ledger entry is\nwritten."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateLedgerEntryRequestPostHooksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunctionHook"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined function hooks to be executed after the ledger entry is\nwritten."
+      }
+    },
+    "com.azure.confidentialledger_data#CreateLedgerEntryRequestPreHooksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#UserDefinedFunctionHook"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined function hooks to be executed before the ledger entry is\nwritten."
+      }
+    },
+    "com.azure.confidentialledger_data#ListLedgerEntries": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ListLedgerEntriesRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#PagedLedgerEntries"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/transactions",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets ledger entries from a collection corresponding to a range.\n\nA collection id may optionally be specified. Only entries in the specified (or\ndefault) collection will be returned."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedLedgerEntries": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.confidentialledger_data#ConfidentialLedgerQueryState",
+          "traits": {
+            "smithy.api#documentation": "State of a ledger query.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path from which to retrieve the next page of results."
+          }
+        },
+        "entries": {
+          "target": "com.azure.confidentialledger_data#PagedLedgerEntriesEntriesList",
+          "traits": {
+            "smithy.api#documentation": "Array of ledger entries.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated ledger entries returned in response to a query."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedLedgerEntriesEntriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#LedgerEntry"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of ledger entries."
+      }
+    },
+    "com.azure.confidentialledger_data#ListLedgerEntriesRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "collectionId",
+            "smithy.api#documentation": "The collection id."
+          }
+        },
+        "fromTransactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fromTransactionId",
+            "smithy.api#documentation": "Specify the first transaction ID in a range."
+          }
+        },
+        "toTransactionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "toTransactionId",
+            "smithy.api#documentation": "Specify the last transaction ID in a range."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tag",
+            "smithy.api#documentation": "Single tag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#DeleteUserDefinedRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#DeleteUserDefinedRoleRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/app/roles",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Deletes user defined roles\n\nA user defined role allows the users to create and manage their own role\nactions using the API."
+      }
+    },
+    "com.azure.confidentialledger_data#DeleteUserDefinedRoleRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "roleName",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "user defined role name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#UpdateUserDefinedRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#UpdateUserDefinedRoleRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#UserDefinedRoles"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/app/roles",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Patch replaces the allowed action on existing roles,if the desire is to remove\nan existing action, the role must be deleted and recreated.\n\nUser defined roles allow users to define and manage app specific AuthZ policy."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedRoles": {
+      "type": "structure",
+      "members": {
+        "roles": {
+          "target": "com.azure.confidentialledger_data#UserDefinedRolesRolesList",
+          "traits": {
+            "smithy.api#documentation": "Roles",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Roles"
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedRolesRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#Role"
+      },
+      "traits": {
+        "smithy.api#documentation": "Roles"
+      }
+    },
+    "com.azure.confidentialledger_data#Role": {
+      "type": "structure",
+      "members": {
+        "roleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "name of the user defined role"
+          }
+        },
+        "roleActions": {
+          "target": "com.azure.confidentialledger_data#RoleRoleActionsList",
+          "traits": {
+            "smithy.api#documentation": "role actions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition for roles"
+      }
+    },
+    "com.azure.confidentialledger_data#RoleRoleActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "role actions"
+      }
+    },
+    "com.azure.confidentialledger_data#UpdateUserDefinedRoleRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roles": {
+          "target": "com.azure.confidentialledger_data#UpdateUserDefinedRoleRequestRolesList",
+          "traits": {
+            "smithy.api#documentation": "Roles",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#UpdateUserDefinedRoleRequestRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#Role"
+      },
+      "traits": {
+        "smithy.api#documentation": "Roles"
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#CreateUserDefinedRoleRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#UserDefinedRoles"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/app/roles",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Creates new roles and their actions\n\nUser defined roles allow users to define and manage app specific AuthZ policy."
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedRoleRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roles": {
+          "target": "com.azure.confidentialledger_data#CreateUserDefinedRoleRequestRolesList",
+          "traits": {
+            "smithy.api#documentation": "Roles",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateUserDefinedRoleRequestRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#Role"
+      },
+      "traits": {
+        "smithy.api#documentation": "Roles"
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedRole": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetUserDefinedRoleRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#UserDefinedRole"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/roles",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets role actions for user defined roles\n\nuser defined roles allow users to define and manage app specific AuthZ policy."
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedRole": {
+      "type": "structure",
+      "members": {
+        "role": {
+          "target": "com.azure.confidentialledger_data#UserDefinedRoleRoleList",
+          "traits": {
+            "smithy.api#documentation": "User defined role",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User defined role"
+      }
+    },
+    "com.azure.confidentialledger_data#UserDefinedRoleRoleList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#Role"
+      },
+      "traits": {
+        "smithy.api#documentation": "User defined role"
+      }
+    },
+    "com.azure.confidentialledger_data#GetUserDefinedRoleRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "roleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "roleName",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "user defined role name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#DeleteLedgerUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#DeleteLedgerUserRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/app/ledgerUsers/{userId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Deletes a user with multiple roles from the Confidential Ledger.\n\nDeletes a user with multiple roles from the Confidential Ledger."
+      }
+    },
+    "com.azure.confidentialledger_data#DeleteLedgerUserRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user id, either an AAD object ID or certificate fingerprint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateOrUpdateLedgerUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#CreateOrUpdateLedgerUserRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#LedgerUserMultipleRoles"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/app/ledgerUsers/{userId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Adds a user or updates a user's fields.\n\nA JSON merge patch is applied for existing users"
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerUserMultipleRoles": {
+      "type": "structure",
+      "members": {
+        "assignedRoles": {
+          "target": "com.azure.confidentialledger_data#LedgerUserMultipleRolesAssignedRolesList",
+          "traits": {
+            "smithy.api#documentation": "Represents an assignable role.",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the user. This must either be an AAD object id or a certificate\nfingerprint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details about a Confidential Ledger user."
+      }
+    },
+    "com.azure.confidentialledger_data#LedgerUserMultipleRolesAssignedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#ConfidentialLedgerUserRoleName"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an assignable role."
+      }
+    },
+    "com.azure.confidentialledger_data#CreateOrUpdateLedgerUserRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user id, either an AAD object ID or certificate fingerprint."
+          }
+        },
+        "assignedRoles": {
+          "target": "com.azure.confidentialledger_data#CreateOrUpdateLedgerUserRequestAssignedRolesList",
+          "traits": {
+            "smithy.api#documentation": "Represents an assignable role.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#CreateOrUpdateLedgerUserRequestAssignedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#ConfidentialLedgerUserRoleName"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an assignable role."
+      }
+    },
+    "com.azure.confidentialledger_data#GetLedgerUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetLedgerUserRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#LedgerUserMultipleRoles"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/ledgerUsers/{userId}",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets a user with multiple roles.\n\nGets a user with multiple roles."
+      }
+    },
+    "com.azure.confidentialledger_data#GetLedgerUserRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user id, either an AAD object ID or certificate fingerprint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ListLedgerUsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ListLedgerUsersRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#PagedLedgerUsers"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/ledgerUsers",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets details on a list of users.\n\nAll users' object IDs and multiple roles will be returned."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedLedgerUsers": {
+      "type": "structure",
+      "members": {
+        "ledgerUsers": {
+          "target": "com.azure.confidentialledger_data#PagedLedgerUsersLedgerUsersList",
+          "traits": {
+            "smithy.api#documentation": "Ledger users with details."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path from which to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated users returned in response to a query."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedLedgerUsersLedgerUsersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#LedgerUserMultipleRoles"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ledger users with details."
+      }
+    },
+    "com.azure.confidentialledger_data#ListLedgerUsersRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ListConsortiumMembers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ListConsortiumMembersRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#Consortium"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/governance/members",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Lists the consortium members.\n\nConsortium members can manage the Confidential Ledger."
+      }
+    },
+    "com.azure.confidentialledger_data#Consortium": {
+      "type": "structure",
+      "members": {
+        "members": {
+          "target": "com.azure.confidentialledger_data#ConsortiumMembersList",
+          "traits": {
+            "smithy.api#documentation": "Members in the consortium.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path from which to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of members in the consortium."
+      }
+    },
+    "com.azure.confidentialledger_data#ConsortiumMembersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#ConsortiumMember"
+      },
+      "traits": {
+        "smithy.api#documentation": "Members in the consortium."
+      }
+    },
+    "com.azure.confidentialledger_data#ConsortiumMember": {
+      "type": "structure",
+      "members": {
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PEM-encoded certificate associated with the member.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier assigned to the member.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a member of the consortium."
+      }
+    },
+    "com.azure.confidentialledger_data#ListConsortiumMembersRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetConstitution": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetConstitutionRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#Constitution"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/governance/constitution",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets the constitution used for governance.\n\nThe constitution is a script that assesses and applies proposals from\nconsortium members."
+      }
+    },
+    "com.azure.confidentialledger_data#Constitution": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SHA256 digest of the constitution script.",
+            "smithy.api#required": {}
+          }
+        },
+        "script": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contents of the constitution.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The governance script for the application."
+      }
+    },
+    "com.azure.confidentialledger_data#GetConstitutionRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#GetEnclaveQuotes": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#GetEnclaveQuotesRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#ConfidentialLedgerEnclaves"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/enclaveQuotes",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets quotes for all nodes of the Confidential Ledger.\n\nA quote is an SGX enclave measurement that can be used to verify the validity\nof a node and its enclave."
+      }
+    },
+    "com.azure.confidentialledger_data#ConfidentialLedgerEnclaves": {
+      "type": "structure",
+      "members": {
+        "currentNodeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the Confidential Ledger node responding to the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "enclaveQuotes": {
+          "target": "com.azure.confidentialledger_data#ConfidentialLedgerEnclavesEnclaveQuotesMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of enclave quotes, indexed by node id.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the enclaves running the Confidential Ledger."
+      }
+    },
+    "com.azure.confidentialledger_data#ConfidentialLedgerEnclavesEnclaveQuotesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.confidentialledger_data#EnclaveQuote"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of enclave quotes, indexed by node id."
+      }
+    },
+    "com.azure.confidentialledger_data#EnclaveQuote": {
+      "type": "structure",
+      "members": {
+        "nodeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID assigned to this node.",
+            "smithy.api#required": {}
+          }
+        },
+        "mrenclave": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "MRENCLAVE value of the code running in the enclave."
+          }
+        },
+        "quoteVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the quote presented.",
+            "smithy.api#required": {}
+          }
+        },
+        "raw": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Raw SGX quote, parsable by tools like Open Enclave's oeverify.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the enclave quote."
+      }
+    },
+    "com.azure.confidentialledger_data#GetEnclaveQuotesRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ListTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ListTagsRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#PagedTags"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/collections/tags",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Gets a list of tags for a collection.\n\nRetrieves the tags associated with a collection."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedTags": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.confidentialledger_data#PagedTagsTagsList",
+          "traits": {
+            "smithy.api#documentation": "Array of tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path from which to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated tags returned in response to a query."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedTagsTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of tags."
+      }
+    },
+    "com.azure.confidentialledger_data#ListTagsRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "collectionId",
+            "smithy.api#documentation": "The collection id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ListCollections": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_data#ListCollectionsRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_data#PagedCollections"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/app/collections",
+          "code": 200,
+          "host": "{ledgerEndpoint}",
+          "hostRaw": [
+            "ledgerEndpoint"
+          ],
+          "apiVersion": "2026-02-23"
+        },
+        "smithy.api#documentation": "Retrieves a list of collection ids present in the Confidential Ledger\n\nCollection ids are user-created collections of ledger entries"
+      }
+    },
+    "com.azure.confidentialledger_data#PagedCollections": {
+      "type": "structure",
+      "members": {
+        "collections": {
+          "target": "com.azure.confidentialledger_data#PagedCollectionsCollectionsList",
+          "traits": {
+            "smithy.api#documentation": "Collection identifiers.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path from which to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated collections returned in response to a query."
+      }
+    },
+    "com.azure.confidentialledger_data#PagedCollectionsCollectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_data#Collection"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection identifiers."
+      }
+    },
+    "com.azure.confidentialledger_data#Collection": {
+      "type": "structure",
+      "members": {
+        "collectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the collection.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identifier for collections."
+      }
+    },
+    "com.azure.confidentialledger_data#ListCollectionsRequest": {
+      "type": "structure",
+      "members": {
+        "ledgerEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_data#ConfidentialledgerData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.confidentialledger_data#DeleteUser"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#CreateOrUpdateUser"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetUser"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ListUsers"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ExecuteUserDefinedFunction"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#DeleteUserDefinedFunction"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#CreateUserDefinedFunction"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetUserDefinedFunction"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ListUserDefinedFunctions"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#UpdateRuntimeOptions"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetRuntimeOptions"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetUserDefinedEndpointsModule"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#CreateUserDefinedEndpoint"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetUserDefinedEndpoint"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetCurrentLedgerEntry"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetTransactionStatus"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetReceipt"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetLedgerEntry"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#CreateLedgerEntry"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ListLedgerEntries"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#DeleteUserDefinedRole"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#UpdateUserDefinedRole"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#CreateUserDefinedRole"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetUserDefinedRole"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#DeleteLedgerUser"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#CreateOrUpdateLedgerUser"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetLedgerUser"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ListLedgerUsers"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ListConsortiumMembers"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetConstitution"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#GetEnclaveQuotes"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ListTags"
+        },
+        {
+          "target": "com.azure.confidentialledger_data#ListCollections"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure ConfidentialLedger data plane",
+        "smithy.api#documentation": "Azure confidentialledger data plane — confidentialledger/data-plane/ConfidentialLedger (latest stable api-version 2026-02-23).",
+        "com.azure.protocols#host": {
+          "template": "{ledgerEndpoint}",
+          "parameters": [
+            {
+              "name": "ledgerEndpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://confidential-ledger.azure.com/.default"
+      }
+    }
+  }
+}

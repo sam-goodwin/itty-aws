@@ -1,0 +1,159 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.maps_geolocation#GeolocationGetIPToLocation": "com.azure.maps_geolocation#GetGeolocationIPToLocation",
+      "com.azure.maps_geolocation#GeolocationGetIPToLocationRequest": "com.azure.maps_geolocation#GetGeolocationIPToLocationRequest",
+      "com.azure.maps_geolocation#GeolocationGetIPToLocationRequestFormat": "com.azure.maps_geolocation#GetGeolocationIPToLocationRequestFormat"
+    }
+  },
+  "shapes": {
+    "com.azure.maps_geolocation#GeolocationGetIPToLocation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_geolocation#GeolocationGetIPToLocationRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_geolocation#IpAddressToLocationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/geolocation/ip/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "1.0"
+        },
+        "smithy.api#documentation": "Use to get the ISO country/region code for a given IP address.\n\nThe `Get IP To Location` API is an HTTP `GET` request that returns the ISO\ncountry/region code for a given IP address. Developers can use this information\nto block or modify content based on the geographical location from which the\napplication is accessed."
+      }
+    },
+    "com.azure.maps_geolocation#IpAddressToLocationResult": {
+      "type": "structure",
+      "members": {
+        "countryRegion": {
+          "target": "com.azure.maps_geolocation#CountryRegion",
+          "traits": {
+            "smithy.api#documentation": "The object containing the country/region information."
+          }
+        },
+        "ipAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP Address of the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful call to IP Address to country/region\nAPI"
+      }
+    },
+    "com.azure.maps_geolocation#CountryRegion": {
+      "type": "structure",
+      "members": {
+        "isoCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address's 2-character country or region code ([ISO\n3166-1](https://www.iso.org/iso-3166-country-codes.html)). Note that IP\naddresses in ranges reserved for special purposes will return Null for\ncountry/region."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object containing the country/region information."
+      }
+    },
+    "com.azure.maps_geolocation#GeolocationGetIPToLocationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_geolocation#GeolocationGetIPToLocationRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Only `json` format is supported."
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "ip",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The IP address. Both IPv4 and IPv6 are allowed."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_geolocation#GeolocationGetIPToLocationRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_geolocation#MapsGeolocation": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.maps_geolocation#GeolocationGetIPToLocation"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Geolocation data plane",
+        "smithy.api#documentation": "Azure maps data plane — maps/data-plane/Geolocation (latest stable api-version 1.0).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true,
+              "default": "https://atlas.microsoft.com"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://atlas.microsoft.com/.default"
+      }
+    }
+  }
+}

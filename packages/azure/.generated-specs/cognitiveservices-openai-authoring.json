@@ -1,0 +1,2940 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_openai_authoring#UploadFileCancel": "com.azure.cognitiveservices_openai_authoring#CancelUploadFile",
+      "com.azure.cognitiveservices_openai_authoring#UploadFileCancelRequest": "com.azure.cognitiveservices_openai_authoring#CancelUploadFileRequest",
+      "com.azure.cognitiveservices_openai_authoring#UploadFileComplete": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFile",
+      "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequest": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequest",
+      "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequestPartIdsList": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequestPartIdsList",
+      "com.azure.cognitiveservices_openai_authoring#UploadFileStart": "com.azure.cognitiveservices_openai_authoring#StartUploadFile",
+      "com.azure.cognitiveservices_openai_authoring#UploadFileStartResponse": "com.azure.cognitiveservices_openai_authoring#StartUploadFileResponse",
+      "com.azure.cognitiveservices_openai_authoring#UploadFileStartRequest": "com.azure.cognitiveservices_openai_authoring#StartUploadFileRequest",
+      "com.azure.cognitiveservices_openai_authoring#ModelsGet": "com.azure.cognitiveservices_openai_authoring#GetModel",
+      "com.azure.cognitiveservices_openai_authoring#ModelsGetRequest": "com.azure.cognitiveservices_openai_authoring#GetModelRequest",
+      "com.azure.cognitiveservices_openai_authoring#ModelsList": "com.azure.cognitiveservices_openai_authoring#ListModels",
+      "com.azure.cognitiveservices_openai_authoring#ModelsListRequest": "com.azure.cognitiveservices_openai_authoring#ListModelsRequest",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningCancel": "com.azure.cognitiveservices_openai_authoring#CancelFineTuning",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningCancelRequest": "com.azure.cognitiveservices_openai_authoring#CancelFineTuningRequest",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpoints": "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpoints",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpointsRequest": "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpointsRequest",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningGetEvents": "com.azure.cognitiveservices_openai_authoring#GetFineTuningEvents",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningGetEventsRequest": "com.azure.cognitiveservices_openai_authoring#GetFineTuningEventsRequest",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningDelete": "com.azure.cognitiveservices_openai_authoring#DeleteFineTuning",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningDeleteRequest": "com.azure.cognitiveservices_openai_authoring#DeleteFineTuningRequest",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningGet": "com.azure.cognitiveservices_openai_authoring#GetFineTuning",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningGetRequest": "com.azure.cognitiveservices_openai_authoring#GetFineTuningRequest",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningCreate": "com.azure.cognitiveservices_openai_authoring#CreateFineTuning",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningCreateResponse": "com.azure.cognitiveservices_openai_authoring#CreateFineTuningResponse",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningCreateRequest": "com.azure.cognitiveservices_openai_authoring#CreateFineTuningRequest",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningList": "com.azure.cognitiveservices_openai_authoring#ListFineTuning",
+      "com.azure.cognitiveservices_openai_authoring#FineTuningListRequest": "com.azure.cognitiveservices_openai_authoring#ListFineTuningRequest",
+      "com.azure.cognitiveservices_openai_authoring#FilesImport": "com.azure.cognitiveservices_openai_authoring#ImportFile",
+      "com.azure.cognitiveservices_openai_authoring#FilesImportResponse": "com.azure.cognitiveservices_openai_authoring#ImportFileResponse",
+      "com.azure.cognitiveservices_openai_authoring#FilesImportRequest": "com.azure.cognitiveservices_openai_authoring#ImportFileRequest",
+      "com.azure.cognitiveservices_openai_authoring#FilesGetContent": "com.azure.cognitiveservices_openai_authoring#GetFileContent",
+      "com.azure.cognitiveservices_openai_authoring#FilesGetContentResponse": "com.azure.cognitiveservices_openai_authoring#GetFileContentResponse",
+      "com.azure.cognitiveservices_openai_authoring#FilesGetContentRequest": "com.azure.cognitiveservices_openai_authoring#GetFileContentRequest",
+      "com.azure.cognitiveservices_openai_authoring#FilesDelete": "com.azure.cognitiveservices_openai_authoring#DeleteFile",
+      "com.azure.cognitiveservices_openai_authoring#FilesDeleteRequest": "com.azure.cognitiveservices_openai_authoring#DeleteFileRequest",
+      "com.azure.cognitiveservices_openai_authoring#FilesGet": "com.azure.cognitiveservices_openai_authoring#GetFile",
+      "com.azure.cognitiveservices_openai_authoring#FilesGetRequest": "com.azure.cognitiveservices_openai_authoring#GetFileRequest",
+      "com.azure.cognitiveservices_openai_authoring#FilesUpload": "com.azure.cognitiveservices_openai_authoring#UploadFile",
+      "com.azure.cognitiveservices_openai_authoring#FilesUploadResponse": "com.azure.cognitiveservices_openai_authoring#UploadFileResponse",
+      "com.azure.cognitiveservices_openai_authoring#FilesUploadRequest": "com.azure.cognitiveservices_openai_authoring#UploadFileRequest",
+      "com.azure.cognitiveservices_openai_authoring#FilesList": "com.azure.cognitiveservices_openai_authoring#ListFiles",
+      "com.azure.cognitiveservices_openai_authoring#FilesListRequest": "com.azure.cognitiveservices_openai_authoring#ListFilesRequest",
+      "com.azure.cognitiveservices_openai_authoring#FilesListRequestPurpose": "com.azure.cognitiveservices_openai_authoring#ListFilesRequestPurpose",
+      "com.azure.cognitiveservices_openai_authoring#BatchCancel": "com.azure.cognitiveservices_openai_authoring#CancelBatch",
+      "com.azure.cognitiveservices_openai_authoring#BatchCancelRequest": "com.azure.cognitiveservices_openai_authoring#CancelBatchRequest",
+      "com.azure.cognitiveservices_openai_authoring#BatchGet": "com.azure.cognitiveservices_openai_authoring#GetBatch",
+      "com.azure.cognitiveservices_openai_authoring#BatchGetRequest": "com.azure.cognitiveservices_openai_authoring#GetBatchRequest",
+      "com.azure.cognitiveservices_openai_authoring#BatchCreate": "com.azure.cognitiveservices_openai_authoring#CreateBatch",
+      "com.azure.cognitiveservices_openai_authoring#BatchCreateRequest": "com.azure.cognitiveservices_openai_authoring#CreateBatchRequest",
+      "com.azure.cognitiveservices_openai_authoring#BatchCreateRequestMetadataMap": "com.azure.cognitiveservices_openai_authoring#CreateBatchRequestMetadataMap",
+      "com.azure.cognitiveservices_openai_authoring#BatchList": "com.azure.cognitiveservices_openai_authoring#ListBatch",
+      "com.azure.cognitiveservices_openai_authoring#BatchListRequest": "com.azure.cognitiveservices_openai_authoring#ListBatchRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_openai_authoring#UploadFileCancel": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCancelRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadResource"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/uploads/{uploadId}/cancel",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Cancels the Upload, and will lead to all uploaded parts to be deleted asynchronously.\r\nNo Parts may be added after an Upload is cancelled."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadResource": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "bytes": {
+          "target": "smithy.api#Integer"
+        },
+        "filename": {
+          "target": "smithy.api#String"
+        },
+        "purpose": {
+          "target": "com.azure.cognitiveservices_openai_authoring#Purpose"
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadStatus"
+        },
+        "expires_at": {
+          "target": "smithy.api#Integer"
+        },
+        "file": {
+          "target": "com.azure.cognitiveservices_openai_authoring#File"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_openai_authoring#File": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FileState"
+        },
+        "bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of this file when available (can be null). File sizes larger than 2^53-1 are not supported to ensure compatibility\r\nwith JavaScript integers."
+          }
+        },
+        "purpose": {
+          "target": "com.azure.cognitiveservices_openai_authoring#Purpose",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the file.",
+            "smithy.api#required": {}
+          }
+        },
+        "status_details": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message with details in case processing of this file failed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A file is a document usable for training and validation. It can also be a service generated document with result details."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#Purpose": {
+      "type": "enum",
+      "members": {
+        "FINE_TUNE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fine-tune"
+          }
+        },
+        "FINE_TUNE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fine-tune-results"
+          }
+        },
+        "ASSISTANTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assistants"
+          }
+        },
+        "ASSISTANTS_OUTPUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assistants_output"
+          }
+        },
+        "BATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "batch"
+          }
+        },
+        "BATCH_OUTPUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "batch_output"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The intended purpose of the uploaded documents. Use \"fine-tune\" for fine-tuning. This allows us to validate the format of the uploaded file."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FileState": {
+      "type": "enum",
+      "members": {
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uploaded"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PROCESSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "processed"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleting"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of a file."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator": {
+      "type": "enum",
+      "members": {
+        "LIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "list"
+          }
+        },
+        "FINE_TUNING_JOB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fine_tuning.job"
+          }
+        },
+        "FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "file"
+          }
+        },
+        "FINE_TUNING_JOB_EVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fine_tuning.job.event"
+          }
+        },
+        "FINE_TUNING_JOB_CHECKPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fine_tuning.job.checkpoint"
+          }
+        },
+        "MODEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "model"
+          }
+        },
+        "BATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "batch"
+          }
+        },
+        "UPLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "upload"
+          }
+        },
+        "UPLOAD_PART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "upload.part"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the type of an object."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFileCancelRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "uploadId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the upload."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFileComplete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadResource"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/uploads/{uploadId}/complete",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "This completes the Upload, and the returned Upload object contains a nested File object that is ready for use across the platform.\r\nYou can define the order of the Parts by providing an ordered list of Part IDs.\r\nThe total number of bytes uploaded must match the size originally specified when creating the Upload object.\r\nAfter this operation no additional Parts can be added once the Upload is completed."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "uploadId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the upload."
+          }
+        },
+        "part_ids": {
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequestPartIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "md5": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequestPartIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFilePart": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadFilePartRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadPartResource"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/uploads/{uploadId}/parts",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Adds a Part to an Upload object, where each Part represents a segment of the file you are uploading.\r\nEach Part can be up to the standard size limit for file upload, based on the File Purpose. You can continue adding Parts until reaching the Upload size limit of 9 GB."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadPartResource": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "upload_id": {
+          "target": "smithy.api#String"
+        },
+        "azure_block_id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFilePartRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "uploadId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the upload."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFileStart": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileStartRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileStartResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/uploads",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "An intermediate Upload object is created, allowing you to add Parts to it. Currently, an Upload size can be a maximum of 9 GB in total and will expire two hours after being created.\r\nAfter the Upload is completed a File object will be generated, containing all the uploaded parts. This File object can then be used across our platform just like any other file."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFileStartResponse": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "bytes": {
+          "target": "smithy.api#Integer"
+        },
+        "filename": {
+          "target": "smithy.api#String"
+        },
+        "purpose": {
+          "target": "com.azure.cognitiveservices_openai_authoring#Purpose"
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadStatus"
+        },
+        "expires_at": {
+          "target": "smithy.api#Integer"
+        },
+        "file": {
+          "target": "com.azure.cognitiveservices_openai_authoring#File"
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The location of the newly created item."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#UploadFileStartRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mime_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#ModelsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#ModelsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#Model"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/models/{modelId}",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets details for the model specified by the given modelId."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#Model": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningState"
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The base model identity (model-id) if this is a fine tune model; otherwise `null`."
+          }
+        },
+        "fine_tune": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fine tune job identity (fine-tune-id) if this is a fine tune model; otherwise `null`."
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.cognitiveservices_openai_authoring#Capabilities",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lifecycle_status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#LifeCycleStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deprecation": {
+          "target": "com.azure.cognitiveservices_openai_authoring#Deprecation",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A model is either a base model or the result of a successful fine tune job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#Deprecation": {
+      "type": "structure",
+      "members": {
+        "fine_tune": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The end date of fine tune support of this model. Will be `null` for fine tune models."
+          }
+        },
+        "inference": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The end date of inference support of this model.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the dates of deprecation for the different use cases of a model.\r\nUsually base models support 1 year of fine tuning after creation. Inference is typically supported 2 years after creation of base or\r\nfine tuned models. The exact dates are specified in the properties."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#LifeCycleStatus": {
+      "type": "enum",
+      "members": {
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        },
+        "GENERALLY_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generally-available"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The life cycle status of a model.\r\nNote: A model can be promoted from \"preview\" to \"generally-available\", but never from \"generally-available\" to \"preview\"."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#Capabilities": {
+      "type": "structure",
+      "members": {
+        "fine_tune": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether a model can be used for fine tuning.",
+            "smithy.api#required": {}
+          }
+        },
+        "inference": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether a model can be deployed.",
+            "smithy.api#required": {}
+          }
+        },
+        "completion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether a model supports completion.",
+            "smithy.api#required": {}
+          }
+        },
+        "chat_completion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether a model supports chat completion.",
+            "smithy.api#required": {}
+          }
+        },
+        "embeddings": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether a model supports embeddings.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The capabilities of a base or fine tune model."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningState": {
+      "type": "enum",
+      "members": {
+        "CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of a finetunes object or fine tuning job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#ModelsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "modelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the model."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#ModelsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#ModelsListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#ModelList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/models",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets a list of all models that are accessible by the Azure OpenAI resource.\r\nThese include base models as well as all successfully completed fine-tuned models owned by the Azure OpenAI resource."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#ModelList": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "data": {
+          "target": "com.azure.cognitiveservices_openai_authoring#ModelListDataList",
+          "traits": {
+            "smithy.api#documentation": "The list of items."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of models."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#ModelListDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_openai_authoring#Model"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of items."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#ModelsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningCancel": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCancelRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/fine_tuning/jobs/{fineTuningJobId}/cancel",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Cancels the processing of the fine-tune job specified by the given fine-tune-id."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJob": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningState"
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier (model-id) of the base model used for the fine-tune.",
+            "smithy.api#required": {}
+          }
+        },
+        "fine_tuned_model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier (model-id) of the resulting fine tuned model. This property is only populated for successfully completed fine-tune runs.\r\nUse this identifier to create a deployment for inferencing."
+          }
+        },
+        "training_file": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file which is used for training.",
+            "smithy.api#required": {}
+          }
+        },
+        "validation_file": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file which is used to evaluate the fine tuned model during training."
+          }
+        },
+        "result_files": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobResultFilesList",
+          "traits": {
+            "smithy.api#documentation": "The result file identities (file-id) containing training and evaluation metrics in csv format.\r\nThe file is only available for successfully completed fine-tune runs."
+          }
+        },
+        "finished_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item has finished successfully (in unix epochs)."
+          }
+        },
+        "organisation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The organisation id of this fine tune job. Unused on Azure OpenAI; compatibility for OpenAI only."
+          }
+        },
+        "trained_tokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of billable tokens processed by this fine tuning job."
+          }
+        },
+        "error": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobError"
+        },
+        "estimated_finish": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running."
+          }
+        },
+        "hyperparameters": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningHyperParameters"
+        },
+        "suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The suffix used to identify the fine-tuned model. The suffix can contain up to 40 characters (a-z, A-Z, 0-9,- and _) that will be added to your fine-tuned model name."
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The seed used for the finetuning job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the values of a fine tune job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningHyperParameters": {
+      "type": "structure",
+      "members": {
+        "n_epochs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset."
+          }
+        },
+        "batch_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The batch size to use for training. The batch size is the number of training examples used to train a single forward and backward pass.\r\nIn general, we've found that larger batch sizes tend to work better for larger datasets.\r\nThe default value as well as the maximum value for this property are specific to a base model."
+          }
+        },
+        "learning_rate_multiplier": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The learning rate multiplier to use for training. The fine-tuning learning rate is the original learning rate used for pre-training multiplied by this value.\r\nLarger learning rates tend to perform better with larger batch sizes.\r\nWe recommend experimenting with values in the range 0.02 to 0.2 to see what produces the best results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hyper parameter settings used in a fine tune job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The machine-readable error code.."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable error message."
+          }
+        },
+        "param": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parameter that was invalid, usually training_file or validation_file. This field will be null if the failure was not parameter-specific."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "For fine-tuning jobs that have failed, this will contain more information on the cause of the failure."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobResultFilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The result file identities (file-id) containing training and evaluation metrics in csv format.\r\nThe file is only available for successfully completed fine-tune runs."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningCancelRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fineTuningJobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the fine-tune job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpointsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpointList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/fine_tuning/jobs/{fineTuningJobId}/checkpoints",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets the checkpoints for the fine-tune job specified by the given fine-tune-id.\r\nCheckpoints are created at the end of successful epochs during training."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpointList": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "data": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpointListDataList",
+          "traits": {
+            "smithy.api#documentation": "The list of items."
+          }
+        },
+        "has_more": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether the list contains more elements than returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of checkpoints."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpointListDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of items."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpoint": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this checkpoint."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The Unix timestamp (in seconds) for when the checkpoint was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "fine_tuned_model_checkpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the fine-tuned checkpoint model that is created.",
+            "smithy.api#required": {}
+          }
+        },
+        "step_number": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The step number that the checkpoint was created at.",
+            "smithy.api#required": {}
+          }
+        },
+        "metrics": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpointMetricsMap",
+          "traits": {
+            "smithy.api#documentation": "The metrics at the step number during the fine-tuning job.",
+            "smithy.api#required": {}
+          }
+        },
+        "fine_tuning_job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the fine-tuning job that this checkpoint was created from..",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpointMetricsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "The metrics at the step number during the fine-tuning job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpointsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fineTuningJobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the fine-tune job."
+          }
+        },
+        "after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "after",
+            "smithy.api#documentation": "Identifier for the last checkpoint ID from the previous pagination request."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of checkpoints to retrieve. Defaults to 10."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningGetEvents": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetEventsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobEventList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/fine_tuning/jobs/{fineTuningJobId}/events",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets the events for the fine-tune job specified by the given fine-tune-id.\r\nEvents are created when the job status changes, e.g. running or complete, and when results are uploaded."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobEventList": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "data": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobEventListDataList",
+          "traits": {
+            "smithy.api#documentation": "The list of items."
+          }
+        },
+        "has_more": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether the list contains more elements than returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of events."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobEventListDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobEvent"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of items."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobEvent": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this event."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this event was created (in unix epochs).",
+            "smithy.api#required": {}
+          }
+        },
+        "level": {
+          "target": "com.azure.cognitiveservices_openai_authoring#LogLevel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The message describing the event. This can be a change of state, e.g., enqueued, started, failed or completed, or other events like uploaded results.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.cognitiveservices_openai_authoring#EventType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Machine readable data of this event."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_openai_authoring#EventType": {
+      "type": "enum",
+      "members": {
+        "MESSAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "message"
+          }
+        },
+        "METRICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metrics"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the severity of a content filter result."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#LogLevel": {
+      "type": "enum",
+      "members": {
+        "INFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The verbosity level of an event."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningGetEventsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fineTuningJobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the fine-tune job."
+          }
+        },
+        "after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "after",
+            "smithy.api#documentation": "Identifier for the last event from the previous pagination request."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of events to retrieve. Defaults to 20."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/fine_tuning/jobs/{fineTuningJobId}",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Deletes the fine-tune job specified by the given fine-tune-id."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fineTuningJobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the fine-tune job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/fine_tuning/jobs/{fineTuningJobId}",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets details for a single fine-tune job specified by the given fine-tune-id.\r\nThe details contain the base model, training and validation files, hyper parameters, time stamps, status and events.\r\nEvents are created when the job status changes, e.g. running or complete, and when results are uploaded."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fineTuningJobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the fine-tune job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/fine_tuning/jobs",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Creates a job that fine-tunes a specified model from a given training file.\r\nResponse includes details of the enqueued job including job status and hyper parameters.\r\nThe name of the fine-tuned model is added to the response once complete."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningCreateResponse": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningState"
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier (model-id) of the base model used for the fine-tune.",
+            "smithy.api#required": {}
+          }
+        },
+        "fine_tuned_model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier (model-id) of the resulting fine tuned model. This property is only populated for successfully completed fine-tune runs.\r\nUse this identifier to create a deployment for inferencing."
+          }
+        },
+        "training_file": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file which is used for training.",
+            "smithy.api#required": {}
+          }
+        },
+        "validation_file": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file which is used to evaluate the fine tuned model during training."
+          }
+        },
+        "result_files": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobResultFilesList",
+          "traits": {
+            "smithy.api#documentation": "The result file identities (file-id) containing training and evaluation metrics in csv format.\r\nThe file is only available for successfully completed fine-tune runs."
+          }
+        },
+        "finished_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item has finished successfully (in unix epochs)."
+          }
+        },
+        "organisation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The organisation id of this fine tune job. Unused on Azure OpenAI; compatibility for OpenAI only."
+          }
+        },
+        "trained_tokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of billable tokens processed by this fine tuning job."
+          }
+        },
+        "error": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobError"
+        },
+        "estimated_finish": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running."
+          }
+        },
+        "hyperparameters": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningHyperParameters"
+        },
+        "suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The suffix used to identify the fine-tuned model. The suffix can contain up to 40 characters (a-z, A-Z, 0-9,- and _) that will be added to your fine-tuned model name."
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The seed used for the finetuning job."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The location of the newly created item."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the values of a fine tune job.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier (model-id) of the base model used for this fine-tune.",
+            "smithy.api#required": {}
+          }
+        },
+        "training_file": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file identity (file-id) that is used for training this fine tuned model.",
+            "smithy.api#required": {}
+          }
+        },
+        "validation_file": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file identity (file-id) that is used to evaluate the fine tuned model during training."
+          }
+        },
+        "hyperparameters": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningHyperParameters"
+        },
+        "suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The suffix used to identify the fine-tuned model. The suffix can contain up to 40 characters (a-z, A-Z, 0-9,- and _) that will be added to your fine-tuned model name."
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The seed used for the finetuning job. Passing in the same seed and job parameters should produce the same results, but may differ in rare cases. If a seed is not specified, one will be generated for you."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/fine_tuning/jobs",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets a list of all fine-tune jobs owned by the Azure OpenAI resource.\r\nThe details that are returned for each fine-tune job contain besides its identifier\r\nthe base model, training and validation files, hyper parameters, time stamps, status and events.\r\nEvents are created when the job status changes, e.g. running or complete, and when results are uploaded."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobList": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "data": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobListDataList",
+          "traits": {
+            "smithy.api#documentation": "The list of items."
+          }
+        },
+        "has_more": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether the list contains more elements than returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of fine tunes."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningJobListDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJob"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of items."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FineTuningListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "after",
+            "smithy.api#documentation": "Identifier for the last event from the previous pagination request."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of events to retrieve. Defaults to 20."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesImportRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesImportResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/files/import",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Creates a new file entity by importing data from a provided url. Uploaded files can, for example, be used for training or evaluating fine-tuned models."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesImportResponse": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FileState"
+        },
+        "bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of this file when available (can be null). File sizes larger than 2^53-1 are not supported to ensure compatibility\r\nwith JavaScript integers."
+          }
+        },
+        "purpose": {
+          "target": "com.azure.cognitiveservices_openai_authoring#Purpose",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the file.",
+            "smithy.api#required": {}
+          }
+        },
+        "status_details": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message with details in case processing of this file failed."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The location of the newly created item."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A file is a document usable for training and validation. It can also be a service generated document with result details.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesImportRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.\r\nIf the `purpose` is set to \"fine-tune\", each line is a JSON record with \"prompt\" and \"completion\" fields representing your training examples.",
+            "smithy.api#required": {}
+          }
+        },
+        "content_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The url to download the document from (can be SAS url of a blob or any other external url accessible with a GET request).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesGetContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesGetContentRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesGetContentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/files/{fileId}/content",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets the content of the file specified by the given file-id.\r\nFiles can be user uploaded content or generated by the service like result metrics of a fine-tune job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesGetContentResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesGetContentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the file."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FileDelete"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/files/{fileId}",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Deletes the file with the given file-id.\r\nDeletion is also allowed if a file was used, e.g., as training file in a fine-tune job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FileDelete": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether gets if the file was deleted.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file-id that was deleted.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the response for File Delete."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the file."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#File"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/files/{fileId}",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets details for a single file specified by the given file-id including status, size, purpose, etc."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "fileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the file."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesUploadRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesUploadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/files",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Creates a new file entity by uploading data from a local machine. Uploaded files can, for example, be used for training or evaluating fine-tuned models."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesUploadResponse": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this job or item was created (in unix epochs)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FileState"
+        },
+        "bytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size of this file when available (can be null). File sizes larger than 2^53-1 are not supported to ensure compatibility\r\nwith JavaScript integers."
+          }
+        },
+        "purpose": {
+          "target": "com.azure.cognitiveservices_openai_authoring#Purpose",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the file.",
+            "smithy.api#required": {}
+          }
+        },
+        "status_details": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message with details in case processing of this file failed."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The location of the newly created item."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A file is a document usable for training and validation. It can also be a service generated document with result details.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesUploadRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FilesListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#FileList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/files",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets a list of all files owned by the Azure OpenAI resource.\r\nThese include user uploaded content like files with purpose \"fine-tune\" for training or validation of fine-tunes models\r\nas well as files that are generated by the service such as \"fine-tune-results\" which contains various metrics for the corresponding fine-tune job."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FileList": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "data": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FileListDataList",
+          "traits": {
+            "smithy.api#documentation": "The list of items."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of files."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FileListDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_openai_authoring#File"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of items."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "purpose": {
+          "target": "com.azure.cognitiveservices_openai_authoring#FilesListRequestPurpose",
+          "traits": {
+            "smithy.api#httpQuery": "purpose",
+            "smithy.api#documentation": "Only return files with the given purpose."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#FilesListRequestPurpose": {
+      "type": "enum",
+      "members": {
+        "FINE_TUNE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fine-tune"
+          }
+        },
+        "FINE_TUNE_RESULTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fine-tune-results"
+          }
+        },
+        "ASSISTANTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assistants"
+          }
+        },
+        "ASSISTANTS_OUTPUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assistants_output"
+          }
+        },
+        "BATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "batch"
+          }
+        },
+        "BATCH_OUTPUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "batch_output"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchCancel": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#BatchCancelRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#Batch"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/batches/{batchId}/cancel",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Cancels the processing of the batch specified by the given batch-id."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#Batch": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity of this item.",
+            "smithy.api#required": {}
+          }
+        },
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API endpoint used by the batch."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchErrors"
+        },
+        "input_file_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the input file for the batch.",
+            "smithy.api#required": {}
+          }
+        },
+        "completion_window": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time frame within which the batch should be processed."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchStatus"
+        },
+        "output_file_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the file containing outputs of successfully executed requests."
+          }
+        },
+        "error_file_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the file containing outputs of requests with errors."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch was created (in unix epochs)."
+          }
+        },
+        "in_progress_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch started progressing (in unix epochs)."
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch will expire (in unix epochs)."
+          }
+        },
+        "finalizing_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch started finalizing (in unix epochs)."
+          }
+        },
+        "completed_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch was completed (in unix epochs)."
+          }
+        },
+        "failed_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch failed (in unix epochs)."
+          }
+        },
+        "expired_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch expired (in unix epochs)."
+          }
+        },
+        "cancelling_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch started cancelling (in unix epochs)."
+          }
+        },
+        "cancelled_at": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A timestamp when this batch was cancelled (in unix epochs)."
+          }
+        },
+        "request_counts": {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchRequestCounts"
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that can be attached to the batch. This can be useful for storing additional information about the batch in a structured format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the values of a batch."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that can be attached to the batch. This can be useful for storing additional information about the batch in a structured format."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchRequestCounts": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of requests in the batch."
+          }
+        },
+        "completed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of requests in the batch that have been completed successfully."
+          }
+        },
+        "failed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of requests in the batch that have failed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The request counts for different statuses within the batch."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchStatus": {
+      "type": "enum",
+      "members": {
+        "VALIDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "validating"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in_progress"
+          }
+        },
+        "FINALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "finalizing"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelling"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of a batch."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchErrors": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the errors object. This is always 'list'."
+          }
+        },
+        "data": {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchErrorData"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "For batches that have failed, this will contain more information on the cause of the failures."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchErrorData": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An error code identifying the error type."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable message providing more details about the error."
+          }
+        },
+        "param": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parameter that caused the error, if applicable (can be null)."
+          }
+        },
+        "line": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The line number of the input file where the error occurred, if applicable (can be null)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error information for a failure in batch."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchCancelRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "batchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the batch."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#BatchGetRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#Batch"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/batches/{batchId}",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets details for a single batch specified by the given batch-id."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "batchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the batch."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#BatchCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#Batch"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/batches",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Creates and executes a batch from an uploaded file of requests.\r\nResponse includes details of the enqueued job including job status.\r\nThe ID of the result file is added to the response once complete."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "input_file_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID if the input file for the batch.",
+            "smithy.api#required": {}
+          }
+        },
+        "completion_window": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time frame within which the batch should be processed.",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchCreateRequestMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that can be attached to the batch. This can be useful for storing additional information about the batch in a structured format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchCreateRequestMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that can be attached to the batch. This can be useful for storing additional information about the batch in a structured format."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_openai_authoring#BatchListRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_openai_authoring#BatchesList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/batches",
+          "code": 200,
+          "host": "{endpoint}/openai",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-21"
+        },
+        "smithy.api#documentation": "Gets a list of all batches owned by the Azure OpenAI resource."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchesList": {
+      "type": "structure",
+      "members": {
+        "object": {
+          "target": "com.azure.cognitiveservices_openai_authoring#TypeDiscriminator"
+        },
+        "data": {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchesListDataList",
+          "traits": {
+            "smithy.api#documentation": "The list of items."
+          }
+        },
+        "first_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the first batch in the list of batches returned."
+          }
+        },
+        "last_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the last batch in the list of batches returned."
+          }
+        },
+        "has_more": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether the list contains more elements than returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of batches."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchesListDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_openai_authoring#Batch"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of items."
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#BatchListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://aoairesource.openai.azure.com. Replace \"aoairesource\" with your Azure OpenAI account name).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "after",
+            "smithy.api#documentation": "Identifier for the last event from the previous pagination request."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Number of batches to retrieve. Defaults to 20."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_openai_authoring#CognitiveservicesOpenaiAuthoring": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCancel"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileComplete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadFilePart"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileStart"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#ModelsGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#ModelsList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCancel"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpoints"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetEvents"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FilesImport"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FilesGetContent"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FilesDelete"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FilesGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FilesUpload"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#FilesList"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchCancel"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchGet"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchCreate"
+        },
+        {
+          "target": "com.azure.cognitiveservices_openai_authoring#BatchList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure OpenAIAuthoring data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/OpenAIAuthoring (latest stable api-version 2024-10-21).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/openai",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

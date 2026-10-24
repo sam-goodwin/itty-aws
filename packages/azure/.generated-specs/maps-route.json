@@ -1,0 +1,3501 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.maps_route#RoutePostSnapToRoadsBatch": "com.azure.maps_route#PostRouteSnapToRoadsBatch",
+      "com.azure.maps_route#RoutePostSnapToRoadsBatchRequest": "com.azure.maps_route#PostRouteSnapToRoadsBatchRequest",
+      "com.azure.maps_route#RoutePostSnapToRoadsBatchRequestBatchItemsList": "com.azure.maps_route#PostRouteSnapToRoadsBatchRequestBatchItemsList",
+      "com.azure.maps_route#RoutePostSnapToRoads": "com.azure.maps_route#PostRouteSnapToRoads",
+      "com.azure.maps_route#RoutePostSnapToRoadsRequest": "com.azure.maps_route#PostRouteSnapToRoadsRequest",
+      "com.azure.maps_route#RoutePostSnapToRoadsRequestTravelMode": "com.azure.maps_route#PostRouteSnapToRoadsRequestTravelMode",
+      "com.azure.maps_route#RoutePostSnapToRoadsRequestFeaturesList": "com.azure.maps_route#PostRouteSnapToRoadsRequestFeaturesList",
+      "com.azure.maps_route#RoutePostRouteRangeBatch": "com.azure.maps_route#PostRouteRouteRangeBatch",
+      "com.azure.maps_route#RoutePostRouteRangeBatchRequest": "com.azure.maps_route#PostRouteRouteRangeBatchRequest",
+      "com.azure.maps_route#RoutePostRouteRangeBatchRequestBatchItemsList": "com.azure.maps_route#PostRouteRouteRangeBatchRequestBatchItemsList",
+      "com.azure.maps_route#RoutePostRouteRange": "com.azure.maps_route#PostRouteRouteRange",
+      "com.azure.maps_route#RoutePostRouteRangeRequest": "com.azure.maps_route#PostRouteRouteRangeRequest",
+      "com.azure.maps_route#RouteGetRouteOperationsResult": "com.azure.maps_route#GetRouteRouteOperationsResult",
+      "com.azure.maps_route#RouteGetRouteOperationsResultRequest": "com.azure.maps_route#GetRouteRouteOperationsResultRequest",
+      "com.azure.maps_route#RouteGetRouteOperationsStatus": "com.azure.maps_route#GetRouteRouteOperationsStatus",
+      "com.azure.maps_route#RouteGetRouteOperationsStatusRequest": "com.azure.maps_route#GetRouteRouteOperationsStatusRequest",
+      "com.azure.maps_route#RoutePostRouteMatrixAsync": "com.azure.maps_route#PostRouteRouteMatrixAsync",
+      "com.azure.maps_route#RoutePostRouteMatrixAsyncResponse": "com.azure.maps_route#PostRouteRouteMatrixAsyncResponse",
+      "com.azure.maps_route#RoutePostRouteMatrixAsyncRequest": "com.azure.maps_route#PostRouteRouteMatrixAsyncRequest",
+      "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestAvoidList": "com.azure.maps_route#PostRouteRouteMatrixAsyncRequestAvoidList",
+      "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestTraffic": "com.azure.maps_route#PostRouteRouteMatrixAsyncRequestTraffic",
+      "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestOptimizeRoute": "com.azure.maps_route#PostRouteRouteMatrixAsyncRequestOptimizeRoute",
+      "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestTravelMode": "com.azure.maps_route#PostRouteRouteMatrixAsyncRequestTravelMode",
+      "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestFeaturesList": "com.azure.maps_route#PostRouteRouteMatrixAsyncRequestFeaturesList",
+      "com.azure.maps_route#RoutePostRouteMatrix": "com.azure.maps_route#PostRouteRouteMatrix",
+      "com.azure.maps_route#RoutePostRouteMatrixRequest": "com.azure.maps_route#PostRouteRouteMatrixRequest",
+      "com.azure.maps_route#RoutePostRouteMatrixRequestAvoidList": "com.azure.maps_route#PostRouteRouteMatrixRequestAvoidList",
+      "com.azure.maps_route#RoutePostRouteMatrixRequestTraffic": "com.azure.maps_route#PostRouteRouteMatrixRequestTraffic",
+      "com.azure.maps_route#RoutePostRouteMatrixRequestOptimizeRoute": "com.azure.maps_route#PostRouteRouteMatrixRequestOptimizeRoute",
+      "com.azure.maps_route#RoutePostRouteMatrixRequestTravelMode": "com.azure.maps_route#PostRouteRouteMatrixRequestTravelMode",
+      "com.azure.maps_route#RoutePostRouteMatrixRequestFeaturesList": "com.azure.maps_route#PostRouteRouteMatrixRequestFeaturesList",
+      "com.azure.maps_route#RoutePostRouteDirectionsBatch": "com.azure.maps_route#PostRouteRouteDirectionsBatch",
+      "com.azure.maps_route#RoutePostRouteDirectionsBatchRequest": "com.azure.maps_route#PostRouteRouteDirectionsBatchRequest",
+      "com.azure.maps_route#RoutePostRouteDirectionsBatchRequestBatchItemsList": "com.azure.maps_route#PostRouteRouteDirectionsBatchRequestBatchItemsList",
+      "com.azure.maps_route#RoutePostRouteDirections": "com.azure.maps_route#PostRouteRouteDirections",
+      "com.azure.maps_route#RoutePostRouteDirectionsResponse": "com.azure.maps_route#PostRouteRouteDirectionsResponse",
+      "com.azure.maps_route#RoutePostRouteDirectionsResponseAlternativeRoutesList": "com.azure.maps_route#PostRouteRouteDirectionsResponseAlternativeRoutesList",
+      "com.azure.maps_route#RoutePostRouteDirectionsResponseFeaturesList": "com.azure.maps_route#PostRouteRouteDirectionsResponseFeaturesList",
+      "com.azure.maps_route#RoutePostRouteDirectionsRequest": "com.azure.maps_route#PostRouteRouteDirectionsRequest",
+      "com.azure.maps_route#RoutePostRouteDirectionsRequestRouteOutputOptionsList": "com.azure.maps_route#PostRouteRouteDirectionsRequestRouteOutputOptionsList",
+      "com.azure.maps_route#RoutePostRouteDirectionsRequestAvoidList": "com.azure.maps_route#PostRouteRouteDirectionsRequestAvoidList",
+      "com.azure.maps_route#RoutePostRouteDirectionsRequestOptimizeRoute": "com.azure.maps_route#PostRouteRouteDirectionsRequestOptimizeRoute",
+      "com.azure.maps_route#RoutePostRouteDirectionsRequestTravelMode": "com.azure.maps_route#PostRouteRouteDirectionsRequestTravelMode",
+      "com.azure.maps_route#RoutePostRouteDirectionsRequestFeaturesList": "com.azure.maps_route#PostRouteRouteDirectionsRequestFeaturesList"
+    }
+  },
+  "shapes": {
+    "com.azure.maps_route#RoutePostSnapToRoadsBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostSnapToRoadsBatchRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#SnapToRoadsBatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/snapToRoads:batch",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "The Snap To Roads Batch API sends batches of up to **100** queries as a single\ncall to the [Snap To Roads\nAPI](/rest/api/maps/route/post-snap-to-roads?view=rest-maps-2025-01-01). This\nAPI enables efficient processing of multiple queries in one request, reducing\nthe need for individual calls.\n\n### Submit Synchronous Batch Request\nThe Synchronous API is recommended for lightweight batch requests. When the\nservice receives a request, it will respond as soon as the batch items are\ncalculated and there will be no possibility to retrieve the results later. The\nSynchronous API will return a timeout error (a 408 response) if the request\ntakes longer than 60 seconds. The number of batch items is limited to **100**\nfor this API.\n```\nPOST https://atlas.microsoft.com/route/snapToRoads:batch?api-version=2025-01-01\n```\n### POST Body for Batch Request\nTo send the _snap to roads_ queries you will use a `POST` request where the\nrequest body will contain the `batchItems` array in `json` format and the\n`Content-Type` header will be set to `application/json`. Here's a sample\nrequest body containing 1 _snap to roads_ queries:\n\n\n```\n{\n  \"batchItems\": [\n    {\n      \"optionalId\": \"bbc9c0f6-ab52-49d8-a788-a658fa654c94\",\n      \"type\": \"FeatureCollection\",\n      \"features\": [\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n              -122.336691,\n              47.59085\n            ]\n          },\n          \"properties\": {\n          }\n        },\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n              -122.336023,\n              47.601616\n            ]\n          },\n          \"properties\": {\n          }\n        }\n      ],\n      \"includeSpeedLimit\": true,\n      \"travelMode\": \"driving\"\n    }\n  ]\n}\n```\n\nA _snap to roads_ batchItem object can accept any of the supported _snap to\nroads_ [Request\nbody](/rest/api/maps/route/post-snap-to-roads?view=rest-maps-2025-01-01#request-body)\n\n\n\nThe batch should contain at least **1** query.\n\n\n### Batch Response Model\nThe batch response contains a `summary` component that indicates the\n`totalRequests` that were part of the original batch request and\n`successfulRequests` i.e. queries which were executed successfully. The batch\nresponse also includes a `batchItems` array which contains a response for each\nand every query in the batch request. The `batchItems` will contain the results\nin the exact same order the original queries were sent in the batch request.\nEach item is of one of the following types:\n\n- [`SnapToRoadsResponse`](/rest/api/maps/route/post-snap-to-roads#response) -\nIf the query completed successfully.\n\n- `Error` - If the query failed. The response will contain a `code` and a\n`message` in this case."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchResponse": {
+      "type": "structure",
+      "members": {
+        "summary": {
+          "target": "com.azure.maps_route#SnapToRoadsBatchResponseSummary",
+          "traits": {
+            "smithy.api#documentation": "Summary for the batch request"
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_route#SnapToRoadsBatchResponseBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "Array containing the batch results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful Snap To Roads Batch service call."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchResponseBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#SnapToRoadsBatchResponseItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array containing the batch results."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchResponseItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the request which would show in corresponding batchItem."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#SnapToRoadsBatchResponseItemFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+          }
+        },
+        "error": {
+          "target": "com.azure.maps_route#CommonErrorDetail",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "error details"
+      }
+    },
+    "com.azure.maps_route#CommonErrorDetail": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error target."
+          }
+        },
+        "details": {
+          "target": "com.azure.maps_route#CommonErrorDetailDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The error details."
+          }
+        },
+        "additionalInfo": {
+          "target": "com.azure.maps_route#CommonErrorDetailAdditionalInfoList",
+          "traits": {
+            "smithy.api#documentation": "The error additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.maps_route#CommonErrorDetailAdditionalInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#ErrorAdditionalInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error additional info."
+      }
+    },
+    "com.azure.maps_route#ErrorAdditionalInfo": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional info type."
+          }
+        },
+        "info": {
+          "target": "com.azure.maps_route#ErrorAdditionalInfoInfoMap",
+          "traits": {
+            "smithy.api#documentation": "The additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource management error additional info."
+      }
+    },
+    "com.azure.maps_route#ErrorAdditionalInfoInfoMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The additional info."
+      }
+    },
+    "com.azure.maps_route#CommonErrorDetailDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#CommonErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error details."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchResponseItemFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#SnapToRoadFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadFeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#GeoJsonPoint",
+          "traits": {
+            "smithy.api#documentation": "A valid `GeoJSON Point` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.2) for details."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_route#SnapToRoadFeaturesItemBboxList",
+          "traits": {
+            "smithy.api#documentation": "A rectangular area on the earth defined as a bounding box object. The sides of\nthe rectangles are defined by latitude and longitude values. For more\ninformation, see [RFC 7946, Section\n5](https://www.rfc-editor.org/rfc/rfc7946#section-5).\n\nExample: \"bbox\": [-10.0, -10.0, 10.0, 10.0]"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#SnapToRoadsFeatureProperties",
+          "traits": {
+            "smithy.api#documentation": "Snap to Roads properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "GeoJSON feature object that contains Geometry object and additional properties\nof the route."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsFeatureProperties": {
+      "type": "structure",
+      "members": {
+        "inputIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Identify the corresponding index in the original list of points for each\nsnapped point. Only the snapped points will return indices and can be used to\ndistinguish them from the interpolated points."
+          }
+        },
+        "isInterpolated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Identify whether this is the interpolated point."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the road the point is snapped to."
+          }
+        },
+        "speedLimitInKilometersPerHour": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Speed limit in kilometers per hour."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Snap to Roads properties."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadFeaturesItemBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A rectangular area on the earth defined as a bounding box object. The sides of\nthe rectangles are defined by latitude and longitude values. For more\ninformation, see [RFC 7946, Section\n5](https://www.rfc-editor.org/rfc/rfc7946#section-5).\n\nExample: \"bbox\": [-10.0, -10.0, 10.0, 10.0]"
+      }
+    },
+    "com.azure.maps_route#GeoJsonPoint": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection.",
+            "smithy.api#required": {}
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_route#GeoJsonPointCoordinatesList",
+          "traits": {
+            "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON Point` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.2) for details."
+      }
+    },
+    "com.azure.maps_route#GeoJsonPointCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details."
+      }
+    },
+    "com.azure.maps_route#GeoJsonObjectType": {
+      "type": "enum",
+      "members": {
+        "POINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Point"
+          }
+        },
+        "MULTIPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiPoint"
+          }
+        },
+        "LINESTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LineString"
+          }
+        },
+        "MULTILINESTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiLineString"
+          }
+        },
+        "POLYGON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Polygon"
+          }
+        },
+        "MULTIPOLYGON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiPolygon"
+          }
+        },
+        "GEOMETRYCOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GeometryCollection"
+          }
+        },
+        "FEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Feature"
+          }
+        },
+        "FEATURECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeatureCollection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection."
+      }
+    },
+    "com.azure.maps_route#FeaturesItemTypeEnum": {
+      "type": "enum",
+      "members": {
+        "FEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Feature"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_route#FeatureTypeEnum": {
+      "type": "enum",
+      "members": {
+        "FEATURECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeatureCollection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchResponseSummary": {
+      "type": "structure",
+      "members": {
+        "successfulRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of successful requests in the batch"
+          }
+        },
+        "totalRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of requests in the batch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Summary for the batch request"
+      }
+    },
+    "com.azure.maps_route#RoutePostSnapToRoadsBatchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which routing results should be returned.\n\nFor more information, see [Localization support in Azure\nMaps](https://learn.microsoft.com/azure/azure-maps/supported-languages#routing-v2-services-preview-supported-languages)."
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_route#RoutePostSnapToRoadsBatchRequestBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "The list of queries to process."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostSnapToRoadsBatchRequestBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#SnapToRoadsBatchRequestItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of queries to process."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchRequestItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the request which would show in corresponding batchItem."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#SnapToRoadsBatchRequestItemFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "A set of points to snap to road network. You can have a minimum of 2 points and\nmaximum of 5000 points and the two consecutive points must be within 6\nkilometer of each other and a total road distance of up to 100 kilometers.\nRefer to [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the\nGeoJSON format.\n\n`Note`: The API will not return a point object in the response for the GPS\npoint that cannot be snapped to a road network.",
+            "smithy.api#required": {}
+          }
+        },
+        "interpolate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether to return additional points between the snapped points to\ncomplete the full route path that smoothly follows the road geometry.\n\nThe interpolated points will have `isInterpolate:true` in the response which\ncan be used to identify the snapped points from interpolated points."
+          }
+        },
+        "includeSpeedLimit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether to include speed limit information for the snapped points in\nthe response. The unit is in kilometers per hour."
+          }
+        },
+        "travelMode": {
+          "target": "com.azure.maps_route#SnapToRoadsBatchRequestItemTravelMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the routing profile for snapping the points. If unspecified, the\ndefault mode is \"driving\", which optimizes the snapped points for driving\nroutes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch Query object"
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchRequestItemTravelMode": {
+      "type": "enum",
+      "members": {
+        "DRIVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "driving"
+          }
+        },
+        "TRUCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "truck"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the routing profile for snapping the points. If unspecified, the\ndefault mode is \"driving\", which optimizes the snapped points for driving\nroutes."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsBatchRequestItemFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#InputSnapToRoadsFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of points to snap to road network. You can have a minimum of 2 points and\nmaximum of 5000 points and the two consecutive points must be within 6\nkilometer of each other and a total road distance of up to 100 kilometers.\nRefer to [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the\nGeoJSON format.\n\n`Note`: The API will not return a point object in the response for the GPS\npoint that cannot be snapped to a road network."
+      }
+    },
+    "com.azure.maps_route#InputSnapToRoadsFeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#GeoJsonPoint",
+          "traits": {
+            "smithy.api#documentation": "A valid `GeoJSON Point` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.2) for details.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#InputSnapToRoadsFeaturesItemPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "The properties object is required in a valid GeoJSON but it can be empty since\nthe metadata is not used for snapping to road.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the input snap to roads points. `GeoJSON` feature object and\nadditional properties. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details."
+      }
+    },
+    "com.azure.maps_route#InputSnapToRoadsFeaturesItemPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties object is required in a valid GeoJSON but it can be empty since\nthe metadata is not used for snapping to road."
+      }
+    },
+    "com.azure.maps_route#RoutePostSnapToRoads": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostSnapToRoadsRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#SnapToRoadsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/snapToRoads",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "The Snap to Roads API accepts GPS point data, represented as longitude and\nlatitude coordinates, and generates points that aligns with existing roadways\non a map. This process, known as \"snapping to roads\", produces a series of\nobjects that trace a path closely following the road network. The resulting\ndata includes road names and their respective speed limits, pertinent to the\ntraversed segments.\n\nMoreover, the Snap to Roads API offers an interpolation feature, which refines\nthe GPS points to create a smoother route that adheres to the road's geometry.\nThis functionality is especially beneficial for asset tracking and enhancing\ndata visualization in mapping applications.\n\n>[!Important]\n> The GPS points must be within 6 kilometer of each other.\n\n\n\nFor information about routing availability in countries/regions, see [Azure\nMaps routing\ncoverage](https://learn.microsoft.com/azure/azure-maps/routing-coverage?pivots=latest)."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#SnapToRoadsResponseFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful call."
+      }
+    },
+    "com.azure.maps_route#SnapToRoadsResponseFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#SnapToRoadFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+      }
+    },
+    "com.azure.maps_route#RoutePostSnapToRoadsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which routing results should be returned.\n\nFor more information, see [Localization support in Azure\nMaps](https://learn.microsoft.com/azure/azure-maps/supported-languages#routing-v2-services-preview-supported-languages)."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#RoutePostSnapToRoadsRequestFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "A set of points to snap to road network. You can have a minimum of 2 points and\nmaximum of 5000 points and the two consecutive points must be within 6\nkilometer of each other and a total road distance of up to 100 kilometers.\nRefer to [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the\nGeoJSON format.\n\n`Note`: The API will not return a point object in the response for the GPS\npoint that cannot be snapped to a road network.",
+            "smithy.api#required": {}
+          }
+        },
+        "interpolate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether to return additional points between the snapped points to\ncomplete the full route path that smoothly follows the road geometry.\n\nThe interpolated points will have `isInterpolate:true` in the response which\ncan be used to identify the snapped points from interpolated points."
+          }
+        },
+        "includeSpeedLimit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether to include speed limit information for the snapped points in\nthe response. The unit is in kilometers per hour."
+          }
+        },
+        "travelMode": {
+          "target": "com.azure.maps_route#RoutePostSnapToRoadsRequestTravelMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the routing profile for snapping the points. If unspecified, the\ndefault mode is \"driving\", which optimizes the snapped points for driving\nroutes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostSnapToRoadsRequestTravelMode": {
+      "type": "enum",
+      "members": {
+        "DRIVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "driving"
+          }
+        },
+        "TRUCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "truck"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the routing profile for snapping the points. If unspecified, the\ndefault mode is \"driving\", which optimizes the snapped points for driving\nroutes."
+      }
+    },
+    "com.azure.maps_route#RoutePostSnapToRoadsRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#InputSnapToRoadsFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of points to snap to road network. You can have a minimum of 2 points and\nmaximum of 5000 points and the two consecutive points must be within 6\nkilometer of each other and a total road distance of up to 100 kilometers.\nRefer to [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the\nGeoJSON format.\n\n`Note`: The API will not return a point object in the response for the GPS\npoint that cannot be snapped to a road network."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteRangeBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostRouteRangeBatchRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#RouteRangeBatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/range:batch",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "The Route Range Batch API sends batches of up to **100** queries as a single\ncall to the [Route Range\nAPI](https://learn.microsoft.com/rest/api/maps/route/post-route-range?view=rest-maps-2025-01-01).\nThis API enables efficient processing of multiple queries in one request,\nreducing the need for individual calls.\n\n### Submit Synchronous Batch Request\nThe Synchronous API is recommended for lightweight batch requests. When the\nservice receives a request, it will respond as soon as the batch items are\ncalculated and there will be no possibility to retrieve the results later. The\nSynchronous API will return a timeout error (a 408 response) if the request\ntakes longer than 60 seconds. The number of batch items is limited to **100**\nfor this API.\n```\nPOST https://atlas.microsoft.com/route/range:batch?api-version=2025-01-01\n```\n### POST Body for Batch Request\nTo send the _route range_ queries you will use a `POST` request where the\nrequest body will contain the `batchItems` array in `json` format and the\n`Content-Type` header will be set to `application/json`. Here's a sample\nrequest body containing 2 _route_range_ queries:\n\n\n```\n{\n  \"batchItems\": [\n    {\n      \"optionalId\": \"bbc9c0f6-ab52-49d8-a788-a658fa654c94\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          5.86605,\n          50.9745\n        ]\n      },\n      \"properties\": {\n        \"timeBudgetInSec\": 6000\n      }\n    },\n    {\n      \"optionalId\": \"300af787-589b-4088-accd-56828542e293\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          -122.201669,\n          47.615076\n        ]\n      },\n      \"properties\": {\n        \"timeBudgetInSec\": 2000\n      }\n    }\n  ]\n}\n```\n\nA _route range_ batchItem object can accept any of the supported _snap to\nroads_ [Request\nbody](/rest/api/maps/route/post-snap-to-roads?view=rest-maps-2025-01-01#request-body)\n\n\n\nThe batch should contain at least **1** query.\n\n\n### Batch Response Model\nThe batch response contains a `summary` component that indicates the\n`totalRequests` that were part of the original batch request and\n`successfulRequests` i.e. queries which were executed successfully. The batch\nresponse also includes a `batchItems` array which contains a response for each\nand every query in the batch request. The `batchItems` will contain the results\nin the exact same order the original queries were sent in the batch request.\nEach item is of one of the following types:\n\n- [`RouteRangeResponse`](/rest/api/maps/route/post-route-range#response) - If\nthe query completed successfully.\n\n- `Error` - If the query failed. The response will contain a `code` and a\n`message` in this case."
+      }
+    },
+    "com.azure.maps_route#RouteRangeBatchResponse": {
+      "type": "structure",
+      "members": {
+        "summary": {
+          "target": "com.azure.maps_route#RouteRangeBatchResponseSummary",
+          "traits": {
+            "smithy.api#documentation": "Summary for the batch request"
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_route#RouteRangeBatchResponseBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "Array containing the batch results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful Route Range Batch service call."
+      }
+    },
+    "com.azure.maps_route#RouteRangeBatchResponseBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteRangeBatchResponseItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array containing the batch results."
+      }
+    },
+    "com.azure.maps_route#RouteRangeBatchResponseItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the request which would show in corresponding batchItem."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#RouteRangeBatchResponseItemFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+          }
+        },
+        "error": {
+          "target": "com.azure.maps_route#CommonErrorDetail",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "error details"
+      }
+    },
+    "com.azure.maps_route#RouteRangeBatchResponseItemFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteRangeFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+      }
+    },
+    "com.azure.maps_route#RouteRangeFeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#RouteRangeGeometry",
+          "traits": {
+            "smithy.api#documentation": "A valid `GeoJSON` Geometry object. Please refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_route#RouteRangeFeaturesItemBboxList",
+          "traits": {
+            "smithy.api#documentation": "A rectangular area on the earth defined as a bounding box object. The sides of\nthe rectangles are defined by latitude and longitude values. For more\ninformation, see [RFC 7946, Section\n5](https://www.rfc-editor.org/rfc/rfc7946#section-5).\n\nExample: \"bbox\": [-10.0, -10.0, 10.0, 10.0]"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#RouteRangeFeatureProperties",
+          "traits": {
+            "smithy.api#documentation": "Route Ranges properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "GeoJSON feature object that contains Geometry object and additional properties\nof the route."
+      }
+    },
+    "com.azure.maps_route#RouteRangeFeatureProperties": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#RouteRangeTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The feature types for the feature objects returned in the response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Route Ranges properties."
+      }
+    },
+    "com.azure.maps_route#RouteRangeTypeEnum": {
+      "type": "enum",
+      "members": {
+        "CENTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "center"
+          }
+        },
+        "BOUNDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boundary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The feature types for the feature objects returned in the response."
+      }
+    },
+    "com.azure.maps_route#RouteRangeFeaturesItemBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A rectangular area on the earth defined as a bounding box object. The sides of\nthe rectangles are defined by latitude and longitude values. For more\ninformation, see [RFC 7946, Section\n5](https://www.rfc-editor.org/rfc/rfc7946#section-5).\n\nExample: \"bbox\": [-10.0, -10.0, 10.0, 10.0]"
+      }
+    },
+    "com.azure.maps_route#RouteRangeGeometry": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the geometry type for the `GeoJSON` Geometry object. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON` Geometry object. Please refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details."
+      }
+    },
+    "com.azure.maps_route#RouteRangeBatchResponseSummary": {
+      "type": "structure",
+      "members": {
+        "successfulRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of successful requests in the batch"
+          }
+        },
+        "totalRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of requests in the batch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Summary for the batch request"
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteRangeBatchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_route#RoutePostRouteRangeBatchRequestBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "The list of queries to process."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteRangeBatchRequestBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteRangeBatchRequestItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of queries to process."
+      }
+    },
+    "com.azure.maps_route#RouteRangeBatchRequestItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the request which would show in corresponding batchItem."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#RouteRangePointGeometry",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` Point Geometry object. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#InputRouteRangeProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameters to use for the calculation of isochrone polygon.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch Query object"
+      }
+    },
+    "com.azure.maps_route#InputRouteRangeProperties": {
+      "type": "structure",
+      "members": {
+        "departAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of departure from the origin point formatted as a dateTime\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nIf the `departAt` is not set, the default value is the current time.\n\nExample:\n\n\"departAt\": \"2023-06-01T09:30:00.000-07:00\""
+          }
+        },
+        "isSimplifiedPolygon": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Use this to specify if you need simplified polygons that reduces the number of\npolygon vertices while preserving the shape. The API returns low definition\npolygon by default."
+          }
+        },
+        "optimizeRoute": {
+          "target": "com.azure.maps_route#InputRouteRangePropertiesOptimizeRoute",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastestWithoutTraffic\" which returns the route to minimize the\ntravel time without using current traffic information.\n\nExample: \"optimizeRoute\":\"shortest\""
+          }
+        },
+        "avoid": {
+          "target": "com.azure.maps_route#InputRouteRangePropertiesAvoidList",
+          "traits": {
+            "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe reachable locations. Avoid supports multiple values in a request.\n\nExample: \"avoid\": [\"limitedAccessHighways\", \"tollRoads\"]"
+          }
+        },
+        "vehicleSpec": {
+          "target": "com.azure.maps_route#RouteRangeVehicleSpec",
+          "traits": {
+            "smithy.api#documentation": "Specifies the vehicle attributes such as vehicle height, weight, max speed,\ntype of cargo, etc. to consider when calculating the reachable locations. This\nhelps avoid low bridge clearances, road restrictions, difficult right turns to\nprovide the optimized truck route based on the vehicle specifications. Vehicle\nattributes are specified within the vehicleSpec property."
+          }
+        },
+        "distanceBudgetInMeters": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The distance budget specifies the maximum range in meters which can be traveled\nfrom the origin waypoint. It cannot be set when `timeBudgetInSec` is specified.\n\nWhen `isSimplifiedPolygon` is false, the maximum distance supported is 90000\nmeters; otherwise, it is 500,000 meters.\n\nExample: \"distanceBudgetInMeters\":5000"
+          }
+        },
+        "timeBudgetInSec": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time budget specifies the maximum time in seconds available for travel,\ndefining how far one can go within this time constraint from the origin\nwaypoint. It cannot be set when `distanceBudgetInMeters` is specified.\n\nWhen `isSimplifiedPolygon` is false, the maximum time supported is 3600\nseconds; otherwise, it is 21,600 seconds.\n\nExample: \"timeBudgetInSec\":3600"
+          }
+        },
+        "travelMode": {
+          "target": "com.azure.maps_route#InputRouteRangePropertiesTravelMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the travel profile to consider when calculating the range polygon. If\nnot specified, the default value is \"driving\".\n\nExample: \"travelMode\":\"driving\""
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the parameters to use for the calculation of isochrone polygon."
+      }
+    },
+    "com.azure.maps_route#InputRouteRangePropertiesTravelMode": {
+      "type": "enum",
+      "members": {
+        "DRIVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "driving"
+          }
+        },
+        "TRUCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "truck"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the travel profile to consider when calculating the range polygon. If\nnot specified, the default value is \"driving\".\n\nExample: \"travelMode\":\"driving\""
+      }
+    },
+    "com.azure.maps_route#RouteRangeVehicleSpec": {
+      "type": "structure",
+      "members": {
+        "isVehicleCommercial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the vehicle is used for commercial purposes. Commercial vehicles may\nnot be allowed to drive on some roads."
+          }
+        },
+        "length": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Length of the vehicle in meters. A value of 0 means that length restrictions\nare not considered."
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Width of the vehicle in meters. A value of 0 means that width restrictions are\nnot considered."
+          }
+        },
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Height of the vehicle in meters. A value of 0 means that height restrictions\nare not considered."
+          }
+        },
+        "weight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight of the vehicle in kilograms. A value of 0 means that weight restrictions\nare not considered."
+          }
+        },
+        "maxSpeed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum speed of the vehicle in km/hour. The max speed in the vehicle profile\nis used to check whether a vehicle is allowed on motorways.\n\nA value of 0 means that an appropriate value for the vehicle will be determined\nand applied during route planning.\n\nA non-zero value may be overridden during route planning. For example, the\ncurrent traffic flow is 60 km/hour. If the vehicle maximum speed is set to 50\nkm/hour, the routing engine will consider 60 km/hour as this is the current\nsituation. If the maximum speed of the vehicle is provided as 80 km/hour but\nthe current traffic flow is 60 km/hour, then routing engine will again use 60\nkm/hour."
+          }
+        },
+        "axleWeight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight per axle of the vehicle in kg. A value of 0 means that weight\nrestrictions per axle are not considered."
+          }
+        },
+        "loadType": {
+          "target": "com.azure.maps_route#RouteRangeVehicleSpecLoadTypeList",
+          "traits": {
+            "smithy.api#documentation": "Types of cargo that may be classified as hazardous materials and restricted\nfrom some roads. Available vehicleLoadType values are US Hazmat classes 1\nthrough 9, plus generic classifications for use in other countries. Values\nbeginning with USHazmat are for US routing while otherHazmat should be used for\nall other countries. vehicleLoadType supports multiple values in a request."
+          }
+        },
+        "adrTunnelRestrictionCode": {
+          "target": "com.azure.maps_route#AdrTunnelRestrictionCodeEnum",
+          "traits": {
+            "smithy.api#documentation": "The ADR tunnel restriction code. ADR is a European agreement concerning the\ninternational carriage of dangerous goods by road. The ADR tunnel restriction\ncode is used to determine whether a vehicle is allowed to pass through a tunnel\nwith restrictions on the carriage of dangerous goods."
+          }
+        },
+        "axleCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of axles on the vehicle."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the vehicle attributes such as vehicle height, weight, max speed,\ntype of cargo, etc. to consider when calculating the reachable locations. This\nhelps avoid low bridge clearances, road restrictions, difficult right turns to\nprovide the optimized truck route based on the vehicle specifications. Vehicle\nattributes are specified within the vehicleSpec property."
+      }
+    },
+    "com.azure.maps_route#AdrTunnelRestrictionCodeEnum": {
+      "type": "enum",
+      "members": {
+        "B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "B"
+          }
+        },
+        "C": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "C"
+          }
+        },
+        "D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "D"
+          }
+        },
+        "E": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "E"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The ADR tunnel restriction code. ADR is a European agreement concerning the\ninternational carriage of dangerous goods by road. The ADR tunnel restriction\ncode is used to determine whether a vehicle is allowed to pass through a tunnel\nwith restrictions on the carriage of dangerous goods."
+      }
+    },
+    "com.azure.maps_route#RouteRangeVehicleSpecLoadTypeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#VehicleLoadTypeEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Types of cargo that may be classified as hazardous materials and restricted\nfrom some roads. Available vehicleLoadType values are US Hazmat classes 1\nthrough 9, plus generic classifications for use in other countries. Values\nbeginning with USHazmat are for US routing while otherHazmat should be used for\nall other countries. vehicleLoadType supports multiple values in a request."
+      }
+    },
+    "com.azure.maps_route#VehicleLoadTypeEnum": {
+      "type": "enum",
+      "members": {
+        "USHAZMATCLASS1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass1"
+          }
+        },
+        "USHAZMATCLASS2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass2"
+          }
+        },
+        "USHAZMATCLASS3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass3"
+          }
+        },
+        "USHAZMATCLASS4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass4"
+          }
+        },
+        "USHAZMATCLASS5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass5"
+          }
+        },
+        "USHAZMATCLASS6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass6"
+          }
+        },
+        "USHAZMATCLASS7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass7"
+          }
+        },
+        "USHAZMATCLASS8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass8"
+          }
+        },
+        "USHAZMATCLASS9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "USHazmatClass9"
+          }
+        },
+        "OTHERHAZMATEXPLOSIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "otherHazmatExplosive"
+          }
+        },
+        "OTHERHAZMATGENERAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "otherHazmatGeneral"
+          }
+        },
+        "OTHERHAZMATHARMFULTOWATER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "otherHazmatHarmfulToWater"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Types of cargo that may be classified as hazardous materials and restricted from some roads."
+      }
+    },
+    "com.azure.maps_route#InputRouteRangePropertiesAvoidList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteRangeAvoidEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe reachable locations. Avoid supports multiple values in a request.\n\nExample: \"avoid\": [\"limitedAccessHighways\", \"tollRoads\"]"
+      }
+    },
+    "com.azure.maps_route#RouteRangeAvoidEnum": {
+      "type": "enum",
+      "members": {
+        "LIMITEDACCESSHIGHWAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "limitedAccessHighways"
+          }
+        },
+        "TOLLROADS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollRoads"
+          }
+        },
+        "FERRIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ferries"
+          }
+        },
+        "TUNNELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnels"
+          }
+        },
+        "BORDERCROSSINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "borderCrossings"
+          }
+        },
+        "LOWEMISSIONZONES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lowEmissionZones"
+          }
+        },
+        "UNPAVEDROADS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unpavedRoads"
+          }
+        },
+        "CARPOOLS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "carpools"
+          }
+        },
+        "CARTRAINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "carTrains"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining the\nreachable locations. Avoid supports multiple values in a request.\n\\n\\nExample: \\\"avoid\\\": [\\\"limitedAccessHighways\\\", \\\"tollRoads\\\"]"
+      }
+    },
+    "com.azure.maps_route#InputRouteRangePropertiesOptimizeRoute": {
+      "type": "enum",
+      "members": {
+        "SHORTEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shortest"
+          }
+        },
+        "FASTESTWITHOUTTRAFFIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastestWithoutTraffic"
+          }
+        },
+        "FASTESTWITHTRAFFIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastestWithTraffic"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastestWithoutTraffic\" which returns the route to minimize the\ntravel time without using current traffic information.\n\nExample: \"optimizeRoute\":\"shortest\""
+      }
+    },
+    "com.azure.maps_route#RouteRangePointGeometry": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the geometry type for the `GeoJSON` Geometry object. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details.",
+            "smithy.api#required": {}
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_route#RouteRangePointGeometryCoordinatesList",
+          "traits": {
+            "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` Point Geometry object. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details."
+      }
+    },
+    "com.azure.maps_route#RouteRangePointGeometryCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteRange": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostRouteRangeRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#RouteRangeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/range",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "The Route Range API creates a polygon that depicts the area reachable from a\ngiven location within a certain threshold based on the specified time or\ndistance budget. A polygon boundary (or Isochrone) is returned in a\ncounterclockwise orientation as well as the precise polygon center which was\nthe result of the origin point.\n\nThe returned polygon can be used for spatial filtering to search for features\nof interest within the provided Isochrone.\n\n\n\nFor information about routing availability in countries/regions, see [Azure\nMaps routing\ncoverage](https://learn.microsoft.com/azure/azure-maps/routing-coverage?pivots=latest)."
+      }
+    },
+    "com.azure.maps_route#RouteRangeResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#RouteRangeResponseFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful call."
+      }
+    },
+    "com.azure.maps_route#RouteRangeResponseFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteRangeFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteRangeRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#RouteRangePointGeometry",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` Point Geometry object. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#InputRouteRangeProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameters to use for the calculation of isochrone polygon.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RouteGetRouteOperationsResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RouteGetRouteOperationsResultRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#RouteOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/route/operations/{id}/result",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "Get the result of an asynchronous operation by its operation ID."
+      }
+    },
+    "com.azure.maps_route#RouteOperationResponse": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.maps_route#RouteOperationKindEnum",
+          "traits": {
+            "smithy.api#documentation": "Type of asynchronous operation",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object represents the result of a successful route operation."
+      }
+    },
+    "com.azure.maps_route#RouteOperationKindEnum": {
+      "type": "enum",
+      "members": {
+        "ROUTEMATRIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RouteMatrix"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of asynchronous operation"
+      }
+    },
+    "com.azure.maps_route#RouteGetRouteOperationsResultRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "System generated unique identifier for the asynchronous operation after it has\nbeen submitted."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which routing results should be returned.\n\nFor more information, see [Localization support in Azure\nMaps](https://learn.microsoft.com/azure/azure-maps/supported-languages#routing-v2-services-preview-supported-languages)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RouteGetRouteOperationsStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RouteGetRouteOperationsStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#RouteOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/route/operations/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "Get the status of an asynchronous operation by its operation ID."
+      }
+    },
+    "com.azure.maps_route#RouteOperation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the asynchronous operation."
+          }
+        },
+        "status": {
+          "target": "com.azure.maps_route#StatusEnum",
+          "traits": {
+            "smithy.api#documentation": "Current status of the async operation."
+          }
+        },
+        "kind": {
+          "target": "com.azure.maps_route#RouteOperationKindEnum",
+          "traits": {
+            "smithy.api#documentation": "Type of asynchronous operation"
+          }
+        },
+        "result": {
+          "target": "com.azure.maps_route#RouteOperationResult",
+          "traits": {
+            "smithy.api#documentation": "The result of async operation"
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when the operation was created."
+          }
+        },
+        "lastActionAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when the operation status was updated."
+          }
+        },
+        "error": {
+          "target": "com.azure.maps_route#CommonErrorDetail",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful Get Operation request."
+      }
+    },
+    "com.azure.maps_route#RouteOperationResult": {
+      "type": "structure",
+      "members": {
+        "resultUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to the get the result of async operation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of async operation"
+      }
+    },
+    "com.azure.maps_route#StatusEnum": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Completed"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Current status of the async operation."
+      }
+    },
+    "com.azure.maps_route#RouteGetRouteOperationsStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "System generated unique identifier for the asynchronous operation after it has\nbeen submitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsync": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostRouteMatrixAsyncRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#RoutePostRouteMatrixAsyncResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/matrix:async",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "The `Route Matrix Async` API is an HTTP `POST` request that allows calculation\nof a matrix of route summaries for a set of routes defined by origin and\ndestination locations by using an asynchronous (async) request. For every given\norigin, the service calculates the cost of routing from that origin to every\ngiven destination. The set of origins and the set of destinations can be\nthought of as the column and row headers of a table and each cell in the table\ncontains the costs of routing from the origin to the destination for that cell.\nRoute Matrices can be calculated for driving, walking and truck routes.\n\nRoute Matrices are used in several different types of applications, most\ncommonly to solve the Traveling Salesman Problem (TSP) and Vehicle Routing\nProblem (VRP). For each origin-destination pair in the matrix, the travel time\nand distance are returned. You can use the computed costs to determine which\ndetailed routes to calculate using the Route Directions API.\n\n\nThe maximum size of a matrix for async request is **50000** (the number of\norigins multiplied by the number of destinations).\n\n\n### Submit Asynchronous Route Matrix Request\nThe Asynchronous API is appropriate for processing big volumes of relatively\ncomplex routing requests. When you make a request by using async request, by\ndefault the service returns a 202 response code along a URL in the\n`operation-Location` field of the response header with the Azure Maps geography\nendpoint {geography}.atlas.microsoft.com. This URL should be checked\nperiodically until the status is Succeeded.\n\n\nThe maximum size of a matrix for this API is **50000** (the number of origins\nmultiplied by the number of destinations). With that constraint in mind,\nexamples of possible matrix dimensions are: 500x100, 100x100, 280x170. 100x50\n(it does not need to be square).\n\n\nThe asynchronous responses are stored for **24** hours. The redirect URL\nreturns a 404 response if used after the expiration period.\n\n\n\n\n```\nPOST\nhttps://atlas.microsoft.com/route/matrix:async?api-version=2025-01-01&subscription-key={subscription-key}\n```\n\nHere's a typical sequence of asynchronous operations:\n1. Client sends a Route Matrix POST request to Azure Maps\n\n2. The server will respond with one of the following:\n\n> HTTP `202 Accepted` -  Route Matrix request has been accepted.\n\n> HTTP `Error` - There was an error processing your Route Matrix request.\nThis could either be a 400 Bad Request or any other Error status code.\n\n\n3. If the Matrix Route request was accepted successfully, the\n`operation-location` header in the response contains the URL to get the status\nof the request. This status URI looks like the following:\n\n```\n    GET\nhttps://atlas.microsoft.com/route/operations/{id}?api-version=2025-01-01?subscription-key={subscription-key}\n  ```\n\n\n4. Client issues a GET request on the resultUrl obtained in Step 3 to get the\nresults\n\n\n\n```\n    GET\nhttps://atlas.microsoft.com/route/operations/{id}/result?api-version=2025-01-01?subscription-key={subscription-key}\n   ```\n\n\n\n### API Limitations\nThe asynchronous processing of matrix is best suited for larger matrices that\nrequire heavy route calculation. The following limitation is applicable to the\nasynchronous requests. If none of the rows in the following table match the\nrequest's parameters, the request does not meet the requirements and will not\nbe processed.\n\nMax matrix size  | Max number of origins | Max number of destinations  | Additional limits\n-----------------|-----------------------|-----------------------------|-------------------\n2500             | 1000                  | 1000                        | All origins and destinations should be contained in an axis-aligned 400 km x 400 km bounding box. Otherwise some matrix cells will be resolved as OUT_OF_REGION.\n50,000           | 10,000                | 10,000                      | - `departAt` or `arriveAt` must be any.<br>- `traffic` must be historical.<br/>- `optimizeRoute` must be fastest.<br/>- `travelMode` must be either driving or truck. <br/>- No other parameters can be used explicitly."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsyncResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsyncRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "A set of origin and destination points passed as GeoJSON MultiPoint features\nfor the input matrix. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the GeoJSON\nformat.",
+            "smithy.api#required": {}
+          }
+        },
+        "departAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of departure from the origin point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nThe `departAt` parameter cannot be used in conjunction with `arriveAt`.\n\nThe `departAt` also supports:\n\n`any` value tailored to the use case where the time context is irrelevant. The\n`traffic=live` parameter value cannot be used together with `any`.\n\n`now` value to set the departure time to the processing time of each individual\ncell. Processing time may be any time between submission and its completion.\nThis mode is best used together with traffic=live.\n\nDefault value: `any` if `departAt` is not specified.\n\nExample:\n\n\"departAt\": \"2024-12-01T09:30:00.000-07:00\""
+          }
+        },
+        "arriveAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of arrival at the destination point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nThe `arriveAt` parameter cannot be used in conjunction with `departAt`.\n\nThe `arriveAt` also supports `any` value which is tailored to the use case\nwhere the time context is irrelevant. The `traffic=live` parameter value cannot\nbe used together with `any`.\n\nDefault value: `any` if `arriveAt` is not specified.\n\nExample: \"arriveAt\": \"2024-12-01T09:30:00.000-07:00\""
+          }
+        },
+        "travelMode": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestTravelMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the travel profile to consider when calculating the matrix. If not\nspecified, the default value is \"driving\".\n\nExample: \"travelMode\":\"driving\""
+          }
+        },
+        "optimizeRoute": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestOptimizeRoute",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastest\" which returns the route to minimize the travel time.\n\nExample: \"optimizeRoute\":\"shortest\""
+          }
+        },
+        "traffic": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestTraffic",
+          "traits": {
+            "smithy.api#documentation": "Specifies how traffic is considered for computing routes.\n\nDefault value: `historical`"
+          }
+        },
+        "avoid": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestAvoidList",
+          "traits": {
+            "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode."
+          }
+        },
+        "vehicleSpec": {
+          "target": "com.azure.maps_route#VehicleSpec",
+          "traits": {
+            "smithy.api#documentation": "Specifies the vehicle attributes such as vehicle height, weight, max speed,\ntype of cargo, etc. to consider when calculating the route matrix. This helps\navoid low bridge clearances, road restrictions, difficult right turns to\nprovide the optimized route based on the vehicle specifications. Vehicle\nattributes are specified within the vehicleSpec property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#VehicleSpec": {
+      "type": "structure",
+      "members": {
+        "isVehicleCommercial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the vehicle is used for commercial purposes. Commercial vehicles may\nnot be allowed to drive on some roads."
+          }
+        },
+        "length": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Length of the vehicle in meters. A value of 0 means that length restrictions\nare not considered."
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Width of the vehicle in meters. A value of 0 means that width restrictions are\nnot considered."
+          }
+        },
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Height of the vehicle in meters. A value of 0 means that height restrictions\nare not considered."
+          }
+        },
+        "weight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight of the vehicle in kilograms. A value of 0 means that weight restrictions\nare not considered."
+          }
+        },
+        "maxSpeed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum speed of the vehicle in km/hour. The max speed in the vehicle profile\nis used to check whether a vehicle is allowed on motorways.\n\nA value of 0 means that an appropriate value for the vehicle will be determined\nand applied during route planning.\n\nA non-zero value may be overridden during route planning. For example, the\ncurrent traffic flow is 60 km/hour. If the vehicle maximum speed is set to 50\nkm/hour, the routing engine will consider 60 km/hour as this is the current\nsituation. If the maximum speed of the vehicle is provided as 80 km/hour but\nthe current traffic flow is 60 km/hour, then routing engine will again use 60\nkm/hour."
+          }
+        },
+        "axleWeight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight per axle of the vehicle in kg. A value of 0 means that weight\nrestrictions per axle are not considered."
+          }
+        },
+        "loadType": {
+          "target": "com.azure.maps_route#VehicleSpecLoadTypeList",
+          "traits": {
+            "smithy.api#documentation": "Types of cargo that may be classified as hazardous materials and restricted\nfrom some roads. Available vehicleLoadType values are US Hazmat classes 1\nthrough 9, plus generic classifications for use in other countries. Values\nbeginning with USHazmat are for US routing while otherHazmat should be used for\nall other countries. vehicleLoadType supports multiple values in a request."
+          }
+        },
+        "adrTunnelRestrictionCode": {
+          "target": "com.azure.maps_route#AdrTunnelRestrictionCodeEnum",
+          "traits": {
+            "smithy.api#documentation": "The ADR tunnel restriction code. ADR is a European agreement concerning the\ninternational carriage of dangerous goods by road. The ADR tunnel restriction\ncode is used to determine whether a vehicle is allowed to pass through a tunnel\nwith restrictions on the carriage of dangerous goods."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the vehicle attributes such as size, weight, max speed, type of\ncargo, etc. for truck routing only. This helps avoid low bridge clearances,\nroad restrictions, difficult right turns to provide the optimized truck route\nbased on the vehicle specifications.\n\n`Note`: Only supported for truck travelMode."
+      }
+    },
+    "com.azure.maps_route#VehicleSpecLoadTypeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#VehicleLoadTypeEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Types of cargo that may be classified as hazardous materials and restricted\nfrom some roads. Available vehicleLoadType values are US Hazmat classes 1\nthrough 9, plus generic classifications for use in other countries. Values\nbeginning with USHazmat are for US routing while otherHazmat should be used for\nall other countries. vehicleLoadType supports multiple values in a request."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestAvoidList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteMatrixAvoidEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode."
+      }
+    },
+    "com.azure.maps_route#RouteMatrixAvoidEnum": {
+      "type": "enum",
+      "members": {
+        "TOLLROADS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollRoads"
+          }
+        },
+        "UNPAVEDROADS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unpavedRoads"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestTraffic": {
+      "type": "enum",
+      "members": {
+        "HISTORICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "historical"
+          }
+        },
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies how traffic is considered for computing routes.\n\nDefault value: `historical`"
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestOptimizeRoute": {
+      "type": "enum",
+      "members": {
+        "SHORTEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shortest"
+          }
+        },
+        "FASTEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastest"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastest\" which returns the route to minimize the travel time.\n\nExample: \"optimizeRoute\":\"shortest\""
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestTravelMode": {
+      "type": "enum",
+      "members": {
+        "DRIVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "driving"
+          }
+        },
+        "TRUCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "truck"
+          }
+        },
+        "WALKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "walking"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the travel profile to consider when calculating the matrix. If not\nspecified, the default value is \"driving\".\n\nExample: \"travelMode\":\"driving\""
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixAsyncRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#InputRouteMatrixFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of origin and destination points passed as GeoJSON MultiPoint features\nfor the input matrix. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the GeoJSON\nformat."
+      }
+    },
+    "com.azure.maps_route#InputRouteMatrixFeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#GeoJsonMultiPoint",
+          "traits": {
+            "smithy.api#documentation": "A valid `GeoJSON MultiPoint` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.3) for details.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#InputRouteMatrixProperties",
+          "traits": {
+            "smithy.api#documentation": "MultiPoint feature properties object which specifies the origin features and\ndestination features for the input matrix.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the input origin and destination points and additional properties for\nthe `GeoJSON` MultiPoint feature object. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details."
+      }
+    },
+    "com.azure.maps_route#InputRouteMatrixProperties": {
+      "type": "structure",
+      "members": {
+        "pointType": {
+          "target": "com.azure.maps_route#RouteMatrixTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the origin MultiPoint type and destination MultiPoint type for the\ninput matrix."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the properties object for the input matrix."
+      }
+    },
+    "com.azure.maps_route#RouteMatrixTypeEnum": {
+      "type": "enum",
+      "members": {
+        "ORIGINS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origins"
+          }
+        },
+        "DESTINATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "destinations"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the origin MultiPoint type and destination MultiPoint type for the\ninput matrix."
+      }
+    },
+    "com.azure.maps_route#GeoJsonMultiPoint": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection.",
+            "smithy.api#required": {}
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_route#GeoJsonMultiPointCoordinatesList",
+          "traits": {
+            "smithy.api#documentation": "Coordinates for the `GeoJson MultiPoint` geometry.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON MultiPoint` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.3) for details."
+      }
+    },
+    "com.azure.maps_route#GeoJsonMultiPointCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#GeoJsonMultiPointCoordinatesItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "Coordinates for the `GeoJson MultiPoint` geometry."
+      }
+    },
+    "com.azure.maps_route#GeoJsonMultiPointCoordinatesItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_route#RoutePostRouteMatrix": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostRouteMatrixRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#RouteMatrixResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/matrix",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "The `Route Matrix` API is an HTTP `POST` request that allows calculation of a\nmatrix of route summaries for a set of routes defined by origin and destination\nlocations by using a sync request. For every given origin, the service\ncalculates the cost of routing from that origin to every given destination. The\nset of origins and the set of destinations can be thought of as the column and\nrow headers of a table and each cell in the table contains the costs of routing\nfrom the origin to the destination for that cell. Route Matrices can be\ncalculated for driving, walking and truck routes. For example, a food delivery\ncompany has 20 drivers and they need to find the closest driver to pick up the\ndelivery from the restaurant. To solve this use case, they can call the Route\nMatrix API and use the travel cost to sort the drivers by their actual travel\ndistance or time from the restaurant.\n\n\nRoute Matrices are used in several different types of applications, most\ncommonly to solve the Traveling Salesman Problem (TSP) and Vehicle Routing\nProblem (VRP). For each origin-destination pair in the matrix, the travel time\nand distance are returned. You can use the computed costs to determine which\ndetailed routes to calculate using the Route Directions API.\n\n\nThe maximum size of a matrix for sync request it's **2500** (the number of\norigins multiplied by the number of destinations).\n\n\n\n### Submit Synchronous Route Matrix Request\nIf your scenario requires synchronous requests and the maximum size of the\nmatrix is less than or equal to 2500, you might want to make synchronous\nrequest. The maximum size of a matrix for this API is **2500** (the number of\norigins multiplied by the number of destinations). With that constraint in\nmind, examples of possible matrix dimensions are: 50x50, 60x40, 90x20 (it does\nnot need to be square).\n\n\n\n### API Limitations\nThe synchronous processing of matrix is best suited for fast, small matrices\nof route calculation. To calculate larger matrices and heavy route calculation,\nuse the asynchronous endpoint. The following limitation is applicable to the\nsynchronous requests. If none of the rows in the following table match the\nrequest's parameters, the request does not meet the requirements and will not\nbe processed.\n\nMax matrix size | Max number of origins  | Max number of destinations | Additional limits\n----------------|------------------------|----------------------------|------------------\n100             | 100         | 100              | N/A\n200             | 200         | 200              | All origins and destinations should be contained in an axis-aligned 400 km x 400 km bounding box. Otherwise, some matrix cells will be resolved as OUT_OF_REGION.\n2500            | 1000        | 1000             | - `departAt` or `arriveAt` must be any.<br> - `traffic` must be historical.<br> - `travelMode` must be either driving or truck<br> - No other parameters can be used explicitly.\n\n\nExamples:\n- Request of 10x20 matrix with `traffic=live`: This request will be processed\nwith a bounding box limit, as it matches a limit of up to 200, which includes\nbounding box restrictions.\n\n- Request of 10x20 matrix with default parameters (`traffic=historical`): This\nrequest will be processed without a bounding box limit, as it matches a limit\nof up to 2500, which does  not impose bounding box restrictions."
+      }
+    },
+    "com.azure.maps_route#RouteMatrixResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#RouteMatrixResponseGeometryMap",
+          "traits": {
+            "smithy.api#documentation": "The geometry object is null",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#RouteMatrixFeatureProperties",
+          "traits": {
+            "smithy.api#documentation": "Route Matrix properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful call."
+      }
+    },
+    "com.azure.maps_route#RouteMatrixFeatureProperties": {
+      "type": "structure",
+      "members": {
+        "summary": {
+          "target": "com.azure.maps_route#RouteMatrixSummary",
+          "traits": {
+            "smithy.api#documentation": "Summary for the route matrix request"
+          }
+        },
+        "matrix": {
+          "target": "com.azure.maps_route#RouteMatrixFeaturePropertiesMatrixList",
+          "traits": {
+            "smithy.api#documentation": "The matrix of route results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Route Matrix properties."
+      }
+    },
+    "com.azure.maps_route#RouteMatrixFeaturePropertiesMatrixList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteMatrixItemResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "The matrix of route results."
+      }
+    },
+    "com.azure.maps_route#RouteMatrixItemResult": {
+      "type": "structure",
+      "members": {
+        "statusCode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The HTTP status code of the current cell."
+          }
+        },
+        "originIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Index of the origin point"
+          }
+        },
+        "destinationIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Index of the destination point"
+          }
+        },
+        "departureAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The estimated departure time, which takes into account the traffic conditions,\nis formatted as a `dateTime` value defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). It will reference the\ntimezone offset by either `departAt` or `arrivalAt`. If not, then the UTC time\nwill be used. If departAt or arriveAt is `any`, then departureAt is absent."
+          }
+        },
+        "arrivalAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The estimated arrival time, which takes into account the traffic conditions, is\nformatted as a `dateTime` value defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). It will reference the\ntimezone offset by either `departAt` or `arrivalAt`. If not, then the UTC time\nwill be used. If departAt or arriveAt is any, then departureAt is absent."
+          }
+        },
+        "distanceInMeters": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Length In Meters property"
+          }
+        },
+        "durationInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Estimated travel time in seconds that does not include delays on the route due\nto traffic conditions."
+          }
+        },
+        "durationTrafficInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time that it takes, in seconds, to travel a corresponding `TravelDistance`\nwith current traffic conditions. This value is provided if `traffic=live`\nis passed to account for current traffic conditions."
+          }
+        },
+        "error": {
+          "target": "com.azure.maps_route#CommonErrorDetail",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Route Matrix item result"
+      }
+    },
+    "com.azure.maps_route#RouteMatrixSummary": {
+      "type": "structure",
+      "members": {
+        "successfulCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of successful routes within this matrix."
+          }
+        },
+        "totalCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of routes within this matrix."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Summary for the route matrix request"
+      }
+    },
+    "com.azure.maps_route#RouteMatrixResponseGeometryMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The geometry object is null"
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixRequestFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "A set of origin and destination points passed as GeoJSON MultiPoint features\nfor the input matrix. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the GeoJSON\nformat.",
+            "smithy.api#required": {}
+          }
+        },
+        "departAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of departure from the origin point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nThe `departAt` parameter cannot be used in conjunction with `arriveAt`.\n\nThe `departAt` also supports:\n\n`any` value tailored to the use case where the time context is irrelevant. The\n`traffic=live` parameter value cannot be used together with `any`.\n\n`now` value to set the departure time to the processing time of each individual\ncell. Processing time may be any time between submission and its completion.\nThis mode is best used together with traffic=live.\n\nDefault value: `any` if `departAt` is not specified.\n\nExample:\n\n\"departAt\": \"2024-12-01T09:30:00.000-07:00\""
+          }
+        },
+        "arriveAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of arrival at the destination point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nThe `arriveAt` parameter cannot be used in conjunction with `departAt`.\n\nThe `arriveAt` also supports `any` value which is tailored to the use case\nwhere the time context is irrelevant. The `traffic=live` parameter value cannot\nbe used together with `any`.\n\nDefault value: `any` if `arriveAt` is not specified.\n\nExample: \"arriveAt\": \"2024-12-01T09:30:00.000-07:00\""
+          }
+        },
+        "travelMode": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixRequestTravelMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the travel profile to consider when calculating the matrix. If not\nspecified, the default value is \"driving\".\n\nExample: \"travelMode\":\"driving\""
+          }
+        },
+        "optimizeRoute": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixRequestOptimizeRoute",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastest\" which returns the route to minimize the travel time.\n\nExample: \"optimizeRoute\":\"fastest \""
+          }
+        },
+        "traffic": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixRequestTraffic",
+          "traits": {
+            "smithy.api#documentation": "Specifies how traffic is considered for computing routes.\n\nDefault value: `historical`"
+          }
+        },
+        "avoid": {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixRequestAvoidList",
+          "traits": {
+            "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode."
+          }
+        },
+        "vehicleSpec": {
+          "target": "com.azure.maps_route#VehicleSpec",
+          "traits": {
+            "smithy.api#documentation": "Specifies the vehicle attributes such as vehicle height, weight, max speed,\ntype of cargo, etc. to consider when calculating the route matrix. This helps\navoid low bridge clearances, road restrictions, difficult right turns to\nprovide the optimized route based on the vehicle specifications. Vehicle\nattributes are specified within the vehicleSpec property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixRequestAvoidList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteMatrixAvoidEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixRequestTraffic": {
+      "type": "enum",
+      "members": {
+        "HISTORICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "historical"
+          }
+        },
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies how traffic is considered for computing routes.\n\nDefault value: `historical`"
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixRequestOptimizeRoute": {
+      "type": "enum",
+      "members": {
+        "FASTEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastest"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastest\" which returns the route to minimize the travel time.\n\nExample: \"optimizeRoute\":\"fastest \""
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixRequestTravelMode": {
+      "type": "enum",
+      "members": {
+        "DRIVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "driving"
+          }
+        },
+        "TRUCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "truck"
+          }
+        },
+        "WALKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "walking"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the travel profile to consider when calculating the matrix. If not\nspecified, the default value is \"driving\".\n\nExample: \"travelMode\":\"driving\""
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteMatrixRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#InputRouteMatrixFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of origin and destination points passed as GeoJSON MultiPoint features\nfor the input matrix. Refer to [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946) for details on the GeoJSON\nformat."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostRouteDirectionsBatchRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#DirectionsBatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/directions:batch",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "Use to send a batch of queries to the [Route\nDirections](/rest/api/maps/route/post-route-directions?view=rest-maps-2025-01-01)\nAPI in a single synchronous request.\n\nThe `Route Directions Batch` API is an HTTP `POST` request that sends batches\nof up to **100** queries in a single call to the [Route\nDirections](/rest/api/maps/route/post-route-directions?view=rest-maps-2025-01-01)\nAPI.\n\n### Submit Synchronous Batch Request\nThe Synchronous API is recommended for lightweight batch requests. When the\nservice receives a request, it will respond as soon as the batch items are\ncalculated and there will be no possibility to retrieve the results later. The\nSynchronous API will return a timeout error (a 408 response) if the request\ntakes longer than 60 seconds. The number of batch items is limited to **100**\nfor this API.\n```\nPOST https://atlas.microsoft.com/route/directions:batch?api-version=2025-01-01\n```\n### POST Body for Batch Request\nTo send the _directions_ queries you will use a `POST` request where the\nrequest body will contain the `batchItems` array in `json` format and the\n`Content-Type` header will be set to `application/json`. Here's a sample\nrequest body containing 2 _directions_ queries:\n\n\n```\n{\n  \"batchItems\": [\n    {\n      \"optionalId\": \"bbc9c0f6-ab52-49d8-a788-a658fa654c94\",\n      \"type\": \"FeatureCollection\",\n      \"features\": [\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"coordinates\": [\n              -122.3368,\n              47.614988\n            ],\n            \"type\": \"Point\"\n          },\n          \"properties\": {\n            \"pointIndex\": 0,\n            \"pointType\": \"waypoint\"\n          }\n        },\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"coordinates\": [\n              -122.316067,\n              47.606356\n            ],\n            \"type\": \"Point\"\n          },\n          \"properties\": {\n            \"pointIndex\": 1,\n            \"pointType\": \"waypoint\"\n          }\n        }\n      ],\n      \"optimizeRoute\": \"fastestWithoutTraffic\",\n      \"routeOutputOptions\": [\n        \"routeSummary\"\n      ],\n      \"maxRouteCount\": 3,\n      \"travelMode\": \"driving\"\n    },\n    {\n      \"optionalId\": \"a191de3c-1268-4986-98f0-03f0a5d9302a\",\n      \"type\": \"FeatureCollection\",\n      \"features\": [\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"coordinates\": [\n              -122.3368,\n              47.614988\n            ],\n            \"type\": \"Point\"\n          },\n          \"properties\": {\n            \"pointIndex\": 0,\n            \"pointType\": \"waypoint\"\n          }\n        },\n        {\n          \"type\": \"Feature\",\n          \"geometry\": {\n            \"coordinates\": [\n              -122.316067,\n              47.606356\n            ],\n            \"type\": \"Point\"\n          },\n          \"properties\": {\n            \"pointIndex\": 1,\n            \"pointType\": \"waypoint\"\n          }\n        }\n      ],\n      \"optimizeRoute\": \"shortest\",\n      \"routeOutputOptions\": [\n        \"routeSummary\"\n      ],\n      \"maxRouteCount\": 2,\n      \"travelMode\": \"driving\"\n    }\n  ]\n}\n ```\n\nA _directions_ batchItem object can accept any of the supported _directions_\n[Request\nbody](/rest/api/maps/route/post-route-directions?view=rest-maps-2025-01-01#request-body)\n\n\n\nThe batch should contain at least **1** query.\n\n\n### Batch Response Model\nThe batch response contains a `summary` component that indicates the\n`totalRequests` that were part of the original batch request and\n`successfulRequests` i.e. queries which were executed successfully. The batch\nresponse also includes a `batchItems` array which contains a response for each\nand every query in the batch request. The `batchItems` will contain the results\nin the exact same order the original queries were sent in the batch request.\nEach item is of one of the following types:\n\n- [`DirectionsResponse`](/rest/api/maps/route/post-directions#response) - If\nthe query completed successfully.\n\n- `Error` - If the query failed. The response will contain a `code` and a\n`message` in this case."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchResponse": {
+      "type": "structure",
+      "members": {
+        "summary": {
+          "target": "com.azure.maps_route#DirectionsBatchResponseSummary",
+          "traits": {
+            "smithy.api#documentation": "Summary for the batch request"
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_route#DirectionsBatchResponseBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "Array containing the batch results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful Directions Batch service call."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchResponseBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#DirectionsBatchResponseItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array containing the batch results."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchResponseItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the request which would show in corresponding batchItem."
+          }
+        },
+        "alternativeRoutes": {
+          "target": "com.azure.maps_route#DirectionsBatchResponseItemAlternativeRoutesList",
+          "traits": {
+            "smithy.api#documentation": "Alternative route."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#DirectionsBatchResponseItemFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. For more information, see [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2)."
+          }
+        },
+        "error": {
+          "target": "com.azure.maps_route#CommonErrorDetail",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "error details"
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchResponseItemFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#FeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. For more information, see [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2)."
+      }
+    },
+    "com.azure.maps_route#FeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#RouteDirectionsGeometry",
+          "traits": {
+            "smithy.api#documentation": "A valid `GeoJSON` Geometry object. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#FeatureProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies the feature properties of the route like itinerary, route Legs and\ngeometry, travel summary."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_route#FeaturesItemBboxList",
+          "traits": {
+            "smithy.api#documentation": "A rectangular area on the earth defined as a bounding box object. The sides of\nthe rectangles are defined by latitude and longitude values. For more\ninformation, see [RFC 7946, Section\n5](https://www.rfc-editor.org/rfc/rfc7946#section-5).\n\nExample: \"bbox\": [-10.0, -10.0, 10.0, 10.0]"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "GeoJSON feature object that contains Geometry object and additional properties\nof the route."
+      }
+    },
+    "com.azure.maps_route#FeaturesItemBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A rectangular area on the earth defined as a bounding box object. The sides of\nthe rectangles are defined by latitude and longitude values. For more\ninformation, see [RFC 7946, Section\n5](https://www.rfc-editor.org/rfc/rfc7946#section-5).\n\nExample: \"bbox\": [-10.0, -10.0, 10.0, 10.0]"
+      }
+    },
+    "com.azure.maps_route#FeatureProperties": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#PropertiesTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the feature properties of the route like itinerary, route Legs and\ngeometry, travel summary."
+      }
+    },
+    "com.azure.maps_route#PropertiesTypeEnum": {
+      "type": "enum",
+      "members": {
+        "MANEUVERPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManeuverPoint"
+          }
+        },
+        "WAYPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Waypoint"
+          }
+        },
+        "ROUTEPATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RoutePath"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Output type."
+      }
+    },
+    "com.azure.maps_route#RouteDirectionsGeometry": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the geometry type for the `GeoJSON` Geometry object. For more\ninformation, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON` Geometry object. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchResponseItemAlternativeRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#FeatureCollection"
+      },
+      "traits": {
+        "smithy.api#documentation": "Alternative route."
+      }
+    },
+    "com.azure.maps_route#FeatureCollection": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#FeatureCollectionFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. For more information, see [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` `FeatureCollection` object that contains a list of Features. For more\ninformation, see [RFC 7946, section\n3.3](https://www.rfc-editor.org/rfc/rfc7946#section-3.3)."
+      }
+    },
+    "com.azure.maps_route#FeatureCollectionFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#FeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. For more information, see [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2)."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchResponseSummary": {
+      "type": "structure",
+      "members": {
+        "successfulRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of successful requests in the batch"
+          }
+        },
+        "totalRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total number of requests in the batch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Summary for the batch request"
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsBatchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which routing results should be returned.\n\nFor more information, see [Localization support in Azure\nMaps](https://learn.microsoft.com/azure/azure-maps/supported-languages#routing-v2-services-preview-supported-languages)."
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsBatchRequestBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "The list of queries to process."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsBatchRequestBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#DirectionsBatchRequestItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of queries to process."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchRequestItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the request which would show in corresponding batchItem."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#DirectionsBatchRequestItemFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "Driving, walking, and truck routes are defined by a set of waypoints(stops) and\nviaWaypoints (intermediate locations that the route must pass through). You can\nhave a maximum of 150 waypoints, and a maximum of 10 viaWaypoints between each\nset of waypoints.\n\nA route must have a minimum of 2 waypoints and the start and end points of the\nroute cannot be viaWaypoints.\n\nBoth waypoint and viaWaypoint locations must be specified as a valid GeoJSON\nPoint feature object along with pointIndex that specifies the order of the\nlocations. For more information on the GeoJSON format, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "travelMode": {
+          "target": "com.azure.maps_route#DirectionsBatchRequestItemTravelMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of travel for the requested route. If not defined, the default value\nis \"driving\" that returns the route optimized for cars.\n\n`Note`: For truck travelMode, the requested truck route may not be available\nfor the entire route. Where the truck route is not available for a particular\nsection, the travelMode element of the response for that section will be\n\"other\".\n\nExample: \"travelMode\":\"driving\""
+          }
+        },
+        "departAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of departure from the origin point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nIf the `departAt` is not set, the default value is the current time.\n\nExample:\n\n\"departAt\": \"2023-06-01T09:30:00.000-07:00\""
+          }
+        },
+        "arriveAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of arrival at the destination point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nThe `arriveAt` parameter cannot be used in conjunction with `departAt`.\n\nExample: \"arriveAt\": \"2023-06-01T09:30:00.000-07:00\""
+          }
+        },
+        "optimizeRoute": {
+          "target": "com.azure.maps_route#DirectionsBatchRequestItemOptimizeRoute",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastestWithoutTraffic\" which returns the route to minimize the\ntravel time without using current traffic information.\n\nExample: \"optimizeRoute\":\"shortest\""
+          }
+        },
+        "optimizeWaypointOrder": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Re-order the route waypoints using a fast heuristic algorithm to reduce the\nroute cost specified with the optimize parameter. The origin and destination\nare excluded from the optimized waypoint and their position is considered\nfixed. Acceptable values are true or false."
+          }
+        },
+        "avoid": {
+          "target": "com.azure.maps_route#DirectionsBatchRequestItemAvoidList",
+          "traits": {
+            "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode.\n\nExample: \"avoid\": [\"limitedAccessHighways\", \"tollRoads\"]"
+          }
+        },
+        "routeOutputOptions": {
+          "target": "com.azure.maps_route#DirectionsBatchRequestItemRouteOutputOptionsList",
+          "traits": {
+            "smithy.api#documentation": "Include the desired route information from the response. By default, the\nitinerary is included in the response.\n\nSupports multiple values such as \"routeOutputOptions\": [\"routePath\",\n\"itinerary\"]"
+          }
+        },
+        "maxRouteCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of routes to return. Available for the driving and truck\ntravel modes.\n\nDefault: \"maxRouteCount\":1"
+          }
+        },
+        "heading": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The initial directional heading of the vehicle in degrees starting at true\nNorth and continuing in clockwise direction. North is 0 degrees, east is 90\ndegrees, south is 180 degrees, west is 270 degrees."
+          }
+        },
+        "vehicleSpec": {
+          "target": "com.azure.maps_route#RouteDirectionVehicleSpec",
+          "traits": {
+            "smithy.api#documentation": "Specifies the vehicle attributes such as size, weight, max speed, type of\ncargo, etc. for truck routing only. This helps avoid low bridge clearances,\nroad restrictions, difficult right turns to provide the optimized truck route\nbased on the vehicle specifications.\n\n`Note`: Only supported for truck travelMode"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Batch Query object"
+      }
+    },
+    "com.azure.maps_route#RouteDirectionVehicleSpec": {
+      "type": "structure",
+      "members": {
+        "isVehicleCommercial": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the vehicle is used for commercial purposes. Commercial vehicles may\nnot be allowed to drive on some roads."
+          }
+        },
+        "length": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Length of the vehicle in meters. A value of 0 means that length restrictions\nare not considered."
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Width of the vehicle in meters. A value of 0 means that width restrictions are\nnot considered."
+          }
+        },
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Height of the vehicle in meters. A value of 0 means that height restrictions\nare not considered."
+          }
+        },
+        "weight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight of the vehicle in kilograms. A value of 0 means that weight restrictions\nare not considered."
+          }
+        },
+        "maxSpeed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum speed of the vehicle in km/hour. The max speed in the vehicle profile\nis used to check whether a vehicle is allowed on motorways.\n\nA value of 0 means that an appropriate value for the vehicle will be determined\nand applied during route planning.\n\nA non-zero value may be overridden during route planning. For example, the\ncurrent traffic flow is 60 km/hour. If the vehicle maximum speed is set to 50\nkm/hour, the routing engine will consider 60 km/hour as this is the current\nsituation. If the maximum speed of the vehicle is provided as 80 km/hour but\nthe current traffic flow is 60 km/hour, then routing engine will again use 60\nkm/hour."
+          }
+        },
+        "axleWeight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Weight per axle of the vehicle in kg. A value of 0 means that weight\nrestrictions per axle are not considered."
+          }
+        },
+        "loadType": {
+          "target": "com.azure.maps_route#RouteDirectionVehicleSpecLoadTypeList",
+          "traits": {
+            "smithy.api#documentation": "Types of cargo that may be classified as hazardous materials and restricted\nfrom some roads. Available vehicleLoadType values are US Hazmat classes 1\nthrough 9, plus generic classifications for use in other countries. Values\nbeginning with USHazmat are for US routing while otherHazmat should be used for\nall other countries. vehicleLoadType supports multiple values in a request."
+          }
+        },
+        "adrTunnelRestrictionCode": {
+          "target": "com.azure.maps_route#AdrTunnelRestrictionCodeEnum",
+          "traits": {
+            "smithy.api#documentation": "The ADR tunnel restriction code. ADR is a European agreement concerning the\ninternational carriage of dangerous goods by road. The ADR tunnel restriction\ncode is used to determine whether a vehicle is allowed to pass through a tunnel\nwith restrictions on the carriage of dangerous goods."
+          }
+        },
+        "axleCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of axles on the vehicle."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the vehicle attributes such as size, weight, max speed, type of\ncargo, etc. for truck routing only. This helps avoid low bridge clearances,\nroad restrictions, difficult right turns to provide the optimized truck route\nbased on the vehicle specifications.\n\nIS`Note`: Only supported for truck travelMode."
+      }
+    },
+    "com.azure.maps_route#RouteDirectionVehicleSpecLoadTypeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#VehicleLoadTypeEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Types of cargo that may be classified as hazardous materials and restricted\nfrom some roads. Available vehicleLoadType values are US Hazmat classes 1\nthrough 9, plus generic classifications for use in other countries. Values\nbeginning with USHazmat are for US routing while otherHazmat should be used for\nall other countries. vehicleLoadType supports multiple values in a request."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchRequestItemRouteOutputOptionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteOutputOptionEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Include the desired route information from the response. By default, the\nitinerary is included in the response.\n\nSupports multiple values such as \"routeOutputOptions\": [\"routePath\",\n\"itinerary\"]"
+      }
+    },
+    "com.azure.maps_route#RouteOutputOptionEnum": {
+      "type": "enum",
+      "members": {
+        "ROUTESUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "routeSummary"
+          }
+        },
+        "ROUTEPATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "routePath"
+          }
+        },
+        "ITINERARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "itinerary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The desired route information from the response."
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchRequestItemAvoidList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#AvoidEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode.\n\nExample: \"avoid\": [\"limitedAccessHighways\", \"tollRoads\"]"
+      }
+    },
+    "com.azure.maps_route#AvoidEnum": {
+      "type": "enum",
+      "members": {
+        "LIMITEDACCESSHIGHWAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "limitedAccessHighways"
+          }
+        },
+        "TOLLROADS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollRoads"
+          }
+        },
+        "FERRIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ferries"
+          }
+        },
+        "TUNNELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tunnels"
+          }
+        },
+        "BORDERCROSSINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "borderCrossings"
+          }
+        },
+        "LOWEMISSIONZONES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lowEmissionZones"
+          }
+        },
+        "UNPAVEDROADS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unpavedRoads"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining the route.\nAvoid supports multiple values in a request and is only supported for the driving and truck\ntravelMode.\\n\\nExample: \\\"avoid\\\": [\\\"limitedAccessHighways\\\", \\\"tollRoads\\\"]"
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchRequestItemOptimizeRoute": {
+      "type": "enum",
+      "members": {
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "SHORTEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shortest"
+          }
+        },
+        "FASTESTWITHOUTTRAFFIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastestWithoutTraffic"
+          }
+        },
+        "FASTESTWITHTRAFFIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastestWithTraffic"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastestWithoutTraffic\" which returns the route to minimize the\ntravel time without using current traffic information.\n\nExample: \"optimizeRoute\":\"shortest\""
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchRequestItemTravelMode": {
+      "type": "enum",
+      "members": {
+        "DRIVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "driving"
+          }
+        },
+        "TRUCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "truck"
+          }
+        },
+        "WALKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "walking"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode of travel for the requested route. If not defined, the default value\nis \"driving\" that returns the route optimized for cars.\n\n`Note`: For truck travelMode, the requested truck route may not be available\nfor the entire route. Where the truck route is not available for a particular\nsection, the travelMode element of the response for that section will be\n\"other\".\n\nExample: \"travelMode\":\"driving\""
+      }
+    },
+    "com.azure.maps_route#DirectionsBatchRequestItemFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#InputWaypointFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Driving, walking, and truck routes are defined by a set of waypoints(stops) and\nviaWaypoints (intermediate locations that the route must pass through). You can\nhave a maximum of 150 waypoints, and a maximum of 10 viaWaypoints between each\nset of waypoints.\n\nA route must have a minimum of 2 waypoints and the start and end points of the\nroute cannot be viaWaypoints.\n\nBoth waypoint and viaWaypoint locations must be specified as a valid GeoJSON\nPoint feature object along with pointIndex that specifies the order of the\nlocations. For more information on the GeoJSON format, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_route#InputWaypointFeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_route#GeoJsonPoint",
+          "traits": {
+            "smithy.api#documentation": "A valid `GeoJSON Point` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.2) for details.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_route#InputWaypointProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies the properties of a waypoint which is a specific location or point\nalong a route or trip that serves as a reference or stopping point.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the input waypoint and viaWaypoint `GeoJSON` feature object and\nadditional properties. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_route#InputWaypointProperties": {
+      "type": "structure",
+      "members": {
+        "pointIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Identify and order the sequence of waypoints in the route. The default value is\nthe `index value` of a features array."
+          }
+        },
+        "pointType": {
+          "target": "com.azure.maps_route#InputWaypointPropertiesPointType",
+          "traits": {
+            "smithy.api#documentation": "Waypoint type on the route. It can be a stop or an intermediate location that\nthe route must pass through."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the properties of a waypoint which is a specific location or point\nalong a route or trip that serves as a reference or stopping point."
+      }
+    },
+    "com.azure.maps_route#InputWaypointPropertiesPointType": {
+      "type": "enum",
+      "members": {
+        "WAYPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waypoint"
+          }
+        },
+        "VIAWAYPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "viaWaypoint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Waypoint type on the route. It can be a stop or an intermediate location that\nthe route must pass through."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirections": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_route#RoutePostRouteDirectionsRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_route#RoutePostRouteDirectionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/route/directions",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "Use to get the best route between an origin and destination for automobile,\ncommercial trucks and walking routes.\n\nThe `Route Directions` API is an HTTP `POST` request that returns the ideal\nroute between an origin and destination for automobile (driving), commercial\ntrucks and walking routes. The route passes through a series of waypoints if\nspecified. A waypoint is a geographical location defined by longitude and\nlatitude that is used for navigational purposes. The route considers factors\nsuch as current traffic and the typical road speeds on the requested day of the\nweek and time of day.\n\nThe API returns the distance, estimated travel time, and a representation of\nthe route geometry. More routing information such as an optimized waypoint\norder or turn by turn instructions is also available, depending on the\nparameters used.\n\nThe Route Directions considers local laws, vehicle dimensions, cargo type, max\nspeed, bridge and tunnel heights to calculate the truck specific routes and\navoid complex maneuvers and difficult roads. Not all trucks can travel the same\nroutes as other vehicles due to certain restrictions based on the vehicle\nprofile or cargo type. For example, highways often have separate speed limits\nfor trucks, some roads don't allow trucks with flammable or hazardous\nmaterials, and there can be height and weight restriction on bridges.\n\nUp to 150 waypoints and 10 viaWaypoints between any two waypoints is supported.\nEach set of waypoints creates a separate route Leg. ViaWaypoints define the\nroute path and can be used for route creation through specific locations, but\nthey don't create route Legs.\n\nFor information about routing availability in countries/regions, see [Azure\nMaps routing\ncoverage](https://learn.microsoft.com/azure/azure-maps/routing-coverage?pivots=latest)."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsResponseFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. For more information, see [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2)."
+          }
+        },
+        "alternativeRoutes": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsResponseAlternativeRoutesList",
+          "traits": {
+            "smithy.api#documentation": "Alternative route."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsResponseAlternativeRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#FeatureCollection"
+      },
+      "traits": {
+        "smithy.api#documentation": "Alternative route."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsResponseFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#FeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. For more information, see [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2)."
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which routing results should be returned.\n\nFor more information, see [Localization support in Azure\nMaps](https://learn.microsoft.com/azure/azure-maps/supported-languages#routing-v2-services-preview-supported-languages)."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_route#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsRequestFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "Driving, walking, and truck routes are defined by a set of waypoints(stops) and\nviaWaypoints (intermediate locations that the route must pass through). You can\nhave a maximum of 150 waypoints, and a maximum of 10 viaWaypoints between each\nset of waypoints.\n\nA route must have a minimum of 2 waypoints and the start and end points of the\nroute cannot be viaWaypoints.\n\nBoth waypoint and viaWaypoint locations must be specified as a valid GeoJSON\nPoint feature object along with pointIndex that specifies the order of the\nlocations. For more information on the GeoJSON format, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "travelMode": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsRequestTravelMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of travel for the requested route. If not defined, the default value\nis \"driving\" that returns the route optimized for cars.\n\n`Note`: For truck travelMode, the requested truck route may not be available\nfor the entire route. Where the truck route is not available for a particular\nsection, the travelMode element of the response for that section will be\n\"other\".\n\nExample: \"travelMode\":\"driving\""
+          }
+        },
+        "departAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of departure from the origin point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nIf the `departAt` is not set, the default value is the current time.\n\nExample:\n\n\"departAt\": \"2023-06-01T09:30:00.000-07:00\""
+          }
+        },
+        "arriveAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time of arrival at the destination point formatted as a `dateTime`\nvalue defined by [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). When a time zone\noffset is not specified, UTC will be assumed.\n\nThe `arriveAt` parameter cannot be used in conjunction with `departAt`.\n\nExample: \"arriveAt\": \"2023-06-01T09:30:00.000-07:00\""
+          }
+        },
+        "optimizeRoute": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsRequestOptimizeRoute",
+          "traits": {
+            "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastestWithoutTraffic\" which returns the route to minimize the\ntravel time without using current traffic information.\n\nExample: \"optimizeRoute\":\"shortest\""
+          }
+        },
+        "optimizeWaypointOrder": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Re-order the route waypoints using a fast heuristic algorithm to reduce the\nroute cost specified with the optimize parameter. The origin and destination\nare excluded from the optimized waypoint and their position is considered\nfixed. Acceptable values are true or false."
+          }
+        },
+        "avoid": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsRequestAvoidList",
+          "traits": {
+            "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode.\n\nExample: \"avoid\": [\"limitedAccessHighways\", \"tollRoads\"]"
+          }
+        },
+        "routeOutputOptions": {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsRequestRouteOutputOptionsList",
+          "traits": {
+            "smithy.api#documentation": "Include the desired route information from the response. By default, the\nitinerary is included in the response.\n\nSupports multiple values such as \"routeOutputOptions\": [\"routePath\",\n\"itinerary\"]"
+          }
+        },
+        "maxRouteCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of routes to return. Available for the driving and truck\ntravel modes.\n\nDefault: \"maxRouteCount\":1"
+          }
+        },
+        "heading": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The initial directional heading of the vehicle in degrees starting at true\nNorth and continuing in clockwise direction. North is 0 degrees, east is 90\ndegrees, south is 180 degrees, west is 270 degrees."
+          }
+        },
+        "vehicleSpec": {
+          "target": "com.azure.maps_route#RouteDirectionVehicleSpec",
+          "traits": {
+            "smithy.api#documentation": "Specifies the vehicle attributes such as size, weight, max speed, type of\ncargo, etc. for truck routing only. This helps avoid low bridge clearances,\nroad restrictions, difficult right turns to provide the optimized truck route\nbased on the vehicle specifications.\n\n`Note`: Only supported for truck travelMode"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsRequestRouteOutputOptionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#RouteOutputOptionEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Include the desired route information from the response. By default, the\nitinerary is included in the response.\n\nSupports multiple values such as \"routeOutputOptions\": [\"routePath\",\n\"itinerary\"]"
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsRequestAvoidList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#AvoidEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies restrictions that the route calculation should honor when determining\nthe route. Avoid supports multiple values in a request and is only supported\nfor the driving and truck travelMode.\n\nExample: \"avoid\": [\"limitedAccessHighways\", \"tollRoads\"]"
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsRequestOptimizeRoute": {
+      "type": "enum",
+      "members": {
+        "SHORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "short"
+          }
+        },
+        "SHORTEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shortest"
+          }
+        },
+        "FASTESTWITHOUTTRAFFIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastestWithoutTraffic"
+          }
+        },
+        "FASTESTWITHTRAFFIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastestWithTraffic"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the parameter to use to optimize the route. If not defined, the\ndefault is \"fastestWithoutTraffic\" which returns the route to minimize the\ntravel time without using current traffic information.\n\nExample: \"optimizeRoute\":\"shortest\""
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsRequestTravelMode": {
+      "type": "enum",
+      "members": {
+        "DRIVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "driving"
+          }
+        },
+        "TRUCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "truck"
+          }
+        },
+        "WALKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "walking"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode of travel for the requested route. If not defined, the default value\nis \"driving\" that returns the route optimized for cars.\n\n`Note`: For truck travelMode, the requested truck route may not be available\nfor the entire route. Where the truck route is not available for a particular\nsection, the travelMode element of the response for that section will be\n\"other\".\n\nExample: \"travelMode\":\"driving\""
+      }
+    },
+    "com.azure.maps_route#RoutePostRouteDirectionsRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_route#InputWaypointFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Driving, walking, and truck routes are defined by a set of waypoints(stops) and\nviaWaypoints (intermediate locations that the route must pass through). You can\nhave a maximum of 150 waypoints, and a maximum of 10 viaWaypoints between each\nset of waypoints.\n\nA route must have a minimum of 2 waypoints and the start and end points of the\nroute cannot be viaWaypoints.\n\nBoth waypoint and viaWaypoint locations must be specified as a valid GeoJSON\nPoint feature object along with pointIndex that specifies the order of the\nlocations. For more information on the GeoJSON format, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_route#MapsRoute": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.maps_route#RoutePostSnapToRoadsBatch"
+        },
+        {
+          "target": "com.azure.maps_route#RoutePostSnapToRoads"
+        },
+        {
+          "target": "com.azure.maps_route#RoutePostRouteRangeBatch"
+        },
+        {
+          "target": "com.azure.maps_route#RoutePostRouteRange"
+        },
+        {
+          "target": "com.azure.maps_route#RouteGetRouteOperationsResult"
+        },
+        {
+          "target": "com.azure.maps_route#RouteGetRouteOperationsStatus"
+        },
+        {
+          "target": "com.azure.maps_route#RoutePostRouteMatrixAsync"
+        },
+        {
+          "target": "com.azure.maps_route#RoutePostRouteMatrix"
+        },
+        {
+          "target": "com.azure.maps_route#RoutePostRouteDirectionsBatch"
+        },
+        {
+          "target": "com.azure.maps_route#RoutePostRouteDirections"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Route data plane",
+        "smithy.api#documentation": "Azure maps data plane — maps/data-plane/Route (latest stable api-version 2025-01-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true,
+              "default": "https://atlas.microsoft.com"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://atlas.microsoft.com/.default"
+      }
+    }
+  }
+}

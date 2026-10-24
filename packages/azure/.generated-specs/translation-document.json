@@ -1,0 +1,1518 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormats": "com.azure.translation_document#GetDocumentTranslationOperationSupportedFormats",
+      "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormatsRequest": "com.azure.translation_document#GetDocumentTranslationOperationSupportedFormatsRequest",
+      "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormatsRequestType": "com.azure.translation_document#GetDocumentTranslationOperationSupportedFormatsRequestType",
+      "com.azure.translation_document#DocumentTranslationOperationsGetDocumentStatus": "com.azure.translation_document#GetDocumentTranslationOperationDocumentStatus",
+      "com.azure.translation_document#DocumentTranslationOperationsGetDocumentStatusRequest": "com.azure.translation_document#GetDocumentTranslationOperationDocumentStatusRequest",
+      "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatus": "com.azure.translation_document#GetDocumentTranslationOperationDocumentsStatus",
+      "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequest": "com.azure.translation_document#GetDocumentTranslationOperationDocumentsStatusRequest",
+      "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestOrderbyList": "com.azure.translation_document#GetDocumentTranslationOperationDocumentsStatusRequestOrderbyList",
+      "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestStatusesList": "com.azure.translation_document#GetDocumentTranslationOperationDocumentsStatusRequestStatusesList",
+      "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestIdsList": "com.azure.translation_document#GetDocumentTranslationOperationDocumentsStatusRequestIdsList",
+      "com.azure.translation_document#DocumentTranslationOperationsCancelTranslation": "com.azure.translation_document#CancelDocumentTranslationOperationTranslation",
+      "com.azure.translation_document#DocumentTranslationOperationsCancelTranslationRequest": "com.azure.translation_document#CancelDocumentTranslationOperationTranslationRequest",
+      "com.azure.translation_document#DocumentTranslationOperationsGetTranslationStatus": "com.azure.translation_document#GetDocumentTranslationOperationTranslationStatus",
+      "com.azure.translation_document#DocumentTranslationOperationsGetTranslationStatusRequest": "com.azure.translation_document#GetDocumentTranslationOperationTranslationStatusRequest",
+      "com.azure.translation_document#DocumentTranslationOperationsStartTranslation": "com.azure.translation_document#StartDocumentTranslationOperationTranslation",
+      "com.azure.translation_document#DocumentTranslationOperationsStartTranslationResponse": "com.azure.translation_document#StartDocumentTranslationOperationTranslationResponse",
+      "com.azure.translation_document#DocumentTranslationOperationsStartTranslationRequest": "com.azure.translation_document#StartDocumentTranslationOperationTranslationRequest",
+      "com.azure.translation_document#DocumentTranslationOperationsStartTranslationRequestInputsList": "com.azure.translation_document#StartDocumentTranslationOperationTranslationRequestInputsList",
+      "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatus": "com.azure.translation_document#GetDocumentTranslationOperationTranslationsStatus",
+      "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequest": "com.azure.translation_document#GetDocumentTranslationOperationTranslationsStatusRequest",
+      "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestOrderbyList": "com.azure.translation_document#GetDocumentTranslationOperationTranslationsStatusRequestOrderbyList",
+      "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestStatusesList": "com.azure.translation_document#GetDocumentTranslationOperationTranslationsStatusRequestStatusesList",
+      "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestIdsList": "com.azure.translation_document#GetDocumentTranslationOperationTranslationsStatusRequestIdsList"
+    }
+  },
+  "shapes": {
+    "com.azure.translation_document#DocumentTranslationOperationsDocumentTranslate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsDocumentTranslateRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsDocumentTranslateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/document:translate",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Submit a single document translation request to the Document Translation service\n\nUse this API to submit a single translation request to the Document Translation Service."
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsDocumentTranslateResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsDocumentTranslateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "sourceLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "sourceLanguage",
+            "smithy.api#documentation": "Specifies source language of the input document.\nIf this parameter isn't specified, automatic language detection is applied to determine the source language.\nFor example if the source document is written in English, then use sourceLanguage=en"
+          }
+        },
+        "targetLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "targetLanguage",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the output document.\nThe target language must be one of the supported languages included in the translation scope.\nFor example if you want to translate the document in German language, then use targetLanguage=de "
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "category",
+            "smithy.api#documentation": "A string specifying the category (domain) of the translation. This parameter is used to get translations \nfrom a customized system built with Custom Translator. Add the Category ID from your Custom Translator \nproject details to this parameter to use your deployed customized system. Default value is: general."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "deploymentName",
+            "smithy.api#documentation": "Deployment name of the custom translation model for the translation request."
+          }
+        },
+        "allowFallback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "allowFallback",
+            "smithy.api#documentation": "Specifies that the service is allowed to fall back to a general system when a custom system doesn't exist. \nPossible values are: true (default) or false."
+          }
+        },
+        "translateTextWithinImage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "translateTextWithinImage",
+            "smithy.api#documentation": "Optional boolean parameter to translate text within an image in the document"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormats": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormatsRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#SupportedFileFormats"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/document/formats",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Returns a list of supported document formats\n\nThe list of supported formats supported by the Document Translation\nservice.\nThe list includes the common file extension, as well as the\ncontent-type if using the upload API."
+      }
+    },
+    "com.azure.translation_document#SupportedFileFormats": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.translation_document#SupportedFileFormatsValueList",
+          "traits": {
+            "smithy.api#documentation": "list of objects",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of supported file formats"
+      }
+    },
+    "com.azure.translation_document#SupportedFileFormatsValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_document#FileFormat"
+      },
+      "traits": {
+        "smithy.api#documentation": "list of objects"
+      }
+    },
+    "com.azure.translation_document#FileFormat": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the format",
+            "smithy.api#required": {}
+          }
+        },
+        "fileExtensions": {
+          "target": "com.azure.translation_document#FileFormatFileExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "Supported file extension for this format",
+            "smithy.api#required": {}
+          }
+        },
+        "contentTypes": {
+          "target": "com.azure.translation_document#FileFormatContentTypesList",
+          "traits": {
+            "smithy.api#documentation": "Supported Content-Types for this format",
+            "smithy.api#required": {}
+          }
+        },
+        "defaultVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Default version if none is specified"
+          }
+        },
+        "versions": {
+          "target": "com.azure.translation_document#FileFormatVersionsList",
+          "traits": {
+            "smithy.api#documentation": "Supported Version"
+          }
+        },
+        "type": {
+          "target": "com.azure.translation_document#FileFormatType",
+          "traits": {
+            "smithy.api#documentation": "Supported Type for this format"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "File Format"
+      }
+    },
+    "com.azure.translation_document#FileFormatType": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Document"
+          }
+        },
+        "GLOSSARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Glossary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Format types"
+      }
+    },
+    "com.azure.translation_document#FileFormatVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported Version"
+      }
+    },
+    "com.azure.translation_document#FileFormatContentTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported Content-Types for this format"
+      }
+    },
+    "com.azure.translation_document#FileFormatFileExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported file extension for this format"
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormatsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormatsRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "the type of format like document or glossary "
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormatsRequestType": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Document"
+          }
+        },
+        "GLOSSARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Glossary"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetDocumentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsGetDocumentStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#DocumentStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/document/batches/{id}/documents/{documentId}",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Returns the status for a specific document\n\nReturns the translation status for a specific document based on the request Id\nand document Id."
+      }
+    },
+    "com.azure.translation_document#DocumentStatus": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the document or folder"
+          }
+        },
+        "sourcePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the source document",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation created date time",
+            "smithy.api#required": {}
+          }
+        },
+        "lastActionDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date time in which the operation's status has been updated",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.translation_document#Status",
+          "traits": {
+            "smithy.api#documentation": "List of possible statuses for job or document",
+            "smithy.api#required": {}
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "To language",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.translation_document#TranslationError",
+          "traits": {
+            "smithy.api#documentation": "This contains an outer error with error code, message, details, target and an\ninner error with more descriptive details."
+          }
+        },
+        "progress": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Progress of the translation if available",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Document Id",
+            "smithy.api#required": {}
+          }
+        },
+        "characterCharged": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Character charged by the API"
+          }
+        },
+        "totalImageScansSucceeded": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total image scans charged by the API"
+          }
+        },
+        "totalImageScansFailed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total image scans failed"
+          }
+        },
+        "imageCharged": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Images charged by the API"
+          }
+        },
+        "imageCharacterDetected": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Characters detected within images"
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment name of the custom translation model used for the translation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Document Status Response"
+      }
+    },
+    "com.azure.translation_document#TranslationError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.azure.translation_document#TranslationErrorCode",
+          "traits": {
+            "smithy.api#documentation": "Enums containing high level error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets high level error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the source of the error. \nFor example it would be \"documents\" or\n\"document id\" in case of invalid document."
+          }
+        },
+        "innerError": {
+          "target": "com.azure.translation_document#InnerTranslationError",
+          "traits": {
+            "smithy.api#documentation": "New Inner Error format which conforms to Cognitive Services API Guidelines\nwhich is available at\nhttps://microsoft.sharepoint.com/%3Aw%3A/t/CognitiveServicesPMO/EUoytcrjuJdKpeOKIK_QRC8BPtUYQpKBi8JsWyeDMRsWlQ?e=CPq8ow.\nThis\ncontains required properties ErrorCode, message and optional properties target,\ndetails(key value pair), inner error(this can be nested)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This contains an outer error with error code, message, details, target and an\ninner error with more descriptive details."
+      }
+    },
+    "com.azure.translation_document#InnerTranslationError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets code error string.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets high level error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the source of the error. \nFor example it would be \"documents\" or\n\"document id\" in case of invalid document."
+          }
+        },
+        "innerError": {
+          "target": "com.azure.translation_document#InnerTranslationError",
+          "traits": {
+            "smithy.api#documentation": "New Inner Error format which conforms to Cognitive Services API Guidelines\nwhich is available at\nhttps://microsoft.sharepoint.com/%3Aw%3A/t/CognitiveServicesPMO/EUoytcrjuJdKpeOKIK_QRC8BPtUYQpKBi8JsWyeDMRsWlQ?e=CPq8ow.\nThis\ncontains required properties ErrorCode, message and optional properties target,\ndetails(key value pair), inner error(this can be nested)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "New Inner Error format which conforms to Cognitive Services API Guidelines\nwhich is available at\nhttps://microsoft.sharepoint.com/%3Aw%3A/t/CognitiveServicesPMO/EUoytcrjuJdKpeOKIK_QRC8BPtUYQpKBi8JsWyeDMRsWlQ?e=CPq8ow.\nThis\ncontains required properties ErrorCode, message and optional properties target,\ndetails(key value pair), inner error(this can be nested)."
+      }
+    },
+    "com.azure.translation_document#TranslationErrorCode": {
+      "type": "enum",
+      "members": {
+        "INVALIDREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidRequest"
+          }
+        },
+        "INVALIDARGUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidArgument"
+          }
+        },
+        "INTERNALSERVERERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InternalServerError"
+          }
+        },
+        "SERVICEUNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServiceUnavailable"
+          }
+        },
+        "RESOURCENOTFOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceNotFound"
+          }
+        },
+        "UNAUTHORIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unauthorized"
+          }
+        },
+        "REQUESTRATETOOHIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RequestRateTooHigh"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enums containing high level error codes."
+      }
+    },
+    "com.azure.translation_document#Status": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cancelled"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cancelling"
+          }
+        },
+        "VALIDATIONFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ValidationFailed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of possible statuses for job or document"
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetDocumentStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Format - uuid.  The batch id"
+          }
+        },
+        "documentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Format - uuid.  The document id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#DocumentsStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/document/batches/{id}/documents",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Returns the status for all documents in a batch document translation request\n\nReturns the status for all documents in a batch document translation request.\n \n          \nIf the number of documents in the response exceeds our paging limit,\nserver-side paging is used.\nPaginated responses indicate a partial result and\ninclude a continuation token in the response. The absence of a continuation\ntoken means that no additional pages are available.\n            \ntop, skip\nand maxpagesize query parameters can be used to specify a number of results to\nreturn and an offset for the collection.\n            \ntop indicates the total\nnumber of records the user wants to be returned across all pages.\nskip\nindicates the number of records to skip from the list of document status held\nby the server based on the sorting method specified.  By default, we sort by\ndescending start time.\nmaxpagesize is the maximum items returned in a page. \nIf more items are requested via top (or top is not specified and there are\nmore items to be returned), @nextLink will contain the link to the next page.\n \n          \norderby query parameter can be used to sort the returned list (ex\n\"orderby=createdDateTimeUtc asc\" or \"orderby=createdDateTimeUtc\ndesc\").\nThe default sorting is descending by createdDateTimeUtc.\nSome query\nparameters can be used to filter the returned list (ex:\n\"status=Succeeded,Cancelled\") will only return succeeded and cancelled\ndocuments.\ncreatedDateTimeUtcStart and createdDateTimeUtcEnd can be used\ncombined or separately to specify a range of datetime to filter the returned\nlist by.\nThe supported filtering query parameters are (status, ids,\ncreatedDateTimeUtcStart, createdDateTimeUtcEnd).\n            \nWhen both top\nand skip are included, the server should first apply skip and then top on\nthe collection.\nNote: If the server can't honor top and/or skip, the server\nmust return an error to the client informing about it instead of just ignoring\nthe query options.\nThis reduces the risk of the client making assumptions about\nthe data returned."
+      }
+    },
+    "com.azure.translation_document#DocumentsStatus": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.translation_document#DocumentsStatusValueList",
+          "traits": {
+            "smithy.api#documentation": "The detail status of individual documents",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url for the next page.  Null if no more pages available"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Documents Status Response"
+      }
+    },
+    "com.azure.translation_document#DocumentsStatusValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_document#DocumentStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "The detail status of individual documents"
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Format - uuid.  The operation id"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "top indicates the total number of records the user wants to be returned across\nall pages.\n            \nClients MAY use top and skip query parameters to\nspecify a number of results to return and an offset into the collection.\nWhen\nboth top and skip are given by a client, the server SHOULD first apply skip\nand then top on the collection.\n            \nNote: If the server can't honor\ntop and/or skip, the server MUST return an error to the client informing\nabout it instead of just ignoring the query options."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "skip indicates the number of records to skip from the list of records held by\nthe server based on the sorting method specified.  By default, we sort by\ndescending start time.\n            \nClients MAY use top and skip query\nparameters to specify a number of results to return and an offset into the\ncollection.\nWhen both top and skip are given by a client, the server SHOULD\nfirst apply skip and then top on the collection.\n            \nNote: If the\nserver can't honor top and/or skip, the server MUST return an error to the\nclient informing about it instead of just ignoring the query options."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "maxpagesize is the maximum items returned in a page.  If more items are\nrequested via top (or top is not specified and there are more items to be\nreturned), @nextLink will contain the link to the next page.\n            \n\nClients MAY request server-driven paging with a specific page size by\nspecifying a maxpagesize preference. The server SHOULD honor this preference\nif the specified page size is smaller than the server's default page size."
+          }
+        },
+        "ids": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestIdsList",
+          "traits": {
+            "smithy.api#httpQuery": "ids",
+            "smithy.api#documentation": "Ids to use in filtering"
+          }
+        },
+        "statuses": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestStatusesList",
+          "traits": {
+            "smithy.api#httpQuery": "statuses",
+            "smithy.api#documentation": "Statuses to use in filtering"
+          }
+        },
+        "createdDateTimeUtcStart": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdDateTimeUtcStart",
+            "smithy.api#documentation": "the start datetime to get items after"
+          }
+        },
+        "createdDateTimeUtcEnd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdDateTimeUtcEnd",
+            "smithy.api#documentation": "the end datetime to get items before"
+          }
+        },
+        "orderby": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "orderby",
+            "smithy.api#documentation": "the sorting query for the collection (ex: 'CreatedDateTimeUtc asc','CreatedDateTimeUtc desc')"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestStatusesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatusRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsCancelTranslation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsCancelTranslationRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#TranslationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/document/batches/{id}",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Cancel a currently processing or queued translation\n\nCancel a currently processing or queued translation.\nA translation will not be\ncancelled if it is already completed or failed or cancelling. A bad request\nwill be returned.\nAll documents that have completed translation will not be\ncancelled and will be charged.\nAll pending documents will be cancelled if\npossible."
+      }
+    },
+    "com.azure.translation_document#TranslationStatus": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the translation operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation created date time",
+            "smithy.api#required": {}
+          }
+        },
+        "lastActionDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date time in which the operation's status has been updated",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.translation_document#Status",
+          "traits": {
+            "smithy.api#documentation": "List of possible statuses for job or document",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.translation_document#TranslationError",
+          "traits": {
+            "smithy.api#documentation": "This contains an outer error with error code, message, details, target and an\ninner error with more descriptive details."
+          }
+        },
+        "summary": {
+          "target": "com.azure.translation_document#StatusSummary",
+          "traits": {
+            "smithy.api#documentation": "Status Summary",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Translation job status response"
+      }
+    },
+    "com.azure.translation_document#StatusSummary": {
+      "type": "structure",
+      "members": {
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total count",
+            "smithy.api#required": {}
+          }
+        },
+        "failed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Failed count",
+            "smithy.api#required": {}
+          }
+        },
+        "success": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of Success",
+            "smithy.api#required": {}
+          }
+        },
+        "inProgress": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of in progress",
+            "smithy.api#required": {}
+          }
+        },
+        "notYetStarted": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Count of not yet started",
+            "smithy.api#required": {}
+          }
+        },
+        "cancelled": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of cancelled",
+            "smithy.api#required": {}
+          }
+        },
+        "totalCharacterCharged": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total characters charged by the API",
+            "smithy.api#required": {}
+          }
+        },
+        "totalImageScansSucceeded": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total image scans charged by the API"
+          }
+        },
+        "totalImageScansFailed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total image scans failed"
+          }
+        },
+        "totalImageCharged": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total images charged by the API"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status Summary"
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsCancelTranslationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Format - uuid.  The operation-id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetTranslationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsGetTranslationStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#TranslationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/document/batches/{id}",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Returns the status for a document translation request\n\nReturns the status for a document translation request.\nThe status includes the\noverall request status, as well as the status for documents that are being\ntranslated as part of that request."
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetTranslationStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Format - uuid.  The operation id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsStartTranslation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsStartTranslationRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsStartTranslationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/document/batches",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Submit a document translation request to the Document Translation service\n\nUse this API to submit a bulk (batch) translation request to the Document\nTranslation service.\nEach request can contain multiple documents and must\ncontain a source and destination container for each document.\n            \nThe\nprefix and suffix filter (if supplied) are used to filter folders. The prefix\nis applied to the subpath after the container name.\n            \nGlossaries /\nTranslation memory can be included in the request and are applied by the\nservice when the document is translated.\n            \nIf the glossary is\ninvalid or unreachable during translation, an error is indicated in the\ndocument status.\nIf a file with the same name already exists at the\ndestination, it will be overwritten. The targetUrl for each target language\nmust be unique."
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsStartTranslationResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "Link to the translation operation status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsStartTranslationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "inputs": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsStartTranslationRequestInputsList",
+          "traits": {
+            "smithy.api#documentation": "The input list of documents or folders containing documents",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.translation_document#BatchOptions",
+          "traits": {
+            "smithy.api#documentation": "The batch operation options"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#BatchOptions": {
+      "type": "structure",
+      "members": {
+        "translateTextWithinImage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Translation text within an image option"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Translation batch request options"
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsStartTranslationRequestInputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_document#BatchRequest"
+      },
+      "traits": {
+        "smithy.api#documentation": "The input list of documents or folders containing documents"
+      }
+    },
+    "com.azure.translation_document#BatchRequest": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.azure.translation_document#SourceInput",
+          "traits": {
+            "smithy.api#documentation": "Source of the input documents",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.azure.translation_document#BatchRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Location of the destination for the output",
+            "smithy.api#required": {}
+          }
+        },
+        "storageType": {
+          "target": "com.azure.translation_document#StorageInputType",
+          "traits": {
+            "smithy.api#documentation": "Storage type of the input documents source string"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition for the input batch translation request"
+      }
+    },
+    "com.azure.translation_document#StorageInputType": {
+      "type": "enum",
+      "members": {
+        "FOLDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Folder"
+          }
+        },
+        "FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "File"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage type of the input documents source string"
+      }
+    },
+    "com.azure.translation_document#BatchRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_document#TargetInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Location of the destination for the output"
+      }
+    },
+    "com.azure.translation_document#TargetInput": {
+      "type": "structure",
+      "members": {
+        "targetUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the folder / container with your documents",
+            "smithy.api#required": {}
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Category / custom system for translation request"
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment name of the custom translation model for the translation request."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target Language",
+            "smithy.api#required": {}
+          }
+        },
+        "glossaries": {
+          "target": "com.azure.translation_document#TargetInputGlossariesList",
+          "traits": {
+            "smithy.api#documentation": "List of Glossary"
+          }
+        },
+        "storageSource": {
+          "target": "com.azure.translation_document#StorageSource",
+          "traits": {
+            "smithy.api#documentation": "Storage Source"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Destination for the finished translated documents"
+      }
+    },
+    "com.azure.translation_document#StorageSource": {
+      "type": "enum",
+      "members": {
+        "AZUREBLOB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureBlob"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Source"
+      }
+    },
+    "com.azure.translation_document#TargetInputGlossariesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_document#Glossary"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Glossary"
+      }
+    },
+    "com.azure.translation_document#Glossary": {
+      "type": "structure",
+      "members": {
+        "glossaryUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the glossary. \nWe will use the file extension to extract the\nformatting if the format parameter is not supplied.\n\nIf the translation\nlanguage pair is not present in the glossary, it will not be applied",
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Format",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional Version.  If not specified, default is used."
+          }
+        },
+        "storageSource": {
+          "target": "com.azure.translation_document#StorageSource",
+          "traits": {
+            "smithy.api#documentation": "Storage Source"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Glossary / translation memory for the request"
+      }
+    },
+    "com.azure.translation_document#SourceInput": {
+      "type": "structure",
+      "members": {
+        "sourceUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the folder / container or single file with your documents",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "com.azure.translation_document#DocumentFilter",
+          "traits": {
+            "smithy.api#documentation": "Document filter"
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language code\nIf none is specified, we will perform auto detect on the document"
+          }
+        },
+        "storageSource": {
+          "target": "com.azure.translation_document#StorageSource",
+          "traits": {
+            "smithy.api#documentation": "Storage Source"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source of the input documents"
+      }
+    },
+    "com.azure.translation_document#DocumentFilter": {
+      "type": "structure",
+      "members": {
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-sensitive prefix string to filter documents in the source path for\ntranslation. \nFor example, when using a Azure storage blob Uri, use the prefix\nto restrict sub folders for translation."
+          }
+        },
+        "suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-sensitive suffix string to filter documents in the source path for\ntranslation. \nThis is most often use for file extensions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Document filter"
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_document#TranslationsStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/document/batches",
+          "code": 200,
+          "host": "{endpoint}/translator",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Returns a list of batch requests submitted and the status for each request\n\nReturns a list of batch requests submitted and the status for each\nrequest.\nThis list only contains batch requests submitted by the user (based on\nthe resource).\n            \nIf the number of requests exceeds our paging limit,\nserver-side paging is used. Paginated responses indicate a partial result and\ninclude a continuation token in the response.\nThe absence of a continuation\ntoken means that no additional pages are available.\n            \ntop, skip\nand maxpagesize query parameters can be used to specify a number of results to\nreturn and an offset for the collection.\n            \ntop indicates the total\nnumber of records the user wants to be returned across all pages.\nskip\nindicates the number of records to skip from the list of batches based on the\nsorting method specified.  By default, we sort by descending start\ntime.\nmaxpagesize is the maximum items returned in a page.  If more items are\nrequested via top (or top is not specified and there are more items to be\nreturned), @nextLink will contain the link to the next page.\n           \n\norderby query parameter can be used to sort the returned list (ex\n\"orderby=createdDateTimeUtc asc\" or \"orderby=createdDateTimeUtc\ndesc\").\nThe default sorting is descending by createdDateTimeUtc.\nSome query\nparameters can be used to filter the returned list (ex:\n\"status=Succeeded,Cancelled\") will only return succeeded and cancelled\noperations.\ncreatedDateTimeUtcStart and createdDateTimeUtcEnd can be used\ncombined or separately to specify a range of datetime to filter the returned\nlist by.\nThe supported filtering query parameters are (status, ids,\ncreatedDateTimeUtcStart, createdDateTimeUtcEnd).\n            \nThe server honors\nthe values specified by the client. However, clients must be prepared to handle\nresponses that contain a different page size or contain a continuation token.\n \n          \nWhen both top and skip are included, the server should first apply\nskip and then top on the collection.\nNote: If the server can't honor top\nand/or skip, the server must return an error to the client informing about it\ninstead of just ignoring the query options.\nThis reduces the risk of the client\nmaking assumptions about the data returned."
+      }
+    },
+    "com.azure.translation_document#TranslationsStatus": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.translation_document#TranslationsStatusValueList",
+          "traits": {
+            "smithy.api#documentation": "The summary status of individual operation",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url for the next page.  Null if no more pages available"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Translation job Status Response"
+      }
+    },
+    "com.azure.translation_document#TranslationsStatusValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_document#TranslationStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "The summary status of individual operation"
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported document Translation endpoint, protocol and hostname, for example: https://{TranslatorResourceName}.cognitiveservices.azure.com/translator.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "top indicates the total number of records the user wants to be returned across\nall pages.\n            \nClients MAY use top and skip query parameters to\nspecify a number of results to return and an offset into the collection.\nWhen\nboth top and skip are given by a client, the server SHOULD first apply skip\nand then top on the collection.\n            \nNote: If the server can't honor\ntop and/or skip, the server MUST return an error to the client informing\nabout it instead of just ignoring the query options."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "skip indicates the number of records to skip from the list of records held by\nthe server based on the sorting method specified.  By default, we sort by\ndescending start time.\n            \nClients MAY use top and skip query\nparameters to specify a number of results to return and an offset into the\ncollection.\nWhen both top and skip are given by a client, the server SHOULD\nfirst apply skip and then top on the collection.\n            \nNote: If the\nserver can't honor top and/or skip, the server MUST return an error to the\nclient informing about it instead of just ignoring the query options."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "maxpagesize is the maximum items returned in a page.  If more items are\nrequested via top (or top is not specified and there are more items to be\nreturned), @nextLink will contain the link to the next page.\n            \n\nClients MAY request server-driven paging with a specific page size by\nspecifying a maxpagesize preference. The server SHOULD honor this preference\nif the specified page size is smaller than the server's default page size."
+          }
+        },
+        "ids": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestIdsList",
+          "traits": {
+            "smithy.api#httpQuery": "ids",
+            "smithy.api#documentation": "Ids to use in filtering"
+          }
+        },
+        "statuses": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestStatusesList",
+          "traits": {
+            "smithy.api#httpQuery": "statuses",
+            "smithy.api#documentation": "Statuses to use in filtering"
+          }
+        },
+        "createdDateTimeUtcStart": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdDateTimeUtcStart",
+            "smithy.api#documentation": "the start datetime to get items after"
+          }
+        },
+        "createdDateTimeUtcEnd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdDateTimeUtcEnd",
+            "smithy.api#documentation": "the end datetime to get items before"
+          }
+        },
+        "orderby": {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "orderby",
+            "smithy.api#documentation": "the sorting query for the collection (ex: 'CreatedDateTimeUtc asc','CreatedDateTimeUtc desc')"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestStatusesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatusRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.translation_document#TranslationDocument": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsDocumentTranslate"
+        },
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetSupportedFormats"
+        },
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetDocumentStatus"
+        },
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetDocumentsStatus"
+        },
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsCancelTranslation"
+        },
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetTranslationStatus"
+        },
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsStartTranslation"
+        },
+        {
+          "target": "com.azure.translation_document#DocumentTranslationOperationsGetTranslationsStatus"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure DocumentTranslation data plane",
+        "smithy.api#documentation": "Azure translation data plane — translation/data-plane/DocumentTranslation (latest stable api-version 2026-03-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/translator",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

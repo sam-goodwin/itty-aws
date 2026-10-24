@@ -1,0 +1,3641 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.maps_search#SearchGetPolygon": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_search#SearchGetPolygonRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_search#Boundary"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/search/polygon",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Use to get polygon data of a geographical area shape such as a city or a country region.\n\nThe `Get Polygon` API is an HTTP `GET` request that supplies polygon data of a geographical area outline such as a city or a country region."
+      }
+    },
+    "com.azure.maps_search#Boundary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The `GeoJSON` object type. Always `Feature`, as defined in\n[RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_search#GeoJsonGeometryCollection",
+          "traits": {
+            "smithy.api#documentation": "A `GeometryCollection` of one or more `Polygon` or `MultiPolygon` shapes whose coordinates\ndefine the outline of the requested area in WGS 84 longitude/latitude order, as defined\nby [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.8).",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_search#BoundaryProperties",
+          "traits": {
+            "smithy.api#documentation": "Display name and copyright attribution for the returned area. See `BoundaryProperties`\nfor the per-property shape."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The successful response body returned by `Get Polygon`. Encoded as a\n[`GeoJSON Feature`](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) whose `geometry` is\na `GeometryCollection` of one or more `Polygon` or `MultiPolygon` shapes describing the\noutline of the requested geographical area, and whose `properties` carry the area's\ndisplay name and copyright attribution."
+      }
+    },
+    "com.azure.maps_search#BoundaryProperties": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the geographical area, for example, `\"Bellevue\"` for a city boundary."
+          }
+        },
+        "copyright": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps API copyright and usage notice that applies to this response. Distinct\nfrom the per-geometry data-provider attributions in `geometriesCopyright`."
+          }
+        },
+        "copyrightUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL to Azure Maps copyright and licensing information for the API and its underlying\ndata sources."
+          }
+        },
+        "geometriesCopyright": {
+          "target": "com.azure.maps_search#BoundaryPropertiesGeometriesCopyrightList",
+          "traits": {
+            "smithy.api#documentation": "Per-geometry data-provider attribution. Each entry corresponds positionally to the\nmatching shape in the parent `Boundary.geometry.geometries` array — entry `i` describes\nthe source of geometry `i`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The `properties` payload of a `Boundary`. Carries the display name of the returned\ngeographical area along with copyright attribution, both an API-wide notice and\nper-geometry data-provider credits."
+      }
+    },
+    "com.azure.maps_search#BoundaryPropertiesGeometriesCopyrightList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#GeometryCopyright"
+      },
+      "traits": {
+        "smithy.api#documentation": "Per-geometry data-provider attribution. Each entry corresponds positionally to the\nmatching shape in the parent `Boundary.geometry.geometries` array — entry `i` describes\nthe source of geometry `i`."
+      }
+    },
+    "com.azure.maps_search#GeometryCopyright": {
+      "type": "structure",
+      "members": {
+        "sourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier for the data provider that supplied this geometry."
+          }
+        },
+        "copyright": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable attribution string for the data provider. For example, `\"TomTom\"`.\nMay be a vendor name or a fuller copyright notice."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A single per-geometry data-provider attribution entry within\n`BoundaryProperties.geometriesCopyright`. Identifies the source of one geometry in\nthe parent `Boundary.geometry.geometries` array."
+      }
+    },
+    "com.azure.maps_search#GeoJsonGeometryCollection": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection.",
+            "smithy.api#required": {}
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_search#GeoJsonGeometryCollectionBboxList",
+          "traits": {
+            "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+          }
+        },
+        "geometries": {
+          "target": "com.azure.maps_search#GeoJsonGeometryCollectionGeometriesList",
+          "traits": {
+            "smithy.api#documentation": "Contains a list of valid `GeoJSON` geometry objects. **Note** that coordinates\nin GeoJSON are in x, y order (longitude, latitude).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON GeometryCollection` object type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.8) for details."
+      }
+    },
+    "com.azure.maps_search#GeoJsonGeometryCollectionGeometriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#GeoJsonGeometry"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains a list of valid `GeoJSON` geometry objects. **Note** that coordinates\nin GeoJSON are in x, y order (longitude, latitude)."
+      }
+    },
+    "com.azure.maps_search#GeoJsonGeometry": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection.",
+            "smithy.api#required": {}
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_search#GeoJsonGeometryBboxList",
+          "traits": {
+            "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON` geometry object. The type must be one of the seven valid\nGeoJSON geometry types - Point, MultiPoint, LineString, MultiLineString,\nPolygon, MultiPolygon and GeometryCollection. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1) for details."
+      }
+    },
+    "com.azure.maps_search#GeoJsonGeometryBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+      }
+    },
+    "com.azure.maps_search#GeoJsonObjectType": {
+      "type": "enum",
+      "members": {
+        "POINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Point"
+          }
+        },
+        "MULTIPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiPoint"
+          }
+        },
+        "LINESTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LineString"
+          }
+        },
+        "MULTILINESTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiLineString"
+          }
+        },
+        "POLYGON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Polygon"
+          }
+        },
+        "MULTIPOLYGON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiPolygon"
+          }
+        },
+        "GEOMETRYCOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GeometryCollection"
+          }
+        },
+        "FEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Feature"
+          }
+        },
+        "FEATURECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeatureCollection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection."
+      }
+    },
+    "com.azure.maps_search#GeoJsonGeometryCollectionBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+      }
+    },
+    "com.azure.maps_search#FeatureTypeEnum": {
+      "type": "enum",
+      "members": {
+        "FEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Feature"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The `GeoJSON` object type for `Feature` objects. Tags each entry inside the `features`\narray of a `FeatureCollection` response (geocoding, reverse geocoding, autocomplete) and\nappears at the root of the `Get Polygon` response. The only value is `Feature`, as\ndefined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_search#SearchGetPolygonRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_search#SearchGetPolygonRequestCoordinatesList",
+          "traits": {
+            "smithy.api#httpQuery": "coordinates",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A point on the earth specified as a longitude and latitude. Example: &coordinates=lon,lat"
+          }
+        },
+        "view": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "view",
+            "smithy.api#documentation": "A string that represents an [ISO 3166-1 Alpha-2 region/country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). This will alter Geopolitical disputed borders and labels to align with the specified user region. By default, the View parameter is set to \"Auto\" even if you haven't defined it in the request.\n\nPlease refer to [Supported Views](https://aka.ms/AzureMapsLocalizationViews) for details and to see the available Views."
+          }
+        },
+        "resultType": {
+          "target": "com.azure.maps_search#SearchGetPolygonRequestResultType",
+          "traits": {
+            "smithy.api#httpQuery": "resultType",
+            "smithy.api#documentation": "The geopolitical concept to return a boundary for. If not specified, the default is `countryRegion` result type."
+          }
+        },
+        "resolution": {
+          "target": "com.azure.maps_search#SearchGetPolygonRequestResolution",
+          "traits": {
+            "smithy.api#httpQuery": "resolution",
+            "smithy.api#documentation": "Resolution determines the amount of points to send back. If not specified, the default is medium resolution."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Specifies which account is intended for usage in conjunction with the Azure AD security model.  It represents a unique ID for the Azure Maps account and can be retrieved from the Azure Maps management plane Account API. For more information on using Microsoft Entra ID security in Azure Maps, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which search results should be returned.\n\nPlease refer to [Supported Languages](/azure/azure-maps/supported-languages?pivots=service-latest) for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_search#SearchGetPolygonRequestResolution": {
+      "type": "enum",
+      "members": {
+        "SMALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "small"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "medium"
+          }
+        },
+        "LARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "large"
+          }
+        },
+        "HUGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "huge"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetPolygonRequestResultType": {
+      "type": "enum",
+      "members": {
+        "COUNTRYREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "countryRegion"
+          }
+        },
+        "ADMINDISTRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "adminDistrict"
+          }
+        },
+        "ADMINDISTRICT2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "adminDistrict2"
+          }
+        },
+        "POSTALCODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postalCode"
+          }
+        },
+        "POSTALCODE2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postalCode2"
+          }
+        },
+        "POSTALCODE3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postalCode3"
+          }
+        },
+        "POSTALCODE4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postalCode4"
+          }
+        },
+        "NEIGHBORHOOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "neighborhood"
+          }
+        },
+        "LOCALITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "locality"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetPolygonRequestCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetReverseGeocodingBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_search#SearchGetReverseGeocodingBatchRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_search#GeocodingBatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/reverseGeocode:batch",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Use to send a batch of queries to the [Reverse Geocoding](/rest/api/maps/search/get-reverse-geocoding) API in a single request.\n\nThe `Get Reverse Geocoding Batch` API is an HTTP `POST` request that sends batches of up to **100** queries to [Reverse Geocoding](/rest/api/maps/search/get-reverse-geocoding) API using a single request.\n\n### Submit Synchronous Batch Request\nThe Synchronous API is recommended for lightweight batch requests. When the service receives a request, it will respond as soon as the batch items are calculated and there will be no possibility to retrieve the results later. The Synchronous API will return a timeout error (a 408 response) if the request takes longer than 60 seconds. The number of batch items is limited to **100** for this API.\n```\nPOST https://atlas.microsoft.com/reverseGeocode:batch?api-version={api-version}\n```\n### POST Body for Batch Request\nTo send the _reverse geocoding_ queries you will use a `POST` request where the request body will contain the `batchItems` array in `json` format and the `Content-Type` header will be set to `application/json`. Here's a sample request body containing 2 _reverse geocoding_ queries:\n\n\n```\n{\n  \"batchItems\": [\n    {\n      \"coordinates\": [-122.128275, 47.639429],\n      \"resultTypes\": [\"Address\", \"PopulatedPlace\"]\n    },\n    {\n      \"coordinates\": [-122.341979399674, 47.6095253501216]\n    }\n  ]\n}\n```\n\nA _reverse geocoding_ batchItem object can accept any of the supported _reverse geocoding_ [URI parameters](/rest/api/maps/search/get-reverse-geocoding#uri-parameters).\n\n\nThe batch should contain at least **1** query.\n\n\n### Batch Response Model\nThe batch response contains a `summary` component that indicates the `totalRequests` that were part of the original batch request and `successfulRequests` i.e. queries which were executed successfully. The batch response also includes a `batchItems` array which contains a response for each and every query in the batch request. The `batchItems` will contain the results in the exact same order the original queries were sent in the batch request. Each item is of one of the following types:\n\n- [`GeocodingResponse`](/rest/api/maps/search/get-reverse-geocoding#geocodingresponse) - If the query completed successfully.\n\n- `Error` - If the query failed. The response will contain a `code` and a `message` in this case."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchResponse": {
+      "type": "structure",
+      "members": {
+        "summary": {
+          "target": "com.azure.maps_search#GeocodingBatchResponseSummary",
+          "traits": {
+            "smithy.api#documentation": "Aggregate counts for the batch as a whole, the total submitted queries and how many of\nthem completed successfully."
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_search#GeocodingBatchResponseBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "The per-query results of the batch. Each entry corresponds positionally to the request\nentry at the same array index in `GeocodingBatchRequestBody.batchItems`. Entries with\n`error` populated represent queries that failed; entries with `features` populated\nrepresent queries that succeeded."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the URL to fetch the next page of results if the response is paginated. This is\nuseful when the response is too large to be returned in a single call, allowing users to\nnavigate through multiple pages of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The successful response body returned by `Get Geocoding Batch`. Carries a `summary` of how\nmany of the submitted queries succeeded plus a `batchItems` array containing one response\nentry per query in the request, in the same order as the request `batchItems` array."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchResponseBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#GeocodingBatchResponseItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The per-query results of the batch. Each entry corresponds positionally to the request\nentry at the same array index in `GeocodingBatchRequestBody.batchItems`. Entries with\n`error` populated represent queries that failed; entries with `features` populated\nrepresent queries that succeeded."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchResponseItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The caller-supplied identifier echoed back from the corresponding\n`GeocodingBatchRequestItem.optionalId`. Populated only when the request entry supplied\none. Useful for application-side correlation when array position is not sufficient."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_search#FeatureCollectionEnum",
+          "traits": {
+            "smithy.api#documentation": "The `GeoJSON` object type of this entry's success body. Always `FeatureCollection`, as\ndefined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). Populated only when the\nentry succeeded."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_search#GeocodingBatchResponseItemFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The array of `GeoJSON Feature` objects geocoded for this batch entry's query. Each\n`Feature` represents a single geocoded location with details exposed via `properties` and\nits primary coordinate via `geometry`. Populated only when the entry succeeded."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the URL to fetch the next page of results if the response is paginated. This is\nuseful when the response is too large to be returned in a single call, allowing users to\nnavigate through multiple pages of results."
+          }
+        },
+        "error": {
+          "target": "com.azure.maps_search#ErrorDetail",
+          "traits": {
+            "smithy.api#documentation": "Diagnostic information for a query that failed inside the batch, the per-entry error\npath complementing the success path on `features`. Populated only when the entry failed;\nsee `ErrorDetail` for the per-error shape."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A single entry inside `GeocodingBatchResponse.batchItems`, carrying the result of one of\nthe queries from the corresponding `GeocodingBatchRequestBody.batchItems` entry.\nSuccessful queries surface their geocoded `features` here in the same shape as\n`GeocodingResponse`; failed queries surface diagnostic information via `error` instead.\nExactly one of `features` or `error` is populated per entry."
+      }
+    },
+    "com.azure.maps_search#ErrorDetail": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error target."
+          }
+        },
+        "details": {
+          "target": "com.azure.maps_search#ErrorDetailDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The error details."
+          }
+        },
+        "additionalInfo": {
+          "target": "com.azure.maps_search#ErrorDetailAdditionalInfoList",
+          "traits": {
+            "smithy.api#documentation": "The error additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.maps_search#ErrorDetailAdditionalInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#ErrorAdditionalInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error additional info."
+      }
+    },
+    "com.azure.maps_search#ErrorAdditionalInfo": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional info type."
+          }
+        },
+        "info": {
+          "target": "com.azure.maps_search#ErrorAdditionalInfoInfoMap",
+          "traits": {
+            "smithy.api#documentation": "The additional info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource management error additional info."
+      }
+    },
+    "com.azure.maps_search#ErrorAdditionalInfoInfoMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The additional info."
+      }
+    },
+    "com.azure.maps_search#ErrorDetailDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#ErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "The error details."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchResponseItemFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#FeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The array of `GeoJSON Feature` objects geocoded for this batch entry's query. Each\n`Feature` represents a single geocoded location with details exposed via `properties` and\nits primary coordinate via `geometry`. Populated only when the entry succeeded."
+      }
+    },
+    "com.azure.maps_search#FeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The `GeoJSON` object type. Always `Feature`, as defined in\n[RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An optional service-assigned identifier for the feature, when one is available."
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_search#FeaturesItemProperties",
+          "traits": {
+            "smithy.api#documentation": "Structured data about the geocoded location, including its entity type, match-quality\nindicators, address components, and one or more geocode points."
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_search#GeoJsonPoint",
+          "traits": {
+            "smithy.api#documentation": "The primary [`GeoJSON Point`](https://tools.ietf.org/html/rfc7946#section-3.1.2)\nrepresenting the geocoded location, with coordinates in WGS 84 longitude/latitude order.",
+            "smithy.api#required": {}
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_search#FeaturesItemBboxList",
+          "traits": {
+            "smithy.api#documentation": "The smallest axis-aligned rectangle that contains the feature's geometry, in WGS 84\nlongitude/latitude order. Encoded as `[westLon, southLat, eastLon, northLat]` per\n[RFC 7946, Section 5](https://datatracker.ietf.org/doc/html/rfc7946#section-5)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A single entry in the `features` array of a `GeocodingResponse`, conforming to the\n[`GeoJSON Feature`](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) object shape.\nRepresents one geocoded location: structured data on `properties`, a representative\ncoordinate on `geometry`, and an optional bounding box on `bbox`."
+      }
+    },
+    "com.azure.maps_search#FeaturesItemBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "The smallest axis-aligned rectangle that contains the feature's geometry, in WGS 84\nlongitude/latitude order. Encoded as `[westLon, southLat, eastLon, northLat]` per\n[RFC 7946, Section 5](https://datatracker.ietf.org/doc/html/rfc7946#section-5)."
+      }
+    },
+    "com.azure.maps_search#GeoJsonPoint": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection.",
+            "smithy.api#required": {}
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_search#GeoJsonPointBboxList",
+          "traits": {
+            "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_search#GeoJsonPointCoordinatesList",
+          "traits": {
+            "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON Point` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.2) for details."
+      }
+    },
+    "com.azure.maps_search#GeoJsonPointCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details."
+      }
+    },
+    "com.azure.maps_search#GeoJsonPointBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+      }
+    },
+    "com.azure.maps_search#FeaturesItemProperties": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity type that the geocoded location resolved to. One of: `Address`, `RoadBlock`,\n`RoadIntersection`, `Neighborhood`, `PopulatedPlace`, `Postcode1`, `AdminDivision1`,\n`AdminDivision2`, or `CountryRegion`."
+          }
+        },
+        "confidence": {
+          "target": "com.azure.maps_search#ConfidenceEnum",
+          "traits": {
+            "smithy.api#documentation": "How strongly the geocoded location matches the request. Use together with `matchCodes` for a\ncomplete picture of match quality. See `ConfidenceEnum` for the value list and the factors\nthat influence the rating."
+          }
+        },
+        "matchCodes": {
+          "target": "com.azure.maps_search#FeaturesItemPropertiesMatchCodesList",
+          "traits": {
+            "smithy.api#documentation": "How the geocoding service produced this result relative to the query: a direct match at the\nrequested specificity (`Good`), one of several candidates (`Ambiguous`), or a fallback to a\nless precise level of the geographic hierarchy (`UpHierarchy`). Multiple values may be\npresent. For example, an `Ambiguous` plus `UpHierarchy` pairing indicates that the service\ncould not match the requested specificity and found multiple matches at a coarser level. See\n`MatchCodesEnum` for per-value descriptions; combine with `confidence` for a complete\npicture of match quality."
+          }
+        },
+        "address": {
+          "target": "com.azure.maps_search#Address",
+          "traits": {
+            "smithy.api#documentation": "The address of the geocoded location, parsed into structured fields such as locality, postal\ncode, country/region, and (when available) street name and number."
+          }
+        },
+        "geocodePoints": {
+          "target": "com.azure.maps_search#FeaturesItemPropertiesGeocodePointsList",
+          "traits": {
+            "smithy.api#documentation": "One or more geocode points for the location, each marked with how it was derived\n(`calculationMethod`) and what it is best suited for (`usageTypes`). For example, `Display`\nfor visual placement on a map, or `Route` for use as a navigation destination."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The `properties` payload of a feature in a `GeocodingResponse`. Carries the entity type and\nmatch-quality indicators for the geocoded location, its parsed address components, and one or\nmore geocode points that pin the location to specific coordinates."
+      }
+    },
+    "com.azure.maps_search#FeaturesItemPropertiesGeocodePointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#GeocodePointsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "One or more geocode points for the location, each marked with how it was derived\n(`calculationMethod`) and what it is best suited for (`usageTypes`). For example, `Display`\nfor visual placement on a map, or `Route` for use as a navigation destination."
+      }
+    },
+    "com.azure.maps_search#GeocodePointsItem": {
+      "type": "structure",
+      "members": {
+        "geometry": {
+          "target": "com.azure.maps_search#GeoJsonPoint",
+          "traits": {
+            "smithy.api#documentation": "The coordinate of this geocode point as a\n[`GeoJSON Point`](https://tools.ietf.org/html/rfc7946#section-3.1.2), with values in WGS 84\nlongitude/latitude order."
+          }
+        },
+        "calculationMethod": {
+          "target": "com.azure.maps_search#CalculationMethodEnum",
+          "traits": {
+            "smithy.api#documentation": "How the point was computed. For example, snapped to the rooftop of a building or\ninterpolated along a road centerline. See `CalculationMethodEnum` for the value list."
+          }
+        },
+        "usageTypes": {
+          "target": "com.azure.maps_search#GeocodePointsItemUsageTypesList",
+          "traits": {
+            "smithy.api#documentation": "What the geocode point is best suited for — `Display` for visual placement on a map, or\n`Route` as a routing destination. A point may carry both. See `UsageTypeEnum` for the\nper-value details, including how each is positioned for features with non-trivial extent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "One geocode point for a location: a coordinate plus metadata describing how the point was\ncomputed (`calculationMethod`) and what it is best suited for (`usageTypes`). A single feature\ntypically returns separate `Display` and `Route` points so callers can pick the one that fits\nthe task."
+      }
+    },
+    "com.azure.maps_search#GeocodePointsItemUsageTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#UsageTypeEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "What the geocode point is best suited for — `Display` for visual placement on a map, or\n`Route` as a routing destination. A point may carry both. See `UsageTypeEnum` for the\nper-value details, including how each is positioned for features with non-trivial extent."
+      }
+    },
+    "com.azure.maps_search#UsageTypeEnum": {
+      "type": "enum",
+      "members": {
+        "DISPLAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Display"
+          }
+        },
+        "ROUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Route"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The intended use for a geocode point. A geocode point returned by the service carries one or\nmore usage types that indicate how a client application should consume the point: for\nexample, displaying the location on a map versus routing a vehicle to it."
+      }
+    },
+    "com.azure.maps_search#CalculationMethodEnum": {
+      "type": "enum",
+      "members": {
+        "INTERPOLATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Interpolation"
+          }
+        },
+        "INTERPOLATIONOFFSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InterpolationOffset"
+          }
+        },
+        "PARCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Parcel"
+          }
+        },
+        "ROOFTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Rooftop"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The method that was used to compute the geocode point."
+      }
+    },
+    "com.azure.maps_search#Address": {
+      "type": "structure",
+      "members": {
+        "addressLine": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The first line of the address, typically the street name and number. For example,\n`\"15127 NE 24th St\"`."
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locality the address falls within: usually a city, town, or village. For example:\n`\"Redmond\"`."
+          }
+        },
+        "neighborhood": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The named neighborhood within the locality, when one is identified."
+          }
+        },
+        "adminDistricts": {
+          "target": "com.azure.maps_search#AddressAdminDistrictsList",
+          "traits": {
+            "smithy.api#documentation": "The administrative subdivisions that contain the address, ordered from coarsest to finest.\nThe first entry is typically the first-order subdivision (such as a U.S. state or a\nCanadian province); subsequent entries cover finer divisions where the country, dependency,\nor region defines them (such as a county at index 1)."
+          }
+        },
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The postal code for the address, when one is defined. Example: `\"98052\"`."
+          }
+        },
+        "countryRegion": {
+          "target": "com.azure.maps_search#AddressCountryRegion",
+          "traits": {
+            "smithy.api#documentation": "The country or region that contains the address, with its display name and ISO 3166-1\nAlpha-2 country code."
+          }
+        },
+        "formattedAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full address rendered as a single human-readable string, with the components joined\naccording to the conventions of the address's country or region. Example:\n`\"15127 NE 24th St, Redmond, WA 98052\"`."
+          }
+        },
+        "streetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The street name component of the address, when the resolved entity is a street-level\naddress. Example: `\"NE 24th St\"`."
+          }
+        },
+        "streetNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The house or building number on the street, when the resolved entity is a street-level\naddress. Example: `\"15127\"`."
+          }
+        },
+        "intersection": {
+          "target": "com.azure.maps_search#Intersection",
+          "traits": {
+            "smithy.api#documentation": "The intersecting-street details for the address, populated when the resolved entity is a\n`RoadIntersection` (such as the corner of two named streets)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The address of a geocoded or autocomplete-suggested location, parsed into structured fields.\nSparseness is normal: only the fields that the resolved entity supplies are populated. For\nexample, `streetName` and `streetNumber` appear only for street-level addresses, and\n`intersection` appears only for road-intersection results."
+      }
+    },
+    "com.azure.maps_search#Intersection": {
+      "type": "structure",
+      "members": {
+        "baseStreet": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary street of the intersection — typically the street the address number references."
+          }
+        },
+        "secondaryStreet1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The first cross street that meets `baseStreet` at the intersection."
+          }
+        },
+        "secondaryStreet2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The second cross street at the intersection, when one is present. Populated only for\nintersections of three or more streets."
+          }
+        },
+        "intersectionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short label describing the form of the intersection. For example, distinguishing an\nat-grade crossroads from a grade-separated crossing such as a bridge or overpass."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the intersection that combines the cross streets, such as\n`\"5th Avenue & Main Street\"`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Intersection details for an address resolved as a road intersection — the corner where two or\nmore named streets meet. Populated only when the resolved entity is a `RoadIntersection`; the\nparent `Address.intersection` is otherwise omitted."
+      }
+    },
+    "com.azure.maps_search#AddressCountryRegion": {
+      "type": "structure",
+      "members": {
+        "ISO": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 3166-1 Alpha-2 country code for the country or region. For example, `\"US\"` for the\nUnited States, or `\"GB\"` for the United Kingdom."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the country or region. For example, `\"United States\"`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The country or region that contains the address, identified by its display name and ISO 3166-1\nAlpha-2 country code. Either field may be omitted in a given response."
+      }
+    },
+    "com.azure.maps_search#AddressAdminDistrictsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#AddressAdminDistrictsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The administrative subdivisions that contain the address, ordered from coarsest to finest.\nThe first entry is typically the first-order subdivision (such as a U.S. state or a\nCanadian province); subsequent entries cover finer divisions where the country, dependency,\nor region defines them (such as a county at index 1)."
+      }
+    },
+    "com.azure.maps_search#AddressAdminDistrictsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full name of the subdivision. For example, `\"Washington\"` for a U.S. state, or\n`\"King County\"` for a county."
+          }
+        },
+        "shortName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The short or abbreviated form of the subdivision name, when one is defined. For example,\n`\"WA\"` for a U.S. state. Finer subdivisions often have no distinct short form, in which case\n`shortName` repeats `name` (such as `\"King County\"`)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An administrative subdivision that contains an address. For example, a state, province, or\ncounty. Returned as one entry in the parent `Address.adminDistricts` array, where entries are\nordered from coarsest to finest."
+      }
+    },
+    "com.azure.maps_search#FeaturesItemPropertiesMatchCodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#MatchCodesEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "How the geocoding service produced this result relative to the query: a direct match at the\nrequested specificity (`Good`), one of several candidates (`Ambiguous`), or a fallback to a\nless precise level of the geographic hierarchy (`UpHierarchy`). Multiple values may be\npresent. For example, an `Ambiguous` plus `UpHierarchy` pairing indicates that the service\ncould not match the requested specificity and found multiple matches at a coarser level. See\n`MatchCodesEnum` for per-value descriptions; combine with `confidence` for a complete\npicture of match quality."
+      }
+    },
+    "com.azure.maps_search#MatchCodesEnum": {
+      "type": "enum",
+      "members": {
+        "GOOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Good"
+          }
+        },
+        "AMBIGUOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ambiguous"
+          }
+        },
+        "UPHIERARCHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UpHierarchy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A match-code value indicating how the geocoding service produced a particular location\nresult. The `matchCodes` field on a feature is an array of these values; combine them with\n`confidence` and `type` to evaluate match quality."
+      }
+    },
+    "com.azure.maps_search#ConfidenceEnum": {
+      "type": "enum",
+      "members": {
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The level of confidence that the geocoded location result is a match. Use this value together\nwith the match codes to obtain more complete information about the match.\n\nThe confidence of a geocoded location is based on many factors, including the relative\nimportance of the geocoded location and the user's location, if specified."
+      }
+    },
+    "com.azure.maps_search#FeatureCollectionEnum": {
+      "type": "enum",
+      "members": {
+        "FEATURECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeatureCollection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The `GeoJSON` object type used at the root of successful responses from the forward\ngeocoding, reverse geocoding, and autocomplete operations (including their batch\nvariants). The only value is `FeatureCollection`, as defined in\n[RFC 7946](https://www.rfc-editor.org/rfc/rfc7946). `Get Polygon` is the one exception:\nits response root is a `GeoJSON Feature`, see `FeatureTypeEnum`."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchResponseSummary": {
+      "type": "structure",
+      "members": {
+        "successfulRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of queries in the batch that were processed successfully — those whose response\nentry in `GeocodingBatchResponse.batchItems` carries `features` rather than `error`."
+          }
+        },
+        "totalRequests": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of queries submitted in the batch. Subtract `successfulRequests` to derive\nthe number of queries that failed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Carries aggregate counts for a `Get Geocoding Batch` response: the size of the submitted\nbatch and how many of its queries were processed successfully. Used as the type of\n`GeocodingBatchResponse.summary`."
+      }
+    },
+    "com.azure.maps_search#SearchGetReverseGeocodingBatchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Specifies which account is intended for usage in conjunction with the Azure AD security model.  It represents a unique ID for the Azure Maps account and can be retrieved from the Azure Maps management plane Account API. For more information on using Microsoft Entra ID security in Azure Maps, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which search results should be returned.\n\nPlease refer to [Supported Languages](/azure/azure-maps/supported-languages?pivots=service-latest) for details."
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_search#SearchGetReverseGeocodingBatchRequestBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "The reverse-geocoding queries to process in this batch. Each entry is one independent\nreverse-geocoding request; the service returns one corresponding entry in\n`GeocodingBatchResponse.batchItems` per query, in the same order."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_search#SearchGetReverseGeocodingBatchRequestBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#ReverseGeocodingBatchRequestItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The reverse-geocoding queries to process in this batch. Each entry is one independent\nreverse-geocoding request; the service returns one corresponding entry in\n`GeocodingBatchResponse.batchItems` per query, in the same order."
+      }
+    },
+    "com.azure.maps_search#ReverseGeocodingBatchRequestItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An optional caller-supplied identifier echoed back on the matching response entry as\n`GeocodingBatchResponseItem.optionalId`. Useful for correlating responses to requests by a\nstable application-side identifier rather than relying on array position alone."
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_search#ReverseGeocodingBatchRequestItemCoordinatesList",
+          "traits": {
+            "smithy.api#documentation": "The location to reverse-geocode, encoded as `[longitude, latitude]` in WGS 84 order. For\nexample, `[-122.138681, 47.630358]` for a point in Redmond, Washington."
+          }
+        },
+        "resultTypes": {
+          "target": "com.azure.maps_search#ReverseGeocodingBatchRequestItemResultTypesList",
+          "traits": {
+            "smithy.api#documentation": "Restricts the response to specific kinds of locations. When omitted, all entity types are\neligible. See `ResultTypeEnum` for the value list and the most-specific-wins selection\nbehavior when entities of multiple types match."
+          }
+        },
+        "view": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An [ISO 3166-1 Alpha-2 region/country\ncode](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) identifying the region whose\ngeopolitical view should be applied to disputed borders and labels in the response. See\n[Supported Views](https://aka.ms/AzureMapsLocalizationViews) for the available values."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "One reverse-geocoding query inside a `ReverseGeocodingBatchRequestBody.batchItems` array.\nEach item is an independent reverse-geocoding request equivalent to a single call to\n`Get Reverse Geocoding`, expressed as fields rather than as URL query parameters. Specify\nthe location to reverse-geocode via `coordinates`; optionally narrow the entity types via\n`resultTypes` and the geopolitical view via `view`."
+      }
+    },
+    "com.azure.maps_search#ReverseGeocodingBatchRequestItemResultTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#ResultTypeEnum"
+      },
+      "traits": {
+        "smithy.api#documentation": "Restricts the response to specific kinds of locations. When omitted, all entity types are\neligible. See `ResultTypeEnum` for the value list and the most-specific-wins selection\nbehavior when entities of multiple types match."
+      }
+    },
+    "com.azure.maps_search#ResultTypeEnum": {
+      "type": "enum",
+      "members": {
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Address"
+          }
+        },
+        "NEIGHBORHOOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Neighborhood"
+          }
+        },
+        "POPULATEDPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PopulatedPlace"
+          }
+        },
+        "POSTCODE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Postcode1"
+          }
+        },
+        "ADMINDIVISION1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision1"
+          }
+        },
+        "ADMINDIVISION2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision2"
+          }
+        },
+        "COUNTRYREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CountryRegion"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An entity type returned by the `Get Reverse Geocoding Batch` operation. Supplied as one or\nmore values in the per-batch-item `resultTypes` field to restrict the response for that\nitem to specific kinds of locations; when the field is omitted, all entity types are\neligible. When entities of more than one type match a coordinate, only the most specific\nis returned. Listed from most specific to least specific: `Address`, `Neighborhood`,\n`PopulatedPlace`, `Postcode1`, `AdminDivision1`, `AdminDivision2`, `CountryRegion`."
+      }
+    },
+    "com.azure.maps_search#ReverseGeocodingBatchRequestItemCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "The location to reverse-geocode, encoded as `[longitude, latitude]` in WGS 84 order. For\nexample, `[-122.138681, 47.630358]` for a point in Redmond, Washington."
+      }
+    },
+    "com.azure.maps_search#SearchGetReverseGeocoding": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_search#SearchGetReverseGeocodingRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_search#GeocodingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/reverseGeocode",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Use to get a street address and location info from longitude and latitude coordinates.\n\nThe `Get Reverse Geocoding` API is an HTTP `GET` request used to translate a coordinate (example: 37.786505, -122.3862) into a human understandable street address. Useful in tracking applications where you receive a GPS feed from the device or asset and wish to know the address associated with the coordinates. This endpoint will return address information for a given coordinate."
+      }
+    },
+    "com.azure.maps_search#GeocodingResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#FeatureCollectionEnum",
+          "traits": {
+            "smithy.api#documentation": "The `GeoJSON` object type of a successful `Get Geocoding` or `Get Reverse Geocoding`\nresponse body. Always `FeatureCollection`, as defined in\n[RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_search#GeocodingResponseFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The array of `GeoJSON Feature` objects returned by the query. Each `Feature` represents a\nsingle geocoded location: its address components, match-quality indicators, and geocode\npoints are exposed via `properties`, and its primary coordinate via `geometry`."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the URL to fetch the next page of results if the response is paginated. This is\nuseful when the response is too large to be returned in a single call, allowing users to\nnavigate through multiple pages of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The successful response body returned by `Get Geocoding` and `Get Reverse Geocoding`, and\nthe per-batch-item success shape carried inside `GeocodingBatchResponse.batchItems`.\nEncoded as a [`GeoJSON FeatureCollection`](https://www.rfc-editor.org/rfc/rfc7946) whose\n`features` array contains one `Feature` per geocoded location."
+      }
+    },
+    "com.azure.maps_search#GeocodingResponseFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#FeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The array of `GeoJSON Feature` objects returned by the query. Each `Feature` represents a\nsingle geocoded location: its address components, match-quality indicators, and geocode\npoints are exposed via `properties`, and its primary coordinate via `geometry`."
+      }
+    },
+    "com.azure.maps_search#SearchGetReverseGeocodingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_search#SearchGetReverseGeocodingRequestCoordinatesList",
+          "traits": {
+            "smithy.api#httpQuery": "coordinates",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The coordinates of the location that you want to reverse geocode. Example: &coordinates=lon,lat"
+          }
+        },
+        "resultTypes": {
+          "target": "com.azure.maps_search#SearchGetReverseGeocodingRequestResultTypesList",
+          "traits": {
+            "smithy.api#httpQuery": "resultTypes",
+            "smithy.api#documentation": "Specify entity types that you want in the response. Only the types you specify will be returned. If the point cannot be mapped to the entity types you specify, no location information is returned in the response. Default value is all possible entities. A comma separated list of entity types selected from the following options.\n\n- Address\n- Neighborhood\n- PopulatedPlace\n- Postcode1\n- AdminDivision1\n- AdminDivision2\n- CountryRegion\n\nThese entity types are ordered from the most specific entity to the least specific entity. When entities of more than one entity type are found, only the most specific entity is returned. For example, if you specify Address and AdminDistrict1 as entity types and entities were found for both types, only the Address entity information is returned in the response."
+          }
+        },
+        "view": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "view",
+            "smithy.api#documentation": "A string that represents an [ISO 3166-1 Alpha-2 region/country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). This will alter Geopolitical disputed borders and labels to align with the specified user region. By default, the View parameter is set to \"Auto\" even if you haven't defined it in the request.\n\nPlease refer to [Supported Views](https://aka.ms/AzureMapsLocalizationViews) for details and to see the available Views."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Specifies which account is intended for usage in conjunction with the Azure AD security model.  It represents a unique ID for the Azure Maps account and can be retrieved from the Azure Maps management plane Account API. For more information on using Microsoft Entra ID security in Azure Maps, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which search results should be returned.\n\nPlease refer to [Supported Languages](/azure/azure-maps/supported-languages?pivots=service-latest) for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_search#SearchGetReverseGeocodingRequestResultTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#SearchGetReverseGeocodingRequestResultTypesItem"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetReverseGeocodingRequestResultTypesItem": {
+      "type": "enum",
+      "members": {
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Address"
+          }
+        },
+        "NEIGHBORHOOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Neighborhood"
+          }
+        },
+        "POPULATEDPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PopulatedPlace"
+          }
+        },
+        "POSTCODE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Postcode1"
+          }
+        },
+        "ADMINDIVISION1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision1"
+          }
+        },
+        "ADMINDIVISION2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision2"
+          }
+        },
+        "COUNTRYREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CountryRegion"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetReverseGeocodingRequestCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocodingBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_search#SearchGetGeocodingBatchRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_search#GeocodingBatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/geocode:batch",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Use to send a batch of queries to the [Geocoding](/rest/api/maps/search/get-geocoding) API in a single request.\n\nThe `Get Geocoding Batch` API is an HTTP `POST` request that sends batches of up to **100** queries to the [Geocoding](/rest/api/maps/search/get-geocoding) API in a single request.\n\n### Submit Synchronous Batch Request\nThe Synchronous API is recommended for lightweight batch requests. When the service receives a request, it will respond as soon as the batch items are calculated and there will be no possibility to retrieve the results later. The Synchronous API will return a timeout error (a 408 response) if the request takes longer than 60 seconds. The number of batch items is limited to **100** for this API.\n```\nPOST https://atlas.microsoft.com/geocode:batch?api-version={api-version}\n```\n### POST Body for Batch Request\nTo send the _geocoding_ queries you will use a `POST` request where the request body will contain the `batchItems` array in `json` format and the `Content-Type` header will be set to `application/json`. Here's a sample request body containing 2 _geocoding_ queries:\n\n\n```\n{\n  \"batchItems\": [\n    {\n      \"addressLine\": \"One, Microsoft Way, Redmond, WA 98052\",\n      \"top\": 2\n    },\n    {\n      \"addressLine\": \"Pike Pl\",\n      \"adminDistrict\": \"WA\",\n      \"locality\": \"Seattle\",\n      \"top\": 3\n    }\n  ]\n}\n```\n\nA _geocoding_ batchItem object can accept any of the supported _geocoding_ [URI parameters](/rest/api/maps/search/get-geocoding#uri-parameters).\n\n\nThe batch should contain at least **1** query.\n\n\n### Batch Response Model\nThe batch response contains a `summary` component that indicates the `totalRequests` that were part of the original batch request and `successfulRequests` i.e. queries which were executed successfully. The batch response also includes a `batchItems` array which contains a response for each and every query in the batch request. The `batchItems` will contain the results in the exact same order the original queries were sent in the batch request. Each item is of one of the following types:\n\n- [`GeocodingResponse`](/rest/api/maps/search/get-geocoding#geocodingresponse) - If the query completed successfully.\n\n- `Error` - If the query failed. The response will contain a `code` and a `message` in this case."
+      }
+    },
+    "com.azure.maps_search#SearchGetGeocodingBatchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Specifies which account is intended for usage in conjunction with the Azure AD security model.  It represents a unique ID for the Azure Maps account and can be retrieved from the Azure Maps management plane Account API. For more information on using Microsoft Entra ID security in Azure Maps, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which search results should be returned.\n\nPlease refer to [Supported Languages](/azure/azure-maps/supported-languages?pivots=service-latest) for details."
+          }
+        },
+        "batchItems": {
+          "target": "com.azure.maps_search#SearchGetGeocodingBatchRequestBatchItemsList",
+          "traits": {
+            "smithy.api#documentation": "The geocoding queries to process in this batch. Each entry is one independent\nforward-geocoding request; the service returns one corresponding entry in\n`GeocodingBatchResponse.batchItems` per query, in the same order."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_search#SearchGetGeocodingBatchRequestBatchItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#GeocodingBatchRequestItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The geocoding queries to process in this batch. Each entry is one independent\nforward-geocoding request; the service returns one corresponding entry in\n`GeocodingBatchResponse.batchItems` per query, in the same order."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchRequestItem": {
+      "type": "structure",
+      "members": {
+        "optionalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An optional caller-supplied identifier echoed back on the matching response entry as\n`GeocodingBatchResponseItem.optionalId`. Useful for correlating responses to requests by a\nstable application-side identifier rather than relying on array position alone."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of geocoded results returned for this query. Defaults to 5; minimum 1,\nmaximum 20."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A free-form string describing the location to geocode, typically an address or landmark\nname. When set, the structured location fields below (`addressLine`, `locality`,\n`countryRegion`, the `adminDistrict` levels, `postalCode`) are ignored."
+          }
+        },
+        "addressLine": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The street line of the address, typically the street name and number, or any other\nofficial street-level address. Ignored when `query` is set."
+          }
+        },
+        "countryRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An [ISO 3166-1 Alpha-2 region/country\ncode](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) that scopes the search to a single\ncountry or region. For example, `\"FR\"` for France. Ignored when `query` is set."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_search#GeocodingBatchRequestItemBboxList",
+          "traits": {
+            "smithy.api#documentation": "A bounding box that scopes the search to a rectangular geographic area. Encoded as\n`[westLon, southLat, eastLon, northLat]` in WGS 84 longitude/latitude order, with each side\nranging from approximately `0.00001` degrees (~1 meter) up to the full global extent\n(`-180, -90` to `180, 90`)."
+          }
+        },
+        "view": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An [ISO 3166-1 Alpha-2 region/country\ncode](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) identifying the region whose\ngeopolitical view should be applied to disputed borders and labels in the response. Defaults\nto `\"auto\"`, which selects the view based on the request origin. See [Supported\nViews](https://aka.ms/AzureMapsLocalizationViews) for the available values."
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_search#GeocodingBatchRequestItemCoordinatesList",
+          "traits": {
+            "smithy.api#documentation": "A point on the earth, encoded as `[longitude, latitude]` in WGS 84 order, used to bias\nresults toward the user's location. When supplied, results closer to this point are\ntypically more relevant to the user."
+          }
+        },
+        "adminDistrict": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The first-order administrative subdivision (such as a state or province) supplied as a name\nor short code. For example, `\"WA\"` for Washington. Ignored when `query` is set."
+          }
+        },
+        "adminDistrict2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The second-order administrative subdivision (such as a county). For example, `\"King\"` for\nKing County. Ignored when `query` is set."
+          }
+        },
+        "adminDistrict3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The third-order administrative subdivision (such as a district, parish, or municipality),\nwhere the country, dependency, or region defines one. Ignored when `query` is set."
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The locality (city, town, or village) component of the address. For example, `\"Seattle\"`.\nIgnored when `query` is set."
+          }
+        },
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The postal code component of the address. Ignored when `query` is set."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "One geocoding query inside a `GeocodingBatchRequestBody.batchItems` array. Each item is an\nindependent forward-geocoding request equivalent to a single call to `Get Geocoding`, expressed\nas fields rather than as URL query parameters. The location can be supplied either as a\nfree-form `query` string or as the structured fields below (`addressLine`, `locality`,\n`countryRegion`, the `adminDistrict` levels, `postalCode`); these two input modes are mutually\nexclusive — when `query` is set, the structured fields are ignored."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchRequestItemCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A point on the earth, encoded as `[longitude, latitude]` in WGS 84 order, used to bias\nresults toward the user's location. When supplied, results closer to this point are\ntypically more relevant to the user."
+      }
+    },
+    "com.azure.maps_search#GeocodingBatchRequestItemBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A bounding box that scopes the search to a rectangular geographic area. Encoded as\n`[westLon, southLat, eastLon, northLat]` in WGS 84 longitude/latitude order, with each side\nranging from approximately `0.00001` degrees (~1 meter) up to the full global extent\n(`-180, -90` to `180, 90`)."
+      }
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocomplete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_search#SearchGetGeocodeAutocompleteRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_search#AutocompleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/geocode:autocomplete",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Use to get ranked list of suggested entities based on a user's location and a partial query.\n\nGiven a request with a user's location and a partial query that serves as the prefix of a full query string (referred to as a query prefix), the Azure Maps Autocomplete API returns a list of suggested entities that the user is most likely searching for. These entities are ranked from most to least likely."
+      }
+    },
+    "com.azure.maps_search#AutocompleteResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#FeatureCollectionEnum",
+          "traits": {
+            "smithy.api#documentation": "The `GeoJSON` object type of a successful `Get Autocomplete` response body. Always\n`FeatureCollection`, as defined in [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_search#AutocompleteResponseFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The array of `GeoJSON Feature` objects returned by the query. Each `Feature` represents a\nsingle autocomplete suggestion: its classification (`type`, `typeGroup`), parsed address,\nand optional place name are exposed via `properties`, and its primary coordinate via\n`geometry`."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contains the URL to fetch the next page of results if the response is paginated. This is\nuseful when the response is too large to be returned in a single call, allowing users to\nnavigate through multiple pages of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The successful response body returned by `Get Autocomplete`. Encoded as a\n[`GeoJSON FeatureCollection`](https://www.rfc-editor.org/rfc/rfc7946) whose `features`\narray contains one `Feature` per autocomplete suggestion, ranked from most to least\nlikely."
+      }
+    },
+    "com.azure.maps_search#AutocompleteResponseFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#AutocompleteFeature"
+      },
+      "traits": {
+        "smithy.api#documentation": "The array of `GeoJSON Feature` objects returned by the query. Each `Feature` represents a\nsingle autocomplete suggestion: its classification (`type`, `typeGroup`), parsed address,\nand optional place name are exposed via `properties`, and its primary coordinate via\n`geometry`."
+      }
+    },
+    "com.azure.maps_search#AutocompleteFeature": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_search#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The `GeoJSON` object type. Always `Feature`, as defined in\n[RFC 7946](https://www.rfc-editor.org/rfc/rfc7946).",
+            "smithy.api#required": {}
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_search#GeoJsonPoint",
+          "traits": {
+            "smithy.api#documentation": "The coordinate of the autocomplete suggestion as a\n[`GeoJSON Point`](https://tools.ietf.org/html/rfc7946#section-3.1.2), with values in WGS 84\nlongitude/latitude order. May be omitted when the suggestion does not resolve to a single\nrepresentative coordinate, for example, broad regional or place-name suggestions."
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_search#AutocompleteProperties",
+          "traits": {
+            "smithy.api#documentation": "Structured data about the autocomplete suggestion, including its classification, parsed\naddress, and (for `Place`-typed suggestions) the place name. See `AutocompleteProperties`\nfor the per-property shape.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A single entry in the `features` array of an `AutocompleteResponse`, conforming to the\n[`GeoJSON Feature`](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) object shape.\nRepresents one autocomplete suggestion: classification (`type`, `typeGroup`), parsed\naddress, and optional place name are exposed via `properties`, with a representative\ncoordinate on `geometry` when one is available."
+      }
+    },
+    "com.azure.maps_search#AutocompleteProperties": {
+      "type": "structure",
+      "members": {
+        "typeGroup": {
+          "target": "com.azure.maps_search#AutocompleteResultTypeGroupsEnum",
+          "traits": {
+            "smithy.api#documentation": "The broad classification of the result as either an address or a named place. See\n`AutocompleteResultTypeGroupsEnum` for the value list."
+          }
+        },
+        "type": {
+          "target": "com.azure.maps_search#AutocompleteResultTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The specific entity kind that the result resolves to. For example, an address, a populated\nplace, a park, or a landmark. See `AutocompleteResultTypeEnum` for the full value list,\npartitioned into the `Address` and `Place` groups by `AutocompleteResultTypeGroupsEnum`."
+          }
+        },
+        "address": {
+          "target": "com.azure.maps_search#Address",
+          "traits": {
+            "smithy.api#documentation": "The address of the autocomplete result, parsed into structured fields. `Address`-typed\nresults typically include street-level detail; `Place`-typed results carry locality,\nadministrative districts, and country/region (street-level fields are usually omitted)."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the suggested place. Populated for `Place`-typed results when the name\nis not already represented in the structured `address` (for example, parks, landmarks, or\nother named features). Omitted for `Address`-typed results and for `Place`-typed results\nwhose name is already included in `address` (such as a populated place whose name appears in\n`address.locality`)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The `properties` payload of an `AutocompleteFeature`. Carries the result's classification\n(`typeGroup`, `type`), its parsed address, and (for many `Place`-typed results) a separate\ndisplay name."
+      }
+    },
+    "com.azure.maps_search#AutocompleteResultTypeEnum": {
+      "type": "enum",
+      "members": {
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Address"
+          }
+        },
+        "ADMINDIVISION1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision1"
+          }
+        },
+        "ADMINDIVISION2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision2"
+          }
+        },
+        "ADMINDIVISION3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision3"
+          }
+        },
+        "ADMINISTRATIVEBUILDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdministrativeBuilding"
+          }
+        },
+        "AIRPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Airport"
+          }
+        },
+        "AIRPORTTERMINAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AirportTerminal"
+          }
+        },
+        "AMUSEMENTPARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AmusementPark"
+          }
+        },
+        "ANCIENTSITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AncientSite"
+          }
+        },
+        "AQUARIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Aquarium"
+          }
+        },
+        "ARCHIPELAGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Archipelago"
+          }
+        },
+        "BASIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basin"
+          }
+        },
+        "BATTLEFIELD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Battlefield"
+          }
+        },
+        "BAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bay"
+          }
+        },
+        "BEACH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Beach"
+          }
+        },
+        "BRIDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bridge"
+          }
+        },
+        "BUSINESSSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BusinessStructure"
+          }
+        },
+        "CAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Camp"
+          }
+        },
+        "CANAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canal"
+          }
+        },
+        "CASINO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Casino"
+          }
+        },
+        "CASTLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Castle"
+          }
+        },
+        "CAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cave"
+          }
+        },
+        "CEMETERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cemetery"
+          }
+        },
+        "CHANNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Channel"
+          }
+        },
+        "CHURCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Church"
+          }
+        },
+        "CLIFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cliff"
+          }
+        },
+        "COAST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Coast"
+          }
+        },
+        "COMMUNITYCENTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CommunityCenter"
+          }
+        },
+        "CONTINENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Continent"
+          }
+        },
+        "COUNTRYREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CountryRegion"
+          }
+        },
+        "CRATER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Crater"
+          }
+        },
+        "CULTURALREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CulturalRegion"
+          }
+        },
+        "DAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dam"
+          }
+        },
+        "DELTA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delta"
+          }
+        },
+        "DESERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Desert"
+          }
+        },
+        "DRAINAGEBASIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DrainageBasin"
+          }
+        },
+        "DUNE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dune"
+          }
+        },
+        "FACILITYSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FacilityStructure"
+          }
+        },
+        "FERRYTERMINAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FerryTerminal"
+          }
+        },
+        "FINANCIALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinancialStructure"
+          }
+        },
+        "FIRESTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FireStation"
+          }
+        },
+        "FOREST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Forest"
+          }
+        },
+        "FORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fort"
+          }
+        },
+        "GARDEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Garden"
+          }
+        },
+        "GEYSER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Geyser"
+          }
+        },
+        "GLACIER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Glacier"
+          }
+        },
+        "GOLFCOURSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GolfCourse"
+          }
+        },
+        "GREATERPOPULATEDPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GreaterPopulatedPlace"
+          }
+        },
+        "HIGHEREDUCATIONFACILITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HigherEducationFacility"
+          }
+        },
+        "HISTORICALSITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HistoricalSite"
+          }
+        },
+        "HOSPITAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hospital"
+          }
+        },
+        "HOTSPRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HotSpring"
+          }
+        },
+        "ICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ice"
+          }
+        },
+        "INDIGENOUSPEOPLESRESERVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IndigenousPeoplesReserve"
+          }
+        },
+        "INDUSTRIALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IndustrialStructure"
+          }
+        },
+        "ISLAND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Island"
+          }
+        },
+        "ISTHMUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Isthmus"
+          }
+        },
+        "LAKE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lake"
+          }
+        },
+        "LANDAREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LandArea"
+          }
+        },
+        "LANDFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Landform"
+          }
+        },
+        "LANDMARKBUILDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LandmarkBuilding"
+          }
+        },
+        "LIBRARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Library"
+          }
+        },
+        "LIGHTHOUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lighthouse"
+          }
+        },
+        "MARINA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Marina"
+          }
+        },
+        "MARKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Market"
+          }
+        },
+        "MEDICALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MedicalStructure"
+          }
+        },
+        "METROSTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MetroStation"
+          }
+        },
+        "MILITARYBASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MilitaryBase"
+          }
+        },
+        "MISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mission"
+          }
+        },
+        "MONUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Monument"
+          }
+        },
+        "MOSQUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mosque"
+          }
+        },
+        "MOUNTAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mountain"
+          }
+        },
+        "MOUNTAINRANGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MountainRange"
+          }
+        },
+        "MULTIMODALSTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiModalStation"
+          }
+        },
+        "MUSEUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Museum"
+          }
+        },
+        "NAUTICALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NauticalStructure"
+          }
+        },
+        "NEIGHBORHOOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Neighborhood"
+          }
+        },
+        "OASIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Oasis"
+          }
+        },
+        "OBSERVATIONPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ObservationPoint"
+          }
+        },
+        "OCEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ocean"
+          }
+        },
+        "OFFICEBUILDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OfficeBuilding"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Other"
+          }
+        },
+        "PARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Park"
+          }
+        },
+        "PARKINGSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ParkingStructure"
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pass"
+          }
+        },
+        "PENINSULA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Peninsula"
+          }
+        },
+        "PLAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Plain"
+          }
+        },
+        "PLANET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Planet"
+          }
+        },
+        "PLATEAU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Plateau"
+          }
+        },
+        "PLAYGROUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Playground"
+          }
+        },
+        "PLAYINGFIELD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PlayingField"
+          }
+        },
+        "POLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pole"
+          }
+        },
+        "POLITICALUNIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PoliticalUnit"
+          }
+        },
+        "POPULATEDPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PopulatedPlace"
+          }
+        },
+        "PORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Port"
+          }
+        },
+        "POSTCODE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Postcode1"
+          }
+        },
+        "PROMONTORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Promontory"
+          }
+        },
+        "RACETRACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RaceTrack"
+          }
+        },
+        "RAILWAYSTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RailwayStation"
+          }
+        },
+        "REEF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reef"
+          }
+        },
+        "RELIGIOUSSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReligiousStructure"
+          }
+        },
+        "RESERVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reserve"
+          }
+        },
+        "RESIDENTIALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResidentialStructure"
+          }
+        },
+        "RIVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "River"
+          }
+        },
+        "ROADBLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RoadBlock"
+          }
+        },
+        "RUIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ruin"
+          }
+        },
+        "SCIENTIFICRESEARCHBASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ScientificResearchBase"
+          }
+        },
+        "SEA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Sea"
+          }
+        },
+        "SEAPLANELANDINGAREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SeaplaneLandingArea"
+          }
+        },
+        "SHRINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Shrine"
+          }
+        },
+        "SKIAREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SkiArea"
+          }
+        },
+        "SPRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Spring"
+          }
+        },
+        "STADIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Stadium"
+          }
+        },
+        "STATISTICALDISTRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StatisticalDistrict"
+          }
+        },
+        "TEMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Temple"
+          }
+        },
+        "THEATER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Theater"
+          }
+        },
+        "TOURISTRAILWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TouristRailway"
+          }
+        },
+        "TOURISTSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TouristStructure"
+          }
+        },
+        "TRAILHEAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Trailhead"
+          }
+        },
+        "TRANSPORTATIONSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TransportationStructure"
+          }
+        },
+        "TUNNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tunnel"
+          }
+        },
+        "VALLEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Valley"
+          }
+        },
+        "VOLCANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Volcano"
+          }
+        },
+        "WALKWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Walkway"
+          }
+        },
+        "WALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wall"
+          }
+        },
+        "WATERFALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Waterfall"
+          }
+        },
+        "WATERFEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WaterFeature"
+          }
+        },
+        "WETLAND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wetland"
+          }
+        },
+        "WINERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Winery"
+          }
+        },
+        "ZOO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Zoo"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A classification of autocomplete suggestions used by `Get Autocomplete` both as an input\nfilter (via the `resultTypes` query parameter) and as an output label (via the `type`\nfield on each `AutocompleteProperties`). The members define a gazetteer-style taxonomy\nspanning addresses, road segments, administrative regions, populated places, natural\nfeatures, and points of interest. This taxonomy is partitioned into two broader groups\nby `AutocompleteResultTypeGroupsEnum`: `Address`, which covers addresses and road\nsegments; and `Place`, which covers all other result types."
+      }
+    },
+    "com.azure.maps_search#AutocompleteResultTypeGroupsEnum": {
+      "type": "enum",
+      "members": {
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Address"
+          }
+        },
+        "PLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Place"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A coarse classification of an autocomplete suggestion into one of two groups. Used by\n`Get Autocomplete` both as an input filter via the `resultTypeGroups` query parameter\n(restricting which kinds of suggestions are returned) and as an output classifier via\nthe `typeGroup` field on each `AutocompleteProperties` (identifying which group a\nreturned suggestion belongs to). The `Address` group covers individual addresses and\nstreet segments; the `Place` group covers all other entity types (administrative\nregions, populated places, natural features, and points of interest)."
+      }
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocompleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Required. The user's query prefix.\n\nExample: \"1 Micro\" or \"Muir Woods\"."
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestCoordinatesList",
+          "traits": {
+            "smithy.api#httpQuery": "coordinates",
+            "smithy.api#documentation": "Required when `bbox` is not provided. A point on the earth specified as a longitude and latitude. When you specify this parameter, the user's location is taken into account and the results returned may be more relevant to the user. Example: &coordinates=lon,lat\n\n**Note:** `coordinates` becomes a secondary signal if `bbox` is provided."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestBboxList",
+          "traits": {
+            "smithy.api#httpQuery": "bbox",
+            "smithy.api#documentation": "Required when `coordinates` is not provided. A rectangular area on the earth defined as a bounding box object. The sides of the rectangle are defined by longitude and latitude values. When you specify this parameter, the geographical area is taken into account when computing the results of a location query.\n\nExample: lon1,lat1,lon2,lat2.\n\nMinimum size approximately 0.00001 degrees (~1.1 meters)\n\nMaximum size: up to the full global extent (-180,-90 to 180,90)"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "Maximum number of responses that will be returned. Default: 5, minimum: 1 and maximum: 20."
+          }
+        },
+        "resultTypeGroups": {
+          "target": "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypeGroupsList",
+          "traits": {
+            "smithy.api#httpQuery": "resultTypeGroups",
+            "smithy.api#documentation": "A comma separated list of returned entity type groups. The possible values are\n\n- Address\n- Place"
+          }
+        },
+        "resultTypes": {
+          "target": "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypesList",
+          "traits": {
+            "smithy.api#httpQuery": "resultTypes",
+            "smithy.api#documentation": "A comma separated list of returned entity types. When type group is set to Address, the supported types are:\n\n- Address\n- RoadBlock\n\nAll other types belong to the Place type group. These may include entities such as AdminDivision1, Neighborhood, PopulatedPlace, and more. Default value is all possible entity types."
+          }
+        },
+        "view": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "view",
+            "smithy.api#documentation": "A string that represents an [ISO 3166-1 Alpha-2 region/country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). This will alter Geopolitical disputed borders and labels to align with the specified user region. By default, the View parameter is set to \"Auto\" even if you haven't defined it in the request.\n\nPlease refer to [Supported Views](https://aka.ms/AzureMapsLocalizationViews) for details and to see the available Views."
+          }
+        },
+        "countryRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "countryRegion",
+            "smithy.api#documentation": "Signal for the autocomplete result to an [ISO 3166-1 Alpha-2 region/country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) that is specified e.g. FR. Only results in the specified country/region will be returned."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Specifies which account is intended for usage in conjunction with the Azure AD security model.  It represents a unique ID for the Azure Maps account and can be retrieved from the Azure Maps management plane Account API. For more information on using Microsoft Entra ID security in Azure Maps, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which search results should be returned.\n\nPlease refer to [Supported Languages](/azure/azure-maps/supported-languages?pivots=service-latest) for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypesItem"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypesItem": {
+      "type": "enum",
+      "members": {
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Address"
+          }
+        },
+        "ADMINDIVISION1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision1"
+          }
+        },
+        "ADMINDIVISION2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision2"
+          }
+        },
+        "ADMINDIVISION3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdminDivision3"
+          }
+        },
+        "ADMINISTRATIVEBUILDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AdministrativeBuilding"
+          }
+        },
+        "AIRPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Airport"
+          }
+        },
+        "AIRPORTTERMINAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AirportTerminal"
+          }
+        },
+        "AMUSEMENTPARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AmusementPark"
+          }
+        },
+        "ANCIENTSITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AncientSite"
+          }
+        },
+        "AQUARIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Aquarium"
+          }
+        },
+        "ARCHIPELAGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Archipelago"
+          }
+        },
+        "BASIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basin"
+          }
+        },
+        "BATTLEFIELD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Battlefield"
+          }
+        },
+        "BAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bay"
+          }
+        },
+        "BEACH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Beach"
+          }
+        },
+        "BRIDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bridge"
+          }
+        },
+        "BUSINESSSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BusinessStructure"
+          }
+        },
+        "CAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Camp"
+          }
+        },
+        "CANAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canal"
+          }
+        },
+        "CASINO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Casino"
+          }
+        },
+        "CASTLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Castle"
+          }
+        },
+        "CAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cave"
+          }
+        },
+        "CEMETERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cemetery"
+          }
+        },
+        "CHANNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Channel"
+          }
+        },
+        "CHURCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Church"
+          }
+        },
+        "CLIFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cliff"
+          }
+        },
+        "COAST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Coast"
+          }
+        },
+        "COMMUNITYCENTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CommunityCenter"
+          }
+        },
+        "CONTINENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Continent"
+          }
+        },
+        "COUNTRYREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CountryRegion"
+          }
+        },
+        "CRATER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Crater"
+          }
+        },
+        "CULTURALREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CulturalRegion"
+          }
+        },
+        "DAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dam"
+          }
+        },
+        "DELTA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delta"
+          }
+        },
+        "DESERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Desert"
+          }
+        },
+        "DRAINAGEBASIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DrainageBasin"
+          }
+        },
+        "DUNE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dune"
+          }
+        },
+        "FACILITYSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FacilityStructure"
+          }
+        },
+        "FERRYTERMINAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FerryTerminal"
+          }
+        },
+        "FINANCIALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FinancialStructure"
+          }
+        },
+        "FIRESTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FireStation"
+          }
+        },
+        "FOREST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Forest"
+          }
+        },
+        "FORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fort"
+          }
+        },
+        "GARDEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Garden"
+          }
+        },
+        "GEYSER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Geyser"
+          }
+        },
+        "GLACIER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Glacier"
+          }
+        },
+        "GOLFCOURSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GolfCourse"
+          }
+        },
+        "GREATERPOPULATEDPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GreaterPopulatedPlace"
+          }
+        },
+        "HIGHEREDUCATIONFACILITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HigherEducationFacility"
+          }
+        },
+        "HISTORICALSITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HistoricalSite"
+          }
+        },
+        "HOSPITAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hospital"
+          }
+        },
+        "HOTSPRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HotSpring"
+          }
+        },
+        "ICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ice"
+          }
+        },
+        "INDIGENOUSPEOPLESRESERVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IndigenousPeoplesReserve"
+          }
+        },
+        "INDUSTRIALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IndustrialStructure"
+          }
+        },
+        "ISLAND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Island"
+          }
+        },
+        "ISTHMUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Isthmus"
+          }
+        },
+        "LAKE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lake"
+          }
+        },
+        "LANDAREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LandArea"
+          }
+        },
+        "LANDFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Landform"
+          }
+        },
+        "LANDMARKBUILDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LandmarkBuilding"
+          }
+        },
+        "LIBRARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Library"
+          }
+        },
+        "LIGHTHOUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lighthouse"
+          }
+        },
+        "MARINA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Marina"
+          }
+        },
+        "MARKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Market"
+          }
+        },
+        "MEDICALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MedicalStructure"
+          }
+        },
+        "METROSTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MetroStation"
+          }
+        },
+        "MILITARYBASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MilitaryBase"
+          }
+        },
+        "MISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mission"
+          }
+        },
+        "MONUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Monument"
+          }
+        },
+        "MOSQUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mosque"
+          }
+        },
+        "MOUNTAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mountain"
+          }
+        },
+        "MOUNTAINRANGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MountainRange"
+          }
+        },
+        "MULTIMODALSTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiModalStation"
+          }
+        },
+        "MUSEUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Museum"
+          }
+        },
+        "NAUTICALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NauticalStructure"
+          }
+        },
+        "NEIGHBORHOOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Neighborhood"
+          }
+        },
+        "OASIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Oasis"
+          }
+        },
+        "OBSERVATIONPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ObservationPoint"
+          }
+        },
+        "OCEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ocean"
+          }
+        },
+        "OFFICEBUILDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OfficeBuilding"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Other"
+          }
+        },
+        "PARK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Park"
+          }
+        },
+        "PARKINGSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ParkingStructure"
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pass"
+          }
+        },
+        "PENINSULA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Peninsula"
+          }
+        },
+        "PLAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Plain"
+          }
+        },
+        "PLANET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Planet"
+          }
+        },
+        "PLATEAU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Plateau"
+          }
+        },
+        "PLAYGROUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Playground"
+          }
+        },
+        "PLAYINGFIELD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PlayingField"
+          }
+        },
+        "POLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pole"
+          }
+        },
+        "POLITICALUNIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PoliticalUnit"
+          }
+        },
+        "POPULATEDPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PopulatedPlace"
+          }
+        },
+        "PORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Port"
+          }
+        },
+        "POSTCODE1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Postcode1"
+          }
+        },
+        "PROMONTORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Promontory"
+          }
+        },
+        "RACETRACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RaceTrack"
+          }
+        },
+        "RAILWAYSTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RailwayStation"
+          }
+        },
+        "REEF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reef"
+          }
+        },
+        "RELIGIOUSSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReligiousStructure"
+          }
+        },
+        "RESERVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reserve"
+          }
+        },
+        "RESIDENTIALSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResidentialStructure"
+          }
+        },
+        "RIVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "River"
+          }
+        },
+        "ROADBLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RoadBlock"
+          }
+        },
+        "RUIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ruin"
+          }
+        },
+        "SCIENTIFICRESEARCHBASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ScientificResearchBase"
+          }
+        },
+        "SEA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Sea"
+          }
+        },
+        "SEAPLANELANDINGAREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SeaplaneLandingArea"
+          }
+        },
+        "SHRINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Shrine"
+          }
+        },
+        "SKIAREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SkiArea"
+          }
+        },
+        "SPRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Spring"
+          }
+        },
+        "STADIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Stadium"
+          }
+        },
+        "STATISTICALDISTRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StatisticalDistrict"
+          }
+        },
+        "TEMPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Temple"
+          }
+        },
+        "THEATER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Theater"
+          }
+        },
+        "TOURISTRAILWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TouristRailway"
+          }
+        },
+        "TOURISTSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TouristStructure"
+          }
+        },
+        "TRAILHEAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Trailhead"
+          }
+        },
+        "TRANSPORTATIONSTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TransportationStructure"
+          }
+        },
+        "TUNNEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tunnel"
+          }
+        },
+        "VALLEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Valley"
+          }
+        },
+        "VOLCANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Volcano"
+          }
+        },
+        "WALKWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Walkway"
+          }
+        },
+        "WALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wall"
+          }
+        },
+        "WATERFALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Waterfall"
+          }
+        },
+        "WATERFEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WaterFeature"
+          }
+        },
+        "WETLAND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wetland"
+          }
+        },
+        "WINERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Winery"
+          }
+        },
+        "ZOO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Zoo"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypeGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypeGroupsItem"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestResultTypeGroupsItem": {
+      "type": "enum",
+      "members": {
+        "ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Address"
+          }
+        },
+        "PLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Place"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocodeAutocompleteRequestCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocoding": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_search#SearchGetGeocodingRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_search#GeocodingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/geocode",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2026-01-01"
+        },
+        "smithy.api#documentation": "Use to get longitude and latitude coordinates of a street address or name of a place.\n\nThe `Get Geocoding` API is an HTTP `GET` request that returns the longitude and latitude coordinates of the location being searched.\n\nIn many cases, the complete search service might be too much, for instance if you are only interested in traditional geocoding. Search can also be accessed for address look up exclusively. The geocoding is performed by hitting the geocoding endpoint with just the address or partial address in question. The geocoding search index will be queried for everything above the street level data. No Point of Interest (POIs) will be returned. Note that the geocoder is very tolerant of typos and incomplete addresses. It will also handle everything from exact street addresses or street or intersections as well as higher level geographies such as city centers, counties and states. The response also returns detailed address properties such as street, postal code, municipality, and country/region information."
+      }
+    },
+    "com.azure.maps_search#SearchGetGeocodingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "Maximum number of responses that will be returned. Default: 5, minimum: 1 and maximum: 20."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#documentation": "A string that contains information about a location, such as an address or landmark name."
+          }
+        },
+        "addressLine": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "addressLine",
+            "smithy.api#documentation": "The official street line of an address relative to the area, as specified by the locality, or postalCode, properties. Typical use of this element would be to provide a street address or any official address.\n\nThis parameter should not be used when the `query` parameter is included in the request."
+          }
+        },
+        "countryRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "countryRegion",
+            "smithy.api#documentation": "Signal for the geocoding result to an [ISO 3166-1 Alpha-2 region/country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) that is specified e.g. FR.\n\nThis parameter should not be used when the `query` parameter is included in the request."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_search#SearchGetGeocodingRequestBboxList",
+          "traits": {
+            "smithy.api#httpQuery": "bbox",
+            "smithy.api#documentation": "A rectangular area on the earth defined as a bounding box object. The sides of the rectangle are defined by longitude and latitude values. When you specify this parameter, the geographical area is taken into account when computing the results of a location query.\n\nExample: lon1,lat1,lon2,lat2.\n\nMinimum size approximately 0.00001 degrees (~1.1 meters)\n\nMaximum size: up to the full global extent (-180,-90 to 180,90)"
+          }
+        },
+        "view": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "view",
+            "smithy.api#documentation": "A string that represents an [ISO 3166-1 Alpha-2 region/country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). This will alter Geopolitical disputed borders and labels to align with the specified user region. By default, the View parameter is set to \"Auto\" even if you haven't defined it in the request.\n\nPlease refer to [Supported Views](https://aka.ms/AzureMapsLocalizationViews) for details and to see the available Views."
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_search#SearchGetGeocodingRequestCoordinatesList",
+          "traits": {
+            "smithy.api#httpQuery": "coordinates",
+            "smithy.api#documentation": "A point on the earth specified as a longitude and latitude. When you specify this parameter, the user's location is taken into account and the results returned may be more relevant to the user. Example: &coordinates=lon,lat"
+          }
+        },
+        "adminDistrict": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "adminDistrict",
+            "smithy.api#documentation": "The country subdivision portion of an address, such as WA.\n\nThis parameter should not be used when the `query` parameter is included in the request."
+          }
+        },
+        "adminDistrict2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "adminDistrict2",
+            "smithy.api#documentation": "The county for the structured address, such as King.\n\nThis parameter should not be used when the `query` parameter is included in the request."
+          }
+        },
+        "adminDistrict3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "adminDistrict3",
+            "smithy.api#documentation": "The named area for the structured address.\n\nThis parameter should not be used when the `query` parameter is included in the request."
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "locality",
+            "smithy.api#documentation": "The locality portion of an address, such as Seattle.\n\nThis parameter should not be used when the `query` parameter is included in the request."
+          }
+        },
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "postalCode",
+            "smithy.api#documentation": "The postal code portion of an address.\n\nThis parameter should not be used when the `query` parameter is included in the request."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which search results should be returned.\n\nPlease refer to [Supported Languages](/azure/azure-maps/supported-languages?pivots=service-latest) for details."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Specifies which account is intended for usage in conjunction with the Azure AD security model.  It represents a unique ID for the Azure Maps account and can be retrieved from the Azure Maps management plane Account API. For more information on using Microsoft Entra ID security in Azure Maps, see [Manage authentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_search#SearchGetGeocodingRequestCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#SearchGetGeocodingRequestBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_search#MapsSearch": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.maps_search#SearchGetPolygon"
+        },
+        {
+          "target": "com.azure.maps_search#SearchGetReverseGeocodingBatch"
+        },
+        {
+          "target": "com.azure.maps_search#SearchGetReverseGeocoding"
+        },
+        {
+          "target": "com.azure.maps_search#SearchGetGeocodingBatch"
+        },
+        {
+          "target": "com.azure.maps_search#SearchGetGeocodeAutocomplete"
+        },
+        {
+          "target": "com.azure.maps_search#SearchGetGeocoding"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Search data plane",
+        "smithy.api#documentation": "Azure maps data plane — maps/data-plane/Search (latest stable api-version 2026-01-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true,
+              "default": "https://atlas.microsoft.com"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://atlas.microsoft.com/.default"
+      }
+    }
+  }
+}

@@ -1,0 +1,683 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#DomainDnsRecord": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.domainDnsRecords#DomainDnsRecord"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecordResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domainDnsRecords",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from domainDnsRecords",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#CreateDomainDnsRecordRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#CreateDomainDnsRecordResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#CreateDomainDnsRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domainDnsRecords#CreateDomainDnsRecordRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domainDnsRecords#CreateDomainDnsRecordResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/domainDnsRecords",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to domainDnsRecords"
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordRequest": {
+      "type": "structure",
+      "members": {
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecordResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domainDnsRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from domainDnsRecords by key"
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#UpdateDomainDnsRecordRequest": {
+      "type": "structure",
+      "members": {
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#UpdateDomainDnsRecordResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "isOptional": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value used when configuring the name of the DNS record at the DNS host."
+          }
+        },
+        "recordType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates what type of DNS record this entity represents. The value can be CName, Mx, Srv, or Txt.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Online Service or feature that has a dependency on this DNS record. Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#UpdateDomainDnsRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domainDnsRecords#UpdateDomainDnsRecordRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.domainDnsRecords#UpdateDomainDnsRecordResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/domainDnsRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in domainDnsRecords"
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#DeleteDomainDnsRecordRequest": {
+      "type": "structure",
+      "members": {
+        "domainDnsRecordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of domainDnsRecord"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#DeleteDomainDnsRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domainDnsRecords#DeleteDomainDnsRecordRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/domainDnsRecords/{domainDnsRecordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from domainDnsRecords"
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.domainDnsRecords#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domainDnsRecords/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.domainDnsRecords#DomainDnsRecords": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.domainDnsRecords#ListDomainDnsRecord"
+        },
+        {
+          "target": "com.microsoft.graph.domainDnsRecords#CreateDomainDnsRecord"
+        },
+        {
+          "target": "com.microsoft.graph.domainDnsRecords#GetDomainDnsRecord"
+        },
+        {
+          "target": "com.microsoft.graph.domainDnsRecords#UpdateDomainDnsRecord"
+        },
+        {
+          "target": "com.microsoft.graph.domainDnsRecords#DeleteDomainDnsRecord"
+        },
+        {
+          "target": "com.microsoft.graph.domainDnsRecords#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

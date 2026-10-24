@@ -1,0 +1,482 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.schemaregistry_data#GetSchemaById": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.schemaregistry_data#GetSchemaByIdRequest"
+      },
+      "output": {
+        "target": "com.azure.schemaregistry_data#GetSchemaByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/$schemaGroups/$schemas/{id}",
+          "code": 200,
+          "host": "https://{fullyQualifiedNamespace}",
+          "apiVersion": "2023-07-01"
+        },
+        "smithy.api#documentation": "Get a registered schema by its unique ID reference.\n\nGets a registered schema by its unique ID.  Azure Schema Registry guarantees that ID is unique within a namespace. Operation response type is based on serialization of schema requested."
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaByIdResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaByIdRequest": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Schema Registry service endpoint, for example 'my-namespace.servicebus.windows.net'.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Schema ID that uniquely identifies a schema in the registry namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaByVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.schemaregistry_data#GetSchemaByVersionRequest"
+      },
+      "output": {
+        "target": "com.azure.schemaregistry_data#GetSchemaByVersionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/$schemaGroups/{groupName}/schemas/{schemaName}/versions/{schemaVersion}",
+          "code": 200,
+          "host": "https://{fullyQualifiedNamespace}",
+          "apiVersion": "2023-07-01"
+        },
+        "smithy.api#documentation": "Get specific schema versions.\n\nGets one specific version of one schema."
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaByVersionResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaByVersionRequest": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Schema Registry service endpoint, for example 'my-namespace.servicebus.windows.net'.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "groupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema group."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema."
+          }
+        },
+        "schemaVersion": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Version number of specific schema."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.schemaregistry_data#ListSchemaVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.schemaregistry_data#ListSchemaVersionsRequest"
+      },
+      "output": {
+        "target": "com.azure.schemaregistry_data#SchemaVersions"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/$schemaGroups/{groupName}/schemas/{schemaName}/versions",
+          "code": 200,
+          "host": "https://{fullyQualifiedNamespace}",
+          "apiVersion": "2023-07-01"
+        },
+        "smithy.api#documentation": "List schema versions.\n\nGets the list of all versions of one schema."
+      }
+    },
+    "com.azure.schemaregistry_data#SchemaVersions": {
+      "type": "structure",
+      "members": {
+        "Value": {
+          "target": "com.azure.schemaregistry_data#SchemaVersionsValueList",
+          "traits": {
+            "smithy.api#documentation": "The collection of schema version pageable items.",
+            "smithy.api#required": {}
+          }
+        },
+        "NextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of schema versions with server paging support."
+      }
+    },
+    "com.azure.schemaregistry_data#SchemaVersionsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of schema version pageable items."
+      }
+    },
+    "com.azure.schemaregistry_data#ListSchemaVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Schema Registry service endpoint, for example 'my-namespace.servicebus.windows.net'.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "groupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema group."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.schemaregistry_data#RegisterSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.schemaregistry_data#RegisterSchemaRequest"
+      },
+      "output": {
+        "target": "com.azure.schemaregistry_data#RegisterSchemaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/$schemaGroups/{groupName}/schemas/{schemaName}",
+          "code": 200,
+          "host": "https://{fullyQualifiedNamespace}",
+          "apiVersion": "2023-07-01"
+        },
+        "smithy.api#documentation": "Register new schema\n\nRegister new schema. If schema of specified name does not exist in specified group, schema is created at version 1. If schema of specified name exists already in specified group, schema is created at latest version + 1."
+      }
+    },
+    "com.azure.schemaregistry_data#RegisterSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "URL location of schema, identified by schema group, schema name, and version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.schemaregistry_data#RegisterSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Schema Registry service endpoint, for example 'my-namespace.servicebus.windows.net'.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "groupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema group."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaPropertiesByContent": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.schemaregistry_data#GetSchemaPropertiesByContentRequest"
+      },
+      "output": {
+        "target": "com.azure.schemaregistry_data#GetSchemaPropertiesByContentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/$schemaGroups/{groupName}/schemas/{schemaName}:get-id",
+          "code": 200,
+          "host": "https://{fullyQualifiedNamespace}",
+          "apiVersion": "2023-07-01"
+        },
+        "smithy.api#documentation": "Get properties for existing schema.\n\nGets the properties referencing an existing schema within the specified schema group, as matched by schema content comparison."
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaPropertiesByContentResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "URL location of schema, identified by schema group, schema name, and version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.schemaregistry_data#GetSchemaPropertiesByContentRequest": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Schema Registry service endpoint, for example 'my-namespace.servicebus.windows.net'.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "groupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema group."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of schema."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.schemaregistry_data#ListSchemaGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.schemaregistry_data#ListSchemaGroupsRequest"
+      },
+      "output": {
+        "target": "com.azure.schemaregistry_data#SchemaGroups"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/$schemaGroups",
+          "code": 200,
+          "host": "https://{fullyQualifiedNamespace}",
+          "apiVersion": "2023-07-01"
+        },
+        "smithy.api#documentation": "Get list of schema groups.\n\nGets the list of schema groups user is authorized to access."
+      }
+    },
+    "com.azure.schemaregistry_data#SchemaGroups": {
+      "type": "structure",
+      "members": {
+        "Value": {
+          "target": "com.azure.schemaregistry_data#SchemaGroupsValueList",
+          "traits": {
+            "smithy.api#documentation": "The collection of pageable schema group name items.",
+            "smithy.api#required": {}
+          }
+        },
+        "NextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of schema group names with server paging support."
+      }
+    },
+    "com.azure.schemaregistry_data#SchemaGroupsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of pageable schema group name items."
+      }
+    },
+    "com.azure.schemaregistry_data#ListSchemaGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedNamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Schema Registry service endpoint, for example 'my-namespace.servicebus.windows.net'.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.schemaregistry_data#SchemaregistryData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.schemaregistry_data#GetSchemaById"
+        },
+        {
+          "target": "com.azure.schemaregistry_data#GetSchemaByVersion"
+        },
+        {
+          "target": "com.azure.schemaregistry_data#ListSchemaVersions"
+        },
+        {
+          "target": "com.azure.schemaregistry_data#RegisterSchema"
+        },
+        {
+          "target": "com.azure.schemaregistry_data#GetSchemaPropertiesByContent"
+        },
+        {
+          "target": "com.azure.schemaregistry_data#ListSchemaGroups"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure SchemaRegistry data plane",
+        "smithy.api#documentation": "Azure schemaregistry data plane — schemaregistry/data-plane/SchemaRegistry (latest stable api-version 2023-07-01).",
+        "com.azure.protocols#host": {
+          "template": "https://{fullyQualifiedNamespace}",
+          "parameters": [
+            {
+              "name": "fullyQualifiedNamespace"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://eventhubs.azure.net/.default"
+      }
+    }
+  }
+}

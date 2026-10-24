@@ -1,0 +1,3101 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaults": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaults",
+      "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequest": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequestModelDeploymentsMap": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequestModelDeploymentsMap",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetDefaults": "com.azure.ai_content_understanding#GetContentAnalyzerDefaults",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetDefaultsRequest": "com.azure.ai_content_understanding#GetContentAnalyzerDefaultsRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatus": "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatus",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatusRequest": "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatusRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersCopy": "com.azure.ai_content_understanding#CopyContentAnalyzer",
+      "com.azure.ai_content_understanding#ContentAnalyzersCopyResponse": "com.azure.ai_content_understanding#CopyContentAnalyzerResponse",
+      "com.azure.ai_content_understanding#ContentAnalyzersCopyRequest": "com.azure.ai_content_understanding#CopyContentAnalyzerRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersDelete": "com.azure.ai_content_understanding#DeleteContentAnalyzer",
+      "com.azure.ai_content_understanding#ContentAnalyzersDeleteRequest": "com.azure.ai_content_understanding#DeleteContentAnalyzerRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersUpdate": "com.azure.ai_content_understanding#UpdateContentAnalyzer",
+      "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequest": "com.azure.ai_content_understanding#UpdateContentAnalyzerRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequestTagsMap": "com.azure.ai_content_understanding#UpdateContentAnalyzerRequestTagsMap",
+      "com.azure.ai_content_understanding#ContentAnalyzersGet": "com.azure.ai_content_understanding#GetContentAnalyzer",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetRequest": "com.azure.ai_content_understanding#GetContentAnalyzerRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersList": "com.azure.ai_content_understanding#ListContentAnalyzers",
+      "com.azure.ai_content_understanding#ContentAnalyzersListRequest": "com.azure.ai_content_understanding#ListContentAnalyzersRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetResultFile": "com.azure.ai_content_understanding#GetContentAnalyzerResultFile",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileResponse": "com.azure.ai_content_understanding#GetContentAnalyzerResultFileResponse",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileRequest": "com.azure.ai_content_understanding#GetContentAnalyzerResultFileRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersDeleteResult": "com.azure.ai_content_understanding#DeleteContentAnalyzerResult",
+      "com.azure.ai_content_understanding#ContentAnalyzersDeleteResultRequest": "com.azure.ai_content_understanding#DeleteContentAnalyzerResultRequest",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetResult": "com.azure.ai_content_understanding#GetContentAnalyzerResult",
+      "com.azure.ai_content_understanding#ContentAnalyzersGetResultRequest": "com.azure.ai_content_understanding#GetContentAnalyzerResultRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaults": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentUnderstandingDefaults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/defaults",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Update default settings for this Content Understanding resource."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentUnderstandingDefaults": {
+      "type": "structure",
+      "members": {
+        "modelDeployments": {
+          "target": "com.azure.ai_content_understanding#ContentUnderstandingDefaultsModelDeploymentsMap",
+          "traits": {
+            "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Default settings for this Content Understanding resource."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentUnderstandingDefaultsModelDeploymentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "modelDeployments": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequestModelDeploymentsMap",
+          "traits": {
+            "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequestModelDeploymentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetDefaults": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetDefaultsRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentUnderstandingDefaults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/defaults",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Return default settings for this Content Understanding resource."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetDefaultsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzerOperationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/analyzers/{analyzerId}/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Get the status of an analyzer creation operation."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerOperationStatus": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.ai_content_understanding#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "The status of the operation",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.ai_content_understanding#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is \"Failed\"."
+          }
+        },
+        "result": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzer",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation."
+          }
+        },
+        "usage": {
+          "target": "com.azure.ai_content_understanding#UsageDetails",
+          "traits": {
+            "smithy.api#documentation": "Usage details of the analyzer creation operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provides status details for analyzer creation operations."
+      }
+    },
+    "com.azure.ai_content_understanding#UsageDetails": {
+      "type": "structure",
+      "members": {
+        "documentPagesMinimal": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of document pages processed at the minimal level.\nFor documents without explicit pages (ex. txt, html), every 3000 UTF-16 characters is counted as one page."
+          }
+        },
+        "documentPagesBasic": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of document pages processed at the basic level.\nFor documents without explicit pages (ex. txt, html), every 3000 UTF-16 characters is counted as one page."
+          }
+        },
+        "documentPagesStandard": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of document pages processed at the standard level.\nFor documents without explicit pages (ex. txt, html), every 3000 UTF-16 characters is counted as one page."
+          }
+        },
+        "audioHours": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The hours of audio processed."
+          }
+        },
+        "videoHours": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The hours of video processed."
+          }
+        },
+        "contextualizationTokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of contextualization tokens consumed for preparing context, generating confidence scores, source grounding, and output formatting."
+          }
+        },
+        "tokens": {
+          "target": "com.azure.ai_content_understanding#UsageDetailsTokensMap",
+          "traits": {
+            "smithy.api#documentation": "The number of LLM and embedding tokens consumed, grouped by model (ex. GTP 4.1) and type (ex. input, cached input, output)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Usage details."
+      }
+    },
+    "com.azure.ai_content_understanding#UsageDetailsTokensMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "The number of LLM and embedding tokens consumed, grouped by model (ex. GTP 4.1) and type (ex. input, cached input, output)."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzer": {
+      "type": "structure",
+      "members": {
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the analyzer.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the analyzer."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the analyzer."
+          }
+        },
+        "status": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the analyzer.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the analyzer was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the analyzer was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerWarningsList",
+          "traits": {
+            "smithy.api#documentation": "Warnings encountered while creating the analyzer."
+          }
+        },
+        "baseAnalyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The analyzer to incrementally train from."
+          }
+        },
+        "config": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfig",
+          "traits": {
+            "smithy.api#documentation": "Analyzer configuration settings."
+          }
+        },
+        "fieldSchema": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSchema",
+          "traits": {
+            "smithy.api#documentation": "The schema of fields to extracted."
+          }
+        },
+        "dynamicFieldSchema": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the result may contain additional fields outside of the defined schema."
+          }
+        },
+        "processingLocation": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerProcessingLocation",
+          "traits": {
+            "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+          }
+        },
+        "knowledgeSources": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerKnowledgeSourcesList",
+          "traits": {
+            "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+          }
+        },
+        "models": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerModelsMap",
+          "traits": {
+            "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+          }
+        },
+        "supportedModels": {
+          "target": "com.azure.ai_content_understanding#SupportedModels",
+          "traits": {
+            "smithy.api#documentation": "Chat completion and embedding models supported by the analyzer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Analyzer that extracts content and fields from multimodal documents."
+      }
+    },
+    "com.azure.ai_content_understanding#SupportedModels": {
+      "type": "structure",
+      "members": {
+        "completion": {
+          "target": "com.azure.ai_content_understanding#SupportedModelsCompletionList",
+          "traits": {
+            "smithy.api#documentation": "Chat completion models supported by the analyzer."
+          }
+        },
+        "embedding": {
+          "target": "com.azure.ai_content_understanding#SupportedModelsEmbeddingList",
+          "traits": {
+            "smithy.api#documentation": "Embedding models supported by the analyzer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Chat completion and embedding models supported by the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#SupportedModelsEmbeddingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Embedding models supported by the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#SupportedModelsCompletionList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Chat completion models supported by the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerModelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerKnowledgeSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#KnowledgeSource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#KnowledgeSource": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.ai_content_understanding#KnowledgeSourceKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of knowledge source.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Knowledge source."
+      }
+    },
+    "com.azure.ai_content_understanding#KnowledgeSourceKind": {
+      "type": "enum",
+      "members": {
+        "LABELEDDATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "labeledData"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Knowledge source kind."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerProcessingLocation": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geography"
+          }
+        },
+        "DATAZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dataZone"
+          }
+        },
+        "GLOBAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "global"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldSchema": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the field schema."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the field schema."
+          }
+        },
+        "fields": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSchemaFieldsMap",
+          "traits": {
+            "smithy.api#documentation": "The fields defined in the schema.",
+            "smithy.api#required": {}
+          }
+        },
+        "definitions": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSchemaDefinitionsMap",
+          "traits": {
+            "smithy.api#documentation": "Additional definitions referenced by the fields in the schema."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema of fields to be extracted from documents."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldSchemaDefinitionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.ai_content_understanding#ContentFieldDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional definitions referenced by the fields in the schema."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldDefinition": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.azure.ai_content_understanding#GenerationMethod",
+          "traits": {
+            "smithy.api#documentation": "Generation method."
+          }
+        },
+        "type": {
+          "target": "com.azure.ai_content_understanding#ContentFieldType",
+          "traits": {
+            "smithy.api#documentation": "Semantic data type of the field value."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Field description."
+          }
+        },
+        "items": {
+          "target": "com.azure.ai_content_understanding#ContentFieldDefinition",
+          "traits": {
+            "smithy.api#documentation": "Field type schema of each array element, if type is array."
+          }
+        },
+        "properties": {
+          "target": "com.azure.ai_content_understanding#ContentFieldDefinitionPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Named sub-fields, if type is object."
+          }
+        },
+        "examples": {
+          "target": "com.azure.ai_content_understanding#ContentFieldDefinitionExamplesList",
+          "traits": {
+            "smithy.api#documentation": "Examples of field values."
+          }
+        },
+        "enum": {
+          "target": "com.azure.ai_content_understanding#ContentFieldDefinitionEnumList",
+          "traits": {
+            "smithy.api#documentation": "Enumeration of possible field values."
+          }
+        },
+        "enumDescriptions": {
+          "target": "com.azure.ai_content_understanding#ContentFieldDefinitionEnumDescriptionsMap",
+          "traits": {
+            "smithy.api#documentation": "Descriptions for each enumeration value."
+          }
+        },
+        "_ref": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference to another field definition.",
+            "smithy.api#jsonName": "$ref"
+          }
+        },
+        "estimateSourceAndConfidence": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Return grounding source and confidence."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of the field using a JSON Schema like syntax."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldDefinitionEnumDescriptionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Descriptions for each enumeration value."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldDefinitionEnumList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Enumeration of possible field values."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldDefinitionExamplesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Examples of field values."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldDefinitionPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.ai_content_understanding#ContentFieldDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "Named sub-fields, if type is object."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "DATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "date"
+          }
+        },
+        "TIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "time"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "INTEGER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integer"
+          }
+        },
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "ARRAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "array"
+          }
+        },
+        "OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "object"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Semantic data type of the field value."
+      }
+    },
+    "com.azure.ai_content_understanding#GenerationMethod": {
+      "type": "enum",
+      "members": {
+        "GENERATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generate"
+          }
+        },
+        "EXTRACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "extract"
+          }
+        },
+        "CLASSIFY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "classify"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Generation method."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldSchemaFieldsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.ai_content_understanding#ContentFieldDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "The fields defined in the schema."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfig": {
+      "type": "structure",
+      "members": {
+        "returnDetails": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Return all content details."
+          }
+        },
+        "locales": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigLocalesList",
+          "traits": {
+            "smithy.api#documentation": "List of locale hints for speech transcription."
+          }
+        },
+        "enableOcr": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable optical character recognition (OCR)."
+          }
+        },
+        "enableLayout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable layout analysis."
+          }
+        },
+        "enableFigureDescription": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable generation of figure description."
+          }
+        },
+        "enableFigureAnalysis": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable analysis of figures, such as charts and diagrams."
+          }
+        },
+        "enableFormula": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable mathematical formula detection."
+          }
+        },
+        "tableFormat": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigTableFormat",
+          "traits": {
+            "smithy.api#documentation": "Representation format of tables in analyze result markdown."
+          }
+        },
+        "chartFormat": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigChartFormat",
+          "traits": {
+            "smithy.api#documentation": "Representation format of charts in analyze result markdown."
+          }
+        },
+        "annotationFormat": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigAnnotationFormat",
+          "traits": {
+            "smithy.api#documentation": "Representation format of annotations in analyze result markdown."
+          }
+        },
+        "disableFaceBlurring": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disable the default blurring of faces for privacy while processing the content."
+          }
+        },
+        "estimateFieldSourceAndConfidence": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Return field grounding source and confidence."
+          }
+        },
+        "contentCategories": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigContentCategoriesMap",
+          "traits": {
+            "smithy.api#documentation": "Map of categories to classify the input content(s) against."
+          }
+        },
+        "enableSegment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable segmentation of the input by contentCategories."
+          }
+        },
+        "segmentPerPage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Force segmentation of document content by page."
+          }
+        },
+        "omitContent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Omit the content for this analyzer from analyze result.\nOnly return content(s) from additional analyzers specified in contentCategories, if any."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration settings for an analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigContentCategoriesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.ai_content_understanding#ContentCategoryDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "Map of categories to classify the input content(s) against."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentCategoryDefinition": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the category."
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional analyzer used to process the content."
+          }
+        },
+        "analyzer": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzer",
+          "traits": {
+            "smithy.api#documentation": "Optional inline definition of analyzer used to process the content."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Content category definition."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigAnnotationFormat": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Representation format of annotations in analyze result markdown."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigChartFormat": {
+      "type": "enum",
+      "members": {
+        "CHARTJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chartJs"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Representation format of charts in analyze result markdown."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigTableFormat": {
+      "type": "enum",
+      "members": {
+        "HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "html"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Representation format of tables in analyze result markdown."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigLocalesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of locale hints for speech transcription."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Warnings encountered while creating the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.ai_content_understanding#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.ai_content_understanding#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.ai_content_understanding#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.ai_content_understanding#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.ai_content_understanding#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerStatus": {
+      "type": "enum",
+      "members": {
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "creating"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleting"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of a resource."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#AzureCoreFoundationsOperationState": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum describing allowed operation states."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGrantCopyAuthorization": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersGrantCopyAuthorizationRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#CopyAuthorization"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyzers/{analyzerId}:grantCopyAuthorization",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Get authorization for copying this analyzer to another location."
+      }
+    },
+    "com.azure.ai_content_understanding#CopyAuthorization": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full path of the source analyzer.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetAzureResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource ID of the target location to copy to.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiresAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date/time when the copy authorization expires.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Copy authorization details for cross-resource copy."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGrantCopyAuthorizationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "targetAzureResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource ID of the target analyzer location.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure region of the target analyzer location.  Defaults to current region."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCopy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersCopyRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersCopyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyzers/{analyzerId}:copy",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Create a copy of the source analyzer to the current location."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCopyResponse": {
+      "type": "structure",
+      "members": {
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the analyzer.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the analyzer."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the analyzer."
+          }
+        },
+        "status": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the analyzer.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the analyzer was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the analyzer was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerWarningsList",
+          "traits": {
+            "smithy.api#documentation": "Warnings encountered while creating the analyzer."
+          }
+        },
+        "baseAnalyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The analyzer to incrementally train from."
+          }
+        },
+        "config": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfig",
+          "traits": {
+            "smithy.api#documentation": "Analyzer configuration settings."
+          }
+        },
+        "fieldSchema": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSchema",
+          "traits": {
+            "smithy.api#documentation": "The schema of fields to extracted."
+          }
+        },
+        "dynamicFieldSchema": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the result may contain additional fields outside of the defined schema."
+          }
+        },
+        "processingLocation": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerProcessingLocation",
+          "traits": {
+            "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+          }
+        },
+        "knowledgeSources": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerKnowledgeSourcesList",
+          "traits": {
+            "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+          }
+        },
+        "models": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerModelsMap",
+          "traits": {
+            "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+          }
+        },
+        "supportedModels": {
+          "target": "com.azure.ai_content_understanding#SupportedModels",
+          "traits": {
+            "smithy.api#documentation": "Chat completion and embedding models supported by the analyzer."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Analyzer that extracts content and fields from multimodal documents.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCopyRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "allowReplace": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "allowReplace",
+            "smithy.api#documentation": "Allow the operation to replace an existing resource."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "sourceAzureResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource ID of the source analyzer location.  Defaults to the current resource."
+          }
+        },
+        "sourceRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure region of the source analyzer location.  Defaults to current region."
+          }
+        },
+        "sourceAnalyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source analyzer ID.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinary": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinaryRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinaryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyzers/{analyzerId}:analyzeBinary",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Extract content and fields from input."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinaryResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinaryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "stringEncoding": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "stringEncoding",
+            "smithy.api#documentation": "  The string encoding format for content spans in the response.\n  Possible values are 'codePoint', 'utf16', and `utf8`.  Default is `codePoint`.\")"
+          }
+        },
+        "processingLocation": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinaryRequestProcessingLocation",
+          "traits": {
+            "smithy.api#httpQuery": "processingLocation",
+            "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+          }
+        },
+        "range": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "range",
+            "smithy.api#documentation": "Range of the input to analyze (ex. `1-3,5,9-`).  Document content uses 1-based page numbers, while audio visual content uses integer milliseconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinaryRequestProcessingLocation": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geography"
+          }
+        },
+        "DATAZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dataZone"
+          }
+        },
+        "GLOBAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "global"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyze": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/analyzers/{analyzerId}:analyze",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Extract content and fields from input."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "stringEncoding": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "stringEncoding",
+            "smithy.api#documentation": "  The string encoding format for content spans in the response.\n  Possible values are 'codePoint', 'utf16', and `utf8`.  Default is `codePoint`.\")"
+          }
+        },
+        "processingLocation": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequestProcessingLocation",
+          "traits": {
+            "smithy.api#httpQuery": "processingLocation",
+            "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "inputs": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequestInputsList",
+          "traits": {
+            "smithy.api#documentation": "Inputs to analyze.  Currently, only pro mode supports multiple inputs.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelDeployments": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequestModelDeploymentsMap",
+          "traits": {
+            "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequestModelDeploymentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequestInputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#AnalysisInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Inputs to analyze.  Currently, only pro mode supports multiple inputs."
+      }
+    },
+    "com.azure.ai_content_understanding#AnalysisInput": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the input to analyze.  Only one of url or data should be specified."
+          }
+        },
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64-encoded binary content of the input to analyze.  Only one of url or data should be specified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the input."
+          }
+        },
+        "mimeType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The MIME type of the input content.  Ex. application/pdf, image/jpeg, etc."
+          }
+        },
+        "range": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Range of the input to analyze (ex. `1-3,5,9-`).  Document content uses 1-based page numbers, while audio visual content uses integer milliseconds."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional input to analyze."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeRequestProcessingLocation": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geography"
+          }
+        },
+        "DATAZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dataZone"
+          }
+        },
+        "GLOBAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "global"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/analyzers/{analyzerId}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Delete analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzer"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/analyzers/{analyzerId}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Update analyzer properties."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the analyzer."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the analyzer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplace": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/analyzers/{analyzerId}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Create a new analyzer asynchronously."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceResponse": {
+      "type": "structure",
+      "members": {
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the analyzer.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the analyzer."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the analyzer."
+          }
+        },
+        "status": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the analyzer.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the analyzer was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the analyzer was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerWarningsList",
+          "traits": {
+            "smithy.api#documentation": "Warnings encountered while creating the analyzer."
+          }
+        },
+        "baseAnalyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The analyzer to incrementally train from."
+          }
+        },
+        "config": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfig",
+          "traits": {
+            "smithy.api#documentation": "Analyzer configuration settings."
+          }
+        },
+        "fieldSchema": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSchema",
+          "traits": {
+            "smithy.api#documentation": "The schema of fields to extracted."
+          }
+        },
+        "dynamicFieldSchema": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the result may contain additional fields outside of the defined schema."
+          }
+        },
+        "processingLocation": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerProcessingLocation",
+          "traits": {
+            "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+          }
+        },
+        "knowledgeSources": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerKnowledgeSourcesList",
+          "traits": {
+            "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+          }
+        },
+        "models": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerModelsMap",
+          "traits": {
+            "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+          }
+        },
+        "supportedModels": {
+          "target": "com.azure.ai_content_understanding#SupportedModels",
+          "traits": {
+            "smithy.api#documentation": "Chat completion and embedding models supported by the analyzer."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Analyzer that extracts content and fields from multimodal documents.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "allowReplace": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "allowReplace",
+            "smithy.api#documentation": "Allow the operation to replace an existing resource."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the analyzer."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the analyzer."
+          }
+        },
+        "baseAnalyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The analyzer to incrementally train from."
+          }
+        },
+        "config": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigInput",
+          "traits": {
+            "smithy.api#documentation": "Analyzer configuration settings."
+          }
+        },
+        "fieldSchema": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSchema",
+          "traits": {
+            "smithy.api#documentation": "The schema of fields to extracted."
+          }
+        },
+        "dynamicFieldSchema": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the result may contain additional fields outside of the defined schema."
+          }
+        },
+        "processingLocation": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestProcessingLocation",
+          "traits": {
+            "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+          }
+        },
+        "knowledgeSources": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestKnowledgeSourcesList",
+          "traits": {
+            "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+          }
+        },
+        "models": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestModelsMap",
+          "traits": {
+            "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestModelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestKnowledgeSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#KnowledgeSource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestProcessingLocation": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geography"
+          }
+        },
+        "DATAZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dataZone"
+          }
+        },
+        "GLOBAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "global"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigInput": {
+      "type": "structure",
+      "members": {
+        "returnDetails": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Return all content details."
+          }
+        },
+        "locales": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigInputLocalesList",
+          "traits": {
+            "smithy.api#documentation": "List of locale hints for speech transcription."
+          }
+        },
+        "enableOcr": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable optical character recognition (OCR)."
+          }
+        },
+        "enableLayout": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable layout analysis."
+          }
+        },
+        "enableFigureDescription": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable generation of figure description."
+          }
+        },
+        "enableFigureAnalysis": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable analysis of figures, such as charts and diagrams."
+          }
+        },
+        "enableFormula": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable mathematical formula detection."
+          }
+        },
+        "tableFormat": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigInputTableFormat",
+          "traits": {
+            "smithy.api#documentation": "Representation format of tables in analyze result markdown."
+          }
+        },
+        "chartFormat": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigInputChartFormat",
+          "traits": {
+            "smithy.api#documentation": "Representation format of charts in analyze result markdown."
+          }
+        },
+        "annotationFormat": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigInputAnnotationFormat",
+          "traits": {
+            "smithy.api#documentation": "Representation format of annotations in analyze result markdown."
+          }
+        },
+        "disableFaceBlurring": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disable the default blurring of faces for privacy while processing the content."
+          }
+        },
+        "estimateFieldSourceAndConfidence": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Return field grounding source and confidence."
+          }
+        },
+        "contentCategories": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigInputContentCategoriesMap",
+          "traits": {
+            "smithy.api#documentation": "Map of categories to classify the input content(s) against."
+          }
+        },
+        "enableSegment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable segmentation of the input by contentCategories."
+          }
+        },
+        "segmentPerPage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Force segmentation of document content by page."
+          }
+        },
+        "omitContent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Omit the content for this analyzer from analyze result.\nOnly return content(s) from additional analyzers specified in contentCategories, if any."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration settings for an analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigInputContentCategoriesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.ai_content_understanding#ContentCategoryDefinitionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Map of categories to classify the input content(s) against."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentCategoryDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the category."
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional analyzer used to process the content."
+          }
+        },
+        "analyzer": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerInput",
+          "traits": {
+            "smithy.api#documentation": "Optional inline definition of analyzer used to process the content."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Content category definition."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the analyzer."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the analyzer."
+          }
+        },
+        "baseAnalyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The analyzer to incrementally train from."
+          }
+        },
+        "config": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerConfigInput",
+          "traits": {
+            "smithy.api#documentation": "Analyzer configuration settings."
+          }
+        },
+        "fieldSchema": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSchema",
+          "traits": {
+            "smithy.api#documentation": "The schema of fields to extracted."
+          }
+        },
+        "dynamicFieldSchema": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the result may contain additional fields outside of the defined schema."
+          }
+        },
+        "processingLocation": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerInputProcessingLocation",
+          "traits": {
+            "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+          }
+        },
+        "knowledgeSources": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerInputKnowledgeSourcesList",
+          "traits": {
+            "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+          }
+        },
+        "models": {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzerInputModelsMap",
+          "traits": {
+            "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Analyzer that extracts content and fields from multimodal documents."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerInputModelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Mapping of model roles to specific model names.\nEx. { \"completion\": \"gpt-4.1\", \"embedding\": \"text-embedding-3-large\" }."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerInputKnowledgeSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#KnowledgeSource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional knowledge sources used to enhance the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerInputProcessingLocation": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geography"
+          }
+        },
+        "DATAZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dataZone"
+          }
+        },
+        "GLOBAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "global"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The location where the data may be processed.  Defaults to global."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigInputAnnotationFormat": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Representation format of annotations in analyze result markdown."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigInputChartFormat": {
+      "type": "enum",
+      "members": {
+        "CHARTJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chartJs"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Representation format of charts in analyze result markdown."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigInputTableFormat": {
+      "type": "enum",
+      "members": {
+        "HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "html"
+          }
+        },
+        "MARKDOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "markdown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Representation format of tables in analyze result markdown."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerConfigInputLocalesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of locale hints for speech transcription."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with the analyzer."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzer"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/analyzers/{analyzerId}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Get analyzer properties."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersListRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#PagedContentAnalyzer"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/analyzers",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "List analyzers."
+      }
+    },
+    "com.azure.ai_content_understanding#PagedContentAnalyzer": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.ai_content_understanding#PagedContentAnalyzerValueList",
+          "traits": {
+            "smithy.api#documentation": "The ContentAnalyzer items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of ContentAnalyzer items"
+      }
+    },
+    "com.azure.ai_content_understanding#PagedContentAnalyzerValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzer"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ContentAnalyzer items on this page"
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetResultFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/analyzerResults/{operationId}/files/{path+}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Get a file associated with the result of an analysis operation."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Operation identifier."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "File path."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersDeleteResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersDeleteResultRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/analyzerResults/{operationId}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Mark the result of an analysis operation for deletion."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersDeleteResultRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Operation identifier."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_content_understanding#ContentAnalyzerAnalyzeOperationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/analyzerResults/{operationId}",
+          "code": 200,
+          "host": "{endpoint}/contentunderstanding",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-11-01"
+        },
+        "smithy.api#documentation": "Get the result of an analysis operation."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzerAnalyzeOperationStatus": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.ai_content_understanding#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "The status of the operation",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.ai_content_understanding#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is \"Failed\"."
+          }
+        },
+        "result": {
+          "target": "com.azure.ai_content_understanding#AnalysisResult",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation."
+          }
+        },
+        "usage": {
+          "target": "com.azure.ai_content_understanding#UsageDetails",
+          "traits": {
+            "smithy.api#documentation": "Usage details of the analyze operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provides status details for analyze operations."
+      }
+    },
+    "com.azure.ai_content_understanding#AnalysisResult": {
+      "type": "structure",
+      "members": {
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the analyzer."
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the API used to analyze the document."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the result was created."
+          }
+        },
+        "warnings": {
+          "target": "com.azure.ai_content_understanding#AnalysisResultWarningsList",
+          "traits": {
+            "smithy.api#documentation": "Warnings encountered while analyzing the document."
+          }
+        },
+        "stringEncoding": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "  The string encoding format for content spans in the response.\n  Possible values are 'codePoint', 'utf16', and `utf8`.  Default is `codePoint`.\")"
+          }
+        },
+        "contents": {
+          "target": "com.azure.ai_content_understanding#AnalysisResultContentsList",
+          "traits": {
+            "smithy.api#documentation": "The extracted content.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Analyze operation result."
+      }
+    },
+    "com.azure.ai_content_understanding#AnalysisResultContentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#AnalysisContent"
+      },
+      "traits": {
+        "smithy.api#documentation": "The extracted content."
+      }
+    },
+    "com.azure.ai_content_understanding#AnalysisContent": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.ai_content_understanding#AnalysisContentKind",
+          "traits": {
+            "smithy.api#documentation": "Content kind.",
+            "smithy.api#required": {}
+          }
+        },
+        "mimeType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Detected MIME type of the content.  Ex. application/pdf, image/jpeg, etc.",
+            "smithy.api#required": {}
+          }
+        },
+        "analyzerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The analyzer that generated this content."
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Classified content category."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path of the content in the input."
+          }
+        },
+        "markdown": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Markdown representation of the content."
+          }
+        },
+        "fields": {
+          "target": "com.azure.ai_content_understanding#AnalysisContentFieldsMap",
+          "traits": {
+            "smithy.api#documentation": "Extracted fields from the content."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Media content base class."
+      }
+    },
+    "com.azure.ai_content_understanding#AnalysisContentFieldsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.ai_content_understanding#ContentField"
+      },
+      "traits": {
+        "smithy.api#documentation": "Extracted fields from the content."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentField": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.ai_content_understanding#ContentFieldType",
+          "traits": {
+            "smithy.api#documentation": "Semantic data type of the field value.",
+            "smithy.api#required": {}
+          }
+        },
+        "spans": {
+          "target": "com.azure.ai_content_understanding#ContentFieldSpansList",
+          "traits": {
+            "smithy.api#documentation": "Span(s) associated with the field value in the markdown content."
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence of predicting the field value."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Encoded source that identifies the position of the field value in the content."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Field extracted from the content."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentFieldSpansList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#ContentSpan"
+      },
+      "traits": {
+        "smithy.api#documentation": "Span(s) associated with the field value in the markdown content."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentSpan": {
+      "type": "structure",
+      "members": {
+        "offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Starting position (0-indexed) of the element in markdown, specified in characters.",
+            "smithy.api#required": {}
+          }
+        },
+        "length": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Length of the element in markdown, specified in characters.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Position of the element in markdown, specified as a character offset and length."
+      }
+    },
+    "com.azure.ai_content_understanding#AnalysisContentKind": {
+      "type": "enum",
+      "members": {
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "AUDIOVISUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audioVisual"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Kind of media content."
+      }
+    },
+    "com.azure.ai_content_understanding#AnalysisResultWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_content_understanding#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Warnings encountered while analyzing the document."
+      }
+    },
+    "com.azure.ai_content_understanding#ContentAnalyzersGetResultRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Content Understanding service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_content_understanding#AiContentUnderstanding": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaults"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetDefaults"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatus"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersGrantCopyAuthorization"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersCopy"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinary"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyze"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersDelete"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdate"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplace"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersGet"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersList"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultFile"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersDeleteResult"
+        },
+        {
+          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResult"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure ContentUnderstanding data plane",
+        "smithy.api#documentation": "Azure ai data plane — ai/data-plane/ContentUnderstanding (latest stable api-version 2025-11-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/contentunderstanding",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

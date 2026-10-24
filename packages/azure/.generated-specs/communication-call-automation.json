@@ -1,0 +1,4147 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.communication_call_automation#CallRecordingResumeRecording": "com.azure.communication_call_automation#ResumeCallRecordingRecording",
+      "com.azure.communication_call_automation#CallRecordingResumeRecordingRequest": "com.azure.communication_call_automation#ResumeCallRecordingRecordingRequest",
+      "com.azure.communication_call_automation#CallRecordingPauseRecording": "com.azure.communication_call_automation#PauseCallRecordingRecording",
+      "com.azure.communication_call_automation#CallRecordingPauseRecordingRequest": "com.azure.communication_call_automation#PauseCallRecordingRecordingRequest",
+      "com.azure.communication_call_automation#CallRecordingStopRecording": "com.azure.communication_call_automation#StopCallRecordingRecording",
+      "com.azure.communication_call_automation#CallRecordingStopRecordingRequest": "com.azure.communication_call_automation#StopCallRecordingRecordingRequest",
+      "com.azure.communication_call_automation#CallRecordingGetRecordingProperties": "com.azure.communication_call_automation#GetCallRecordingRecordingProperties",
+      "com.azure.communication_call_automation#CallRecordingGetRecordingPropertiesRequest": "com.azure.communication_call_automation#GetCallRecordingRecordingPropertiesRequest",
+      "com.azure.communication_call_automation#CallRecordingStartRecording": "com.azure.communication_call_automation#StartCallRecordingRecording",
+      "com.azure.communication_call_automation#CallRecordingStartRecordingRequest": "com.azure.communication_call_automation#StartCallRecordingRecordingRequest",
+      "com.azure.communication_call_automation#CallRecordingStartRecordingRequestChannelAffinityList": "com.azure.communication_call_automation#StartCallRecordingRecordingRequestChannelAffinityList",
+      "com.azure.communication_call_automation#CallRecordingStartRecordingRequestAudioChannelParticipantOrderingList": "com.azure.communication_call_automation#StartCallRecordingRecordingRequestAudioChannelParticipantOrderingList",
+      "com.azure.communication_call_automation#CallConnectionGetParticipant": "com.azure.communication_call_automation#GetCallConnectionParticipant",
+      "com.azure.communication_call_automation#CallConnectionGetParticipantRequest": "com.azure.communication_call_automation#GetCallConnectionParticipantRequest",
+      "com.azure.communication_call_automation#CallConnectionMoveParticipants": "com.azure.communication_call_automation#MoveCallConnectionParticipants",
+      "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequest": "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequest",
+      "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequestTargetParticipantsList": "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequestTargetParticipantsList",
+      "com.azure.communication_call_automation#CallConnectionMute": "com.azure.communication_call_automation#MuteCallConnection",
+      "com.azure.communication_call_automation#CallConnectionMuteRequest": "com.azure.communication_call_automation#MuteCallConnectionRequest",
+      "com.azure.communication_call_automation#CallConnectionMuteRequestTargetParticipantsList": "com.azure.communication_call_automation#MuteCallConnectionRequestTargetParticipantsList",
+      "com.azure.communication_call_automation#CallConnectionRemoveParticipant": "com.azure.communication_call_automation#RemoveCallConnectionParticipant",
+      "com.azure.communication_call_automation#CallConnectionRemoveParticipantRequest": "com.azure.communication_call_automation#RemoveCallConnectionParticipantRequest",
+      "com.azure.communication_call_automation#CallConnectionAddParticipant": "com.azure.communication_call_automation#AddCallConnectionParticipant",
+      "com.azure.communication_call_automation#CallConnectionAddParticipantRequest": "com.azure.communication_call_automation#AddCallConnectionParticipantRequest",
+      "com.azure.communication_call_automation#CallConnectionGetParticipants": "com.azure.communication_call_automation#GetCallConnectionParticipants",
+      "com.azure.communication_call_automation#CallConnectionGetParticipantsRequest": "com.azure.communication_call_automation#GetCallConnectionParticipantsRequest",
+      "com.azure.communication_call_automation#CallMediaStopMediaStreaming": "com.azure.communication_call_automation#StopCallMediaMediaStreaming",
+      "com.azure.communication_call_automation#CallMediaStopMediaStreamingRequest": "com.azure.communication_call_automation#StopCallMediaMediaStreamingRequest",
+      "com.azure.communication_call_automation#CallMediaStartMediaStreaming": "com.azure.communication_call_automation#StartCallMediaMediaStreaming",
+      "com.azure.communication_call_automation#CallMediaStartMediaStreamingRequest": "com.azure.communication_call_automation#StartCallMediaMediaStreamingRequest",
+      "com.azure.communication_call_automation#CallMediaSendDtmfTones": "com.azure.communication_call_automation#SendCallMediaDtmfTones",
+      "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequest": "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequest",
+      "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequestTonesList": "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequestTonesList",
+      "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognition": "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognition",
+      "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognitionRequest": "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognitionRequest",
+      "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognition": "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognition",
+      "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognitionRequest": "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognitionRequest",
+      "com.azure.communication_call_automation#CallMediaCancelAllMediaOperations": "com.azure.communication_call_automation#CancelCallMediaAllMediaOperations",
+      "com.azure.communication_call_automation#CallMediaCancelAllMediaOperationsRequest": "com.azure.communication_call_automation#CancelCallMediaAllMediaOperationsRequest",
+      "com.azure.communication_call_automation#CallMediaUpdateTranscription": "com.azure.communication_call_automation#UpdateCallMediaTranscription",
+      "com.azure.communication_call_automation#CallMediaUpdateTranscriptionRequest": "com.azure.communication_call_automation#UpdateCallMediaTranscriptionRequest",
+      "com.azure.communication_call_automation#CallMediaStopTranscription": "com.azure.communication_call_automation#StopCallMediaTranscription",
+      "com.azure.communication_call_automation#CallMediaStopTranscriptionRequest": "com.azure.communication_call_automation#StopCallMediaTranscriptionRequest",
+      "com.azure.communication_call_automation#CallMediaStartTranscription": "com.azure.communication_call_automation#StartCallMediaTranscription",
+      "com.azure.communication_call_automation#CallMediaStartTranscriptionRequest": "com.azure.communication_call_automation#StartCallMediaTranscriptionRequest",
+      "com.azure.communication_call_automation#CallConnectionTransferToParticipant": "com.azure.communication_call_automation#TransferCallConnectionToParticipant",
+      "com.azure.communication_call_automation#CallConnectionTransferToParticipantRequest": "com.azure.communication_call_automation#TransferCallConnectionToParticipantRequest",
+      "com.azure.communication_call_automation#CallConnectionTerminateCall": "com.azure.communication_call_automation#TerminateCallConnectionCall",
+      "com.azure.communication_call_automation#CallConnectionTerminateCallRequest": "com.azure.communication_call_automation#TerminateCallConnectionCallRequest",
+      "com.azure.communication_call_automation#CallConnectionGetCall": "com.azure.communication_call_automation#GetCallConnectionCall",
+      "com.azure.communication_call_automation#CallConnectionGetCallRequest": "com.azure.communication_call_automation#GetCallConnectionCallRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.communication_call_automation#CallRecordingResumeRecording": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallRecordingResumeRecordingRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/recordings/{recordingId}:resume",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Resume recording the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingResumeRecordingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "recordingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The recording id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingPauseRecording": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallRecordingPauseRecordingRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/recordings/{recordingId}:pause",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Pause recording the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingPauseRecordingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "recordingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The recording id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingStopRecording": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallRecordingStopRecordingRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/calling/recordings/{recordingId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Stop recording the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingStopRecordingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "recordingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The recording id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingGetRecordingProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallRecordingGetRecordingPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#RecordingStateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/calling/recordings/{recordingId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Get call recording properties."
+      }
+    },
+    "com.azure.communication_call_automation#RecordingStateResponse": {
+      "type": "structure",
+      "members": {
+        "recordingId": {
+          "target": "smithy.api#String"
+        },
+        "recordingState": {
+          "target": "com.azure.communication_call_automation#RecordingState"
+        },
+        "recordingKind": {
+          "target": "com.azure.communication_call_automation#RecordingKind"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#RecordingKind": {
+      "type": "enum",
+      "members": {
+        "AZURECOMMUNICATIONSERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "azureCommunicationServices"
+          }
+        },
+        "TEAMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "teams"
+          }
+        },
+        "TEAMSCOMPLIANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "teamsCompliance"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#RecordingState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#CallRecordingGetRecordingPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "recordingId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The recording id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingStartRecording": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallRecordingStartRecordingRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#RecordingStateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/recordings",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Start recording the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingStartRecordingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "callLocator": {
+          "target": "com.azure.communication_call_automation#CallLocator"
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The call connection Id. (Only one of callLocator or callConnectionId to be used)"
+          }
+        },
+        "recordingStateCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The uri to send notifications to."
+          }
+        },
+        "recordingContentType": {
+          "target": "com.azure.communication_call_automation#RecordingContentType"
+        },
+        "recordingChannelType": {
+          "target": "com.azure.communication_call_automation#RecordingChannelType"
+        },
+        "recordingFormatType": {
+          "target": "com.azure.communication_call_automation#RecordingFormatType"
+        },
+        "audioChannelParticipantOrdering": {
+          "target": "com.azure.communication_call_automation#CallRecordingStartRecordingRequestAudioChannelParticipantOrderingList",
+          "traits": {
+            "smithy.api#documentation": "The sequential order in which audio channels are assigned to participants in the unmixed recording.\r\nWhen 'recordingChannelType' is set to 'unmixed' and `audioChannelParticipantOrdering is not specified,\r\nthe audio channel to participant mapping will be automatically assigned based on the order in which participant\r\nfirst audio was detected.  Channel to participant mapping details can be found in the metadata of the recording."
+          }
+        },
+        "channelAffinity": {
+          "target": "com.azure.communication_call_automation#CallRecordingStartRecordingRequestChannelAffinityList",
+          "traits": {
+            "smithy.api#documentation": "The channel affinity of call recording\r\nWhen 'recordingChannelType' is set to 'unmixed', if channelAffinity is not specified, 'channel' will be automatically assigned.\r\nChannel-Participant mapping details can be found in the metadata of the recording.\r\n///"
+          }
+        },
+        "pauseOnStart": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true will start recording in Pause mode, which can be resumed."
+          }
+        },
+        "externalStorage": {
+          "target": "com.azure.communication_call_automation#ExternalStorage"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#ExternalStorage": {
+      "type": "structure",
+      "members": {
+        "recordingStorageKind": {
+          "target": "com.azure.communication_call_automation#RecordingStorageKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "recordingDestinationContainerUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri of a container or a location within a container"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#RecordingStorageKind": {
+      "type": "enum",
+      "members": {
+        "AZURECOMMUNICATIONSERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "azureCommunicationServices"
+          }
+        },
+        "AZUREBLOBSTORAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "azureBlobStorage"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the kind of external storage"
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingStartRecordingRequestChannelAffinityList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#ChannelAffinity"
+      },
+      "traits": {
+        "smithy.api#documentation": "The channel affinity of call recording\r\nWhen 'recordingChannelType' is set to 'unmixed', if channelAffinity is not specified, 'channel' will be automatically assigned.\r\nChannel-Participant mapping details can be found in the metadata of the recording.\r\n///"
+      }
+    },
+    "com.azure.communication_call_automation#ChannelAffinity": {
+      "type": "structure",
+      "members": {
+        "channel": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Channel number to which bitstream from a particular participant will be written."
+          }
+        },
+        "participant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Channel affinity for a participant"
+      }
+    },
+    "com.azure.communication_call_automation#CommunicationIdentifierModel": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModelKind",
+          "traits": {
+            "smithy.api#documentation": "The identifier kind. Only required in responses."
+          }
+        },
+        "rawId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Raw Id of the identifier. Optional in requests, required in responses."
+          }
+        },
+        "communicationUser": {
+          "target": "com.azure.communication_call_automation#CommunicationUserIdentifierModel",
+          "traits": {
+            "smithy.api#documentation": "The communication user."
+          }
+        },
+        "phoneNumber": {
+          "target": "com.azure.communication_call_automation#PhoneNumberIdentifierModel",
+          "traits": {
+            "smithy.api#documentation": "The phone number."
+          }
+        },
+        "microsoftTeamsUser": {
+          "target": "com.azure.communication_call_automation#MicrosoftTeamsUserIdentifierModel",
+          "traits": {
+            "smithy.api#documentation": "The Microsoft Teams user."
+          }
+        },
+        "microsoftTeamsApp": {
+          "target": "com.azure.communication_call_automation#MicrosoftTeamsAppIdentifierModel",
+          "traits": {
+            "smithy.api#documentation": "The Microsoft Teams application."
+          }
+        },
+        "teamsExtensionUser": {
+          "target": "com.azure.communication_call_automation#TeamsExtensionUserIdentifierModel",
+          "traits": {
+            "smithy.api#documentation": "The Microsoft Teams Extension user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identifies a participant in Azure Communication services. A participant is, for example, a phone number or an Azure communication user. This model is polymorphic: Apart from kind and rawId, at most one further property may be set which must match the kind enum value."
+      }
+    },
+    "com.azure.communication_call_automation#TeamsExtensionUserIdentifierModel": {
+      "type": "structure",
+      "members": {
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the Microsoft Teams Extension user, i.e. the Entra ID object Id of the user.",
+            "smithy.api#required": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant Id of the Microsoft Teams Extension user.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Communication Services resource Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "cloud": {
+          "target": "com.azure.communication_call_automation#CommunicationCloudEnvironmentModel",
+          "traits": {
+            "smithy.api#documentation": "The cloud that the Microsoft Teams Extension user belongs to. By default 'public' if missing."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Microsoft Teams Phone user who is using a Communication Services resource to extend their Teams Phone set up."
+      }
+    },
+    "com.azure.communication_call_automation#CommunicationCloudEnvironmentModel": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "public"
+          }
+        },
+        "DOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dod"
+          }
+        },
+        "GCCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The cloud that the identifier belongs to."
+      }
+    },
+    "com.azure.communication_call_automation#MicrosoftTeamsAppIdentifierModel": {
+      "type": "structure",
+      "members": {
+        "appId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the Microsoft Teams application.",
+            "smithy.api#required": {}
+          }
+        },
+        "cloud": {
+          "target": "com.azure.communication_call_automation#CommunicationCloudEnvironmentModel",
+          "traits": {
+            "smithy.api#documentation": "The cloud that the Microsoft Teams application belongs to. By default 'public' if missing."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Microsoft Teams application."
+      }
+    },
+    "com.azure.communication_call_automation#MicrosoftTeamsUserIdentifierModel": {
+      "type": "structure",
+      "members": {
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the Microsoft Teams user. If not anonymous, this is the Entra ID object Id of the user.",
+            "smithy.api#required": {}
+          }
+        },
+        "isAnonymous": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the Microsoft Teams user is anonymous. By default false if missing."
+          }
+        },
+        "cloud": {
+          "target": "com.azure.communication_call_automation#CommunicationCloudEnvironmentModel",
+          "traits": {
+            "smithy.api#documentation": "The cloud that the Microsoft Teams user belongs to. By default 'public' if missing."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Microsoft Teams user."
+      }
+    },
+    "com.azure.communication_call_automation#PhoneNumberIdentifierModel": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The phone number, usually in E.164 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "isAnonymous": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the phone number is anonymous. By default false if missing. If the phone number is anonymous, the value will be the string 'anonymous'."
+          }
+        },
+        "assertedId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asserted Id of the phone number. An asserted Id gets generated when the same phone number joins the same call more than once."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A phone number."
+      }
+    },
+    "com.azure.communication_call_automation#CommunicationUserIdentifierModel": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the communication user.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A user that got created with an Azure Communication Services resource."
+      }
+    },
+    "com.azure.communication_call_automation#CommunicationIdentifierModelKind": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "COMMUNICATIONUSER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "communicationUser"
+          }
+        },
+        "PHONENUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "phoneNumber"
+          }
+        },
+        "MICROSOFTTEAMSUSER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoftTeamsUser"
+          }
+        },
+        "MICROSOFTTEAMSAPP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "microsoftTeamsApp"
+          }
+        },
+        "TEAMSEXTENSIONUSER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "teamsExtensionUser"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identifier kind, for example 'communicationUser' or 'phoneNumber'."
+      }
+    },
+    "com.azure.communication_call_automation#CallRecordingStartRecordingRequestAudioChannelParticipantOrderingList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "The sequential order in which audio channels are assigned to participants in the unmixed recording.\r\nWhen 'recordingChannelType' is set to 'unmixed' and `audioChannelParticipantOrdering is not specified,\r\nthe audio channel to participant mapping will be automatically assigned based on the order in which participant\r\nfirst audio was detected.  Channel to participant mapping details can be found in the metadata of the recording."
+      }
+    },
+    "com.azure.communication_call_automation#RecordingFormatType": {
+      "type": "enum",
+      "members": {
+        "WAV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wav"
+          }
+        },
+        "MP3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mp3"
+          }
+        },
+        "MP4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mp4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the format type of call recording."
+      }
+    },
+    "com.azure.communication_call_automation#RecordingChannelType": {
+      "type": "enum",
+      "members": {
+        "MIXED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mixed"
+          }
+        },
+        "UNMIXED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unmixed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the channel type of call recording."
+      }
+    },
+    "com.azure.communication_call_automation#RecordingContentType": {
+      "type": "enum",
+      "members": {
+        "AUDIO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audio"
+          }
+        },
+        "AUDIOVIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audioVideo"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The content type of call recording."
+      }
+    },
+    "com.azure.communication_call_automation#CallLocator": {
+      "type": "structure",
+      "members": {
+        "groupCallId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group call id"
+          }
+        },
+        "serverCallId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The server call id."
+          }
+        },
+        "roomId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Acs room id. (Not supported for Start Recording)"
+          }
+        },
+        "kind": {
+          "target": "com.azure.communication_call_automation#CallLocatorKind"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The locator used for joining or taking action on a call"
+      }
+    },
+    "com.azure.communication_call_automation#CallLocatorKind": {
+      "type": "enum",
+      "members": {
+        "GROUPCALLLOCATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "groupCallLocator"
+          }
+        },
+        "SERVERCALLLOCATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "serverCallLocator"
+          }
+        },
+        "ROOMCALLLOCATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "roomCallLocator"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The call locator kind"
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionGetParticipant": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionGetParticipantRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#CallParticipant"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/calling/callConnections/{callConnectionId}/participants/{participantRawId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Get participant from a call.\n\nGet participant from a call."
+      }
+    },
+    "com.azure.communication_call_automation#CallParticipant": {
+      "type": "structure",
+      "members": {
+        "identifier": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+        },
+        "isMuted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is participant muted"
+          }
+        },
+        "isOnHold": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is participant on hold."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A call participant."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionGetParticipantRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection Id"
+          }
+        },
+        "participantRawId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Raw id of the participant to retrieve."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionMoveParticipants": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}/participants:moveHere",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Move a participant to the call.\n\nMove a participant to the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection Id"
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "targetParticipants": {
+          "target": "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequestTargetParticipantsList",
+          "traits": {
+            "smithy.api#documentation": "The participant to Move.",
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        },
+        "fromCall": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CallConnectionId for the call you want to move the participant from",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequestTargetParticipantsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "The participant to Move."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionCancelAddParticipant": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionCancelAddParticipantRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}/participants:cancelAddParticipant",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Cancel add participant operation.\n\nCancel add participant operation."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionCancelAddParticipantRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection Id"
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Invitation ID used to add a participant.",
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionMute": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionMuteRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#MuteParticipantsResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}/participants:mute",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Mute participants from the call using identifier.\n\nMute participants from the call using identifier."
+      }
+    },
+    "com.azure.communication_call_automation#MuteParticipantsResult": {
+      "type": "structure",
+      "members": {
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operation context provided by client."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result payload for muting participants from the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionMuteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "targetParticipants": {
+          "target": "com.azure.communication_call_automation#CallConnectionMuteRequestTargetParticipantsList",
+          "traits": {
+            "smithy.api#documentation": "Participants to be muted from the call.\r\nOnly ACS Users are supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionMuteRequestTargetParticipantsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "Participants to be muted from the call.\r\nOnly ACS Users are supported."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionRemoveParticipant": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionRemoveParticipantRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}/participants:remove",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Remove a participant from the call using identifier.\n\nRemove a participant from the call using identifier."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionRemoveParticipantRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "participantToRemove": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionAddParticipant": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionAddParticipantRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}/participants:add",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Add a participant to the call.\n\nAdd a participant to the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionAddParticipantRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection Id"
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "sourceCallerIdNumber": {
+          "target": "com.azure.communication_call_automation#PhoneNumberIdentifierModel"
+        },
+        "sourceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(Optional) The display name of the source that is associated with this invite operation when\r\nadding a PSTN participant or teams user.  Note: Will not update the display name in the roster."
+          }
+        },
+        "participantToAdd": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "invitationTimeoutInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the timeout to wait for the invited participant to pickup.\r\nThe maximum value of this is 180 seconds"
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        },
+        "customCallingContext": {
+          "target": "com.azure.communication_call_automation#CustomCallingContext"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CustomCallingContext": {
+      "type": "structure",
+      "members": {
+        "voipHeaders": {
+          "target": "com.azure.communication_call_automation#CustomCallingContextVoipHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Custom calling context VoiP headers"
+          }
+        },
+        "sipHeaders": {
+          "target": "com.azure.communication_call_automation#CustomCallingContextSipHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Custom calling context SIP headers"
+          }
+        },
+        "teamsPhoneCallDetails": {
+          "target": "com.azure.communication_call_automation#TeamsPhoneCallDetails"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The custom calling context which will be sent to the target"
+      }
+    },
+    "com.azure.communication_call_automation#TeamsPhoneCallDetails": {
+      "type": "structure",
+      "members": {
+        "teamsPhoneCallerDetails": {
+          "target": "com.azure.communication_call_automation#TeamsPhoneCallerDetails"
+        },
+        "teamsPhoneSourceDetails": {
+          "target": "com.azure.communication_call_automation#TeamsPhoneSourceDetails"
+        },
+        "sessionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id to exclusively identify this call session. IVR will use this for their telemetry/reporting."
+          }
+        },
+        "intent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The intent of the call"
+          }
+        },
+        "callTopic": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A very short description (max 48 chars) of the reason for the call. To be displayed in Teams CallNotification"
+          }
+        },
+        "callContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A summary of the call thus far. It will be displayed on a side panel in the Teams UI"
+          }
+        },
+        "transcriptUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url for fetching the transcript of the call"
+          }
+        },
+        "callSentiment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sentiment of the call thus far"
+          }
+        },
+        "suggestedActions": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Recommendations for resolving the issue based on the customer's intent and interaction history"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The call details which will be sent to the target"
+      }
+    },
+    "com.azure.communication_call_automation#TeamsPhoneSourceDetails": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of the source entity passing along the call details, passed in the ISO-639 standard",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Status of the source entity passing along the call details",
+            "smithy.api#required": {}
+          }
+        },
+        "intendedTargets": {
+          "target": "com.azure.communication_call_automation#TeamsPhoneSourceDetailsIntendedTargetsMap",
+          "traits": {
+            "smithy.api#documentation": "Intended targets of the source entity passing along the call details"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container for details relating to the entity responsible for the creation of these call details"
+      }
+    },
+    "com.azure.communication_call_automation#TeamsPhoneSourceDetailsIntendedTargetsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "Intended targets of the source entity passing along the call details"
+      }
+    },
+    "com.azure.communication_call_automation#TeamsPhoneCallerDetails": {
+      "type": "structure",
+      "members": {
+        "caller": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Caller's name",
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Caller's phone number",
+            "smithy.api#required": {}
+          }
+        },
+        "recordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Caller's record ID (ex in CRM)"
+          }
+        },
+        "screenPopUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Caller's screen pop URL"
+          }
+        },
+        "isAuthenticated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag indicating whether the caller was authenticated"
+          }
+        },
+        "additionalCallerInformation": {
+          "target": "com.azure.communication_call_automation#TeamsPhoneCallerDetailsAdditionalCallerInformationMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key value pairs (max 10, any additional entries would be ignored) which a bot author wants to pass to the Teams Client for display to the agent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container for details relating to the original caller of the call"
+      }
+    },
+    "com.azure.communication_call_automation#TeamsPhoneCallerDetailsAdditionalCallerInformationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key value pairs (max 10, any additional entries would be ignored) which a bot author wants to pass to the Teams Client for display to the agent"
+      }
+    },
+    "com.azure.communication_call_automation#CustomCallingContextSipHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom calling context SIP headers"
+      }
+    },
+    "com.azure.communication_call_automation#CustomCallingContextVoipHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom calling context VoiP headers"
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionGetParticipants": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionGetParticipantsRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#GetParticipantsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/calling/callConnections/{callConnectionId}/participants",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Get participants from a call. Recording and transcription bots are omitted from this list.\n\nGet participants from a call. Recording and transcription bots are omitted from this list."
+      }
+    },
+    "com.azure.communication_call_automation#GetParticipantsResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.communication_call_automation#GetParticipantsResponseValueList",
+          "traits": {
+            "smithy.api#documentation": "List of the current participants in the call.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Continue of the list of participants"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response payload for getting participants of the call."
+      }
+    },
+    "com.azure.communication_call_automation#GetParticipantsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#CallParticipant"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the current participants in the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionGetParticipantsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStopMediaStreaming": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaStopMediaStreamingRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:stopMediaStreaming",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Stops media streaming in the call\n\nStops media streaming in the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStopMediaStreamingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStartMediaStreaming": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaStartMediaStreamingRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:startMediaStreaming",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Starts media streaming in the call\n\nStarts media streaming in the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStartMediaStreamingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaUnhold": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaUnholdRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:unhold",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Unhold participants from the call using identifier.\n\nUnhold participants from the call using identifier."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaUnholdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "targetParticipant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaHold": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaHoldRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:hold",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Hold participant from the call using identifier.\n\nHold participant from the call using identifier."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaHoldRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "targetParticipant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "playSourceInfo": {
+          "target": "com.azure.communication_call_automation#PlaySource"
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#PlaySource": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.communication_call_automation#PlaySourceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "playSourceCacheId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the identifier to be used for caching related media"
+          }
+        },
+        "file": {
+          "target": "com.azure.communication_call_automation#FileSource"
+        },
+        "text": {
+          "target": "com.azure.communication_call_automation#TextSource"
+        },
+        "ssml": {
+          "target": "com.azure.communication_call_automation#SsmlSource"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#SsmlSource": {
+      "type": "structure",
+      "members": {
+        "ssmlText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Ssml string for the cognitive service to be played",
+            "smithy.api#required": {}
+          }
+        },
+        "customVoiceEndpointId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint where the custom voice was deployed."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#TextSource": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text for the cognitive service to be played",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceLocale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source language locale to be played\r\nRefer to available locales here: <seealso href=\"https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?tabs=stt-tts\" />"
+          }
+        },
+        "voiceKind": {
+          "target": "com.azure.communication_call_automation#VoiceKind"
+        },
+        "voiceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Voice name to be played\r\nRefer to available Text-to-speech voices here: <seealso href=\"https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?tabs=stt-tts\" />"
+          }
+        },
+        "customVoiceEndpointId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint where the custom voice was deployed."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#VoiceKind": {
+      "type": "enum",
+      "members": {
+        "MALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "male"
+          }
+        },
+        "FEMALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "female"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Audio kind type"
+      }
+    },
+    "com.azure.communication_call_automation#FileSource": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri for the audio file to be played",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#PlaySourceType": {
+      "type": "enum",
+      "members": {
+        "FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "file"
+          }
+        },
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "SSML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssml"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the types of play source"
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaSendDtmfTones": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:sendDtmfTones",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Send dtmf tones.\n\nSend dtmf tones."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id"
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "tones": {
+          "target": "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequestTonesList",
+          "traits": {
+            "smithy.api#documentation": "List of tones to be sent to target participant.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetParticipant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequestTonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#Tone"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tones to be sent to target participant."
+      }
+    },
+    "com.azure.communication_call_automation#Tone": {
+      "type": "enum",
+      "members": {
+        "ZERO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zero"
+          }
+        },
+        "ONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one"
+          }
+        },
+        "TWO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "two"
+          }
+        },
+        "THREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "three"
+          }
+        },
+        "FOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "four"
+          }
+        },
+        "FIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "five"
+          }
+        },
+        "SIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "six"
+          }
+        },
+        "SEVEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "seven"
+          }
+        },
+        "EIGHT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eight"
+          }
+        },
+        "NINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nine"
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "a"
+          }
+        },
+        "B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "b"
+          }
+        },
+        "C": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "c"
+          }
+        },
+        "D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "d"
+          }
+        },
+        "POUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pound"
+          }
+        },
+        "ASTERISK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asterisk"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of valid stop tones"
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognition": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognitionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:stopContinuousDtmfRecognition",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Stop continuous Dtmf recognition by unsubscribing to tones."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognitionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id"
+          }
+        },
+        "targetParticipant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognition": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognitionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:startContinuousDtmfRecognition",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Start continuous Dtmf recognition by subscribing to tones."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognitionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id"
+          }
+        },
+        "targetParticipant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaRecognize": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaRecognizeRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:recognize",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Recognize media from call.\n\nRecognize media from call."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaRecognizeRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id"
+          }
+        },
+        "recognizeInputType": {
+          "target": "com.azure.communication_call_automation#RecognizeInputType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "playPrompt": {
+          "target": "com.azure.communication_call_automation#PlaySource"
+        },
+        "playPrompts": {
+          "target": "com.azure.communication_call_automation#CallMediaRecognizeRequestPlayPromptsList",
+          "traits": {
+            "smithy.api#documentation": "The source of the audio to be played for recognition."
+          }
+        },
+        "interruptCallMediaOperation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set recognize can barge into other existing queued-up/currently-processing requests."
+          }
+        },
+        "recognizeOptions": {
+          "target": "com.azure.communication_call_automation#RecognizeOptions",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#RecognizeOptions": {
+      "type": "structure",
+      "members": {
+        "interruptPrompt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines if we interrupt the prompt and start recognizing."
+          }
+        },
+        "initialSilenceTimeoutInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time to wait for first input after prompt (if any)."
+          }
+        },
+        "targetParticipant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "speechLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Speech language to be recognized, If not set default is en-US"
+          }
+        },
+        "speechRecognitionModelEndpointId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint where the custom model was deployed."
+          }
+        },
+        "dtmfOptions": {
+          "target": "com.azure.communication_call_automation#DtmfOptions"
+        },
+        "choices": {
+          "target": "com.azure.communication_call_automation#RecognizeOptionsChoicesList",
+          "traits": {
+            "smithy.api#documentation": "Defines Ivr choices for recognize."
+          }
+        },
+        "speechOptions": {
+          "target": "com.azure.communication_call_automation#SpeechOptions"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#SpeechOptions": {
+      "type": "structure",
+      "members": {
+        "endSilenceTimeoutInMs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The length of end silence when user stops speaking and cogservice send response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options for continuous speech recognition"
+      }
+    },
+    "com.azure.communication_call_automation#RecognizeOptionsChoicesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#Choice"
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines Ivr choices for recognize."
+      }
+    },
+    "com.azure.communication_call_automation#Choice": {
+      "type": "structure",
+      "members": {
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for a given choice",
+            "smithy.api#required": {}
+          }
+        },
+        "phrases": {
+          "target": "com.azure.communication_call_automation#ChoicePhrasesList",
+          "traits": {
+            "smithy.api#documentation": "List of phrases to recognize",
+            "smithy.api#required": {}
+          }
+        },
+        "tone": {
+          "target": "com.azure.communication_call_automation#Tone"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#ChoicePhrasesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of phrases to recognize"
+      }
+    },
+    "com.azure.communication_call_automation#DtmfOptions": {
+      "type": "structure",
+      "members": {
+        "interToneTimeoutInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time to wait between DTMF inputs to stop recognizing."
+          }
+        },
+        "maxTonesToCollect": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of DTMF tones to be collected."
+          }
+        },
+        "stopTones": {
+          "target": "com.azure.communication_call_automation#DtmfOptionsStopTonesList",
+          "traits": {
+            "smithy.api#documentation": "List of tones that will stop recognizing."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options for DTMF recognition"
+      }
+    },
+    "com.azure.communication_call_automation#DtmfOptionsStopTonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#Tone"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tones that will stop recognizing."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaRecognizeRequestPlayPromptsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#PlaySource"
+      },
+      "traits": {
+        "smithy.api#documentation": "The source of the audio to be played for recognition."
+      }
+    },
+    "com.azure.communication_call_automation#RecognizeInputType": {
+      "type": "enum",
+      "members": {
+        "DTMF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dtmf"
+          }
+        },
+        "SPEECH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "speech"
+          }
+        },
+        "SPEECHORDTMF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "speechOrDtmf"
+          }
+        },
+        "CHOICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "choices"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the type of the recognize input"
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaCancelAllMediaOperations": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaCancelAllMediaOperationsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:cancelAllMediaOperations",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Cancel all media operations in a call.\n\nCancel all media operations in a call."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaCancelAllMediaOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaUpdateTranscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaUpdateTranscriptionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:updateTranscription",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "UpdateTranscription Api.\n\nAPI to change transcription language."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaUpdateTranscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id"
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Locale used for transcription, e.g., en-CA or en-AU."
+          }
+        },
+        "speechModelEndpointId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the deployed custom model, in GUID format, e.g., a259c255-1cdw-4ed7-a693-dd58563b6f6a."
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStopTranscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaStopTranscriptionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:stopTranscription",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Stops transcription in the call.\n\nStops transcription in the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStopTranscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStartTranscription": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaStartTranscriptionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:startTranscription",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Starts transcription in the call\n\nStarts transcription in the call"
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaStartTranscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Locale used for transcription, e.g., en-CA or en-AU."
+          }
+        },
+        "speechModelEndpointId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the deployed custom model in GUID format. The GUID is generated by Azure Speech Studio, e.g., a259c255-1cdw-4ed7-a693-dd58563b6f6a."
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaPlay": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallMediaPlayRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:play",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Plays audio to participants in the call.\n\nPlays audio to participants in the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaPlayRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "playSources": {
+          "target": "com.azure.communication_call_automation#CallMediaPlayRequestPlaySourcesList",
+          "traits": {
+            "smithy.api#documentation": "The source of the audio to be played.",
+            "smithy.api#required": {}
+          }
+        },
+        "playTo": {
+          "target": "com.azure.communication_call_automation#CallMediaPlayRequestPlayToList",
+          "traits": {
+            "smithy.api#documentation": "The list of call participants play provided audio to.\r\nPlays to everyone in the call when not provided."
+          }
+        },
+        "interruptCallMediaOperation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set play can barge into other existing queued-up/currently-processing requests."
+          }
+        },
+        "playOptions": {
+          "target": "com.azure.communication_call_automation#PlayOptions"
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to identify context of the operation."
+          }
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#PlayOptions": {
+      "type": "structure",
+      "members": {
+        "loop": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The option to play the provided audio source in loop when set to true",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_call_automation#CallMediaPlayRequestPlayToList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of call participants play provided audio to.\r\nPlays to everyone in the call when not provided."
+      }
+    },
+    "com.azure.communication_call_automation#CallMediaPlayRequestPlaySourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#PlaySource"
+      },
+      "traits": {
+        "smithy.api#documentation": "The source of the audio to be played."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionTransferToParticipant": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionTransferToParticipantRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:transferToParticipant",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Transfer the call to a participant.\n\nTransfer the call to a participant."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionTransferToParticipantRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "targetParticipant": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers when calling mid-call actions to correlate the request to the response event."
+          }
+        },
+        "transferee": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+        },
+        "operationCallbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set a callback URI that overrides the default callback URI set by CreateCall/AnswerCall for this operation.\r\nThis setup is per-action. If this is not set, the default callback URI set by CreateCall/AnswerCall will be used."
+          }
+        },
+        "customCallingContext": {
+          "target": "com.azure.communication_call_automation#CustomCallingContext"
+        },
+        "sourceCallerIdNumber": {
+          "target": "com.azure.communication_call_automation#PhoneNumberIdentifierModel"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionTerminateCall": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionTerminateCallRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections/{callConnectionId}:terminate",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Terminate a call using CallConnectionId.\n\nTerminate a call using CallConnectionId."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionTerminateCallRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The terminate call request."
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionHangupCall": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionHangupCallRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/calling/callConnections/{callConnectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Hang up call automation service from the call. This will make call automation service leave the call, but does not terminate if there are more than 1 caller in the call.\n\nHang up call automation service from the call. This will make call automation service leave the call, but does not terminate if there are more than 1 caller in the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionHangupCallRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionGetCall": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CallConnectionGetCallRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#CallConnectionProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/calling/callConnections/{callConnectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Get the detail properties of an ongoing call."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionProperties": {
+      "type": "structure",
+      "members": {
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The call connection id."
+          }
+        },
+        "serverCallId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The server call id."
+          }
+        },
+        "targets": {
+          "target": "com.azure.communication_call_automation#CallConnectionPropertiesTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The targets of the call."
+          }
+        },
+        "callConnectionState": {
+          "target": "com.azure.communication_call_automation#CallConnectionStateModel"
+        },
+        "callbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The callback URI."
+          }
+        },
+        "sourceCallerIdNumber": {
+          "target": "com.azure.communication_call_automation#PhoneNumberIdentifierModel"
+        },
+        "sourceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the call if dialing out to a pstn number."
+          }
+        },
+        "source": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+        },
+        "correlationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The correlation ID."
+          }
+        },
+        "answeredBy": {
+          "target": "com.azure.communication_call_automation#CommunicationUserIdentifierModel"
+        },
+        "mediaStreamingSubscription": {
+          "target": "com.azure.communication_call_automation#MediaStreamingSubscription"
+        },
+        "transcriptionSubscription": {
+          "target": "com.azure.communication_call_automation#TranscriptionSubscription"
+        },
+        "answeredFor": {
+          "target": "com.azure.communication_call_automation#PhoneNumberIdentifierModel"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a call connection"
+      }
+    },
+    "com.azure.communication_call_automation#TranscriptionSubscription": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription Id."
+          }
+        },
+        "state": {
+          "target": "com.azure.communication_call_automation#TranscriptionSubscriptionState"
+        },
+        "subscribedResultTypes": {
+          "target": "com.azure.communication_call_automation#TranscriptionSubscriptionSubscribedResultTypesList",
+          "traits": {
+            "smithy.api#documentation": "Subscribed transcription result types."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the locale used for transcription, e.g., en-CA or en-AU."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Transcription Subscription Object."
+      }
+    },
+    "com.azure.communication_call_automation#TranscriptionSubscriptionSubscribedResultTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#TranscriptionResultType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Subscribed transcription result types."
+      }
+    },
+    "com.azure.communication_call_automation#TranscriptionResultType": {
+      "type": "enum",
+      "members": {
+        "FINAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "final"
+          }
+        },
+        "INTERMEDIATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "intermediate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Transcription result types"
+      }
+    },
+    "com.azure.communication_call_automation#TranscriptionSubscriptionState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Current state of transcription session"
+      }
+    },
+    "com.azure.communication_call_automation#MediaStreamingSubscription": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription Id."
+          }
+        },
+        "state": {
+          "target": "com.azure.communication_call_automation#MediaStreamingSubscriptionState"
+        },
+        "subscribedContentTypes": {
+          "target": "com.azure.communication_call_automation#MediaStreamingSubscriptionSubscribedContentTypesList",
+          "traits": {
+            "smithy.api#documentation": "Subscribed media streaming content types."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Media streaming Subscription Object."
+      }
+    },
+    "com.azure.communication_call_automation#MediaStreamingSubscriptionSubscribedContentTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#MediaStreamingContentType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Subscribed media streaming content types."
+      }
+    },
+    "com.azure.communication_call_automation#MediaStreamingContentType": {
+      "type": "enum",
+      "members": {
+        "AUDIO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audio"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of content in Media streaming."
+      }
+    },
+    "com.azure.communication_call_automation#MediaStreamingSubscriptionState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Current state of media streaming session"
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionStateModel": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "CONNECTING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connecting"
+          }
+        },
+        "CONNECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connected"
+          }
+        },
+        "TRANSFERRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transferring"
+          }
+        },
+        "TRANSFERACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transferAccepted"
+          }
+        },
+        "DISCONNECTING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disconnecting"
+          }
+        },
+        "DISCONNECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disconnected"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The states of a call connection."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionPropertiesTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "The targets of the call."
+      }
+    },
+    "com.azure.communication_call_automation#CallConnectionGetCallRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "callConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The call connection id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#Connect": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#ConnectRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#CallConnectionProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections:connect",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Create a Connection to a CallLocator.\n\nCreate a connection to a CallLocator."
+      }
+    },
+    "com.azure.communication_call_automation#ConnectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "callLocator": {
+          "target": "com.azure.communication_call_automation#CallLocator",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "callbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The callback URI.",
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Used by customers to correlate the request to the response event."
+          }
+        },
+        "callIntelligenceOptions": {
+          "target": "com.azure.communication_call_automation#CallIntelligenceOptions"
+        },
+        "mediaStreamingOptions": {
+          "target": "com.azure.communication_call_automation#MediaStreamingOptions"
+        },
+        "transcriptionOptions": {
+          "target": "com.azure.communication_call_automation#TranscriptionOptions"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#TranscriptionOptions": {
+      "type": "structure",
+      "members": {
+        "transportType": {
+          "target": "com.azure.communication_call_automation#StreamingTransportType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Locale used for transcription, e.g., en-CA or en-AU.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options for live transcription."
+      }
+    },
+    "com.azure.communication_call_automation#StreamingTransportType": {
+      "type": "enum",
+      "members": {
+        "WEBSOCKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "websocket"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the transport type used for streaming. Note that future values may be introduced that are not currently documented."
+      }
+    },
+    "com.azure.communication_call_automation#MediaStreamingOptions": {
+      "type": "structure",
+      "members": {
+        "transportType": {
+          "target": "com.azure.communication_call_automation#StreamingTransportType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "audioChannelType": {
+          "target": "com.azure.communication_call_automation#MediaStreamingAudioChannelType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options for media streaming."
+      }
+    },
+    "com.azure.communication_call_automation#MediaStreamingAudioChannelType": {
+      "type": "enum",
+      "members": {
+        "MIXED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mixed"
+          }
+        },
+        "UNMIXED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unmixed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The audio channel type to stream, e.g., unmixed audio, mixed audio."
+      }
+    },
+    "com.azure.communication_call_automation#CallIntelligenceOptions": {
+      "type": "structure",
+      "members": {
+        "cognitiveServicesEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the Cognitive Service resource assigned to this call."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AI options for the call."
+      }
+    },
+    "com.azure.communication_call_automation#RejectCall": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#RejectCallRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections:reject",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Reject the call.\n\nReject the call."
+      }
+    },
+    "com.azure.communication_call_automation#RejectCallRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "incomingCallContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The context associated with the call.",
+            "smithy.api#required": {}
+          }
+        },
+        "callRejectReason": {
+          "target": "com.azure.communication_call_automation#CallRejectReason"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CallRejectReason": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "BUSY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "busy"
+          }
+        },
+        "FORBIDDEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "forbidden"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reason of rejecting a call"
+      }
+    },
+    "com.azure.communication_call_automation#RedirectCall": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#RedirectCallRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections:redirect",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Redirect a call.\n\nRedirect a call."
+      }
+    },
+    "com.azure.communication_call_automation#RedirectCallRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "incomingCallContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The context associated with the call.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "com.azure.communication_call_automation#CommunicationIdentifierModel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#AnswerCall": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#AnswerCallRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#CallConnectionProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections:answer",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Answer a Call.\n\nAnswer a call using the IncomingCallContext from Event Grid."
+      }
+    },
+    "com.azure.communication_call_automation#AnswerCallRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "incomingCallContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The context associated with the call.",
+            "smithy.api#required": {}
+          }
+        },
+        "callbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The callback uri.",
+            "smithy.api#required": {}
+          }
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A customer set value used to track the answering of a call."
+          }
+        },
+        "callIntelligenceOptions": {
+          "target": "com.azure.communication_call_automation#CallIntelligenceOptions"
+        },
+        "answeredBy": {
+          "target": "com.azure.communication_call_automation#CommunicationUserIdentifierModel"
+        },
+        "mediaStreamingOptions": {
+          "target": "com.azure.communication_call_automation#MediaStreamingOptions"
+        },
+        "transcriptionOptions": {
+          "target": "com.azure.communication_call_automation#TranscriptionOptions"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CreateCall": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_call_automation#CreateCallRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_call_automation#CallConnectionProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/calling/callConnections",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-12"
+        },
+        "smithy.api#documentation": "Create an outbound call.\n\nCreate an outbound call."
+      }
+    },
+    "com.azure.communication_call_automation#CreateCallRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The endpoint of the Azure Communication Service resource.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "If specified, the client directs that the request is repeatable; that is, that the client can make the request multiple times with the same Repeatability-Request-Id and get back an appropriate response without the server executing the request multiple times. The value of the Repeatability-Request-Id is an opaque string representing a client-generated unique identifier for the request. It is a version 4 (random) UUID."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "If Repeatability-Request-ID header is specified, then Repeatability-First-Sent header must also be specified. The value should be the date and time at which the request was first created, expressed using the IMF-fixdate form of HTTP-date. Example: Sun, 06 Nov 1994 08:49:37 GMT."
+          }
+        },
+        "targets": {
+          "target": "com.azure.communication_call_automation#CreateCallRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The targets of the call.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceCallerIdNumber": {
+          "target": "com.azure.communication_call_automation#PhoneNumberIdentifierModel"
+        },
+        "sourceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the call if dialing out to a pstn number"
+          }
+        },
+        "source": {
+          "target": "com.azure.communication_call_automation#CommunicationUserIdentifierModel"
+        },
+        "operationContext": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A customer set value used to track the answering of a call."
+          }
+        },
+        "callbackUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The callback URI.",
+            "smithy.api#required": {}
+          }
+        },
+        "callIntelligenceOptions": {
+          "target": "com.azure.communication_call_automation#CallIntelligenceOptions"
+        },
+        "mediaStreamingOptions": {
+          "target": "com.azure.communication_call_automation#MediaStreamingOptions"
+        },
+        "transcriptionOptions": {
+          "target": "com.azure.communication_call_automation#TranscriptionOptions"
+        },
+        "teamsAppSource": {
+          "target": "com.azure.communication_call_automation#MicrosoftTeamsAppIdentifierModel"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_call_automation#CreateCallRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "The targets of the call."
+      }
+    },
+    "com.azure.communication_call_automation#CommunicationCallAutomation": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.communication_call_automation#CallRecordingResumeRecording"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallRecordingPauseRecording"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallRecordingStopRecording"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallRecordingGetRecordingProperties"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallRecordingStartRecording"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionGetParticipant"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionMoveParticipants"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionCancelAddParticipant"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionMute"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionRemoveParticipant"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionAddParticipant"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionGetParticipants"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaStopMediaStreaming"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaStartMediaStreaming"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaUnhold"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaHold"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaSendDtmfTones"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognition"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognition"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaRecognize"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaCancelAllMediaOperations"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaUpdateTranscription"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaStopTranscription"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaStartTranscription"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallMediaPlay"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionTransferToParticipant"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionTerminateCall"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionHangupCall"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CallConnectionGetCall"
+        },
+        {
+          "target": "com.azure.communication_call_automation#Connect"
+        },
+        {
+          "target": "com.azure.communication_call_automation#RejectCall"
+        },
+        {
+          "target": "com.azure.communication_call_automation#RedirectCall"
+        },
+        {
+          "target": "com.azure.communication_call_automation#AnswerCall"
+        },
+        {
+          "target": "com.azure.communication_call_automation#CreateCall"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure CallAutomation data plane",
+        "smithy.api#documentation": "Azure communication data plane — communication/data-plane/CallAutomation (latest stable api-version 2026-03-12).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://communication.azure.com/.default"
+      }
+    }
+  }
+}

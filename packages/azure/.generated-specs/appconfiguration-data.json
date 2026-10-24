@@ -1,0 +1,3777 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.appconfiguration_data#CheckSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CheckSnapshotRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/snapshots/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests the headers and status of the given resource.\n\nRequests the headers and status of the given resource."
+      }
+    },
+    "com.azure.appconfiguration_data#CheckSnapshotRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key-value snapshot to check."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#UpdateSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#UpdateSnapshotRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#UpdateSnapshotResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/snapshots/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates the state of a key-value snapshot.\n\nUpdates the state of a key-value snapshot."
+      }
+    },
+    "com.azure.appconfiguration_data#UpdateSnapshotResponse": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.appconfiguration_data#SnapshotStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the snapshot."
+          }
+        },
+        "filters": {
+          "target": "com.azure.appconfiguration_data#SnapshotFiltersList",
+          "traits": {
+            "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "composition_type": {
+          "target": "com.azure.appconfiguration_data#CompositionType",
+          "traits": {
+            "smithy.api#documentation": "The composition type describes how the key-values within the snapshot are\ncomposed. The 'key' composition type ensures there are no two key-values\ncontaining the same key. The 'key_label' composition type ensures there are no\ntwo key-values containing the same key and label."
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot was created."
+          }
+        },
+        "expires": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot will expire."
+          }
+        },
+        "retention_period": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of time, in seconds, that a snapshot will remain in the archived\nstate before expiring. This property is only writable during the creation of a\nsnapshot. If not specified, the default lifetime of key-value revisions will be\nused."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size in bytes of the snapshot."
+          }
+        },
+        "items_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of key-values in the snapshot."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#SnapshotTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the snapshot."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the snapshot."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the snapshot."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A snapshot is a named, immutable subset of an App Configuration store's key-values.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#SnapshotTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the snapshot."
+      }
+    },
+    "com.azure.appconfiguration_data#CompositionType": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key"
+          }
+        },
+        "KEY_LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key_label"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Composition types."
+      }
+    },
+    "com.azure.appconfiguration_data#SnapshotFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#KeyValueFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot."
+      }
+    },
+    "com.azure.appconfiguration_data#KeyValueFilter": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters key-values by their key field.",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters key-values by their label field."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#KeyValueFilterTagsList",
+          "traits": {
+            "smithy.api#documentation": "Filters key-values by their tags field."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enables filtering of key-values. Syntax reference:\nhttps://aka.ms/azconfig/docs/restapisnapshots"
+      }
+    },
+    "com.azure.appconfiguration_data#KeyValueFilterTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Filters key-values by their tags field."
+      }
+    },
+    "com.azure.appconfiguration_data#SnapshotStatus": {
+      "type": "enum",
+      "members": {
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "provisioning"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Snapshot status."
+      }
+    },
+    "com.azure.appconfiguration_data#UpdateSnapshotRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key-value snapshot to update."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "status": {
+          "target": "com.azure.appconfiguration_data#SnapshotStatus",
+          "traits": {
+            "smithy.api#documentation": "The desired status of the snapshot."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CreateSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CreateSnapshotRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#CreateSnapshotResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/snapshots/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a key-value snapshot.\n\nCreates a key-value snapshot."
+      }
+    },
+    "com.azure.appconfiguration_data#CreateSnapshotResponse": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.appconfiguration_data#SnapshotStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the snapshot."
+          }
+        },
+        "filters": {
+          "target": "com.azure.appconfiguration_data#SnapshotFiltersList",
+          "traits": {
+            "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "composition_type": {
+          "target": "com.azure.appconfiguration_data#CompositionType",
+          "traits": {
+            "smithy.api#documentation": "The composition type describes how the key-values within the snapshot are\ncomposed. The 'key' composition type ensures there are no two key-values\ncontaining the same key. The 'key_label' composition type ensures there are no\ntwo key-values containing the same key and label."
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot was created."
+          }
+        },
+        "expires": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot will expire."
+          }
+        },
+        "retention_period": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of time, in seconds, that a snapshot will remain in the archived\nstate before expiring. This property is only writable during the creation of a\nsnapshot. If not specified, the default lifetime of key-value revisions will be\nused."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size in bytes of the snapshot."
+          }
+        },
+        "items_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of key-values in the snapshot."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#SnapshotTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the snapshot."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the snapshot."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the snapshot."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A snapshot is a named, immutable subset of an App Configuration store's key-values.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CreateSnapshotRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key-value snapshot to create."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "filters": {
+          "target": "com.azure.appconfiguration_data#CreateSnapshotRequestFiltersList",
+          "traits": {
+            "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "composition_type": {
+          "target": "com.azure.appconfiguration_data#CompositionType",
+          "traits": {
+            "smithy.api#documentation": "The composition type describes how the key-values within the snapshot are\ncomposed. The 'key' composition type ensures there are no two key-values\ncontaining the same key. The 'key_label' composition type ensures there are no\ntwo key-values containing the same key and label."
+          }
+        },
+        "retention_period": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of time, in seconds, that a snapshot will remain in the archived\nstate before expiring. This property is only writable during the creation of a\nsnapshot. If not specified, the default lifetime of key-value revisions will be\nused."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#CreateSnapshotRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the snapshot."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the snapshot."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CreateSnapshotRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the snapshot."
+      }
+    },
+    "com.azure.appconfiguration_data#CreateSnapshotRequestFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#KeyValueFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot."
+      }
+    },
+    "com.azure.appconfiguration_data#GetSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetSnapshotRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#GetSnapshotResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/snapshots/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets a single key-value snapshot.\n\nGets a single key-value snapshot."
+      }
+    },
+    "com.azure.appconfiguration_data#GetSnapshotResponse": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.appconfiguration_data#SnapshotStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the snapshot."
+          }
+        },
+        "filters": {
+          "target": "com.azure.appconfiguration_data#SnapshotFiltersList",
+          "traits": {
+            "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "composition_type": {
+          "target": "com.azure.appconfiguration_data#CompositionType",
+          "traits": {
+            "smithy.api#documentation": "The composition type describes how the key-values within the snapshot are\ncomposed. The 'key' composition type ensures there are no two key-values\ncontaining the same key. The 'key_label' composition type ensures there are no\ntwo key-values containing the same key and label."
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot was created."
+          }
+        },
+        "expires": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot will expire."
+          }
+        },
+        "retention_period": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of time, in seconds, that a snapshot will remain in the archived\nstate before expiring. This property is only writable during the creation of a\nsnapshot. If not specified, the default lifetime of key-value revisions will be\nused."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size in bytes of the snapshot."
+          }
+        },
+        "items_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of key-values in the snapshot."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#SnapshotTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the snapshot."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the snapshot."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the snapshot."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A snapshot is a named, immutable subset of an App Configuration store's key-values.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetSnapshotRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the snapshot."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#GetSnapshotRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetSnapshotRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#GetSnapshotRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetSnapshotRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status"
+          }
+        },
+        "FILTERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "filters"
+          }
+        },
+        "COMPOSITION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "composition_type"
+          }
+        },
+        "CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created"
+          }
+        },
+        "EXPIRES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expires"
+          }
+        },
+        "RETENTION_PERIOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "retention_period"
+          }
+        },
+        "SIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "size"
+          }
+        },
+        "ITEMS_COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "items_count"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CheckSnapshotsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/snapshots",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests the headers and status of the given resource.\n\nRequests the headers and status of the given resource."
+      }
+    },
+    "com.azure.appconfiguration_data#CheckSnapshotsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetSnapshots": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetSnapshotsRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#SnapshotListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/snapshots",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets a list of key-value snapshots.\n\nGets a list of key-value snapshots."
+      }
+    },
+    "com.azure.appconfiguration_data#SnapshotListResult": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.azure.appconfiguration_data#SnapshotListResultItemsList",
+          "traits": {
+            "smithy.api#documentation": "The collection value."
+          }
+        },
+        "_nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI that can be used to request the next set of paged results.",
+            "smithy.api#jsonName": "@nextLink"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of a snapshot list request."
+      }
+    },
+    "com.azure.appconfiguration_data#SnapshotListResultItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#Snapshot"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection value."
+      }
+    },
+    "com.azure.appconfiguration_data#Snapshot": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.appconfiguration_data#SnapshotStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the snapshot."
+          }
+        },
+        "filters": {
+          "target": "com.azure.appconfiguration_data#SnapshotFiltersList",
+          "traits": {
+            "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "composition_type": {
+          "target": "com.azure.appconfiguration_data#CompositionType",
+          "traits": {
+            "smithy.api#documentation": "The composition type describes how the key-values within the snapshot are\ncomposed. The 'key' composition type ensures there are no two key-values\ncontaining the same key. The 'key_label' composition type ensures there are no\ntwo key-values containing the same key and label."
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot was created."
+          }
+        },
+        "expires": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the snapshot will expire."
+          }
+        },
+        "retention_period": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of time, in seconds, that a snapshot will remain in the archived\nstate before expiring. This property is only writable during the creation of a\nsnapshot. If not specified, the default lifetime of key-value revisions will be\nused."
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size in bytes of the snapshot."
+          }
+        },
+        "items_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of key-values in the snapshot."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#SnapshotTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the snapshot."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the snapshot."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the snapshot."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A snapshot is a named, immutable subset of an App Configuration store's key-values."
+      }
+    },
+    "com.azure.appconfiguration_data#GetSnapshotsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name",
+            "smithy.api#documentation": "A filter for the name of the returned snapshots."
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#GetSnapshotsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "status": {
+          "target": "com.azure.appconfiguration_data#GetSnapshotsRequestStatusList",
+          "traits": {
+            "smithy.api#httpQuery": "status",
+            "smithy.api#documentation": "Used to filter returned snapshots by their status property."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetSnapshotsRequestStatusList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#GetSnapshotsRequestStatusItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetSnapshotsRequestStatusItem": {
+      "type": "enum",
+      "members": {
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "provisioning"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetSnapshotsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#GetSnapshotsRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetSnapshotsRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status"
+          }
+        },
+        "FILTERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "filters"
+          }
+        },
+        "COMPOSITION_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "composition_type"
+          }
+        },
+        "CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created"
+          }
+        },
+        "EXPIRES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expires"
+          }
+        },
+        "RETENTION_PERIOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "retention_period"
+          }
+        },
+        "SIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "size"
+          }
+        },
+        "ITEMS_COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "items_count"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CheckRevisionsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/revisions",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests the headers and status of the given resource.\n\nRequests the headers and status of the given resource."
+      }
+    },
+    "com.azure.appconfiguration_data#CheckRevisionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "key",
+            "smithy.api#documentation": "A filter used to match keys. Syntax reference:\nhttps://aka.ms/azconfig/docs/restapirevisions"
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "A filter used to match labels. Syntax reference:\nhttps://aka.ms/azconfig/docs/restapirevisions"
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#CheckRevisionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#CheckRevisionsRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "A filter used to query by tags. Syntax reference:\nhttps://aka.ms/azconfig/docs/restapirevisions"
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CheckRevisionsRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckRevisionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#CheckRevisionsRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckRevisionsRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key"
+          }
+        },
+        "LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "label"
+          }
+        },
+        "CONTENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content_type"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "value"
+          }
+        },
+        "LAST_MODIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_modified"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "locked"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetRevisions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetRevisionsRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#KeyValueListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/revisions",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets a list of key-value revisions.\n\nGets a list of key-value revisions."
+      }
+    },
+    "com.azure.appconfiguration_data#KeyValueListResult": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.azure.appconfiguration_data#KeyValueListResultItemsList",
+          "traits": {
+            "smithy.api#documentation": "The collection value."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier representing the returned state of the resource."
+          }
+        },
+        "_nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI that can be used to request the next set of paged results.",
+            "smithy.api#jsonName": "@nextLink"
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of a list request."
+      }
+    },
+    "com.azure.appconfiguration_data#KeyValueListResultItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#KeyValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection value."
+      }
+    },
+    "com.azure.appconfiguration_data#KeyValue": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the key-value.",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label the key-value belongs to."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the value stored within the key-value."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "last_modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A date representing the last time the key-value was modified."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#KeyValueTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the key-value"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the key-value."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the key-value is locked."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A key-value pair representing application settings."
+      }
+    },
+    "com.azure.appconfiguration_data#KeyValueTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the key-value"
+      }
+    },
+    "com.azure.appconfiguration_data#GetRevisionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "key",
+            "smithy.api#documentation": "A filter used to match keys. Syntax reference:\nhttps://aka.ms/azconfig/docs/restapirevisions"
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "A filter used to match labels. Syntax reference:\nhttps://aka.ms/azconfig/docs/restapirevisions"
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#GetRevisionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#GetRevisionsRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "A filter used to query by tags. Syntax reference:\nhttps://aka.ms/azconfig/docs/restapirevisions"
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetRevisionsRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetRevisionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#GetRevisionsRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetRevisionsRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key"
+          }
+        },
+        "LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "label"
+          }
+        },
+        "CONTENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content_type"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "value"
+          }
+        },
+        "LAST_MODIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_modified"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "locked"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetOperationDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetOperationDetailsRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#OperationDetails"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/operations",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets the state of a long running operation.\n\nGets the state of a long running operation."
+      }
+    },
+    "com.azure.appconfiguration_data#OperationDetails": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique id of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.appconfiguration_data#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "The current status of the operation",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.appconfiguration_data#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "An error, available when the status is `Failed`, describing why the operation\nfailed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of a long running operation."
+      }
+    },
+    "com.azure.appconfiguration_data#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.appconfiguration_data#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.appconfiguration_data#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.appconfiguration_data#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.appconfiguration_data#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.appconfiguration_data#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.appconfiguration_data#AzureCoreFoundationsOperationState": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum describing allowed operation states."
+      }
+    },
+    "com.azure.appconfiguration_data#GetOperationDetailsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "snapshot": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "snapshot",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Snapshot identifier for the long running operation."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#DeleteLock": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#DeleteLockRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#DeleteLockResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/locks/{key}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Unlocks a key-value.\n\nUnlocks a key-value."
+      }
+    },
+    "com.azure.appconfiguration_data#DeleteLockResponse": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the key-value.",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label the key-value belongs to."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the value stored within the key-value."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "last_modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A date representing the last time the key-value was modified."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#KeyValueTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the key-value"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the key-value."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the key-value is locked."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A key-value pair representing application settings.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#DeleteLockRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The key of the key-value to unlock."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "The label, if any, of the key-value to unlock."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#PutLock": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#PutLockRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#PutLockResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/locks/{key}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Locks a key-value.\n\nLocks a key-value."
+      }
+    },
+    "com.azure.appconfiguration_data#PutLockResponse": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the key-value.",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label the key-value belongs to."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the value stored within the key-value."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "last_modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A date representing the last time the key-value was modified."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#KeyValueTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the key-value"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the key-value."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the key-value is locked."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A key-value pair representing application settings.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#PutLockRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The key of the key-value to lock."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "The label, if any, of the key-value to lock."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CheckLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CheckLabelsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/labels",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests the headers and status of the given resource.\n\nRequests the headers and status of the given resource."
+      }
+    },
+    "com.azure.appconfiguration_data#CheckLabelsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name",
+            "smithy.api#documentation": "A filter for the name of the returned labels."
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#CheckLabelsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CheckLabelsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#CheckLabelsRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckLabelsRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetLabels": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetLabelsRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#LabelListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/labels",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets a list of labels.\n\nGets a list of labels."
+      }
+    },
+    "com.azure.appconfiguration_data#LabelListResult": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.azure.appconfiguration_data#LabelListResultItemsList",
+          "traits": {
+            "smithy.api#documentation": "The collection value."
+          }
+        },
+        "_nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI that can be used to request the next set of paged results.",
+            "smithy.api#jsonName": "@nextLink"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of a list request."
+      }
+    },
+    "com.azure.appconfiguration_data#LabelListResultItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#Label"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection value."
+      }
+    },
+    "com.azure.appconfiguration_data#Label": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the label."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Labels are used to group key-values."
+      }
+    },
+    "com.azure.appconfiguration_data#GetLabelsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name",
+            "smithy.api#documentation": "A filter for the name of the returned labels."
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#GetLabelsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetLabelsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#GetLabelsRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetLabelsRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckKeyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CheckKeyValueRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/kv/{key}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests the headers and status of the given resource.\n\nRequests the headers and status of the given resource."
+      }
+    },
+    "com.azure.appconfiguration_data#CheckKeyValueRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The key of the key-value to retrieve."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "The label of the key-value to retrieve."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#CheckKeyValueRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#CheckKeyValueRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "A filter used to query by tags. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CheckKeyValueRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckKeyValueRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#CheckKeyValueRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckKeyValueRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key"
+          }
+        },
+        "LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "label"
+          }
+        },
+        "CONTENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content_type"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "value"
+          }
+        },
+        "LAST_MODIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_modified"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "locked"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#DeleteKeyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#DeleteKeyValueRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#DeleteKeyValueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/kv/{key}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes a key-value.\n\nDeletes a key-value."
+      }
+    },
+    "com.azure.appconfiguration_data#DeleteKeyValueResponse": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the key-value.",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label the key-value belongs to."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the value stored within the key-value."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "last_modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A date representing the last time the key-value was modified."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#KeyValueTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the key-value"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the key-value."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the key-value is locked."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A key-value pair representing application settings.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#DeleteKeyValueRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The key of the key-value to delete."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "The label of the key-value to delete."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#PutKeyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#PutKeyValueRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#PutKeyValueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/kv/{key}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a key-value.\n\nCreates a key-value."
+      }
+    },
+    "com.azure.appconfiguration_data#PutKeyValueResponse": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the key-value.",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label the key-value belongs to."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the value stored within the key-value."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "last_modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A date representing the last time the key-value was modified."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#KeyValueTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the key-value"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the key-value."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the key-value is locked."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A key-value pair representing application settings.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#PutKeyValueRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The key of the key-value to create."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "The label of the key-value to create."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the value stored within the key-value."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "last_modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A date representing the last time the key-value was modified."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#PutKeyValueRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the key-value"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the key-value."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the key-value is locked."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#PutKeyValueRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the key-value"
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeyValue": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetKeyValueRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#GetKeyValueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/kv/{key}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets a single key-value.\n\nGets a single key-value."
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeyValueResponse": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the key-value.",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label the key-value belongs to."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the value stored within the key-value."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "last_modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A date representing the last time the key-value was modified."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#KeyValueTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the key-value"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the key-value."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the key-value is locked."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "A value representing the current state of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A key-value pair representing application settings.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeyValueRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The key of the key-value."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "The label of the key-value to retrieve."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#GetKeyValueRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#GetKeyValueRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "A filter used to query by tags. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeyValueRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetKeyValueRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#GetKeyValueRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetKeyValueRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key"
+          }
+        },
+        "LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "label"
+          }
+        },
+        "CONTENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content_type"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "value"
+          }
+        },
+        "LAST_MODIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_modified"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "locked"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckKeyValues": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CheckKeyValuesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/kv",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests the headers and status of the given resource.\n\nRequests the headers and status of the given resource."
+      }
+    },
+    "com.azure.appconfiguration_data#CheckKeyValuesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "key",
+            "smithy.api#documentation": "A filter used to match keys. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "A filter used to match labels. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#CheckKeyValuesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "snapshot": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "snapshot",
+            "smithy.api#documentation": "A filter used get key-values for a snapshot. The value should be the name of\nthe snapshot. Not valid when used with 'key' and 'label' filters."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#CheckKeyValuesRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "A filter used to query by tags. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#CheckKeyValuesRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckKeyValuesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#CheckKeyValuesRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckKeyValuesRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key"
+          }
+        },
+        "LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "label"
+          }
+        },
+        "CONTENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content_type"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "value"
+          }
+        },
+        "LAST_MODIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_modified"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "locked"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetKeyValues": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetKeyValuesRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#KeyValueListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/kv",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets a list of key-values.\n\nGets a list of key-values."
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeyValuesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "key",
+            "smithy.api#documentation": "A filter used to match keys. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "label",
+            "smithy.api#documentation": "A filter used to match labels. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "_Select": {
+          "target": "com.azure.appconfiguration_data#GetKeyValuesRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$Select",
+            "smithy.api#documentation": "Used to select what fields are present in the returned resource(s)."
+          }
+        },
+        "snapshot": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "snapshot",
+            "smithy.api#documentation": "A filter used get key-values for a snapshot. The value should be the name of\nthe snapshot. Not valid when used with 'key' and 'label' filters."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration_data#GetKeyValuesRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "A filter used to query by tags. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering"
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeyValuesRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetKeyValuesRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#GetKeyValuesRequestSelectItem"
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#GetKeyValuesRequestSelectItem": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key"
+          }
+        },
+        "LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "label"
+          }
+        },
+        "CONTENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content_type"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "value"
+          }
+        },
+        "LAST_MODIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_modified"
+          }
+        },
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "locked"
+          }
+        },
+        "ETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "etag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appconfiguration_data#CheckKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#CheckKeysRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/keys",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests the headers and status of the given resource.\n\nRequests the headers and status of the given resource."
+      }
+    },
+    "com.azure.appconfiguration_data#CheckKeysRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name",
+            "smithy.api#documentation": "A filter for the name of the returned keys."
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appconfiguration_data#GetKeysRequest"
+      },
+      "output": {
+        "target": "com.azure.appconfiguration_data#KeyListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/keys",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets a list of keys.\n\nGets a list of keys."
+      }
+    },
+    "com.azure.appconfiguration_data#KeyListResult": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.azure.appconfiguration_data#KeyListResultItemsList",
+          "traits": {
+            "smithy.api#documentation": "The collection value."
+          }
+        },
+        "_nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI that can be used to request the next set of paged results.",
+            "smithy.api#jsonName": "@nextLink"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of a list request."
+      }
+    },
+    "com.azure.appconfiguration_data#KeyListResultItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration_data#Key"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection value."
+      }
+    },
+    "com.azure.appconfiguration_data#Key": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the key.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Keys serve as identifiers for key-values and are used to store and retrieve corresponding values."
+      }
+    },
+    "com.azure.appconfiguration_data#GetKeysRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name",
+            "smithy.api#documentation": "A filter for the name of the returned keys."
+          }
+        },
+        "After": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "After",
+            "smithy.api#documentation": "Instructs the server to return elements that appear after the element referred\nto by the specified token."
+          }
+        },
+        "syncToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Sync-Token",
+            "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "acceptDatetime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Datetime",
+            "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration_data#AppconfigurationData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.appconfiguration_data#CheckSnapshot"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#UpdateSnapshot"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#CreateSnapshot"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetSnapshot"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#CheckSnapshots"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetSnapshots"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#CheckRevisions"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetRevisions"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetOperationDetails"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#DeleteLock"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#PutLock"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#CheckLabels"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetLabels"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#CheckKeyValue"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#DeleteKeyValue"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#PutKeyValue"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetKeyValue"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#CheckKeyValues"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetKeyValues"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#CheckKeys"
+        },
+        {
+          "target": "com.azure.appconfiguration_data#GetKeys"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure AppConfiguration data plane",
+        "smithy.api#documentation": "Azure appconfiguration data plane — appconfiguration/data-plane/AppConfiguration (latest stable api-version 2026-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://azconfig.io/.default"
+      }
+    }
+  }
+}

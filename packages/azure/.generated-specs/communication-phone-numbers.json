@@ -1,0 +1,3275 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbers": "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbers",
+      "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbersRequest": "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbersRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersGetByNumber": "com.azure.communication_phone_numbers#GetPhoneNumberByNumber",
+      "com.azure.communication_phone_numbers#PhoneNumbersGetByNumberRequest": "com.azure.communication_phone_numbers#GetPhoneNumberByNumberRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilities": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilities",
+      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesResponse": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesResponse",
+      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequest": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestSms": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestSms",
+      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestCalling": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestCalling",
+      "com.azure.communication_phone_numbers#PhoneNumbersCancelOperation": "com.azure.communication_phone_numbers#CancelPhoneNumberOperation",
+      "com.azure.communication_phone_numbers#PhoneNumbersCancelOperationRequest": "com.azure.communication_phone_numbers#CancelPhoneNumberOperationRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersGetOperation": "com.azure.communication_phone_numbers#GetPhoneNumberOperation",
+      "com.azure.communication_phone_numbers#PhoneNumbersGetOperationRequest": "com.azure.communication_phone_numbers#GetPhoneNumberOperationRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbers": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbers",
+      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersResponse": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersResponse",
+      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequest": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestAssignmentType": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestAssignmentType",
+      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestPhoneNumberType": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestPhoneNumberType",
+      "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservation": "com.azure.communication_phone_numbers#DeletePhoneNumberReservation",
+      "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservationRequest": "com.azure.communication_phone_numbers#DeletePhoneNumberReservationRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersGetReservation": "com.azure.communication_phone_numbers#GetPhoneNumberReservation",
+      "com.azure.communication_phone_numbers#PhoneNumbersGetReservationRequest": "com.azure.communication_phone_numbers#GetPhoneNumberReservationRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersListReservations": "com.azure.communication_phone_numbers#ListPhoneNumberReservations",
+      "com.azure.communication_phone_numbers#PhoneNumbersListReservationsRequest": "com.azure.communication_phone_numbers#ListPhoneNumberReservationsRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersListOfferings": "com.azure.communication_phone_numbers#ListPhoneNumberOfferings",
+      "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequest": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestAssignmentType": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestAssignmentType",
+      "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestPhoneNumberType": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestPhoneNumberType",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalities": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalities",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequest": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequestPhoneNumberType": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequestPhoneNumberType",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountries": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountries",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountriesRequest": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountriesRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodes": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodes",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequest": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequest",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestAssignmentType": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestAssignmentType",
+      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestPhoneNumberType": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestPhoneNumberType"
+    }
+  },
+  "shapes": {
+    "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#OperatorInformationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/operatorInformation/:search",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Searches for number format and operator information for a given list of phone numbers."
+      }
+    },
+    "com.azure.communication_phone_numbers#OperatorInformationResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.communication_phone_numbers#OperatorInformationResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "Results of a search.\r\nThis array will have one entry per requested phone number which will contain the relevant operator information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a search result containing format and operator information associated with the requested phone numbers"
+      }
+    },
+    "com.azure.communication_phone_numbers#OperatorInformationResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#OperatorInformation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Results of a search.\r\nThis array will have one entry per requested phone number which will contain the relevant operator information."
+      }
+    },
+    "com.azure.communication_phone_numbers#OperatorInformation": {
+      "type": "structure",
+      "members": {
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "E.164 formatted string representation of the phone number",
+            "smithy.api#required": {}
+          }
+        },
+        "nationalFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "National format of the phone number"
+          }
+        },
+        "internationalFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "International format of the phone number"
+          }
+        },
+        "isoCountryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 3166-1 two character ('alpha-2') code associated with the phone number."
+          }
+        },
+        "numberType": {
+          "target": "com.azure.communication_phone_numbers#OperatorInformationNumberType",
+          "traits": {
+            "smithy.api#documentation": "Type of service associated with the phone number"
+          }
+        },
+        "operatorDetails": {
+          "target": "com.azure.communication_phone_numbers#OperatorDetails"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents metadata about a phone number that is controlled/provided by that phone number's operator."
+      }
+    },
+    "com.azure.communication_phone_numbers#OperatorDetails": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the phone operator"
+          }
+        },
+        "mobileNetworkCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mobile Network Code, 2 or 3 decimal digits that identify mobile networks within a country/region"
+          }
+        },
+        "mobileCountryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mobile Country Code, 3 decimal digits that identify a country/region"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents metadata describing the operator of a phone number"
+      }
+    },
+    "com.azure.communication_phone_numbers#OperatorInformationNumberType": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "other"
+          }
+        },
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of service associated with the phone number"
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "phoneNumbers": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequestPhoneNumbersList",
+          "traits": {
+            "smithy.api#documentation": "Phone number(s) whose operator information is being requested",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.communication_phone_numbers#OperatorInformationOptions"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#OperatorInformationOptions": {
+      "type": "structure",
+      "members": {
+        "includeAdditionalOperatorDetails": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Includes the fields operatorDetails, numberType, and isoCountryCode in the response.  Please note: use of this option will result in additional costs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents options to modify a search request for operator information"
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequestPhoneNumbersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Phone number(s) whose operator information is being requested"
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbersRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumbers"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/phoneNumbers",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets the list of all purchased phone numbers."
+      }
+    },
+    "com.azure.communication_phone_numbers#PurchasedPhoneNumbers": {
+      "type": "structure",
+      "members": {
+        "phoneNumbers": {
+          "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumbersPhoneNumbersList",
+          "traits": {
+            "smithy.api#documentation": "Represents a list of phone numbers.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the URL link to the next page of phone number results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of purchased phone numbers."
+      }
+    },
+    "com.azure.communication_phone_numbers#PurchasedPhoneNumbersPhoneNumbersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumber"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of phone numbers."
+      }
+    },
+    "com.azure.communication_phone_numbers#PurchasedPhoneNumber": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the phone number, e.g. 11234567890.",
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String of the E.164 format of the phone number, e.g. +11234567890.",
+            "smithy.api#required": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 3166-2 code of the phone number's country, e.g. US.",
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumberPhoneNumberType",
+          "traits": {
+            "smithy.api#documentation": "The phone number's type, e.g. geographic, tollFree, mobile.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilities",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumberAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "The assignment type of the phone number. A phone number can be assigned to a person, or to an application.",
+            "smithy.api#required": {}
+          }
+        },
+        "purchaseDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time that the phone number was purchased.",
+            "smithy.api#required": {}
+          }
+        },
+        "cost": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCost",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a purchased phone number."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCost": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The cost amount.",
+            "smithy.api#required": {}
+          }
+        },
+        "currencyCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 4217 currency code for the cost amount, e.g. USD.",
+            "smithy.api#required": {}
+          }
+        },
+        "billingFrequency": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCostBillingFrequency",
+          "traits": {
+            "smithy.api#documentation": "The frequency with which the cost gets billed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The incurred cost for a single phone number."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCostBillingFrequency": {
+      "type": "enum",
+      "members": {
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The frequency with which the cost gets billed."
+      }
+    },
+    "com.azure.communication_phone_numbers#PurchasedPhoneNumberAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The assignment type of the phone number. A phone number can be assigned to a person, or to an application."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCapabilities": {
+      "type": "structure",
+      "members": {
+        "calling": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilitiesCalling",
+          "traits": {
+            "smithy.api#documentation": "Capability value for calling.",
+            "smithy.api#required": {}
+          }
+        },
+        "sms": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilitiesSms",
+          "traits": {
+            "smithy.api#documentation": "Capability value for SMS.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capabilities of a phone number."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCapabilitiesSms": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "INBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound"
+          }
+        },
+        "OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound"
+          }
+        },
+        "INBOUND_OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound+outbound"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capability value for SMS."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCapabilitiesCalling": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "INBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound"
+          }
+        },
+        "OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound"
+          }
+        },
+        "INBOUND_OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound+outbound"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capability value for calling."
+      }
+    },
+    "com.azure.communication_phone_numbers#PurchasedPhoneNumberPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The phone number's type, e.g. geographic, tollFree, mobile."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbersRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An optional parameter for how many entries to skip, for pagination purposes. The default value is 0."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReleasePhoneNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersReleasePhoneNumberRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersReleasePhoneNumberResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/phoneNumbers/{phoneNumber}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Releases a purchased phone number."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReleasePhoneNumberResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "URL to query for status of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReleasePhoneNumberRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Phone number to be released, e.g. +11234567890."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetByNumber": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersGetByNumberRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumber"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/phoneNumbers/{phoneNumber}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets the details of the given purchased phone number."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetByNumberRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The purchased phone number whose details are to be fetched in E.164 format, e.g. +11234567890."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilities": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/phoneNumbers/{phoneNumber}/capabilities",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Updates the capabilities of a phone number."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "URL to retrieve the final result after operation completes."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "URL to query for status of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The phone number id in E.164 format. The leading plus can be either + or encoded as %2B, e.g. +11234567890."
+          }
+        },
+        "calling": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestCalling",
+          "traits": {
+            "smithy.api#documentation": "Capability value for calling."
+          }
+        },
+        "sms": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestSms",
+          "traits": {
+            "smithy.api#documentation": "Capability value for SMS."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestSms": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "INBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound"
+          }
+        },
+        "OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound"
+          }
+        },
+        "INBOUND_OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound+outbound"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capability value for SMS."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestCalling": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "INBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound"
+          }
+        },
+        "OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound"
+          }
+        },
+        "INBOUND_OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound+outbound"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capability value for calling."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersCancelOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersCancelOperationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/phoneNumbers/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Cancels an operation by its id."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersCancelOperationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the operation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersGetOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/phoneNumbers/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets an operation by its id."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOperation": {
+      "type": "structure",
+      "members": {
+        "operationType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberOperationOperationType",
+          "traits": {
+            "smithy.api#documentation": "The type of operation, e.g. Search",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberOperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL for retrieving the result of the operation, if any."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date that the operation was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberOperationError",
+          "traits": {
+            "smithy.api#documentation": "The Communication Services error."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The most recent date that the operation was changed."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "Url to retrieve the final result after operation completes."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOperationError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error target."
+          }
+        },
+        "details": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberOperationErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Further details about specific errors that led to this error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.communication_phone_numbers#CommunicationError",
+          "traits": {
+            "smithy.api#documentation": "The inner error if any."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Communication Services error."
+      }
+    },
+    "com.azure.communication_phone_numbers#CommunicationError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error target."
+          }
+        },
+        "details": {
+          "target": "com.azure.communication_phone_numbers#CommunicationErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Further details about specific errors that led to this error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.communication_phone_numbers#CommunicationError",
+          "traits": {
+            "smithy.api#documentation": "The inner error if any."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Communication Services error."
+      }
+    },
+    "com.azure.communication_phone_numbers#CommunicationErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#CommunicationError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Further details about specific errors that led to this error."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOperationErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#CommunicationError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Further details about specific errors that led to this error."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOperationStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of operation."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOperationOperationType": {
+      "type": "enum",
+      "members": {
+        "PURCHASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "purchase"
+          }
+        },
+        "RELEASEPHONENUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "releasePhoneNumber"
+          }
+        },
+        "SEARCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "search"
+          }
+        },
+        "UPDATEPHONENUMBERCAPABILITIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "updatePhoneNumberCapabilities"
+          }
+        },
+        "RESERVATIONPURCHASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reservationPurchase"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of operation, e.g. Search"
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetOperationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the operation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersPurchasePhoneNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchasePhoneNumbersRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchasePhoneNumbersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/availablePhoneNumbers/:purchase",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Purchases phone numbers."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersPurchasePhoneNumbersResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "URL to query for status of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersPurchasePhoneNumbersRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "searchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The search id."
+          }
+        },
+        "agreeToNotResell": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The agreement to not resell the phone numbers. Defaults to false if not provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetSearchResult": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersGetSearchResultRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberSearchResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/availablePhoneNumbers/searchResults/{searchId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets a phone number search result by search id."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberSearchResult": {
+      "type": "structure",
+      "members": {
+        "searchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The search id.",
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumbers": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberSearchResultPhoneNumbersList",
+          "traits": {
+            "smithy.api#documentation": "The phone numbers that are available. Can be fewer than the desired search quantity.",
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberSearchResultPhoneNumberType",
+          "traits": {
+            "smithy.api#documentation": "The phone number's type, e.g. geographic, tollFree, mobile.",
+            "smithy.api#required": {}
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberSearchResultAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "Phone number's assignment type.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilities",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cost": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCost",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "searchExpiresBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date that this search result expires and phone numbers are no longer on hold. A search result expires in less than 15min, e.g. 2020-11-19T16:31:49.048Z.",
+            "smithy.api#required": {}
+          }
+        },
+        "isAgreementToNotResellRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if do not resell agreement is required. If true, the phone numbers cannot be acquired unless the customer provides explicit agreement to not resell them."
+          }
+        },
+        "errorCode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The error code of the search."
+          }
+        },
+        "error": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberSearchResultError",
+          "traits": {
+            "smithy.api#documentation": "Mapping Error Messages to Codes"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of a phone number search operation."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberSearchResultError": {
+      "type": "enum",
+      "members": {
+        "NOERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoError"
+          }
+        },
+        "UNKNOWNERRORCODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnknownErrorCode"
+          }
+        },
+        "OUTOFSTOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OutOfStock"
+          }
+        },
+        "AUTHORIZATIONDENIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AuthorizationDenied"
+          }
+        },
+        "MISSINGADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MissingAddress"
+          }
+        },
+        "INVALIDADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidAddress"
+          }
+        },
+        "INVALIDOFFERMODEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InvalidOfferModel"
+          }
+        },
+        "NOTENOUGHLICENSES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotEnoughLicenses"
+          }
+        },
+        "NOWALLET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoWallet"
+          }
+        },
+        "NOTENOUGHCREDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotEnoughCredit"
+          }
+        },
+        "NUMBERSPARTIALLYACQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NumbersPartiallyAcquired"
+          }
+        },
+        "ALLNUMBERSNOTACQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllNumbersNotAcquired"
+          }
+        },
+        "RESERVATIONEXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReservationExpired"
+          }
+        },
+        "PURCHASEFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PurchaseFailed"
+          }
+        },
+        "BILLINGUNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BillingUnavailable"
+          }
+        },
+        "PROVISIONINGFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProvisioningFailed"
+          }
+        },
+        "UNKNOWNSEARCHERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnknownSearchError"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mapping Error Messages to Codes"
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberSearchResultAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Phone number's assignment type."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberSearchResultPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The phone number's type, e.g. geographic, tollFree, mobile."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberSearchResultPhoneNumbersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The phone numbers that are available. Can be fewer than the desired search quantity."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetSearchResultRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "searchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The search Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/availablePhoneNumbers/countries/{countryCode}/:search",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Search for available phone numbers to purchase."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "URL to retrieve the final result after operation completes."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "URL to query for status of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ISO 3166-2 country code, e.g. US."
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestPhoneNumberType",
+          "traits": {
+            "smithy.api#documentation": "The type of phone numbers to search for, e.g. geographic, tollFree, mobile.",
+            "smithy.api#required": {}
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "The assignment type of the phone numbers to search for. A phone number can be assigned to a person, or to an application.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilities",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "areaCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The area code of the desired phone number, e.g. 425."
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The quantity of desired phone numbers. The default value is 1."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The assignment type of the phone numbers to search for. A phone number can be assigned to a person, or to an application."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of phone numbers to search for, e.g. geographic, tollFree, mobile."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersPurchaseReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchaseReservationRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchaseReservationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/availablePhoneNumbers/reservations/{reservationId}/:purchase",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Starts the purchase of all phone numbers in the reservation.\n\nStarts a long running operation to purchase all of the phone numbers in the reservation. Purchase can only be started for active reservations that at least one phone number. If any of the phone numbers in the reservation is from a country where reselling is not permitted, do not resell agreement is required. The response will include an 'Operation-Location' header that can be used to query the status of the operation."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersPurchaseReservationResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "URL to query for status of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersPurchaseReservationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "reservationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the reservation."
+          }
+        },
+        "agreeToNotResell": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The agreement to not resell the phone numbers. Defaults to false if not provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/availablePhoneNumbers/reservations/{reservationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Deletes a reservation by its ID.\n\nDeletes the reservation with the given ID. Any phone number in the reservation will be released and made available for others to purchase. Only reservations with 'active' status can be deleted."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "reservationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the reservation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersCreateOrUpdateReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersCreateOrUpdateReservationRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersReservation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/availablePhoneNumbers/reservations/{reservationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Creates or updates a reservation by its ID.\n\nAdds and removes phone numbers from the reservation with the given ID. The response will be the updated state of the reservation. Phone numbers can be reserved by including them in the payload. If a number is already in the reservation, it will be ignored. To remove a phone number, set it explicitly to null in the request payload. This operation is idempotent. If a reservation with the same ID already exists, it will be updated, otherwise a new one is created. Only reservations with 'active' status can be updated. Updating a reservation will extend the expiration time of the reservation to 15 minutes after the last change, up to a maximum of 2 hours from creation time. Partial success is possible, in which case the response will have a 207 status code."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReservation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the reservation."
+          }
+        },
+        "expiresAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the reservation will expire. If a reservation is not purchased before this time, all of the reserved phone numbers will be released and made available for others to purchase."
+          }
+        },
+        "phoneNumbers": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersReservationPhoneNumbersMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary containing the reservation phone numbers. The key is the ID of the phone number (digits only) and values are AvailablePhoneNumber objects. Not populated when retrieving PhoneNumbersReservation collections."
+          }
+        },
+        "status": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersReservationStatus",
+          "traits": {
+            "smithy.api#documentation": "Represents the status of the reservation. Possible values include: 'active', 'submitted', 'completed', 'expired'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a reservation for phone numbers. A reservation is a temporary hold on phone numbers that can later be purchased. The reservation has a limited lifetime after which the phone numbers are released if not purchased. Reservations older than 1 month are automatically deleted."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReservationStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "SUBMITTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "submitted"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the status of the reservation. Possible values include: 'active', 'submitted', 'completed', 'expired'."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReservationPhoneNumbersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.communication_phone_numbers#AvailablePhoneNumber",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary containing the reservation phone numbers. The key is the ID of the phone number (digits only) and values are AvailablePhoneNumber objects. Not populated when retrieving PhoneNumbersReservation collections."
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumber": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the phone number."
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 3166-2 country code, e.g. US.",
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The phone number in E.164 format, e.g. +11234567890."
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilities",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#AvailablePhoneNumberPhoneNumberType",
+          "traits": {
+            "smithy.api#documentation": "Represents the number type of the offering.",
+            "smithy.api#required": {}
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#AvailablePhoneNumberAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "Represents the assignment type of the offering. Also known as the use case.",
+            "smithy.api#required": {}
+          }
+        },
+        "cost": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCost",
+          "traits": {
+            "smithy.api#documentation": "The incurred cost for this phone number."
+          }
+        },
+        "status": {
+          "target": "com.azure.communication_phone_numbers#AvailablePhoneNumberStatus",
+          "traits": {
+            "smithy.api#documentation": "Represents the status of the phone number. Possible values include: 'available', 'reserved', 'expired', 'error', 'purchased'."
+          }
+        },
+        "isAgreementToNotResellRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if do not resell agreement is required. If true, the phone number cannot be acquired unless the customer provides explicit agreement to not resell it."
+          }
+        },
+        "error": {
+          "target": "com.azure.communication_phone_numbers#AvailablePhoneNumberError"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a phone number available in inventory"
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumberError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code indicating the reason why the operation performed on the phone number failed."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message describing the failure that occurred."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains error details in case of failure when reserving, releasing or purchasing the phone number. Note that this is ignored by the service when present in requests."
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumberStatus": {
+      "type": "enum",
+      "members": {
+        "AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "available"
+          }
+        },
+        "RESERVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reserved"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "PURCHASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "purchased"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the status of the phone number. Possible values include: 'available', 'reserved', 'expired', 'error', 'purchased'."
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumberAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the assignment type of the offering. Also known as the use case."
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumberPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the number type of the offering."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersCreateOrUpdateReservationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "reservationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the reservation."
+          }
+        },
+        "phoneNumbers": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersCreateOrUpdateReservationRequestPhoneNumbersMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary containing the reservation phone numbers. The key is the ID of the phone number (digits only) and values are AvailablePhoneNumber objects. Not populated when retrieving PhoneNumbersReservation collections."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersCreateOrUpdateReservationRequestPhoneNumbersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.communication_phone_numbers#AvailablePhoneNumberInput",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary containing the reservation phone numbers. The key is the ID of the phone number (digits only) and values are AvailablePhoneNumber objects. Not populated when retrieving PhoneNumbersReservation collections."
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumberInput": {
+      "type": "structure",
+      "members": {
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 3166-2 country code, e.g. US.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilities",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#AvailablePhoneNumberInputPhoneNumberType",
+          "traits": {
+            "smithy.api#documentation": "Represents the number type of the offering.",
+            "smithy.api#required": {}
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#AvailablePhoneNumberInputAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "Represents the assignment type of the offering. Also known as the use case.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a phone number available in inventory"
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumberInputAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the assignment type of the offering. Also known as the use case."
+      }
+    },
+    "com.azure.communication_phone_numbers#AvailablePhoneNumberInputPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the number type of the offering."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetReservation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersGetReservationRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersReservation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/availablePhoneNumbers/reservations/{reservationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets a reservation by its ID.\n\nRetrieves the reservation with the given ID, including all of the phone numbers associated with it."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersGetReservationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "reservationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the reservation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListReservations": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersListReservationsRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersReservations"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/availablePhoneNumbers/reservations",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Lists all reservations.\n\nRetrieves a paginated list of all phone number reservations. Note that the reservations will not be populated with the phone numbers associated with them."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReservations": {
+      "type": "structure",
+      "members": {
+        "reservations": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersReservationsReservationsList",
+          "traits": {
+            "smithy.api#documentation": "Represents a list of phone numbers reservations. Note that the phone numbers from each reservation are not included.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the URL link to the next page of phone number results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of phone numbers reservations. Note that the phone numbers from each reservation are not included."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersReservationsReservationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersReservation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of phone numbers reservations. Note that the phone numbers from each reservation are not included."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListReservationsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListOfferings": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#OfferingsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/availablePhoneNumbers/countries/{countryCode}/offerings",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "List available offerings of capabilities with rates for the given country."
+      }
+    },
+    "com.azure.communication_phone_numbers#OfferingsResponse": {
+      "type": "structure",
+      "members": {
+        "phoneNumberOfferings": {
+          "target": "com.azure.communication_phone_numbers#OfferingsResponsePhoneNumberOfferingsList",
+          "traits": {
+            "smithy.api#documentation": "Represents the underlying list of offerings."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the URL link to the next page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a wrapper around a list of offerings."
+      }
+    },
+    "com.azure.communication_phone_numbers#OfferingsResponsePhoneNumberOfferingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberOffering"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the underlying list of offerings."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOffering": {
+      "type": "structure",
+      "members": {
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberOfferingPhoneNumberType",
+          "traits": {
+            "smithy.api#documentation": "Represents the number type of the offering."
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberOfferingAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "Represents the assignment type of the offering."
+          }
+        },
+        "availableCapabilities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCapabilities"
+        },
+        "cost": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCost",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a phone number capability offering"
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOfferingAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the assignment type of the offering."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberOfferingPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the number type of the offering."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ISO 3166-2 country code, e.g. US."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An optional parameter for how many entries to skip, for pagination purposes. The default value is 0."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestPhoneNumberType",
+          "traits": {
+            "smithy.api#httpQuery": "phoneNumberType",
+            "smithy.api#documentation": "Filter by numberType, e.g. Geographic, TollFree, Mobile."
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestAssignmentType",
+          "traits": {
+            "smithy.api#httpQuery": "assignmentType",
+            "smithy.api#documentation": "Filter by assignmentType, e.g. Person, Application."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "accept-language",
+            "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalities": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberLocalities"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/availablePhoneNumbers/countries/{countryCode}/localities",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets the list of cities or towns with available phone numbers."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberLocalities": {
+      "type": "structure",
+      "members": {
+        "phoneNumberLocalities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberLocalitiesPhoneNumberLocalitiesList",
+          "traits": {
+            "smithy.api#documentation": "Represents the underlying list of localities, e.g. cities or town."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the URL link to the next page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a wrapper around a list of cities or towns."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberLocalitiesPhoneNumberLocalitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberLocality"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the underlying list of localities, e.g. cities or town."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberLocality": {
+      "type": "structure",
+      "members": {
+        "localizedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the localized name of the locality.",
+            "smithy.api#required": {}
+          }
+        },
+        "administrativeDivision": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberAdministrativeDivision"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a locality."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberAdministrativeDivision": {
+      "type": "structure",
+      "members": {
+        "localizedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the localized name of the administrative division of the locality. e.g. state or province localized name.",
+            "smithy.api#required": {}
+          }
+        },
+        "abbreviatedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the abbreviated name of the administrative division of the locality. e.g. state or province abbreviation such as WA (Washington).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an administrative division. e.g. state or province."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ISO 3166-2 country code, e.g. US."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An optional parameter for how many entries to skip, for pagination purposes. The default value is 0."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
+          }
+        },
+        "administrativeDivision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "administrativeDivision",
+            "smithy.api#documentation": "An optional parameter for the name of the state or province in which to search for the area code."
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequestPhoneNumberType",
+          "traits": {
+            "smithy.api#httpQuery": "phoneNumberType",
+            "smithy.api#documentation": "Filter by numberType, e.g. Geographic, TollFree, Mobile."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "accept-language",
+            "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequestPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/availablePhoneNumbers/countries/{countryCode}/:browse",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Browses for available phone numbers to purchase.\n\nBrowses for available phone numbers to purchase. The response will be a randomized list of phone numbers available to purchase matching the browsing criteria. This operation is not paginated. Since the results are randomized, repeating the same request will not guarantee the same results."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersBrowseResult": {
+      "type": "structure",
+      "members": {
+        "phoneNumbers": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseResultPhoneNumbersList",
+          "traits": {
+            "smithy.api#documentation": "The phone numbers that are available for purchase.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of a phone number browse operation."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersBrowseResultPhoneNumbersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#AvailablePhoneNumber"
+      },
+      "traits": {
+        "smithy.api#documentation": "The phone numbers that are available for purchase."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ISO 3166-2 country code, e.g. US."
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequestPhoneNumberType",
+          "traits": {
+            "smithy.api#documentation": "Represents the number type of the offering.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberBrowseCapabilitiesRequest"
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequestAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "Represents the assignment type of the offering. Also known as the use case."
+          }
+        },
+        "phoneNumberPrefixes": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequestPhoneNumberPrefixesList",
+          "traits": {
+            "smithy.api#documentation": "The phone number prefix to match. If specified, the search will be limited to phone numbers that start with the any of the given prefixes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequestPhoneNumberPrefixesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The phone number prefix to match. If specified, the search will be limited to phone numbers that start with the any of the given prefixes."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequestAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the assignment type of the offering. Also known as the use case."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberBrowseCapabilitiesRequest": {
+      "type": "structure",
+      "members": {
+        "calling": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberBrowseCapabilitiesRequestCalling",
+          "traits": {
+            "smithy.api#documentation": "Capability value for calling."
+          }
+        },
+        "sms": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberBrowseCapabilitiesRequestSms",
+          "traits": {
+            "smithy.api#documentation": "Capability value for SMS."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The minimum desired capabilities for the browse operation request."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberBrowseCapabilitiesRequestSms": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "INBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound"
+          }
+        },
+        "OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound"
+          }
+        },
+        "INBOUND_OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound+outbound"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capability value for SMS."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberBrowseCapabilitiesRequestCalling": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "INBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound"
+          }
+        },
+        "OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound"
+          }
+        },
+        "INBOUND_OUTBOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inbound+outbound"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capability value for calling."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbersRequestPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the number type of the offering."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountries": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountriesRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberCountries"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/availablePhoneNumbers/countries",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets the list of supported countries."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCountries": {
+      "type": "structure",
+      "members": {
+        "countries": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberCountriesCountriesList",
+          "traits": {
+            "smithy.api#documentation": "Represents the underlying list of countries."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the URL link to the next page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a wrapper around a list of countries."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCountriesCountriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberCountry"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the underlying list of countries."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberCountry": {
+      "type": "structure",
+      "members": {
+        "localizedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the name of the country.",
+            "smithy.api#required": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the abbreviated name of the country.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a country."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountriesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An optional parameter for how many entries to skip, for pagination purposes. The default value is 0."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "accept-language",
+            "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodes": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberAreaCodes"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/availablePhoneNumbers/countries/{countryCode}/areaCodes",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Gets the list of available area codes."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberAreaCodes": {
+      "type": "structure",
+      "members": {
+        "areaCodes": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumberAreaCodesAreaCodesList",
+          "traits": {
+            "smithy.api#documentation": "Represents a list of available toll-free area codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the URL link to the next page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of available area codes."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberAreaCodesAreaCodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_phone_numbers#PhoneNumberAreaCode"
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of available toll-free area codes."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumberAreaCode": {
+      "type": "structure",
+      "members": {
+        "areaCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An area code."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an Area Code."
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://resourcename.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ISO 3166-2 country code, e.g. US."
+          }
+        },
+        "phoneNumberType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestPhoneNumberType",
+          "traits": {
+            "smithy.api#httpQuery": "phoneNumberType",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Filter by numberType, e.g. Geographic, TollFree, Mobile."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An optional parameter for how many entries to skip, for pagination purposes. The default value is 0."
+          }
+        },
+        "maxPageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxPageSize",
+            "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
+          }
+        },
+        "assignmentType": {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestAssignmentType",
+          "traits": {
+            "smithy.api#httpQuery": "assignmentType",
+            "smithy.api#documentation": "Filter by assignmentType, e.g. Person, Application."
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "locality",
+            "smithy.api#documentation": "The name of locality or town in which to search for the area code. This is required if the number type is Geographic."
+          }
+        },
+        "administrativeDivision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "administrativeDivision",
+            "smithy.api#documentation": "The name of the state or province in which to search for the area code."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "accept-language",
+            "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestAssignmentType": {
+      "type": "enum",
+      "members": {
+        "PERSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "person"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestPhoneNumberType": {
+      "type": "enum",
+      "members": {
+        "GEOGRAPHIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geographic"
+          }
+        },
+        "TOLLFREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tollFree"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.communication_phone_numbers#CommunicationPhoneNumbers": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearch"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbers"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersReleasePhoneNumber"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersGetByNumber"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilities"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersCancelOperation"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersGetOperation"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchasePhoneNumbers"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersGetSearchResult"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbers"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchaseReservation"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservation"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersCreateOrUpdateReservation"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersGetReservation"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListReservations"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferings"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalities"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbers"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountries"
+        },
+        {
+          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodes"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure PhoneNumbers data plane",
+        "smithy.api#documentation": "Azure communication data plane — communication/data-plane/PhoneNumbers (latest stable api-version 2025-06-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://communication.azure.com/.default"
+      }
+    }
+  }
+}

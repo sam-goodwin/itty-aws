@@ -31,10 +31,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a SchemaVersion",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteSchemaVersionResponse": {
@@ -120,10 +120,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a SchemaVersion",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#SchemaVersionsCreateOrReplaceResponse": {
@@ -437,10 +437,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a SchemaVersion",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetSchemaVersionResponse": {
@@ -542,10 +542,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List SchemaVersion resources by Schema",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#SchemaVersionListResult": {
@@ -669,10 +669,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a Schema",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteSchemaResponse": {
@@ -750,10 +750,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a Schema",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#SchemasCreateOrReplaceResponse": {
@@ -1021,10 +1021,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a Schema",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetSchemaResponse": {
@@ -1118,10 +1118,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List Schema resources by SchemaRegistry",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#SchemaListResult": {
@@ -1237,10 +1237,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a SchemaRegistry",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteSchemaRegistryResponse": {
@@ -1310,10 +1310,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a SchemaRegistry",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateSchemaRegistryResponse": {
@@ -1728,10 +1728,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a SchemaRegistry",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#SchemaRegistriesCreateOrReplaceResponse": {
@@ -1985,10 +1985,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a SchemaRegistry",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetSchemaRegistryResponse": {
@@ -2134,10 +2134,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List SchemaRegistry resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#SchemaRegistryListResult": {
@@ -2305,10 +2305,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Delete a RegistryDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#DeleteRegistryDeviceResponse": {
@@ -2386,10 +2386,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Update a RegistryDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#UpdateRegistryDeviceResponse": {
@@ -2667,10 +2667,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Create a RegistryDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#RegistryDevicesCreateOrReplaceResponse": {
@@ -2885,10 +2885,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Get a RegistryDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#GetRegistryDeviceResponse": {
@@ -3013,10 +3013,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "List RegistryDevice resources by Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#RegistryDeviceListResult": {
@@ -3163,10 +3163,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/migrate",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Migrate the resources into Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceMigrateResponse": {
@@ -3406,10 +3406,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a NamespaceDiscoveredDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteNamespaceDiscoveredDeviceResponse": {
@@ -3487,10 +3487,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a NamespaceDiscoveredDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateNamespaceDiscoveredDeviceResponse": {
@@ -4106,10 +4106,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a NamespaceDiscoveredDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredDevicesCreateOrReplaceResponse": {
@@ -4363,10 +4363,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a NamespaceDiscoveredDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetNamespaceDiscoveredDeviceResponse": {
@@ -4492,10 +4492,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List NamespaceDiscoveredDevice resources by Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredDeviceListResult": {
@@ -4643,10 +4643,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a NamespaceDiscoveredAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteNamespaceDiscoveredAssetResponse": {
@@ -4724,10 +4724,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a NamespaceDiscoveredAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateNamespaceDiscoveredAssetResponse": {
@@ -5979,10 +5979,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a NamespaceDiscoveredAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredAssetsCreateOrReplaceResponse": {
@@ -6417,10 +6417,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a NamespaceDiscoveredAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetNamespaceDiscoveredAssetResponse": {
@@ -6546,10 +6546,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List NamespaceDiscoveredAsset resources by Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredAssetListResult": {
@@ -6697,10 +6697,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a NamespaceDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteNamespaceDeviceResponse": {
@@ -6778,10 +6778,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a NamespaceDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateNamespaceDeviceResponse": {
@@ -7754,10 +7754,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a NamespaceDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceDevicesCreateOrReplaceResponse": {
@@ -8013,10 +8013,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a NamespaceDevice",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetNamespaceDeviceResponse": {
@@ -8147,10 +8147,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List NamespaceDevice resources by Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceDeviceListResult": {
@@ -8303,10 +8303,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/revokeAndRotate",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Revokes a Certificate Authority of type `ICA` and issuer type `Microsoft`. If the Certificate Authority is an invalid type, the API responds with HTTP 400.",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#CertificateAuthoritiesRevokeAndRotateResponse": {
@@ -8384,10 +8384,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Delete a CertificatePolicy",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#DeleteCertificatePolicyResponse": {
@@ -8473,10 +8473,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Update a CertificatePolicy",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#UpdateCertificatePolicyResponse": {
@@ -8667,10 +8667,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Create a CertificatePolicy",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#CertificatePoliciesCreateOrReplaceResponse": {
@@ -8806,10 +8806,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Get a CertificatePolicy",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#GetCertificatePolicyResponse": {
@@ -8911,10 +8911,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "List CertificatePolicy resources by CertificateAuthority",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#CertificatePolicyListResult": {
@@ -9038,10 +9038,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/activate",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Activates a Certificate Authority of type `ICA` and issuer type `External`. If the Certificate Authority is an invalid type, the API responds with HTTP 400.",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#ActivateCertificateAuthorityResponse": {
@@ -9126,10 +9126,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Delete a CertificateAuthority",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#DeleteCertificateAuthorityResponse": {
@@ -9207,10 +9207,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Update a CertificateAuthority",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#UpdateCertificateAuthorityResponse": {
@@ -9323,6 +9323,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Certificate is valid not after this date. Format ISO8601."
+          }
+        },
+        "issuer": {
+          "target": "com.azure.deviceregistry#CertificateAuthorityIssuer",
+          "traits": {
+            "smithy.api#documentation": "The issuer for an intermediate Certificate Authority (certificateAuthorityType ICA only)."
           }
         }
       },
@@ -9447,10 +9453,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Create a CertificateAuthority",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#CertificateAuthoritiesCreateOrReplaceResponse": {
@@ -9605,6 +9611,12 @@
             "smithy.api#documentation": "Crypto type: ECC.",
             "smithy.api#required": {}
           }
+        },
+        "issuer": {
+          "target": "com.azure.deviceregistry#CertificateAuthorityIssuer",
+          "traits": {
+            "smithy.api#documentation": "The issuer for an intermediate Certificate Authority (certificateAuthorityType ICA only)."
+          }
         }
       },
       "traits": {
@@ -9636,10 +9648,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Get a CertificateAuthority",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#GetCertificateAuthorityResponse": {
@@ -9758,10 +9770,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "List CertificateAuthority resources by Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#CertificateAuthorityListResult": {
@@ -9902,10 +9914,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}/executeAction",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "A long-running resource action.",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceAssetExecuteActionResponse": {
@@ -10094,10 +10106,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a NamespaceAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteNamespaceAssetResponse": {
@@ -10175,10 +10187,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a NamespaceAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateNamespaceAssetResponse": {
@@ -11543,10 +11555,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a NamespaceAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceAssetsCreateOrReplaceResponse": {
@@ -11988,10 +12000,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a NamespaceAsset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetNamespaceAssetResponse": {
@@ -12117,10 +12129,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List NamespaceAsset resources by Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceAssetListResult": {
@@ -12268,10 +12280,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteNamespaceResponse": {
@@ -12341,10 +12353,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateNamespaceResponse": {
@@ -13098,10 +13110,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespacesCreateOrReplaceResponse": {
@@ -13347,10 +13359,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a Namespace",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetNamespaceResponse": {
@@ -13496,10 +13508,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List Namespace resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#NamespaceListResult": {
@@ -13667,10 +13679,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a Asset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteAssetResponse": {
@@ -13740,10 +13752,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a Asset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateAssetResponse": {
@@ -14636,10 +14648,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a Asset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#AssetsCreateOrReplaceResponse": {
@@ -14977,10 +14989,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a Asset",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetAssetResponse": {
@@ -15098,10 +15110,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List Asset resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#AssetListResult": {
@@ -15241,10 +15253,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a AssetEndpointProfile",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#DeleteAssetEndpointProfileResponse": {
@@ -15314,10 +15326,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update a AssetEndpointProfile",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#UpdateAssetEndpointProfileResponse": {
@@ -15740,10 +15752,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a AssetEndpointProfile",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#AssetEndpointProfilesCreateOrReplaceResponse": {
@@ -15953,10 +15965,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a AssetEndpointProfile",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetAssetEndpointProfileResponse": {
@@ -16074,10 +16086,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List AssetEndpointProfile resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#AssetEndpointProfileListResult": {
@@ -16217,10 +16229,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/schemaRegistries",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List SchemaRegistry resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#ListSchemaRegistryBySubscriptionRequest": {
@@ -16252,10 +16264,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/namespaces",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List Namespace resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#ListNamespaceBySubscriptionRequest": {
@@ -16287,10 +16299,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/operationStatuses/{operationId}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Returns the current status of an async operation.",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetOperationStatusResponse": {
@@ -16558,10 +16570,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/asyncOperationStatuses/{operationId}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-02-preview"
         },
         "smithy.api#documentation": "Returns the current status of an async operation.",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-02-preview"
       }
     },
     "com.azure.deviceregistry#GetAsyncOperationStatusResponse": {
@@ -16681,10 +16693,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers/{billingContainerName}",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a BillingContainer",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#GetBillingContainerResponse": {
@@ -16782,10 +16794,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List BillingContainer resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#BillingContainerListResult": {
@@ -16891,10 +16903,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assets",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List Asset resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#ListAssetBySubscriptionRequest": {
@@ -16926,10 +16938,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List AssetEndpointProfile resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#ListAssetEndpointProfileBySubscriptionRequest": {
@@ -16961,10 +16973,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DeviceRegistry/operations",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.deviceregistry#ListOperationsResponse": {
@@ -17342,6 +17354,91 @@
       "traits": {
         "smithy.api#title": "Azure Deviceregistry",
         "smithy.api#documentation": "Azure Deviceregistry API — merged from the deviceregistry resource-manager specs (latest stable api-version per resource provider)."
+      }
+    },
+    "com.azure.deviceregistry#CertificateAuthorityIssuerType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "External"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The issuer type for an intermediate Certificate Authority."
+      }
+    },
+    "com.azure.deviceregistry#CertificateAuthorityStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING_ACTIVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PendingActivation"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "ACTIVE_BUT_PENDING_RENEWAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActiveButPendingRenewal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of the Certificate Authority certificate lifecycle."
+      }
+    },
+    "com.azure.deviceregistry#CertificateAuthorityIssuer": {
+      "type": "structure",
+      "members": {
+        "issuerType": {
+          "target": "com.azure.deviceregistry#CertificateAuthorityIssuerType",
+          "traits": {
+            "smithy.api#documentation": "The Certificate Authority issuer type.",
+            "smithy.api#required": {}
+          }
+        },
+        "certificateAuthorityResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the root issuer Certificate Authority in the same namespace (issuer type Microsoft)."
+          }
+        },
+        "certificateSigningRequest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate Signing Request (CSR) in PEM format, generated by the service (issuer type External)."
+          }
+        },
+        "thumbprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Thumbprint of the Certificate Authority certificate signed by the external issuer (issuer type External)."
+          }
+        },
+        "status": {
+          "target": "com.azure.deviceregistry#CertificateAuthorityStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the external issuer certificate lifecycle (issuer type External)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The issuer for an intermediate Certificate Authority."
       }
     }
   }

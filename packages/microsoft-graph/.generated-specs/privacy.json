@@ -1,0 +1,134 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.privacy#GetPrivacyRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.privacy#GetPrivacyRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.privacy#GetPrivacyRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.privacy#GetPrivacyRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.privacy#GetPrivacyRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.privacy#Privacy2": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.privacy#GetPrivacy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.privacy#GetPrivacyRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.privacy#Privacy2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/privacy",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get privacy"
+      }
+    },
+    "com.microsoft.graph.privacy#UpdatePrivacyRequest": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.privacy#UpdatePrivacy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.privacy#UpdatePrivacyRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.privacy#Privacy2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/privacy",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update privacy"
+      }
+    },
+    "com.microsoft.graph.privacy#Privacy": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.privacy#GetPrivacy"
+        },
+        {
+          "target": "com.microsoft.graph.privacy#UpdatePrivacy"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

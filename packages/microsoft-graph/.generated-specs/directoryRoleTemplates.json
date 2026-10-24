@@ -1,0 +1,1499 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DirectoryRoleTemplate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#DirectoryRoleTemplate"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/directoryRoleTemplates",
+          "code": 200
+        },
+        "smithy.api#documentation": "List directoryRoleTemplates\n\nRetrieve a list of directoryRoleTemplate objects.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CreateDirectoryRoleTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CreateDirectoryRoleTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CreateDirectoryRoleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#CreateDirectoryRoleTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#CreateDirectoryRoleTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to directoryRoleTemplates"
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get directoryRoleTemplate\n\nRetrieve the properties and relationships of a directoryroletemplate object."
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#UpdateDirectoryRoleTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#UpdateDirectoryRoleTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name to set for the directory role. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#UpdateDirectoryRoleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#UpdateDirectoryRoleTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#UpdateDirectoryRoleTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in directoryRoleTemplates"
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeleteDirectoryRoleTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeleteDirectoryRoleTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#DeleteDirectoryRoleTemplateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from directoryRoleTemplates"
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsRequestGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        },
+        "groupIds": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsRequestGroupIdsList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}/checkMemberGroups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action checkMemberGroups\n\nCheck for membership in a specified list of group IDs, and return from that list the IDs of groups where a specified object is a member. The specified object can be of one of the following types:\n- user\n- group\n- service principal\n- organizational contact\n- device\n- directory object This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Microsoft Entra ID. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        },
+        "ids": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsRequestIdsList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjectsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}/checkMemberObjects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action checkMemberObjects",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        },
+        "securityEnabledOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberGroupsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberGroupsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberGroupsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}/getMemberGroups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getMemberGroups\n\nReturn all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the DirectoryResultSizeLimitExceeded error code. If you get the DirectoryResultSizeLimitExceeded error code, use the List group transitive memberOf API instead.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberObjectsRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        },
+        "securityEnabledOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberObjectsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberObjectsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberObjectsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetMemberObjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberObjectsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberObjectsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}/getMemberObjects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getMemberObjects\n\nReturn all IDs for the groups, administrative units, and directory roles that an object of one of the following types is a member of:\n- user\n- group\n- service principal\n- organizational contact\n- device\n- directory object This function is transitive. Only users and role-enabled groups can be members of directory roles.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#RestoreRequest": {
+      "type": "structure",
+      "members": {
+        "directoryRoleTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of directoryRoleTemplate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DirectoryObject": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#RestoreResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#DirectoryObject",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#Restore": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#RestoreRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#RestoreResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/{directoryRoleTemplateId}/restore",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action restore\n\nRestore a recently deleted directory object from deleted items. The following types are supported:\n- administrativeUnit\n- application\n- agentIdentityBlueprint\n- agentIdentity\n- agentIdentityBlueprintPrincipal\n- agentUser\n- certificateBasedAuthPki\n- certificateAuthorityDetail\n- group\n- servicePrincipal\n- user If an item is accidentally deleted, you can fully restore the item. Additionally, restoring an application doesn't automatically restore the associated service principal automatically. You must call this API to explicitly restore the deleted service principal. A recently deleted item remains available for up to 30 days. After 30 days, the item is permanently deleted."
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/directoryRoleTemplates/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeltaRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeltaRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeltaRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeltaRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#DeltaRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#DeltaRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#DeltaRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeltaResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#DirectoryObject"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DeltaResponse": {
+      "type": "structure",
+      "members": {
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataDeltaLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.deltaLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#DeltaResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#Delta": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#DeltaRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#DeltaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/directoryRoleTemplates/delta()",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke function delta\n\nGet newly created, updated, or deleted directory objects without performing a full read of the entire directoryObject collection. For more information, see Use delta query to track changes in Microsoft Graph data for details.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "isSyncedFromOnPremises": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ExtensionProperty": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "deletedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when this object was deleted. Always null when the object hasn't been deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the application object on which this extension property is defined. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "dataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the data type of the value the extension property can hold. Following values are supported. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximumNot nullable. For multivalued directory extensions, these limits apply per value in the collection."
+          }
+        },
+        "isMultiValued": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Defines the directory extension as a multi-valued property. When true, the directory extension property can store a collection of objects of the dataType; for example, a collection of string types such as 'extensionb7b1c57b532f40b8b5ed4b7a7ba67401jobGroupTracker': ['String 1', 'String 2']. The default value is false. Supports $filter (eq)."
+          }
+        },
+        "isSyncedFromOnPremises": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the extension property. Not nullable. Supports $filter (eq)."
+          }
+        },
+        "targetObjects": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#ExtensionPropertyTargetObjectsList",
+          "traits": {
+            "smithy.api#documentation": "Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ExtensionPropertyTargetObjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization"
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionPropertiesResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#ExtensionProperty"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionPropertiesResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionPropertiesResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionPropertiesRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionPropertiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/getAvailableExtensionProperties",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getAvailableExtensionProperties\n\nReturn all directory extension definitions that are registered in a directory, including through multitenant apps. The following entities support extension properties:",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetByIdsRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetByIdsRequestTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetByIdsRequest": {
+      "type": "structure",
+      "members": {
+        "ids": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetByIdsRequestIdsList"
+        },
+        "types": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetByIdsRequestTypesList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetByIdsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#DirectoryObject"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetByIdsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetByIdsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#GetByIds": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetByIdsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#GetByIdsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/getByIds",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action getByIds\n\nReturn the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ValidatePropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "entityType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "mailNickname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "onBehalfOfUserId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#ValidateProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.directoryRoleTemplates#ValidatePropertiesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/directoryRoleTemplates/validateProperties",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action validateProperties\n\nValidate that a Microsoft 365 group's display name or mail nickname complies with naming policies. Clients can use this API to determine whether a display name or mail nickname is valid before trying to create a Microsoft 365 group. To validate the properties of an existing group, use the group: validateProperties function. The following policy validations are performed for the display name and mail nickname properties:\n1. Validate the prefix and suffix naming policy\n2. Validate the custom banned words policy\n3. Validate that the mail nickname is unique This API only returns the first validation failure that is encountered. If the properties fail multiple validations, only the first validation failure is returned. However, you can validate both the mail nickname and the display name and receive a collection of validation errors if you're only validating the prefix and suffix naming policy. To learn more about configuring naming policies, see Configure naming policy."
+      }
+    },
+    "com.microsoft.graph.directoryRoleTemplates#DirectoryRoleTemplates": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#ListDirectoryRoleTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#CreateDirectoryRoleTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetDirectoryRoleTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#UpdateDirectoryRoleTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#DeleteDirectoryRoleTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberGroups"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#CheckMemberObjects"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberGroups"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetMemberObjects"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#Restore"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetCount"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#Delta"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetAvailableExtensionProperties"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#GetByIds"
+        },
+        {
+          "target": "com.microsoft.graph.directoryRoleTemplates#ValidateProperties"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

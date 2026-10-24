@@ -1,0 +1,1055 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#SubscribedSku": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appliesTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target class for this SKU. Only SKUs with target class User are assignable. The possible values are: User, Company.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. The possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consumedUnits": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of licenses that have been assigned.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prepaidUnits": {
+          "target": "com.microsoft.graph.subscribedSkus#LicenseUnitsDetail",
+          "traits": {
+            "smithy.api#documentation": "Information about the number and status of prepaid licenses.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlans": {
+          "target": "com.microsoft.graph.subscribedSkus#SubscribedSkuServicePlansList",
+          "traits": {
+            "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skuPartNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.microsoft.graph.subscribedSkus#SubscribedSkuSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#LicenseUnitsDetail": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of units that are enabled for the active subscription of the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lockedOut": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of units that are locked out because the customer canceled their subscription of the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of units that are suspended because the subscription of the service SKU has been canceled. The units can't be assigned but can still be reactivated before they're deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "warning": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of units that are in warning status. When the subscription of the service SKU has expired, the customer has a grace period to renew their subscription before it's canceled (moved to a suspended state).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#ServicePlanInfo": {
+      "type": "structure",
+      "members": {
+        "appliesTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object the service plan can be assigned to. The possible values are:User - service plan can be assigned to individual users.Company - service plan can be assigned to the entire tenant.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "provisioningStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The provisioning status of the service plan. The possible values are:Success - Service is fully provisioned.Disabled - Service is disabled.Error - The service plan isn't provisioned and is in an error state.PendingInput - The service isn't provisioned and is awaiting service confirmation.PendingActivation - The service is provisioned but requires explicit activation by an administrator (for example, Intune_O365 service plan)PendingProvisioning - Microsoft has added a new service to the product SKU and it isn't activated in the tenant.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlanId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the service plan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlanName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service plan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#SubscribedSkuServicePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.subscribedSkus#ServicePlanInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#SubscribedSkuSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#ListSubscribedSkuResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.subscribedSkus#SubscribedSku"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#ListSubscribedSkuResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.subscribedSkus#ListSubscribedSkuResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#ListSubscribedSku": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.subscribedSkus#ListSubscribedSkuRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.subscribedSkus#ListSubscribedSkuResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscribedSkus",
+          "code": 200
+        },
+        "smithy.api#documentation": "List subscribedSkus\n\nGet the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Microsoft Entra admin center or the Microsoft 365 admin center against their Microsoft Graph skuId and skuPartNumber properties, see Product names and service plan identifiers for licensing.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuRequestServicePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.subscribedSkus#ServicePlanInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuRequestSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appliesTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target class for this SKU. Only SKUs with target class User are assignable. The possible values are: User, Company.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. The possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consumedUnits": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of licenses that have been assigned.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prepaidUnits": {
+          "target": "com.microsoft.graph.subscribedSkus#LicenseUnitsDetail",
+          "traits": {
+            "smithy.api#documentation": "Information about the number and status of prepaid licenses.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlans": {
+          "target": "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuRequestServicePlansList",
+          "traits": {
+            "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skuPartNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuRequestSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuResponseServicePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.subscribedSkus#ServicePlanInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuResponseSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appliesTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target class for this SKU. Only SKUs with target class User are assignable. The possible values are: User, Company.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. The possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consumedUnits": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of licenses that have been assigned.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prepaidUnits": {
+          "target": "com.microsoft.graph.subscribedSkus#LicenseUnitsDetail",
+          "traits": {
+            "smithy.api#documentation": "Information about the number and status of prepaid licenses.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlans": {
+          "target": "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuResponseServicePlansList",
+          "traits": {
+            "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skuPartNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuResponseSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#CreateSubscribedSku": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.subscribedSkus#CreateSubscribedSkuResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/subscribedSkus",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to subscribedSkus"
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#GetSubscribedSkuRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.subscribedSkus#GetSubscribedSkuRequest": {
+      "type": "structure",
+      "members": {
+        "subscribedSkuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of subscribedSku"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.subscribedSkus#GetSubscribedSkuRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#GetSubscribedSkuResponseServicePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.subscribedSkus#ServicePlanInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#GetSubscribedSkuResponseSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#GetSubscribedSkuResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appliesTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target class for this SKU. Only SKUs with target class User are assignable. The possible values are: User, Company.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. The possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consumedUnits": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of licenses that have been assigned.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prepaidUnits": {
+          "target": "com.microsoft.graph.subscribedSkus#LicenseUnitsDetail",
+          "traits": {
+            "smithy.api#documentation": "Information about the number and status of prepaid licenses.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlans": {
+          "target": "com.microsoft.graph.subscribedSkus#GetSubscribedSkuResponseServicePlansList",
+          "traits": {
+            "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skuPartNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.microsoft.graph.subscribedSkus#GetSubscribedSkuResponseSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#GetSubscribedSku": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.subscribedSkus#GetSubscribedSkuRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.subscribedSkus#GetSubscribedSkuResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscribedSkus/{subscribedSkuId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get subscribedSku\n\nGet a specific commercial subscription that an organization has acquired."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuRequestServicePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.subscribedSkus#ServicePlanInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuRequestSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuRequest": {
+      "type": "structure",
+      "members": {
+        "subscribedSkuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of subscribedSku"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appliesTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target class for this SKU. Only SKUs with target class User are assignable. The possible values are: User, Company.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. The possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consumedUnits": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of licenses that have been assigned.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prepaidUnits": {
+          "target": "com.microsoft.graph.subscribedSkus#LicenseUnitsDetail",
+          "traits": {
+            "smithy.api#documentation": "Information about the number and status of prepaid licenses.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlans": {
+          "target": "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuRequestServicePlansList",
+          "traits": {
+            "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skuPartNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuRequestSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuResponseServicePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.subscribedSkus#ServicePlanInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuResponseSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the account this SKU belongs to.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "appliesTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target class for this SKU. Only SKUs with target class User are assignable. The possible values are: User, Company.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "capabilityStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enabled indicates that the prepaidUnits property has at least one unit that is enabled. LockedOut indicates that the customer canceled their subscription. The possible values are: Enabled, Warning, Suspended, Deleted, LockedOut.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "consumedUnits": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of licenses that have been assigned.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prepaidUnits": {
+          "target": "com.microsoft.graph.subscribedSkus#LicenseUnitsDetail",
+          "traits": {
+            "smithy.api#documentation": "Information about the number and status of prepaid licenses.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "servicePlans": {
+          "target": "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuResponseServicePlansList",
+          "traits": {
+            "smithy.api#documentation": "Information about the service plans that are available with the SKU. Not nullable."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier (GUID) for the service SKU.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "skuPartNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU part number; for example: AAD_PREMIUM or RMSBASIC. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuResponseSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of all subscription IDs associated with this SKU."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#UpdateSubscribedSku": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.subscribedSkus#UpdateSubscribedSkuResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/subscribedSkus/{subscribedSkuId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in subscribedSkus"
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#DeleteSubscribedSkuRequest": {
+      "type": "structure",
+      "members": {
+        "subscribedSkuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of subscribedSku"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#DeleteSubscribedSku": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.subscribedSkus#DeleteSubscribedSkuRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/subscribedSkus/{subscribedSkuId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from subscribedSkus"
+      }
+    },
+    "com.microsoft.graph.subscribedSkus#SubscribedSkus": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.subscribedSkus#ListSubscribedSku"
+        },
+        {
+          "target": "com.microsoft.graph.subscribedSkus#CreateSubscribedSku"
+        },
+        {
+          "target": "com.microsoft.graph.subscribedSkus#GetSubscribedSku"
+        },
+        {
+          "target": "com.microsoft.graph.subscribedSkus#UpdateSubscribedSku"
+        },
+        {
+          "target": "com.microsoft.graph.subscribedSkus#DeleteSubscribedSku"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

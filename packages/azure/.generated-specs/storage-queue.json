@@ -1,0 +1,2444 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.storage_queue#MessageIdDelete": "com.azure.storage_queue#DeleteMessageId",
+      "com.azure.storage_queue#MessageIdDeleteRequest": "com.azure.storage_queue#DeleteMessageIdRequest",
+      "com.azure.storage_queue#MessageIdUpdate": "com.azure.storage_queue#UpdateMessageId",
+      "com.azure.storage_queue#MessageIdUpdateRequest": "com.azure.storage_queue#UpdateMessageIdRequest",
+      "com.azure.storage_queue#MessagesClear": "com.azure.storage_queue#ClearMessage",
+      "com.azure.storage_queue#MessagesClearRequest": "com.azure.storage_queue#ClearMessageRequest",
+      "com.azure.storage_queue#QueueSetAccessPolicy": "com.azure.storage_queue#SetQueueAccessPolicy",
+      "com.azure.storage_queue#QueueSetAccessPolicyRequest": "com.azure.storage_queue#SetQueueAccessPolicyRequest",
+      "com.azure.storage_queue#QueueGetAccessPolicy": "com.azure.storage_queue#GetQueueAccessPolicy",
+      "com.azure.storage_queue#QueueGetAccessPolicyResponse": "com.azure.storage_queue#GetQueueAccessPolicyResponse",
+      "com.azure.storage_queue#QueueGetAccessPolicyRequest": "com.azure.storage_queue#GetQueueAccessPolicyRequest",
+      "com.azure.storage_queue#QueueSetMetadata": "com.azure.storage_queue#SetQueueMetadata",
+      "com.azure.storage_queue#QueueSetMetadataRequest": "com.azure.storage_queue#SetQueueMetadataRequest",
+      "com.azure.storage_queue#QueueGetProperties": "com.azure.storage_queue#GetQueueProperties",
+      "com.azure.storage_queue#QueueGetPropertiesRequest": "com.azure.storage_queue#GetQueuePropertiesRequest",
+      "com.azure.storage_queue#QueueDelete": "com.azure.storage_queue#DeleteQueue",
+      "com.azure.storage_queue#QueueDeleteRequest": "com.azure.storage_queue#DeleteQueueRequest",
+      "com.azure.storage_queue#QueueCreate": "com.azure.storage_queue#CreateQueue",
+      "com.azure.storage_queue#QueueCreateRequest": "com.azure.storage_queue#CreateQueueRequest",
+      "com.azure.storage_queue#ServiceListQueuesSegment": "com.azure.storage_queue#ListServiceQueuesSegment",
+      "com.azure.storage_queue#ServiceListQueuesSegmentRequest": "com.azure.storage_queue#ListServiceQueuesSegmentRequest",
+      "com.azure.storage_queue#ServiceListQueuesSegmentRequestIncludeList": "com.azure.storage_queue#ListServiceQueuesSegmentRequestIncludeList",
+      "com.azure.storage_queue#ServiceListQueuesSegmentRequestIncludeItem": "com.azure.storage_queue#ListServiceQueuesSegmentRequestIncludeItem",
+      "com.azure.storage_queue#ServiceGetUserDelegationKey": "com.azure.storage_queue#GetServiceUserDelegationKey",
+      "com.azure.storage_queue#ServiceGetUserDelegationKeyRequest": "com.azure.storage_queue#GetServiceUserDelegationKeyRequest",
+      "com.azure.storage_queue#ServiceGetStatistics": "com.azure.storage_queue#GetServiceStatistics",
+      "com.azure.storage_queue#ServiceGetStatisticsRequest": "com.azure.storage_queue#GetServiceStatisticsRequest",
+      "com.azure.storage_queue#ServiceSetProperties": "com.azure.storage_queue#SetServiceProperties",
+      "com.azure.storage_queue#ServiceSetPropertiesRequest": "com.azure.storage_queue#SetServicePropertiesRequest",
+      "com.azure.storage_queue#ServiceSetPropertiesRequestCorsList": "com.azure.storage_queue#SetServicePropertiesRequestCorsList",
+      "com.azure.storage_queue#ServiceGetProperties": "com.azure.storage_queue#GetServiceProperties",
+      "com.azure.storage_queue#ServiceGetPropertiesRequest": "com.azure.storage_queue#GetServicePropertiesRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.storage_queue#MessageIdDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#MessageIdDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#DeleteMessageIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{queueName}/messages/{messageid}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "storage": true
+        },
+        "smithy.api#documentation": "The Delete operation deletes the specified message."
+      }
+    },
+    "com.azure.storage_queue#DeleteMessageIdResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#MessageIdDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "messageid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The container name."
+          }
+        },
+        "popreceipt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "popreceipt",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Required. Specifies the valid pop receipt value returned from an earlier call to the Get Messages or Update Message operation."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#MessageIdUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#MessageIdUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#UpdateMessageIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{queueName}/messages/{messageid}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "storage": true,
+          "xmlRoot": "QueueMessage"
+        },
+        "smithy.api#documentation": "The Update operation was introduced with version 2011-08-18 of the Queue service API. The Update Message operation updates the visibility timeout of a message. You can also use this operation to update the contents of a message. A message must be in a format that can be included in an XML request with UTF-8 encoding, and the encoded message can be up to 64KB in size."
+      }
+    },
+    "com.azure.storage_queue#UpdateMessageIdResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        },
+        "xMsPopreceipt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-popreceipt",
+            "smithy.api#documentation": "The pop receipt of the queue message."
+          }
+        },
+        "xMsTimeNextVisible": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-time-next-visible",
+            "smithy.api#documentation": "A UTC date/time value that represents when the message will be visible on the queue."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#MessageIdUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "messageid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The container name."
+          }
+        },
+        "popreceipt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "popreceipt",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Required. Specifies the valid pop receipt value returned from an earlier call to the Get Messages or Update Message operation."
+          }
+        },
+        "visibilitytimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "visibilitytimeout",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Optional. Specifies the new visibility timeout value, in seconds, relative to server time. The default value is 30 seconds. A specified value must be larger than or equal to 1 second, and cannot be larger than 7 days, or larger than 2 hours on REST protocol versions prior to version 2011-08-18. The visibility timeout of a message can be set to a value later than the expiry time."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        },
+        "MessageText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the message",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#MessagesPeek": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#MessagesPeekRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#MessagesPeekResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{queueName}/messages",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "peekonly": "true"
+          },
+          "storage": true
+        },
+        "smithy.api#documentation": "The Peek operation retrieves one or more messages from the front of the queue, but does not alter the visibility of the message."
+      }
+    },
+    "com.azure.storage_queue#MessagesPeekResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.storage_queue#PeekedMessagesList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "smithy.api#xmlName": "QueueMessagesList",
+            "com.azure.protocols#xmlItemName": "QueueMessage"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#PeekedMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#PeekedMessageItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The object returned when calling Peek Messages on a Queue"
+      }
+    },
+    "com.azure.storage_queue#PeekedMessageItem": {
+      "type": "structure",
+      "members": {
+        "MessageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the Message.",
+            "smithy.api#required": {}
+          }
+        },
+        "InsertionTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the Message was inserted into the Queue.",
+            "smithy.api#required": {}
+          }
+        },
+        "ExpirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the Message will expire and be automatically deleted.",
+            "smithy.api#required": {}
+          }
+        },
+        "DequeueCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of times the message has been dequeued.",
+            "smithy.api#required": {}
+          }
+        },
+        "MessageText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the Message.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object returned in the QueueMessageList array when calling Peek Messages on a Queue"
+      }
+    },
+    "com.azure.storage_queue#MessagesPeekRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "numofmessages": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "numofmessages",
+            "smithy.api#documentation": "Optional. A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. If fewer are visible, the visible messages are returned. By default, a single message is retrieved from the queue with this operation."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#MessagesClear": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#MessagesClearRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#ClearMessageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{queueName}/messages",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "storage": true
+        },
+        "smithy.api#documentation": "The Clear operation deletes all messages from the specified queue."
+      }
+    },
+    "com.azure.storage_queue#ClearMessageResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#MessagesClearRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#MessagesEnqueue": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#MessagesEnqueueRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#MessagesEnqueueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{queueName}/messages",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "storage": true,
+          "xmlRoot": "QueueMessage"
+        },
+        "smithy.api#documentation": "The Enqueue operation adds a new message to the back of the message queue. A visibility timeout can also be specified to make the message invisible until the visibility timeout expires. A message must be in a format that can be included in an XML request with UTF-8 encoding. The encoded message can be up to 64 KB in size for versions 2011-08-18 and newer, or 8 KB in size for previous versions."
+      }
+    },
+    "com.azure.storage_queue#MessagesEnqueueResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.storage_queue#EnqueuedMessageList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "smithy.api#xmlName": "QueueMessagesList",
+            "com.azure.protocols#xmlItemName": "QueueMessage"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#EnqueuedMessageList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#EnqueuedMessage"
+      },
+      "traits": {
+        "smithy.api#documentation": "The object returned when calling Put Message on a Queue"
+      }
+    },
+    "com.azure.storage_queue#EnqueuedMessage": {
+      "type": "structure",
+      "members": {
+        "MessageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the Message.",
+            "smithy.api#required": {}
+          }
+        },
+        "InsertionTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the Message was inserted into the Queue.",
+            "smithy.api#required": {}
+          }
+        },
+        "ExpirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the Message will expire and be automatically deleted.",
+            "smithy.api#required": {}
+          }
+        },
+        "PopReceipt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This value is required to delete the Message. If deletion fails using this popreceipt then the message has been dequeued by another client.",
+            "smithy.api#required": {}
+          }
+        },
+        "TimeNextVisible": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the message will again become visible in the Queue.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object returned in the QueueMessageList array when calling Put Message on a Queue"
+      }
+    },
+    "com.azure.storage_queue#MessagesEnqueueRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "visibilitytimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "visibilitytimeout",
+            "smithy.api#documentation": "Optional. If specified, the request must be made using an x-ms-version of 2011-08-18 or later. If not specified, the default value is 0. Specifies the new visibility timeout value, in seconds, relative to server time. The new value must be larger than or equal to 0, and cannot be larger than 7 days. The visibility timeout of a message cannot be set to a value later than the expiry time. visibilitytimeout should be set to a value smaller than the time-to-live value."
+          }
+        },
+        "messagettl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "messagettl",
+            "smithy.api#documentation": "Optional. Specifies the time-to-live interval for the message, in seconds. Prior to version 2017-07-29, the maximum time-to-live allowed is 7 days. For version 2017-07-29 or later, the maximum time-to-live can be any positive number, as well as -1 indicating that the message does not expire. If this parameter is omitted, the default time-to-live is 7 days."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        },
+        "MessageText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the message",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#MessagesDequeue": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#MessagesDequeueRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#MessagesDequeueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{queueName}/messages",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "storage": true
+        },
+        "smithy.api#documentation": "The Dequeue operation retrieves one or more messages from the front of the queue."
+      }
+    },
+    "com.azure.storage_queue#MessagesDequeueResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.storage_queue#DequeuedMessagesList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "smithy.api#xmlName": "QueueMessagesList",
+            "com.azure.protocols#xmlItemName": "QueueMessage"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#DequeuedMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#DequeuedMessageItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The object returned when calling Get Messages on a Queue"
+      }
+    },
+    "com.azure.storage_queue#DequeuedMessageItem": {
+      "type": "structure",
+      "members": {
+        "MessageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the Message.",
+            "smithy.api#required": {}
+          }
+        },
+        "InsertionTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the Message was inserted into the Queue.",
+            "smithy.api#required": {}
+          }
+        },
+        "ExpirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the Message will expire and be automatically deleted.",
+            "smithy.api#required": {}
+          }
+        },
+        "PopReceipt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This value is required to delete the Message. If deletion fails using this popreceipt then the message has been dequeued by another client.",
+            "smithy.api#required": {}
+          }
+        },
+        "TimeNextVisible": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that the message will again become visible in the Queue.",
+            "smithy.api#required": {}
+          }
+        },
+        "DequeueCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of times the message has been dequeued.",
+            "smithy.api#required": {}
+          }
+        },
+        "MessageText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the Message.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object returned in the QueueMessageList array when calling Get Messages on a Queue."
+      }
+    },
+    "com.azure.storage_queue#MessagesDequeueRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "numofmessages": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "numofmessages",
+            "smithy.api#documentation": "Optional. A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. If fewer are visible, the visible messages are returned. By default, a single message is retrieved from the queue with this operation."
+          }
+        },
+        "visibilitytimeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "visibilitytimeout",
+            "smithy.api#documentation": "Optional. Specifies the new visibility timeout value, in seconds, relative to server time. The default value is 30 seconds. A specified value must be larger than or equal to 1 second, and cannot be larger than 7 days, or larger than 2 hours on REST protocol versions prior to version 2011-08-18. The visibility timeout of a message can be set to a value later than the expiry time."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#QueueSetAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#QueueSetAccessPolicyRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#SetQueueAccessPolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{queueName}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "comp": "acl"
+          },
+          "storage": true,
+          "xmlRoot": "SignedIdentifiers"
+        },
+        "smithy.api#documentation": "sets stored access policies for the queue that may be used with Shared Access Signatures"
+      }
+    },
+    "com.azure.storage_queue#SetQueueAccessPolicyResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#QueueSetAccessPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        },
+        "body": {
+          "target": "com.azure.storage_queue#SignedIdentifiers",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "com.azure.protocols#xmlItemName": "SignedIdentifier"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#SignedIdentifiers": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#SignedIdentifier"
+      },
+      "traits": {
+        "smithy.api#documentation": "a collection of signed identifiers"
+      }
+    },
+    "com.azure.storage_queue#SignedIdentifier": {
+      "type": "structure",
+      "members": {
+        "Id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "a unique id",
+            "smithy.api#required": {}
+          }
+        },
+        "AccessPolicy": {
+          "target": "com.azure.storage_queue#AccessPolicy",
+          "traits": {
+            "smithy.api#documentation": "The access policy",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "signed identifier"
+      }
+    },
+    "com.azure.storage_queue#AccessPolicy": {
+      "type": "structure",
+      "members": {
+        "Start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the date-time the policy is active"
+          }
+        },
+        "Expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the date-time the policy expires"
+          }
+        },
+        "Permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the permissions for the acl policy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An Access policy"
+      }
+    },
+    "com.azure.storage_queue#QueueGetAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#QueueGetAccessPolicyRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#QueueGetAccessPolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{queueName}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "comp": "acl"
+          },
+          "storage": true
+        },
+        "smithy.api#documentation": "returns details about any stored access policies specified on the queue that may be used with Shared Access Signatures."
+      }
+    },
+    "com.azure.storage_queue#QueueGetAccessPolicyResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.storage_queue#SignedIdentifiers",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "smithy.api#xmlName": "SignedIdentifiers",
+            "com.azure.protocols#xmlItemName": "SignedIdentifier"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#QueueGetAccessPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#QueueSetMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#QueueSetMetadataRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#SetQueueMetadataResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{queueName}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "comp": "metadata"
+          },
+          "storage": true
+        },
+        "smithy.api#documentation": "sets user-defined metadata on the specified queue. Metadata is associated with the queue as name-value pairs."
+      }
+    },
+    "com.azure.storage_queue#SetQueueMetadataResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#QueueSetMetadataRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.storage_queue#HeaderCollection",
+          "traits": {
+            "smithy.api#documentation": "Optional. Include this parameter to specify that the queue's metadata be returned as part of the response body. Note that metadata requested with this parameter must be stored in accordance with the naming restrictions imposed by the 2009-09-19 version of the Queue service. Beginning with this version, all metadata names must adhere to the naming conventions for C# identifiers.",
+            "smithy.api#httpPrefixHeaders": "x-ms-meta-"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#HeaderCollection": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.azure.storage_queue#QueueGetProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#QueueGetPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#GetQueuePropertiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{queueName}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "comp": "metadata"
+          },
+          "storage": true
+        },
+        "smithy.api#documentation": "Retrieves user-defined metadata and queue properties on the specified queue. Metadata is associated with the queue as name-values pairs."
+      }
+    },
+    "com.azure.storage_queue#GetQueuePropertiesResponse": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.storage_queue#HeaderCollection",
+          "traits": {
+            "smithy.api#httpPrefixHeaders": "x-ms-meta-"
+          }
+        },
+        "xMsApproximateMessagesCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-approximate-messages-count",
+            "smithy.api#documentation": "The approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher."
+          }
+        },
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#QueueGetPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#QueueDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#QueueDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#DeleteQueueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{queueName}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "storage": true
+        },
+        "smithy.api#documentation": "operation permanently deletes the specified queue"
+      }
+    },
+    "com.azure.storage_queue#DeleteQueueResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#QueueDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#QueueCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#QueueCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#CreateQueueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{queueName}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "storage": true
+        },
+        "smithy.api#documentation": "creates a new queue under the given account."
+      }
+    },
+    "com.azure.storage_queue#CreateQueueResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#QueueCreateRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "queueName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The queue name."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.storage_queue#HeaderCollection",
+          "traits": {
+            "smithy.api#documentation": "Optional. Include this parameter to specify that the queue's metadata be returned as part of the response body. Note that metadata requested with this parameter must be stored in accordance with the naming restrictions imposed by the 2009-09-19 version of the Queue service. Beginning with this version, all metadata names must adhere to the naming conventions for C# identifiers.",
+            "smithy.api#httpPrefixHeaders": "x-ms-meta-"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#ServiceListQueuesSegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#ServiceListQueuesSegmentRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#ListServiceQueuesSegmentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "comp": "list"
+          },
+          "storage": true
+        },
+        "smithy.api#documentation": "The List Queues Segment operation returns a list of the queues under the specified account"
+      }
+    },
+    "com.azure.storage_queue#ListServiceQueuesSegmentResponse": {
+      "type": "structure",
+      "members": {
+        "ServiceEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#xmlAttribute": {}
+          }
+        },
+        "Prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Marker": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "MaxResults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "QueueItems": {
+          "target": "com.azure.storage_queue#ListQueuesSegmentResponseQueueItemsList",
+          "traits": {
+            "smithy.api#xmlName": "Queues",
+            "com.azure.protocols#xmlItemName": "Queue"
+          }
+        },
+        "NextMarker": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object returned when calling List Queues on a Queue Service.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#ListQueuesSegmentResponseQueueItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#QueueItem"
+      },
+      "traits": {}
+    },
+    "com.azure.storage_queue#QueueItem": {
+      "type": "structure",
+      "members": {
+        "Name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Queue.",
+            "smithy.api#required": {}
+          }
+        },
+        "Metadata": {
+          "target": "com.azure.storage_queue#Metadata",
+          "traits": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An Azure Storage Queue."
+      }
+    },
+    "com.azure.storage_queue#Metadata": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.storage_queue#ServiceListQueuesSegmentRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "prefix",
+            "smithy.api#documentation": "Filters the results to return only queues whose name begins with the specified prefix."
+          }
+        },
+        "marker": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "marker",
+            "smithy.api#documentation": "A string value that identifies the portion of the list of queues to be returned with the next listing operation. The operation returns the NextMarker value within the response body if the listing operation did not return all queues remaining to be listed with the current page. The NextMarker value can be used as the value for the marker parameter in a subsequent call to request the next page of list items. The marker value is opaque to the client."
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Specifies the maximum number of queues to return. If the request does not specify maxresults, or specifies a value greater than 5000, the server will return up to 5000 items. Note that if the listing operation crosses a partition boundary, then the service will return a continuation token for retrieving the remainder of the results. For this reason, it is possible that the service will return fewer results than specified by maxresults, or than the default of 5000."
+          }
+        },
+        "include": {
+          "target": "com.azure.storage_queue#ServiceListQueuesSegmentRequestIncludeList",
+          "traits": {
+            "smithy.api#httpQuery": "include",
+            "smithy.api#documentation": "Include this parameter to specify that the queues' metadata be returned as part of the response body."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#ServiceListQueuesSegmentRequestIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#ServiceListQueuesSegmentRequestIncludeItem"
+      },
+      "traits": {}
+    },
+    "com.azure.storage_queue#ServiceListQueuesSegmentRequestIncludeItem": {
+      "type": "enum",
+      "members": {
+        "METADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metadata"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.storage_queue#ServiceGetUserDelegationKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#ServiceGetUserDelegationKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#GetServiceUserDelegationKeyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "restype": "service",
+            "comp": "userdelegationkey"
+          },
+          "storage": true,
+          "xmlRoot": "KeyInfo"
+        },
+        "smithy.api#documentation": "Retrieves a user delegation key for the Queue service. This is only a valid operation when using bearer token authentication."
+      }
+    },
+    "com.azure.storage_queue#GetServiceUserDelegationKeyResponse": {
+      "type": "structure",
+      "members": {
+        "SignedOid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Active Directory object ID in GUID format.",
+            "smithy.api#required": {}
+          }
+        },
+        "SignedTid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Active Directory tenant ID in GUID format",
+            "smithy.api#required": {}
+          }
+        },
+        "SignedStart": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date-time the key is active",
+            "smithy.api#required": {}
+          }
+        },
+        "SignedExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date-time the key expires",
+            "smithy.api#required": {}
+          }
+        },
+        "SignedService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Abbreviation of the Azure Storage service that accepts the key",
+            "smithy.api#required": {}
+          }
+        },
+        "SignedVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service version that created the key",
+            "smithy.api#required": {}
+          }
+        },
+        "SignedDelegatedUserTid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The delegated user tenant id in Azure AD. Return if DelegatedUserTid is specified."
+          }
+        },
+        "Value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key as a base64 string",
+            "smithy.api#required": {}
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "If a client request id header is sent in the request, this header will be present in the response with the same value."
+          }
+        },
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Blob service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A user delegation key",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#ServiceGetUserDelegationKeyRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        },
+        "Start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date-time the key is active in ISO 8601 UTC time"
+          }
+        },
+        "Expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date-time the key expires in ISO 8601 UTC time",
+            "smithy.api#required": {}
+          }
+        },
+        "DelegatedUserTid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The delegated user tenant id in Azure AD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#ServiceGetStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#ServiceGetStatisticsRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#GetServiceStatisticsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "restype": "service",
+            "comp": "stats"
+          },
+          "storage": true
+        },
+        "smithy.api#documentation": "Retrieves statistics related to replication for the Queue service. It is only available on the secondary location endpoint when read-access geo-redundant replication is enabled for the storage account."
+      }
+    },
+    "com.azure.storage_queue#GetServiceStatisticsResponse": {
+      "type": "structure",
+      "members": {
+        "GeoReplication": {
+          "target": "com.azure.storage_queue#GeoReplication",
+          "traits": {
+            "smithy.api#documentation": "Geo-Replication information for the Secondary Storage Service"
+          }
+        },
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Date",
+            "smithy.api#documentation": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Stats for the storage service.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#GeoReplication": {
+      "type": "structure",
+      "members": {
+        "Status": {
+          "target": "com.azure.storage_queue#GeoReplicationStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the secondary location",
+            "smithy.api#required": {}
+          }
+        },
+        "LastSyncTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A GMT date/time value, to the second. All primary writes preceding this value are guaranteed to be available for read operations at the secondary. Primary writes after this point in time may or may not be available for reads.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.storage_queue#GeoReplicationStatus": {
+      "type": "enum",
+      "members": {
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live"
+          }
+        },
+        "BOOTSTRAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bootstrap"
+          }
+        },
+        "UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unavailable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the secondary location"
+      }
+    },
+    "com.azure.storage_queue#ServiceGetStatisticsRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#ServiceSetProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#ServiceSetPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#SetServicePropertiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "restype": "service",
+            "comp": "properties"
+          },
+          "storage": true,
+          "xmlRoot": "StorageServiceProperties"
+        },
+        "smithy.api#documentation": "Sets properties for a storage account's Queue service endpoint, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules"
+      }
+    },
+    "com.azure.storage_queue#SetServicePropertiesResponse": {
+      "type": "structure",
+      "members": {
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#ServiceSetPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        },
+        "Logging": {
+          "target": "com.azure.storage_queue#Logging",
+          "traits": {
+            "smithy.api#documentation": "Azure Analytics Logging settings"
+          }
+        },
+        "HourMetrics": {
+          "target": "com.azure.storage_queue#Metrics",
+          "traits": {
+            "smithy.api#documentation": "A summary of request statistics grouped by API in hourly aggregates for queues"
+          }
+        },
+        "MinuteMetrics": {
+          "target": "com.azure.storage_queue#Metrics",
+          "traits": {
+            "smithy.api#documentation": "a summary of request statistics grouped by API in minute aggregates for queues"
+          }
+        },
+        "Cors": {
+          "target": "com.azure.storage_queue#ServiceSetPropertiesRequestCorsList",
+          "traits": {
+            "smithy.api#documentation": "The set of CORS rules.",
+            "com.azure.protocols#xmlItemName": "CorsRule"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#ServiceSetPropertiesRequestCorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#CorsRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of CORS rules."
+      }
+    },
+    "com.azure.storage_queue#CorsRule": {
+      "type": "structure",
+      "members": {
+        "AllowedOrigins": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The origin domains that are permitted to make a request against the storage service via CORS. The origin domain is the domain from which the request originates. Note that the origin must be an exact case-sensitive match with the origin that the user age sends to the service. You can also use the wildcard character '*' to allow all origin domains to make requests via CORS.",
+            "smithy.api#required": {}
+          }
+        },
+        "AllowedMethods": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The methods (HTTP request verbs) that the origin domain may use for a CORS request. (comma separated)",
+            "smithy.api#required": {}
+          }
+        },
+        "AllowedHeaders": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the request headers that the origin domain may specify on the CORS request.",
+            "smithy.api#required": {}
+          }
+        },
+        "ExposedHeaders": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer",
+            "smithy.api#required": {}
+          }
+        },
+        "MaxAgeInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum amount time that a browser should cache the preflight OPTIONS request.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "CORS is an HTTP feature that enables a web application running under one domain to access resources in another domain. Web browsers implement a security restriction known as same-origin policy that prevents a web page from calling APIs in a different domain; CORS provides a secure way to allow one domain (the origin domain) to call APIs in another domain"
+      }
+    },
+    "com.azure.storage_queue#Metrics": {
+      "type": "structure",
+      "members": {
+        "Version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Storage Analytics to configure."
+          }
+        },
+        "Enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether metrics are enabled for the Queue service.",
+            "smithy.api#required": {}
+          }
+        },
+        "IncludeAPIs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether metrics should generate summary statistics for called API operations."
+          }
+        },
+        "RetentionPolicy": {
+          "target": "com.azure.storage_queue#RetentionPolicy",
+          "traits": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "a summary of request statistics grouped by API in hour or minute aggregates for queues"
+      }
+    },
+    "com.azure.storage_queue#RetentionPolicy": {
+      "type": "structure",
+      "members": {
+        "Enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether a retention policy is enabled for the storage service",
+            "smithy.api#required": {}
+          }
+        },
+        "Days": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Indicates the number of days that metrics or logging or soft-deleted data should be retained. All data older than this value will be deleted"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "the retention policy"
+      }
+    },
+    "com.azure.storage_queue#Logging": {
+      "type": "structure",
+      "members": {
+        "Version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Storage Analytics to configure.",
+            "smithy.api#required": {}
+          }
+        },
+        "Delete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether all delete requests should be logged.",
+            "smithy.api#required": {}
+          }
+        },
+        "Read": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether all read requests should be logged.",
+            "smithy.api#required": {}
+          }
+        },
+        "Write": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether all write requests should be logged.",
+            "smithy.api#required": {}
+          }
+        },
+        "RetentionPolicy": {
+          "target": "com.azure.storage_queue#RetentionPolicy",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Analytics Logging settings."
+      }
+    },
+    "com.azure.storage_queue#ServiceGetProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.storage_queue#ServiceGetPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.storage_queue#GetServicePropertiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2026-04-06",
+          "apiVersionHeader": "x-ms-version",
+          "query": {
+            "restype": "service",
+            "comp": "properties"
+          },
+          "storage": true
+        },
+        "smithy.api#documentation": "gets the properties of a storage account's Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules."
+      }
+    },
+    "com.azure.storage_queue#GetServicePropertiesResponse": {
+      "type": "structure",
+      "members": {
+        "Logging": {
+          "target": "com.azure.storage_queue#Logging",
+          "traits": {
+            "smithy.api#documentation": "Azure Analytics Logging settings"
+          }
+        },
+        "HourMetrics": {
+          "target": "com.azure.storage_queue#Metrics",
+          "traits": {
+            "smithy.api#documentation": "A summary of request statistics grouped by API in hourly aggregates for queues"
+          }
+        },
+        "MinuteMetrics": {
+          "target": "com.azure.storage_queue#Metrics",
+          "traits": {
+            "smithy.api#documentation": "a summary of request statistics grouped by API in minute aggregates for queues"
+          }
+        },
+        "Cors": {
+          "target": "com.azure.storage_queue#StorageServicePropertiesCorsList",
+          "traits": {
+            "smithy.api#documentation": "The set of CORS rules.",
+            "com.azure.protocols#xmlItemName": "CorsRule"
+          }
+        },
+        "xMsRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-request-id",
+            "smithy.api#documentation": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+          }
+        },
+        "xMsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-version",
+            "smithy.api#documentation": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Service Properties.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.storage_queue#StorageServicePropertiesCorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage_queue#CorsRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of CORS rules."
+      }
+    },
+    "com.azure.storage_queue#ServiceGetPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The URL of the service account, queue or message that is the target of the desired operation.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The The timeout parameter is expressed in seconds. For more information, see <a href=\"https://learn.microsoft.com/rest/api/storageservices/setting-timeouts-for-queue-service-operations>Setting Timeouts for Queue Service Operations.</a>"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "Provides a client-generated, opaque value with a 1 KB character limit that is recorded in the analytics logs when storage analytics logging is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage_queue#StorageQueue": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.storage_queue#MessageIdDelete"
+        },
+        {
+          "target": "com.azure.storage_queue#MessageIdUpdate"
+        },
+        {
+          "target": "com.azure.storage_queue#MessagesPeek"
+        },
+        {
+          "target": "com.azure.storage_queue#MessagesClear"
+        },
+        {
+          "target": "com.azure.storage_queue#MessagesEnqueue"
+        },
+        {
+          "target": "com.azure.storage_queue#MessagesDequeue"
+        },
+        {
+          "target": "com.azure.storage_queue#QueueSetAccessPolicy"
+        },
+        {
+          "target": "com.azure.storage_queue#QueueGetAccessPolicy"
+        },
+        {
+          "target": "com.azure.storage_queue#QueueSetMetadata"
+        },
+        {
+          "target": "com.azure.storage_queue#QueueGetProperties"
+        },
+        {
+          "target": "com.azure.storage_queue#QueueDelete"
+        },
+        {
+          "target": "com.azure.storage_queue#QueueCreate"
+        },
+        {
+          "target": "com.azure.storage_queue#ServiceListQueuesSegment"
+        },
+        {
+          "target": "com.azure.storage_queue#ServiceGetUserDelegationKey"
+        },
+        {
+          "target": "com.azure.storage_queue#ServiceGetStatistics"
+        },
+        {
+          "target": "com.azure.storage_queue#ServiceSetProperties"
+        },
+        {
+          "target": "com.azure.storage_queue#ServiceGetProperties"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure QueueStorage data plane",
+        "smithy.api#documentation": "Azure storage data plane — storage/data-plane/QueueStorage (latest stable api-version 2026-04-06).",
+        "com.azure.protocols#host": {
+          "template": "{url}",
+          "parameters": [
+            {
+              "name": "url",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://storage.azure.com/.default"
+      }
+    }
+  }
+}

@@ -1,0 +1,723 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrlWithoutSaving": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrlWithoutSavingRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/detect/iterations/{publishedName}/url/nostore",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Detect objects in an image url without saving the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prediction Id."
+          }
+        },
+        "project": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project Id."
+          }
+        },
+        "iteration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration Id."
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date this prediction was created."
+          }
+        },
+        "predictions": {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePredictionPredictionsList",
+          "traits": {
+            "smithy.api#documentation": "List of predictions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Result of an image prediction request."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImagePredictionPredictionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#Prediction"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of predictions."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#Prediction": {
+      "type": "structure",
+      "members": {
+        "probability": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Probability of the tag."
+          }
+        },
+        "tagId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the predicted tag."
+          }
+        },
+        "tagName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the predicted tag.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "boundingBox": {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#BoundingBox",
+          "traits": {
+            "smithy.api#documentation": "Bounding box of the prediction.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tagType": {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#PredictionTagType",
+          "traits": {
+            "smithy.api#documentation": "Type of the predicted tag.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Prediction result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#PredictionTagType": {
+      "type": "enum",
+      "members": {
+        "REGULAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Regular"
+          }
+        },
+        "NEGATIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Negative"
+          }
+        },
+        "GENERALPRODUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GeneralProduct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the predicted tag."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#BoundingBox": {
+      "type": "structure",
+      "members": {
+        "left": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Coordinate of the left boundary.",
+            "smithy.api#required": {}
+          }
+        },
+        "top": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Coordinate of the top boundary.",
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Width.",
+            "smithy.api#required": {}
+          }
+        },
+        "height": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Height.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounding box that defines a region of an image."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrlWithoutSavingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url of the image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrlRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/detect/iterations/{publishedName}/url",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Detect objects in an image url and saves the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrlRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url of the image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageWithoutSaving": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageWithoutSavingRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/detect/iterations/{publishedName}/image/nostore",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Detect objects in an image without saving the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageWithoutSavingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/detect/iterations/{publishedName}/image",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Detect objects in an image and saves the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrlWithoutSaving": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrlWithoutSavingRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/classify/iterations/{publishedName}/url/nostore",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Classify an image url without saving the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrlWithoutSavingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url of the image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrlRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/classify/iterations/{publishedName}/url",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Classify an image url and saves the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrlRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url of the image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageWithoutSaving": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageWithoutSavingRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/classify/iterations/{publishedName}/image/nostore",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Classify an image without saving the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageWithoutSavingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_custom_vision_prediction#ImagePrediction"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{projectId}/classify/iterations/{publishedName}/image",
+          "code": 200,
+          "host": "{endpoint}/customvision/v3.1/prediction",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Classify an image and saves the result."
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id."
+          }
+        },
+        "publishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the name of the model to evaluate against."
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "application",
+            "smithy.api#documentation": "Optional. Specifies the name of application using the endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_custom_vision_prediction#CognitiveservicesCustomVisionPrediction": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrlWithoutSaving"
+        },
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrl"
+        },
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageWithoutSaving"
+        },
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImage"
+        },
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrlWithoutSaving"
+        },
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageUrl"
+        },
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImageWithoutSaving"
+        },
+        {
+          "target": "com.azure.cognitiveservices_custom_vision_prediction#ImageClassifierClassifyImage"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure CustomVisionPrediction data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/CustomVisionPrediction (latest stable api-version v3.1).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/customvision/v3.1/prediction",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

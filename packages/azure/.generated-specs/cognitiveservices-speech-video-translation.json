@@ -1,0 +1,1569 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIteration": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIteration",
+      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationResponse": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationResponse",
+      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationRequest": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIteration": "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIteration",
+      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIterationRequest": "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIterationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIteration": "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIteration",
+      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIterationRequest": "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIterationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslation": "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslation",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslation": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslation",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationResponse": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationResponse",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslation": "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslation",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslation": "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslation",
+      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperation": "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperation",
+      "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperationRequest": "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHub": "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHub",
+      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHubRequest": "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHubRequest",
+      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfiguration": "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfiguration",
+      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfigurationRequest": "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfigurationRequest",
+      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfiguration": "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfiguration",
+      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfigurationRequest": "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfigurationRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIteration": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/translations/{translationId}/iterations/{iterationId}",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Creates an iteration."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration ID",
+            "smithy.api#required": {}
+          }
+        },
+        "input": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationInput",
+          "traits": {
+            "smithy.api#documentation": "Iteration input.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration description"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#Status",
+          "traits": {
+            "smithy.api#documentation": "Iteration status"
+          }
+        },
+        "failureReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration failure reason"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "result": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationResult",
+          "traits": {
+            "smithy.api#documentation": "Iteration result."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Do one iteration to translate one video file from source locale to target locale, webvtt for content editing is optional for requesting parameter.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationResult": {
+      "type": "structure",
+      "members": {
+        "translatedVideoFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translated video file URL."
+          }
+        },
+        "translatedAudioFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translated audio file URL."
+          }
+        },
+        "sourceLocaleSubtitleWebvttFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source locale subtitle file URL."
+          }
+        },
+        "targetLocaleSubtitleWebvttFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target locale subtitle file URL."
+          }
+        },
+        "targetLocaleAdvancedSubtitleFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property provides the URL of the target locale Advanced SubStation Alpha (ASS) subtitle file. It is populated only when exportTargetLocaleAdvancedSubtitleFile is set to true during iteration creation; otherwise, this property will not be included in the response."
+          }
+        },
+        "metadataJsonWebvttFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata json webvtt file URL."
+          }
+        },
+        "reportFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Report file URL."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Iteration result."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#Status": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task status."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationInput": {
+      "type": "structure",
+      "members": {
+        "webvttFile": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#WebvttFile",
+          "traits": {
+            "smithy.api#documentation": "Webvtt file for content editing, this parameter is required from the second iteration creation request of the translation."
+          }
+        },
+        "speakerCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of speakers in the video, if not specified, it will inherit the value defined in the input of translation creation."
+          }
+        },
+        "subtitleMaxCharCountPerSegment": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Recommended: Do not set this parameter unless you have specific requirements. The default behavior is optimized for most customers. Subtitle max display character count per segment, if not specified, it will inherit the value defined in the input of translation creation."
+          }
+        },
+        "exportSubtitleInVideo": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Export subtitle in video, if not specified, it will inherit the value defined in the input of translation creation."
+          }
+        },
+        "ttsCustomLexiconFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translate with TTS custom lexicon for speech synthesis. Provide the custom lexicon file using either ttsCustomLexiconFileUrl or ttsCustomLexiconFileIdInAudioContentCreation. These parameters are mutually exclusive—only one of them is required. If both are provided, the request will be considered invalid."
+          }
+        },
+        "ttsCustomLexiconFileIdInAudioContentCreation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translate with TTS custom lexicon for speech synthesis. Provide the custom lexicon file using either ttsCustomLexiconFileUrl or ttsCustomLexiconFileIdInAudioContentCreation. These parameters are mutually exclusive—only one of them is required. If both are provided, the request will be considered invalid."
+          }
+        },
+        "enableVideoSpeedAdjustment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This parameter allows for the adjustment of video playback speed to ensure better alignment with translated audio. When enabled, the API can slow down or speed up the video to match the timing of the translated audio, providing a more synchronized and seamless viewing experience, if not specified, video speed will not be adjusted."
+          }
+        },
+        "enableOcrCorrectionFromSubtitle": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate whether to allow the API to correct the speech recognition (SR) results using the subtitles from the original video file. By leveraging the existing subtitles, the API can enhance the accuracy of the transcribed text, ensuring that the final output is more precise and reliable, if not specified, translation will not do correction from OCR subtitle."
+          }
+        },
+        "exportTargetLocaleAdvancedSubtitleFile": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This parameter, when enabled, allows the API to export subtitles in the Advanced SubStation Alpha format. The subtitle file can specify font styles and colors, which helps in addressing character display issues in certain target locales such as Arabic (Ar), Japanese (Ja), Korean (Ko), and Chinese (Ch). By using this parameter, you can ensure that the subtitles are visually appealing and correctly rendered across different languages and regions, if not specified, iteration response will not include advanced subtitle."
+          }
+        },
+        "subtitlePrimaryColor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This parameter specifies the primary color of the subtitles in the video translation output. The value should be provided in the format <rr><gg><bb>, #<rr><gg><bb>, <rr><gg><bb><aa> or #<rr><gg><bb><aa>, where <rr> represents the red component of the color, <gg> represents the green component, <bb> represents the blue component, <aa> represents the alpha component. For example, EBA205 or #EBA205  would set the subtitle color to a specific shade of yellow. This parameter allows for customization of subtitle appearance to enhance readability and visual appeal, if not specified, it will use default white color."
+          }
+        },
+        "subtitleOutlineColor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This parameter specifies the outline color of the subtitles in the video translation output. The value should be provided in the format <rr><gg><bb>, #<rr><gg><bb>, <rr><gg><bb><aa> or #<rr><gg><bb><aa>, where <rr> represents the red component of the color, <gg> represents the green component, <bb> represents the blue component, <aa> represents the alpha component. For example, EBA205 or #EBA205  would set the subtitle color to a specific shade of yellow. This parameter allows for customization of subtitle appearance to enhance readability and visual appeal, if not specified, it will use default black color."
+          }
+        },
+        "subtitleFontSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "This parameter specifies the font size of subtitles in the video translation output between 5 and 30, if not specified, it will use the language dependent default value."
+          }
+        },
+        "enableEmotionalPlatformVoice": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#EnableEmotionalPlatformVoice",
+          "traits": {
+            "smithy.api#documentation": "Recommended: Do not set this parameter unless you have specific requirements. The default behavior is optimized for most customers. This parameter specifies whether to enable emotion for platform voice. By default, the server determines whether to apply emotion based on the target locale to optimize quality. If not specified, the API will automatically decide whether to enable emotional expression on the server side."
+          }
+        },
+        "adjustWebvttAlignment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Recommended: Do not set this parameter unless you have specific requirements. The default behavior is optimized for most customers. Specify whether to adjust webvtt alignment according to the synthesized audio for the translated text. If true (default), alignment will be adjusted. If false, alignment will not be adjusted. When not specified, the default value is true (provided as null to the API)."
+          }
+        },
+        "exportAdjustedPromptAudioInWebvtt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specify whether to export adjusted prompt audio in webvtt, if not specified, the default value is false."
+          }
+        },
+        "subtitleVerticalMargin": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Specify subtitle vertical margin, the value range is from 0 to 200, if not specified, the default value is 10."
+          }
+        },
+        "adjustBackgroundVolumeMultiplier": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Recommended: Do not set this parameter unless you have specific requirements. The default behavior is optimized for most customers. Adjust the background volume based on the maximum volume with this multiplier factor. The value range is (0, 1], the suggested value is 0.6 if you want to adjust the background volume. If not specified, the original background audio volume will be kept unchanged."
+          }
+        },
+        "pushResultToAzureStorageBlobDirUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure storage blob directory URL to push iteration results to. When specified, the API will push the translation results to the specified Azure storage blob directory."
+          }
+        },
+        "pushResultToAzureStorageBlobManagedIdentityClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed identity client ID for user-assigned managed identity to push results to Azure storage blob, if not specified, API will use system-assigned managed identity. This property is only used when pushResultToAzureStorageBlobDirUrl is specified."
+          }
+        },
+        "use24kPromptAudio": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Recommended: Do not set this parameter unless you have specific requirements. The default behavior is optimized for most customers. When this parameter is set to true, the service uses a higher sample rate (24 kHz) prompt audio for voice prompting. If this parameter is not specified or is set to false, the service continues to use 16 kHz prompt audio by default, which generally provides better overall synthesis quality."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Iteration input."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EnableEmotionalPlatformVoice": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Auto"
+          }
+        },
+        "ENABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enable"
+          }
+        },
+        "DISABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable emotional platform voice kind."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#WebvttFile": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation webvtt file url.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#WebvttFileKind",
+          "traits": {
+            "smithy.api#documentation": "Translation webvtt file kind.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Translation webvtt file."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#WebvttFileKind": {
+      "type": "enum",
+      "members": {
+        "SOURCELOCALESUBTITLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SourceLocaleSubtitle"
+          }
+        },
+        "TARGETLOCALESUBTITLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TargetLocaleSubtitle"
+          }
+        },
+        "METADATAJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MetadataJson"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Webvtt file kind."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "translationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Translation resource ID."
+          }
+        },
+        "iterationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Iteration ID"
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Operation ID."
+          }
+        },
+        "input": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationInput",
+          "traits": {
+            "smithy.api#documentation": "Iteration input.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration description"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIteration": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIterationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#Iteration"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/translations/{translationId}/iterations/{iterationId}",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Fetch a iteration by ID."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#Iteration": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration ID",
+            "smithy.api#required": {}
+          }
+        },
+        "input": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationInput",
+          "traits": {
+            "smithy.api#documentation": "Iteration input.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration description"
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#Status",
+          "traits": {
+            "smithy.api#documentation": "Iteration status"
+          }
+        },
+        "failureReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Iteration failure reason"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the current status was entered. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "result": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationResult",
+          "traits": {
+            "smithy.api#documentation": "Iteration result."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Do one iteration to translate one video file from source locale to target locale, webvtt for content editing is optional for requesting parameter."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIterationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "translationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Translation resource ID."
+          }
+        },
+        "iterationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Iteration ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIteration": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIterationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#PagedIteration"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/translations/{translationId}/iterations",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "List Iteration resources."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#PagedIteration": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#PagedIterationValueList",
+          "traits": {
+            "smithy.api#documentation": "The Iteration items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Iteration items"
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#PagedIterationValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#Iteration"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Iteration items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIterationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "translationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Translation resource ID."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/translations/{translationId}",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Delete a translation."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "translationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Translation resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/translations/{translationId}",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Creates a translation."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation resource ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "input": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationInput",
+          "traits": {
+            "smithy.api#documentation": "Translation input.",
+            "smithy.api#required": {}
+          }
+        },
+        "firstIterationInput": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationInput",
+          "traits": {
+            "smithy.api#documentation": "First iteration input for the translation, this property is only used when autoCreateFirstIteration is true."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation description."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "expiresDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the translation will be automatically deleted. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "latestIteration": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#Iteration",
+          "traits": {
+            "smithy.api#documentation": "Latest iteration of the translation."
+          }
+        },
+        "latestSucceededIteration": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#Iteration",
+          "traits": {
+            "smithy.api#documentation": "Latest completed iteration of the translation."
+          }
+        },
+        "failureReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation failure reason"
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Create translation resource for hosting iterations of translating one video file from source locale to target locale.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationInput": {
+      "type": "structure",
+      "members": {
+        "sourceLocale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source locale of the video file. Locale code follows BCP-47. You can find the text to speech locale list here https://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts , if not specified, the source locale will be auto-detected from the video file, the auto detect is only supported after version 2025-05-20."
+          }
+        },
+        "targetLocale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target locale of the translation. Locale code follows BCP-47. You can find the text to speech locale list here https://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts.",
+            "smithy.api#required": {}
+          }
+        },
+        "voiceKind": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#VoiceKind",
+          "traits": {
+            "smithy.api#documentation": "Translation voice kind.",
+            "smithy.api#required": {}
+          }
+        },
+        "videoFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation video file Azure blob url, .mp4 file format, maxmum 5GB file size and 4 hours video duration. Provide the input media file using either videoFileUrl or audioFileUrl, these parameters are mutually exclusive—only one of them is required. If both are provided, the request will be considered invalid."
+          }
+        },
+        "audioFileUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation audio file Azure blob url, .mp3 or .wav file format, maxmum 5GB file size and 4 hours video duration. Provide the input media file using either videoFileUrl or audioFileUrl, these parameters are mutually exclusive—only one of them is required. If both are provided, the request will be considered invalid."
+          }
+        },
+        "speakerCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of speakers in the video, if not provided, it will be auto-detected from the video file."
+          }
+        },
+        "enableLipSync": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate whether to enable lip sync, if not provided, the default value is false to disable the lip sync."
+          }
+        },
+        "subtitleMaxCharCountPerSegment": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Subtitle max display character count per segment, if not provided, it will use the language dependent default value."
+          }
+        },
+        "exportSubtitleInVideo": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Export subtitle in video, if not specified, the default value is false, it will not burn subtitle to the translated video file."
+          }
+        },
+        "autoCreateFirstIteration": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate whether to automatically create the first iteration when creating a translation, if not specified, the default value is false without creating the first iteration automatically."
+          }
+        },
+        "inputFileSourceKind": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#InputFileSourceKind",
+          "traits": {
+            "smithy.api#documentation": "Input file source kind, if not specified, the default value is to access input file with anonymous access."
+          }
+        },
+        "inputFileAzureStorageBlobManagedIdentityClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed identity client ID for user-assigned managed identity to access input file from Azure storage blob, if not specified, API will use system-assigned managed identity. This property is only used when inputFileSourceKind is AzureStorageBlobManagedIdentity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Translation input."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#InputFileSourceKind": {
+      "type": "enum",
+      "members": {
+        "AZURESTORAGEBLOBMANAGEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureStorageBlobManagedIdentity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input source kind for the input video, audio or webvtt files."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#VoiceKind": {
+      "type": "enum",
+      "members": {
+        "PLATFORMVOICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PlatformVoice"
+          }
+        },
+        "PERSONALVOICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PersonalVoice"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "TTS voice kind."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "translationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Translation resource ID."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Id",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Operation ID."
+          }
+        },
+        "input": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationInput",
+          "traits": {
+            "smithy.api#documentation": "Translation input.",
+            "smithy.api#required": {}
+          }
+        },
+        "firstIterationInput": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationInput",
+          "traits": {
+            "smithy.api#documentation": "First iteration input for the translation, this property is only used when autoCreateFirstIteration is true."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#Translation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/translations/{translationId}",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Fetch a translation by ID."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#Translation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation resource ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "input": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationInput",
+          "traits": {
+            "smithy.api#documentation": "Translation input.",
+            "smithy.api#required": {}
+          }
+        },
+        "firstIterationInput": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationInput",
+          "traits": {
+            "smithy.api#documentation": "First iteration input for the translation, this property is only used when autoCreateFirstIteration is true."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation description."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the object was created. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "expiresDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the translation will be automatically deleted. The timestamp is encoded as ISO 8601 date and time format (\"YYYY-MM-DDThh:mm:ssZ\", see https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)."
+          }
+        },
+        "latestIteration": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#Iteration",
+          "traits": {
+            "smithy.api#documentation": "Latest iteration of the translation."
+          }
+        },
+        "latestSucceededIteration": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#Iteration",
+          "traits": {
+            "smithy.api#documentation": "Latest completed iteration of the translation."
+          }
+        },
+        "failureReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Translation failure reason"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Create translation resource for hosting iterations of translating one video file from source locale to target locale."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "translationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Translation resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#PagedTranslation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/translations",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "List translation resources."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#PagedTranslation": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#PagedTranslationValueList",
+          "traits": {
+            "smithy.api#documentation": "The Translation items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Translation items"
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#PagedTranslationValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#Translation"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Translation items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#Operation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Fetch a operation by ID."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#Operation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation ID",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#Status",
+          "traits": {
+            "smithy.api#documentation": "Operation status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operation."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Operation ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHub": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHubRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/configurations/event-hub:ping",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Send ping to EventHub to verify configuration."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHubRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfigurationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/configurations/event-hub",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Delete EventHub configuration."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsCreateOrReplaceEventHubConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsCreateOrReplaceEventHubConfigurationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfiguration"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/configurations/event-hub",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Create or replace EventHub configuration."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfiguration": {
+      "type": "structure",
+      "members": {
+        "isEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate whether to enable sending event to EventHub.",
+            "smithy.api#required": {}
+          }
+        },
+        "eventHubNamespaceHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "EventHub namespace host name, for example: [YourNamespace].servicebus.windows.net",
+            "smithy.api#required": {}
+          }
+        },
+        "eventHubName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "EventHub name.",
+            "smithy.api#required": {}
+          }
+        },
+        "managedIdentityClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed identity client ID for user-assigned managed identity, if not specified, API will use system-assigned managed identity."
+          }
+        },
+        "enabledEvents": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationEnabledEventsList",
+          "traits": {
+            "smithy.api#documentation": "Enabled event kinds for notification.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "EventHub configuration."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationEnabledEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubVideoTranslationEventKind"
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled event kinds for notification."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubVideoTranslationEventKind": {
+      "type": "enum",
+      "members": {
+        "PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ping"
+          }
+        },
+        "TRANSLATIONCOMPLETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TranslationCompletion"
+          }
+        },
+        "ITERATIONCOMPLETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IterationCompletion"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "EventHub event kind."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsCreateOrReplaceEventHubConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "isEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate whether to enable sending event to EventHub.",
+            "smithy.api#required": {}
+          }
+        },
+        "eventHubNamespaceHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "EventHub namespace host name, for example: [YourNamespace].servicebus.windows.net",
+            "smithy.api#required": {}
+          }
+        },
+        "eventHubName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "EventHub name.",
+            "smithy.api#required": {}
+          }
+        },
+        "managedIdentityClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Managed identity client ID for user-assigned managed identity, if not specified, API will use system-assigned managed identity."
+          }
+        },
+        "enabledEvents": {
+          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsCreateOrReplaceEventHubConfigurationRequestEnabledEventsList",
+          "traits": {
+            "smithy.api#documentation": "Enabled event kinds for notification.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsCreateOrReplaceEventHubConfigurationRequestEnabledEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubVideoTranslationEventKind"
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled event kinds for notification."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfigurationRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfiguration"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/configurations/event-hub",
+          "code": 200,
+          "host": "{endpoint}/videotranslation",
+          "apiVersion": "2026-03-01"
+        },
+        "smithy.api#documentation": "Get EventHub configuration."
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_speech_video_translation#CognitiveservicesSpeechVideoTranslation": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIteration"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIteration"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIteration"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslation"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslation"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslation"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslation"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperation"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHub"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfiguration"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsCreateOrReplaceEventHubConfiguration"
+        },
+        {
+          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfiguration"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure SpeechVideoTranslation data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/SpeechVideoTranslation (latest stable api-version 2026-03-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/videotranslation",
+          "parameters": [
+            {
+              "name": "endpoint"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

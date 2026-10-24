@@ -1,0 +1,3069 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.containerregistry_data#ContainerRegistryBlobGetChunk": "com.azure.containerregistry_data#GetContainerRegistryBlobChunk",
+      "com.azure.containerregistry_data#ContainerRegistryBlobGetChunkRequest": "com.azure.containerregistry_data#GetContainerRegistryBlobChunkRequest",
+      "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExists": "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExists",
+      "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExistsRequest": "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExistsRequest",
+      "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2Support": "com.azure.containerregistry_data#CheckContainerRegistryDockerV2Support",
+      "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2SupportRequest": "com.azure.containerregistry_data#CheckContainerRegistryDockerV2SupportRequest",
+      "com.azure.containerregistry_data#ContainerRegistryDeleteManifest": "com.azure.containerregistry_data#DeleteContainerRegistryManifest",
+      "com.azure.containerregistry_data#ContainerRegistryDeleteManifestRequest": "com.azure.containerregistry_data#DeleteContainerRegistryManifestRequest",
+      "com.azure.containerregistry_data#ContainerRegistryCreateManifest": "com.azure.containerregistry_data#CreateContainerRegistryManifest",
+      "com.azure.containerregistry_data#ContainerRegistryCreateManifestResponse": "com.azure.containerregistry_data#CreateContainerRegistryManifestResponse",
+      "com.azure.containerregistry_data#ContainerRegistryCreateManifestRequest": "com.azure.containerregistry_data#CreateContainerRegistryManifestRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifest": "com.azure.containerregistry_data#GetContainerRegistryManifest",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponse": "com.azure.containerregistry_data#GetContainerRegistryManifestResponse",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseSignaturesList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseSignaturesList",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseHistoryList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseHistoryList",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseFsLayersList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseFsLayersList",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseLayersList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseLayersList",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseManifestsList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseManifestsList",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestRequest": "com.azure.containerregistry_data#GetContainerRegistryManifestRequest",
+      "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExists": "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExists",
+      "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExistsRequest": "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExistsRequest",
+      "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlob": "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlob",
+      "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlobRequest": "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlobRequest",
+      "com.azure.containerregistry_data#ContainerRegistryBlobGetBlob": "com.azure.containerregistry_data#GetContainerRegistryBlobBlob",
+      "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobResponse": "com.azure.containerregistry_data#GetContainerRegistryBlobBlobResponse",
+      "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobRequest": "com.azure.containerregistry_data#GetContainerRegistryBlobBlobRequest",
+      "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLogin": "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLogin",
+      "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLoginRequest": "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLoginRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetRepositories": "com.azure.containerregistry_data#GetContainerRegistryRepositories",
+      "com.azure.containerregistry_data#ContainerRegistryGetRepositoriesRequest": "com.azure.containerregistry_data#GetContainerRegistryRepositoriesRequest",
+      "com.azure.containerregistry_data#ContainerRegistryDeleteTag": "com.azure.containerregistry_data#DeleteContainerRegistryTag",
+      "com.azure.containerregistry_data#ContainerRegistryDeleteTagRequest": "com.azure.containerregistry_data#DeleteContainerRegistryTagRequest",
+      "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributes": "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributes",
+      "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributesRequest": "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributesRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetTagProperties": "com.azure.containerregistry_data#GetContainerRegistryTagProperties",
+      "com.azure.containerregistry_data#ContainerRegistryGetTagPropertiesRequest": "com.azure.containerregistry_data#GetContainerRegistryTagPropertiesRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetTags": "com.azure.containerregistry_data#GetContainerRegistryTags",
+      "com.azure.containerregistry_data#ContainerRegistryGetTagsRequest": "com.azure.containerregistry_data#GetContainerRegistryTagsRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetTagsRequestOrderby": "com.azure.containerregistry_data#GetContainerRegistryTagsRequestOrderby",
+      "com.azure.containerregistry_data#ContainerRegistryUpdateManifestProperties": "com.azure.containerregistry_data#UpdateContainerRegistryManifestProperties",
+      "com.azure.containerregistry_data#ContainerRegistryUpdateManifestPropertiesRequest": "com.azure.containerregistry_data#UpdateContainerRegistryManifestPropertiesRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestProperties": "com.azure.containerregistry_data#GetContainerRegistryManifestProperties",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestPropertiesRequest": "com.azure.containerregistry_data#GetContainerRegistryManifestPropertiesRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifests": "com.azure.containerregistry_data#GetContainerRegistryManifests",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequest": "com.azure.containerregistry_data#GetContainerRegistryManifestsRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequestOrderby": "com.azure.containerregistry_data#GetContainerRegistryManifestsRequestOrderby",
+      "com.azure.containerregistry_data#ContainerRegistryDeleteRepository": "com.azure.containerregistry_data#DeleteContainerRegistryRepository",
+      "com.azure.containerregistry_data#ContainerRegistryDeleteRepositoryRequest": "com.azure.containerregistry_data#DeleteContainerRegistryRepositoryRequest",
+      "com.azure.containerregistry_data#ContainerRegistryUpdateProperties": "com.azure.containerregistry_data#UpdateContainerRegistryProperties",
+      "com.azure.containerregistry_data#ContainerRegistryUpdatePropertiesRequest": "com.azure.containerregistry_data#UpdateContainerRegistryPropertiesRequest",
+      "com.azure.containerregistry_data#ContainerRegistryGetProperties": "com.azure.containerregistry_data#GetContainerRegistryProperties",
+      "com.azure.containerregistry_data#ContainerRegistryGetPropertiesRequest": "com.azure.containerregistry_data#GetContainerRegistryPropertiesRequest",
+      "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunk": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunk",
+      "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkResponse": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkResponse",
+      "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkRequest": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.containerregistry_data#ContainerRegistryBlobStartUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobStartUploadRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobStartUploadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/{name}/blobs/uploads/",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Initiate a resumable blob upload with an empty request body."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobStartUploadResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "Provided location for blob"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobStartUploadRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobGetChunk": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetChunkRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/{name}/blobs/{digest}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Retrieve the blob from the registry identified by `digest`. This endpoint may\nalso support RFC7233 compliant range requests. Support can be detected by\nissuing a HEAD request. If the header `Accept-Range: bytes` is returned, range\nrequests can be used to fetch partial content."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobGetChunkRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        },
+        "range": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "range",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Format : bytes=<start>-<end>,  HTTP Range header specifying blob chunk."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExists": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExistsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/v2/{name}/blobs/{digest}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Same as GET, except only the headers are returned."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExistsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        },
+        "range": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "range",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Format : bytes=<start>-<end>,  HTTP Range header specifying blob chunk."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2Support": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2SupportRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Tells whether this Docker Registry instance supports Docker Registry HTTP API v2"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2SupportRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryDeleteManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryDeleteManifestRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/{name}/manifests/{reference}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Delete the manifest identified by `name` and `reference`. Note that a manifest\ncan _only_ be deleted by `digest`."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryDeleteManifestRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryCreateManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryCreateManifestRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryCreateManifestResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v2/{name}/manifests/{reference}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Put the manifest identified by `name` and `reference` where `reference` can be\na tag or digest."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryCreateManifestResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryCreateManifestRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A tag or a digest, pointing to a specific image"
+          }
+        },
+        "schemaVersion": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Schema version"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifest": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/{name}/manifests/{reference}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Get the manifest identified by `name` and `reference` where `reference` can be\na tag or digest."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponse": {
+      "type": "structure",
+      "members": {
+        "schemaVersion": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Schema version"
+          }
+        },
+        "mediaType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Media type for this Manifest"
+          }
+        },
+        "manifests": {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseManifestsList",
+          "traits": {
+            "smithy.api#documentation": "(ManifestList, OCIIndex) List of V2 image layer information"
+          }
+        },
+        "config": {
+          "target": "com.azure.containerregistry_data#Descriptor",
+          "traits": {
+            "smithy.api#documentation": "(V2, OCI) Image config descriptor"
+          }
+        },
+        "layers": {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseLayersList",
+          "traits": {
+            "smithy.api#documentation": "(V2, OCI) List of V2 image layer information"
+          }
+        },
+        "annotations": {
+          "target": "com.azure.containerregistry_data#Annotations",
+          "traits": {
+            "smithy.api#documentation": "(OCI, OCIIndex) Additional metadata"
+          }
+        },
+        "architecture": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(V1) CPU architecture"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(V1) Image name"
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "(V1) Image tag"
+          }
+        },
+        "fsLayers": {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseFsLayersList",
+          "traits": {
+            "smithy.api#documentation": "(V1) List of layer information"
+          }
+        },
+        "history": {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseHistoryList",
+          "traits": {
+            "smithy.api#documentation": "(V1) Image history"
+          }
+        },
+        "signatures": {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseSignaturesList",
+          "traits": {
+            "smithy.api#documentation": "(V1) Image signature"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseSignaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#ImageSignature"
+      },
+      "traits": {
+        "smithy.api#documentation": "(V1) Image signature"
+      }
+    },
+    "com.azure.containerregistry_data#ImageSignature": {
+      "type": "structure",
+      "members": {
+        "header": {
+          "target": "com.azure.containerregistry_data#JWK",
+          "traits": {
+            "smithy.api#documentation": "A JSON web signature"
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A signature for the image manifest, signed by a libtrust private key"
+          }
+        },
+        "protected": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The signed protected header"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Signature of a signed manifest"
+      }
+    },
+    "com.azure.containerregistry_data#JWK": {
+      "type": "structure",
+      "members": {
+        "jwk": {
+          "target": "com.azure.containerregistry_data#JWKHeader",
+          "traits": {
+            "smithy.api#documentation": "JSON web key parameter"
+          }
+        },
+        "alg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The algorithm used to sign or encrypt the JWT"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A JSON web signature"
+      }
+    },
+    "com.azure.containerregistry_data#JWKHeader": {
+      "type": "structure",
+      "members": {
+        "crv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "crv value"
+          }
+        },
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "kid value"
+          }
+        },
+        "kty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "kty value"
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "x value"
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "y value"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "JSON web key parameter"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseHistoryList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#History"
+      },
+      "traits": {
+        "smithy.api#documentation": "(V1) Image history"
+      }
+    },
+    "com.azure.containerregistry_data#History": {
+      "type": "structure",
+      "members": {
+        "v1Compatibility": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The raw v1 compatibility information"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of unstructured historical data for v1 compatibility"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseFsLayersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#FsLayer"
+      },
+      "traits": {
+        "smithy.api#documentation": "(V1) List of layer information"
+      }
+    },
+    "com.azure.containerregistry_data#FsLayer": {
+      "type": "structure",
+      "members": {
+        "blobSum": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SHA of an image layer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image layer information"
+      }
+    },
+    "com.azure.containerregistry_data#Annotations": {
+      "type": "structure",
+      "members": {
+        "org_opencontainers_image_created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time on which the image was built (string, date-time as defined by\nhttps://tools.ietf.org/html/rfc3339#section-5.6)",
+            "smithy.api#jsonName": "org.opencontainers.image.created"
+          }
+        },
+        "org_opencontainers_image_authors": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contact details of the people or organization responsible for the image.",
+            "smithy.api#jsonName": "org.opencontainers.image.authors"
+          }
+        },
+        "org_opencontainers_image_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to find more information on the image.",
+            "smithy.api#jsonName": "org.opencontainers.image.url"
+          }
+        },
+        "org_opencontainers_image_documentation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to get documentation on the image.",
+            "smithy.api#jsonName": "org.opencontainers.image.documentation"
+          }
+        },
+        "org_opencontainers_image_source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to get source code for building the image.",
+            "smithy.api#jsonName": "org.opencontainers.image.source"
+          }
+        },
+        "org_opencontainers_image_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the packaged software. The version MAY match a label or tag in the\nsource code repository, may also be Semantic versioning-compatible",
+            "smithy.api#jsonName": "org.opencontainers.image.version"
+          }
+        },
+        "org_opencontainers_image_revision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source control revision identifier for the packaged software.",
+            "smithy.api#jsonName": "org.opencontainers.image.revision"
+          }
+        },
+        "org_opencontainers_image_vendor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the distributing entity, organization or individual.",
+            "smithy.api#jsonName": "org.opencontainers.image.vendor"
+          }
+        },
+        "org_opencontainers_image_licenses": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "License(s) under which contained software is distributed as an SPDX License\nExpression.",
+            "smithy.api#jsonName": "org.opencontainers.image.licenses"
+          }
+        },
+        "org_opencontainers_image_ref_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the reference for a target.",
+            "smithy.api#jsonName": "org.opencontainers.image.ref.name"
+          }
+        },
+        "org_opencontainers_image_title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable title of the image",
+            "smithy.api#jsonName": "org.opencontainers.image.title"
+          }
+        },
+        "org_opencontainers_image_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the software packaged in the image",
+            "smithy.api#jsonName": "org.opencontainers.image.description"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional information provided through arbitrary metadata.",
+        "com.distilled.openapi#additionalProperties": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseLayersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#Descriptor"
+      },
+      "traits": {
+        "smithy.api#documentation": "(V2, OCI) List of V2 image layer information"
+      }
+    },
+    "com.azure.containerregistry_data#Descriptor": {
+      "type": "structure",
+      "members": {
+        "mediaType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Layer media type"
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Layer size"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Layer digest"
+          }
+        },
+        "urls": {
+          "target": "com.azure.containerregistry_data#DescriptorUrlsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies a list of URIs from which this object may be downloaded."
+          }
+        },
+        "annotations": {
+          "target": "com.azure.containerregistry_data#Annotations",
+          "traits": {
+            "smithy.api#documentation": "Additional information provided through arbitrary metadata."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Docker V2 image layer descriptor including config and layers"
+      }
+    },
+    "com.azure.containerregistry_data#DescriptorUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies a list of URIs from which this object may be downloaded."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseManifestsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#ManifestListAttributes"
+      },
+      "traits": {
+        "smithy.api#documentation": "(ManifestList, OCIIndex) List of V2 image layer information"
+      }
+    },
+    "com.azure.containerregistry_data#ManifestListAttributes": {
+      "type": "structure",
+      "members": {
+        "mediaType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The MIME type of the referenced object. This will generally be\napplication/vnd.docker.image.manifest.v2+json, but it could also be\napplication/vnd.docker.image.manifest.v1+json"
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size in bytes of the object"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The digest of the content, as defined by the Registry V2 HTTP API Specification"
+          }
+        },
+        "platform": {
+          "target": "com.azure.containerregistry_data#Platform",
+          "traits": {
+            "smithy.api#documentation": "The platform object describes the platform which the image in the manifest runs\non. A full list of valid operating system and architecture values are listed in\nthe Go language documentation for $GOOS and $GOARCH"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attributes of a manifest in a manifest list."
+      }
+    },
+    "com.azure.containerregistry_data#Platform": {
+      "type": "structure",
+      "members": {
+        "architecture": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the CPU architecture, for example amd64 or ppc64le."
+          }
+        },
+        "os": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The os field specifies the operating system, for example linux or windows."
+          }
+        },
+        "os_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The optional os.version field specifies the operating system version, for\nexample 10.0.10586.",
+            "smithy.api#jsonName": "os.version"
+          }
+        },
+        "os_features": {
+          "target": "com.azure.containerregistry_data#PlatformOsFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The optional os.features field specifies an array of strings, each listing a\nrequired OS feature (for example on Windows win32k",
+            "smithy.api#jsonName": "os.features"
+          }
+        },
+        "variant": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The optional variant field specifies a variant of the CPU, for example armv6l\nto specify a particular CPU variant of the ARM CPU."
+          }
+        },
+        "features": {
+          "target": "com.azure.containerregistry_data#PlatformFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The optional features field specifies an array of strings, each listing a\nrequired CPU feature (for example sse4 or aes"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The platform object describes the platform which the image in the manifest runs\non. A full list of valid operating system and architecture values are listed in\nthe Go language documentation for $GOOS and $GOARCH"
+      }
+    },
+    "com.azure.containerregistry_data#PlatformFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The optional features field specifies an array of strings, each listing a\nrequired CPU feature (for example sse4 or aes"
+      }
+    },
+    "com.azure.containerregistry_data#PlatformOsFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The optional os.features field specifies an array of strings, each listing a\nrequired OS feature (for example on Windows win32k"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A tag or a digest, pointing to a specific image"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobMountBlob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobMountBlobRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobMountBlobResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/{name}/blobs/uploads/",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Mount a blob identified by the `mount` parameter from another repository."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobMountBlobResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "Provided location for blob"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobMountBlobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "from",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the source repository."
+          }
+        },
+        "mount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "mount",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of blob to mount from the source repository."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExists": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExistsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/v2/{name}/blobs/{digest}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Same as GET, except only the headers are returned."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExistsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlobRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v2/{name}/blobs/{digest}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Removes an already uploaded blob."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobGetBlob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/{name}/blobs/{digest}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Retrieve the blob from the registry identified by digest."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#AuthenticationExchangeAcrRefreshTokenForAcrAccessToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#AuthenticationExchangeAcrRefreshTokenForAcrAccessTokenRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#AcrAccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/oauth2/token",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Exchange ACR Refresh token for an ACR Access Token"
+      }
+    },
+    "com.azure.containerregistry_data#AcrAccessToken": {
+      "type": "structure",
+      "members": {
+        "access_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token for performing authenticated requests",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The ACR access token response containing the access token for authentication."
+      }
+    },
+    "com.azure.containerregistry_data#AuthenticationExchangeAcrRefreshTokenForAcrAccessTokenRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLogin": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLoginRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#AcrAccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/oauth2/token",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Exchange Username, Password and Scope for an ACR Access Token"
+      }
+    },
+    "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLoginRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "service",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Indicates the name of your Azure container registry."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "scope",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Expected to be a valid scope, and can be specified more than once for multiple\nscope requests. You can obtain this from the Www-Authenticate response header\nfrom the challenge."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#AuthenticationExchangeAadAccessTokenForAcrRefreshToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#AuthenticationExchangeAadAccessTokenForAcrRefreshTokenRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#AcrRefreshToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/oauth2/exchange",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ]
+        },
+        "smithy.api#documentation": "Exchange AAD tokens for an ACR refresh Token"
+      }
+    },
+    "com.azure.containerregistry_data#AcrRefreshToken": {
+      "type": "structure",
+      "members": {
+        "refresh_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The refresh token to be used for generating access tokens",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The ACR refresh token response containing the refresh token for authentication."
+      }
+    },
+    "com.azure.containerregistry_data#AuthenticationExchangeAadAccessTokenForAcrRefreshTokenRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetRepositoriesRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#Repositories"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/acr/v1/_catalog",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "List repositories"
+      }
+    },
+    "com.azure.containerregistry_data#Repositories": {
+      "type": "structure",
+      "members": {
+        "repositories": {
+          "target": "com.azure.containerregistry_data#RepositoriesRepositoriesList",
+          "traits": {
+            "smithy.api#documentation": "Repository names"
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to the next page of results"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of repositories"
+      }
+    },
+    "com.azure.containerregistry_data#RepositoriesRepositoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Repository names"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "last",
+            "smithy.api#documentation": "Query parameter for the last item in previous query. Result set will include values lexically after last."
+          }
+        },
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "n",
+            "smithy.api#documentation": "Query parameter for max number of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryDeleteTag": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryDeleteTagRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/acr/v1/{name}/_tags/{reference}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Delete tag"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryDeleteTagRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Tag name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributes": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributesRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ArtifactTagProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/acr/v1/{name}/_tags/{reference}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Update tag attributes"
+      }
+    },
+    "com.azure.containerregistry_data#ArtifactTagProperties": {
+      "type": "structure",
+      "members": {
+        "registry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registry login server name. This is likely to be similar to\n{registry-name}.azurecr.io.",
+            "smithy.api#required": {}
+          }
+        },
+        "imageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image name",
+            "smithy.api#required": {}
+          }
+        },
+        "tag": {
+          "target": "com.azure.containerregistry_data#TagAttributesBase",
+          "traits": {
+            "smithy.api#documentation": "List of tag attribute details",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag attributes"
+      }
+    },
+    "com.azure.containerregistry_data#TagAttributesBase": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag name",
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag digest",
+            "smithy.api#required": {}
+          }
+        },
+        "createdTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag created time",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag last update time",
+            "smithy.api#required": {}
+          }
+        },
+        "signed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is signed"
+          }
+        },
+        "changeableAttributes": {
+          "target": "com.azure.containerregistry_data#TagChangeableAttributes",
+          "traits": {
+            "smithy.api#documentation": "Writeable properties of the resource",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag attribute details"
+      }
+    },
+    "com.azure.containerregistry_data#TagChangeableAttributes": {
+      "type": "structure",
+      "members": {
+        "deleteEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Delete enabled"
+          }
+        },
+        "writeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Write enabled"
+          }
+        },
+        "listEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "List enabled"
+          }
+        },
+        "readEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Read enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Changeable attributes"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Tag name"
+          }
+        },
+        "deleteEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Delete enabled"
+          }
+        },
+        "writeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Write enabled"
+          }
+        },
+        "listEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "List enabled"
+          }
+        },
+        "readEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Read enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetTagProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetTagPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ArtifactTagProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/acr/v1/{name}/_tags/{reference}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Get tag attributes by tag"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetTagPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Tag name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetTagsRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#TagList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/acr/v1/{name}/_tags",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "List tags of a repository"
+      }
+    },
+    "com.azure.containerregistry_data#TagList": {
+      "type": "structure",
+      "members": {
+        "registry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registry login server name. This is likely to be similar to\n{registry-name}.azurecr.io.",
+            "smithy.api#required": {}
+          }
+        },
+        "imageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image name",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerregistry_data#TagListTagsList",
+          "traits": {
+            "smithy.api#documentation": "List of tag attribute details",
+            "smithy.api#required": {}
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to the next page of results"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tag details"
+      }
+    },
+    "com.azure.containerregistry_data#TagListTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#TagAttributesBase"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tag attribute details"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetTagsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "last",
+            "smithy.api#documentation": "Query parameter for the last item in previous query. Result set will include\nvalues lexically after last."
+          }
+        },
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "n",
+            "smithy.api#documentation": "query parameter for max number of items"
+          }
+        },
+        "orderby": {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetTagsRequestOrderby",
+          "traits": {
+            "smithy.api#httpQuery": "orderby",
+            "smithy.api#documentation": "orderby query parameter"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "digest",
+            "smithy.api#documentation": "filter by digest"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetTagsRequestOrderby": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "TIMEDESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timedesc"
+          }
+        },
+        "TIMEASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timeasc"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry_data#ContainerRegistryUpdateManifestProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryUpdateManifestPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ArtifactManifestProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/acr/v1/{name}/_manifests/{digest}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Update properties of a manifest"
+      }
+    },
+    "com.azure.containerregistry_data#ArtifactManifestProperties": {
+      "type": "structure",
+      "members": {
+        "registry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registry login server name. This is likely to be similar to\n{registry-name}.azurecr.io."
+          }
+        },
+        "imageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Repository name"
+          }
+        },
+        "manifest": {
+          "target": "com.azure.containerregistry_data#ManifestAttributesBase",
+          "traits": {
+            "smithy.api#documentation": "Manifest attributes",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Manifest attributes details"
+      }
+    },
+    "com.azure.containerregistry_data#ManifestAttributesBase": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Manifest",
+            "smithy.api#required": {}
+          }
+        },
+        "imageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Image size"
+          }
+        },
+        "createdTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Created time",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last update time",
+            "smithy.api#required": {}
+          }
+        },
+        "architecture": {
+          "target": "com.azure.containerregistry_data#ArtifactArchitecture",
+          "traits": {
+            "smithy.api#documentation": "CPU architecture"
+          }
+        },
+        "os": {
+          "target": "com.azure.containerregistry_data#ArtifactOperatingSystem",
+          "traits": {
+            "smithy.api#documentation": "Operating system"
+          }
+        },
+        "references": {
+          "target": "com.azure.containerregistry_data#ManifestAttributesBaseReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of artifacts that are referenced by this manifest list, with information\nabout the platform each supports.  This list will be empty if this is a leaf\nmanifest and not a manifest list."
+          }
+        },
+        "configMediaType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Config blob media type"
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerregistry_data#ManifestAttributesBaseTagsList",
+          "traits": {
+            "smithy.api#documentation": "List of tags"
+          }
+        },
+        "changeableAttributes": {
+          "target": "com.azure.containerregistry_data#ManifestChangeableAttributes",
+          "traits": {
+            "smithy.api#documentation": "Writeable properties of the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Manifest details"
+      }
+    },
+    "com.azure.containerregistry_data#ManifestChangeableAttributes": {
+      "type": "structure",
+      "members": {
+        "deleteEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Delete enabled"
+          }
+        },
+        "writeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Write enabled"
+          }
+        },
+        "listEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "List enabled"
+          }
+        },
+        "readEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Read enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Changeable attributes"
+      }
+    },
+    "com.azure.containerregistry_data#ManifestAttributesBaseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tags"
+      }
+    },
+    "com.azure.containerregistry_data#ManifestAttributesBaseReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#ArtifactManifestPlatform"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of artifacts that are referenced by this manifest list, with information\nabout the platform each supports.  This list will be empty if this is a leaf\nmanifest and not a manifest list."
+      }
+    },
+    "com.azure.containerregistry_data#ArtifactManifestPlatform": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Manifest digest",
+            "smithy.api#required": {}
+          }
+        },
+        "architecture": {
+          "target": "com.azure.containerregistry_data#ArtifactArchitecture",
+          "traits": {
+            "smithy.api#documentation": "CPU architecture"
+          }
+        },
+        "os": {
+          "target": "com.azure.containerregistry_data#ArtifactOperatingSystem",
+          "traits": {
+            "smithy.api#documentation": "Operating system"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifact's platform, consisting of operating system and architecture."
+      }
+    },
+    "com.azure.containerregistry_data#ArtifactOperatingSystem": {
+      "type": "enum",
+      "members": {
+        "AIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aix"
+          }
+        },
+        "ANDROID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "android"
+          }
+        },
+        "DARWIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "darwin"
+          }
+        },
+        "DRAGONFLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dragonfly"
+          }
+        },
+        "FREEBSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "freebsd"
+          }
+        },
+        "ILLUMOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "illumos"
+          }
+        },
+        "IOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ios"
+          }
+        },
+        "JS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "js"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linux"
+          }
+        },
+        "NETBSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "netbsd"
+          }
+        },
+        "OPENBSD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openbsd"
+          }
+        },
+        "PLAN9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "plan9"
+          }
+        },
+        "SOLARIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "solaris"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "windows"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifact platform's operating system."
+      }
+    },
+    "com.azure.containerregistry_data#ArtifactArchitecture": {
+      "type": "enum",
+      "members": {
+        "_386": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "386"
+          }
+        },
+        "AMD64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amd64"
+          }
+        },
+        "ARM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arm"
+          }
+        },
+        "ARM64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arm64"
+          }
+        },
+        "MIPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips"
+          }
+        },
+        "MIPSLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mipsle"
+          }
+        },
+        "MIPS64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips64"
+          }
+        },
+        "MIPS64LE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips64le"
+          }
+        },
+        "PPC64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ppc64"
+          }
+        },
+        "PPC64LE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ppc64le"
+          }
+        },
+        "RISCV64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "riscv64"
+          }
+        },
+        "S390X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s390x"
+          }
+        },
+        "WASM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wasm"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The artifact platform's architecture."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryUpdateManifestPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        },
+        "deleteEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Delete enabled"
+          }
+        },
+        "writeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Write enabled"
+          }
+        },
+        "listEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "List enabled"
+          }
+        },
+        "readEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Read enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ArtifactManifestProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/acr/v1/{name}/_manifests/{digest}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Get manifest attributes"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifests": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#AcrManifests"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/acr/v1/{name}/_manifests",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "List manifests of a repository"
+      }
+    },
+    "com.azure.containerregistry_data#AcrManifests": {
+      "type": "structure",
+      "members": {
+        "registry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registry login server name. This is likely to be similar to\n{registry-name}.azurecr.io."
+          }
+        },
+        "imageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image name"
+          }
+        },
+        "manifests": {
+          "target": "com.azure.containerregistry_data#AcrManifestsManifestsList",
+          "traits": {
+            "smithy.api#documentation": "List of manifests"
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to the next page of results"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Manifest attributes"
+      }
+    },
+    "com.azure.containerregistry_data#AcrManifestsManifestsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry_data#ManifestAttributesBase"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of manifests"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "last": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "last",
+            "smithy.api#documentation": "Query parameter for the last item in previous query. Result set will include\nvalues lexically after last."
+          }
+        },
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "n",
+            "smithy.api#documentation": "query parameter for max number of items"
+          }
+        },
+        "orderby": {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequestOrderby",
+          "traits": {
+            "smithy.api#httpQuery": "orderby",
+            "smithy.api#documentation": "orderby query parameter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequestOrderby": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "TIMEDESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timedesc"
+          }
+        },
+        "TIMEASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timeasc"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry_data#ContainerRegistryDeleteRepository": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryDeleteRepositoryRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/acr/v1/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Delete the repository identified by `name`"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryDeleteRepositoryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryUpdateProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryUpdatePropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRepositoryProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/acr/v1/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Update the attribute identified by `name` where `reference` is the name of the\nrepository."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRepositoryProperties": {
+      "type": "structure",
+      "members": {
+        "registry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registry login server name. This is likely to be similar to\n{registry-name}.azurecr.io.",
+            "smithy.api#required": {}
+          }
+        },
+        "imageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image name",
+            "smithy.api#required": {}
+          }
+        },
+        "createdTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image created time",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image last update time",
+            "smithy.api#required": {}
+          }
+        },
+        "manifestCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of the manifests",
+            "smithy.api#required": {}
+          }
+        },
+        "tagCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of the tags",
+            "smithy.api#required": {}
+          }
+        },
+        "changeableAttributes": {
+          "target": "com.azure.containerregistry_data#RepositoryChangeableAttributes",
+          "traits": {
+            "smithy.api#documentation": "Writeable properties of the resource",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of this repository."
+      }
+    },
+    "com.azure.containerregistry_data#RepositoryChangeableAttributes": {
+      "type": "structure",
+      "members": {
+        "deleteEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Delete enabled"
+          }
+        },
+        "writeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Write enabled"
+          }
+        },
+        "listEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "List enabled"
+          }
+        },
+        "readEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Read enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Changeable attributes for Repository"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryUpdatePropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        },
+        "deleteEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Delete enabled"
+          }
+        },
+        "writeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Write enabled"
+          }
+        },
+        "listEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "List enabled"
+          }
+        },
+        "readEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Read enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryGetPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRepositoryProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/acr/v1/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Get repository attributes"
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryGetPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the image (including the namespace)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCancelUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCancelUploadRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{nextBlobUuidLink+}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Cancel outstanding upload processes, releasing associated resources. If this is\nnot called, the unfinished uploads will eventually timeout."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCancelUploadRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextBlobUuidLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Link acquired from upload start or previous chunk. Note, do not include initial\n/ (must do substring(1) )"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunk": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/{nextBlobUuidLink+}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Upload a stream of data without completing the upload."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "Provided location for blob"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextBlobUuidLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Link acquired from upload start or previous chunk. Note, do not include initial\n/ (must do substring(1) )"
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUpload": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadRequest"
+      },
+      "output": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{nextBlobUuidLink+}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Complete the upload, providing all the data in the body, if necessary. A\nrequest without a body will just complete the upload with previously uploaded\ncontent."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "Provided location for blob"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextBlobUuidLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Link acquired from upload start or previous chunk. Note, do not include initial\n/ (must do substring(1) )"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "digest",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Digest of a BLOB"
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobGetUploadStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetUploadStatusRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{nextBlobUuidLink+}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-07-01"
+        },
+        "smithy.api#documentation": "Retrieve status of upload identified by uuid. The primary purpose of this\nendpoint is to resolve the current status of a resumable upload."
+      }
+    },
+    "com.azure.containerregistry_data#ContainerRegistryBlobGetUploadStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextBlobUuidLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Link acquired from upload start or previous chunk. Note, do not include initial\n/ (must do substring(1) )"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry_data#ContainerregistryData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobStartUpload"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetChunk"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExists"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2Support"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryDeleteManifest"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryCreateManifest"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifest"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobMountBlob"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExists"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlob"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetBlob"
+        },
+        {
+          "target": "com.azure.containerregistry_data#AuthenticationExchangeAcrRefreshTokenForAcrAccessToken"
+        },
+        {
+          "target": "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLogin"
+        },
+        {
+          "target": "com.azure.containerregistry_data#AuthenticationExchangeAadAccessTokenForAcrRefreshToken"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetRepositories"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryDeleteTag"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributes"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetTagProperties"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetTags"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryUpdateManifestProperties"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestProperties"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifests"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryDeleteRepository"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryUpdateProperties"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryGetProperties"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobCancelUpload"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunk"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUpload"
+        },
+        {
+          "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetUploadStatus"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Registry data plane",
+        "smithy.api#documentation": "Azure containerregistry data plane — containerregistry/data-plane/Registry (latest stable api-version 2021-07-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://containerregistry.azure.net/.default",
+        "com.azure.protocols#tokenExchange": "acr"
+      }
+    }
+  }
+}

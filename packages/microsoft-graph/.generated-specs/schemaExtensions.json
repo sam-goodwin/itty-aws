@@ -1,0 +1,817 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#SchemaExtension": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the schema extension.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Microsoft Entra ID as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq)."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.schemaExtensions#SchemaExtensionPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq)."
+          }
+        },
+        "targetTypes": {
+          "target": "com.microsoft.graph.schemaExtensions#SchemaExtensionTargetTypesList",
+          "traits": {
+            "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#ExtensionSchemaProperty": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the strongly typed property defined as part of a schema extension.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the property that is defined as part of a schema extension.  Allowed values are Binary, Boolean, DateTime, Integer, or String. For more information, see Supported property data types.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#SchemaExtensionPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.schemaExtensions#ExtensionSchemaProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#SchemaExtensionTargetTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#ListSchemaExtensionResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.schemaExtensions#SchemaExtension"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#ListSchemaExtensionResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.schemaExtensions#ListSchemaExtensionResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#ListSchemaExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.schemaExtensions#ListSchemaExtensionRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.schemaExtensions#ListSchemaExtensionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/schemaExtensions",
+          "code": 200
+        },
+        "smithy.api#documentation": "List schemaExtensions\n\nGet a list of schemaExtension objects in your tenant. The schema extensions can be InDevelopment, Available, or Deprecated and includes schema extensions:",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionRequestPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.schemaExtensions#ExtensionSchemaProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionRequestTargetTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the schema extension.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Microsoft Entra ID as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq)."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionRequestPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq)."
+          }
+        },
+        "targetTypes": {
+          "target": "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionRequestTargetTypesList",
+          "traits": {
+            "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionResponsePropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.schemaExtensions#ExtensionSchemaProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionResponseTargetTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the schema extension.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Microsoft Entra ID as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq)."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionResponsePropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq)."
+          }
+        },
+        "targetTypes": {
+          "target": "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionResponseTargetTypesList",
+          "traits": {
+            "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#CreateSchemaExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.schemaExtensions#CreateSchemaExtensionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/schemaExtensions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create schemaExtension\n\nCreate a new schemaExtension definition and its associated schema extension property to extend a supporting resource type. Schema extensions let you add strongly-typed custom data to a resource. The app that creates a schema extension is the owner app. Depending on the \nstate of the extension, the owner app, and only the owner app, may update or delete the extension.  See examples of how to define a schema extension that describes a training course, \nuse the schema extension definition to create a new group with training course data, and \nadd training course data to an existing group."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#GetSchemaExtensionRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#GetSchemaExtensionRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.schemaExtensions#GetSchemaExtensionRequest": {
+      "type": "structure",
+      "members": {
+        "schemaExtensionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of schemaExtension"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.schemaExtensions#GetSchemaExtensionRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.schemaExtensions#GetSchemaExtensionRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#GetSchemaExtensionResponsePropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.schemaExtensions#ExtensionSchemaProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#GetSchemaExtensionResponseTargetTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#GetSchemaExtensionResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the schema extension.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Microsoft Entra ID as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq)."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.schemaExtensions#GetSchemaExtensionResponsePropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq)."
+          }
+        },
+        "targetTypes": {
+          "target": "com.microsoft.graph.schemaExtensions#GetSchemaExtensionResponseTargetTypesList",
+          "traits": {
+            "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#GetSchemaExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.schemaExtensions#GetSchemaExtensionRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.schemaExtensions#GetSchemaExtensionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/schemaExtensions/{schemaExtensionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get schemaExtension"
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionRequestPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.schemaExtensions#ExtensionSchemaProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionRequestTargetTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionRequest": {
+      "type": "structure",
+      "members": {
+        "schemaExtensionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of schemaExtension"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the schema extension.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Microsoft Entra ID as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq)."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionRequestPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq)."
+          }
+        },
+        "targetTypes": {
+          "target": "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionRequestTargetTypesList",
+          "traits": {
+            "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionResponsePropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.schemaExtensions#ExtensionSchemaProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionResponseTargetTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the schema extension.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Microsoft Entra ID as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq)."
+          }
+        },
+        "properties": {
+          "target": "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionResponsePropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The collection of property names and types that make up the schema extension definition."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The lifecycle state of the schema extension. Possible states are InDevelopment, Available, and Deprecated. Automatically set to InDevelopment on creation. For more information about the possible state transitions and behaviors, see Schema extensions lifecycle. Supports $filter (eq)."
+          }
+        },
+        "targetTypes": {
+          "target": "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionResponseTargetTypesList",
+          "traits": {
+            "smithy.api#documentation": "Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#UpdateSchemaExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.schemaExtensions#UpdateSchemaExtensionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/schemaExtensions/{schemaExtensionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update schemaExtension\n\nUpdate properties in the definition of the specified schemaExtension. Additive updates to the extension can only be made when the extension is in the InDevelopment or Available status. This means custom properties or target resource types cannot be removed from the definition, but new custom properties can be added and the description of the extension changed. The update applies to all the resources that are included in the targetTypes property of the extension. These resources are among the supporting resource types. For delegated flows, the signed-in user can update a schema extension as long as the owner property of the extension is set to the appId of an application the signed-in user owns. That application can be the one that initially created the extension, or some other application owned by the signed-in user.  This criteria for the owner property allows a signed-in user to make updates through other applications they don't own, such as Microsoft Graph Explorer. When using Graph Explorer to update a schemaExtension resource, include the owner property in the PATCH request body."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#DeleteSchemaExtensionRequest": {
+      "type": "structure",
+      "members": {
+        "schemaExtensionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of schemaExtension"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#DeleteSchemaExtension": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.schemaExtensions#DeleteSchemaExtensionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/schemaExtensions/{schemaExtensionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete schemaExtension\n\nDelete the definition of a schema extension. Only the app that created the schema extension (owner app) can delete the schema extension definition, and only when the extension is in the InDevelopment state. Deleting a schema extension definition doesn't affect accessing custom data that has been added to resource instances based on that definition."
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.schemaExtensions#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/schemaExtensions/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.schemaExtensions#SchemaExtensions": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.schemaExtensions#ListSchemaExtension"
+        },
+        {
+          "target": "com.microsoft.graph.schemaExtensions#CreateSchemaExtension"
+        },
+        {
+          "target": "com.microsoft.graph.schemaExtensions#GetSchemaExtension"
+        },
+        {
+          "target": "com.microsoft.graph.schemaExtensions#UpdateSchemaExtension"
+        },
+        {
+          "target": "com.microsoft.graph.schemaExtensions#DeleteSchemaExtension"
+        },
+        {
+          "target": "com.microsoft.graph.schemaExtensions#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

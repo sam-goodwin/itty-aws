@@ -1,0 +1,1084 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANA": "com.azure.maps_timezone#GetTimezoneTimezoneWindowsToIANA",
+      "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANAResponse": "com.azure.maps_timezone#GetTimezoneTimezoneWindowsToIANAResponse",
+      "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANAResponseBodyList": "com.azure.maps_timezone#GetTimezoneTimezoneWindowsToIANAResponseBodyList",
+      "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANARequest": "com.azure.maps_timezone#GetTimezoneTimezoneWindowsToIANARequest",
+      "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANARequestFormat": "com.azure.maps_timezone#GetTimezoneTimezoneWindowsToIANARequestFormat",
+      "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersion": "com.azure.maps_timezone#GetTimezoneTimezoneIANAVersion",
+      "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersionRequest": "com.azure.maps_timezone#GetTimezoneTimezoneIANAVersionRequest",
+      "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersionRequestFormat": "com.azure.maps_timezone#GetTimezoneTimezoneIANAVersionRequestFormat",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindows": "com.azure.maps_timezone#GetTimezoneTimezoneEnumWindows",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsResponse": "com.azure.maps_timezone#GetTimezoneTimezoneEnumWindowsResponse",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsResponseBodyList": "com.azure.maps_timezone#GetTimezoneTimezoneEnumWindowsResponseBodyList",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsRequest": "com.azure.maps_timezone#GetTimezoneTimezoneEnumWindowsRequest",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsRequestFormat": "com.azure.maps_timezone#GetTimezoneTimezoneEnumWindowsRequestFormat",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANA": "com.azure.maps_timezone#GetTimezoneTimezoneEnumIANA",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANAResponse": "com.azure.maps_timezone#GetTimezoneTimezoneEnumIANAResponse",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANAResponseBodyList": "com.azure.maps_timezone#GetTimezoneTimezoneEnumIANAResponseBodyList",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANARequest": "com.azure.maps_timezone#GetTimezoneTimezoneEnumIANARequest",
+      "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANARequestFormat": "com.azure.maps_timezone#GetTimezoneTimezoneEnumIANARequestFormat",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByID": "com.azure.maps_timezone#GetTimezoneTimezoneByID",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequest": "com.azure.maps_timezone#GetTimezoneTimezoneByIDRequest",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequestOptions": "com.azure.maps_timezone#GetTimezoneTimezoneByIDRequestOptions",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequestFormat": "com.azure.maps_timezone#GetTimezoneTimezoneByIDRequestFormat",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinates": "com.azure.maps_timezone#GetTimezoneTimezoneByCoordinates",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequest": "com.azure.maps_timezone#GetTimezoneTimezoneByCoordinatesRequest",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestQueryList": "com.azure.maps_timezone#GetTimezoneTimezoneByCoordinatesRequestQueryList",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestOptions": "com.azure.maps_timezone#GetTimezoneTimezoneByCoordinatesRequestOptions",
+      "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestFormat": "com.azure.maps_timezone#GetTimezoneTimezoneByCoordinatesRequestFormat"
+    }
+  },
+  "shapes": {
+    "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANA": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANARequest"
+      },
+      "output": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANAResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/timezone/windowsToIana/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "1.0"
+        },
+        "smithy.api#documentation": "Use to get the IANA ID.\n\nThe `Get Windows to IANA Time Zone` API is an HTTP `GET` request that returns a\ncorresponding Internet Assigned Numbers Authority (IANA) ID, given a valid\nWindows Time Zone ID. Multiple IANA IDs may be returned for a single Windows\nID. It is possible to narrow these results by adding an optional territory\nparameter."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANAResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANAResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANAResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_timezone#IanaId"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#IanaId": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id property"
+          }
+        },
+        "isAlias": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "IsAlias property"
+          }
+        },
+        "aliasOf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AliasOf property"
+          }
+        },
+        "hasZone1970Location": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This attribute returns `True` if the IanaId has any country/zone associated\nwith it."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "IANA time zone ID information."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANARequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANARequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Only `json` format is supported."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Windows time zone ID."
+          }
+        },
+        "territory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "territory",
+            "smithy.api#documentation": "Windows Time Zone territory code."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANARequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersionRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_timezone#TimezoneIanaVersionResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/timezone/ianaVersion/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "1.0"
+        },
+        "smithy.api#documentation": "Use to get the current IANA version number.\n\nThe `Get Time Zone IANA Version` API is an HTTP `GET` request that returns the\ncurrent Internet Assigned Numbers Authority (IANA) version number as Metadata."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneIanaVersionResult": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version property"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful Timezone IANA Version call"
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersionRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Only `json` format is supported."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersionRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindows": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/timezone/enumWindows/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "1.0"
+        },
+        "smithy.api#documentation": "Use to get the list of Windows Time Zone IDs.\n\nThe `Get Windows Time Zones` API is an HTTP `GET` request that returns a full\nlist of Windows Time Zone IDs."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_timezone#TimezoneWindows"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneWindows": {
+      "type": "structure",
+      "members": {
+        "windowsId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Windows Id property"
+          }
+        },
+        "territory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Territory property"
+          }
+        },
+        "ianaIds": {
+          "target": "com.azure.maps_timezone#TimezoneWindowsIanaIdsList",
+          "traits": {
+            "smithy.api#documentation": "IanaIds array"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Windows timezone information with IANA mappings."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneWindowsIanaIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IanaIds array"
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Only `json` format is supported."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindowsRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANA": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANARequest"
+      },
+      "output": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANAResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/timezone/enumIana/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "1.0"
+        },
+        "smithy.api#documentation": "Use to get the list of IANA time zone IDs.\n\nThe `Get IANA Time Zones` API is an HTTP `GET` request that returns a full list\nof Internet Assigned Numbers Authority (IANA) time zone IDs. Updates to the\nIANA service are reflected in the system within one day."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANAResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANAResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANAResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_timezone#IanaId"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANARequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANARequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Only `json` format is supported."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANARequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByID": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_timezone#TimezoneResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/timezone/byId/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "1.0"
+        },
+        "smithy.api#documentation": "Use to get the current, historical, and future time zone information for the\nspecified IANA time zone ID.\n\nThe `Get Timezone By ID` API is an HTTP `GET` request that returns current,\nhistorical, and future time zone information for the specified IANA time zone\nID."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneResult": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version property"
+          }
+        },
+        "referenceUtcTimestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference Utc Timestamp property"
+          }
+        },
+        "timeZones": {
+          "target": "com.azure.maps_timezone#TimezoneResultTimeZonesList",
+          "traits": {
+            "smithy.api#documentation": "TimeZoneId array"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object is returned from a successful Timezone By ID call or By Coordinates\ncall"
+      }
+    },
+    "com.azure.maps_timezone#TimezoneResultTimeZonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_timezone#TimezoneId"
+      },
+      "traits": {
+        "smithy.api#documentation": "TimeZoneId array"
+      }
+    },
+    "com.azure.maps_timezone#TimezoneId": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id property"
+          }
+        },
+        "aliases": {
+          "target": "com.azure.maps_timezone#TimezoneIdAliasesList",
+          "traits": {
+            "smithy.api#documentation": "An array of time zone ID aliases. Only returned when [options]=*zoneinfo* or\n*all*.\n\nNote: may be null."
+          }
+        },
+        "countries": {
+          "target": "com.azure.maps_timezone#TimezoneIdCountriesList",
+          "traits": {
+            "smithy.api#documentation": "An array of country/region records. Only returned when [options]=*zoneinfo* or\n*all*."
+          }
+        },
+        "names": {
+          "target": "com.azure.maps_timezone#TimezoneNames",
+          "traits": {
+            "smithy.api#documentation": "Timezone names object."
+          }
+        },
+        "referenceTime": {
+          "target": "com.azure.maps_timezone#ReferenceTime",
+          "traits": {
+            "smithy.api#documentation": "Details in effect at the local time."
+          }
+        },
+        "representativePoint": {
+          "target": "com.azure.maps_timezone#RepresentativePoint",
+          "traits": {
+            "smithy.api#documentation": "Representative point property"
+          }
+        },
+        "timeTransitions": {
+          "target": "com.azure.maps_timezone#TimezoneIdTimeTransitionsList",
+          "traits": {
+            "smithy.api#documentation": "Time zone DST transitions from [transitionsFrom] until timestamp + 1 year."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Timezone ID information."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneIdTimeTransitionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_timezone#TimeTransition"
+      },
+      "traits": {
+        "smithy.api#documentation": "Time zone DST transitions from [transitionsFrom] until timestamp + 1 year."
+      }
+    },
+    "com.azure.maps_timezone#TimeTransition": {
+      "type": "structure",
+      "members": {
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tag property"
+          }
+        },
+        "standardOffset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "StandardOffset property"
+          }
+        },
+        "daylightSavings": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DaylightSavings property"
+          }
+        },
+        "utcStart": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date, start time for this transition period"
+          }
+        },
+        "utcEnd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date, end time for this transition period"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a time zone transition."
+      }
+    },
+    "com.azure.maps_timezone#RepresentativePoint": {
+      "type": "structure",
+      "members": {
+        "latitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Latitude property"
+          }
+        },
+        "longitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Longitude property"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Representative point property"
+      }
+    },
+    "com.azure.maps_timezone#ReferenceTime": {
+      "type": "structure",
+      "members": {
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time zone name in effect at the reference timestamp (i.e. PST or PDT depending\nwhether Daylight Savings Time is in effect)."
+          }
+        },
+        "standardOffset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UTC offset in effect at the `ReferenceUTCTimestamp`."
+          }
+        },
+        "daylightSavings": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time saving in minutes in effect at the `ReferenceUTCTimestamp`."
+          }
+        },
+        "wallTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current wall time at the given time zone as shown in the `Tag` property."
+          }
+        },
+        "posixTzValidYear": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The year this POSIX string is valid for. Note: A POSIX string will only be\nvalid in the given year."
+          }
+        },
+        "posixTz": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "POSIX string used to set the time zone environment variable."
+          }
+        },
+        "sunrise": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sunrise at the given time zone as shown in the `Tag` property, populated only\nwhen the call is `byCoordinates`. The sunrise is represented as a UTC timestamp\nconforming to [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). Note that\nthe Timezone API does not return sunrise and sunset times when solar day is\nobserved in the requested region."
+          }
+        },
+        "sunset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sunset at the given time zone as shown in the `Tag` property, populated only\nwhen the call is `byCoordinates`. The sunset is represented as a UTC timestamp\nconforming to [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6). Note that\nthe Timezone API does not return sunrise and sunset times when solar day is\nobserved in the requested region."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details in effect at the local time."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneNames": {
+      "type": "structure",
+      "members": {
+        "iso6391LanguageCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 639-1 language code of the Names"
+          }
+        },
+        "generic": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Generic Name"
+          }
+        },
+        "standard": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Standard Name"
+          }
+        },
+        "daylight": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Daylight Name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Timezone names object."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneIdCountriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_timezone#CountryRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of country/region records. Only returned when [options]=*zoneinfo* or\n*all*."
+      }
+    },
+    "com.azure.maps_timezone#CountryRecord": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "country/region Name"
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO-3166 2-letter country/region code for the country/region."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A country/region record."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneIdAliasesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of time zone ID aliases. Only returned when [options]=*zoneinfo* or\n*all*.\n\nNote: may be null."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Only `json` format is supported."
+          }
+        },
+        "options": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequestOptions",
+          "traits": {
+            "smithy.api#httpQuery": "options",
+            "smithy.api#documentation": "Alternatively, use alias \"o\". Options available for types of information\nreturned in the result."
+          }
+        },
+        "timeStamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "timeStamp",
+            "smithy.api#documentation": "Alternatively, use alias \"stamp\", or \"s\". Reference time, if omitted, the API\nwill use the machine time serving the request."
+          }
+        },
+        "transitionsFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "transitionsFrom",
+            "smithy.api#documentation": "Alternatively, use alias \"tf\". The start date from which daylight savings time\n(DST) transitions are requested, only applies when \"options\" = all or \"options\"\n= transitions."
+          }
+        },
+        "transitionsYears": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "transitionsYears",
+            "smithy.api#documentation": "Alternatively, use alias \"ty\". The number of years from \"transitionsFrom\" for\nwhich DST transitions are requested, only applies when \"options\" = all or\n\"options\" = transitions."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The IANA time zone ID."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Specifies the language code in which the timezone names should be returned. If\nno language code is provided, the response will be in \"EN\". Please refer to\n[Supported\nLanguages](https://docs.microsoft.com/azure/azure-maps/supported-languages) for\ndetails."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequestOptions": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "ZONEINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zoneInfo"
+          }
+        },
+        "TRANSITIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transitions"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByIDRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinates": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_timezone#TimezoneResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/timezone/byCoordinates/{format}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "1.0"
+        },
+        "smithy.api#documentation": "Use to get the current, historical, and future time zone information for the\nspecified latitude-longitude pair.\n\nThe `Get Timezone By Coordinates` API is an HTTP `GET` request that returns\ncurrent, historical, and future time zone information for a specified\nlatitude-longitude pair. In addition, the API provides sunset and sunrise times\nfor a given location, with the exception of regions that observe solar days."
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "format": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestFormat",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Desired format of the response. Only `json` format is supported."
+          }
+        },
+        "options": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestOptions",
+          "traits": {
+            "smithy.api#httpQuery": "options",
+            "smithy.api#documentation": "Alternatively, use alias \"o\". Options available for types of information\nreturned in the result."
+          }
+        },
+        "timeStamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "timeStamp",
+            "smithy.api#documentation": "Alternatively, use alias \"stamp\", or \"s\". Reference time, if omitted, the API\nwill use the machine time serving the request."
+          }
+        },
+        "transitionsFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "transitionsFrom",
+            "smithy.api#documentation": "Alternatively, use alias \"tf\". The start date from which daylight savings time\n(DST) transitions are requested, only applies when \"options\" = all or \"options\"\n= transitions."
+          }
+        },
+        "transitionsYears": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "transitionsYears",
+            "smithy.api#documentation": "Alternatively, use alias \"ty\". The number of years from \"transitionsFrom\" for\nwhich DST transitions are requested, only applies when \"options\" = all or\n\"options\" = transitions."
+          }
+        },
+        "query": {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestQueryList",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Coordinates of the point for which time zone information is requested. This\nparameter is a list of coordinates, containing a pair of coordinate(lat, long).\nWhen this endpoint is called directly, coordinates are passed in as a single\nstring containing coordinates, separated by commas."
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Indicates the account intended for use with the Microsoft Entra ID security\nmodel. This unique ID for the Azure Maps account can be obtained from the\n[Azure Maps management plane Account API](/rest/api/maps-management/accounts).\nFor more information on using Microsoft Entra ID security in Azure Maps, see\n[Manage authentication in Azure\nMaps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Specifies the language code in which the timezone names should be returned. If\nno language code is provided, the response will be in \"EN\". Please refer to\n[Supported\nLanguages](https://docs.microsoft.com/azure/azure-maps/supported-languages) for\ndetails."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestQueryList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestOptions": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "ZONEINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zoneInfo"
+          }
+        },
+        "TRANSITIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transitions"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinatesRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_timezone#MapsTimezone": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneWindowsToIANA"
+        },
+        {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneIANAVersion"
+        },
+        {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumWindows"
+        },
+        {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneEnumIANA"
+        },
+        {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneByID"
+        },
+        {
+          "target": "com.azure.maps_timezone#TimezoneGetTimezoneByCoordinates"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Timezone data plane",
+        "smithy.api#documentation": "Azure maps data plane — maps/data-plane/Timezone (latest stable api-version 1.0).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true,
+              "default": "https://atlas.microsoft.com"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://atlas.microsoft.com/.default"
+      }
+    }
+  }
+}

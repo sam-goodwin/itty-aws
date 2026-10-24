@@ -1,0 +1,2629 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.monitor_operational_insights#QueryExecute": "com.azure.monitor_operational_insights#ExecuteQuery",
+      "com.azure.monitor_operational_insights#QueryExecuteRequest": "com.azure.monitor_operational_insights#ExecuteQueryRequest",
+      "com.azure.monitor_operational_insights#QueryExecuteRequestWorkspacesList": "com.azure.monitor_operational_insights#ExecuteQueryRequestWorkspacesList",
+      "com.azure.monitor_operational_insights#QueryGet": "com.azure.monitor_operational_insights#GetQuery",
+      "com.azure.monitor_operational_insights#QueryGetRequest": "com.azure.monitor_operational_insights#GetQueryRequest",
+      "com.azure.monitor_operational_insights#MetadataPost": "com.azure.monitor_operational_insights#PostMetadata",
+      "com.azure.monitor_operational_insights#MetadataPostRequest": "com.azure.monitor_operational_insights#PostMetadataRequest",
+      "com.azure.monitor_operational_insights#MetadataGet": "com.azure.monitor_operational_insights#GetMetadata",
+      "com.azure.monitor_operational_insights#MetadataGetRequest": "com.azure.monitor_operational_insights#GetMetadataRequest",
+      "com.azure.monitor_operational_insights#QueryExecuteWithResourceId": "com.azure.monitor_operational_insights#ExecuteQueryWithResourceId",
+      "com.azure.monitor_operational_insights#QueryExecuteWithResourceIdRequest": "com.azure.monitor_operational_insights#ExecuteQueryWithResourceIdRequest",
+      "com.azure.monitor_operational_insights#QueryExecuteWithResourceIdRequestWorkspacesList": "com.azure.monitor_operational_insights#ExecuteQueryWithResourceIdRequestWorkspacesList",
+      "com.azure.monitor_operational_insights#QueryGetWithResourceId": "com.azure.monitor_operational_insights#GetQueryWithResourceId",
+      "com.azure.monitor_operational_insights#QueryGetWithResourceIdRequest": "com.azure.monitor_operational_insights#GetQueryWithResourceIdRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.monitor_operational_insights#QueryExecute": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_operational_insights#QueryExecuteRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_operational_insights#QueryResults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/workspaces/{workspaceId}/query",
+          "code": 200,
+          "host": "{endpoint}/v1",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://api.loganalytics.io"
+          }
+        },
+        "smithy.api#documentation": "Execute an Analytics query\n\nExecutes an Analytics query for data.\n[Here](https://learn.microsoft.com/azure/azure-monitor/logs/api/request-format)\nis an example for using POST with an Analytics query."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryResults": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#QueryResultsTablesList",
+          "traits": {
+            "smithy.api#documentation": "The results of the query in tabular format.",
+            "smithy.api#required": {}
+          }
+        },
+        "statistics": {
+          "target": "com.azure.monitor_operational_insights#QueryResultsStatisticsMap",
+          "traits": {
+            "smithy.api#documentation": "Statistics represented in JSON format."
+          }
+        },
+        "render": {
+          "target": "com.azure.monitor_operational_insights#QueryResultsRenderMap",
+          "traits": {
+            "smithy.api#documentation": "Visualization data in JSON format."
+          }
+        },
+        "error": {
+          "target": "com.azure.monitor_operational_insights#ErrorInfo",
+          "traits": {
+            "smithy.api#documentation": "The code and message for an error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the tables, columns & rows resulting from a query."
+      }
+    },
+    "com.azure.monitor_operational_insights#ErrorInfo": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A machine readable error code.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human readable error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "com.azure.monitor_operational_insights#ErrorInfoDetailsList",
+          "traits": {
+            "smithy.api#documentation": "error details."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.monitor_operational_insights#ErrorInfo",
+          "traits": {
+            "smithy.api#documentation": "Inner error details if they exist."
+          }
+        },
+        "additionalProperties": {
+          "target": "com.azure.monitor_operational_insights#ErrorInfoAdditionalPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Additional properties that can be provided on the error info object"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The code and message for an error."
+      }
+    },
+    "com.azure.monitor_operational_insights#ErrorInfoAdditionalPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional properties that can be provided on the error info object"
+      }
+    },
+    "com.azure.monitor_operational_insights#ErrorInfoDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#ErrorDetail"
+      },
+      "traits": {
+        "smithy.api#documentation": "error details."
+      }
+    },
+    "com.azure.monitor_operational_insights#ErrorDetail": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error's code.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human readable error message.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates which property in the request is responsible for the error."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates which value in 'target' is responsible for the error."
+          }
+        },
+        "resources": {
+          "target": "com.azure.monitor_operational_insights#ErrorDetailResourcesList",
+          "traits": {
+            "smithy.api#documentation": "Indicates resources which were responsible for the error."
+          }
+        },
+        "additionalProperties": {
+          "target": "com.azure.monitor_operational_insights#ErrorDetailAdditionalPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Additional properties that can be provided on the error details object"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error details."
+      }
+    },
+    "com.azure.monitor_operational_insights#ErrorDetailAdditionalPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional properties that can be provided on the error details object"
+      }
+    },
+    "com.azure.monitor_operational_insights#ErrorDetailResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates resources which were responsible for the error."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryResultsRenderMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Visualization data in JSON format."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryResultsStatisticsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Statistics represented in JSON format."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryResultsTablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#Table"
+      },
+      "traits": {
+        "smithy.api#documentation": "The results of the query in tabular format."
+      }
+    },
+    "com.azure.monitor_operational_insights#Table": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the table.",
+            "smithy.api#required": {}
+          }
+        },
+        "columns": {
+          "target": "com.azure.monitor_operational_insights#TableColumnsList",
+          "traits": {
+            "smithy.api#documentation": "The list of columns in this table.",
+            "smithy.api#required": {}
+          }
+        },
+        "rows": {
+          "target": "com.azure.monitor_operational_insights#TableRowsList",
+          "traits": {
+            "smithy.api#documentation": "The resulting rows from this query.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the columns and rows for one table in a query response."
+      }
+    },
+    "com.azure.monitor_operational_insights#TableRowsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#TableRowsItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resulting rows from this query."
+      }
+    },
+    "com.azure.monitor_operational_insights#TableRowsItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.monitor_operational_insights#TableColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#Column"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of columns in this table."
+      }
+    },
+    "com.azure.monitor_operational_insights#Column": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of this column.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.monitor_operational_insights#ColumnDataType",
+          "traits": {
+            "smithy.api#documentation": "The data type of this column.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A column in a table."
+      }
+    },
+    "com.azure.monitor_operational_insights#ColumnDataType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        },
+        "DATETIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "datetime"
+          }
+        },
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        },
+        "INT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int"
+          }
+        },
+        "LONG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "long"
+          }
+        },
+        "REAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "real"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "GUID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "guid"
+          }
+        },
+        "DECIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decimal"
+          }
+        },
+        "TIMESPAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timespan"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data type of a column."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryExecuteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Primary Workspace ID of the query. This is the Workspace ID from the Properties\nblade in the Azure portal."
+          }
+        },
+        "prefer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Prefer",
+            "smithy.api#documentation": "Optional. The prefer header to set server timeout, query statistics and visualization information."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query to execute.",
+            "smithy.api#required": {}
+          }
+        },
+        "timespan": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The timespan over which to query data. This is an ISO8601 time period\nvalue.  This timespan is applied in addition to any that are specified in the\nquery expression."
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#QueryExecuteRequestWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "A list of workspaces to query in addition to the primary workspace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryExecuteRequestWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of workspaces to query in addition to the primary workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_operational_insights#QueryGetRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_operational_insights#QueryResults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/workspaces/{workspaceId}/query",
+          "code": 200,
+          "host": "{endpoint}/v1",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://api.loganalytics.io"
+          }
+        },
+        "smithy.api#documentation": "Execute an Analytics query\n\nExecutes an Analytics query for data."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Primary Workspace ID of the query. This is the Workspace ID from the Properties\nblade in the Azure portal."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Analytics query. Learn more about the\n[Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)"
+          }
+        },
+        "timespan": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "timespan",
+            "smithy.api#documentation": "Optional. The timespan over which to query data. This is an ISO8601 time period\nvalue.  This timespan is applied in addition to any that are specified in the\nquery expression."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPost": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_operational_insights#MetadataPostRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_operational_insights#MetadataResults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/workspaces/{workspaceId}/metadata",
+          "code": 200,
+          "host": "{endpoint}/v1",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://api.loganalytics.io"
+          }
+        },
+        "smithy.api#documentation": "Gets metadata information\n\nRetrieve the metadata information for the workspace, including its schema,\nfunctions, workspace info, categories etc."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResults": {
+      "type": "structure",
+      "members": {
+        "categories": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The list of categories that are referenced in this metadata response."
+          }
+        },
+        "resourceTypes": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The list of resource types that are referenced in this metadata response."
+          }
+        },
+        "solutions": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsSolutionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of Log Analytics solutions installed on the workspace."
+          }
+        },
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsTablesList",
+          "traits": {
+            "smithy.api#documentation": "The list of tables and columns that comprise the schema of the workspace."
+          }
+        },
+        "functions": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of functions stored on the workspace, or introduced by solutions etc."
+          }
+        },
+        "queries": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsQueriesList",
+          "traits": {
+            "smithy.api#documentation": "The list of saved queries stored on the workspace, or introduced by solutions,\nresource types, etc."
+          }
+        },
+        "applications": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsApplicationsList",
+          "traits": {
+            "smithy.api#documentation": "The list of Application Insights apps that were referenced in the metadata\nrequest."
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Log Analytics workspaces that were referenced in the metadata\nrequest."
+          }
+        },
+        "resources": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsResourcesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Azure resources that were referenced in the metadata request."
+          }
+        },
+        "permissions": {
+          "target": "com.azure.monitor_operational_insights#MetadataResultsPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of permission rules that affected the metadata request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata response for the app, including available tables, etc."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataPermissions"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of permission rules that affected the metadata request."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissions": {
+      "type": "structure",
+      "members": {
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#MetadataPermissionsWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "The permission indication for the workspaces on the metadata request.",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.monitor_operational_insights#MetadataPermissionsResourcesList",
+          "traits": {
+            "smithy.api#documentation": "The permission indication for the Azure resources on the metadata request."
+          }
+        },
+        "applications": {
+          "target": "com.azure.monitor_operational_insights#MetadataPermissionsApplicationsList",
+          "traits": {
+            "smithy.api#documentation": "The permission indication for the Application Insights apps on the metadata\nrequest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Permission information for the metadata call, includes apps/workspaces/resource\nthe user didn't have access to."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsApplicationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataPermissionsApplicationsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The permission indication for the Application Insights apps on the metadata\nrequest."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsApplicationsItem": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID on the permission indication.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The permission indication for the Application Insights apps on the metadata request."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataPermissionsResourcesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The permission indication for the Azure resources on the metadata request."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsResourcesItem": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID on the permission indication.",
+            "smithy.api#required": {}
+          }
+        },
+        "denyTables": {
+          "target": "com.azure.monitor_operational_insights#MetadataPermissionsResourcesItemDenyTablesList",
+          "traits": {
+            "smithy.api#documentation": "The list of tables that were denied access for the resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The permission indication for the Azure resources on the metadata request."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsResourcesItemDenyTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of tables that were denied access for the resource ID."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataPermissionsWorkspacesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The permission indication for the workspaces on the metadata request."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsWorkspacesItem": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID on the permission indication.",
+            "smithy.api#required": {}
+          }
+        },
+        "denyTables": {
+          "target": "com.azure.monitor_operational_insights#MetadataPermissionsWorkspacesItemDenyTablesList",
+          "traits": {
+            "smithy.api#documentation": "The list of tables that were denied access for the resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The permission indication for the workspaces on the metadata request."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPermissionsWorkspacesItemDenyTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of tables that were denied access for the resource ID."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Azure resources that were referenced in the metadata request."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataWorkspace"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Log Analytics workspaces that were referenced in the metadata\nrequest."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataWorkspace": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Log Analytics workspace.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of the Log Analytics workspace.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Log Analytics workspace.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure region of the Log Analytics workspace.",
+            "smithy.api#required": {}
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataWorkspaceRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the Log Analytics workspace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Log Analytics workspaces that were part of the metadata request and that the\nuser has access to."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataWorkspaceRelated": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedTablesList",
+          "traits": {
+            "smithy.api#documentation": "The related tables for the Log Analytics workspace."
+          }
+        },
+        "solutions": {
+          "target": "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedSolutionsList",
+          "traits": {
+            "smithy.api#documentation": "The related Log Analytics solutions for the Log Analytics workspace."
+          }
+        },
+        "resourceTypes": {
+          "target": "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The related resource types for the Log Analytics workspace."
+          }
+        },
+        "functions": {
+          "target": "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "The related functions for the Log Analytics workspace."
+          }
+        },
+        "resources": {
+          "target": "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedResourcesList",
+          "traits": {
+            "smithy.api#documentation": "The related Azure resources for the Log Analytics workspace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the Log Analytics workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related Azure resources for the Log Analytics workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related functions for the Log Analytics workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related resource types for the Log Analytics workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedSolutionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related Log Analytics solutions for the Log Analytics workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataWorkspaceRelatedTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related tables for the Log Analytics workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsApplicationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataApplication"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Application Insights apps that were referenced in the metadata\nrequest."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataApplication": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Application Insights app.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of the Application Insights app.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Application Insights app.",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure region of the Application Insights app.",
+            "smithy.api#required": {}
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataApplicationRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the Application Insights app."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Application Insights apps that were part of the metadata request and that the\nuser has access to."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataApplicationRelated": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataApplicationRelatedTablesList",
+          "traits": {
+            "smithy.api#documentation": "The related tables for the Application Insights app."
+          }
+        },
+        "functions": {
+          "target": "com.azure.monitor_operational_insights#MetadataApplicationRelatedFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "The related functions for the Application Insights app."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the Application Insights app."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataApplicationRelatedFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related functions for the Application Insights app."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataApplicationRelatedTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related tables for the Application Insights app."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataQuery"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of saved queries stored on the workspace, or introduced by solutions,\nresource types, etc."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQuery": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the query."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the query."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The KQL body of the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "labels": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryLabelsList",
+          "traits": {
+            "smithy.api#documentation": "The user defined labels associated with the query."
+          }
+        },
+        "tags": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags associated with the query."
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "The properties of the query."
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the query."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Queries are stored pieces of KQL, along with a list of relevant metadata items."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryRelated": {
+      "type": "structure",
+      "members": {
+        "categories": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryRelatedCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The related categories for the query."
+          }
+        },
+        "solutions": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryRelatedSolutionsList",
+          "traits": {
+            "smithy.api#documentation": "The related Log Analytics solutions for the query."
+          }
+        },
+        "resourceTypes": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryRelatedResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The related resource types for the query."
+          }
+        },
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataQueryRelatedTablesList",
+          "traits": {
+            "smithy.api#documentation": "The related tables for the query."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryRelatedTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related tables for the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryRelatedResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related resource types for the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryRelatedSolutionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related Log Analytics solutions for the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryRelatedCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related categories for the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags associated with the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataQueryLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user defined labels associated with the query."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataFunction"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of functions stored on the workspace, or introduced by solutions etc."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunction": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the function.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the function, to be used in queries.",
+            "smithy.api#required": {}
+          }
+        },
+        "parameters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parameters/arguments of the function, if any."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the function."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the function."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The KQL body of the function.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags associated with the function."
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "The properties of the function."
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Functions are stored Kusto queries that can be specified as part of queries by\nusing their name."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionRelated": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionRelatedTablesList",
+          "traits": {
+            "smithy.api#documentation": "The related tables for the function."
+          }
+        },
+        "solutions": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionRelatedSolutionsList",
+          "traits": {
+            "smithy.api#documentation": "The related Log Analytics solutions for the function."
+          }
+        },
+        "resourceTypes": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionRelatedResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The related resource types for the function."
+          }
+        },
+        "categories": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionRelatedCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The related categories for the function."
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#MetadataFunctionRelatedWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "The related workspaces for the function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionRelatedWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related workspaces for the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionRelatedCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related categories for the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionRelatedResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related resource types for the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionRelatedSolutionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related Log Analytics solutions for the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionRelatedTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related tables for the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataFunctionTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags associated with the function."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsTablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataTable"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of tables and columns that comprise the schema of the workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTable": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the table",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the table",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the table"
+          }
+        },
+        "timespanColumn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The column associated with the timespan query parameter for the table"
+          }
+        },
+        "labels": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableLabelsList",
+          "traits": {
+            "smithy.api#documentation": "The user defined labels of the table"
+          }
+        },
+        "tags": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags associated with the table"
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitor_operational_insights#MetadataTablePropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "The properties of the table"
+          }
+        },
+        "columns": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableColumnsList",
+          "traits": {
+            "smithy.api#documentation": "The list of columns defined on the table"
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the table"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Tables are part of the workspace schema, and contain a list of columns and a\nreference to other relevant metadata items."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableRelated": {
+      "type": "structure",
+      "members": {
+        "categories": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableRelatedCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The related categories for the table"
+          }
+        },
+        "solutions": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableRelatedSolutionsList",
+          "traits": {
+            "smithy.api#documentation": "The related Log Analytics solutions for the table"
+          }
+        },
+        "resourceTypes": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableRelatedResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The related resource types for the table"
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableRelatedWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "The related Log Analytics workspaces for the table"
+          }
+        },
+        "functions": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableRelatedFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "The related functions for the table"
+          }
+        },
+        "queries": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableRelatedQueriesList",
+          "traits": {
+            "smithy.api#documentation": "The related saved queries for the table"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableRelatedQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related saved queries for the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableRelatedFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related functions for the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableRelatedWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related Log Analytics workspaces for the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableRelatedResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related resource types for the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableRelatedSolutionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related Log Analytics solutions for the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableRelatedCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related categories for the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataTableColumnsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of columns defined on the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableColumnsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the column",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the column"
+          }
+        },
+        "type": {
+          "target": "com.azure.monitor_operational_insights#ColumnDataType",
+          "traits": {
+            "smithy.api#documentation": "The data type of the column",
+            "smithy.api#required": {}
+          }
+        },
+        "isPreferredFacet": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A flag indicating this column is a preferred facet"
+          }
+        },
+        "source": {
+          "target": "com.azure.monitor_operational_insights#MetadataTableColumnsItemSourceMap",
+          "traits": {
+            "smithy.api#documentation": "An indication of the source of the column, used only when multiple workspaces\nhave conflicting definition for the column"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A column in a metadata table."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableColumnsItemSourceMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "An indication of the source of the column, used only when multiple workspaces\nhave conflicting definition for the column"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTablePropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags associated with the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataTableLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user defined labels of the table"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsSolutionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataSolution"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Log Analytics solutions installed on the workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolution": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Log Analytics solution",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Log Analytics solution",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the Log Analytics solution"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the Log Analytics solution"
+          }
+        },
+        "tags": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags that are associated with the Log Analytics solution"
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Log Analytics solution"
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the Log Analytics solution",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solutions can group tables and functions that are associated with a certain\nAzure Log Analytics offering."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionRelated": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionRelatedTablesList",
+          "traits": {
+            "smithy.api#documentation": "The tables related to the Log Analytics solution",
+            "smithy.api#required": {}
+          }
+        },
+        "functions": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionRelatedFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "The functions related to the Log Analytics solution"
+          }
+        },
+        "categories": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionRelatedCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The categories related to the Log Analytics solution"
+          }
+        },
+        "queries": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionRelatedQueriesList",
+          "traits": {
+            "smithy.api#documentation": "The saved queries related to the Log Analytics solution"
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#MetadataSolutionRelatedWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "The Workspaces referenced in the metadata request that are related to the Log\nAnalytics solution"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the Log Analytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionRelatedWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Workspaces referenced in the metadata request that are related to the Log\nAnalytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionRelatedQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The saved queries related to the Log Analytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionRelatedCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The categories related to the Log Analytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionRelatedFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The functions related to the Log Analytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionRelatedTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tables related to the Log Analytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Log Analytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataSolutionTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that are associated with the Log Analytics solution"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataResourceType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of resource types that are referenced in this metadata response."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceType": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the resource-type",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource-type",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the resource-type"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the resource-type"
+          }
+        },
+        "labels": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeLabelsList",
+          "traits": {
+            "smithy.api#documentation": "The user-defined labels of the resource-type"
+          }
+        },
+        "tags": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags associated with the resource-type"
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypePropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "The properties of the resource-type"
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the resource-type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about types of Azure resources, containing relevant tables, functions,\netc."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeRelated": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedTablesList",
+          "traits": {
+            "smithy.api#documentation": "The tables related to the resource-type"
+          }
+        },
+        "functions": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "The functions related to the resource-type"
+          }
+        },
+        "categories": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The categories related to the resource-type"
+          }
+        },
+        "queries": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedQueriesList",
+          "traits": {
+            "smithy.api#documentation": "The queries related to the resource-type"
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics workspaces related to the resource-type"
+          }
+        },
+        "resources": {
+          "target": "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedResourcesList",
+          "traits": {
+            "smithy.api#documentation": "The Azure resources related to the resource-type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Azure resources related to the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Log Analytics workspaces related to the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The queries related to the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The categories related to the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The functions related to the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeRelatedTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tables related to the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypePropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags associated with the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResourceTypeLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user-defined labels of the resource-type"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataResultsCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#MetadataCategory"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of categories that are referenced in this metadata response."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataCategory": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the category",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the category",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the category"
+          }
+        },
+        "related": {
+          "target": "com.azure.monitor_operational_insights#MetadataCategoryRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the category"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Categories are used to group other metadata entities."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataCategoryRelated": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#MetadataCategoryRelatedTablesList",
+          "traits": {
+            "smithy.api#documentation": "The tables related to the category"
+          }
+        },
+        "functions": {
+          "target": "com.azure.monitor_operational_insights#MetadataCategoryRelatedFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "The functions related to the category"
+          }
+        },
+        "resourceTypes": {
+          "target": "com.azure.monitor_operational_insights#MetadataCategoryRelatedResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The resource types related to the category"
+          }
+        },
+        "queries": {
+          "target": "com.azure.monitor_operational_insights#MetadataCategoryRelatedQueriesList",
+          "traits": {
+            "smithy.api#documentation": "The saved queries related to the category"
+          }
+        },
+        "solutions": {
+          "target": "com.azure.monitor_operational_insights#MetadataCategoryRelatedSolutionsList",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics solutions related to the category"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the category"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataCategoryRelatedSolutionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Log Analytics solutions related to the category"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataCategoryRelatedQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The saved queries related to the category"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataCategoryRelatedResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource types related to the category"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataCategoryRelatedFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The functions related to the category"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataCategoryRelatedTablesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tables related to the category"
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataPostRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Primary Workspace ID of the query. This is the Workspace ID from the Properties\nblade in the Azure portal."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_operational_insights#MetadataGetRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_operational_insights#MetadataResults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/workspaces/{workspaceId}/metadata",
+          "code": 200,
+          "host": "{endpoint}/v1",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://api.loganalytics.io"
+          }
+        },
+        "smithy.api#documentation": "Gets metadata information\n\nRetrieve the metadata information for the workspace, including its schema,\nfunctions, workspace info, categories etc."
+      }
+    },
+    "com.azure.monitor_operational_insights#MetadataGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Primary Workspace ID of the query. This is the Workspace ID from the Properties\nblade in the Azure portal."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_operational_insights#QueryBatchRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_operational_insights#BatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/$batch",
+          "code": 200,
+          "host": "{endpoint}/v1",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://api.loganalytics.io"
+          }
+        },
+        "smithy.api#documentation": "Execute a batch of Analytics queries\n\nExecutes a batch of Analytics queries for data.\n[Here](https://learn.microsoft.com/azure/azure-monitor/logs/api/batch-queries)\nis an example for using POST with an Analytics query."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchResponse": {
+      "type": "structure",
+      "members": {
+        "responses": {
+          "target": "com.azure.monitor_operational_insights#BatchResponseResponsesList",
+          "traits": {
+            "smithy.api#documentation": "An array of responses corresponding to each individual request in a batch."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response to a batch query."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchResponseResponsesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#BatchQueryResponse"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of responses corresponding to each individual request in a batch."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique ID corresponding to each request in the batch."
+          }
+        },
+        "status": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The HTTP status code of the response."
+          }
+        },
+        "body": {
+          "target": "com.azure.monitor_operational_insights#BatchQueryResults",
+          "traits": {
+            "smithy.api#documentation": "Contains the tables, columns & rows resulting from a query."
+          }
+        },
+        "headers": {
+          "target": "com.azure.monitor_operational_insights#BatchQueryResponseHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of <string>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the batch query response and the headers, id, and status of the request"
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryResponseHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of <string>"
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryResults": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.azure.monitor_operational_insights#BatchQueryResultsTablesList",
+          "traits": {
+            "smithy.api#documentation": "The results of the query in tabular format."
+          }
+        },
+        "statistics": {
+          "target": "com.azure.monitor_operational_insights#BatchQueryResultsStatisticsMap",
+          "traits": {
+            "smithy.api#documentation": "Statistics represented in JSON format."
+          }
+        },
+        "render": {
+          "target": "com.azure.monitor_operational_insights#BatchQueryResultsRenderMap",
+          "traits": {
+            "smithy.api#documentation": "Visualization data in JSON format."
+          }
+        },
+        "error": {
+          "target": "com.azure.monitor_operational_insights#ErrorInfo",
+          "traits": {
+            "smithy.api#documentation": "The code and message for an error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the tables, columns & rows resulting from a query."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryResultsRenderMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Visualization data in JSON format."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryResultsStatisticsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Statistics represented in JSON format."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryResultsTablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#Table"
+      },
+      "traits": {
+        "smithy.api#documentation": "The results of the query in tabular format."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryBatchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "requests": {
+          "target": "com.azure.monitor_operational_insights#QueryBatchRequestRequestsList",
+          "traits": {
+            "smithy.api#documentation": "An single request in a batch.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryBatchRequestRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_operational_insights#BatchQueryRequest"
+      },
+      "traits": {
+        "smithy.api#documentation": "An single request in a batch."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique ID corresponding to each request in the batch.",
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "com.azure.monitor_operational_insights#BatchQueryRequestHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Headers of the request. Can use prefer header to set server timeout and to\nquery statistics and visualization information."
+          }
+        },
+        "body": {
+          "target": "com.azure.monitor_operational_insights#QueryBody",
+          "traits": {
+            "smithy.api#documentation": "The Analytics query. Learn more about the\n[Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query path of a single request in a batch.",
+            "smithy.api#required": {}
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The method of a single request in a batch, defaults to GET",
+            "smithy.api#required": {}
+          }
+        },
+        "workspace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Primary Workspace ID of the query. This is the Workspace ID from the Properties\nblade in the Azure portal.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A single request in a batch."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryBody": {
+      "type": "structure",
+      "members": {
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query to execute.",
+            "smithy.api#required": {}
+          }
+        },
+        "timespan": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The timespan over which to query data. This is an ISO8601 time period\nvalue.  This timespan is applied in addition to any that are specified in the\nquery expression."
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#QueryBodyWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "A list of workspaces to query in addition to the primary workspace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Analytics query. Learn more about the\n[Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)"
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryBodyWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of workspaces to query in addition to the primary workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#BatchQueryRequestHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Headers of the request. Can use prefer header to set server timeout and to\nquery statistics and visualization information."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryExecuteWithResourceId": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_operational_insights#QueryExecuteWithResourceIdRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_operational_insights#QueryResults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{resourceId+}/query",
+          "code": 200,
+          "host": "{endpoint}/v1",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://api.loganalytics.io"
+          }
+        },
+        "smithy.api#documentation": "Execute an Analytics query using resource ID\n\nExecutes an Analytics query for data in the context of a resource.\n[Here](https://learn.microsoft.com/azure/azure-monitor/logs/api/azure-resource-queries)\nis an example for using POST with an Analytics query."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryExecuteWithResourceIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the resource."
+          }
+        },
+        "prefer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Prefer",
+            "smithy.api#documentation": "Optional. The prefer header to set server timeout, query statistics and\nvisualization information."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query to execute.",
+            "smithy.api#required": {}
+          }
+        },
+        "timespan": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The timespan over which to query data. This is an ISO8601 time period\nvalue.  This timespan is applied in addition to any that are specified in the\nquery expression."
+          }
+        },
+        "workspaces": {
+          "target": "com.azure.monitor_operational_insights#QueryExecuteWithResourceIdRequestWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "A list of workspaces to query in addition to the primary workspace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryExecuteWithResourceIdRequestWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of workspaces to query in addition to the primary workspace."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryGetWithResourceId": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_operational_insights#QueryGetWithResourceIdRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_operational_insights#QueryResults"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{resourceId+}/query",
+          "code": 200,
+          "host": "{endpoint}/v1",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://api.loganalytics.io"
+          }
+        },
+        "smithy.api#documentation": "Execute an Analytics query using resource URI\n\nExecutes an Analytics query for data in the context of a resource.\n[Here](https://learn.microsoft.com/azure/azure-monitor/logs/api/azure-resource-queries)\nis an example for using POST with an Analytics query."
+      }
+    },
+    "com.azure.monitor_operational_insights#QueryGetWithResourceIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics service endpoint.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The identifier of the resource."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Analytics query. Learn more about the\n[Analytics query syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)"
+          }
+        },
+        "timespan": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "timespan",
+            "smithy.api#documentation": "Optional. The timespan over which to query data. This is an ISO8601 time period\nvalue.  This timespan is applied in addition to any that are specified in the\nquery expression."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_operational_insights#MonitorOperationalInsights": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.monitor_operational_insights#QueryExecute"
+        },
+        {
+          "target": "com.azure.monitor_operational_insights#QueryGet"
+        },
+        {
+          "target": "com.azure.monitor_operational_insights#MetadataPost"
+        },
+        {
+          "target": "com.azure.monitor_operational_insights#MetadataGet"
+        },
+        {
+          "target": "com.azure.monitor_operational_insights#QueryBatch"
+        },
+        {
+          "target": "com.azure.monitor_operational_insights#QueryExecuteWithResourceId"
+        },
+        {
+          "target": "com.azure.monitor_operational_insights#QueryGetWithResourceId"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure OperationalInsights data plane",
+        "smithy.api#documentation": "Azure monitor data plane — monitor/data-plane/OperationalInsights (latest stable api-version v1).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/v1",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true,
+              "default": "https://api.loganalytics.io"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://api.loganalytics.io/.default"
+      }
+    }
+  }
+}

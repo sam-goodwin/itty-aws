@@ -15,16 +15,36 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.widget#EmployeesDelete": "com.azure.widget#DeleteEmployee",
+      "com.azure.widget#EmployeesDeleteResponse": "com.azure.widget#DeleteEmployeeResponse",
+      "com.azure.widget#EmployeesDeleteRequest": "com.azure.widget#DeleteEmployeeRequest",
+      "com.azure.widget#EmployeesUpdate": "com.azure.widget#UpdateEmployee",
+      "com.azure.widget#EmployeesUpdateResponse": "com.azure.widget#UpdateEmployeeResponse",
+      "com.azure.widget#EmployeesUpdateResponseTagsMap": "com.azure.widget#UpdateEmployeeResponseTagsMap",
+      "com.azure.widget#EmployeesUpdateRequest": "com.azure.widget#UpdateEmployeeRequest",
+      "com.azure.widget#EmployeesUpdateRequestTagsMap": "com.azure.widget#UpdateEmployeeRequestTagsMap",
+      "com.azure.widget#EmployeesGet": "com.azure.widget#GetEmployee",
+      "com.azure.widget#EmployeesGetResponse": "com.azure.widget#GetEmployeeResponse",
+      "com.azure.widget#EmployeesGetResponseTagsMap": "com.azure.widget#GetEmployeeResponseTagsMap",
+      "com.azure.widget#EmployeesGetRequest": "com.azure.widget#GetEmployeeRequest",
+      "com.azure.widget#EmployeesListByResourceGroup": "com.azure.widget#ListEmployeeByResourceGroup",
+      "com.azure.widget#EmployeesListByResourceGroupRequest": "com.azure.widget#ListEmployeeByResourceGroupRequest",
+      "com.azure.widget#EmployeesListBySubscription": "com.azure.widget#ListEmployeeBySubscription",
+      "com.azure.widget#EmployeesListBySubscriptionRequest": "com.azure.widget#ListEmployeeBySubscriptionRequest",
+      "com.azure.widget#OperationsList": "com.azure.widget#ListOperations",
+      "com.azure.widget#OperationsListResponse": "com.azure.widget#ListOperationsResponse",
+      "com.azure.widget#OperationsListResponseValueList": "com.azure.widget#ListOperationsResponseValueList"
+    }
   },
   "shapes": {
-    "com.azure.widget#DeleteEmployee": {
+    "com.azure.widget#EmployeesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.widget#DeleteEmployeeRequest"
+        "target": "com.azure.widget#EmployeesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.widget#DeleteEmployeeResponse"
+        "target": "com.azure.widget#EmployeesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +57,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.widget#DeleteEmployeeResponse": {
+    "com.azure.widget#EmployeesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -59,7 +79,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.widget#DeleteEmployeeRequest": {
+    "com.azure.widget#EmployeesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -91,13 +111,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.widget#UpdateEmployee": {
+    "com.azure.widget#EmployeesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.widget#UpdateEmployeeRequest"
+        "target": "com.azure.widget#EmployeesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.widget#UpdateEmployeeResponse"
+        "target": "com.azure.widget#EmployeesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -110,7 +130,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.widget#UpdateEmployeeResponse": {
+    "com.azure.widget#EmployeesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -138,7 +158,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.widget#UpdateEmployeeResponseTagsMap",
+          "target": "com.azure.widget#EmployeesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -243,7 +263,7 @@
         "smithy.api#documentation": "The resource provisioning state."
       }
     },
-    "com.azure.widget#UpdateEmployeeResponseTagsMap": {
+    "com.azure.widget#EmployeesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -363,7 +383,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.widget#UpdateEmployeeRequest": {
+    "com.azure.widget#EmployeesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -391,7 +411,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.widget#UpdateEmployeeRequestTagsMap",
+          "target": "com.azure.widget#EmployeesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -433,7 +453,7 @@
         "smithy.api#documentation": "Employee properties"
       }
     },
-    "com.azure.widget#UpdateEmployeeRequestTagsMap": {
+    "com.azure.widget#EmployeesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -604,13 +624,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.widget#GetEmployee": {
+    "com.azure.widget#EmployeesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.widget#GetEmployeeRequest"
+        "target": "com.azure.widget#EmployeesGetRequest"
       },
       "output": {
-        "target": "com.azure.widget#GetEmployeeResponse"
+        "target": "com.azure.widget#EmployeesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -623,7 +643,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.widget#GetEmployeeResponse": {
+    "com.azure.widget#EmployeesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -651,7 +671,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.widget#GetEmployeeResponseTagsMap",
+          "target": "com.azure.widget#EmployeesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -674,7 +694,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.widget#GetEmployeeResponseTagsMap": {
+    "com.azure.widget#EmployeesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -686,7 +706,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.widget#GetEmployeeRequest": {
+    "com.azure.widget#EmployeesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -718,10 +738,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.widget#ListEmployeeByResourceGroup": {
+    "com.azure.widget#EmployeesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.widget#ListEmployeeByResourceGroupRequest"
+        "target": "com.azure.widget#EmployeesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.widget#EmployeeListResult"
@@ -830,7 +850,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.widget#ListEmployeeByResourceGroupRequest": {
+    "com.azure.widget#EmployeesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -854,10 +874,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.widget#ListEmployeeBySubscription": {
+    "com.azure.widget#EmployeesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.widget#ListEmployeeBySubscriptionRequest"
+        "target": "com.azure.widget#EmployeesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.widget#EmployeeListResult"
@@ -873,7 +893,7 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.widget#ListEmployeeBySubscriptionRequest": {
+    "com.azure.widget#EmployeesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -889,13 +909,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.widget#ListOperations": {
+    "com.azure.widget#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.widget#ListOperationsResponse"
+        "target": "com.azure.widget#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -908,11 +928,11 @@
         "com.distilled.openapi#apiVersion": "2021-11-01"
       }
     },
-    "com.azure.widget#ListOperationsResponse": {
+    "com.azure.widget#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.widget#ListOperationsResponseValueList",
+          "target": "com.azure.widget#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -928,7 +948,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.widget#ListOperationsResponseValueList": {
+    "com.azure.widget#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.widget#Operation"
@@ -1052,25 +1072,25 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.widget#DeleteEmployee"
+          "target": "com.azure.widget#EmployeesDelete"
         },
         {
-          "target": "com.azure.widget#UpdateEmployee"
+          "target": "com.azure.widget#EmployeesUpdate"
         },
         {
           "target": "com.azure.widget#EmployeesCreateOrUpdate"
         },
         {
-          "target": "com.azure.widget#GetEmployee"
+          "target": "com.azure.widget#EmployeesGet"
         },
         {
-          "target": "com.azure.widget#ListEmployeeByResourceGroup"
+          "target": "com.azure.widget#EmployeesListByResourceGroup"
         },
         {
-          "target": "com.azure.widget#ListEmployeeBySubscription"
+          "target": "com.azure.widget#EmployeesListBySubscription"
         },
         {
-          "target": "com.azure.widget#ListOperations"
+          "target": "com.azure.widget#OperationsList"
         }
       ],
       "traits": {

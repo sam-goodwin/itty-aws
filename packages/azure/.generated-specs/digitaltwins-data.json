@@ -1,0 +1,3236 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.digitaltwins_data#DeleteJobsGetById": "com.azure.digitaltwins_data#GetDeleteJobById",
+      "com.azure.digitaltwins_data#DeleteJobsGetByIdRequest": "com.azure.digitaltwins_data#GetDeleteJobByIdRequest",
+      "com.azure.digitaltwins_data#DeleteJobsAdd": "com.azure.digitaltwins_data#AddDeleteJob",
+      "com.azure.digitaltwins_data#DeleteJobsAddResponse": "com.azure.digitaltwins_data#AddDeleteJobResponse",
+      "com.azure.digitaltwins_data#DeleteJobsAddRequest": "com.azure.digitaltwins_data#AddDeleteJobRequest",
+      "com.azure.digitaltwins_data#DeleteJobsList": "com.azure.digitaltwins_data#ListDeleteJobs",
+      "com.azure.digitaltwins_data#DeleteJobsListRequest": "com.azure.digitaltwins_data#ListDeleteJobsRequest",
+      "com.azure.digitaltwins_data#ImportJobsCancel": "com.azure.digitaltwins_data#CancelImportJob",
+      "com.azure.digitaltwins_data#ImportJobsCancelRequest": "com.azure.digitaltwins_data#CancelImportJobRequest",
+      "com.azure.digitaltwins_data#ImportJobsDelete": "com.azure.digitaltwins_data#DeleteImportJob",
+      "com.azure.digitaltwins_data#ImportJobsDeleteRequest": "com.azure.digitaltwins_data#DeleteImportJobRequest",
+      "com.azure.digitaltwins_data#ImportJobsAdd": "com.azure.digitaltwins_data#AddImportJob",
+      "com.azure.digitaltwins_data#ImportJobsAddRequest": "com.azure.digitaltwins_data#AddImportJobRequest",
+      "com.azure.digitaltwins_data#ImportJobsGetById": "com.azure.digitaltwins_data#GetImportJobById",
+      "com.azure.digitaltwins_data#ImportJobsGetByIdRequest": "com.azure.digitaltwins_data#GetImportJobByIdRequest",
+      "com.azure.digitaltwins_data#ImportJobsList": "com.azure.digitaltwins_data#ListImportJobs",
+      "com.azure.digitaltwins_data#ImportJobsListRequest": "com.azure.digitaltwins_data#ListImportJobsRequest",
+      "com.azure.digitaltwins_data#EventRoutesDelete": "com.azure.digitaltwins_data#DeleteEventRoute",
+      "com.azure.digitaltwins_data#EventRoutesDeleteRequest": "com.azure.digitaltwins_data#DeleteEventRouteRequest",
+      "com.azure.digitaltwins_data#EventRoutesAdd": "com.azure.digitaltwins_data#AddEventRoute",
+      "com.azure.digitaltwins_data#EventRoutesAddRequest": "com.azure.digitaltwins_data#AddEventRouteRequest",
+      "com.azure.digitaltwins_data#EventRoutesGetById": "com.azure.digitaltwins_data#GetEventRouteById",
+      "com.azure.digitaltwins_data#EventRoutesGetByIdRequest": "com.azure.digitaltwins_data#GetEventRouteByIdRequest",
+      "com.azure.digitaltwins_data#EventRoutesList": "com.azure.digitaltwins_data#ListEventRoutes",
+      "com.azure.digitaltwins_data#EventRoutesListRequest": "com.azure.digitaltwins_data#ListEventRoutesRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponent": "com.azure.digitaltwins_data#UpdateDigitalTwinComponent",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentResponse": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequestBodyList",
+      "com.azure.digitaltwins_data#DigitalTwinsGetComponent": "com.azure.digitaltwins_data#GetDigitalTwinComponent",
+      "com.azure.digitaltwins_data#DigitalTwinsGetComponentResponse": "com.azure.digitaltwins_data#GetDigitalTwinComponentResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsGetComponentRequest": "com.azure.digitaltwins_data#GetDigitalTwinComponentRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetry": "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetry",
+      "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetryRequest": "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetryRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsSendTelemetry": "com.azure.digitaltwins_data#SendDigitalTwinTelemetry",
+      "com.azure.digitaltwins_data#DigitalTwinsSendTelemetryRequest": "com.azure.digitaltwins_data#SendDigitalTwinTelemetryRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationships": "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationships",
+      "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationshipsRequest": "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationshipsRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsListRelationships": "com.azure.digitaltwins_data#ListDigitalTwinRelationships",
+      "com.azure.digitaltwins_data#DigitalTwinsListRelationshipsRequest": "com.azure.digitaltwins_data#ListDigitalTwinRelationshipsRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationship": "com.azure.digitaltwins_data#DeleteDigitalTwinRelationship",
+      "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationshipRequest": "com.azure.digitaltwins_data#DeleteDigitalTwinRelationshipRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationship": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationship",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipResponse": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequestBodyList",
+      "com.azure.digitaltwins_data#DigitalTwinsAddRelationship": "com.azure.digitaltwins_data#AddDigitalTwinRelationship",
+      "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipResponse": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequest": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequestIfNoneMatch": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequestIfNoneMatch",
+      "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipById": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipById",
+      "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdResponse": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdRequest": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsDelete": "com.azure.digitaltwins_data#DeleteDigitalTwin",
+      "com.azure.digitaltwins_data#DigitalTwinsDeleteRequest": "com.azure.digitaltwins_data#DeleteDigitalTwinRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdate": "com.azure.digitaltwins_data#UpdateDigitalTwin",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateResponse": "com.azure.digitaltwins_data#UpdateDigitalTwinResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsUpdateRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinRequestBodyList",
+      "com.azure.digitaltwins_data#DigitalTwinsAdd": "com.azure.digitaltwins_data#AddDigitalTwin",
+      "com.azure.digitaltwins_data#DigitalTwinsAddResponse": "com.azure.digitaltwins_data#AddDigitalTwinResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsAddRequest": "com.azure.digitaltwins_data#AddDigitalTwinRequest",
+      "com.azure.digitaltwins_data#DigitalTwinsAddRequestIfNoneMatch": "com.azure.digitaltwins_data#AddDigitalTwinRequestIfNoneMatch",
+      "com.azure.digitaltwins_data#DigitalTwinsGetById": "com.azure.digitaltwins_data#GetDigitalTwinById",
+      "com.azure.digitaltwins_data#DigitalTwinsGetByIdResponse": "com.azure.digitaltwins_data#GetDigitalTwinByIdResponse",
+      "com.azure.digitaltwins_data#DigitalTwinsGetByIdRequest": "com.azure.digitaltwins_data#GetDigitalTwinByIdRequest",
+      "com.azure.digitaltwins_data#DigitalTwinModelsDelete": "com.azure.digitaltwins_data#DeleteDigitalTwinModel",
+      "com.azure.digitaltwins_data#DigitalTwinModelsDeleteRequest": "com.azure.digitaltwins_data#DeleteDigitalTwinModelRequest",
+      "com.azure.digitaltwins_data#DigitalTwinModelsUpdate": "com.azure.digitaltwins_data#UpdateDigitalTwinModel",
+      "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequest",
+      "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequestBodyList",
+      "com.azure.digitaltwins_data#DigitalTwinModelsGetById": "com.azure.digitaltwins_data#GetDigitalTwinModelById",
+      "com.azure.digitaltwins_data#DigitalTwinModelsGetByIdRequest": "com.azure.digitaltwins_data#GetDigitalTwinModelByIdRequest",
+      "com.azure.digitaltwins_data#DigitalTwinModelsAdd": "com.azure.digitaltwins_data#AddDigitalTwinModel",
+      "com.azure.digitaltwins_data#DigitalTwinModelsAddResponse": "com.azure.digitaltwins_data#AddDigitalTwinModelResponse",
+      "com.azure.digitaltwins_data#DigitalTwinModelsAddRequest": "com.azure.digitaltwins_data#AddDigitalTwinModelRequest",
+      "com.azure.digitaltwins_data#DigitalTwinModelsAddRequestBodyList": "com.azure.digitaltwins_data#AddDigitalTwinModelRequestBodyList",
+      "com.azure.digitaltwins_data#DigitalTwinModelsList": "com.azure.digitaltwins_data#ListDigitalTwinModels",
+      "com.azure.digitaltwins_data#DigitalTwinModelsListRequest": "com.azure.digitaltwins_data#ListDigitalTwinModelsRequest",
+      "com.azure.digitaltwins_data#DigitalTwinModelsListRequestDependenciesForList": "com.azure.digitaltwins_data#ListDigitalTwinModelsRequestDependenciesForList"
+    }
+  },
+  "shapes": {
+    "com.azure.digitaltwins_data#DeleteJobsGetById": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DeleteJobsGetByIdRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DeleteJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jobs/deletions/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves a delete job.\nStatus codes:\n* 200 OK\n* 404 Not Found\n  * DeleteJobNotFound - The delete job was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJob": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the delete job."
+          }
+        },
+        "status": {
+          "target": "com.azure.digitaltwins_data#DeleteJobStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the job."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time of the job. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "finishedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time of the job. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "purgeDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time at which job will be purged by the service from the system. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "error": {
+          "target": "com.azure.digitaltwins_data#Error",
+          "traits": {
+            "smithy.api#documentation": "Details of the error(s) that occurred executing the import job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A job which contains a reference to the operations to perform, results, and execution metadata."
+      }
+    },
+    "com.azure.digitaltwins_data#Error": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service specific error code which serves as the substatus for the HTTP error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.digitaltwins_data#ErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Internal error details."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.digitaltwins_data#InnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error definition."
+      }
+    },
+    "com.azure.digitaltwins_data#InnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A more specific error code than was provided by the containing error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.digitaltwins_data#InnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A more specific error description than was provided by the containing error."
+      }
+    },
+    "com.azure.digitaltwins_data#ErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins_data#Error"
+      },
+      "traits": {
+        "smithy.api#documentation": "Internal error details."
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notstarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of the job."
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobsGetByIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the delete job. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobsAdd": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DeleteJobsAddRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DeleteJobsAddResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/jobs/deletions",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Initiates a job which deletes all models, twins, and relationships on the instance. Does not delete any other types of entities.\nStatus codes:\n* 202 Created\n* 400 Bad Request\n  * JobLimitReached - The maximum number of delete jobs allowed has been reached. \n  * ValidationFailed - Operation-Id already exists."
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobsAddResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The URL to track the status of the long running operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobsAddRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeoutInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeoutInMinutes",
+            "smithy.api#documentation": "Desired timeout for the delete job. Once the specified timeout is reached, service will stop any delete operations triggered by the current delete job that are in progress, and go to a failed state. Please note that this will leave your instance in an unknown state as there won't be any rollback operation."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "operation-id",
+            "smithy.api#documentation": "ID for the operation's status monitor. The ID is generated if header was not passed by the client."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DeleteJobsListRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DeleteJobCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jobs/deletions",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves all deletion jobs. This may be useful to find a delete job that was previously requested, or to view a history of delete jobs that have run or are currently running on the instance.\nStatus codes:\n* 200 OK"
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.digitaltwins_data#DeleteJobCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The list of delete job objects.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URI to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of delete job objects."
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins_data#DeleteJob"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of delete job objects."
+      }
+    },
+    "com.azure.digitaltwins_data#DeleteJobsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "maxItemsPerPage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "max-items-per-page",
+            "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsCancel": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#ImportJobsCancelRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#ImportJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/jobs/imports/{id}/cancel",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Cancels an import job that is currently running. Service will stop any import operations triggered by the current import job that are in progress, and go to a cancelled state. Please note that this will leave your instance in an unknown state as there won't be any rollback operation. \nStatus codes:\n* 200 Request Accepted\n* 400 Bad Request\n  * ValidationFailed - The import job request is not valid."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJob": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the import job."
+          }
+        },
+        "inputBlobUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path to the input Azure storage blob that contains file(s) describing the operations to perform in the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "outputBlobUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path to the output Azure storage blob that will contain the errors and progress logs of import job.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.digitaltwins_data#ImportJobStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the job."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time of the job. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "lastActionDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time service performed any action from the job. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "finishedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time of the job. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "purgeDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time at which job will be purged by the service from the system. The timestamp is in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "error": {
+          "target": "com.azure.digitaltwins_data#Error",
+          "traits": {
+            "smithy.api#documentation": "Details of the error(s) that occurred executing the import job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A job which contains a reference to the operations to perform, results, and execution metadata."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notstarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelling"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of the job."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsCancelRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the import job. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#ImportJobsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/jobs/imports/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Deletes an import job. This is simply used to remove a job id, so it may be reused later. It can not be used to stop entities from being imported.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * ValidationFailed - The import job request is not valid."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the import job. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsAdd": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#ImportJobsAddRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#ImportJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/jobs/imports/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Creates an import job.\nStatus codes:\n* 201 Created\n* 400 Bad Request\n  * JobLimitReached - The maximum number of import jobs allowed has been reached.\n  * ValidationFailed - The import job request is not valid."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsAddRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the import job. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "inputBlobUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path to the input Azure storage blob that contains file(s) describing the operations to perform in the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "outputBlobUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path to the output Azure storage blob that will contain the errors and progress logs of import job.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.digitaltwins_data#ErrorInput",
+          "traits": {
+            "smithy.api#documentation": "Details of the error(s) that occurred executing the import job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#ErrorInput": {
+      "type": "structure",
+      "members": {
+        "innererror": {
+          "target": "com.azure.digitaltwins_data#InnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error definition."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsGetById": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#ImportJobsGetByIdRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#ImportJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jobs/imports/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves an import job.\nStatus codes:\n* 200 OK\n* 404 Not Found\n  * ImportJobNotFound - The import job was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsGetByIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the import job. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#ImportJobsListRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#ImportJobCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jobs/imports",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves all import jobs.\nStatus codes:\n* 200 OK"
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.digitaltwins_data#ImportJobCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The list of import job objects.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URI to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of import job objects."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins_data#ImportJob"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of import job objects."
+      }
+    },
+    "com.azure.digitaltwins_data#ImportJobsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "maxItemsPerPage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "max-items-per-page",
+            "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#EventRoutesDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/eventroutes/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Deletes an event route.\nStatus codes:\n* 204 No Content\n* 404 Not Found\n  * EventRouteNotFound - The event route was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for an event route. The id is unique within event routes and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesAdd": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#EventRoutesAddRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/eventroutes/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Adds or replaces an event route.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * EventRouteEndpointInvalid - The endpoint provided does not exist or is not active.\n  * EventRouteFilterInvalid - The event route filter is invalid.\n  * EventRouteIdInvalid - The event route id is invalid.\n  * LimitExceeded - The maximum number of event routes allowed has been reached."
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesAddRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for an event route. The id is unique within event routes and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "endpointName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the endpoint this event route is bound to.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An expression which describes the events which are routed to the endpoint.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesGetById": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#EventRoutesGetByIdRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#EventRoute"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/eventroutes/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves an event route.\nStatus codes:\n* 200 OK\n* 404 Not Found\n  * EventRouteNotFound - The event route was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoute": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the event route."
+          }
+        },
+        "endpointName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the endpoint this event route is bound to.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An expression which describes the events which are routed to the endpoint.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A route which directs notification and telemetry events to an endpoint. Endpoints are a destination outside of Azure Digital Twins such as an EventHub."
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesGetByIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for an event route. The id is unique within event routes and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#EventRoutesListRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#EventRouteCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/eventroutes",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves all event routes.\nStatus codes:\n* 200 OK"
+      }
+    },
+    "com.azure.digitaltwins_data#EventRouteCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.digitaltwins_data#EventRouteCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The EventRoute objects.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URI to retrieve the next page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of EventRoute objects."
+      }
+    },
+    "com.azure.digitaltwins_data#EventRouteCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins_data#EventRoute"
+      },
+      "traits": {
+        "smithy.api#documentation": "The EventRoute objects."
+      }
+    },
+    "com.azure.digitaltwins_data#EventRoutesListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "maxItemsPerPage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "max-items-per-page",
+            "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/digitaltwins/{id}/components/{componentPath}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Updates a component on a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id, component path, or payload is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * ValidationFailed - Applying the patch results in an invalid digital twin.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentResponse": {
+      "type": "structure",
+      "members": {
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "Weak Etag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "componentPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the DTDL component."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Only perform the operation if the entity's etag matches one of the etags provided or * is provided."
+          }
+        },
+        "body": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetComponent": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsGetComponentRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsGetComponentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/digitaltwins/{id}/components/{componentPath}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves a component from a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or component path is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * ComponentNotFound - The component path was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetComponentResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.digitaltwins_data#Component",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#Component": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Digital twin component"
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetComponentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "componentPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the DTDL component."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetry": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetryRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/digitaltwins/{id}/components/{componentPath}/telemetry",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Sends telemetry on behalf of a component in a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id, message id, or component path is invalid.\n  * ValidationFailed - The telemetry content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * ComponentNotFound - The component path was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "componentPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the DTDL component."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "messageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Message-Id",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique message identifier (in the scope of the digital twin id) that is commonly used for de-duplicating messages."
+          }
+        },
+        "telemetrySourceTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Telemetry-Source-Time",
+            "smithy.api#documentation": "An RFC 3339 timestamp that identifies the time the telemetry was measured."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsSendTelemetry": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsSendTelemetryRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/digitaltwins/{id}/telemetry",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Sends telemetry on behalf of a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or message id is invalid.\n  * ValidationFailed - The telemetry content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsSendTelemetryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "messageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Message-Id",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A unique message identifier (in the scope of the digital twin id) that is commonly used for de-duplicating messages."
+          }
+        },
+        "telemetrySourceTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Telemetry-Source-Time",
+            "smithy.api#documentation": "An RFC 3339 timestamp that identifies the time the telemetry was measured."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationships": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationshipsRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#IncomingRelationshipCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/digitaltwins/{id}/incomingrelationships",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves all incoming relationship for a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#IncomingRelationshipCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.digitaltwins_data#IncomingRelationshipCollectionValueList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URI to retrieve the next page of objects."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of incoming relationships which relate digital twins together."
+      }
+    },
+    "com.azure.digitaltwins_data#IncomingRelationshipCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins_data#IncomingRelationship"
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#IncomingRelationship": {
+      "type": "structure",
+      "members": {
+        "_relationshipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user-provided string representing the id of this relationship, unique in the context of the source digital twin, i.e. sourceId + relationshipId is unique in the context of the service.",
+            "smithy.api#jsonName": "$relationshipId"
+          }
+        },
+        "_sourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the source digital twin.",
+            "smithy.api#jsonName": "$sourceId"
+          }
+        },
+        "_relationshipName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the relationship.",
+            "smithy.api#jsonName": "$relationshipName"
+          }
+        },
+        "_relationshipLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to the relationship, to be used for deletion.",
+            "smithy.api#jsonName": "$relationshipLink"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An incoming relationship."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationshipsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsListRelationships": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsListRelationshipsRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#RelationshipCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/digitaltwins/{id}/relationships",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves the relationships from a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#RelationshipCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.digitaltwins_data#RelationshipCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The relationship objects.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URI to retrieve the next page of objects."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of relationships which relate digital twins together."
+      }
+    },
+    "com.azure.digitaltwins_data#RelationshipCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The relationship objects."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsListRelationshipsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "relationshipName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "relationshipName",
+            "smithy.api#documentation": "The name of the relationship."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationship": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationshipRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/digitaltwins/{id}/relationships/{relationshipId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Deletes a relationship between two digital twins.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or relationship id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * RelationshipNotFound - The relationship was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationshipRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "relationshipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the relationship. The id is unique within the digital twin and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Only perform the operation if the entity's etag matches one of the etags provided or * is provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationship": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/digitaltwins/{id}/relationships/{relationshipId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Updates the properties on a relationship between two digital twins.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or relationship id is invalid.\n  * InvalidRelationship - The relationship is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * ValidationFailed - The relationship content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * RelationshipNotFound - The relationship was not found.\n* 409 Conflict\n  * RelationshipAlreadyExists - The relationship already exists.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipResponse": {
+      "type": "structure",
+      "members": {
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "Weak Etag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "relationshipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the relationship. The id is unique within the digital twin and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Only perform the operation if the entity's etag matches one of the etags provided or * is provided."
+          }
+        },
+        "body": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAddRelationship": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/digitaltwins/{id}/relationships/{relationshipId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Adds a relationship between two digital twins.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id, relationship id, or payload is invalid.\n  * InvalidRelationship - The relationship is invalid.\n  * OperationNotAllowed - The relationship cannot connect to the same digital twin.\n  * ValidationFailed - The relationship content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * TargetTwinNotFound - The digital twin target of the relationship was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.digitaltwins_data#Relationship",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#Relationship": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Digital twin relationship"
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "relationshipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the relationship. The id is unique within the digital twin and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequestIfNoneMatch",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Only perform the operation if the entity does not already exist."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequestIfNoneMatch": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipById": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/digitaltwins/{id}/relationships/{relationshipId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves a relationship between two digital twins.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or relationship id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * RelationshipNotFound - The relationship was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.digitaltwins_data#Relationship",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "relationshipId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the relationship. The id is unique within the digital twin and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/digitaltwins/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Deletes a digital twin. All relationships referencing the digital twin must already be deleted.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n  * RelationshipsNotDeleted - The digital twin contains relationships.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Only perform the operation if the entity's etag matches one of the etags provided or * is provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/digitaltwins/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Updates a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or payload is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * ValidationFailed - Applying the patch results in an invalid digital twin.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "Weak Etag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Only perform the operation if the entity's etag matches one of the etags provided or * is provided."
+          }
+        },
+        "body": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsUpdateRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAdd": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsAddRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsAddResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/digitaltwins/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Adds or replaces a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or payload is invalid.\n  * ModelDecommissioned - The model for the digital twin is decommissioned.\n  * TwinLimitReached - The maximum number of digital twins allowed has been reached.\n  * ValidationFailed - The digital twin payload is not valid.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAddResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.digitaltwins_data#DigitalTwin",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwin": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Digital twin"
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAddRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsAddRequestIfNoneMatch",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Only perform the operation if the entity does not already exist."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsAddRequestIfNoneMatch": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetById": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsGetByIdRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsGetByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/digitaltwins/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetByIdResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.digitaltwins_data#DigitalTwin",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsGetByIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id of the digital twin. The id is unique within the service and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#QueryQueryTwins": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#QueryQueryTwinsRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#QueryResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/query",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Executes a query that allows traversing relationships and filtering by property values.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * BadRequest - The continuation token is invalid.\n  * SqlQueryError - The query contains some errors.\n  * TimeoutError - The query execution timed out after 60 seconds. Try simplifying the query or adding conditions to reduce the result size.\n * 429 Too Many Requests\n  * QuotaReachedError - The maximum query rate limit has been reached."
+      }
+    },
+    "com.azure.digitaltwins_data#QueryResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.digitaltwins_data#QueryResultValueList",
+          "traits": {
+            "smithy.api#documentation": "The query results.",
+            "smithy.api#required": {}
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token which can be used to construct a new QuerySpecification to retrieve the next set of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The results of a query operation and an optional continuation token."
+      }
+    },
+    "com.azure.digitaltwins_data#QueryResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The query results."
+      }
+    },
+    "com.azure.digitaltwins_data#QueryQueryTwinsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "maxItemsPerPage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "max-items-per-page",
+            "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query to execute. This value is ignored if a continuation token is provided."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token which is used to retrieve the next set of results from a previous query."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinModelsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/models/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Deletes a model. A model can only be deleted if no other models reference it.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * MissingArgument - The model id was not provided.\n* 404 Not Found\n  * ModelNotFound - The model was not found.\n* 409 Conflict\n  * ModelReferencesNotDeleted - The model refers to models that are not deleted."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the model. The id is globally unique and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/models/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Updates the metadata for a model.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * MissingArgument - The model id was not provided.\n* 404 Not Found\n  * ModelNotFound - The model was not found.\n* 409 Conflict\n  * ModelReferencesNotDecommissioned - The model refers to models that are not decommissioned."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the model. The id is globally unique and case sensitive."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "body": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsGetById": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinModelsGetByIdRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsModelData"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/models/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves model metadata and optionally the model definition.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * MissingArgument - The model id was not provided.\n* 404 Not Found\n  * ModelNotFound - The model was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsModelData": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsModelDataDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "A language map that contains the localized display names as specified in the model definition."
+          }
+        },
+        "description": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsModelDataDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "A language map that contains the localized descriptions as specified in the model definition."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the model as specified in the model definition.",
+            "smithy.api#required": {}
+          }
+        },
+        "uploadTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the model was uploaded to the service."
+          }
+        },
+        "decommissioned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the model is decommissioned. Decommissioned models cannot be referenced by newly created digital twins."
+          }
+        },
+        "model": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The model definition."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A model definition and metadata for that model."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsModelDataDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A language map that contains the localized descriptions as specified in the model definition."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinsModelDataDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A language map that contains the localized display names as specified in the model definition."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsGetByIdRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id for the model. The id is globally unique and case sensitive."
+          }
+        },
+        "includeModelDefinition": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeModelDefinition",
+            "smithy.api#documentation": "When true the model definition will be returned as part of the result."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsAdd": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinModelsAddRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinModelsAddResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/models",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Uploads one or more models. When any error occurs, no models are uploaded.\nStatus codes:\n* 201 Created\n* 400 Bad Request\n  * DTDLParserError - The models provided are not valid DTDL.\n  * InvalidArgument - The model id is invalid.\n  * LimitExceeded - The maximum number of model ids allowed in 'dependenciesFor' has been reached.\n  * ModelVersionNotSupported - The version of DTDL used is not supported.\n* 409 Conflict\n  * ModelAlreadyExists - The model provided already exists."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsAddResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.digitaltwins_data#NonPagedDigitalTwinsModelDataCollection",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.digitaltwins_data#NonPagedDigitalTwinsModelDataCollection": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsModelData"
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of DigitalTwinsModelData objects."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsAddRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "body": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsAddRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsAddRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinModelsListRequest"
+      },
+      "output": {
+        "target": "com.azure.digitaltwins_data#PagedDigitalTwinsModelDataCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/models",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-31"
+        },
+        "smithy.api#documentation": "Retrieves model metadata and, optionally, model definitions.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * LimitExceeded - The maximum number of model ids allowed in 'dependenciesFor' has been reached.\n* 404 Not Found\n  * ModelNotFound - The model was not found."
+      }
+    },
+    "com.azure.digitaltwins_data#PagedDigitalTwinsModelDataCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.digitaltwins_data#PagedDigitalTwinsModelDataCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The DigitalTwinsModelData objects.",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URI to retrieve the next page of objects."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of DigitalTwinsModelData objects."
+      }
+    },
+    "com.azure.digitaltwins_data#PagedDigitalTwinsModelDataCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins_data#DigitalTwinsModelData"
+      },
+      "traits": {
+        "smithy.api#documentation": "The DigitalTwinsModelData objects."
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "dependenciesFor": {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsListRequestDependenciesForList",
+          "traits": {
+            "smithy.api#httpQuery": "dependenciesFor",
+            "smithy.api#documentation": "If specified, only return the set of the specified models along with their dependencies. If omitted, all models are retrieved."
+          }
+        },
+        "includeModelDefinition": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeModelDefinition",
+            "smithy.api#documentation": "When true the model definition will be returned as part of the result."
+          }
+        },
+        "traceparent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "traceparent",
+            "smithy.api#documentation": "Identifies the request in a distributed tracing system."
+          }
+        },
+        "tracestate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "tracestate",
+            "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
+          }
+        },
+        "maxItemsPerPage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "max-items-per-page",
+            "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins_data#DigitalTwinModelsListRequestDependenciesForList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.digitaltwins_data#DigitaltwinsData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.digitaltwins_data#DeleteJobsGetById"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DeleteJobsAdd"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DeleteJobsList"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#ImportJobsCancel"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#ImportJobsDelete"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#ImportJobsAdd"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#ImportJobsGetById"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#ImportJobsList"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#EventRoutesDelete"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#EventRoutesAdd"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#EventRoutesGetById"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#EventRoutesList"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponent"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsGetComponent"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetry"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsSendTelemetry"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationships"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsListRelationships"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationship"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationship"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationship"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipById"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsDelete"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdate"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsAdd"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinsGetById"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#QueryQueryTwins"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsDelete"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsUpdate"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsGetById"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsAdd"
+        },
+        {
+          "target": "com.azure.digitaltwins_data#DigitalTwinModelsList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure DigitalTwins data plane",
+        "smithy.api#documentation": "Azure digitaltwins data plane — digitaltwins/data-plane/DigitalTwins (latest stable api-version 2023-10-31).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://digitaltwins.azure.net/.default"
+      }
+    }
+  }
+}

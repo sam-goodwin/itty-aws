@@ -1,0 +1,637 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateBasedAuthConfiguration2": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "certificateAuthorities": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateBasedAuthConfigurationCertificateAuthoritiesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateAuthority": {
+      "type": "structure",
+      "members": {
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The base64 encoded string representing the public certificate."
+          }
+        },
+        "certificateRevocationListUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the certificate revocation list.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deltaCertificateRevocationListUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isRootAuthority": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority."
+          }
+        },
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issuer of the certificate, calculated from the certificate value. Read-only."
+          }
+        },
+        "issuerSki": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subject key identifier of the certificate, calculated from the certificate value. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateBasedAuthConfigurationCertificateAuthoritiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateAuthority"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateBasedAuthConfiguration2"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificateBasedAuthConfiguration",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from certificateBasedAuthConfiguration",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationRequestCertificateAuthoritiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateAuthority"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "certificateAuthorities": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationRequestCertificateAuthoritiesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationResponseCertificateAuthoritiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateAuthority"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "certificateAuthorities": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationResponseCertificateAuthoritiesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificateBasedAuthConfiguration",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to certificateBasedAuthConfiguration"
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "certificateBasedAuthConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of certificateBasedAuthConfiguration"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationResponseCertificateAuthoritiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateAuthority"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "certificateAuthorities": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationResponseCertificateAuthoritiesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificateBasedAuthConfiguration/{certificateBasedAuthConfigurationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from certificateBasedAuthConfiguration by key"
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationRequestCertificateAuthoritiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateAuthority"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "certificateBasedAuthConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of certificateBasedAuthConfiguration"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "certificateAuthorities": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationRequestCertificateAuthoritiesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationResponseCertificateAuthoritiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateAuthority"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "certificateAuthorities": {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationResponseCertificateAuthoritiesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of certificate authorities which creates a trusted certificate chain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/certificateBasedAuthConfiguration/{certificateBasedAuthConfigurationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in certificateBasedAuthConfiguration"
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#DeleteCertificateBasedAuthConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "certificateBasedAuthConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of certificateBasedAuthConfiguration"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#DeleteCertificateBasedAuthConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#DeleteCertificateBasedAuthConfigurationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/certificateBasedAuthConfiguration/{certificateBasedAuthConfigurationId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from certificateBasedAuthConfiguration"
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificateBasedAuthConfiguration/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.certificateBasedAuthConfiguration#CertificateBasedAuthConfiguration": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#ListCertificateBasedAuthConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#CreateCertificateBasedAuthConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCertificateBasedAuthConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#UpdateCertificateBasedAuthConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#DeleteCertificateBasedAuthConfiguration"
+        },
+        {
+          "target": "com.microsoft.graph.certificateBasedAuthConfiguration#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

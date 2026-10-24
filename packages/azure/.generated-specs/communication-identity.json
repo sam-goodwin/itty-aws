@@ -1,0 +1,763 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.communication_identity#IdentityOperationsRevokeAccessTokens": "com.azure.communication_identity#RevokeIdentityOperationAccessTokens",
+      "com.azure.communication_identity#IdentityOperationsRevokeAccessTokensRequest": "com.azure.communication_identity#RevokeIdentityOperationAccessTokensRequest",
+      "com.azure.communication_identity#IdentityOperationsDelete": "com.azure.communication_identity#DeleteIdentityOperation",
+      "com.azure.communication_identity#IdentityOperationsDeleteRequest": "com.azure.communication_identity#DeleteIdentityOperationRequest",
+      "com.azure.communication_identity#IdentityOperationsCreate": "com.azure.communication_identity#CreateIdentityOperation",
+      "com.azure.communication_identity#IdentityOperationsCreateRequest": "com.azure.communication_identity#CreateIdentityOperationRequest",
+      "com.azure.communication_identity#IdentityOperationsCreateRequestCreateTokenWithScopesList": "com.azure.communication_identity#CreateIdentityOperationRequestCreateTokenWithScopesList",
+      "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignment": "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignment",
+      "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignmentRequest": "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignmentRequest",
+      "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignment": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignment",
+      "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequest": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequest",
+      "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequestClientIdsList": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequestClientIdsList",
+      "com.azure.communication_identity#TeamsExtensionOperationsGetAssignment": "com.azure.communication_identity#GetTeamsExtensionOperationAssignment",
+      "com.azure.communication_identity#TeamsExtensionOperationsGetAssignmentRequest": "com.azure.communication_identity#GetTeamsExtensionOperationAssignmentRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.communication_identity#TeamsUserOperationsExchangeTeamsUserAccessToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#TeamsUserOperationsExchangeTeamsUserAccessTokenRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_identity#CommunicationIdentityAccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/teamsUser/:exchangeAccessToken",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Exchange an Entra ID access token of a Teams user for a new Communication Identity access token with a matching expiration time.\n\nExchange an Entra ID access token of a Teams user for a new Communication Identity access token with a matching expiration time."
+      }
+    },
+    "com.azure.communication_identity#CommunicationIdentityAccessToken": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token issued for the identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiresOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiry time of the token.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An access token."
+      }
+    },
+    "com.azure.communication_identity#TeamsUserOperationsExchangeTeamsUserAccessTokenRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entra ID access token of a Teams User to acquire a new Communication Identity access token.",
+            "smithy.api#required": {}
+          }
+        },
+        "appId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Client ID of an Entra ID application to be verified against the appid claim in the Entra ID access token.",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object ID of an Entra ID user (Teams User) to be verified against the oid claim in the Entra ID access token.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsRevokeAccessTokens": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#IdentityOperationsRevokeAccessTokensRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/identities/{id}/:revokeAccessTokens",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Revoke all access tokens for the specific identity.\n\nRevoke all access tokens for the specific identity."
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsRevokeAccessTokensRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifier of the identity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsIssueAccessToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#IdentityOperationsIssueAccessTokenRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_identity#CommunicationIdentityAccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/identities/{id}/:issueAccessToken",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Issue a new token for an identity.\n\nIssue a new token for an identity."
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsIssueAccessTokenRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifier of the identity to issue token for."
+          }
+        },
+        "scopes": {
+          "target": "com.azure.communication_identity#IdentityOperationsIssueAccessTokenRequestScopesList",
+          "traits": {
+            "smithy.api#documentation": "List of scopes attached to the token.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiresInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional custom validity period of the token within [60,1440] minutes range. If not provided, the default value of 1440 minutes (24 hours) will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsIssueAccessTokenRequestScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_identity#CommunicationIdentityTokenScope"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of scopes attached to the token."
+      }
+    },
+    "com.azure.communication_identity#CommunicationIdentityTokenScope": {
+      "type": "enum",
+      "members": {
+        "CHAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chat"
+          }
+        },
+        "VOIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "voip"
+          }
+        },
+        "CHAT_JOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chat.join"
+          }
+        },
+        "CHAT_JOIN_LIMITED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chat.join.limited"
+          }
+        },
+        "VOIP_JOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "voip.join"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of scopes for an access token."
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#IdentityOperationsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/identities/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Delete the identity, revoke all tokens for the identity and delete all associated data.\n\nDelete the identity, revoke all tokens for the identity and delete all associated data."
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Identifier of the identity to be deleted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#IdentityOperationsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_identity#CommunicationIdentityAccessTokenResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/identities",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Create a new identity, and optionally, an access token.\n\nCreate a new identity, and optionally, an access token."
+      }
+    },
+    "com.azure.communication_identity#CommunicationIdentityAccessTokenResult": {
+      "type": "structure",
+      "members": {
+        "identity": {
+          "target": "com.azure.communication_identity#CommunicationIdentity2",
+          "traits": {
+            "smithy.api#documentation": "The communication identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "accessToken": {
+          "target": "com.azure.communication_identity#CommunicationIdentityAccessToken",
+          "traits": {
+            "smithy.api#documentation": "An access token."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A communication identity with access token."
+      }
+    },
+    "com.azure.communication_identity#CommunicationIdentity2": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the identity.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A communication identity."
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "createTokenWithScopes": {
+          "target": "com.azure.communication_identity#IdentityOperationsCreateRequestCreateTokenWithScopesList",
+          "traits": {
+            "smithy.api#documentation": "Also create access token for the created identity."
+          }
+        },
+        "expiresInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional custom validity period of the token within [60,1440] minutes range. If not provided, the default value of 1440 minutes (24 hours) will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#IdentityOperationsCreateRequestCreateTokenWithScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_identity#CommunicationIdentityTokenScope"
+      },
+      "traits": {
+        "smithy.api#documentation": "Also create access token for the created identity."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignmentRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/access/teamsExtension/tenants/{tenantId}/assignments/{objectId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Removes a Teams Phone access assignment.\n\nRemoves a Teams Phone access assignment."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignmentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Tenant Id we want to remove the assignment for."
+          }
+        },
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Object Id we want to remove the assignment for."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_identity#TeamsExtensionAssignmentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/teamsExtension/tenants/{tenantId}/assignments/{objectId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Creates or replaces a Teams Phone access assignment.\n\nCreates or replaces a Teams Phone access assignment."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionAssignmentResponse": {
+      "type": "structure",
+      "members": {
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object ID of the assignment.",
+            "smithy.api#required": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant ID of the assignment.",
+            "smithy.api#required": {}
+          }
+        },
+        "principalType": {
+          "target": "com.azure.communication_identity#TeamsExtensionPrincipalType",
+          "traits": {
+            "smithy.api#documentation": "The type of principal the assignment is for.",
+            "smithy.api#required": {}
+          }
+        },
+        "clientIds": {
+          "target": "com.azure.communication_identity#TeamsExtensionAssignmentResponseClientIdsList",
+          "traits": {
+            "smithy.api#documentation": "The client IDs for the assignment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Teams Extension assignment response."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionAssignmentResponseClientIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The client IDs for the assignment."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionPrincipalType": {
+      "type": "enum",
+      "members": {
+        "RESOURCEACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resourceAccount"
+          }
+        },
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of principal the assignment is for."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Tenant Id we want to update the assignment for."
+          }
+        },
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Object Id we want to update the assignment for."
+          }
+        },
+        "principalType": {
+          "target": "com.azure.communication_identity#TeamsExtensionPrincipalType",
+          "traits": {
+            "smithy.api#documentation": "The type of principal the assignment is for.",
+            "smithy.api#required": {}
+          }
+        },
+        "clientIds": {
+          "target": "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequestClientIdsList",
+          "traits": {
+            "smithy.api#documentation": "The client IDs for the assignment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequestClientIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The client IDs for the assignment."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsGetAssignment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#TeamsExtensionOperationsGetAssignmentRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_identity#TeamsExtensionAssignmentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/teamsExtension/tenants/{tenantId}/assignments/{objectId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Get Teams Phone access assignment by object id.\n\nGet Teams Phone access assignment by object id."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsGetAssignmentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Tenant Id we want to get the assignment for."
+          }
+        },
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Object Id we want to get the assignment for."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsExchangeToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_identity#TeamsExtensionOperationsExchangeTokenRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_identity#CommunicationIdentityAccessTokenResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/teamsExtension/:exchangeAccessToken",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-09-23"
+        },
+        "smithy.api#documentation": "Exchanges a Teams Phone token for an ACS user access token.\n\nExchanges a Teams Phone token for an ACS user access token."
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionOperationsExchangeTokenRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "body": {
+          "target": "com.azure.communication_identity#TeamsExtensionExchangeTokenRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_identity#TeamsExtensionExchangeTokenRequest": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A request to exchange a Teams Extension token."
+      }
+    },
+    "com.azure.communication_identity#CommunicationIdentity": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.communication_identity#TeamsUserOperationsExchangeTeamsUserAccessToken"
+        },
+        {
+          "target": "com.azure.communication_identity#IdentityOperationsRevokeAccessTokens"
+        },
+        {
+          "target": "com.azure.communication_identity#IdentityOperationsIssueAccessToken"
+        },
+        {
+          "target": "com.azure.communication_identity#IdentityOperationsDelete"
+        },
+        {
+          "target": "com.azure.communication_identity#IdentityOperationsCreate"
+        },
+        {
+          "target": "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignment"
+        },
+        {
+          "target": "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignment"
+        },
+        {
+          "target": "com.azure.communication_identity#TeamsExtensionOperationsGetAssignment"
+        },
+        {
+          "target": "com.azure.communication_identity#TeamsExtensionOperationsExchangeToken"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Identity data plane",
+        "smithy.api#documentation": "Azure communication data plane — communication/data-plane/Identity (latest stable api-version 2026-09-23).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://communication.azure.com/.default"
+      }
+    }
+  }
+}

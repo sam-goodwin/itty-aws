@@ -1,0 +1,2139 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.informationProtection#GetInformationProtectionRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetInformationProtectionRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetInformationProtectionRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#GetInformationProtectionRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#GetInformationProtectionRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#InformationProtection2": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetInformationProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetInformationProtectionRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#InformationProtection2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateInformationProtectionRequest": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateInformationProtection": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#UpdateInformationProtectionRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#InformationProtection2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/informationProtection",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetBitlockerRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetBitlockerRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetBitlockerRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#GetBitlockerRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#GetBitlockerRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetBitlockerResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetBitlocker": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetBitlockerRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#GetBitlockerResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/bitlocker",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get bitlocker from informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#ListRecoveryKeysRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListRecoveryKeysRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListRecoveryKeysRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListRecoveryKeysRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.informationProtection#ListRecoveryKeysRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#ListRecoveryKeysRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#ListRecoveryKeysRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#BitlockerRecoveryKey": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the key was originally backed up to Microsoft Entra ID. Not nullable."
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the device the BitLocker key is originally backed up from. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The BitLocker recovery key. Requires $select to retrieve. Not nullable."
+          }
+        },
+        "volumeType": {
+          "target": "com.microsoft.graph.informationProtection#VolumeType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#VolumeType": {
+      "type": "enum",
+      "members": {
+        "OPERATINGSYSTEMVOLUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "operatingSystemVolume"
+          }
+        },
+        "FIXEDDATAVOLUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fixedDataVolume"
+          }
+        },
+        "REMOVABLEDATAVOLUME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "removableDataVolume"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListRecoveryKeysResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.informationProtection#BitlockerRecoveryKey"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListRecoveryKeysResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.informationProtection#ListRecoveryKeysResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#ListRecoveryKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#ListRecoveryKeysRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#ListRecoveryKeysResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/bitlocker/recoveryKeys",
+          "code": 200
+        },
+        "smithy.api#documentation": "List recoveryKeys\n\nGet a list of the bitlockerRecoveryKey objects and their properties.  This operation doesn't return the key property. For information about how to read the key property, see Get bitlockerRecoveryKey. You can use this API to programmatically iterate through the list of recovery keys in the tenant and identify devices with BitLocker enabled. For more information, see the sample PowerShell code in BitLocker recovery process.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetRecoveryKeysRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetRecoveryKeysRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetRecoveryKeysRequest": {
+      "type": "structure",
+      "members": {
+        "bitlockerRecoveryKeyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of bitlockerRecoveryKey"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#GetRecoveryKeysRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#GetRecoveryKeysRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetRecoveryKeysResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the key was originally backed up to Microsoft Entra ID. Not nullable."
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the device the BitLocker key is originally backed up from. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The BitLocker recovery key. Requires $select to retrieve. Not nullable."
+          }
+        },
+        "volumeType": {
+          "target": "com.microsoft.graph.informationProtection#VolumeType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetRecoveryKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetRecoveryKeysRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#GetRecoveryKeysResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/bitlocker/recoveryKeys/{bitlockerRecoveryKeyId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get bitlockerRecoveryKey\n\nRetrieve the properties and relationships of a bitlockerRecoveryKey object.  By default, this operation doesn't return the key property that represents the actual recovery key. To include the key property in the response, use the $select OData query parameter. Including the $select query parameter triggers a Microsoft Entra audit of the operation and generates an audit log. For more information on audit logs for bitlocker recovery keys, see the KeyManagement category filter of Microsoft Entra audit logs."
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/bitlocker/recoveryKeys/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#ThreatAssessmentRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "category": {
+          "target": "com.microsoft.graph.informationProtection#ThreatCategory"
+        },
+        "contentType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentContentType",
+          "traits": {
+            "smithy.api#documentation": "The content type of threat assessment. The possible values are: mail, url, file.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.informationProtection#IdentitySet",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment request creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expectedAssessment": {
+          "target": "com.microsoft.graph.informationProtection#ThreatExpectedAssessment"
+        },
+        "requestSource": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentRequestSource",
+          "traits": {
+            "smithy.api#documentation": "The source of the threat assessment request. The possible values are: administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentStatus",
+          "traits": {
+            "smithy.api#documentation": "The assessment process status. The possible values are: pending, completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ThreatCategory": {
+      "type": "enum",
+      "members": {
+        "UNDEFINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "undefined"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spam"
+          }
+        },
+        "PHISHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "phishing"
+          }
+        },
+        "MALWARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "malware"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ThreatAssessmentContentType": {
+      "type": "enum",
+      "members": {
+        "MAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mail"
+          }
+        },
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        },
+        "FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "file"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#IdentitySet": {
+      "type": "structure",
+      "members": {
+        "application": {
+          "target": "com.microsoft.graph.informationProtection#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The application associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "device": {
+          "target": "com.microsoft.graph.informationProtection#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The device associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "user": {
+          "target": "com.microsoft.graph.informationProtection#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The user associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#Identity": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity.For drive items, the display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as changed when using delta.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the identity or actor. For example, in the access reviews decisions API, this property might record the id of the principal, that is, the group, user, or application that's subject to review.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ThreatExpectedAssessment": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "UNBLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unblock"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ThreatAssessmentRequestSource": {
+      "type": "enum",
+      "members": {
+        "UNDEFINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "undefined"
+          }
+        },
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ADMINISTRATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "administrator"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ThreatAssessmentStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.informationProtection#ThreatAssessmentRequest"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#ListThreatAssessmentRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#ListThreatAssessmentRequestsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/threatAssessmentRequests",
+          "code": 200
+        },
+        "smithy.api#documentation": "List threatAssessmentRequests\n\nRetrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.informationProtection#CreateThreatAssessmentRequestsRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "category": {
+          "target": "com.microsoft.graph.informationProtection#ThreatCategory"
+        },
+        "contentType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentContentType",
+          "traits": {
+            "smithy.api#documentation": "The content type of threat assessment. The possible values are: mail, url, file.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.informationProtection#IdentitySet",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment request creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expectedAssessment": {
+          "target": "com.microsoft.graph.informationProtection#ThreatExpectedAssessment"
+        },
+        "requestSource": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentRequestSource",
+          "traits": {
+            "smithy.api#documentation": "The source of the threat assessment request. The possible values are: administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentStatus",
+          "traits": {
+            "smithy.api#documentation": "The assessment process status. The possible values are: pending, completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#CreateThreatAssessmentRequestsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "category": {
+          "target": "com.microsoft.graph.informationProtection#ThreatCategory"
+        },
+        "contentType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentContentType",
+          "traits": {
+            "smithy.api#documentation": "The content type of threat assessment. The possible values are: mail, url, file.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.informationProtection#IdentitySet",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment request creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expectedAssessment": {
+          "target": "com.microsoft.graph.informationProtection#ThreatExpectedAssessment"
+        },
+        "requestSource": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentRequestSource",
+          "traits": {
+            "smithy.api#documentation": "The source of the threat assessment request. The possible values are: administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentStatus",
+          "traits": {
+            "smithy.api#documentation": "The assessment process status. The possible values are: pending, completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#CreateThreatAssessmentRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#CreateThreatAssessmentRequestsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#CreateThreatAssessmentRequestsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/informationProtection/threatAssessmentRequests",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create threatAssessmentRequest\n\nCreate a new threat assessment request. A threat assessment request can be one of the following types:"
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "category": {
+          "target": "com.microsoft.graph.informationProtection#ThreatCategory"
+        },
+        "contentType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentContentType",
+          "traits": {
+            "smithy.api#documentation": "The content type of threat assessment. The possible values are: mail, url, file.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.informationProtection#IdentitySet",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment request creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expectedAssessment": {
+          "target": "com.microsoft.graph.informationProtection#ThreatExpectedAssessment"
+        },
+        "requestSource": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentRequestSource",
+          "traits": {
+            "smithy.api#documentation": "The source of the threat assessment request. The possible values are: administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentStatus",
+          "traits": {
+            "smithy.api#documentation": "The assessment process status. The possible values are: pending, completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetThreatAssessmentRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get threatAssessmentRequest\n\nRetrieve the properties and relationships of a specified threatAssessmentRequest object. A threat assessment request can be one of the following types:"
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateThreatAssessmentRequestsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "category": {
+          "target": "com.microsoft.graph.informationProtection#ThreatCategory"
+        },
+        "contentType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentContentType",
+          "traits": {
+            "smithy.api#documentation": "The content type of threat assessment. The possible values are: mail, url, file.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.informationProtection#IdentitySet",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment request creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expectedAssessment": {
+          "target": "com.microsoft.graph.informationProtection#ThreatExpectedAssessment"
+        },
+        "requestSource": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentRequestSource",
+          "traits": {
+            "smithy.api#documentation": "The source of the threat assessment request. The possible values are: administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentStatus",
+          "traits": {
+            "smithy.api#documentation": "The assessment process status. The possible values are: pending, completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateThreatAssessmentRequestsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "category": {
+          "target": "com.microsoft.graph.informationProtection#ThreatCategory"
+        },
+        "contentType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentContentType",
+          "traits": {
+            "smithy.api#documentation": "The content type of threat assessment. The possible values are: mail, url, file.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.informationProtection#IdentitySet",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment request creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expectedAssessment": {
+          "target": "com.microsoft.graph.informationProtection#ThreatExpectedAssessment"
+        },
+        "requestSource": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentRequestSource",
+          "traits": {
+            "smithy.api#documentation": "The source of the threat assessment request. The possible values are: administrator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentStatus",
+          "traits": {
+            "smithy.api#documentation": "The assessment process status. The possible values are: pending, completed.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateThreatAssessmentRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#UpdateThreatAssessmentRequestsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#UpdateThreatAssessmentRequestsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property threatAssessmentRequests in informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#DeleteThreatAssessmentRequestsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#DeleteThreatAssessmentRequests": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#DeleteThreatAssessmentRequestsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property threatAssessmentRequests for informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#ListResultsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListResultsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListResultsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListResultsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.informationProtection#ListResultsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#ListResultsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#ListResultsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#ThreatAssessmentResult": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result message for each threat assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resultType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentResultType",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment result type. The possible values are: checkPolicy, rescan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ThreatAssessmentResultType": {
+      "type": "enum",
+      "members": {
+        "CHECKPOLICY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "checkPolicy"
+          }
+        },
+        "RESCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rescan"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListResultsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.informationProtection#ThreatAssessmentResult"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#ListResultsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.informationProtection#ListResultsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#ListResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#ListResultsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#ListResultsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}/results",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get results from informationProtection\n\nA collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.informationProtection#CreateResultsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result message for each threat assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resultType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentResultType",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment result type. The possible values are: checkPolicy, rescan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#CreateResultsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result message for each threat assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resultType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentResultType",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment result type. The possible values are: checkPolicy, rescan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#CreateResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#CreateResultsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#CreateResultsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}/results",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create new navigation property to results for informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetResultsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetResultsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.informationProtection#GetResultsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "threatAssessmentResultId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentResult"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.informationProtection#GetResultsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.informationProtection#GetResultsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetResultsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result message for each threat assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resultType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentResultType",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment result type. The possible values are: checkPolicy, rescan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetResultsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#GetResultsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}/results/{threatAssessmentResultId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get results from informationProtection\n\nA collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it."
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateResultsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "threatAssessmentResultId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentResult"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result message for each threat assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resultType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentResultType",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment result type. The possible values are: checkPolicy, rescan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateResultsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result message for each threat assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "resultType": {
+          "target": "com.microsoft.graph.informationProtection#ThreatAssessmentResultType",
+          "traits": {
+            "smithy.api#documentation": "The threat assessment result type. The possible values are: checkPolicy, rescan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#UpdateResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#UpdateResultsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.informationProtection#UpdateResultsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}/results/{threatAssessmentResultId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property results in informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#DeleteResultsRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "threatAssessmentResultId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentResult"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#DeleteResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#DeleteResultsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}/results/{threatAssessmentResultId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property results for informationProtection"
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetResultsCountRequest": {
+      "type": "structure",
+      "members": {
+        "threatAssessmentRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of threatAssessmentRequest"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetResultsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetResultsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/threatAssessmentRequests/{threatAssessmentRequestId}/results/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/informationProtection/threatAssessmentRequests/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.informationProtection#InformationProtection": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.informationProtection#GetInformationProtection"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#UpdateInformationProtection"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#GetBitlocker"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#ListRecoveryKeys"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#GetRecoveryKeys"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#GetCount"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#ListThreatAssessmentRequests"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#CreateThreatAssessmentRequests"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#GetThreatAssessmentRequests"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#UpdateThreatAssessmentRequests"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#DeleteThreatAssessmentRequests"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#ListResults"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#CreateResults"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#GetResults"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#UpdateResults"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#DeleteResults"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#GetResultsCount"
+        },
+        {
+          "target": "com.microsoft.graph.informationProtection#GetThreatAssessmentRequestsCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

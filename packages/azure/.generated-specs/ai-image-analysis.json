@@ -1,0 +1,878 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.ai_image_analysis#AnalyzeFromUrl": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_image_analysis#AnalyzeFromUrlRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_image_analysis#ImageAnalysisResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/imageanalysis:analyze",
+          "code": 200,
+          "host": "{endpoint}/computervision",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-01"
+        },
+        "smithy.api#documentation": "Performs a single Image Analysis operation"
+      }
+    },
+    "com.azure.ai_image_analysis#ImageAnalysisResult": {
+      "type": "structure",
+      "members": {
+        "captionResult": {
+          "target": "com.azure.ai_image_analysis#CaptionResult",
+          "traits": {
+            "smithy.api#documentation": "The generated phrase that describes the content of the analyzed image."
+          }
+        },
+        "denseCaptionsResult": {
+          "target": "com.azure.ai_image_analysis#DenseCaptionsResult",
+          "traits": {
+            "smithy.api#documentation": "The up to 10 generated phrases, the first describing the content of the whole image,\nand the others describing the content of different regions of the image."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.ai_image_analysis#ImageMetadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata associated with the analyzed image.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cloud AI model used for the analysis",
+            "smithy.api#required": {}
+          }
+        },
+        "objectsResult": {
+          "target": "com.azure.ai_image_analysis#ObjectsResult",
+          "traits": {
+            "smithy.api#documentation": "A list of detected physical objects in the analyzed image, and their location."
+          }
+        },
+        "peopleResult": {
+          "target": "com.azure.ai_image_analysis#PeopleResult",
+          "traits": {
+            "smithy.api#documentation": "A list of detected people in the analyzed image, and their location."
+          }
+        },
+        "readResult": {
+          "target": "com.azure.ai_image_analysis#ReadResult",
+          "traits": {
+            "smithy.api#documentation": "The extracted printed and hand-written text in the analyze image. Also knows as OCR."
+          }
+        },
+        "smartCropsResult": {
+          "target": "com.azure.ai_image_analysis#SmartCropsResult",
+          "traits": {
+            "smithy.api#documentation": "A list of crop regions at the desired as aspect ratios (if provided) that can be used as image thumbnails.\nThese regions preserve as much content as possible from the analyzed image, with priority given to detected faces."
+          }
+        },
+        "tagsResult": {
+          "target": "com.azure.ai_image_analysis#TagsResult",
+          "traits": {
+            "smithy.api#documentation": "A list of content tags in the analyzed image."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the outcome of an Image Analysis operation."
+      }
+    },
+    "com.azure.ai_image_analysis#TagsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.ai_image_analysis#TagsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "A list of tags.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of entities observed in the image. Tags can be physical objects, living being, scenery, or actions\nthat appear in the image."
+      }
+    },
+    "com.azure.ai_image_analysis#TagsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DetectedTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTag": {
+      "type": "structure",
+      "members": {
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A score, in the range of 0 to 1 (inclusive), representing the confidence that this entity was observed.\nHigher values indicating higher confidence.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the entity.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A content entity observation in the image. A tag can be a physical object, living being, scenery, or action\nthat appear in the image."
+      }
+    },
+    "com.azure.ai_image_analysis#SmartCropsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.ai_image_analysis#SmartCropsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "A list of crop regions.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Smart cropping result. A list of crop regions at the desired as aspect ratios (if provided) that can be used as image thumbnails.\nThese regions preserve as much content as possible from the analyzed image, with priority given to detected faces."
+      }
+    },
+    "com.azure.ai_image_analysis#SmartCropsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#CropRegion"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of crop regions."
+      }
+    },
+    "com.azure.ai_image_analysis#CropRegion": {
+      "type": "structure",
+      "members": {
+        "aspectRatio": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The aspect ratio of the crop region.\nAspect ratio is calculated by dividing the width of the region in pixels by its height in pixels.\nThe aspect ratio will be in the range 0.75 to 1.8 (inclusive) if provided by the developer during the analyze call.\nOtherwise, it will be in the range 0.5 to 2.0 (inclusive).",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingBox": {
+          "target": "com.azure.ai_image_analysis#ImageBoundingBox",
+          "traits": {
+            "smithy.api#documentation": "The bounding box of the region.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A region at the desired aspect ratio that can be used as image thumbnail.\nThe region preserves as much content as possible from the analyzed image, with priority given to detected faces."
+      }
+    },
+    "com.azure.ai_image_analysis#ImageBoundingBox": {
+      "type": "structure",
+      "members": {
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "X-coordinate of the top left point of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Y-coordinate of the top left point of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "w": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Width of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "h": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Height of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A basic rectangle specifying a sub-region of the image."
+      }
+    },
+    "com.azure.ai_image_analysis#ReadResult": {
+      "type": "structure",
+      "members": {
+        "blocks": {
+          "target": "com.azure.ai_image_analysis#ReadResultBlocksList",
+          "traits": {
+            "smithy.api#documentation": "A list of text blocks in the image. At the moment only one block is returned, containing all the text detected in the image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The results of a Read (OCR) operation."
+      }
+    },
+    "com.azure.ai_image_analysis#ReadResultBlocksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DetectedTextBlock"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of text blocks in the image. At the moment only one block is returned, containing all the text detected in the image."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTextBlock": {
+      "type": "structure",
+      "members": {
+        "lines": {
+          "target": "com.azure.ai_image_analysis#DetectedTextBlockLinesList",
+          "traits": {
+            "smithy.api#documentation": "A list of text lines in this block.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a single block of detected text in the image."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTextBlockLinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DetectedTextLine"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of text lines in this block."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTextLine": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text content of the detected text line.",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingPolygon": {
+          "target": "com.azure.ai_image_analysis#DetectedTextLineBoundingPolygonList",
+          "traits": {
+            "smithy.api#documentation": "A bounding polygon around the text line. At the moment only quadrilaterals are supported (represented by 4 image points).",
+            "smithy.api#required": {}
+          }
+        },
+        "words": {
+          "target": "com.azure.ai_image_analysis#DetectedTextLineWordsList",
+          "traits": {
+            "smithy.api#documentation": "A list of words in this line.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a single line of text in the image."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTextLineWordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DetectedTextWord"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of words in this line."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTextWord": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text content of the word.",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingPolygon": {
+          "target": "com.azure.ai_image_analysis#DetectedTextWordBoundingPolygonList",
+          "traits": {
+            "smithy.api#documentation": "A bounding polygon around the word. At the moment only quadrilaterals are supported (represented by 4 image points).",
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The level of confidence that the word was detected. Confidence scores span the range of 0.0 to 1.0 (inclusive), with higher values indicating a higher confidence of detection.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A word object consisting of a contiguous sequence of characters. For non-space delimited languages,\r\nsuch as Chinese, Japanese, and Korean, each character is represented as its own word."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTextWordBoundingPolygonList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#ImagePoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "A bounding polygon around the word. At the moment only quadrilaterals are supported (represented by 4 image points)."
+      }
+    },
+    "com.azure.ai_image_analysis#ImagePoint": {
+      "type": "structure",
+      "members": {
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The horizontal x-coordinate of this point, in pixels. Zero values corresponds to the left-most pixels in the image.",
+            "smithy.api#required": {}
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The vertical y-coordinate of this point, in pixels. Zero values corresponds to the top-most pixels in the image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the coordinates of a single pixel in the image."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedTextLineBoundingPolygonList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#ImagePoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "A bounding polygon around the text line. At the moment only quadrilaterals are supported (represented by 4 image points)."
+      }
+    },
+    "com.azure.ai_image_analysis#PeopleResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.ai_image_analysis#PeopleResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "A list of people detected in an image and their location.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of people detected in an image and their location."
+      }
+    },
+    "com.azure.ai_image_analysis#PeopleResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DetectedPerson"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of people detected in an image and their location."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedPerson": {
+      "type": "structure",
+      "members": {
+        "boundingBox": {
+          "target": "com.azure.ai_image_analysis#ImageBoundingBox",
+          "traits": {
+            "smithy.api#documentation": "A rectangular boundary where the person was detected.",
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A score, in the range of 0 to 1 (inclusive), representing the confidence that this detection was accurate.\nHigher values indicating higher confidence.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a person detected in an image."
+      }
+    },
+    "com.azure.ai_image_analysis#ObjectsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.ai_image_analysis#ObjectsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "A list of physical object detected in an image and their location.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of physical object detected in an image and their location."
+      }
+    },
+    "com.azure.ai_image_analysis#ObjectsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DetectedObject"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of physical object detected in an image and their location."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedObject": {
+      "type": "structure",
+      "members": {
+        "boundingBox": {
+          "target": "com.azure.ai_image_analysis#ImageBoundingBox",
+          "traits": {
+            "smithy.api#documentation": "A rectangular boundary where the object was detected.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_image_analysis#DetectedObjectTagsList",
+          "traits": {
+            "smithy.api#documentation": "A single-item list containing the object information.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a physical object detected in an image."
+      }
+    },
+    "com.azure.ai_image_analysis#DetectedObjectTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DetectedTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "A single-item list containing the object information."
+      }
+    },
+    "com.azure.ai_image_analysis#ImageMetadata": {
+      "type": "structure",
+      "members": {
+        "height": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The height of the image in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "width": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The width of the image in pixels.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata associated with the analyzed image."
+      }
+    },
+    "com.azure.ai_image_analysis#DenseCaptionsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.ai_image_analysis#DenseCaptionsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "The list of image captions.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a list of up to 10 image captions for different regions of the image.\nThe first caption always applies to the whole image."
+      }
+    },
+    "com.azure.ai_image_analysis#DenseCaptionsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#DenseCaption"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of image captions."
+      }
+    },
+    "com.azure.ai_image_analysis#DenseCaption": {
+      "type": "structure",
+      "members": {
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A score, in the range of 0 to 1 (inclusive), representing the confidence that this description is accurate.\nHigher values indicating higher confidence.",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text of the caption.",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingBox": {
+          "target": "com.azure.ai_image_analysis#ImageBoundingBox",
+          "traits": {
+            "smithy.api#documentation": "The image region of which this caption applies.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a generated phrase that describes the content of the whole image or a region in the image"
+      }
+    },
+    "com.azure.ai_image_analysis#CaptionResult": {
+      "type": "structure",
+      "members": {
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A score, in the range of 0 to 1 (inclusive), representing the confidence that this description is accurate.\nHigher values indicating higher confidence.",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text of the caption.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a generated phrase that describes the content of the whole image."
+      }
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromUrlRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Azure AI Computer Vision endpoint (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.ai_image_analysis#AnalyzeFromUrlRequestFeaturesList",
+          "traits": {
+            "smithy.api#httpQuery": "features",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A list of visual features to analyze.\nSeven visual features are supported: Caption, DenseCaptions, Read (OCR), Tags, Objects, SmartCrops, and People.\nAt least one visual feature must be specified."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#documentation": "The desired language for result generation (a two-letter language code).\nIf this option is not specified, the default value 'en' is used (English).\nSee https://aka.ms/cv-languages for a list of supported languages."
+          }
+        },
+        "gender_neutral_caption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "gender-neutral-caption",
+            "smithy.api#documentation": "Boolean flag for enabling gender-neutral captioning for Caption and Dense Captions features.\nBy default captions may contain gender terms (for example: 'man', 'woman', or 'boy', 'girl'). \nIf you set this to \"true\", those will be replaced with gender-neutral terms (for example: 'person' or 'child')."
+          }
+        },
+        "smartcrops_aspect_ratios": {
+          "target": "com.azure.ai_image_analysis#AnalyzeFromUrlRequestSmartcropsAspectRatiosList",
+          "traits": {
+            "smithy.api#httpQuery": "smartcrops-aspect-ratios",
+            "smithy.api#documentation": "A list of aspect ratios to use for smart cropping.\nAspect ratios are calculated by dividing the target crop width in pixels by the height in pixels.\nSupported values are between 0.75 and 1.8 (inclusive).\nIf this parameter is not specified, the service will return one crop region with an aspect\nratio it sees fit between 0.5 and 2.0 (inclusive)."
+          }
+        },
+        "model_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "model-version",
+            "smithy.api#documentation": "The version of cloud AI-model used for analysis.\nThe format is the following: 'latest' (default value) or 'YYYY-MM-DD' or 'YYYY-MM-DD-preview', where 'YYYY', 'MM', 'DD' are the year, month and day associated with the model.\nThis is not commonly set, as the default always gives the latest AI model with recent improvements.\nIf however you would like to make sure analysis results do not change over time, set this value to a specific model version."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Publicly reachable URL of an image to analyze.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromUrlRequestSmartcropsAspectRatiosList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromUrlRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#AnalyzeFromUrlRequestFeaturesItem"
+      },
+      "traits": {}
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromUrlRequestFeaturesItem": {
+      "type": "enum",
+      "members": {
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "CAPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "caption"
+          }
+        },
+        "DENSECAPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "denseCaptions"
+          }
+        },
+        "OBJECTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "objects"
+          }
+        },
+        "READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "read"
+          }
+        },
+        "SMARTCROPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smartCrops"
+          }
+        },
+        "PEOPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "people"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromImageData": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_image_analysis#AnalyzeFromImageDataRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_image_analysis#ImageAnalysisResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/imageanalysis:analyze",
+          "code": 200,
+          "host": "{endpoint}/computervision",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-10-01"
+        },
+        "smithy.api#documentation": "Performs a single Image Analysis operation"
+      }
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromImageDataRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Azure AI Computer Vision endpoint (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.ai_image_analysis#AnalyzeFromImageDataRequestFeaturesList",
+          "traits": {
+            "smithy.api#httpQuery": "features",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A list of visual features to analyze.\nSeven visual features are supported: Caption, DenseCaptions, Read (OCR), Tags, Objects, SmartCrops, and People.\nAt least one visual feature must be specified."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#documentation": "The desired language for result generation (a two-letter language code).\nIf this option is not specified, the default value 'en' is used (English).\nSee https://aka.ms/cv-languages for a list of supported languages."
+          }
+        },
+        "gender_neutral_caption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "gender-neutral-caption",
+            "smithy.api#documentation": "Boolean flag for enabling gender-neutral captioning for Caption and Dense Captions features.\nBy default captions may contain gender terms (for example: 'man', 'woman', or 'boy', 'girl'). \nIf you set this to \"true\", those will be replaced with gender-neutral terms (for example: 'person' or 'child')."
+          }
+        },
+        "smartcrops_aspect_ratios": {
+          "target": "com.azure.ai_image_analysis#AnalyzeFromImageDataRequestSmartcropsAspectRatiosList",
+          "traits": {
+            "smithy.api#httpQuery": "smartcrops-aspect-ratios",
+            "smithy.api#documentation": "A list of aspect ratios to use for smart cropping.\nAspect ratios are calculated by dividing the target crop width in pixels by the height in pixels.\nSupported values are between 0.75 and 1.8 (inclusive).\nIf this parameter is not specified, the service will return one crop region with an aspect\nratio it sees fit between 0.5 and 2.0 (inclusive)."
+          }
+        },
+        "model_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "model-version",
+            "smithy.api#documentation": "The version of cloud AI-model used for analysis.\nThe format is the following: 'latest' (default value) or 'YYYY-MM-DD' or 'YYYY-MM-DD-preview', where 'YYYY', 'MM', 'DD' are the year, month and day associated with the model.\nThis is not commonly set, as the default always gives the latest AI model with recent improvements.\nIf however you would like to make sure analysis results do not change over time, set this value to a specific model version."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromImageDataRequestSmartcropsAspectRatiosList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromImageDataRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_image_analysis#AnalyzeFromImageDataRequestFeaturesItem"
+      },
+      "traits": {}
+    },
+    "com.azure.ai_image_analysis#AnalyzeFromImageDataRequestFeaturesItem": {
+      "type": "enum",
+      "members": {
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "CAPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "caption"
+          }
+        },
+        "DENSECAPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "denseCaptions"
+          }
+        },
+        "OBJECTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "objects"
+          }
+        },
+        "READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "read"
+          }
+        },
+        "SMARTCROPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smartCrops"
+          }
+        },
+        "PEOPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "people"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_image_analysis#AiImageAnalysis": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.ai_image_analysis#AnalyzeFromUrl"
+        },
+        {
+          "target": "com.azure.ai_image_analysis#AnalyzeFromImageData"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure ImageAnalysis data plane",
+        "smithy.api#documentation": "Azure ai data plane — ai/data-plane/ImageAnalysis (latest stable api-version 2023-10-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/computervision",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

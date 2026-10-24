@@ -1,0 +1,2079 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.appCatalogs#GetAppCatalogsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetAppCatalogsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetAppCatalogsRequest": {
+      "type": "structure",
+      "members": {
+        "select": {
+          "target": "com.microsoft.graph.appCatalogs#GetAppCatalogsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.appCatalogs#GetAppCatalogsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetAppCatalogsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetAppCatalogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#GetAppCatalogsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#GetAppCatalogsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get appCatalogs"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateAppCatalogsRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateAppCatalogsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateAppCatalogs": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateAppCatalogsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateAppCatalogsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/appCatalogs",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update appCatalogs"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#ListTeamsAppsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListTeamsAppsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListTeamsAppsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListTeamsAppsRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.appCatalogs#ListTeamsAppsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.appCatalogs#ListTeamsAppsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.appCatalogs#ListTeamsAppsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#TeamsApp": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "distributionMethod": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppDistributionMethod",
+          "traits": {
+            "smithy.api#documentation": "The method of distribution for the app. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppDistributionMethod": {
+      "type": "enum",
+      "members": {
+        "STORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "store"
+          }
+        },
+        "ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "organization"
+          }
+        },
+        "SIDELOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sideloaded"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListTeamsAppsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.appCatalogs#TeamsApp"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListTeamsAppsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.appCatalogs#ListTeamsAppsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#ListTeamsApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#ListTeamsAppsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#ListTeamsAppsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs/teamsApps",
+          "code": 200
+        },
+        "smithy.api#documentation": "List teamsApp\n\nList apps from the Microsoft Teams app catalog, including apps from the Microsoft Teams store and apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify organization as the distributionMethod in the request.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.appCatalogs#CreateTeamsAppsRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "distributionMethod": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppDistributionMethod",
+          "traits": {
+            "smithy.api#documentation": "The method of distribution for the app. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#CreateTeamsAppsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "distributionMethod": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppDistributionMethod",
+          "traits": {
+            "smithy.api#documentation": "The method of distribution for the app. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#CreateTeamsApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#CreateTeamsAppsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#CreateTeamsAppsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/appCatalogs/teamsApps",
+          "code": 200
+        },
+        "smithy.api#documentation": "Publish teamsApp\n\nPublish an app to the Microsoft Teams app catalog.\nSpecifically, this API publishes the app to your organization's catalog (the tenant app catalog);\nthe created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center."
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetTeamsAppsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetTeamsAppsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetTeamsAppsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.appCatalogs#GetTeamsAppsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.appCatalogs#GetTeamsAppsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetTeamsAppsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "distributionMethod": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppDistributionMethod",
+          "traits": {
+            "smithy.api#documentation": "The method of distribution for the app. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetTeamsApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#GetTeamsAppsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#GetTeamsAppsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get teamsApps from appCatalogs"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateTeamsAppsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "distributionMethod": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppDistributionMethod",
+          "traits": {
+            "smithy.api#documentation": "The method of distribution for the app. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateTeamsAppsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "distributionMethod": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppDistributionMethod",
+          "traits": {
+            "smithy.api#documentation": "The method of distribution for the app. Read-only.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateTeamsApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateTeamsAppsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateTeamsAppsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property teamsApps in appCatalogs"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#DeleteTeamsAppsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#DeleteTeamsApps": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#DeleteTeamsAppsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete teamsApp\n\nDelete an app from an organization's app catalog (the tenant app catalog). To delete an app, the distributionMethod property for the app must be set to organization. You can also use this API to remove a submitted app from the review process."
+      }
+    },
+    "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppDefinition": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authorization": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppAuthorization",
+          "traits": {
+            "smithy.api#documentation": "Authorization requirements specified in the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.appCatalogs#IdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verbose description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the app provided by the app developer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publishingState": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPublishingState",
+          "traits": {
+            "smithy.api#documentation": "The published status of a specific version of a Teams app. The possible values are:submitted—The specific version of the Teams app was submitted and is under review.published—The request to publish the specific version of the Teams app was approved by the admin and the app is published.rejected—The admin rejected the request to publish the specific version of the Teams app.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Short description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID from the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version number of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppAuthorization": {
+      "type": "structure",
+      "members": {
+        "clientAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The registration ID of the Microsoft Entra app ID associated with the teamsApp.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "requiredPermissionSet": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPermissionSet",
+          "traits": {
+            "smithy.api#documentation": "Set of permissions required by the teamsApp.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppPermissionSet": {
+      "type": "structure",
+      "members": {
+        "resourceSpecificPermissions": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPermissionSetResourceSpecificPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "A collection of resource-specific permissions."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppResourceSpecificPermission": {
+      "type": "structure",
+      "members": {
+        "permissionType": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppResourceSpecificPermissionType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource-specific permission.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissionValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource-specific permission.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppResourceSpecificPermissionType": {
+      "type": "enum",
+      "members": {
+        "DELEGATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delegated"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppPermissionSetResourceSpecificPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.appCatalogs#TeamsAppResourceSpecificPermission"
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of resource-specific permissions."
+      }
+    },
+    "com.microsoft.graph.appCatalogs#IdentitySet": {
+      "type": "structure",
+      "members": {
+        "application": {
+          "target": "com.microsoft.graph.appCatalogs#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The application associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "device": {
+          "target": "com.microsoft.graph.appCatalogs#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The device associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "user": {
+          "target": "com.microsoft.graph.appCatalogs#Identity",
+          "traits": {
+            "smithy.api#documentation": "Optional. The user associated with this action.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#Identity": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the identity.For drive items, the display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as changed when using delta.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the identity or actor. For example, in the access reviews decisions API, this property might record the id of the principal, that is, the group, user, or application that's subject to review.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#TeamsAppPublishingState": {
+      "type": "enum",
+      "members": {
+        "SUBMITTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "submitted"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "PUBLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "published"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListAppDefinitionsResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.appCatalogs#TeamsAppDefinition"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#ListAppDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.appCatalogs#ListAppDefinitionsResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#ListAppDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#ListAppDefinitionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#ListAppDefinitionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}/appDefinitions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get appDefinitions from appCatalogs\n\nThe details for each version of the app.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.appCatalogs#CreateAppDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsApp_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authorization": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppAuthorization",
+          "traits": {
+            "smithy.api#documentation": "Authorization requirements specified in the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.appCatalogs#IdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verbose description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the app provided by the app developer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publishingState": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPublishingState",
+          "traits": {
+            "smithy.api#documentation": "The published status of a specific version of a Teams app. The possible values are:submitted—The specific version of the Teams app was submitted and is under review.published—The request to publish the specific version of the Teams app was approved by the admin and the app is published.rejected—The admin rejected the request to publish the specific version of the Teams app.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Short description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID from the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version number of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#CreateAppDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authorization": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppAuthorization",
+          "traits": {
+            "smithy.api#documentation": "Authorization requirements specified in the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.appCatalogs#IdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verbose description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the app provided by the app developer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publishingState": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPublishingState",
+          "traits": {
+            "smithy.api#documentation": "The published status of a specific version of a Teams app. The possible values are:submitted—The specific version of the Teams app was submitted and is under review.published—The request to publish the specific version of the Teams app was approved by the admin and the app is published.rejected—The admin rejected the request to publish the specific version of the Teams app.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Short description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID from the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version number of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#CreateAppDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#CreateAppDefinitionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#CreateAppDefinitionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/appCatalogs/teamsApps/{teamsApp_id}/appDefinitions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update teamsApp\n\nUpdate an app previously published to the Microsoft Teams app catalog. To update an app, the distributionMethod property for the app must be set to organization. This API specifically updates an app published to your organization's app catalog (the tenant app catalog)."
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetAppDefinitionsRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetAppDefinitionsRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetAppDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "teamsAppDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsAppDefinition"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.appCatalogs#GetAppDefinitionsRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.appCatalogs#GetAppDefinitionsRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetAppDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authorization": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppAuthorization",
+          "traits": {
+            "smithy.api#documentation": "Authorization requirements specified in the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.appCatalogs#IdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verbose description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the app provided by the app developer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publishingState": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPublishingState",
+          "traits": {
+            "smithy.api#documentation": "The published status of a specific version of a Teams app. The possible values are:submitted—The specific version of the Teams app was submitted and is under review.published—The request to publish the specific version of the Teams app was approved by the admin and the app is published.rejected—The admin rejected the request to publish the specific version of the Teams app.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Short description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID from the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version number of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetAppDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#GetAppDefinitionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#GetAppDefinitionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}/appDefinitions/{teamsAppDefinitionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get appDefinitions from appCatalogs\n\nThe details for each version of the app."
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateAppDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsApp_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "teamsAppDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsAppDefinition"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authorization": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppAuthorization",
+          "traits": {
+            "smithy.api#documentation": "Authorization requirements specified in the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.appCatalogs#IdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verbose description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the app provided by the app developer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publishingState": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPublishingState",
+          "traits": {
+            "smithy.api#documentation": "The published status of a specific version of a Teams app. The possible values are:submitted—The specific version of the Teams app was submitted and is under review.published—The request to publish the specific version of the Teams app was approved by the admin and the app is published.rejected—The admin rejected the request to publish the specific version of the Teams app.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Short description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID from the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version number of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateAppDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "authorization": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppAuthorization",
+          "traits": {
+            "smithy.api#documentation": "Authorization requirements specified in the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.microsoft.graph.appCatalogs#IdentitySet",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Verbose description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the app provided by the app developer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publishingState": {
+          "target": "com.microsoft.graph.appCatalogs#TeamsAppPublishingState",
+          "traits": {
+            "smithy.api#documentation": "The published status of a specific version of a Teams app. The possible values are:submitted—The specific version of the Teams app was submitted and is under review.published—The request to publish the specific version of the Teams app was approved by the admin and the app is published.rejected—The admin rejected the request to publish the specific version of the Teams app.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "shortDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Short description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID from the Teams app manifest.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version number of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateAppDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateAppDefinitionsRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateAppDefinitionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/appCatalogs/teamsApps/{teamsApp_id}/appDefinitions/{teamsAppDefinitionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Publish teamsApp\n\nPublish an app to the Microsoft Teams app catalog.\nSpecifically, this API publishes the app to your organization's catalog (the tenant app catalog);\nthe created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center."
+      }
+    },
+    "com.microsoft.graph.appCatalogs#DeleteAppDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "teamsAppDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsAppDefinition"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#DeleteAppDefinitions": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#DeleteAppDefinitionsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}/appDefinitions/{teamsAppDefinitionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property appDefinitions for appCatalogs"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetBotRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetBotRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.appCatalogs#GetBotRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "teamsAppDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsAppDefinition"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.appCatalogs#GetBotRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.appCatalogs#GetBotRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetBotResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetBot": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#GetBotRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#GetBotResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}/appDefinitions/{teamsAppDefinitionId}/bot",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get teamworkBot\n\nGet the bot associated with a specific definition of the  TeamsApp."
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateBotRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "teamsAppDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsAppDefinition"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateBotResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#UpdateBot": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateBotRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.appCatalogs#UpdateBotResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}/appDefinitions/{teamsAppDefinitionId}/bot",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update the navigation property bot in appCatalogs"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#DeleteBotRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "teamsAppDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsAppDefinition"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#DeleteBot": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#DeleteBotRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}/appDefinitions/{teamsAppDefinitionId}/bot",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete navigation property bot for appCatalogs"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetAppDefinitionsCountRequest": {
+      "type": "structure",
+      "members": {
+        "teamsAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsApp"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetAppDefinitionsCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#GetAppDefinitionsCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs/teamsApps/{teamsAppId}/appDefinitions/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.appCatalogs#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.appCatalogs#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/appCatalogs/teamsApps/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.appCatalogs#AppCatalogs": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.appCatalogs#GetAppCatalogs"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#UpdateAppCatalogs"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#ListTeamsApps"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#CreateTeamsApps"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#GetTeamsApps"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#UpdateTeamsApps"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#DeleteTeamsApps"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#ListAppDefinitions"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#CreateAppDefinitions"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#GetAppDefinitions"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#UpdateAppDefinitions"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#DeleteAppDefinitions"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#GetBot"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#UpdateBot"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#DeleteBot"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#GetAppDefinitionsCount"
+        },
+        {
+          "target": "com.microsoft.graph.appCatalogs#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

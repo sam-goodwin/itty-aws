@@ -1,0 +1,723 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GroupLifecyclePolicy": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "alternateNotificationEmails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groupLifetimeInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "managedGroupTypes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group type for which the expiration policy applies. Possible values are All, Selected or None.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#GroupLifecyclePolicy"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/groupLifecyclePolicies",
+          "code": 200
+        },
+        "smithy.api#documentation": "List groupLifecyclePolicies\n\nList all the groupLifecyclePolicies.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#CreateGroupLifecyclePolicyRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "alternateNotificationEmails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groupLifetimeInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "managedGroupTypes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group type for which the expiration policy applies. Possible values are All, Selected or None.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#CreateGroupLifecyclePolicyResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "alternateNotificationEmails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groupLifetimeInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "managedGroupTypes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group type for which the expiration policy applies. Possible values are All, Selected or None.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#CreateGroupLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#CreateGroupLifecyclePolicyRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#CreateGroupLifecyclePolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/groupLifecyclePolicies",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create groupLifecyclePolicy\n\nCreates a new groupLifecyclePolicy. Only one policy exists in the tenant."
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyRequest": {
+      "type": "structure",
+      "members": {
+        "groupLifecyclePolicyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupLifecyclePolicy"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "alternateNotificationEmails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groupLifetimeInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "managedGroupTypes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group type for which the expiration policy applies. Possible values are All, Selected or None.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/groupLifecyclePolicies/{groupLifecyclePolicyId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get groupLifecyclePolicy\n\nRetrieve the properties and relationships of a groupLifecyclePolicies object."
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#UpdateGroupLifecyclePolicyRequest": {
+      "type": "structure",
+      "members": {
+        "groupLifecyclePolicyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupLifecyclePolicy"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "alternateNotificationEmails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groupLifetimeInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "managedGroupTypes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group type for which the expiration policy applies. Possible values are All, Selected or None.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#UpdateGroupLifecyclePolicyResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "alternateNotificationEmails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "groupLifetimeInDays": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "managedGroupTypes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group type for which the expiration policy applies. Possible values are All, Selected or None.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#UpdateGroupLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#UpdateGroupLifecyclePolicyRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#UpdateGroupLifecyclePolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/groupLifecyclePolicies/{groupLifecyclePolicyId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update groupLifecyclePolicy\n\nUpdate the properties of a groupLifecyclePolicygroupLifecyclePolicy resource type object."
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#DeleteGroupLifecyclePolicyRequest": {
+      "type": "structure",
+      "members": {
+        "groupLifecyclePolicyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupLifecyclePolicy"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#DeleteGroupLifecyclePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#DeleteGroupLifecyclePolicyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/groupLifecyclePolicies/{groupLifecyclePolicyId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete groupLifecyclePolicy\n\nDelete a groupLifecyclePolicy."
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#AddGroupRequest": {
+      "type": "structure",
+      "members": {
+        "groupLifecyclePolicyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupLifecyclePolicy"
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#AddGroupResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#AddGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#AddGroupRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#AddGroupResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/groupLifecyclePolicies/{groupLifecyclePolicyId}/addGroup",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action addGroup\n\nAdd a group to a groupLifecyclePolicy. This action is supported only if the managedGroupTypes property of the policy is set to Selected."
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#RemoveGroupRequest": {
+      "type": "structure",
+      "members": {
+        "groupLifecyclePolicyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of groupLifecyclePolicy"
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#RemoveGroupResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#RemoveGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#RemoveGroupRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#RemoveGroupResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/groupLifecyclePolicies/{groupLifecyclePolicyId}/removeGroup",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action removeGroup\n\nRemoves a group from a lifecycle policy."
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.groupLifecyclePolicies#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/groupLifecyclePolicies/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.groupLifecyclePolicies#GroupLifecyclePolicies": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#ListGroupLifecyclePolicy"
+        },
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#CreateGroupLifecyclePolicy"
+        },
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#GetGroupLifecyclePolicy"
+        },
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#UpdateGroupLifecyclePolicy"
+        },
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#DeleteGroupLifecyclePolicy"
+        },
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#AddGroup"
+        },
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#RemoveGroup"
+        },
+        {
+          "target": "com.microsoft.graph.groupLifecyclePolicies#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

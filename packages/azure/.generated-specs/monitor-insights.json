@@ -1,0 +1,549 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.monitor_insights#Batch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_insights#BatchRequest"
+      },
+      "output": {
+        "target": "com.azure.monitor_insights#MetricResultsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/subscriptions/{subscriptionId}/metrics:getBatch",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-02-01"
+        },
+        "smithy.api#documentation": "Lists the metric values for multiple resources."
+      }
+    },
+    "com.azure.monitor_insights#MetricResultsResponse": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.monitor_insights#MetricResultsResponseValuesList",
+          "traits": {
+            "smithy.api#documentation": "The collection of metric data responses per resource, per metric."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The metrics result for a resource."
+      }
+    },
+    "com.azure.monitor_insights#MetricResultsResponseValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_insights#MetricResultsResponseValuesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of metric data responses per resource, per metric."
+      }
+    },
+    "com.azure.monitor_insights#MetricResultsResponseValuesItem": {
+      "type": "structure",
+      "members": {
+        "starttime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start time, in datetime format, for which the data was retrieved.",
+            "smithy.api#required": {}
+          }
+        },
+        "endtime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end time, in datetime format, for which the data was retrieved.",
+            "smithy.api#required": {}
+          }
+        },
+        "interval": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The interval (window size) for which the metric data was returned in ISO 8601\nduration format with a special case for 'FULL' value that returns single\ndatapoint for entire time span requested (*Examples: PT15M, PT1H, P1D, FULL*).\nThis may be adjusted and different from what was originally requested if\nAutoAdjustTimegrain=true is specified."
+          }
+        },
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The namespace of the metrics been queried"
+          }
+        },
+        "resourceregion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The region of the resource been queried for metrics."
+          }
+        },
+        "resourceid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource that has been queried for metrics."
+          }
+        },
+        "value": {
+          "target": "com.azure.monitor_insights#MetricResultsResponseValuesItemValueList",
+          "traits": {
+            "smithy.api#documentation": "The value of the collection.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The metric data response for a resource."
+      }
+    },
+    "com.azure.monitor_insights#MetricResultsResponseValuesItemValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_insights#Metric"
+      },
+      "traits": {
+        "smithy.api#documentation": "The value of the collection."
+      }
+    },
+    "com.azure.monitor_insights#Metric": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The metric Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type of the metric resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "com.azure.monitor_insights#LocalizableString",
+          "traits": {
+            "smithy.api#documentation": "The name and the display name of the metric, i.e. it is localizable string.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Detailed description of this metric."
+          }
+        },
+        "errorCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "'Success' or the error details on query failures for this metric."
+          }
+        },
+        "errorMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message encountered querying this specific metric."
+          }
+        },
+        "unit": {
+          "target": "com.azure.monitor_insights#MetricUnit",
+          "traits": {
+            "smithy.api#documentation": "The unit of the metric.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeseries": {
+          "target": "com.azure.monitor_insights#MetricTimeseriesList",
+          "traits": {
+            "smithy.api#documentation": "The time series returned when a data query is performed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result data of a query."
+      }
+    },
+    "com.azure.monitor_insights#MetricTimeseriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_insights#TimeSeriesElement"
+      },
+      "traits": {
+        "smithy.api#documentation": "The time series returned when a data query is performed."
+      }
+    },
+    "com.azure.monitor_insights#TimeSeriesElement": {
+      "type": "structure",
+      "members": {
+        "metadatavalues": {
+          "target": "com.azure.monitor_insights#TimeSeriesElementMetadatavaluesList",
+          "traits": {
+            "smithy.api#documentation": "The metadata values returned if $filter was specified in the call."
+          }
+        },
+        "data": {
+          "target": "com.azure.monitor_insights#TimeSeriesElementDataList",
+          "traits": {
+            "smithy.api#documentation": "An array of data points representing the metric values.  This is only returned\nif a result type of data is specified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A time series result type. The discriminator value is always TimeSeries in this\ncase."
+      }
+    },
+    "com.azure.monitor_insights#TimeSeriesElementDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_insights#MetricValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of data points representing the metric values.  This is only returned\nif a result type of data is specified."
+      }
+    },
+    "com.azure.monitor_insights#MetricValue": {
+      "type": "structure",
+      "members": {
+        "timeStamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp for the metric value in ISO 8601 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "average": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The average value in the time range."
+          }
+        },
+        "minimum": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The least value in the time range."
+          }
+        },
+        "maximum": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The greatest value in the time range."
+          }
+        },
+        "total": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The sum of all of the values in the time range."
+          }
+        },
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of samples in the time range. Can be used to determine the number of\nvalues that contributed to the average value."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a metric value."
+      }
+    },
+    "com.azure.monitor_insights#TimeSeriesElementMetadatavaluesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_insights#MetadataValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata values returned if $filter was specified in the call."
+      }
+    },
+    "com.azure.monitor_insights#MetadataValue": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.monitor_insights#LocalizableString",
+          "traits": {
+            "smithy.api#documentation": "The name of the metadata."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the metadata."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a metric metadata value."
+      }
+    },
+    "com.azure.monitor_insights#LocalizableString": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The invariant value.",
+            "smithy.api#required": {}
+          }
+        },
+        "localizedValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The localizable string class."
+      }
+    },
+    "com.azure.monitor_insights#MetricUnit": {
+      "type": "enum",
+      "members": {
+        "COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Count"
+          }
+        },
+        "BYTES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Bytes"
+          }
+        },
+        "SECONDS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Seconds"
+          }
+        },
+        "COUNTPERSECOND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CountPerSecond"
+          }
+        },
+        "BYTESPERSECOND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BytesPerSecond"
+          }
+        },
+        "PERCENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Percent"
+          }
+        },
+        "MILLISECONDS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MilliSeconds"
+          }
+        },
+        "BYTESECONDS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ByteSeconds"
+          }
+        },
+        "UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unspecified"
+          }
+        },
+        "CORES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cores"
+          }
+        },
+        "MILLICORES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MilliCores"
+          }
+        },
+        "NANOCORES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NanoCores"
+          }
+        },
+        "BITSPERSECOND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BitsPerSecond"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The unit of the metric."
+      }
+    },
+    "com.azure.monitor_insights#BatchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The regional endpoint to use, for example https://eastus.metrics.monitor.azure.com. The region should match\nthe region of the requested resources. For global resources, the region should be 'global'.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The subscription identifier for the resources in this batch."
+          }
+        },
+        "starttime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "starttime",
+            "smithy.api#documentation": "The start time of the query. It is a string in the format\n'yyyy-MM-ddTHH:mm:ss.fffZ'. If you have specified the endtime parameter, then\nthis parameter is required.\nIf only starttime is specified, then endtime defaults to the current time.\nIf no time interval is specified, the default is 1 hour."
+          }
+        },
+        "endtime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "endtime",
+            "smithy.api#documentation": "The end time of the query. It is a string in the format 'yyyy-MM-ddTHH:mm:ss.fffZ'."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "interval",
+            "smithy.api#documentation": "The interval (i.e. timegrain) of the query in ISO 8601 duration format.\nDefaults to PT1M. Special case for 'FULL' value that returns single datapoint\nfor entire time span requested.\n*Examples: PT15M, PT1H, P1D, FULL*"
+          }
+        },
+        "metricnamespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "metricnamespace",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Metric namespace that contains the requested metric names."
+          }
+        },
+        "metricnames": {
+          "target": "com.azure.monitor_insights#BatchRequestMetricnamesList",
+          "traits": {
+            "smithy.api#httpQuery": "metricnames",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The names of the metrics (comma separated) to retrieve."
+          }
+        },
+        "aggregation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "aggregation",
+            "smithy.api#documentation": "The list of aggregation types (comma separated) to retrieve. *Examples: average, minimum, maximum*"
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of records to retrieve per resource ID in the request.\nValid only if filter is specified.\nDefaults to 10."
+          }
+        },
+        "orderby": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "orderby",
+            "smithy.api#documentation": "The aggregation to use for sorting results and the direction of the sort.\nOnly one order can be specified.\n*Examples: sum asc*"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "The filter is used to reduce the set of metric data\nreturned.<br>Example:<br>Metric contains metadata A, B and C.<br>- Return all\ntime series of C where A = a1 and B = b1 or b2<br>**filter=A eq ‘a1’ and B eq\n‘b1’ or B eq ‘b2’ and C eq ‘*’**<br>- Invalid variant:<br>**filter=A eq ‘a1’\nand B eq ‘b1’ and C eq ‘*’ or B = ‘b2’**<br>This is invalid because the logical\nor operator cannot separate two different metadata names.<br>- Return all time\nseries where A = a1, B = b1 and C = c1:<br>**filter=A eq ‘a1’ and B eq ‘b1’ and\nC eq ‘c1’**<br>- Return all time series where A = a1<br>**filter=A eq ‘a1’ and\nB eq ‘*’ and C eq ‘*’**."
+          }
+        },
+        "rollupby": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "rollupby",
+            "smithy.api#documentation": "Dimension name(s) to rollup results by. For example if you only want to see\nmetric values with a filter like 'City eq Seattle or City eq Tacoma' but don't\nwant to see separate values for each city, you can specify 'RollUpBy=City' to\nsee the results for Seattle and Tacoma rolled up into one timeseries."
+          }
+        },
+        "resourceids": {
+          "target": "com.azure.monitor_insights#BatchRequestResourceidsList",
+          "traits": {
+            "smithy.api#documentation": "The list of resource IDs to query metrics for."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_insights#BatchRequestResourceidsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of resource IDs to query metrics for."
+      }
+    },
+    "com.azure.monitor_insights#BatchRequestMetricnamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.monitor_insights#MonitorInsights": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.monitor_insights#Batch"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Insights data plane",
+        "smithy.api#documentation": "Azure monitor data plane — monitor/data-plane/Insights (latest stable api-version 2024-02-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://metrics.monitor.azure.com/.default"
+      }
+    }
+  }
+}

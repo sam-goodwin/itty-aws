@@ -1,0 +1,136 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.monitor_ingestion#Upload": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.monitor_ingestion#UploadRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/dataCollectionRules/{ruleId}/streams/{stream}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-01-01"
+        },
+        "smithy.api#documentation": "Ingestion API used to directly ingest data using Data Collection Rules.\n\nIngestion API used to directly ingest data using Data Collection Rules."
+      }
+    },
+    "com.azure.monitor_ingestion#UploadRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Data Collection Endpoint for the Data Collection Rule. For example, https://dce-name.eastus-2.ingest.monitor.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "ruleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The immutable ID of the Data Collection Rule resource."
+          }
+        },
+        "stream": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The streamDeclaration name as defined in the Data Collection Rule."
+          }
+        },
+        "contentEncoding": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Content-Encoding",
+            "smithy.api#documentation": "The content encoding of the request body which is always 'gzip'."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "body": {
+          "target": "com.azure.monitor_ingestion#UploadRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor_ingestion#UploadRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitor_ingestion#UploadRequestBodyItemMap"
+      },
+      "traits": {}
+    },
+    "com.azure.monitor_ingestion#UploadRequestBodyItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.monitor_ingestion#MonitorIngestion": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.monitor_ingestion#Upload"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Ingestion data plane",
+        "smithy.api#documentation": "Azure monitor data plane — monitor/data-plane/Ingestion (latest stable api-version 2023-01-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://monitor.azure.com/.default"
+      }
+    }
+  }
+}

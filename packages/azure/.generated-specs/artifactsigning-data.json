@@ -1,0 +1,723 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsages": "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsages",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsagesRequest": "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsagesRequest",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatus": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatus",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusResponse": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusResponse",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusRequest": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusRequest",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsSign": "com.azure.artifactsigning_data#SignCertificateProfileOperation",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsSignResponse": "com.azure.artifactsigning_data#SignCertificateProfileOperationResponse",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequest": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequest",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestAuthenticodeHashListList": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestAuthenticodeHashListList",
+      "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestFileHashListList": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestFileHashListList"
+    }
+  },
+  "shapes": {
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/codesigningaccounts/{accountName}/certificateprofiles/{certificateProfile}/sign/rootcert",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-15"
+        },
+        "smithy.api#documentation": "Gets the signing root certificate on the certificate chain for that account and profile name.\n\nThe root certificate is generated as part of the initial account creation and it is used to sign the bits for the profile provided."
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificateResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Signing account name."
+          }
+        },
+        "certificateProfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Signing Certificate profile name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsages": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsagesRequest"
+      },
+      "output": {
+        "target": "com.azure.artifactsigning_data#PagedExtendedKeyUsage"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/codesigningaccounts/{accountName}/certificateprofiles/{certificateProfile}/sign/eku",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-15"
+        },
+        "smithy.api#documentation": "Gets a list of extended key usage object identifiers that are allowed for this account and profile combination.\n\nThe list of extended key usages are used to determine the purpose of the certificate usage as part of the signing operation."
+      }
+    },
+    "com.azure.artifactsigning_data#PagedExtendedKeyUsage": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.artifactsigning_data#PagedExtendedKeyUsageValueList",
+          "traits": {
+            "smithy.api#documentation": "The ExtendedKeyUsage items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of ExtendedKeyUsage items"
+      }
+    },
+    "com.azure.artifactsigning_data#PagedExtendedKeyUsageValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.artifactsigning_data#ExtendedKeyUsage"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ExtendedKeyUsage items on this page"
+      }
+    },
+    "com.azure.artifactsigning_data#ExtendedKeyUsage": {
+      "type": "structure",
+      "members": {
+        "eku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An oid string that represents an eku.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Extended key usage object identifier that are allowable."
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsagesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Azure Artifact Signing account name."
+          }
+        },
+        "certificateProfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Azure Artifact Signing certificate profile name under an account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignCertificateChain": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignCertificateChainRequest"
+      },
+      "output": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignCertificateChainResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/codesigningaccounts/{accountName}/certificateprofiles/{certificateProfile}/sign/certchain",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-15"
+        },
+        "smithy.api#documentation": "Gets the signing certificate chain for that account and profile.\n\nThe certificate chain is generated as part of each profile renewal."
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignCertificateChainResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignCertificateChainRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Signing account name."
+          }
+        },
+        "certificateProfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Signing Certificate profile name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/codesigningaccounts/{accountName}/certificateprofiles/{certificateProfile}/sign/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-15"
+        },
+        "smithy.api#documentation": "Gets the status of a signing operation.\n\nThis status operation requires that a Sign request has been submitted and the operationId is known."
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.artifactsigning_data#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "The status of the operation",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.artifactsigning_data#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is \"Failed\"."
+          }
+        },
+        "result": {
+          "target": "com.azure.artifactsigning_data#SignStatusResult",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.artifactsigning_data#SignStatusResult": {
+      "type": "structure",
+      "members": {
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Digital signature of the requested content digest."
+          }
+        },
+        "signingCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Signing certificate corresponding to the private key used to sign the requested \ndigest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The sign status model."
+      }
+    },
+    "com.azure.artifactsigning_data#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.artifactsigning_data#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.artifactsigning_data#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.artifactsigning_data#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.artifactsigning_data#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.artifactsigning_data#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.artifactsigning_data#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.artifactsigning_data#AzureCoreFoundationsOperationState": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum describing allowed operation states."
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Signing account name."
+          }
+        },
+        "certificateProfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Signing Certificate profile name."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsSign": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequest"
+      },
+      "output": {
+        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/codesigningaccounts/{accountName}/certificateprofiles/{certificateProfile}:sign",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-06-15"
+        },
+        "smithy.api#documentation": "Submit a sign operation.\n\nSubmit a sign operation under the created account and profile name provided."
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsSignResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Azure Artifact Signing account name."
+          }
+        },
+        "certificateProfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Azure Artifact Signing certificate profile name under an account."
+          }
+        },
+        "clientVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "client-version",
+            "smithy.api#documentation": "An optional client version."
+          }
+        },
+        "xCorrelationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-correlation-id",
+            "smithy.api#documentation": "An identifier used to batch multiple requests."
+          }
+        },
+        "signatureAlgorithm": {
+          "target": "com.azure.artifactsigning_data#SignSignatureAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "The supported signature algorithm identifiers.",
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content digest to sign.",
+            "smithy.api#required": {}
+          }
+        },
+        "fileHashList": {
+          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestFileHashListList",
+          "traits": {
+            "smithy.api#documentation": "List of full file digital signatures."
+          }
+        },
+        "authenticodeHashList": {
+          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestAuthenticodeHashListList",
+          "traits": {
+            "smithy.api#documentation": "List of authenticode digital signatures."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestAuthenticodeHashListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of authenticode digital signatures."
+      }
+    },
+    "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestFileHashListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of full file digital signatures."
+      }
+    },
+    "com.azure.artifactsigning_data#SignSignatureAlgorithm": {
+      "type": "enum",
+      "members": {
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        },
+        "PS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS256"
+          }
+        },
+        "PS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS384"
+          }
+        },
+        "PS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS512"
+          }
+        },
+        "ES256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES256"
+          }
+        },
+        "ES384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES384"
+          }
+        },
+        "ES512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES512"
+          }
+        },
+        "ES256K": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES256K"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Algorithms supported for signing."
+      }
+    },
+    "com.azure.artifactsigning_data#ArtifactsigningData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificate"
+        },
+        {
+          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsages"
+        },
+        {
+          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignCertificateChain"
+        },
+        {
+          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatus"
+        },
+        {
+          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSign"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure ArtifactSigning data plane",
+        "smithy.api#documentation": "Azure artifactsigning data plane — artifactsigning/data-plane/ArtifactSigning (latest stable api-version 2024-06-15).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://codesigning.azure.net/.default"
+      }
+    }
+  }
+}

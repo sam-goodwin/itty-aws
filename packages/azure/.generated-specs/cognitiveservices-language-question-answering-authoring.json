@@ -1,0 +1,3005 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonyms": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonyms",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequestValueList": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequestValueList",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonyms": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonyms",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonymsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonymsRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSources": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSources",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesResponse": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesResponse",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequest": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequestBodyList": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequestBodyList",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSources": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSources",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSourcesRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSourcesRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnas": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnas",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasResponse": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasResponse",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasRequest": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnas": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnas",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnasRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnasRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedback": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedback",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequest": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequestRecordsList": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequestRecordsList",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProject": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProject",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectResponse": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectResponse",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectRequest": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeployments": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeployments",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeploymentsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeploymentsRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImport": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProject",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportResponse": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectResponse",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestAssetKind": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestAssetKind",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestFormat": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestFormat",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExport": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProject",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportResponse": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectResponse",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestAssetKind": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestAssetKind",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestFormat": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestFormat",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProject": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProject",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectResponse": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectResponse",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectRequest": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProject": "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProject",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProjectRequest": "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProjectRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetails": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetails",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetailsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetailsRequest",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjects": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjects",
+      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjectsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjectsRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeleteStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeleteStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeletionJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/deletion-jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of a Project delete job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeletionJobState": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "Job Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeletionJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of a project deletion job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeletionJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#JobStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelling"
+          }
+        },
+        "PARTIALLYCOMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "partiallyCompleted"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Job Status."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeleteStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonyms": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/synonyms",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Updates all the synonyms of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequestValueList",
+          "traits": {
+            "smithy.api#documentation": "The WordAlterations items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#WordAlterations"
+      },
+      "traits": {
+        "smithy.api#documentation": "The WordAlterations items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#WordAlterations": {
+      "type": "structure",
+      "members": {
+        "alterations": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#WordAlterationsAlterationsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of word alterations.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of word alterations."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#WordAlterationsAlterationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of word alterations."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonyms": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonymsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedWordAlterations"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/synonyms",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets all the synonyms of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedWordAlterations": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedWordAlterationsValueList",
+          "traits": {
+            "smithy.api#documentation": "The WordAlterations items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of WordAlterations items"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedWordAlterationsValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#WordAlterations"
+      },
+      "traits": {
+        "smithy.api#documentation": "The WordAlterations items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonymsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of resources to return from the collection."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An offset into the collection of the first resource to be returned."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of resources to include in a single response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateSourcesStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateSourcesStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateSourcesJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/sources/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of update sources job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateSourcesJobState": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "Job Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateSourcesJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Job state represents the job metadata and any errors."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateSourcesJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateSourcesStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/sources",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Updates the sources of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequestBodyList",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateSourceRecord"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateSourceRecord": {
+      "type": "structure",
+      "members": {
+        "op": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateOperationKind",
+          "traits": {
+            "smithy.api#documentation": "Update operation type for assets.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaSourceRecord",
+          "traits": {
+            "smithy.api#documentation": "Update source record.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source to be updated."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaSourceRecord": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of the Source."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique source identifier. Name of the file if it's a 'file' source; otherwise,\nthe complete URL if it's a 'url' source.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI location for the file or url.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceKind": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#SourceKind",
+          "traits": {
+            "smithy.api#documentation": "Supported source types.",
+            "smithy.api#required": {}
+          }
+        },
+        "contentStructureKind": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaSourceRecordContentStructureKind",
+          "traits": {
+            "smithy.api#documentation": "Content structure type for sources."
+          }
+        },
+        "refresh": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean flag used to refresh data from the Source."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update source record."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaSourceRecordContentStructureKind": {
+      "type": "enum",
+      "members": {
+        "UNSTRUCTURED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unstructured"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Content structure type for sources."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#SourceKind": {
+      "type": "enum",
+      "members": {
+        "FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "file"
+          }
+        },
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "url"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported source types."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateOperationKind": {
+      "type": "enum",
+      "members": {
+        "ADD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "add"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delete"
+          }
+        },
+        "REPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "replace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update operation type for assets."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSourcesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedQnaSourceRecord"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/sources",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets all the sources of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedQnaSourceRecord": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedQnaSourceRecordValueList",
+          "traits": {
+            "smithy.api#documentation": "The QnaSourceRecord items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of QnaSourceRecord items"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedQnaSourceRecordValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaSourceRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The QnaSourceRecord items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaSourceRecord": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of the Source."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique source identifier. Name of the file if it's a 'file' source; otherwise,\nthe complete URL if it's a 'url' source.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI location for the file or url.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceKind": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#SourceKind",
+          "traits": {
+            "smithy.api#documentation": "Supported source types.",
+            "smithy.api#required": {}
+          }
+        },
+        "contentStructureKind": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaSourceRecordContentStructureKind",
+          "traits": {
+            "smithy.api#documentation": "Content structure type for sources."
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date-time when the QnA was last updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom source record with last updated date-time."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaSourceRecordContentStructureKind": {
+      "type": "enum",
+      "members": {
+        "UNSTRUCTURED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unstructured"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Content structure type for sources."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSourcesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of resources to return from the collection."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An offset into the collection of the first resource to be returned."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of resources to include in a single response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateQnasStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateQnasStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateQnasJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/qnas/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of update QnAs job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateQnasJobState": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "Job Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateQnasJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Job state represents the job metadata and any errors."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringUpdateQnasJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateQnasStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnas": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/qnas",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Updates the QnAs of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "body": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaOptions",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaOptions": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of QnAs to be updated."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQnaRecord": {
+      "type": "structure",
+      "members": {
+        "op": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateOperationKind",
+          "traits": {
+            "smithy.api#documentation": "Update operation type for assets.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecord",
+          "traits": {
+            "smithy.api#documentation": "QnA record.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "QnA record to be updated."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecord": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Unique ID for the QnA.",
+            "smithy.api#required": {}
+          }
+        },
+        "answer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Answer text."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source from which QnA was indexed e.g.\nhttps://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/FAQs ."
+          }
+        },
+        "questions": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecordQuestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of questions associated with the answer."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecordMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+          }
+        },
+        "dialog": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaDialog",
+          "traits": {
+            "smithy.api#documentation": "Context of a QnA."
+          }
+        },
+        "activeLearningSuggestions": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecordActiveLearningSuggestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of Active Learning suggestions for the QnA."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "QnA record."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecordActiveLearningSuggestionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestionsCluster"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Active Learning suggestions for the QnA."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestionsCluster": {
+      "type": "structure",
+      "members": {
+        "clusterHead": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Question chosen as the head of suggested questions cluster by Active Learning\nclustering algorithm."
+          }
+        },
+        "suggestedQuestions": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestionsClusterSuggestedQuestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of all suggested questions for the QnA."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Active Learning suggested questions cluster details."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestionsClusterSuggestedQuestionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestion"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of all suggested questions for the QnA."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestion": {
+      "type": "structure",
+      "members": {
+        "question": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Question suggested by the Active Learning feature."
+          }
+        },
+        "userSuggestedCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of times the question was suggested explicitly by the user."
+          }
+        },
+        "autoSuggestedCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of times the question was suggested automatically by the Active\nLearning algorithm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Question suggested by the Active Learning feature."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaDialog": {
+      "type": "structure",
+      "members": {
+        "isContextOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "To mark if a prompt is relevant only with a previous question or not. If true,\ndo not include this QnA as answer for queries without context; otherwise,\nignores context and includes this QnA in answers."
+          }
+        },
+        "prompts": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaDialogPromptsList",
+          "traits": {
+            "smithy.api#documentation": "List of prompts associated with the answer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dialog associated with QnA Record."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaDialogPromptsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaPrompt"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of prompts associated with the answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaPrompt": {
+      "type": "structure",
+      "members": {
+        "displayOrder": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Index of the prompt. It is used for ordering of the prompts."
+          }
+        },
+        "qnaId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ID of the QnA corresponding to the prompt."
+          }
+        },
+        "qna": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecord",
+          "traits": {
+            "smithy.api#documentation": "QnA record. Either QnAId or QnA record needs to be present in a Prompt."
+          }
+        },
+        "displayText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text displayed to represent a follow up question prompt."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Prompt for an answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecordMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QnaRecordQuestionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of questions associated with the answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnas": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnasRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedRetrieveQnaRecord"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/qnas",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets all the QnAs of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedRetrieveQnaRecord": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedRetrieveQnaRecordValueList",
+          "traits": {
+            "smithy.api#documentation": "The RetrieveQnaRecord items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of RetrieveQnaRecord items"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedRetrieveQnaRecordValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The RetrieveQnaRecord items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecord": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Unique ID for the QnA.",
+            "smithy.api#required": {}
+          }
+        },
+        "answer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Answer text."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source from which QnA was indexed e.g.\nhttps://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/FAQs ."
+          }
+        },
+        "questions": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecordQuestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of questions associated with the answer."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecordMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+          }
+        },
+        "dialog": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaDialog",
+          "traits": {
+            "smithy.api#documentation": "Context of a QnA."
+          }
+        },
+        "activeLearningSuggestions": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecordActiveLearningSuggestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of Active Learning suggestions for the QnA."
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date-time when the QnA was last updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "QnA Record with last updated date-time."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecordActiveLearningSuggestionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestionsCluster"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Active Learning suggestions for the QnA."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecordMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#RetrieveQnaRecordQuestionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of questions associated with the answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnasRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of resources to return from the collection."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An offset into the collection of the first resource to be returned."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of resources to include in a single response."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "source",
+            "smithy.api#documentation": "Source of the QnA."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetImportStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetImportStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringImportJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/import/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of an Import job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringImportJobState": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "Job Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringImportJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Import job status, project metadata, and assets."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringImportJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetImportStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedback": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/feedback",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Update Active Learning feedback."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "records": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequestRecordsList",
+          "traits": {
+            "smithy.api#documentation": "A list of Feedback Records for Active Learning."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequestRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#FeedbackRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of Feedback Records for Active Learning."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#FeedbackRecord": {
+      "type": "structure",
+      "members": {
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier of the user."
+          }
+        },
+        "userQuestion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User suggested question for the QnA."
+          }
+        },
+        "qnaId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Unique ID of the QnA."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Feedback Record for Active Learning."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetExportStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetExportStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringExportJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/export/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of an Export job, once job completes, returns the project\nmetadata, and assets."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringExportJobState": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "Job Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringExportJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        },
+        "resultUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to download the result of the Export Job.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Export job status, project metadata, and assets."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringExportJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetExportStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeployStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeployStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeploymentJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/deployments/{deploymentName}/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of a Deploy job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeploymentJobState": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "Job Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeploymentJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Job state represents the job metadata and any errors."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringAuthoringProjectDeploymentJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeployStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the deployment."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/deployments/{deploymentName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Deploy project to production."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the specific deployment of the project to use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeploymentsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedProjectDeployment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/deployments",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "List all deployments of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedProjectDeployment": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedProjectDeploymentValueList",
+          "traits": {
+            "smithy.api#documentation": "The ProjectDeployment items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of ProjectDeployment items"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedProjectDeploymentValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ProjectDeployment"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ProjectDeployment items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#ProjectDeployment": {
+      "type": "structure",
+      "members": {
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the deployment.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastDeployedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the project last deployment date-time."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Project deployment details."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeploymentsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of resources to return from the collection."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An offset into the collection of the first resource to be returned."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of resources to include in a single response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/:import",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Import project assets."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "format": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestFormat",
+          "traits": {
+            "smithy.api#httpQuery": "format",
+            "smithy.api#documentation": "Knowledge base Import or Export format."
+          }
+        },
+        "assetKind": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestAssetKind",
+          "traits": {
+            "smithy.api#httpQuery": "assetKind",
+            "smithy.api#documentation": "Kind of the asset of the project."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadataInput",
+          "traits": {
+            "smithy.api#documentation": "Parameters needed to create the project."
+          }
+        },
+        "assets": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#Assets",
+          "traits": {
+            "smithy.api#documentation": "All assets for this project."
+          }
+        },
+        "fileUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Import data File URI."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#Assets": {
+      "type": "structure",
+      "members": {
+        "synonyms": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#AssetsSynonymsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of synonyms."
+          }
+        },
+        "qnas": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#AssetsQnasList",
+          "traits": {
+            "smithy.api#documentation": "List of QnA records to import."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All assets for this project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#AssetsQnasList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of QnA records to import."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecord": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Unique ID for the QnA.",
+            "smithy.api#required": {}
+          }
+        },
+        "answer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Answer text."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source from which QnA was indexed e.g.\nhttps://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/FAQs ."
+          }
+        },
+        "questions": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecordQuestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of questions associated with the answer."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecordMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+          }
+        },
+        "dialog": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QnaDialog",
+          "traits": {
+            "smithy.api#documentation": "Context of a QnA."
+          }
+        },
+        "activeLearningSuggestions": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecordActiveLearningSuggestionsList",
+          "traits": {
+            "smithy.api#documentation": "List of Active Learning suggestions for the QnA."
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date-time when the QnA was last updated."
+          }
+        },
+        "sourceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of the Source."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Import QnA Record."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecordActiveLearningSuggestionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#SuggestedQuestionsCluster"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Active Learning suggestions for the QnA."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecordMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata associated with the answer, useful to categorize or filter question\nanswers."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQnaRecordQuestionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of questions associated with the answer."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#AssetsSynonymsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#WordAlterations"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of synonyms."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadataInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the project."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of the text records. This is BCP-47 representation of a language. For\nexample, use \"en\" for English; \"es\" for Spanish etc. If not set, use \"en\" for\nEnglish as default."
+          }
+        },
+        "multilingualResource": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Resource enabled for multiple languages across projects or not."
+          }
+        },
+        "settings": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ProjectSettings",
+          "traits": {
+            "smithy.api#documentation": "Configurable settings of the Project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#ProjectSettings": {
+      "type": "structure",
+      "members": {
+        "defaultAnswer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Default Answer response when no good match is found in the knowledge base."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configurable settings of the Project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestAssetKind": {
+      "type": "enum",
+      "members": {
+        "QNAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qnas"
+          }
+        },
+        "SYNONYMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synonyms"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "TSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tsv"
+          }
+        },
+        "EXCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "excel"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}/:export",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Export project metadata and assets."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "format": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestFormat",
+          "traits": {
+            "smithy.api#httpQuery": "format",
+            "smithy.api#documentation": "Knowledge base Import or Export format."
+          }
+        },
+        "assetKind": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestAssetKind",
+          "traits": {
+            "smithy.api#httpQuery": "assetKind",
+            "smithy.api#documentation": "Kind of the asset of the project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestAssetKind": {
+      "type": "enum",
+      "members": {
+        "QNAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qnas"
+          }
+        },
+        "SYNONYMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synonyms"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "TSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tsv"
+          }
+        },
+        "EXCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "excel"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Delete the project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProjectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Create or update a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadata": {
+      "type": "structure",
+      "members": {
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the project.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the project."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of the text records. This is BCP-47 representation of a language. For\nexample, use \"en\" for English; \"es\" for Spanish etc. If not set, use \"en\" for\nEnglish as default."
+          }
+        },
+        "multilingualResource": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Resource enabled for multiple languages across projects or not."
+          }
+        },
+        "settings": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ProjectSettings",
+          "traits": {
+            "smithy.api#documentation": "Configurable settings of the Project."
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project creation date-time."
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the project last modified date-time."
+          }
+        },
+        "lastDeployedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the project last deployment date-time."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the project."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProjectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the project."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of the text records. This is BCP-47 representation of a language. For\nexample, use \"en\" for English; \"es\" for Spanish etc. If not set, use \"en\" for\nEnglish as default."
+          }
+        },
+        "multilingualResource": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Resource enabled for multiple languages across projects or not."
+          }
+        },
+        "settings": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ProjectSettings",
+          "traits": {
+            "smithy.api#documentation": "Configurable settings of the Project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetails": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetailsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects/{projectName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Get the requested project metadata."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetailsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjectsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedQuestionAnsweringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/query-knowledgebases/projects",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets all projects for a user."
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedQuestionAnsweringProjectMetadata": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedQuestionAnsweringProjectMetadataValueList",
+          "traits": {
+            "smithy.api#documentation": "The QuestionAnsweringProjectMetadata items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of QuestionAnsweringProjectMetadata items"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#PagedQuestionAnsweringProjectMetadataValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "The QuestionAnsweringProjectMetadata items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjectsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint (e.g., https://<resource-name>.api.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of resources to return from the collection."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "An offset into the collection of the first resource to be returned."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of resources to include in a single response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_question_answering_authoring#CognitiveservicesLanguageQuestionAnsweringAuthoring": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeleteStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonyms"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonyms"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateSourcesStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSources"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSources"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateQnasStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnas"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnas"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetImportStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedback"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetExportStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeployStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProject"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeployments"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImport"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExport"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProject"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProject"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetails"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjects"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure LanguageQuestionAnsweringAuthoring data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/LanguageQuestionAnsweringAuthoring (latest stable api-version 2023-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/language",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

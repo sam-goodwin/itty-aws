@@ -1,0 +1,1366 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatus": "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatus",
+      "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatusRequest": "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatusRequest",
+      "com.azure.discovery_bookshelf#KnowledgeBasesSearch": "com.azure.discovery_bookshelf#SearchKnowledgeBase",
+      "com.azure.discovery_bookshelf#KnowledgeBasesSearchResponse": "com.azure.discovery_bookshelf#SearchKnowledgeBaseResponse",
+      "com.azure.discovery_bookshelf#KnowledgeBasesSearchRequest": "com.azure.discovery_bookshelf#SearchKnowledgeBaseRequest",
+      "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexing": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexing",
+      "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingResponse": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingResponse",
+      "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingRequest": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingRequest",
+      "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexing": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexing",
+      "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingResponse": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingResponse",
+      "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingRequest": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingRequest",
+      "com.azure.discovery_bookshelf#KnowledgeBasesDelete": "com.azure.discovery_bookshelf#DeleteKnowledgeBase",
+      "com.azure.discovery_bookshelf#KnowledgeBasesDeleteResponse": "com.azure.discovery_bookshelf#DeleteKnowledgeBaseResponse",
+      "com.azure.discovery_bookshelf#KnowledgeBasesDeleteRequest": "com.azure.discovery_bookshelf#DeleteKnowledgeBaseRequest",
+      "com.azure.discovery_bookshelf#KnowledgeBasesGet": "com.azure.discovery_bookshelf#GetKnowledgeBase",
+      "com.azure.discovery_bookshelf#KnowledgeBasesGetRequest": "com.azure.discovery_bookshelf#GetKnowledgeBaseRequest",
+      "com.azure.discovery_bookshelf#KnowledgeBasesList": "com.azure.discovery_bookshelf#ListKnowledgeBases",
+      "com.azure.discovery_bookshelf#KnowledgeBasesListRequest": "com.azure.discovery_bookshelf#ListKnowledgeBasesRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBaseOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/knowledgeBases/{knowledgeBaseName}/operations/{operationId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Get the status of a long-running operation."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBaseOperationResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "The status of the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is 'Failed'."
+          }
+        },
+        "operationType": {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBaseOperationType",
+          "traits": {
+            "smithy.api#documentation": "The type of operation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response indicating the KnowledgeBase operation."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBaseOperationType": {
+      "type": "enum",
+      "members": {
+        "INDEXING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Indexing"
+          }
+        },
+        "CANCELINDEXING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CancelIndexing"
+          }
+        },
+        "SEARCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Search"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status indicating the KnowledgeBase operation."
+      }
+    },
+    "com.azure.discovery_bookshelf#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.discovery_bookshelf#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.discovery_bookshelf#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.discovery_bookshelf#AzureCoreFoundationsOperationState": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum describing allowed operation states."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "knowledgeBaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The knowledgeBase name."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesSearch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesSearchRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesSearchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/knowledgeBases/{knowledgeBaseName}:search",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Search the knowledge base."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesSearchResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location of an instance of KnowledgeBase"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesSearchRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "knowledgeBaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The knowledgeBase name."
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for request repeatability."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "Specifies the date and time at which the request was first created."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query text to search against the knowledge base.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexing": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/knowledgeBases/{knowledgeBaseName}:cancelIndexing",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Cancel indexing."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "knowledgeBaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The knowledgeBase name."
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "Specifies the date and time at which the request was first created."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexing": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/knowledgeBases/{knowledgeBaseName}:startIndexing",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Start indexing."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "knowledgeBaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The knowledgeBase name."
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "Specifies the date and time at which the request was first created."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nodePoolId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Node pool ID"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/knowledgeBases/{knowledgeBaseName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Delete a KnowledgeBase."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "knowledgeBaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The knowledgeBase name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/knowledgeBases/{knowledgeBaseName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Creates or updates a KnowledgeBase."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The knowledgeBase name.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID for the resource."
+          }
+        },
+        "bookshelfName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the associated Bookshelf tracked resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageAssetReferences": {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBaseStorageAssetReferencesList",
+          "traits": {
+            "smithy.api#documentation": "Storage asset references to index."
+          }
+        },
+        "knowledgeBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to access the knowledge base."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Provisioning state."
+          }
+        },
+        "error": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error details if provisioning failed."
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_bookshelf#IndexingStatus",
+          "traits": {
+            "smithy.api#documentation": "The status"
+          }
+        },
+        "createdByApiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API version used to create this knowledge base."
+          }
+        },
+        "lastIndexingRun": {
+          "target": "com.azure.discovery_bookshelf#LastIndexingRun",
+          "traits": {
+            "smithy.api#documentation": "The details of the most recent indexing run."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created"
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created this resource."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who created this resource."
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was last updated"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who updated this resource."
+          }
+        },
+        "lastModifiedByType": {
+          "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who updated this resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBaseTagsList",
+          "traits": {
+            "smithy.api#documentation": "The tags"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description",
+            "smithy.api#required": {}
+          }
+        },
+        "copilotInstruction": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The copilot instruction",
+            "smithy.api#required": {}
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A knowledgeBase.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBaseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags"
+      }
+    },
+    "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonTag": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Property key"
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Property value"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of Tag"
+      }
+    },
+    "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonByType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "User"
+          }
+        },
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Application"
+          }
+        },
+        "SYSTEM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "System"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum for entity type"
+      }
+    },
+    "com.azure.discovery_bookshelf#LastIndexingRun": {
+      "type": "structure",
+      "members": {
+        "runId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operation run identifier."
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_bookshelf#IndexingStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the indexing run."
+          }
+        },
+        "error": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is 'Failed'."
+          }
+        },
+        "indexingMetrics": {
+          "target": "com.azure.discovery_bookshelf#IndexingMetrics",
+          "traits": {
+            "smithy.api#documentation": "Indexing metrics for the run."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The details of the last indexing run."
+      }
+    },
+    "com.azure.discovery_bookshelf#IndexingMetrics": {
+      "type": "structure",
+      "members": {
+        "documentsProcessed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of documents that were successfully processed.",
+            "smithy.api#required": {}
+          }
+        },
+        "documentsFailed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of documents that failed during indexing.",
+            "smithy.api#required": {}
+          }
+        },
+        "documentsTotal": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of documents considered for indexing.",
+            "smithy.api#required": {}
+          }
+        },
+        "indexingPercentageComplete": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The indexing completion percentage from 0 to 100.",
+            "smithy.api#required": {}
+          }
+        },
+        "enrichmentStartTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UTC timestamp when enrichment started."
+          }
+        },
+        "enrichmentEndTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UTC timestamp when enrichment ended."
+          }
+        },
+        "indexingStartTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UTC timestamp when indexing started."
+          }
+        },
+        "indexingEndTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UTC timestamp when indexing ended."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indexing metrics for a run."
+      }
+    },
+    "com.azure.discovery_bookshelf#IndexingStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum for IndexingStatus"
+      }
+    },
+    "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonProvisioningState": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Accepted"
+          }
+        },
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Provisioning"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updating"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource provisioning state."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBaseStorageAssetReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_bookshelf#StorageAssetReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage asset references to index."
+      }
+    },
+    "com.azure.discovery_bookshelf#StorageAssetReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of the storage asset.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of the User Assigned Managed Identity to access the storage asset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to a storage asset with identity information."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "knowledgeBaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The knowledgeBase name."
+          }
+        },
+        "storageAssetReferences": {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateRequestStorageAssetReferencesList",
+          "traits": {
+            "smithy.api#documentation": "Storage asset references to index."
+          }
+        },
+        "tags": {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "The tags"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description"
+          }
+        },
+        "copilotInstruction": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The copilot instruction"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags"
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdateRequestStorageAssetReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_bookshelf#StorageAssetReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage asset references to index."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBase"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/knowledgeBases/{knowledgeBaseName}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "Fetch a KnowledgeBase by name."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBase": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The knowledgeBase name.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID for the resource."
+          }
+        },
+        "bookshelfName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the associated Bookshelf tracked resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageAssetReferences": {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBaseStorageAssetReferencesList",
+          "traits": {
+            "smithy.api#documentation": "Storage asset references to index."
+          }
+        },
+        "knowledgeBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to access the knowledge base."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Provisioning state."
+          }
+        },
+        "error": {
+          "target": "com.azure.discovery_bookshelf#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error details if provisioning failed."
+          }
+        },
+        "status": {
+          "target": "com.azure.discovery_bookshelf#IndexingStatus",
+          "traits": {
+            "smithy.api#documentation": "The status"
+          }
+        },
+        "createdByApiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API version used to create this knowledge base."
+          }
+        },
+        "lastIndexingRun": {
+          "target": "com.azure.discovery_bookshelf#LastIndexingRun",
+          "traits": {
+            "smithy.api#documentation": "The details of the most recent indexing run."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was created"
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created this resource."
+          }
+        },
+        "createdByType": {
+          "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who created this resource."
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when the resource was last updated"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who updated this resource."
+          }
+        },
+        "lastModifiedByType": {
+          "target": "com.azure.discovery_bookshelf#MicrosoftDiscoveryCommonByType",
+          "traits": {
+            "smithy.api#documentation": "The type of user who updated this resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBaseTagsList",
+          "traits": {
+            "smithy.api#documentation": "The tags"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description",
+            "smithy.api#required": {}
+          }
+        },
+        "copilotInstruction": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The copilot instruction",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A knowledgeBase."
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "knowledgeBaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The knowledgeBase name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBasesListRequest"
+      },
+      "output": {
+        "target": "com.azure.discovery_bookshelf#PagedKnowledgeBase"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/knowledgeBases",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-01"
+        },
+        "smithy.api#documentation": "List KnowledgeBase resources"
+      }
+    },
+    "com.azure.discovery_bookshelf#PagedKnowledgeBase": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.discovery_bookshelf#PagedKnowledgeBaseValueList",
+          "traits": {
+            "smithy.api#documentation": "The KnowledgeBase items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of KnowledgeBase items"
+      }
+    },
+    "com.azure.discovery_bookshelf#PagedKnowledgeBaseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.discovery_bookshelf#KnowledgeBase"
+      },
+      "traits": {
+        "smithy.api#documentation": "The KnowledgeBase items on this page"
+      }
+    },
+    "com.azure.discovery_bookshelf#KnowledgeBasesListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.discovery_bookshelf#DiscoveryBookshelf": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatus"
+        },
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesSearch"
+        },
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexing"
+        },
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexing"
+        },
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesDelete"
+        },
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesGet"
+        },
+        {
+          "target": "com.azure.discovery_bookshelf#KnowledgeBasesList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Microsoft.Discovery.Bookshelf data plane",
+        "smithy.api#documentation": "Azure discovery data plane — discovery/data-plane/Microsoft.Discovery.Bookshelf (latest stable api-version 2026-06-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://discovery.azure.com/.default"
+      }
+    }
+  }
+}

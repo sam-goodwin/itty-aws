@@ -1,0 +1,2919 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.deviceprovisioning_data#DeviceRegistrationStateDelete": "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationState",
+      "com.azure.deviceprovisioning_data#DeviceRegistrationStateDeleteRequest": "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationStateRequest",
+      "com.azure.deviceprovisioning_data#DeviceRegistrationStateGet": "com.azure.deviceprovisioning_data#GetDeviceRegistrationState",
+      "com.azure.deviceprovisioning_data#DeviceRegistrationStateGetRequest": "com.azure.deviceprovisioning_data#GetDeviceRegistrationStateRequest",
+      "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanism": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanism",
+      "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanismRequest": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanismRequest",
+      "com.azure.deviceprovisioning_data#IndividualEnrollmentDelete": "com.azure.deviceprovisioning_data#DeleteIndividualEnrollment",
+      "com.azure.deviceprovisioning_data#IndividualEnrollmentDeleteRequest": "com.azure.deviceprovisioning_data#DeleteIndividualEnrollmentRequest",
+      "com.azure.deviceprovisioning_data#IndividualEnrollmentGet": "com.azure.deviceprovisioning_data#GetIndividualEnrollment",
+      "com.azure.deviceprovisioning_data#IndividualEnrollmentGetRequest": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentRequest",
+      "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanism": "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanism",
+      "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanismRequest": "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanismRequest",
+      "com.azure.deviceprovisioning_data#EnrollmentGroupDelete": "com.azure.deviceprovisioning_data#DeleteEnrollmentGroup",
+      "com.azure.deviceprovisioning_data#EnrollmentGroupDeleteRequest": "com.azure.deviceprovisioning_data#DeleteEnrollmentGroupRequest",
+      "com.azure.deviceprovisioning_data#EnrollmentGroupGet": "com.azure.deviceprovisioning_data#GetEnrollmentGroup",
+      "com.azure.deviceprovisioning_data#EnrollmentGroupGetRequest": "com.azure.deviceprovisioning_data#GetEnrollmentGroupRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#RegistrationOperationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{idScope}/registrations/{registrationId}/register",
+          "code": 200,
+          "host": "https://global.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Registers the devices and optionally issue operational certificates for IoT devices.\n\nRegisters the devices and optionally issue operational certificates for IoT devices."
+      }
+    },
+    "com.azure.deviceprovisioning_data#RegistrationOperationStatus": {
+      "type": "structure",
+      "members": {
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentStatus",
+          "traits": {
+            "smithy.api#documentation": "Device enrollment status."
+          }
+        },
+        "registrationState": {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationResult",
+          "traits": {
+            "smithy.api#documentation": "Device registration result."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "retry-after"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Registration operation status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationResult": {
+      "type": "structure",
+      "members": {
+        "tpm": {
+          "target": "com.azure.deviceprovisioning_data#TpmRegistrationResult",
+          "traits": {
+            "smithy.api#documentation": "TPM registration result."
+          }
+        },
+        "x509": {
+          "target": "com.azure.deviceprovisioning_data#X509RegistrationResult",
+          "traits": {
+            "smithy.api#documentation": "X509 registration result."
+          }
+        },
+        "symmetricKey": {
+          "target": "com.azure.deviceprovisioning_data#SymmetricKeyRegistrationResult",
+          "traits": {
+            "smithy.api#documentation": "Registration result returned when using SymmetricKey attestation."
+          }
+        },
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment.\nA case-insensitive string (up to 128 characters long) of alphanumeric\ncharacters plus certain special characters : . _ -. No special characters\nallowed at start or end."
+          }
+        },
+        "createdDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registration create date time (in UTC)."
+          }
+        },
+        "assignedHub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assigned Azure IoT Hub."
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device ID."
+          }
+        },
+        "status": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentStatus",
+          "traits": {
+            "smithy.api#documentation": "Enrollment status."
+          }
+        },
+        "substatus": {
+          "target": "com.azure.deviceprovisioning_data#AssignedDeviceSubstatus",
+          "traits": {
+            "smithy.api#documentation": "Substatus for 'Assigned' devices. Possible values include -\n'initialAssignment': Device has been assigned to an IoT hub for the first time,\n'deviceDataMigrated': Device has been assigned to a different IoT hub and its\ndevice data was migrated from the previously assigned IoT hub. Device data was\nremoved from the previously assigned IoT hub, 'deviceDataReset':  Device has\nbeen assigned to a different IoT hub and its device data was populated from the\ninitial state stored in the enrollment. Device data was removed from the\npreviously assigned IoT hub, 'reprovisionedToInitialAssignment': Device has\nbeen re-provisioned to a previously assigned IoT hub."
+          }
+        },
+        "errorCode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Error code."
+          }
+        },
+        "errorMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message."
+          }
+        },
+        "lastUpdatedDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last updated date time (in UTC)."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "payload": {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationResultPayloadMap",
+          "traits": {
+            "smithy.api#documentation": "Any object"
+          }
+        },
+        "issuedCertificateChain": {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationResultIssuedCertificateChainList",
+          "traits": {
+            "smithy.api#documentation": "An array containing the full certificate chain for the issued certificate.\nThe first element is the issued leaf certificate, followed by any intermediate\ncertification authorities (ICAs), and ending with the root certification authority (CA).\nEach certificate in the array is the issuer of the previous certificate.\nThis property is not included in responses for the\nRuntimeRegistration_DeviceRegistrationStatusLookup operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Device registration result."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationResultIssuedCertificateChainList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array containing the full certificate chain for the issued certificate.\nThe first element is the issued leaf certificate, followed by any intermediate\ncertification authorities (ICAs), and ending with the root certification authority (CA).\nEach certificate in the array is the issuer of the previous certificate.\nThis property is not included in responses for the\nRuntimeRegistration_DeviceRegistrationStatusLookup operation."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationResultPayloadMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Any object"
+      }
+    },
+    "com.azure.deviceprovisioning_data#AssignedDeviceSubstatus": {
+      "type": "enum",
+      "members": {
+        "INITIALASSIGNMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initialAssignment"
+          }
+        },
+        "DEVICEDATAMIGRATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deviceDataMigrated"
+          }
+        },
+        "DEVICEDATARESET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deviceDataReset"
+          }
+        },
+        "REPROVISIONEDTOINITIALASSIGNMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reprovisionedToInitialAssignment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Substatus for 'Assigned' devices. Possible values include -\n'initialAssignment': Device has been assigned to an IoT hub for the first time,\n'deviceDataMigrated': Device has been assigned to a different IoT hub and its\ndevice data was migrated from the previously assigned IoT hub. Device data was\nremoved from the previously assigned IoT hub, 'deviceDataReset':  Device has\nbeen assigned to a different IoT hub and its device data was populated from the\ninitial state stored in the enrollment. Device data was removed from the\npreviously assigned IoT hub, 'reprovisionedToInitialAssignment': Device has\nbeen re-provisioned to a previously assigned IoT hub."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentStatus": {
+      "type": "enum",
+      "members": {
+        "UNASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unassigned"
+          }
+        },
+        "ASSIGNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assigning"
+          }
+        },
+        "ASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "assigned"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enrollment status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#SymmetricKeyRegistrationResult": {
+      "type": "structure",
+      "members": {
+        "enrollmentGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enrollment group ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Registration result returned when using SymmetricKey attestation."
+      }
+    },
+    "com.azure.deviceprovisioning_data#X509RegistrationResult": {
+      "type": "structure",
+      "members": {
+        "certificateInfo": {
+          "target": "com.azure.deviceprovisioning_data#X509CertificateInfo",
+          "traits": {
+            "smithy.api#documentation": "X509 certificate info."
+          }
+        },
+        "enrollmentGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enrollment group ID."
+          }
+        },
+        "signingCertificateInfo": {
+          "target": "com.azure.deviceprovisioning_data#X509CertificateInfo",
+          "traits": {
+            "smithy.api#documentation": "X509 certificate info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "X509 registration result."
+      }
+    },
+    "com.azure.deviceprovisioning_data#X509CertificateInfo": {
+      "type": "structure",
+      "members": {
+        "subjectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate subject name.",
+            "smithy.api#required": {}
+          }
+        },
+        "sha1Thumbprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SHA-1 thumbprint of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "sha256Thumbprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SHA-256 thumbprint of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "issuerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate issuer name.",
+            "smithy.api#required": {}
+          }
+        },
+        "notBeforeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate validity start date (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "notAfterUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate expiry date (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate serial number.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Certificate version.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "X509 certificate info."
+      }
+    },
+    "com.azure.deviceprovisioning_data#TpmRegistrationResult": {
+      "type": "structure",
+      "members": {
+        "authenticationKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Encrypted authentication key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "TPM registration result."
+      }
+    },
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "idScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the DPS instance."
+          }
+        },
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The registration ID is alphanumeric, lowercase, and may contain hyphens."
+          }
+        },
+        "tpm": {
+          "target": "com.azure.deviceprovisioning_data#TpmAttestation",
+          "traits": {
+            "smithy.api#documentation": "Attestation via TPM."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Base64-encoded DER certificate signing request (CSR) in PKCS #10 format,\nexcluding PEM headers and footers. The Common Name (CN) must match the device\nregistrationId. Including this field in the\nRuntimeRegistration_DeviceRegistrationStatusLookup operation will result in\na bad request."
+          }
+        },
+        "payload": {
+          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificateRequestPayloadMap",
+          "traits": {
+            "smithy.api#documentation": "Any object"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificateRequestPayloadMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Any object"
+      }
+    },
+    "com.azure.deviceprovisioning_data#TpmAttestation": {
+      "type": "structure",
+      "members": {
+        "endorsementKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TPM endorsement key.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageRootKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TPM storage root key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attestation via TPM."
+      }
+    },
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookupRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#RegistrationOperationStatus"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{idScope}/registrations/{registrationId}/operations/{operationId}",
+          "code": 200,
+          "host": "https://global.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Gets the registration operation status.\n\nGets the registration operation status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookupRequest": {
+      "type": "structure",
+      "members": {
+        "idScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the DPS instance."
+          }
+        },
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Registration ID."
+          }
+        },
+        "operationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Operation ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{idScope}/registrations/{registrationId}",
+          "code": 200,
+          "host": "https://global.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Gets the device registration status.\n\nGets the device registration status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequest": {
+      "type": "structure",
+      "members": {
+        "idScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the DPS instance."
+          }
+        },
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Registration ID."
+          }
+        },
+        "tpm": {
+          "target": "com.azure.deviceprovisioning_data#TpmAttestation",
+          "traits": {
+            "smithy.api#documentation": "Attestation via TPM."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A Base64-encoded DER certificate signing request (CSR) in PKCS #10 format,\nexcluding PEM headers and footers. The Common Name (CN) must match the device\nregistrationId. Including this field in the\nRuntimeRegistration_DeviceRegistrationStatusLookup operation will result in\na bad request."
+          }
+        },
+        "payload": {
+          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequestPayloadMap",
+          "traits": {
+            "smithy.api#documentation": "Any object"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequestPayloadMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Any object"
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateQueryRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateQueryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/registrations/{id}/query",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Gets the registration state of devices in this enrollmentGroup.\n\nGets the registration state of devices in this enrollmentGroup."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateQueryResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateQueryResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateQueryResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationState"
+      },
+      "traits": {}
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationState": {
+      "type": "structure",
+      "members": {
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment.\nA case-insensitive string (up to 128 characters long) of alphanumeric\ncharacters plus certain special characters : . _ -. No special characters\nallowed at start or end."
+          }
+        },
+        "createdDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Registration create date time (in UTC)."
+          }
+        },
+        "assignedHub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assigned Azure IoT Hub."
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device ID."
+          }
+        },
+        "status": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentStatus",
+          "traits": {
+            "smithy.api#documentation": "Enrollment status."
+          }
+        },
+        "substatus": {
+          "target": "com.azure.deviceprovisioning_data#AssignedDeviceSubstatus",
+          "traits": {
+            "smithy.api#documentation": "Substatus for 'Assigned' devices. Possible values include -\n'initialAssignment': Device has been assigned to an IoT hub for the first time,\n'deviceDataMigrated': Device has been assigned to a different IoT hub and its\ndevice data was migrated from the previously assigned IoT hub. Device data was\nremoved from the previously assigned IoT hub, 'deviceDataReset':  Device has\nbeen assigned to a different IoT hub and its device data was populated from the\ninitial state stored in the enrollment. Device data was removed from the\npreviously assigned IoT hub, 'reprovisionedToInitialAssignment': Device has\nbeen re-provisioned to a previously assigned IoT hub."
+          }
+        },
+        "errorCode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Error code."
+          }
+        },
+        "errorMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message."
+          }
+        },
+        "lastUpdatedDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last updated date time (in UTC)."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "payload": {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStatePayloadMap",
+          "traits": {
+            "smithy.api#documentation": "Custom allocation payload returned from the webhook to the device."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Device registration state."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStatePayloadMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom allocation payload returned from the webhook to the device."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateQueryRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Enrollment group ID."
+          }
+        },
+        "xMsMaxItemCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-max-item-count",
+            "smithy.api#documentation": "pageSize"
+          }
+        },
+        "xMsContinuation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-continuation",
+            "smithy.api#documentation": "continuation token"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/registrations/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Deletes the device registration\n\nDeletes the device registration"
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Registration ID."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "The ETag of the registration status record."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateGetRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/registrations/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Gets the device registration state.\n\nGets the device registration state."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceRegistrationStateGetRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Registration ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentQueryRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentQueryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/enrollments/query",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Query the device enrollment records.\n\nQuery the device enrollment records."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentQueryResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentQueryResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentQueryResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollment"
+      },
+      "traits": {}
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollment": {
+      "type": "structure",
+      "members": {
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment.\nA case-insensitive string (up to 128 characters long) of alphanumeric\ncharacters plus certain special characters : . _ -. No special characters\nallowed at start or end.",
+            "smithy.api#required": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Desired IoT Hub device ID (optional)."
+          }
+        },
+        "namespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry namespace that contains the referenced\ncertificate authority and certificate policy."
+          }
+        },
+        "certificateAuthorityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate authority resource that owns the\nreferenced certificate policy."
+          }
+        },
+        "certificatePolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate policy resource."
+          }
+        },
+        "registrationState": {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationState",
+          "traits": {
+            "smithy.api#documentation": "Current registration status."
+          }
+        },
+        "optionalDeviceInformation": {
+          "target": "com.azure.deviceprovisioning_data#TwinCollection",
+          "traits": {
+            "smithy.api#documentation": "Optional Device Information."
+          }
+        },
+        "attestation": {
+          "target": "com.azure.deviceprovisioning_data#AttestationMechanism",
+          "traits": {
+            "smithy.api#documentation": "Attestation method used by the device.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.deviceprovisioning_data#DeviceCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Capabilities of the device."
+          }
+        },
+        "iotHubHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Iot Hub host name."
+          }
+        },
+        "initialTwin": {
+          "target": "com.azure.deviceprovisioning_data#InitialTwin",
+          "traits": {
+            "smithy.api#documentation": "Initial device twin."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "provisioningStatus": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentProvisioningStatus",
+          "traits": {
+            "smithy.api#documentation": "The provisioning status."
+          }
+        },
+        "reprovisionPolicy": {
+          "target": "com.azure.deviceprovisioning_data#ReprovisionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The behavior when a device is re-provisioned to an IoT hub."
+          }
+        },
+        "createdDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DateTime this resource was created."
+          }
+        },
+        "lastUpdatedDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DateTime this resource was last updated."
+          }
+        },
+        "allocationPolicy": {
+          "target": "com.azure.deviceprovisioning_data#AllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The allocation policy of this resource. This policy overrides the tenant level\nallocation policy for this individual enrollment or enrollment group. Possible\nvalues include 'hashed': Linked IoT hubs are equally likely to have devices\nprovisioned to them, 'geoLatency':  Devices are provisioned to an IoT hub with\nthe lowest latency to the device.If multiple linked IoT hubs would provide the\nsame lowest latency, the provisioning service hashes devices across those hubs,\n'static' : Specification of the desired IoT hub in the enrollment list takes\npriority over the service-level allocation policy, 'custom': Devices are\nprovisioned to an IoT hub based on your own custom logic. The provisioning\nservice passes information about the device to the logic, and the logic returns\nthe desired IoT hub as well as the desired initial configuration. We recommend\nusing Azure Functions to host your logic."
+          }
+        },
+        "iotHubs": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentIotHubsList",
+          "traits": {
+            "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+          }
+        },
+        "customAllocationDefinition": {
+          "target": "com.azure.deviceprovisioning_data#CustomAllocationDefinition",
+          "traits": {
+            "smithy.api#documentation": "This tells DPS which webhook to call when using custom allocation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The device enrollment record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#CustomAllocationDefinition": {
+      "type": "structure",
+      "members": {
+        "webhookUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The webhook URL used for allocation requests.",
+            "smithy.api#required": {}
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API version of the provisioning service types (such as\nIndividualEnrollment) sent in the custom allocation request. Minimum supported\nversion: \"2018-09-01-preview\".",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This tells DPS which webhook to call when using custom allocation."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentIotHubsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+      }
+    },
+    "com.azure.deviceprovisioning_data#AllocationPolicy": {
+      "type": "enum",
+      "members": {
+        "HASHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hashed"
+          }
+        },
+        "GEOLATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geoLatency"
+          }
+        },
+        "STATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "static"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The allocation policy of this resource. This policy overrides the tenant level\nallocation policy for this individual enrollment or enrollment group. Possible\nvalues include 'hashed': Linked IoT hubs are equally likely to have devices\nprovisioned to them, 'geoLatency':  Devices are provisioned to an IoT hub with\nthe lowest latency to the device.If multiple linked IoT hubs would provide the\nsame lowest latency, the provisioning service hashes devices across those hubs,\n'static' : Specification of the desired IoT hub in the enrollment list takes\npriority over the service-level allocation policy, 'custom': Devices are\nprovisioned to an IoT hub based on your own custom logic. The provisioning\nservice passes information about the device to the logic, and the logic returns\nthe desired IoT hub as well as the desired initial configuration. We recommend\nusing Azure Functions to host your logic."
+      }
+    },
+    "com.azure.deviceprovisioning_data#ReprovisionPolicy": {
+      "type": "structure",
+      "members": {
+        "updateHubAssignment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true (default), the Device Provisioning Service will evaluate the\ndevice's IoT Hub assignment and update it if necessary for any provisioning\nrequests beyond the first from a given device. If set to false, the device will\nstay assigned to its current IoT hub.",
+            "smithy.api#required": {}
+          }
+        },
+        "migrateDeviceData": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true (default), the Device Provisioning Service will migrate the\ndevice's data (twin, device capabilities, and device ID) from one IoT hub to\nanother during an IoT hub assignment update. If set to false, the Device\nProvisioning Service will reset the device's data to the initial desired\nconfiguration stored in the corresponding enrollment list.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The behavior of the service when a device is re-provisioned to an IoT hub."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentProvisioningStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#InitialTwin": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.deviceprovisioning_data#TwinCollection",
+          "traits": {
+            "smithy.api#documentation": "Twin tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceprovisioning_data#InitialTwinProperties",
+          "traits": {
+            "smithy.api#documentation": "Twin desired properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Initial device twin. Contains a subset of the properties of Twin."
+      }
+    },
+    "com.azure.deviceprovisioning_data#InitialTwinProperties": {
+      "type": "structure",
+      "members": {
+        "desired": {
+          "target": "com.azure.deviceprovisioning_data#TwinCollection",
+          "traits": {
+            "smithy.api#documentation": "Gets and sets the InitialTwin desired properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the initial properties that will be set on the device twin."
+      }
+    },
+    "com.azure.deviceprovisioning_data#TwinCollection": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Version of the TwinCollection"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of properties in the TwinCollection"
+          }
+        },
+        "metadata": {
+          "target": "com.azure.deviceprovisioning_data#Metadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata for the TwinCollection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a collection of properties within a Twin",
+        "com.distilled.openapi#additionalProperties": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#Metadata": {
+      "type": "structure",
+      "members": {
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the TwinCollection was updated"
+          }
+        },
+        "lastUpdatedVersion": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "This is null for reported properties metadata and is not null for desired\nproperties metadata."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata for the TwinCollection"
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceCapabilities": {
+      "type": "structure",
+      "members": {
+        "iotEdge": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, this device is an IoTEdge device.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Device capabilities."
+      }
+    },
+    "com.azure.deviceprovisioning_data#AttestationMechanism": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.deviceprovisioning_data#AttestationType",
+          "traits": {
+            "smithy.api#documentation": "Attestation Type.",
+            "smithy.api#required": {}
+          }
+        },
+        "tpm": {
+          "target": "com.azure.deviceprovisioning_data#TpmAttestation",
+          "traits": {
+            "smithy.api#documentation": "TPM attestation method."
+          }
+        },
+        "x509": {
+          "target": "com.azure.deviceprovisioning_data#X509Attestation",
+          "traits": {
+            "smithy.api#documentation": "X509 attestation method."
+          }
+        },
+        "symmetricKey": {
+          "target": "com.azure.deviceprovisioning_data#SymmetricKeyAttestation",
+          "traits": {
+            "smithy.api#documentation": "Symmetric Key attestation method."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attestation mechanism for individualEnrollment as well as enrollmentGroup."
+      }
+    },
+    "com.azure.deviceprovisioning_data#SymmetricKeyAttestation": {
+      "type": "structure",
+      "members": {
+        "primaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Primary symmetric key."
+          }
+        },
+        "secondaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secondary symmetric key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attestation via SymmetricKey."
+      }
+    },
+    "com.azure.deviceprovisioning_data#X509Attestation": {
+      "type": "structure",
+      "members": {
+        "clientCertificates": {
+          "target": "com.azure.deviceprovisioning_data#X509Certificates",
+          "traits": {
+            "smithy.api#documentation": "Primary and secondary certificates"
+          }
+        },
+        "signingCertificates": {
+          "target": "com.azure.deviceprovisioning_data#X509Certificates",
+          "traits": {
+            "smithy.api#documentation": "Primary and secondary certificates"
+          }
+        },
+        "caReferences": {
+          "target": "com.azure.deviceprovisioning_data#X509CAReferences",
+          "traits": {
+            "smithy.api#documentation": "Primary and secondary CA references."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attestation via X509."
+      }
+    },
+    "com.azure.deviceprovisioning_data#X509CAReferences": {
+      "type": "structure",
+      "members": {
+        "primary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Primary CA reference."
+          }
+        },
+        "secondary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secondary CA reference."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Primary and secondary CA references."
+      }
+    },
+    "com.azure.deviceprovisioning_data#X509Certificates": {
+      "type": "structure",
+      "members": {
+        "primary": {
+          "target": "com.azure.deviceprovisioning_data#X509CertificateWithInfo",
+          "traits": {
+            "smithy.api#documentation": "Certificate and Certificate info"
+          }
+        },
+        "secondary": {
+          "target": "com.azure.deviceprovisioning_data#X509CertificateWithInfo",
+          "traits": {
+            "smithy.api#documentation": "Certificate and Certificate info"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Primary and secondary certificates"
+      }
+    },
+    "com.azure.deviceprovisioning_data#X509CertificateWithInfo": {
+      "type": "structure",
+      "members": {
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PEM-formatted certificate string."
+          }
+        },
+        "info": {
+          "target": "com.azure.deviceprovisioning_data#X509CertificateInfo_2",
+          "traits": {
+            "smithy.api#documentation": "X509 certificate info."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Certificate and Certificate info"
+      }
+    },
+    "com.azure.deviceprovisioning_data#X509CertificateInfo_2": {
+      "type": "structure",
+      "members": {
+        "subjectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subject name of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "sha1Thumbprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SHA-1 thumbprint of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "sha256Thumbprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SHA-256 thumbprint of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "issuerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer name of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "notBeforeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate validity start (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "notAfterUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate validity end (UTC).",
+            "smithy.api#required": {}
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Serial number of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Version of the certificate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "X509 certificate info."
+      }
+    },
+    "com.azure.deviceprovisioning_data#AttestationType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "TPM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tpm"
+          }
+        },
+        "X509": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x509"
+          }
+        },
+        "SYMMETRICKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "symmetricKey"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attestation Type."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentQueryRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsMaxItemCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-max-item-count",
+            "smithy.api#documentation": "Page size"
+          }
+        },
+        "xMsContinuation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-continuation",
+            "smithy.api#documentation": "Continuation token"
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OData query string.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanism": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanismRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#AttestationMechanism"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/enrollments/{id}/attestationmechanism",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Get the attestation mechanism in the device enrollment record.\n\nGet the attestation mechanism in the device enrollment record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanismRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment. A\ncase-insensitive string (up to 128 characters long) of alphanumeric characters\nplus certain special characters : . _ -. No special characters allowed at start\nor end."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/enrollments/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Delete a device enrollment record.\n\nDelete a device enrollment record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment. A\ncase-insensitive string (up to 128 characters long) of alphanumeric characters\nplus certain special characters : . _ -. No special characters allowed at start\nor end."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "The ETag of the enrollment record."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/enrollments/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Create or update a device enrollment record.\n\nCreate or update a device enrollment record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment. A\ncase-insensitive string (up to 128 characters long) of alphanumeric characters\nplus certain special characters : . _ -. No special characters allowed at start\nor end."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "The ETag of the enrollment record."
+          }
+        },
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment.\nA case-insensitive string (up to 128 characters long) of alphanumeric\ncharacters plus certain special characters : . _ -. No special characters\nallowed at start or end.",
+            "smithy.api#required": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Desired IoT Hub device ID (optional)."
+          }
+        },
+        "namespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry namespace that contains the referenced\ncertificate authority and certificate policy."
+          }
+        },
+        "certificateAuthorityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate authority resource that owns the\nreferenced certificate policy."
+          }
+        },
+        "certificatePolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate policy resource."
+          }
+        },
+        "optionalDeviceInformation": {
+          "target": "com.azure.deviceprovisioning_data#TwinCollection",
+          "traits": {
+            "smithy.api#documentation": "Optional Device Information."
+          }
+        },
+        "attestation": {
+          "target": "com.azure.deviceprovisioning_data#AttestationMechanism",
+          "traits": {
+            "smithy.api#documentation": "Attestation method used by the device.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.deviceprovisioning_data#DeviceCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Capabilities of the device."
+          }
+        },
+        "iotHubHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Iot Hub host name."
+          }
+        },
+        "initialTwin": {
+          "target": "com.azure.deviceprovisioning_data#InitialTwin",
+          "traits": {
+            "smithy.api#documentation": "Initial device twin."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "provisioningStatus": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdateRequestProvisioningStatus",
+          "traits": {
+            "smithy.api#documentation": "The provisioning status."
+          }
+        },
+        "reprovisionPolicy": {
+          "target": "com.azure.deviceprovisioning_data#ReprovisionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The behavior when a device is re-provisioned to an IoT hub."
+          }
+        },
+        "allocationPolicy": {
+          "target": "com.azure.deviceprovisioning_data#AllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The allocation policy of this resource. This policy overrides the tenant level\nallocation policy for this individual enrollment or enrollment group. Possible\nvalues include 'hashed': Linked IoT hubs are equally likely to have devices\nprovisioned to them, 'geoLatency':  Devices are provisioned to an IoT hub with\nthe lowest latency to the device.If multiple linked IoT hubs would provide the\nsame lowest latency, the provisioning service hashes devices across those hubs,\n'static' : Specification of the desired IoT hub in the enrollment list takes\npriority over the service-level allocation policy, 'custom': Devices are\nprovisioned to an IoT hub based on your own custom logic. The provisioning\nservice passes information about the device to the logic, and the logic returns\nthe desired IoT hub as well as the desired initial configuration. We recommend\nusing Azure Functions to host your logic."
+          }
+        },
+        "iotHubs": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdateRequestIotHubsList",
+          "traits": {
+            "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+          }
+        },
+        "customAllocationDefinition": {
+          "target": "com.azure.deviceprovisioning_data#CustomAllocationDefinition",
+          "traits": {
+            "smithy.api#documentation": "This tells DPS which webhook to call when using custom allocation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdateRequestIotHubsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdateRequestProvisioningStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGetRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/enrollments/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Get a device enrollment record.\n\nGet a device enrollment record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentGetRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment. A\ncase-insensitive string (up to 128 characters long) of alphanumeric characters\nplus certain special characters : . _ -. No special characters allowed at start\nor end."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentRunBulkOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentRunBulkOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#BulkEnrollmentOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/enrollments",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Bulk device enrollment operation with maximum of 10 enrollments.\n\nBulk device enrollment operation with maximum of 10 enrollments."
+      }
+    },
+    "com.azure.deviceprovisioning_data#BulkEnrollmentOperationResult": {
+      "type": "structure",
+      "members": {
+        "errors": {
+          "target": "com.azure.deviceprovisioning_data#BulkEnrollmentOperationResultErrorsList",
+          "traits": {
+            "smithy.api#documentation": "Registration errors"
+          }
+        },
+        "isSuccessful": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the operation was successful in its entirety.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Results of a bulk enrollment operation"
+      }
+    },
+    "com.azure.deviceprovisioning_data#BulkEnrollmentOperationResultErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioning_data#BulkEnrollmentOperationError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Registration errors"
+      }
+    },
+    "com.azure.deviceprovisioning_data#BulkEnrollmentOperationError": {
+      "type": "structure",
+      "members": {
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment.\nA case-insensitive string (up to 128 characters long) of alphanumeric\ncharacters plus certain special characters : . _ -. No special characters\nallowed at start or end.",
+            "smithy.api#required": {}
+          }
+        },
+        "errorCode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Error code",
+            "smithy.api#required": {}
+          }
+        },
+        "errorStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error status.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bulk enrollment operation error"
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentRunBulkOperationRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "enrollments": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentRunBulkOperationRequestEnrollmentsList",
+          "traits": {
+            "smithy.api#documentation": "Enrollment items",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.azure.deviceprovisioning_data#BulkEnrollmentMode",
+          "traits": {
+            "smithy.api#documentation": "Operation mode.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#BulkEnrollmentMode": {
+      "type": "enum",
+      "members": {
+        "CREATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "create"
+          }
+        },
+        "UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "update"
+          }
+        },
+        "UPDATEIFMATCHETAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "updateIfMatchETag"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bulk enrollment operation mode."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentRunBulkOperationRequestEnrollmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Enrollment items"
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentInput": {
+      "type": "structure",
+      "members": {
+        "registrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This id is used to uniquely identify a device registration of an enrollment.\nA case-insensitive string (up to 128 characters long) of alphanumeric\ncharacters plus certain special characters : . _ -. No special characters\nallowed at start or end.",
+            "smithy.api#required": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Desired IoT Hub device ID (optional)."
+          }
+        },
+        "namespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry namespace that contains the referenced\ncertificate authority and certificate policy."
+          }
+        },
+        "certificateAuthorityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate authority resource that owns the\nreferenced certificate policy."
+          }
+        },
+        "certificatePolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate policy resource."
+          }
+        },
+        "optionalDeviceInformation": {
+          "target": "com.azure.deviceprovisioning_data#TwinCollection",
+          "traits": {
+            "smithy.api#documentation": "Optional Device Information."
+          }
+        },
+        "attestation": {
+          "target": "com.azure.deviceprovisioning_data#AttestationMechanism",
+          "traits": {
+            "smithy.api#documentation": "Attestation method used by the device.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.deviceprovisioning_data#DeviceCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Capabilities of the device."
+          }
+        },
+        "iotHubHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Iot Hub host name."
+          }
+        },
+        "initialTwin": {
+          "target": "com.azure.deviceprovisioning_data#InitialTwin",
+          "traits": {
+            "smithy.api#documentation": "Initial device twin."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "provisioningStatus": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentInputProvisioningStatus",
+          "traits": {
+            "smithy.api#documentation": "The provisioning status."
+          }
+        },
+        "reprovisionPolicy": {
+          "target": "com.azure.deviceprovisioning_data#ReprovisionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The behavior when a device is re-provisioned to an IoT hub."
+          }
+        },
+        "allocationPolicy": {
+          "target": "com.azure.deviceprovisioning_data#AllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The allocation policy of this resource. This policy overrides the tenant level\nallocation policy for this individual enrollment or enrollment group. Possible\nvalues include 'hashed': Linked IoT hubs are equally likely to have devices\nprovisioned to them, 'geoLatency':  Devices are provisioned to an IoT hub with\nthe lowest latency to the device.If multiple linked IoT hubs would provide the\nsame lowest latency, the provisioning service hashes devices across those hubs,\n'static' : Specification of the desired IoT hub in the enrollment list takes\npriority over the service-level allocation policy, 'custom': Devices are\nprovisioned to an IoT hub based on your own custom logic. The provisioning\nservice passes information about the device to the logic, and the logic returns\nthe desired IoT hub as well as the desired initial configuration. We recommend\nusing Azure Functions to host your logic."
+          }
+        },
+        "iotHubs": {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentInputIotHubsList",
+          "traits": {
+            "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+          }
+        },
+        "customAllocationDefinition": {
+          "target": "com.azure.deviceprovisioning_data#CustomAllocationDefinition",
+          "traits": {
+            "smithy.api#documentation": "This tells DPS which webhook to call when using custom allocation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The device enrollment record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentInputIotHubsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+      }
+    },
+    "com.azure.deviceprovisioning_data#IndividualEnrollmentInputProvisioningStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupQueryRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupQueryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/enrollmentGroups/query",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Query the device enrollment groups.\n\nQuery the device enrollment groups."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupQueryResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupQueryResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupQueryResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroup"
+      },
+      "traits": {}
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroup": {
+      "type": "structure",
+      "members": {
+        "enrollmentGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enrollment Group ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "attestation": {
+          "target": "com.azure.deviceprovisioning_data#AttestationMechanism",
+          "traits": {
+            "smithy.api#documentation": "Attestation method used by the device.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.deviceprovisioning_data#DeviceCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Capabilities of the device."
+          }
+        },
+        "iotHubHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Iot Hub host name."
+          }
+        },
+        "namespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry namespace that contains the referenced\ncertificate authority and certificate policy."
+          }
+        },
+        "certificateAuthorityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate authority resource that owns the\nreferenced certificate policy."
+          }
+        },
+        "certificatePolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate policy resource."
+          }
+        },
+        "initialTwin": {
+          "target": "com.azure.deviceprovisioning_data#InitialTwin",
+          "traits": {
+            "smithy.api#documentation": "Initial device twin."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "provisioningStatus": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupProvisioningStatus",
+          "traits": {
+            "smithy.api#documentation": "The provisioning status."
+          }
+        },
+        "reprovisionPolicy": {
+          "target": "com.azure.deviceprovisioning_data#ReprovisionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The behavior when a device is re-provisioned to an IoT hub."
+          }
+        },
+        "createdDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DateTime this resource was created."
+          }
+        },
+        "lastUpdatedDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DateTime this resource was last updated."
+          }
+        },
+        "allocationPolicy": {
+          "target": "com.azure.deviceprovisioning_data#AllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The allocation policy of this resource. This policy overrides the tenant level\nallocation policy for this individual enrollment or enrollment group. Possible\nvalues include 'hashed': Linked IoT hubs are equally likely to have devices\nprovisioned to them, 'geoLatency':  Devices are provisioned to an IoT hub with\nthe lowest latency to the device.If multiple linked IoT hubs would provide the\nsame lowest latency, the provisioning service hashes devices across those hubs,\n'static' : Specification of the desired IoT hub in the enrollment list takes\npriority over the service-level allocation policy, 'custom': Devices are\nprovisioned to an IoT hub based on your own custom logic. The provisioning\nservice passes information about the device to the logic, and the logic returns\nthe desired IoT hub as well as the desired initial configuration. We recommend\nusing Azure Functions to host your logic."
+          }
+        },
+        "iotHubs": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupIotHubsList",
+          "traits": {
+            "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+          }
+        },
+        "customAllocationDefinition": {
+          "target": "com.azure.deviceprovisioning_data#CustomAllocationDefinition",
+          "traits": {
+            "smithy.api#documentation": "This tells DPS which webhook to call when using custom allocation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enrollment group record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupIotHubsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupProvisioningStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupQueryRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsMaxItemCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-max-item-count",
+            "smithy.api#documentation": "Page size"
+          }
+        },
+        "xMsContinuation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-continuation",
+            "smithy.api#documentation": "Continuation token"
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OData query string.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanism": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanismRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#AttestationMechanism"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/enrollmentGroups/{id}/attestationmechanism",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Get the attestation mechanism in the device enrollment group record.\n\nGet the attestation mechanism in the device enrollment group record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanismRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Enrollment group ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/enrollmentGroups/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Delete a device enrollment group.\n\nDelete a device enrollment group."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Enrollment group ID."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "The ETag of the enrollment group record."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroup"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/enrollmentGroups/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Create or update a device enrollment group.\n\nCreate or update a device enrollment group."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Enrollment group ID."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "The ETag of the enrollment record."
+          }
+        },
+        "enrollmentGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enrollment Group ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "attestation": {
+          "target": "com.azure.deviceprovisioning_data#AttestationMechanism",
+          "traits": {
+            "smithy.api#documentation": "Attestation method used by the device.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.deviceprovisioning_data#DeviceCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Capabilities of the device."
+          }
+        },
+        "iotHubHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Iot Hub host name."
+          }
+        },
+        "namespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry namespace that contains the referenced\ncertificate authority and certificate policy."
+          }
+        },
+        "certificateAuthorityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate authority resource that owns the\nreferenced certificate policy."
+          }
+        },
+        "certificatePolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate policy resource."
+          }
+        },
+        "initialTwin": {
+          "target": "com.azure.deviceprovisioning_data#InitialTwin",
+          "traits": {
+            "smithy.api#documentation": "Initial device twin."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "provisioningStatus": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdateRequestProvisioningStatus",
+          "traits": {
+            "smithy.api#documentation": "The provisioning status."
+          }
+        },
+        "reprovisionPolicy": {
+          "target": "com.azure.deviceprovisioning_data#ReprovisionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The behavior when a device is re-provisioned to an IoT hub."
+          }
+        },
+        "allocationPolicy": {
+          "target": "com.azure.deviceprovisioning_data#AllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The allocation policy of this resource. This policy overrides the tenant level\nallocation policy for this individual enrollment or enrollment group. Possible\nvalues include 'hashed': Linked IoT hubs are equally likely to have devices\nprovisioned to them, 'geoLatency':  Devices are provisioned to an IoT hub with\nthe lowest latency to the device.If multiple linked IoT hubs would provide the\nsame lowest latency, the provisioning service hashes devices across those hubs,\n'static' : Specification of the desired IoT hub in the enrollment list takes\npriority over the service-level allocation policy, 'custom': Devices are\nprovisioned to an IoT hub based on your own custom logic. The provisioning\nservice passes information about the device to the logic, and the logic returns\nthe desired IoT hub as well as the desired initial configuration. We recommend\nusing Azure Functions to host your logic."
+          }
+        },
+        "iotHubs": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdateRequestIotHubsList",
+          "traits": {
+            "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+          }
+        },
+        "customAllocationDefinition": {
+          "target": "com.azure.deviceprovisioning_data#CustomAllocationDefinition",
+          "traits": {
+            "smithy.api#documentation": "This tells DPS which webhook to call when using custom allocation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdateRequestIotHubsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdateRequestProvisioningStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGetRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroup"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/enrollmentGroups/{id}",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Get a device enrollment group.\n\nGet a device enrollment group."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupGetRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Enrollment group ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupRunBulkOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupRunBulkOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.deviceprovisioning_data#BulkEnrollmentGroupOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/enrollmentGroups",
+          "code": 200,
+          "host": "https://{dpsName}.azure-devices-provisioning.net",
+          "apiVersion": "2026-11-01"
+        },
+        "smithy.api#documentation": "Bulk device enrollment group operation with maximum of 10 groups.\n\nBulk device enrollment group operation with maximum of 10 groups."
+      }
+    },
+    "com.azure.deviceprovisioning_data#BulkEnrollmentGroupOperationResult": {
+      "type": "structure",
+      "members": {
+        "errors": {
+          "target": "com.azure.deviceprovisioning_data#BulkEnrollmentGroupOperationResultErrorsList",
+          "traits": {
+            "smithy.api#documentation": "Registration errors"
+          }
+        },
+        "isSuccessful": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the operation was successful in its entirety.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Results of a bulk enrollment group operation."
+      }
+    },
+    "com.azure.deviceprovisioning_data#BulkEnrollmentGroupOperationResultErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioning_data#BulkEnrollmentGroupOperationError"
+      },
+      "traits": {
+        "smithy.api#documentation": "Registration errors"
+      }
+    },
+    "com.azure.deviceprovisioning_data#BulkEnrollmentGroupOperationError": {
+      "type": "structure",
+      "members": {
+        "enrollmentGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enrollment group id.",
+            "smithy.api#required": {}
+          }
+        },
+        "errorCode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Error code",
+            "smithy.api#required": {}
+          }
+        },
+        "errorStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error status.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bulk enrollment operation error."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupRunBulkOperationRequest": {
+      "type": "structure",
+      "members": {
+        "dpsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The DPS instance hostname.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "enrollmentGroups": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupRunBulkOperationRequestEnrollmentGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Enrollment items",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.azure.deviceprovisioning_data#BulkEnrollmentMode",
+          "traits": {
+            "smithy.api#documentation": "Operation mode.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupRunBulkOperationRequestEnrollmentGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Enrollment items"
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupInput": {
+      "type": "structure",
+      "members": {
+        "enrollmentGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enrollment Group ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "attestation": {
+          "target": "com.azure.deviceprovisioning_data#AttestationMechanism",
+          "traits": {
+            "smithy.api#documentation": "Attestation method used by the device.",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.deviceprovisioning_data#DeviceCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Capabilities of the device."
+          }
+        },
+        "iotHubHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Iot Hub host name."
+          }
+        },
+        "namespaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry namespace that contains the referenced\ncertificate authority and certificate policy."
+          }
+        },
+        "certificateAuthorityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate authority resource that owns the\nreferenced certificate policy."
+          }
+        },
+        "certificatePolicyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Azure Device Registry certificate policy resource."
+          }
+        },
+        "initialTwin": {
+          "target": "com.azure.deviceprovisioning_data#InitialTwin",
+          "traits": {
+            "smithy.api#documentation": "Initial device twin."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag associated with the resource."
+          }
+        },
+        "provisioningStatus": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupInputProvisioningStatus",
+          "traits": {
+            "smithy.api#documentation": "The provisioning status."
+          }
+        },
+        "reprovisionPolicy": {
+          "target": "com.azure.deviceprovisioning_data#ReprovisionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The behavior when a device is re-provisioned to an IoT hub."
+          }
+        },
+        "allocationPolicy": {
+          "target": "com.azure.deviceprovisioning_data#AllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "The allocation policy of this resource. This policy overrides the tenant level\nallocation policy for this individual enrollment or enrollment group. Possible\nvalues include 'hashed': Linked IoT hubs are equally likely to have devices\nprovisioned to them, 'geoLatency':  Devices are provisioned to an IoT hub with\nthe lowest latency to the device.If multiple linked IoT hubs would provide the\nsame lowest latency, the provisioning service hashes devices across those hubs,\n'static' : Specification of the desired IoT hub in the enrollment list takes\npriority over the service-level allocation policy, 'custom': Devices are\nprovisioned to an IoT hub based on your own custom logic. The provisioning\nservice passes information about the device to the logic, and the logic returns\nthe desired IoT hub as well as the desired initial configuration. We recommend\nusing Azure Functions to host your logic."
+          }
+        },
+        "iotHubs": {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupInputIotHubsList",
+          "traits": {
+            "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+          }
+        },
+        "customAllocationDefinition": {
+          "target": "com.azure.deviceprovisioning_data#CustomAllocationDefinition",
+          "traits": {
+            "smithy.api#documentation": "This tells DPS which webhook to call when using custom allocation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enrollment group record."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupInputIotHubsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of IoT Hub hostnames the device(s) in this resource can be allocated\nto. Must be a subset of tenant level list of IoT hubs."
+      }
+    },
+    "com.azure.deviceprovisioning_data#EnrollmentGroupInputProvisioningStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The provisioning status."
+      }
+    },
+    "com.azure.deviceprovisioning_data#DeviceprovisioningData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificate"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookup"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookup"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateQuery"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateDelete"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateGet"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentQuery"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanism"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentDelete"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGet"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentRunBulkOperation"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupQuery"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanism"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupDelete"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGet"
+        },
+        {
+          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupRunBulkOperation"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure DeviceProvisioningServices data plane",
+        "smithy.api#documentation": "Azure deviceprovisioningservices data plane — deviceprovisioningservices/data-plane/DeviceProvisioningServices (latest stable api-version 2026-11-01).",
+        "com.azure.protocols#host": {
+          "template": "https://global.azure-devices-provisioning.net",
+          "parameters": []
+        },
+        "com.azure.protocols#audience": "https://azure-devices-provisioning.net/.default"
+      }
+    }
+  }
+}

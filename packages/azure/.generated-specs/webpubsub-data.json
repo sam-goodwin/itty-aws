@@ -1,0 +1,1914 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.webpubsub_data#RemoveUserFromGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#RemoveUserFromGroupRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/hubs/{hub}/users/{userId}/groups/{group}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Remove a user from the target group.\n\nRemove a user from the target group."
+      }
+    },
+    "com.azure.webpubsub_data#RemoveUserFromGroupRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target user Id."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, which length should be greater than 0 and less than 1025."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#AddUserToGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#AddUserToGroupRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/api/hubs/{hub}/users/{userId}/groups/{group}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Add a user to the target group.\n\nAdd a user to the target group."
+      }
+    },
+    "com.azure.webpubsub_data#AddUserToGroupRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target user Id."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, which length should be greater than 0 and less than 1025."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#RemoveUserFromAllGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#RemoveUserFromAllGroupsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/hubs/{hub}/users/{userId}/groups",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Remove a user from all groups.\n\nRemove a user from all groups."
+      }
+    },
+    "com.azure.webpubsub_data#RemoveUserFromAllGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target user Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#SendToUser": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#SendToUserRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/users/{userId}/:send",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Send content inside request body to the specific user.\n\nSend content inside request body to the specific user."
+      }
+    },
+    "com.azure.webpubsub_data#SendToUserRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user Id."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Following OData filter syntax to filter out the subscribers receiving the messages."
+          }
+        },
+        "messageTtlSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "messageTtlSeconds",
+            "smithy.api#documentation": "The time-to-live (TTL) value in seconds for messages sent to the service. 0 is the default value, which means the message never expires. 300 is the maximum value. If this parameter is non-zero, messages that are not consumed by the client within the specified TTL will be dropped by the service. This parameter can help when the client's bandwidth is limited."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#CloseUserConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#CloseUserConnectionsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/users/{userId}/:closeConnections",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Close connections for the specific user.\n\nClose connections for the specific user."
+      }
+    },
+    "com.azure.webpubsub_data#CloseUserConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The user Id."
+          }
+        },
+        "excluded": {
+          "target": "com.azure.webpubsub_data#CloseUserConnectionsRequestExcludedList",
+          "traits": {
+            "smithy.api#httpQuery": "excluded",
+            "smithy.api#documentation": "Exclude these connectionIds when closing the connections for the user."
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "reason",
+            "smithy.api#documentation": "The reason closing the client connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#CloseUserConnectionsRequestExcludedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#UserExists": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#UserExistsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/api/hubs/{hub}/users/{userId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Check if there are any client connections connected for the given user.\n\nCheck if there are any client connections connected for the given user."
+      }
+    },
+    "com.azure.webpubsub_data#UserExistsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target user Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#CheckPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#CheckPermissionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/api/hubs/{hub}/permissions/{permission}/connections/{connectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Check if a connection has permission to the specified action.\n\nCheck if a connection has permission to the specified action."
+      }
+    },
+    "com.azure.webpubsub_data#CheckPermissionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "permission": {
+          "target": "com.azure.webpubsub_data#CheckPermissionRequestPermission",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The permission: current supported actions are joinLeaveGroup and sendToGroup."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target connection Id."
+          }
+        },
+        "targetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "targetName",
+            "smithy.api#documentation": "The meaning of the target depends on the specific permission. For joinLeaveGroup and sendToGroup, targetName is a required parameter standing for the group name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#CheckPermissionRequestPermission": {
+      "type": "enum",
+      "members": {
+        "SENDTOGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sendToGroup"
+          }
+        },
+        "JOINLEAVEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "joinLeaveGroup"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#RevokePermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#RevokePermissionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/hubs/{hub}/permissions/{permission}/connections/{connectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Revoke permission for the connection.\n\nRevoke permission for the connection."
+      }
+    },
+    "com.azure.webpubsub_data#RevokePermissionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "permission": {
+          "target": "com.azure.webpubsub_data#RevokePermissionRequestPermission",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The permission: current supported actions are joinLeaveGroup and sendToGroup."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target connection Id."
+          }
+        },
+        "targetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "targetName",
+            "smithy.api#documentation": "The meaning of the target depends on the specific permission. For joinLeaveGroup and sendToGroup, targetName is a required parameter standing for the group name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#RevokePermissionRequestPermission": {
+      "type": "enum",
+      "members": {
+        "SENDTOGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sendToGroup"
+          }
+        },
+        "JOINLEAVEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "joinLeaveGroup"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#GrantPermission": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#GrantPermissionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/api/hubs/{hub}/permissions/{permission}/connections/{connectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Grant permission to the connection.\n\nGrant permission to the connection."
+      }
+    },
+    "com.azure.webpubsub_data#GrantPermissionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "permission": {
+          "target": "com.azure.webpubsub_data#GrantPermissionRequestPermission",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The permission: current supported actions are joinLeaveGroup and sendToGroup."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target connection Id."
+          }
+        },
+        "targetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "targetName",
+            "smithy.api#documentation": "The meaning of the target depends on the specific permission. For joinLeaveGroup and sendToGroup, targetName is a required parameter standing for the group name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#GrantPermissionRequestPermission": {
+      "type": "enum",
+      "members": {
+        "SENDTOGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sendToGroup"
+          }
+        },
+        "JOINLEAVEGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "joinLeaveGroup"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#RemoveConnectionFromGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#RemoveConnectionFromGroupRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/hubs/{hub}/groups/{group}/connections/{connectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Remove a connection from the target group.\n\nRemove a connection from the target group."
+      }
+    },
+    "com.azure.webpubsub_data#RemoveConnectionFromGroupRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, which length should be greater than 0 and less than 1025."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target connection Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#AddConnectionToGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#AddConnectionToGroupRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/api/hubs/{hub}/groups/{group}/connections/{connectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Add a connection to the target group.\n\nAdd a connection to the target group."
+      }
+    },
+    "com.azure.webpubsub_data#AddConnectionToGroupRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, which length should be greater than 0 and less than 1025."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target connection Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#ListConnectionsInGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#ListConnectionsInGroupRequest"
+      },
+      "output": {
+        "target": "com.azure.webpubsub_data#GroupMemberPagedValues"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/hubs/{hub}/groups/{group}/connections",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "List connections in a group.\n\nList connections in a group."
+      }
+    },
+    "com.azure.webpubsub_data#GroupMemberPagedValues": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.webpubsub_data#GroupMemberPagedValuesValueList",
+          "traits": {
+            "smithy.api#documentation": "The group members",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of results"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged response for group members"
+      }
+    },
+    "com.azure.webpubsub_data#GroupMemberPagedValuesValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.webpubsub_data#GroupMember"
+      },
+      "traits": {
+        "smithy.api#documentation": "The group members"
+      }
+    },
+    "com.azure.webpubsub_data#GroupMember": {
+      "type": "structure",
+      "members": {
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connection Id",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Group member"
+      }
+    },
+    "com.azure.webpubsub_data#ListConnectionsInGroupRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, whose length should be greater than 0 and less than 1025."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of connections to include in a single response. It should be between 1 and 200."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The maximum number of connections to return. If the value is not set, then all the connections in a group are returned."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "A token that allows the client to retrieve the next page of results. This parameter is provided by the service in the response of a previous request when there are additional results to be fetched. Clients should include the continuationToken in the next request to receive the subsequent page of data. If this parameter is omitted, the server will return the first page of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#SendToGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#SendToGroupRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/groups/{group}/:send",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Send content inside request body to a group of connections.\n\nSend content inside request body to a group of connections."
+      }
+    },
+    "com.azure.webpubsub_data#SendToGroupRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, which length should be greater than 0 and less than 1025."
+          }
+        },
+        "excluded": {
+          "target": "com.azure.webpubsub_data#SendToGroupRequestExcludedList",
+          "traits": {
+            "smithy.api#httpQuery": "excluded",
+            "smithy.api#documentation": "Excluded connection Ids"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Following OData filter syntax to filter out the subscribers receiving the messages."
+          }
+        },
+        "messageTtlSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "messageTtlSeconds",
+            "smithy.api#documentation": "The time-to-live (TTL) value in seconds for messages sent to the service. 0 is the default value, which means the message never expires. 300 is the maximum value. If this parameter is non-zero, messages that are not consumed by the client within the specified TTL will be dropped by the service. This parameter can help when the client's bandwidth is limited."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#SendToGroupRequestExcludedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#CloseGroupConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#CloseGroupConnectionsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/groups/{group}/:closeConnections",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Close connections in the specific group.\n\nClose connections in the specific group."
+      }
+    },
+    "com.azure.webpubsub_data#CloseGroupConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, which length should be greater than 0 and less than 1025."
+          }
+        },
+        "excluded": {
+          "target": "com.azure.webpubsub_data#CloseGroupConnectionsRequestExcludedList",
+          "traits": {
+            "smithy.api#httpQuery": "excluded",
+            "smithy.api#documentation": "Exclude these connectionIds when closing the connections in the group."
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "reason",
+            "smithy.api#documentation": "The reason closing the client connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#CloseGroupConnectionsRequestExcludedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#GroupExists": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#GroupExistsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/api/hubs/{hub}/groups/{group}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Check if there are any client connections inside the given group\n\nCheck if there are any client connections inside the given group"
+      }
+    },
+    "com.azure.webpubsub_data#GroupExistsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target group name, which length should be greater than 0 and less than 1025."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#RemoveConnectionFromAllGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#RemoveConnectionFromAllGroupsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/hubs/{hub}/connections/{connectionId}/groups",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Remove a connection from all groups.\n\nRemove a connection from all groups."
+      }
+    },
+    "com.azure.webpubsub_data#RemoveConnectionFromAllGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target connection Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#SendToConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#SendToConnectionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/connections/{connectionId}/:send",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Send content inside request body to the specific connection.\n\nSend content inside request body to the specific connection."
+      }
+    },
+    "com.azure.webpubsub_data#SendToConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The connection Id."
+          }
+        },
+        "messageTtlSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "messageTtlSeconds",
+            "smithy.api#documentation": "The time-to-live (TTL) value in seconds for messages sent to the service. 0 is the default value, which means the message never expires. 300 is the maximum value. If this parameter is non-zero, messages that are not consumed by the client within the specified TTL will be dropped by the service. This parameter can help when the client's bandwidth is limited."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#ConnectionExists": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#ConnectionExistsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/api/hubs/{hub}/connections/{connectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Check if the connection with the given connectionId exists.\n\nCheck if the connection with the given connectionId exists."
+      }
+    },
+    "com.azure.webpubsub_data#ConnectionExistsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The connection Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#CloseConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#CloseConnectionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/hubs/{hub}/connections/{connectionId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Close the client connection.\n\nClose the client connection."
+      }
+    },
+    "com.azure.webpubsub_data#CloseConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "connectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target connection Id."
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "reason",
+            "smithy.api#documentation": "The reason closing the client connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#SendToAll": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#SendToAllRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/:send",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Broadcast content inside request body to all the connected client connections.\n\nBroadcast content inside request body to all the connected client connections."
+      }
+    },
+    "com.azure.webpubsub_data#SendToAllRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "excluded": {
+          "target": "com.azure.webpubsub_data#SendToAllRequestExcludedList",
+          "traits": {
+            "smithy.api#httpQuery": "excluded",
+            "smithy.api#documentation": "Excluded connection Ids."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "filter",
+            "smithy.api#documentation": "Following OData filter syntax to filter out the subscribers receiving the messages."
+          }
+        },
+        "messageTtlSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "messageTtlSeconds",
+            "smithy.api#documentation": "The time-to-live (TTL) value in seconds for messages sent to the service. 0 is the default value, which means the message never expires. 300 is the maximum value. If this parameter is non-zero, messages that are not consumed by the client within the specified TTL will be dropped by the service. This parameter can help when the client's bandwidth is limited."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#SendToAllRequestExcludedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#RemoveConnectionsFromGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#RemoveConnectionsFromGroupsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/:removeFromGroups",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Remove filtered connections from multiple groups.\n\nRemove filtered connections from multiple groups."
+      }
+    },
+    "com.azure.webpubsub_data#RemoveConnectionsFromGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "groups": {
+          "target": "com.azure.webpubsub_data#RemoveConnectionsFromGroupsRequestGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Target groups",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Following OData filter syntax to filter out the subscribers receiving the messages"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#RemoveConnectionsFromGroupsRequestGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Target groups"
+      }
+    },
+    "com.azure.webpubsub_data#GenerateClientToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#GenerateClientTokenRequest"
+      },
+      "output": {
+        "target": "com.azure.webpubsub_data#ClientTokenResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/:generateToken",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Generate token for the client to connect Azure Web PubSub service.\n\nGenerate token for the client to connect Azure Web PubSub service."
+      }
+    },
+    "com.azure.webpubsub_data#ClientTokenResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Access token for the client to connect Azure Web PubSub service",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response object containing the client access token"
+      }
+    },
+    "com.azure.webpubsub_data#GenerateClientTokenRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "userId",
+            "smithy.api#documentation": "User Id."
+          }
+        },
+        "role": {
+          "target": "com.azure.webpubsub_data#GenerateClientTokenRequestRoleList",
+          "traits": {
+            "smithy.api#httpQuery": "role",
+            "smithy.api#documentation": "Roles that the connection with the generated token will have."
+          }
+        },
+        "minutesToExpire": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "minutesToExpire",
+            "smithy.api#documentation": "The expire time of the generated token."
+          }
+        },
+        "group": {
+          "target": "com.azure.webpubsub_data#GenerateClientTokenRequestGroupList",
+          "traits": {
+            "smithy.api#httpQuery": "group",
+            "smithy.api#documentation": "Groups that the connection will join when it connects."
+          }
+        },
+        "clientType": {
+          "target": "com.azure.webpubsub_data#GenerateClientTokenRequestClientType",
+          "traits": {
+            "smithy.api#httpQuery": "clientType",
+            "smithy.api#documentation": "The type of client. Case-insensitive. If not set, it's \"Default\". For Web PubSub for Socket.IO, only the default value is supported. For Web PubSub, the valid values are 'Default' and 'MQTT'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#GenerateClientTokenRequestClientType": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "MQTT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MQTT"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#GenerateClientTokenRequestGroupList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#GenerateClientTokenRequestRoleList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#CloseAllConnections": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#CloseAllConnectionsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/:closeConnections",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Close the connections in the hub.\n\nClose the connections in the hub."
+      }
+    },
+    "com.azure.webpubsub_data#CloseAllConnectionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "excluded": {
+          "target": "com.azure.webpubsub_data#CloseAllConnectionsRequestExcludedList",
+          "traits": {
+            "smithy.api#httpQuery": "excluded",
+            "smithy.api#documentation": "Exclude these connectionIds when closing the connections in the hub."
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "reason",
+            "smithy.api#documentation": "The reason closing the client connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#CloseAllConnectionsRequestExcludedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.webpubsub_data#AddConnectionsToGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#AddConnectionsToGroupsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/hubs/{hub}/:addToGroups",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Add filtered connections to multiple groups.\n\nAdd filtered connections to multiple groups."
+      }
+    },
+    "com.azure.webpubsub_data#AddConnectionsToGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "hub": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Target hub name, which should start with alphabetic characters and only contain alpha-numeric characters or underscore."
+          }
+        },
+        "groups": {
+          "target": "com.azure.webpubsub_data#AddConnectionsToGroupsRequestGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Target groups",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Following OData filter syntax to filter out the subscribers receiving the messages"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#AddConnectionsToGroupsRequestGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Target groups"
+      }
+    },
+    "com.azure.webpubsub_data#GetServiceStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.webpubsub_data#GetServiceStatusRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "HEAD",
+          "uri": "/api/health",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Get service health status.\n\nGet service health status."
+      }
+    },
+    "com.azure.webpubsub_data#GetServiceStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "HTTP or HTTPS endpoint for the Web PubSub service instance",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.webpubsub_data#WebpubsubData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.webpubsub_data#RemoveUserFromGroup"
+        },
+        {
+          "target": "com.azure.webpubsub_data#AddUserToGroup"
+        },
+        {
+          "target": "com.azure.webpubsub_data#RemoveUserFromAllGroups"
+        },
+        {
+          "target": "com.azure.webpubsub_data#SendToUser"
+        },
+        {
+          "target": "com.azure.webpubsub_data#CloseUserConnections"
+        },
+        {
+          "target": "com.azure.webpubsub_data#UserExists"
+        },
+        {
+          "target": "com.azure.webpubsub_data#CheckPermission"
+        },
+        {
+          "target": "com.azure.webpubsub_data#RevokePermission"
+        },
+        {
+          "target": "com.azure.webpubsub_data#GrantPermission"
+        },
+        {
+          "target": "com.azure.webpubsub_data#RemoveConnectionFromGroup"
+        },
+        {
+          "target": "com.azure.webpubsub_data#AddConnectionToGroup"
+        },
+        {
+          "target": "com.azure.webpubsub_data#ListConnectionsInGroup"
+        },
+        {
+          "target": "com.azure.webpubsub_data#SendToGroup"
+        },
+        {
+          "target": "com.azure.webpubsub_data#CloseGroupConnections"
+        },
+        {
+          "target": "com.azure.webpubsub_data#GroupExists"
+        },
+        {
+          "target": "com.azure.webpubsub_data#RemoveConnectionFromAllGroups"
+        },
+        {
+          "target": "com.azure.webpubsub_data#SendToConnection"
+        },
+        {
+          "target": "com.azure.webpubsub_data#ConnectionExists"
+        },
+        {
+          "target": "com.azure.webpubsub_data#CloseConnection"
+        },
+        {
+          "target": "com.azure.webpubsub_data#SendToAll"
+        },
+        {
+          "target": "com.azure.webpubsub_data#RemoveConnectionsFromGroups"
+        },
+        {
+          "target": "com.azure.webpubsub_data#GenerateClientToken"
+        },
+        {
+          "target": "com.azure.webpubsub_data#CloseAllConnections"
+        },
+        {
+          "target": "com.azure.webpubsub_data#AddConnectionsToGroups"
+        },
+        {
+          "target": "com.azure.webpubsub_data#GetServiceStatus"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure WebPubSub data plane",
+        "smithy.api#documentation": "Azure webpubsub data plane — webpubsub/data-plane/WebPubSub (latest stable api-version 2024-12-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://webpubsub.azure.com/.default"
+      }
+    }
+  }
+}

@@ -92,7 +92,7 @@ export const GROUPS: ReadonlyArray<readonly [string, ReadonlyArray<string>]> = [
       "archil",
     ],
   ],
-  ["Identity", ["auth0", "better-auth", "clerk", "workos", "okta"]],
+  ["Identity", ["auth0", "better-auth", "clerk", "workos", "okta", "microsoft-graph"]],
   ["Secrets & certificates", ["onepassword", "doppler", "infisical", "unkey", "acme", "zerossl"]],
   [
     "Payments",
@@ -156,6 +156,7 @@ export const SEARCH_HINTS: Record<string, string> = {
   clerk: "auth users",
   workos: "auth sso",
   okta: "auth sso",
+  "microsoft-graph": "entra azure ad active directory microsoft 365 office",
   "better-auth": "auth sessions self-hosted",
   onepassword: "secrets 1password connect events audit users partnership",
   doppler: "secrets env",

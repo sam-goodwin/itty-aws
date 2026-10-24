@@ -1,0 +1,497 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#TeamsTemplate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.teamsTemplates#ListTeamsTemplateResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.teamsTemplates#TeamsTemplate"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.teamsTemplates#ListTeamsTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.teamsTemplates#ListTeamsTemplateResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#ListTeamsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.teamsTemplates#ListTeamsTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.teamsTemplates#ListTeamsTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/teamsTemplates",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from teamsTemplates",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#CreateTeamsTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#CreateTeamsTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#CreateTeamsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.teamsTemplates#CreateTeamsTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.teamsTemplates#CreateTeamsTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/teamsTemplates",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to teamsTemplates"
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#GetTeamsTemplateRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.teamsTemplates#GetTeamsTemplateRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.teamsTemplates#GetTeamsTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "teamsTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsTemplate"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.teamsTemplates#GetTeamsTemplateRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.teamsTemplates#GetTeamsTemplateRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#GetTeamsTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#GetTeamsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.teamsTemplates#GetTeamsTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.teamsTemplates#GetTeamsTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/teamsTemplates/{teamsTemplateId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from teamsTemplates by key"
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#UpdateTeamsTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "teamsTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsTemplate"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#UpdateTeamsTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#UpdateTeamsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.teamsTemplates#UpdateTeamsTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.teamsTemplates#UpdateTeamsTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/teamsTemplates/{teamsTemplateId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in teamsTemplates"
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#DeleteTeamsTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "teamsTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of teamsTemplate"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#DeleteTeamsTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.teamsTemplates#DeleteTeamsTemplateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/teamsTemplates/{teamsTemplateId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from teamsTemplates"
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.teamsTemplates#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/teamsTemplates/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.teamsTemplates#TeamsTemplates": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.teamsTemplates#ListTeamsTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.teamsTemplates#CreateTeamsTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.teamsTemplates#GetTeamsTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.teamsTemplates#UpdateTeamsTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.teamsTemplates#DeleteTeamsTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.teamsTemplates#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

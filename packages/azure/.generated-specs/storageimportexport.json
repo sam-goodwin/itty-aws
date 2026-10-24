@@ -15,10 +15,31 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.storageimportexport#OperationsList": "com.azure.storageimportexport#ListOperations",
+      "com.azure.storageimportexport#BitLockerKeysList": "com.azure.storageimportexport#ListBitLockerKeys",
+      "com.azure.storageimportexport#BitLockerKeysListRequest": "com.azure.storageimportexport#ListBitLockerKeysRequest",
+      "com.azure.storageimportexport#JobsDelete": "com.azure.storageimportexport#DeleteJob",
+      "com.azure.storageimportexport#JobsDeleteRequest": "com.azure.storageimportexport#DeleteJobRequest",
+      "com.azure.storageimportexport#JobsUpdate": "com.azure.storageimportexport#UpdateJob",
+      "com.azure.storageimportexport#JobsUpdateRequest": "com.azure.storageimportexport#UpdateJobRequest",
+      "com.azure.storageimportexport#JobsUpdateRequestProperties": "com.azure.storageimportexport#UpdateJobRequestProperties",
+      "com.azure.storageimportexport#JobsUpdateRequestPropertiesDriveListList": "com.azure.storageimportexport#UpdateJobRequestPropertiesDriveListList",
+      "com.azure.storageimportexport#JobsCreate": "com.azure.storageimportexport#CreateJob",
+      "com.azure.storageimportexport#JobsCreateRequest": "com.azure.storageimportexport#CreateJobRequest",
+      "com.azure.storageimportexport#JobsGet": "com.azure.storageimportexport#GetJob",
+      "com.azure.storageimportexport#JobsGetRequest": "com.azure.storageimportexport#GetJobRequest",
+      "com.azure.storageimportexport#JobsListByResourceGroup": "com.azure.storageimportexport#ListJobByResourceGroup",
+      "com.azure.storageimportexport#JobsListByResourceGroupRequest": "com.azure.storageimportexport#ListJobByResourceGroupRequest",
+      "com.azure.storageimportexport#JobsListBySubscription": "com.azure.storageimportexport#ListJobBySubscription",
+      "com.azure.storageimportexport#JobsListBySubscriptionRequest": "com.azure.storageimportexport#ListJobBySubscriptionRequest",
+      "com.azure.storageimportexport#LocationsGet": "com.azure.storageimportexport#GetLocation",
+      "com.azure.storageimportexport#LocationsGetRequest": "com.azure.storageimportexport#GetLocationRequest",
+      "com.azure.storageimportexport#LocationsList": "com.azure.storageimportexport#ListLocations"
+    }
   },
   "shapes": {
-    "com.azure.storageimportexport#ListOperations": {
+    "com.azure.storageimportexport#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -114,10 +135,10 @@
         "smithy.api#documentation": "operation display properties"
       }
     },
-    "com.azure.storageimportexport#ListBitLockerKeys": {
+    "com.azure.storageimportexport#BitLockerKeysList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#ListBitLockerKeysRequest"
+        "target": "com.azure.storageimportexport#BitLockerKeysListRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#GetBitLockerKeysResponse"
@@ -176,7 +197,7 @@
         "smithy.api#documentation": "BitLocker recovery key or password to the specified drive"
       }
     },
-    "com.azure.storageimportexport#ListBitLockerKeysRequest": {
+    "com.azure.storageimportexport#BitLockerKeysListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -208,10 +229,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageimportexport#DeleteJob": {
+    "com.azure.storageimportexport#JobsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#DeleteJobRequest"
+        "target": "com.azure.storageimportexport#JobsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -227,7 +248,7 @@
         "com.distilled.openapi#apiVersion": "2020-08-01"
       }
     },
-    "com.azure.storageimportexport#DeleteJobRequest": {
+    "com.azure.storageimportexport#JobsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -259,10 +280,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageimportexport#UpdateJob": {
+    "com.azure.storageimportexport#JobsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#UpdateJobRequest"
+        "target": "com.azure.storageimportexport#JobsUpdateRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#JobResponse"
@@ -1076,7 +1097,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.storageimportexport#UpdateJobRequest": {
+    "com.azure.storageimportexport#JobsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1110,7 +1131,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.storageimportexport#UpdateJobRequestProperties",
+          "target": "com.azure.storageimportexport#JobsUpdateRequestProperties",
           "traits": {
             "smithy.api#documentation": "Specifies the properties of a UpdateJob."
           }
@@ -1120,7 +1141,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageimportexport#UpdateJobRequestProperties": {
+    "com.azure.storageimportexport#JobsUpdateRequestProperties": {
       "type": "structure",
       "members": {
         "cancelRequested": {
@@ -1166,7 +1187,7 @@
           }
         },
         "driveList": {
-          "target": "com.azure.storageimportexport#UpdateJobRequestPropertiesDriveListList",
+          "target": "com.azure.storageimportexport#JobsUpdateRequestPropertiesDriveListList",
           "traits": {
             "smithy.api#documentation": "List of drives that comprise the job."
           }
@@ -1176,7 +1197,7 @@
         "smithy.api#documentation": "Specifies the properties of a UpdateJob."
       }
     },
-    "com.azure.storageimportexport#UpdateJobRequestPropertiesDriveListList": {
+    "com.azure.storageimportexport#JobsUpdateRequestPropertiesDriveListList": {
       "type": "list",
       "member": {
         "target": "com.azure.storageimportexport#DriveStatus"
@@ -1185,10 +1206,10 @@
         "smithy.api#documentation": "List of drives that comprise the job."
       }
     },
-    "com.azure.storageimportexport#CreateJob": {
+    "com.azure.storageimportexport#JobsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#CreateJobRequest"
+        "target": "com.azure.storageimportexport#JobsCreateRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#JobResponse"
@@ -1204,7 +1225,7 @@
         "com.distilled.openapi#apiVersion": "2020-08-01"
       }
     },
-    "com.azure.storageimportexport#CreateJobRequest": {
+    "com.azure.storageimportexport#JobsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1435,10 +1456,10 @@
         "smithy.api#documentation": "Contains information about the Microsoft datacenter to which the drives should be shipped."
       }
     },
-    "com.azure.storageimportexport#GetJob": {
+    "com.azure.storageimportexport#JobsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#GetJobRequest"
+        "target": "com.azure.storageimportexport#JobsGetRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#JobResponse"
@@ -1454,7 +1475,7 @@
         "com.distilled.openapi#apiVersion": "2020-08-01"
       }
     },
-    "com.azure.storageimportexport#GetJobRequest": {
+    "com.azure.storageimportexport#JobsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1486,10 +1507,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageimportexport#ListJobByResourceGroup": {
+    "com.azure.storageimportexport#JobsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#ListJobByResourceGroupRequest"
+        "target": "com.azure.storageimportexport#JobsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#ListJobsResponse"
@@ -1534,7 +1555,7 @@
         "smithy.api#documentation": "Job list"
       }
     },
-    "com.azure.storageimportexport#ListJobByResourceGroupRequest": {
+    "com.azure.storageimportexport#JobsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1572,10 +1593,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageimportexport#ListJobBySubscription": {
+    "com.azure.storageimportexport#JobsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#ListJobBySubscriptionRequest"
+        "target": "com.azure.storageimportexport#JobsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#ListJobsResponse"
@@ -1591,7 +1612,7 @@
         "com.distilled.openapi#apiVersion": "2020-08-01"
       }
     },
-    "com.azure.storageimportexport#ListJobBySubscriptionRequest": {
+    "com.azure.storageimportexport#JobsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1621,10 +1642,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageimportexport#GetLocation": {
+    "com.azure.storageimportexport#LocationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.storageimportexport#GetLocationRequest"
+        "target": "com.azure.storageimportexport#LocationsGetRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#Location"
@@ -1764,7 +1785,7 @@
         "smithy.api#documentation": "A list of carriers that are supported at this location. "
       }
     },
-    "com.azure.storageimportexport#GetLocationRequest": {
+    "com.azure.storageimportexport#LocationsGetRequest": {
       "type": "structure",
       "members": {
         "locationName": {
@@ -1780,7 +1801,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.storageimportexport#ListLocations": {
+    "com.azure.storageimportexport#LocationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -1827,34 +1848,34 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.storageimportexport#ListOperations"
+          "target": "com.azure.storageimportexport#OperationsList"
         },
         {
-          "target": "com.azure.storageimportexport#ListBitLockerKeys"
+          "target": "com.azure.storageimportexport#BitLockerKeysList"
         },
         {
-          "target": "com.azure.storageimportexport#DeleteJob"
+          "target": "com.azure.storageimportexport#JobsDelete"
         },
         {
-          "target": "com.azure.storageimportexport#UpdateJob"
+          "target": "com.azure.storageimportexport#JobsUpdate"
         },
         {
-          "target": "com.azure.storageimportexport#CreateJob"
+          "target": "com.azure.storageimportexport#JobsCreate"
         },
         {
-          "target": "com.azure.storageimportexport#GetJob"
+          "target": "com.azure.storageimportexport#JobsGet"
         },
         {
-          "target": "com.azure.storageimportexport#ListJobByResourceGroup"
+          "target": "com.azure.storageimportexport#JobsListByResourceGroup"
         },
         {
-          "target": "com.azure.storageimportexport#ListJobBySubscription"
+          "target": "com.azure.storageimportexport#JobsListBySubscription"
         },
         {
-          "target": "com.azure.storageimportexport#GetLocation"
+          "target": "com.azure.storageimportexport#LocationsGet"
         },
         {
-          "target": "com.azure.storageimportexport#ListLocations"
+          "target": "com.azure.storageimportexport#LocationsList"
         }
       ],
       "traits": {

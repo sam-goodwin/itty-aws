@@ -1,0 +1,2501 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.keyvault_administration#RoleDefinitionsDelete": "com.azure.keyvault_administration#DeleteRoleDefinition",
+      "com.azure.keyvault_administration#RoleDefinitionsDeleteRequest": "com.azure.keyvault_administration#DeleteRoleDefinitionRequest",
+      "com.azure.keyvault_administration#RoleDefinitionsGet": "com.azure.keyvault_administration#GetRoleDefinition",
+      "com.azure.keyvault_administration#RoleDefinitionsGetRequest": "com.azure.keyvault_administration#GetRoleDefinitionRequest",
+      "com.azure.keyvault_administration#RoleDefinitionsList": "com.azure.keyvault_administration#ListRoleDefinitions",
+      "com.azure.keyvault_administration#RoleDefinitionsListRequest": "com.azure.keyvault_administration#ListRoleDefinitionsRequest",
+      "com.azure.keyvault_administration#RoleAssignmentsDelete": "com.azure.keyvault_administration#DeleteRoleAssignment",
+      "com.azure.keyvault_administration#RoleAssignmentsDeleteRequest": "com.azure.keyvault_administration#DeleteRoleAssignmentRequest",
+      "com.azure.keyvault_administration#RoleAssignmentsCreate": "com.azure.keyvault_administration#CreateRoleAssignment",
+      "com.azure.keyvault_administration#RoleAssignmentsCreateRequest": "com.azure.keyvault_administration#CreateRoleAssignmentRequest",
+      "com.azure.keyvault_administration#RoleAssignmentsGet": "com.azure.keyvault_administration#GetRoleAssignment",
+      "com.azure.keyvault_administration#RoleAssignmentsGetRequest": "com.azure.keyvault_administration#GetRoleAssignmentRequest",
+      "com.azure.keyvault_administration#RoleAssignmentsListForScope": "com.azure.keyvault_administration#ListRoleAssignmentForScope",
+      "com.azure.keyvault_administration#RoleAssignmentsListForScopeRequest": "com.azure.keyvault_administration#ListRoleAssignmentForScopeRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.keyvault_administration#SelectiveKeyRestoreStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#SelectiveKeyRestoreStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#SelectiveKeyRestoreOperation2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/restore/{jobId}/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Returns the status of the selective key restore operation"
+      }
+    },
+    "com.azure.keyvault_administration#SelectiveKeyRestoreOperation2": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.keyvault_administration#OperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the restore operation."
+          }
+        },
+        "statusDetails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status details of restore operation."
+          }
+        },
+        "error": {
+          "target": "com.azure.keyvault_administration#Error",
+          "traits": {
+            "smithy.api#documentation": "Error encountered, if any, during the selective key restore operation.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the selective key restore operation."
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The start time of the restore operation"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The end time of the restore operation",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Selective Key Restore operation"
+      }
+    },
+    "com.azure.keyvault_administration#Error": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.keyvault_administration#Error",
+          "traits": {
+            "smithy.api#documentation": "The key vault server error."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault_administration#OperationStatus": {
+      "type": "enum",
+      "members": {
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InProgress"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of a long-running operation."
+      }
+    },
+    "com.azure.keyvault_administration#SelectiveKeyRestoreStatusRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Job Id returned part of the restore operation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#UpdateSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#UpdateSettingRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#Setting"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/settings/{settingName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates key vault account setting, stores it, then returns the setting name and value to the client.\n\nDescription of the pool setting to be updated"
+      }
+    },
+    "com.azure.keyvault_administration#Setting": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account setting to be updated",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the pool setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.keyvault_administration#SettingTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The type specifier of the value."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Key Vault account setting."
+      }
+    },
+    "com.azure.keyvault_administration#SettingTypeEnum": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type specifier of the value."
+      }
+    },
+    "com.azure.keyvault_administration#UpdateSettingRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "settingName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the account setting. Must be a valid settings option."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the pool setting.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#GetSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#GetSettingRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#Setting"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/settings/{settingName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Get specified account setting object.\n\nRetrieves the setting object of a specified setting name."
+      }
+    },
+    "com.azure.keyvault_administration#GetSettingRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "settingName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the account setting. Must be a valid settings option."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#GetSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#GetSettingsRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#SettingsListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/settings",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "List account settings.\n\nRetrieves a list of all the available account settings that can be configured."
+      }
+    },
+    "com.azure.keyvault_administration#SettingsListResult": {
+      "type": "structure",
+      "members": {
+        "settings": {
+          "target": "com.azure.keyvault_administration#SettingsListResultSettingsList",
+          "traits": {
+            "smithy.api#documentation": "A response message containing a list of account settings with their associated value."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The settings list result."
+      }
+    },
+    "com.azure.keyvault_administration#SettingsListResultSettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_administration#Setting"
+      },
+      "traits": {
+        "smithy.api#documentation": "A response message containing a list of account settings with their associated value."
+      }
+    },
+    "com.azure.keyvault_administration#GetSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RestoreStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RestoreStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RestoreOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/restore/{jobId}/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Returns the status of restore operation"
+      }
+    },
+    "com.azure.keyvault_administration#RestoreOperation": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.keyvault_administration#OperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the restore operation."
+          }
+        },
+        "statusDetails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status details of restore operation."
+          }
+        },
+        "error": {
+          "target": "com.azure.keyvault_administration#Error",
+          "traits": {
+            "smithy.api#documentation": "Error encountered, if any, during the restore operation.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the restore operation."
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The start time of the restore operation"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The end time of the restore operation",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Restore operation"
+      }
+    },
+    "com.azure.keyvault_administration#RestoreStatusRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Job Id returned part of the restore operation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#FullRestoreOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#FullRestoreOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#FullRestoreOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/restore",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Restores all key materials using the SAS token pointing to a previously stored Azure Blob storage backup folder"
+      }
+    },
+    "com.azure.keyvault_administration#FullRestoreOperationResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URI to poll for completion status."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.keyvault_administration#FullRestoreOperationRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "sasTokenParameters": {
+          "target": "com.azure.keyvault_administration#SASTokenParameter",
+          "traits": {
+            "smithy.api#documentation": "A user-provided SAS token to an Azure blob storage container.",
+            "smithy.api#required": {}
+          }
+        },
+        "folderToRestore": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Folder name of the blob where the previous successful full backup was stored",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#SASTokenParameter": {
+      "type": "structure",
+      "members": {
+        "storageResourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob storage container Uri",
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SAS token pointing to an Azure Blob storage container"
+          }
+        },
+        "useManagedIdentity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates which authentication method should be used. If set to true, Managed HSM will use the configured user-assigned managed identity to authenticate with Azure Storage. Otherwise, a SAS token has to be specified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An authentication method and location for the operation."
+      }
+    },
+    "com.azure.keyvault_administration#PreFullRestoreOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#PreFullRestoreOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#PreFullRestoreOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/prerestore",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Pre-restore operation for checking whether the customer can perform a full restore operation."
+      }
+    },
+    "com.azure.keyvault_administration#PreFullRestoreOperationResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URI to poll for completion status."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.keyvault_administration#PreFullRestoreOperationRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "sasTokenParameters": {
+          "target": "com.azure.keyvault_administration#SASTokenParameter",
+          "traits": {
+            "smithy.api#documentation": "A user-provided SAS token to an Azure blob storage container."
+          }
+        },
+        "folderToRestore": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Folder name of the blob where the previous successful full backup was stored"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#PreFullBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#PreFullBackupRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#PreFullBackupResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/prebackup",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Pre-backup operation for checking whether the customer can perform a full backup operation."
+      }
+    },
+    "com.azure.keyvault_administration#PreFullBackupResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URI to poll for completion status."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.keyvault_administration#PreFullBackupRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "storageResourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob storage container Uri"
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SAS token pointing to an Azure Blob storage container"
+          }
+        },
+        "useManagedIdentity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates which authentication method should be used. If set to true, Managed HSM will use the configured user-assigned managed identity to authenticate with Azure Storage. Otherwise, a SAS token has to be specified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#SelectiveKeyRestoreOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#SelectiveKeyRestoreOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#SelectiveKeyRestoreOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/keys/{keyName}/restore",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Restores all key versions of a given key using user supplied SAS token pointing to a previously stored Azure Blob storage backup folder"
+      }
+    },
+    "com.azure.keyvault_administration#SelectiveKeyRestoreOperationResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URI to poll for completion status."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.keyvault_administration#SelectiveKeyRestoreOperationRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key to be restored from the user supplied backup"
+          }
+        },
+        "sasTokenParameters": {
+          "target": "com.azure.keyvault_administration#SASTokenParameter",
+          "traits": {
+            "smithy.api#documentation": "A user-provided SAS token to an Azure blob storage container.",
+            "smithy.api#required": {}
+          }
+        },
+        "folder": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Folder name of the blob where the previous successful full backup was stored",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#CreateEkmConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#CreateEkmConnectionRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#EkmConnection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/ekm/create",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates the EKM connection.\n\nThe External Key Manager (EKM) sets up the EKM connection. If the EKM connection already exists, this operation fails. This operation requires ekm/write permission."
+      }
+    },
+    "com.azure.keyvault_administration#EkmConnection": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "EKM proxy FQDN (Fully Qualified Domain Name). Only allowed characters are a-z, A-Z, 0-9, hyphen (-), dot (.), and colon (:).",
+            "smithy.api#required": {}
+          }
+        },
+        "path_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional path prefix for the EKM proxy (if any)."
+          }
+        },
+        "server_ca_certificates": {
+          "target": "com.azure.keyvault_administration#EkmConnectionServerCaCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "The root CA certificate chain that issued the proxy server's certificate. An array of certificates in the certificate chain, each in DER format and base64 encoded.",
+            "smithy.api#required": {}
+          }
+        },
+        "server_subject_common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subject common name of the server certificate of EKM Proxy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A EkmConnection model object."
+      }
+    },
+    "com.azure.keyvault_administration#EkmConnectionServerCaCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The root CA certificate chain that issued the proxy server's certificate. An array of certificates in the certificate chain, each in DER format and base64 encoded."
+      }
+    },
+    "com.azure.keyvault_administration#CreateEkmConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "EKM proxy FQDN (Fully Qualified Domain Name). Only allowed characters are a-z, A-Z, 0-9, hyphen (-), dot (.), and colon (:).",
+            "smithy.api#required": {}
+          }
+        },
+        "path_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional path prefix for the EKM proxy (if any)."
+          }
+        },
+        "server_ca_certificates": {
+          "target": "com.azure.keyvault_administration#CreateEkmConnectionRequestServerCaCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "The root CA certificate chain that issued the proxy server's certificate. An array of certificates in the certificate chain, each in DER format and base64 encoded.",
+            "smithy.api#required": {}
+          }
+        },
+        "server_subject_common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subject common name of the server certificate of EKM Proxy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#CreateEkmConnectionRequestServerCaCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The root CA certificate chain that issued the proxy server's certificate. An array of certificates in the certificate chain, each in DER format and base64 encoded."
+      }
+    },
+    "com.azure.keyvault_administration#CheckEkmConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#CheckEkmConnectionRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#EkmProxyInfo"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/ekm/check",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Checks the connectivity and authentication with the EKM proxy.\n\nThe External Key Manager (EKM) Check operation checks the connectivity and authentication with the EKM proxy. This operation requires ekm/read permission."
+      }
+    },
+    "com.azure.keyvault_administration#EkmProxyInfo": {
+      "type": "structure",
+      "members": {
+        "api_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The highest version of proxy interface API supported by the EKM Proxy.",
+            "smithy.api#required": {}
+          }
+        },
+        "proxy_vendor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the proxy vendor.",
+            "smithy.api#required": {}
+          }
+        },
+        "proxy_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the proxy product and its version.",
+            "smithy.api#required": {}
+          }
+        },
+        "ekm_vendor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the EKM vendor.",
+            "smithy.api#required": {}
+          }
+        },
+        "ekm_product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the EKM product and its version.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "EKM proxy information."
+      }
+    },
+    "com.azure.keyvault_administration#CheckEkmConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#GetEkmCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#GetEkmCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#EkmProxyClientCertificateInfo"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/ekm/certificate",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets the EKM proxy client certificate.\n\nThe External Key Manager (EKM) Certificate Get operation returns Proxy client certificate. This operation requires ekm/read permission."
+      }
+    },
+    "com.azure.keyvault_administration#EkmProxyClientCertificateInfo": {
+      "type": "structure",
+      "members": {
+        "ca_certificates": {
+          "target": "com.azure.keyvault_administration#EkmProxyClientCertificateInfoCaCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "The client root CA certificate chain to authenticate to the EKM proxy. An array of certificates in the certificate chain, each in DER format and base64 encoded.",
+            "smithy.api#required": {}
+          }
+        },
+        "subject_common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subject common name of the client certificate used to authenticate to the EKM proxy.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "EKM proxy client certificate information."
+      }
+    },
+    "com.azure.keyvault_administration#EkmProxyClientCertificateInfoCaCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The client root CA certificate chain to authenticate to the EKM proxy. An array of certificates in the certificate chain, each in DER format and base64 encoded."
+      }
+    },
+    "com.azure.keyvault_administration#GetEkmCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#DeleteEkmConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#DeleteEkmConnectionRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#EkmConnection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/ekm",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes the EKM connection.\n\nThe External Key Manager (EKM) deletes the existing EKM connection. If the EKM connection does not already exists, this operation fails. This operation requires ekm/delete permission."
+      }
+    },
+    "com.azure.keyvault_administration#DeleteEkmConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#UpdateEkmConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#UpdateEkmConnectionRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#EkmConnection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/ekm",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates the EKM connection.\n\nThe External Key Manager (EKM) updates the existing EKM connection. If the EKM connection does not exist, this operation fails. This operation requires ekm/write permission."
+      }
+    },
+    "com.azure.keyvault_administration#UpdateEkmConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "EKM proxy FQDN (Fully Qualified Domain Name). Only allowed characters are a-z, A-Z, 0-9, hyphen (-), dot (.), and colon (:)."
+          }
+        },
+        "path_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional path prefix for the EKM proxy (if any)."
+          }
+        },
+        "server_ca_certificates": {
+          "target": "com.azure.keyvault_administration#UpdateEkmConnectionRequestServerCaCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "The root CA certificate chain that issued the proxy server's certificate. An array of certificates in the certificate chain, each in DER format and base64 encoded."
+          }
+        },
+        "server_subject_common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subject common name of the server certificate of EKM Proxy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#UpdateEkmConnectionRequestServerCaCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The root CA certificate chain that issued the proxy server's certificate. An array of certificates in the certificate chain, each in DER format and base64 encoded."
+      }
+    },
+    "com.azure.keyvault_administration#GetEkmConnection": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#GetEkmConnectionRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#EkmConnection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/ekm",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets the EKM connection.\n\nThe External Key Manager (EKM) Get operation returns EKM connection. This operation requires ekm/read permission."
+      }
+    },
+    "com.azure.keyvault_administration#GetEkmConnectionRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#FullBackupStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#FullBackupStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#FullBackupOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/backup/{jobId}/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Returns the status of full backup operation"
+      }
+    },
+    "com.azure.keyvault_administration#FullBackupOperation": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.keyvault_administration#OperationStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the backup operation."
+          }
+        },
+        "statusDetails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status details of backup operation."
+          }
+        },
+        "error": {
+          "target": "com.azure.keyvault_administration#Error",
+          "traits": {
+            "smithy.api#documentation": "Error encountered, if any, during the full backup operation.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The start time of the backup operation in UTC"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The end time of the backup operation in UTC",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the full backup operation."
+          }
+        },
+        "azureStorageBlobContainerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure blob storage container Uri which contains the full backup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Full backup operation"
+      }
+    },
+    "com.azure.keyvault_administration#FullBackupStatusRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The id returned as part of the backup request"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#FullBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#FullBackupRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#FullBackupResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/backup",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a full backup using a user-provided SAS token to an Azure blob storage container."
+      }
+    },
+    "com.azure.keyvault_administration#FullBackupResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URI to poll for completion status."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.keyvault_administration#FullBackupRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "storageResourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Blob storage container Uri",
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SAS token pointing to an Azure Blob storage container"
+          }
+        },
+        "useManagedIdentity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates which authentication method should be used. If set to true, Managed HSM will use the configured user-assigned managed identity to authenticate with Azure Storage. Otherwise, a SAS token has to be specified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleDefinitionsDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleDefinition"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes a custom role definition."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinition": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role definition ID."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role definition name."
+          }
+        },
+        "type": {
+          "target": "com.azure.keyvault_administration#RoleDefinitionType",
+          "traits": {
+            "smithy.api#documentation": "The role definition type."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault_administration#RoleDefinitionProperties",
+          "traits": {
+            "smithy.api#documentation": "Role definition properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionProperties": {
+      "type": "structure",
+      "members": {
+        "roleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role definition description."
+          }
+        },
+        "type": {
+          "target": "com.azure.keyvault_administration#RoleType",
+          "traits": {
+            "smithy.api#documentation": "The role type."
+          }
+        },
+        "permissions": {
+          "target": "com.azure.keyvault_administration#RoleDefinitionPropertiesPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "Role definition permissions."
+          }
+        },
+        "assignableScopes": {
+          "target": "com.azure.keyvault_administration#RoleDefinitionPropertiesAssignableScopesList",
+          "traits": {
+            "smithy.api#documentation": "Role definition assignable scopes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition properties."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionPropertiesAssignableScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_administration#RoleScope"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition assignable scopes."
+      }
+    },
+    "com.azure.keyvault_administration#RoleScope": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "/"
+          }
+        },
+        "KEYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "/keys"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The role scope."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionPropertiesPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_administration#Permission"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition permissions."
+      }
+    },
+    "com.azure.keyvault_administration#Permission": {
+      "type": "structure",
+      "members": {
+        "actions": {
+          "target": "com.azure.keyvault_administration#PermissionActionsList",
+          "traits": {
+            "smithy.api#documentation": "Action permissions that are granted."
+          }
+        },
+        "notActions": {
+          "target": "com.azure.keyvault_administration#PermissionNotActionsList",
+          "traits": {
+            "smithy.api#documentation": "Action permissions that are excluded but not denied. They may be granted by other role definitions assigned to a principal."
+          }
+        },
+        "dataActions": {
+          "target": "com.azure.keyvault_administration#PermissionDataActionsList",
+          "traits": {
+            "smithy.api#documentation": "Data action permissions that are granted."
+          }
+        },
+        "notDataActions": {
+          "target": "com.azure.keyvault_administration#PermissionNotDataActionsList",
+          "traits": {
+            "smithy.api#documentation": "Data action permissions that are excluded but not denied. They may be granted by other role definitions assigned to a principal."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition permissions."
+      }
+    },
+    "com.azure.keyvault_administration#PermissionNotDataActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_administration#DataAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "Data action permissions that are excluded but not denied. They may be granted by other role definitions assigned to a principal."
+      }
+    },
+    "com.azure.keyvault_administration#DataAction": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_READ_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/read/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_WRITE_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/write/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_DELETEDKEYS_READ_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/deletedKeys/read/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_DELETEDKEYS_RECOVER_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/deletedKeys/recover/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_BACKUP_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/backup/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_RESTORE_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/restore/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_ROLEASSIGNMENTS_DELETE_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/roleAssignments/delete/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_ROLEASSIGNMENTS_READ_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/roleAssignments/read/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_ROLEASSIGNMENTS_WRITE_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/roleAssignments/write/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_ROLEDEFINITIONS_READ_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/roleDefinitions/read/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_ROLEDEFINITIONS_WRITE_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/roleDefinitions/write/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_ROLEDEFINITIONS_DELETE_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/roleDefinitions/delete/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_ENCRYPT_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/encrypt/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_DECRYPT_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/decrypt/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_WRAP_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/wrap/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_UNWRAP_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/unwrap/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_SIGN_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/sign/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_VERIFY_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/verify/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_CREATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/create"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/delete"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_EXPORT_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/export/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_RELEASE_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/release/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_IMPORT_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/import/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_KEYS_DELETEDKEYS_DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/keys/deletedKeys/delete"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_SECURITYDOMAIN_DOWNLOAD_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/securitydomain/download/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_SECURITYDOMAIN_DOWNLOAD_READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/securitydomain/download/read"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_SECURITYDOMAIN_UPLOAD_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/securitydomain/upload/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_SECURITYDOMAIN_UPLOAD_READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/securitydomain/upload/read"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_SECURITYDOMAIN_TRANSFERKEY_READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/securitydomain/transferkey/read"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_BACKUP_START_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/backup/start/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_RESTORE_START_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/restore/start/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_BACKUP_STATUS_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/backup/status/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_RESTORE_STATUS_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/restore/status/action"
+          }
+        },
+        "MICROSOFT_KEYVAULT_MANAGEDHSM_RNG_ACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.KeyVault/managedHsm/rng/action"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported permissions for data actions."
+      }
+    },
+    "com.azure.keyvault_administration#PermissionDataActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_administration#DataAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "Data action permissions that are granted."
+      }
+    },
+    "com.azure.keyvault_administration#PermissionNotActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Action permissions that are excluded but not denied. They may be granted by other role definitions assigned to a principal."
+      }
+    },
+    "com.azure.keyvault_administration#PermissionActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Action permissions that are granted."
+      }
+    },
+    "com.azure.keyvault_administration#RoleType": {
+      "type": "enum",
+      "members": {
+        "AKVBUILTINROLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AKVBuiltInRole"
+          }
+        },
+        "CUSTOMROLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomRole"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The role type."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_AUTHORIZATION_ROLEDEFINITIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Authorization/roleDefinitions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The role definition type."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role definition to delete. Managed HSM only supports '/'."
+          }
+        },
+        "roleDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name (GUID) of the role definition to delete."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsCreateOrUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleDefinitionsCreateOrUpdateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleDefinition"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates or updates a custom role definition."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsCreateOrUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role definition to create or update. Managed HSM only supports '/'."
+          }
+        },
+        "roleDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the role definition to create or update. It can be any valid GUID."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault_administration#RoleDefinitionProperties",
+          "traits": {
+            "smithy.api#documentation": "Role definition properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleDefinitionsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleDefinition"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Get the specified role definition."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role definition to get. Managed HSM only supports '/'."
+          }
+        },
+        "roleDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the role definition to get."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleDefinitionsListRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleDefinitionListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleDefinitions",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Get all role definitions that are applicable at scope and above."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.keyvault_administration#RoleDefinitionListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "Role definition list."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to use for getting the next set of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition list operation result."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_administration#RoleDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition list."
+      }
+    },
+    "com.azure.keyvault_administration#RoleDefinitionsListRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role definition."
+          }
+        },
+        "_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleAssignmentsDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleAssignment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes a role assignment."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignment": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role assignment ID."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role assignment name."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role assignment type."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault_administration#RoleAssignmentPropertiesWithScope",
+          "traits": {
+            "smithy.api#documentation": "Role assignment properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role Assignments"
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentPropertiesWithScope": {
+      "type": "structure",
+      "members": {
+        "scope": {
+          "target": "com.azure.keyvault_administration#RoleScope",
+          "traits": {
+            "smithy.api#documentation": "The role scope."
+          }
+        },
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role definition ID."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role assignment properties with scope."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role assignment to delete."
+          }
+        },
+        "roleAssignmentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the role assignment to delete."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleAssignmentsCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleAssignment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a role assignment."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role assignment to create."
+          }
+        },
+        "roleAssignmentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the role assignment to create. It can be any valid GUID."
+          }
+        },
+        "properties": {
+          "target": "com.azure.keyvault_administration#RoleAssignmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Role assignment properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentProperties": {
+      "type": "structure",
+      "members": {
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role definition ID used in the role assignment.",
+            "smithy.api#required": {}
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal ID assigned to the role. This maps to the ID inside the Active Directory. It can point to a user, service principal, or security group.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role assignment properties."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleAssignmentsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleAssignment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Get the specified role assignment."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsGetRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role assignment."
+          }
+        },
+        "roleAssignmentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the role assignment to get."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsListForScope": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_administration#RoleAssignmentsListForScopeRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_administration#RoleAssignmentListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{scope+}/providers/Microsoft.Authorization/roleAssignments",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets role assignments for a scope."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.keyvault_administration#RoleAssignmentListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "Role assignment list."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to use for getting the next set of results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role assignment list operation result."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_administration#RoleAssignment"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role assignment list."
+      }
+    },
+    "com.azure.keyvault_administration#RoleAssignmentsListForScopeRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The base URL of the Key Vault instance (e.g. https://myvault.vault.azure.net/)",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The scope of the role assignments."
+          }
+        },
+        "_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_administration#KeyvaultAdministration": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.keyvault_administration#SelectiveKeyRestoreStatus"
+        },
+        {
+          "target": "com.azure.keyvault_administration#UpdateSetting"
+        },
+        {
+          "target": "com.azure.keyvault_administration#GetSetting"
+        },
+        {
+          "target": "com.azure.keyvault_administration#GetSettings"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RestoreStatus"
+        },
+        {
+          "target": "com.azure.keyvault_administration#FullRestoreOperation"
+        },
+        {
+          "target": "com.azure.keyvault_administration#PreFullRestoreOperation"
+        },
+        {
+          "target": "com.azure.keyvault_administration#PreFullBackup"
+        },
+        {
+          "target": "com.azure.keyvault_administration#SelectiveKeyRestoreOperation"
+        },
+        {
+          "target": "com.azure.keyvault_administration#CreateEkmConnection"
+        },
+        {
+          "target": "com.azure.keyvault_administration#CheckEkmConnection"
+        },
+        {
+          "target": "com.azure.keyvault_administration#GetEkmCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_administration#DeleteEkmConnection"
+        },
+        {
+          "target": "com.azure.keyvault_administration#UpdateEkmConnection"
+        },
+        {
+          "target": "com.azure.keyvault_administration#GetEkmConnection"
+        },
+        {
+          "target": "com.azure.keyvault_administration#FullBackupStatus"
+        },
+        {
+          "target": "com.azure.keyvault_administration#FullBackup"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleDefinitionsDelete"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleDefinitionsCreateOrUpdate"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleDefinitionsGet"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleDefinitionsList"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleAssignmentsDelete"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleAssignmentsCreate"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleAssignmentsGet"
+        },
+        {
+          "target": "com.azure.keyvault_administration#RoleAssignmentsListForScope"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Administration data plane",
+        "smithy.api#documentation": "Azure keyvault data plane — keyvault/data-plane/Administration (latest stable api-version 2026-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{vaultBaseUrl}",
+          "parameters": [
+            {
+              "name": "vaultBaseUrl",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://vault.azure.net/.default"
+      }
+    }
+  }
+}

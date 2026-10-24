@@ -1,0 +1,2021 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cosmos_tables#TableSetAccessPolicy": "com.azure.cosmos_tables#SetTableAccessPolicy",
+      "com.azure.cosmos_tables#TableSetAccessPolicyRequest": "com.azure.cosmos_tables#SetTableAccessPolicyRequest",
+      "com.azure.cosmos_tables#TableSetAccessPolicyRequestIdentifiersList": "com.azure.cosmos_tables#SetTableAccessPolicyRequestIdentifiersList",
+      "com.azure.cosmos_tables#TableGetAccessPolicy": "com.azure.cosmos_tables#GetTableAccessPolicy",
+      "com.azure.cosmos_tables#TableGetAccessPolicyRequest": "com.azure.cosmos_tables#GetTableAccessPolicyRequest",
+      "com.azure.cosmos_tables#ServiceGetStatistics": "com.azure.cosmos_tables#GetServiceStatistics",
+      "com.azure.cosmos_tables#ServiceGetStatisticsRequest": "com.azure.cosmos_tables#GetServiceStatisticsRequest",
+      "com.azure.cosmos_tables#ServiceGetProperties": "com.azure.cosmos_tables#GetServiceProperties",
+      "com.azure.cosmos_tables#ServiceGetPropertiesRequest": "com.azure.cosmos_tables#GetServicePropertiesRequest",
+      "com.azure.cosmos_tables#ServiceSetProperties": "com.azure.cosmos_tables#SetServiceProperties",
+      "com.azure.cosmos_tables#ServiceSetPropertiesRequest": "com.azure.cosmos_tables#SetServicePropertiesRequest",
+      "com.azure.cosmos_tables#ServiceSetPropertiesRequestCorsList": "com.azure.cosmos_tables#SetServicePropertiesRequestCorsList",
+      "com.azure.cosmos_tables#TableDelete": "com.azure.cosmos_tables#DeleteTable",
+      "com.azure.cosmos_tables#TableDeleteRequest": "com.azure.cosmos_tables#DeleteTableRequest",
+      "com.azure.cosmos_tables#TableCreate": "com.azure.cosmos_tables#CreateTable",
+      "com.azure.cosmos_tables#TableCreateRequest": "com.azure.cosmos_tables#CreateTableRequest",
+      "com.azure.cosmos_tables#TableCreateRequestPrefer": "com.azure.cosmos_tables#CreateTableRequestPrefer",
+      "com.azure.cosmos_tables#TableCreateRequestFormat": "com.azure.cosmos_tables#CreateTableRequestFormat",
+      "com.azure.cosmos_tables#TableInsertEntity": "com.azure.cosmos_tables#InsertTableEntity",
+      "com.azure.cosmos_tables#TableInsertEntityResponse": "com.azure.cosmos_tables#InsertTableEntityResponse",
+      "com.azure.cosmos_tables#TableInsertEntityResponseBodyMap": "com.azure.cosmos_tables#InsertTableEntityResponseBodyMap",
+      "com.azure.cosmos_tables#TableInsertEntityRequest": "com.azure.cosmos_tables#InsertTableEntityRequest",
+      "com.azure.cosmos_tables#TableInsertEntityRequestBodyMap": "com.azure.cosmos_tables#InsertTableEntityRequestBodyMap",
+      "com.azure.cosmos_tables#TableInsertEntityRequestPrefer": "com.azure.cosmos_tables#InsertTableEntityRequestPrefer",
+      "com.azure.cosmos_tables#TableInsertEntityRequestFormat": "com.azure.cosmos_tables#InsertTableEntityRequestFormat",
+      "com.azure.cosmos_tables#TableDeleteEntity": "com.azure.cosmos_tables#DeleteTableEntity",
+      "com.azure.cosmos_tables#TableDeleteEntityRequest": "com.azure.cosmos_tables#DeleteTableEntityRequest",
+      "com.azure.cosmos_tables#TableMergeEntity": "com.azure.cosmos_tables#MergeTableEntity",
+      "com.azure.cosmos_tables#TableMergeEntityResponse": "com.azure.cosmos_tables#MergeTableEntityResponse",
+      "com.azure.cosmos_tables#TableMergeEntityRequest": "com.azure.cosmos_tables#MergeTableEntityRequest",
+      "com.azure.cosmos_tables#TableMergeEntityRequestBodyMap": "com.azure.cosmos_tables#MergeTableEntityRequestBodyMap",
+      "com.azure.cosmos_tables#TableUpdateEntity": "com.azure.cosmos_tables#UpdateTableEntity",
+      "com.azure.cosmos_tables#TableUpdateEntityResponse": "com.azure.cosmos_tables#UpdateTableEntityResponse",
+      "com.azure.cosmos_tables#TableUpdateEntityRequest": "com.azure.cosmos_tables#UpdateTableEntityRequest",
+      "com.azure.cosmos_tables#TableUpdateEntityRequestBodyMap": "com.azure.cosmos_tables#UpdateTableEntityRequestBodyMap"
+    }
+  },
+  "shapes": {
+    "com.azure.cosmos_tables#TableSetAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableSetAccessPolicyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{table}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Sets stored access policies for the table that may be used with Shared Access\nSignatures."
+      }
+    },
+    "com.azure.cosmos_tables#TableSetAccessPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "identifiers": {
+          "target": "com.azure.cosmos_tables#TableSetAccessPolicyRequestIdentifiersList",
+          "traits": {
+            "smithy.api#documentation": "An array of signed identifiers",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableSetAccessPolicyRequestIdentifiersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_tables#SignedIdentifier"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of signed identifiers"
+      }
+    },
+    "com.azure.cosmos_tables#SignedIdentifier": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID for the signed identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "accessPolicy": {
+          "target": "com.azure.cosmos_tables#AccessPolicy",
+          "traits": {
+            "smithy.api#documentation": "The access policy for the signed identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The signed identifier."
+      }
+    },
+    "com.azure.cosmos_tables#AccessPolicy": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date-time the policy is active.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date-time the policy expires.",
+            "smithy.api#required": {}
+          }
+        },
+        "permission": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The permissions for acl the policy.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An access policy."
+      }
+    },
+    "com.azure.cosmos_tables#TableGetAccessPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableGetAccessPolicyRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#SignedIdentifiers"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{table}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Retrieves details about any stored access policies specified on the table that\nmay be used with Shared Access Signatures."
+      }
+    },
+    "com.azure.cosmos_tables#SignedIdentifiers": {
+      "type": "structure",
+      "members": {
+        "identifiers": {
+          "target": "com.azure.cosmos_tables#SignedIdentifiersIdentifiersList",
+          "traits": {
+            "smithy.api#documentation": "An array of signed identifiers",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Table signed identifiers."
+      }
+    },
+    "com.azure.cosmos_tables#SignedIdentifiersIdentifiersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_tables#SignedIdentifier"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of signed identifiers"
+      }
+    },
+    "com.azure.cosmos_tables#TableGetAccessPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#ServiceGetStatistics": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#ServiceGetStatisticsRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableServiceStats"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Retrieves statistics related to replication for the Table service. It is only\navailable on the secondary location endpoint when read-access geo-redundant\nreplication is enabled for the account."
+      }
+    },
+    "com.azure.cosmos_tables#TableServiceStats": {
+      "type": "structure",
+      "members": {
+        "geoReplication": {
+          "target": "com.azure.cosmos_tables#GeoReplication",
+          "traits": {
+            "smithy.api#documentation": "Geo-Replication information for the Secondary Storage Service."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Stats for the table service."
+      }
+    },
+    "com.azure.cosmos_tables#GeoReplication": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.cosmos_tables#GeoReplicationStatusType",
+          "traits": {
+            "smithy.api#documentation": "The status of the secondary location",
+            "smithy.api#required": {}
+          }
+        },
+        "lastSyncTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A GMT date/time value, to the second. All primary writes preceding this value are guaranteed to be available for read operations at the secondary. Primary writes after this point in time may or may not be available for reads.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Geo-Replication information for the Secondary Storage Service"
+      }
+    },
+    "com.azure.cosmos_tables#GeoReplicationStatusType": {
+      "type": "enum",
+      "members": {
+        "LIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live"
+          }
+        },
+        "BOOTSTRAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bootstrap"
+          }
+        },
+        "UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unavailable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the secondary location."
+      }
+    },
+    "com.azure.cosmos_tables#ServiceGetStatisticsRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#ServiceGetProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#ServiceGetPropertiesRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableServiceProperties"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Gets the properties of an account's Table service, including properties for\nAnalytics and CORS (Cross-Origin Resource Sharing) rules."
+      }
+    },
+    "com.azure.cosmos_tables#TableServiceProperties": {
+      "type": "structure",
+      "members": {
+        "logging": {
+          "target": "com.azure.cosmos_tables#Logging",
+          "traits": {
+            "smithy.api#documentation": "The logging properties."
+          }
+        },
+        "hourMetrics": {
+          "target": "com.azure.cosmos_tables#Metrics",
+          "traits": {
+            "smithy.api#documentation": "The hour metrics properties."
+          }
+        },
+        "minuteMetrics": {
+          "target": "com.azure.cosmos_tables#Metrics",
+          "traits": {
+            "smithy.api#documentation": "The minute metrics properties."
+          }
+        },
+        "cors": {
+          "target": "com.azure.cosmos_tables#TableServicePropertiesCorsList",
+          "traits": {
+            "smithy.api#documentation": "The CORS properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The service properties."
+      }
+    },
+    "com.azure.cosmos_tables#TableServicePropertiesCorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_tables#CorsRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The CORS properties."
+      }
+    },
+    "com.azure.cosmos_tables#CorsRule": {
+      "type": "structure",
+      "members": {
+        "allowedOrigins": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The origin domains that are permitted to make a request against the service via\nCORS. The origin domain is the domain from which the request originates. Note\nthat the origin must be an exact case-sensitive match with the origin that the\nuser age sends to the service. You can also use the wildcard character '*' to\nallow all origin domains to make requests via CORS.",
+            "smithy.api#required": {}
+          }
+        },
+        "allowedMethods": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The methods (HTTP request verbs) that the origin domain may use for a CORS\nrequest.",
+            "smithy.api#required": {}
+          }
+        },
+        "allowedHeaders": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The request headers that the origin domain may specify on the CORS request.",
+            "smithy.api#required": {}
+          }
+        },
+        "exposedHeaders": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response headers that may be sent in the response to the CORS request and\nexposed by the browser to the request issuer.",
+            "smithy.api#required": {}
+          }
+        },
+        "maxAgeInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum amount time that a browser should cache the preflight OPTIONS\nrequest.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "CORS is an HTTP feature that enables a web application running under one domain to access resources in another domain. Web browsers implement a security restriction known as same-origin policy that prevents a web page from calling APIs in a different domain; CORS provides a secure way to allow one domain (the origin domain) to call APIs in another domain"
+      }
+    },
+    "com.azure.cosmos_tables#Metrics": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the metrics properties."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether metrics are enabled for the Table service.",
+            "smithy.api#required": {}
+          }
+        },
+        "includeApis": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether metrics should generate summary statistics for called API\noperations."
+          }
+        },
+        "retentionPolicy": {
+          "target": "com.azure.cosmos_tables#RetentionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retention policy of the metrics."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The metrics properties."
+      }
+    },
+    "com.azure.cosmos_tables#RetentionPolicy": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable the retention policy.",
+            "smithy.api#required": {}
+          }
+        },
+        "days": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Indicates the number of days that metrics or logging or soft-deleted data\nshould be retained. All data older than this value will be deleted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The retention policy."
+      }
+    },
+    "com.azure.cosmos_tables#Logging": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the logging properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "delete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether delete operation is logged.",
+            "smithy.api#required": {}
+          }
+        },
+        "read": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether read operation is logged.",
+            "smithy.api#required": {}
+          }
+        },
+        "write": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether write operation is logged.",
+            "smithy.api#required": {}
+          }
+        },
+        "retentionPolicy": {
+          "target": "com.azure.cosmos_tables#RetentionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retention policy of the logs.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Analytics Logging settings."
+      }
+    },
+    "com.azure.cosmos_tables#ServiceGetPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#ServiceSetProperties": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#ServiceSetPropertiesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Sets properties for an account's Table service endpoint, including properties\nfor Analytics and CORS (Cross-Origin Resource Sharing) rules."
+      }
+    },
+    "com.azure.cosmos_tables#ServiceSetPropertiesRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "logging": {
+          "target": "com.azure.cosmos_tables#Logging",
+          "traits": {
+            "smithy.api#documentation": "The logging properties."
+          }
+        },
+        "hourMetrics": {
+          "target": "com.azure.cosmos_tables#Metrics",
+          "traits": {
+            "smithy.api#documentation": "The hour metrics properties."
+          }
+        },
+        "minuteMetrics": {
+          "target": "com.azure.cosmos_tables#Metrics",
+          "traits": {
+            "smithy.api#documentation": "The minute metrics properties."
+          }
+        },
+        "cors": {
+          "target": "com.azure.cosmos_tables#ServiceSetPropertiesRequestCorsList",
+          "traits": {
+            "smithy.api#documentation": "The CORS properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#ServiceSetPropertiesRequestCorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_tables#CorsRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The CORS properties."
+      }
+    },
+    "com.azure.cosmos_tables#TableDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/Tables('{table}')",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Deletes an existing table."
+      }
+    },
+    "com.azure.cosmos_tables#TableDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableCreateRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/Tables",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Creates a new table under the given account."
+      }
+    },
+    "com.azure.cosmos_tables#TableResponse": {
+      "type": "structure",
+      "members": {
+        "TableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "odata_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The odata type of the table.",
+            "smithy.api#jsonName": "odata.type"
+          }
+        },
+        "odata_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the table.",
+            "smithy.api#jsonName": "odata.id"
+          }
+        },
+        "odata_editLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The edit link of the table.",
+            "smithy.api#jsonName": "odata.editLink"
+          }
+        },
+        "odata_metadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The metadata response of the table.",
+            "smithy.api#jsonName": "odata.metadata"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The table properties as returned in an echo response."
+      }
+    },
+    "com.azure.cosmos_tables#TableCreateRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "_format": {
+          "target": "com.azure.cosmos_tables#TableCreateRequestFormat",
+          "traits": {
+            "smithy.api#httpQuery": "$format",
+            "smithy.api#documentation": "Specifies the metadata format for the response."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "prefer": {
+          "target": "com.azure.cosmos_tables#TableCreateRequestPrefer",
+          "traits": {
+            "smithy.api#httpHeader": "Prefer",
+            "smithy.api#documentation": "Specifies whether the response should include the created table in the\npayload. Possible values are return-no-content and return-content."
+          }
+        },
+        "TableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the table."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableCreateRequestPrefer": {
+      "type": "enum",
+      "members": {
+        "RETURN_NO_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "return-no-content"
+          }
+        },
+        "RETURN_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "return-content"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableCreateRequestFormat": {
+      "type": "enum",
+      "members": {
+        "APPLICATION_JSON_ODATA_NOMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=nometadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_MINIMALMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=minimalmetadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_FULLMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=fullmetadata"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableQuery": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableQueryRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableQueryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/Tables",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Queries tables under the given account."
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryResponse": {
+      "type": "structure",
+      "members": {
+        "odata_metadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The metadata response of the table.",
+            "smithy.api#jsonName": "odata.metadata"
+          }
+        },
+        "value": {
+          "target": "com.azure.cosmos_tables#TableQueryResponseValueList",
+          "traits": {
+            "smithy.api#documentation": "The requested list of tables."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for the table query response."
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_tables#TableProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The requested list of tables."
+      }
+    },
+    "com.azure.cosmos_tables#TableProperties": {
+      "type": "structure",
+      "members": {
+        "TableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "odata_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The odata type of the table.",
+            "smithy.api#jsonName": "odata.type"
+          }
+        },
+        "odata_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the table.",
+            "smithy.api#jsonName": "odata.id"
+          }
+        },
+        "odata_editLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The edit link of the table.",
+            "smithy.api#jsonName": "odata.editLink"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for the table response."
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "_format": {
+          "target": "com.azure.cosmos_tables#TableQueryRequestFormat",
+          "traits": {
+            "smithy.api#httpQuery": "$format",
+            "smithy.api#documentation": "Specifies the metadata format for the response."
+          }
+        },
+        "_top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Specifies the maximum number of records to return."
+          }
+        },
+        "_select": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select expression using OData notation. Limits the columns on each record to just those requested."
+          }
+        },
+        "_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "OData filter expression."
+          }
+        },
+        "NextTableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "NextTableName",
+            "smithy.api#documentation": "A table query continuation token from a previous call."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryRequestFormat": {
+      "type": "enum",
+      "members": {
+        "APPLICATION_JSON_ODATA_NOMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=nometadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_MINIMALMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=minimalmetadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_FULLMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=fullmetadata"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableInsertEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableInsertEntityRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableInsertEntityResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{table}",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Insert entity in a table."
+      }
+    },
+    "com.azure.cosmos_tables#TableInsertEntityResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cosmos_tables#TableInsertEntityResponseBodyMap",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableInsertEntityResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableInsertEntityRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "_format": {
+          "target": "com.azure.cosmos_tables#TableInsertEntityRequestFormat",
+          "traits": {
+            "smithy.api#httpQuery": "$format",
+            "smithy.api#documentation": "Specifies the metadata format for the response."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "prefer": {
+          "target": "com.azure.cosmos_tables#TableInsertEntityRequestPrefer",
+          "traits": {
+            "smithy.api#httpHeader": "Prefer",
+            "smithy.api#documentation": "Specifies whether the response should include the inserted entity in the\npayload. Possible values are return-no-content and return-content."
+          }
+        },
+        "body": {
+          "target": "com.azure.cosmos_tables#TableInsertEntityRequestBodyMap",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableInsertEntityRequestBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableInsertEntityRequestPrefer": {
+      "type": "enum",
+      "members": {
+        "RETURN_NO_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "return-no-content"
+          }
+        },
+        "RETURN_CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "return-content"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableInsertEntityRequestFormat": {
+      "type": "enum",
+      "members": {
+        "APPLICATION_JSON_ODATA_NOMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=nometadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_MINIMALMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=minimalmetadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_FULLMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=fullmetadata"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableDeleteEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableDeleteEntityRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{table}(PartitionKey='{partitionKey}',RowKey='{rowKey}')",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Deletes the specified entity in a table."
+      }
+    },
+    "com.azure.cosmos_tables#TableDeleteEntityRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "partitionKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The partition key of the entity."
+          }
+        },
+        "rowKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The row key of the entity."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Match condition for an entity to be deleted. If specified and a matching entity\nis not found, an error will be raised. To force an unconditional delete, set to\nthe wildcard character (*)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableMergeEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableMergeEntityRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableMergeEntityResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/{table}(PartitionKey='{partitionKey}',RowKey='{rowKey}')",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Merge entity in a table."
+      }
+    },
+    "com.azure.cosmos_tables#TableMergeEntityResponse": {
+      "type": "structure",
+      "members": {
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "The ETag contains a value that you can use to perform operations conditionally."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableMergeEntityRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "partitionKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The partition key of the entity."
+          }
+        },
+        "rowKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The row key of the entity."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Match condition for an entity to be deleted. If specified and a matching entity\nis not found, an error will be raised. To force an unconditional delete, set to\nthe wildcard character (*)."
+          }
+        },
+        "body": {
+          "target": "com.azure.cosmos_tables#TableMergeEntityRequestBodyMap",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableMergeEntityRequestBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableUpdateEntity": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableUpdateEntityRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableUpdateEntityResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{table}(PartitionKey='{partitionKey}',RowKey='{rowKey}')",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Update entity in a table."
+      }
+    },
+    "com.azure.cosmos_tables#TableUpdateEntityResponse": {
+      "type": "structure",
+      "members": {
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "The ETag contains a value that you can use to perform operations conditionally."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableUpdateEntityRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "partitionKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The partition key of the entity."
+          }
+        },
+        "rowKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The row key of the entity."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Match condition for an entity to be deleted. If specified and a matching entity\nis not found, an error will be raised. To force an unconditional delete, set to\nthe wildcard character (*)."
+          }
+        },
+        "body": {
+          "target": "com.azure.cosmos_tables#TableUpdateEntityRequestBodyMap",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableUpdateEntityRequestBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{table}(PartitionKey='{partitionKey}',RowKey='{rowKey}')",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Retrieve a single entity."
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyResponseBodyMap",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "partitionKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The partition key of the entity."
+          }
+        },
+        "rowKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The row key of the entity."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "_format": {
+          "target": "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyRequestFormat",
+          "traits": {
+            "smithy.api#httpQuery": "$format",
+            "smithy.api#documentation": "Specifies the metadata format for the response."
+          }
+        },
+        "_select": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select expression using OData notation. Limits the columns on each record to just those requested."
+          }
+        },
+        "_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "OData filter expression."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKeyRequestFormat": {
+      "type": "enum",
+      "members": {
+        "APPLICATION_JSON_ODATA_NOMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=nometadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_MINIMALMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=minimalmetadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_FULLMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=fullmetadata"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableQueryEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cosmos_tables#TableQueryEntitiesRequest"
+      },
+      "output": {
+        "target": "com.azure.cosmos_tables#TableEntityQueryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{table}()",
+          "code": 200,
+          "host": "{url}",
+          "hostRaw": [
+            "url"
+          ],
+          "apiVersion": "2019-02-02",
+          "apiVersionHeader": "x-ms-version",
+          "headers": {
+            "DataServiceVersion": "3.0",
+            "Accept": "application/json;odata=minimalmetadata"
+          },
+          "audienceByHost": {
+            ".table.core.windows.net": "https://storage.azure.com/.default"
+          }
+        },
+        "smithy.api#documentation": "Queries entities under the given table."
+      }
+    },
+    "com.azure.cosmos_tables#TableEntityQueryResponse": {
+      "type": "structure",
+      "members": {
+        "odata_metadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The metadata response of the table.",
+            "smithy.api#jsonName": "odata.metadata"
+          }
+        },
+        "value": {
+          "target": "com.azure.cosmos_tables#TableEntityQueryResponseValueList",
+          "traits": {
+            "smithy.api#documentation": "List of table entities."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for the table entity query response."
+      }
+    },
+    "com.azure.cosmos_tables#TableEntityQueryResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_tables#TableEntityQueryResponseValueItemMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of table entities."
+      }
+    },
+    "com.azure.cosmos_tables#TableEntityQueryResponseValueItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#TableQueryEntitiesRequest": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The host name of the tables account, e.g. accountName.table.core.windows.net",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the table."
+          }
+        },
+        "_format": {
+          "target": "com.azure.cosmos_tables#TableQueryEntitiesRequestFormat",
+          "traits": {
+            "smithy.api#httpQuery": "$format",
+            "smithy.api#documentation": "Specifies the metadata format for the response."
+          }
+        },
+        "_top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Specifies the maximum number of records to return."
+          }
+        },
+        "_select": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select expression using OData notation. Limits the columns on each record to just those requested."
+          }
+        },
+        "_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "OData filter expression."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeout",
+            "smithy.api#documentation": "The timeout parameter is expressed in seconds."
+          }
+        },
+        "NextPartitionKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "NextPartitionKey",
+            "smithy.api#documentation": "An entity partition key query continuation token from a previous call."
+          }
+        },
+        "NextRowKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "NextRowKey",
+            "smithy.api#documentation": "An entity row key query continuation token from a previous call."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_tables#TableQueryEntitiesRequestFormat": {
+      "type": "enum",
+      "members": {
+        "APPLICATION_JSON_ODATA_NOMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=nometadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_MINIMALMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=minimalmetadata"
+          }
+        },
+        "APPLICATION_JSON_ODATA_FULLMETADATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application/json;odata=fullmetadata"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cosmos_tables#CosmosTables": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cosmos_tables#TableSetAccessPolicy"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableGetAccessPolicy"
+        },
+        {
+          "target": "com.azure.cosmos_tables#ServiceGetStatistics"
+        },
+        {
+          "target": "com.azure.cosmos_tables#ServiceGetProperties"
+        },
+        {
+          "target": "com.azure.cosmos_tables#ServiceSetProperties"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableDelete"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableCreate"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableQuery"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableInsertEntity"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableDeleteEntity"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableMergeEntity"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableUpdateEntity"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKey"
+        },
+        {
+          "target": "com.azure.cosmos_tables#TableQueryEntities"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Tables data plane",
+        "smithy.api#documentation": "Azure cosmos-db data plane — cosmos-db/data-plane/Tables (latest stable api-version 2019-02-02).",
+        "com.azure.protocols#host": {
+          "template": "{url}",
+          "parameters": [
+            {
+              "name": "url",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cosmos.azure.com/.default"
+      }
+    }
+  }
+}

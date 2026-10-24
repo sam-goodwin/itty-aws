@@ -1,0 +1,1836 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.ai_projects#IndexesDeleteVersion": "com.azure.ai_projects#DeleteIndexVersion",
+      "com.azure.ai_projects#IndexesDeleteVersionRequest": "com.azure.ai_projects#DeleteIndexVersionRequest",
+      "com.azure.ai_projects#IndexesGetVersion": "com.azure.ai_projects#GetIndexVersion",
+      "com.azure.ai_projects#IndexesGetVersionRequest": "com.azure.ai_projects#GetIndexVersionRequest",
+      "com.azure.ai_projects#IndexesListVersions": "com.azure.ai_projects#ListIndexVersions",
+      "com.azure.ai_projects#IndexesListVersionsRequest": "com.azure.ai_projects#ListIndexVersionsRequest",
+      "com.azure.ai_projects#IndexesListLatest": "com.azure.ai_projects#ListIndexLatest",
+      "com.azure.ai_projects#IndexesListLatestRequest": "com.azure.ai_projects#ListIndexLatestRequest",
+      "com.azure.ai_projects#DeploymentsGet": "com.azure.ai_projects#GetDeployment",
+      "com.azure.ai_projects#DeploymentsGetRequest": "com.azure.ai_projects#GetDeploymentRequest",
+      "com.azure.ai_projects#DeploymentsList": "com.azure.ai_projects#ListDeployments",
+      "com.azure.ai_projects#DeploymentsListRequest": "com.azure.ai_projects#ListDeploymentsRequest",
+      "com.azure.ai_projects#DeploymentsListRequestDeploymentType": "com.azure.ai_projects#ListDeploymentsRequestDeploymentType",
+      "com.azure.ai_projects#DatasetsGetCredentials": "com.azure.ai_projects#GetDatasetCredentials",
+      "com.azure.ai_projects#DatasetsGetCredentialsRequest": "com.azure.ai_projects#GetDatasetCredentialsRequest",
+      "com.azure.ai_projects#DatasetsDeleteVersion": "com.azure.ai_projects#DeleteDatasetVersion",
+      "com.azure.ai_projects#DatasetsDeleteVersionRequest": "com.azure.ai_projects#DeleteDatasetVersionRequest",
+      "com.azure.ai_projects#DatasetsGetVersion": "com.azure.ai_projects#GetDatasetVersion",
+      "com.azure.ai_projects#DatasetsGetVersionRequest": "com.azure.ai_projects#GetDatasetVersionRequest",
+      "com.azure.ai_projects#DatasetsListVersions": "com.azure.ai_projects#ListDatasetVersions",
+      "com.azure.ai_projects#DatasetsListVersionsRequest": "com.azure.ai_projects#ListDatasetVersionsRequest",
+      "com.azure.ai_projects#DatasetsListLatest": "com.azure.ai_projects#ListDatasetLatest",
+      "com.azure.ai_projects#DatasetsListLatestRequest": "com.azure.ai_projects#ListDatasetLatestRequest",
+      "com.azure.ai_projects#ConnectionsGetWithCredentials": "com.azure.ai_projects#GetConnectionWithCredentials",
+      "com.azure.ai_projects#ConnectionsGetWithCredentialsRequest": "com.azure.ai_projects#GetConnectionWithCredentialsRequest",
+      "com.azure.ai_projects#ConnectionsGet": "com.azure.ai_projects#GetConnection",
+      "com.azure.ai_projects#ConnectionsGetRequest": "com.azure.ai_projects#GetConnectionRequest",
+      "com.azure.ai_projects#ConnectionsList": "com.azure.ai_projects#ListConnections",
+      "com.azure.ai_projects#ConnectionsListRequest": "com.azure.ai_projects#ListConnectionsRequest",
+      "com.azure.ai_projects#ConnectionsListRequestConnectionType": "com.azure.ai_projects#ListConnectionsRequestConnectionType"
+    }
+  },
+  "shapes": {
+    "com.azure.ai_projects#IndexesDeleteVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#IndexesDeleteVersionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/indexes/{name}/versions/{version}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Delete the specific version of the Index. The service returns 204 No Content if the Index was deleted successfully or if the Index does not exist."
+      }
+    },
+    "com.azure.ai_projects#IndexesDeleteVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the Index to delete."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#IndexesCreateOrUpdateVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#IndexesCreateOrUpdateVersionRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#Index"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/indexes/{name}/versions/{version}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Create a new or update an existing Index with the given version id"
+      }
+    },
+    "com.azure.ai_projects#Index": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.ai_projects#IndexType",
+          "traits": {
+            "smithy.api#documentation": "Type of index",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset ID, a unique identifier for the asset"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the resource",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asset description text."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_projects#IndexTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Index resource Definition"
+      }
+    },
+    "com.azure.ai_projects#IndexTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+      }
+    },
+    "com.azure.ai_projects#IndexType": {
+      "type": "enum",
+      "members": {
+        "AZURESEARCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureSearch"
+          }
+        },
+        "COSMOSDBNOSQLVECTORSTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CosmosDBNoSqlVectorStore"
+          }
+        },
+        "MANAGEDAZURESEARCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManagedAzureSearch"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_projects#IndexesCreateOrUpdateVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The specific version id of the Index to create or update."
+          }
+        },
+        "type": {
+          "target": "com.azure.ai_projects#IndexType",
+          "traits": {
+            "smithy.api#documentation": "Type of index",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asset description text."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_projects#IndexesCreateOrUpdateVersionRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#IndexesCreateOrUpdateVersionRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+      }
+    },
+    "com.azure.ai_projects#IndexesGetVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#IndexesGetVersionRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#Index"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/indexes/{name}/versions/{version}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Get the specific version of the Index. The service returns 404 Not Found error if the Index does not exist."
+      }
+    },
+    "com.azure.ai_projects#IndexesGetVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The specific version id of the Index to retrieve."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#IndexesListVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#IndexesListVersionsRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#PagedIndex"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/indexes/{name}/versions",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "List all versions of the given Index"
+      }
+    },
+    "com.azure.ai_projects#PagedIndex": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.ai_projects#PagedIndexValueList",
+          "traits": {
+            "smithy.api#documentation": "The Index items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Index items"
+      }
+    },
+    "com.azure.ai_projects#PagedIndexValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_projects#Index"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Index items on this page"
+      }
+    },
+    "com.azure.ai_projects#IndexesListVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#IndexesListLatest": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#IndexesListLatestRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#PagedIndex"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/indexes",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "List the latest version of each Index"
+      }
+    },
+    "com.azure.ai_projects#IndexesListLatestRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DeploymentsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DeploymentsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#Deployment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/deployments/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Get a deployed model."
+      }
+    },
+    "com.azure.ai_projects#Deployment": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.ai_projects#DeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The type of the deployment",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the deployment",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model Deployment Definition"
+      }
+    },
+    "com.azure.ai_projects#DeploymentType": {
+      "type": "enum",
+      "members": {
+        "MODELDEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ModelDeployment"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_projects#DeploymentsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name of the deployment"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DeploymentsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DeploymentsListRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#PagedDeployment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/deployments",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "List all deployed models in the project"
+      }
+    },
+    "com.azure.ai_projects#PagedDeployment": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.ai_projects#PagedDeploymentValueList",
+          "traits": {
+            "smithy.api#documentation": "The Deployment items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Deployment items"
+      }
+    },
+    "com.azure.ai_projects#PagedDeploymentValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_projects#Deployment"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Deployment items on this page"
+      }
+    },
+    "com.azure.ai_projects#DeploymentsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "modelPublisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "modelPublisher",
+            "smithy.api#documentation": "Model publisher to filter models by"
+          }
+        },
+        "modelName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "modelName",
+            "smithy.api#documentation": "Model name (the publisher specific name) to filter models by"
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.ai_projects#DeploymentsListRequestDeploymentType",
+          "traits": {
+            "smithy.api#httpQuery": "deploymentType",
+            "smithy.api#documentation": "Type of deployment to filter list by"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DeploymentsListRequestDeploymentType": {
+      "type": "enum",
+      "members": {
+        "MODELDEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ModelDeployment"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_projects#DatasetsStartPendingUploadVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DatasetsStartPendingUploadVersionRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#PendingUploadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/datasets/{name}/versions/{version}/startPendingUpload",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Start a new or get an existing pending upload of a dataset for a specific version."
+      }
+    },
+    "com.azure.ai_projects#PendingUploadResponse": {
+      "type": "structure",
+      "members": {
+        "blobReference": {
+          "target": "com.azure.ai_projects#BlobReference",
+          "traits": {
+            "smithy.api#documentation": "Container-level read, write, list SAS.",
+            "smithy.api#required": {}
+          }
+        },
+        "pendingUploadId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID for this upload request.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of asset to be created if user did not specify version when initially creating upload"
+          }
+        },
+        "pendingUploadType": {
+          "target": "com.azure.ai_projects#PendingUploadResponsePendingUploadType",
+          "traits": {
+            "smithy.api#documentation": "BlobReference is the only supported type",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the response for a pending upload request"
+      }
+    },
+    "com.azure.ai_projects#PendingUploadResponsePendingUploadType": {
+      "type": "enum",
+      "members": {
+        "BLOBREFERENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BlobReference"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "BlobReference is the only supported type"
+      }
+    },
+    "com.azure.ai_projects#BlobReference": {
+      "type": "structure",
+      "members": {
+        "blobUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Blob URI path for client to upload data. Example: `https://blob.windows.core.net/Container/Path`",
+            "smithy.api#required": {}
+          }
+        },
+        "storageAccountArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM ID of the storage account to use.",
+            "smithy.api#required": {}
+          }
+        },
+        "credential": {
+          "target": "com.azure.ai_projects#SasCredential",
+          "traits": {
+            "smithy.api#documentation": "Credential info to access the storage account.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Blob reference details."
+      }
+    },
+    "com.azure.ai_projects#SasCredential": {
+      "type": "structure",
+      "members": {
+        "sasUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SAS uri",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.ai_projects#SasCredentialType",
+          "traits": {
+            "smithy.api#documentation": "Type of credential",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SAS Credential definition"
+      }
+    },
+    "com.azure.ai_projects#SasCredentialType": {
+      "type": "enum",
+      "members": {
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of credential"
+      }
+    },
+    "com.azure.ai_projects#DatasetsStartPendingUploadVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The specific version id of the DatasetVersion to operate on."
+          }
+        },
+        "pendingUploadId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If PendingUploadId is not provided, a random GUID will be used."
+          }
+        },
+        "connectionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Storage Account connection name to use for generating temporary SAS token"
+          }
+        },
+        "pendingUploadType": {
+          "target": "com.azure.ai_projects#DatasetsStartPendingUploadVersionRequestPendingUploadType",
+          "traits": {
+            "smithy.api#documentation": "BlobReference is the only supported type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DatasetsStartPendingUploadVersionRequestPendingUploadType": {
+      "type": "enum",
+      "members": {
+        "BLOBREFERENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BlobReference"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "BlobReference is the only supported type."
+      }
+    },
+    "com.azure.ai_projects#DatasetsGetCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DatasetsGetCredentialsRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#AssetCredentialResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/datasets/{name}/versions/{version}/credentials",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Get the SAS credential to access the storage account associated with a Dataset version."
+      }
+    },
+    "com.azure.ai_projects#AssetCredentialResponse": {
+      "type": "structure",
+      "members": {
+        "blobReference": {
+          "target": "com.azure.ai_projects#BlobReference",
+          "traits": {
+            "smithy.api#documentation": "Credential info to access the storage account.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a reference to a blob for consumption"
+      }
+    },
+    "com.azure.ai_projects#DatasetsGetCredentialsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The specific version id of the DatasetVersion to operate on."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DatasetsDeleteVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DatasetsDeleteVersionRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/datasets/{name}/versions/{version}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Delete the specific version of the DatasetVersion. The service returns 204 No Content if the DatasetVersion was deleted successfully or if the DatasetVersion does not exist."
+      }
+    },
+    "com.azure.ai_projects#DatasetsDeleteVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the DatasetVersion to delete."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DatasetsCreateOrUpdateVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DatasetsCreateOrUpdateVersionRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#DatasetVersion"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/datasets/{name}/versions/{version}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Create a new or update an existing DatasetVersion with the given version id"
+      }
+    },
+    "com.azure.ai_projects#DatasetVersion": {
+      "type": "structure",
+      "members": {
+        "dataUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the data ([example](https://go.microsoft.com/fwlink/?linkid=2202330))",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.ai_projects#DatasetType",
+          "traits": {
+            "smithy.api#documentation": "Dataset type",
+            "smithy.api#required": {}
+          }
+        },
+        "isReference": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the dataset holds a reference to the storage, or the dataset manages storage itself. If true, the underlying data will not be deleted when the dataset version is deleted"
+          }
+        },
+        "connectionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Storage Account connection name. Required if startPendingUploadVersion was not called before creating the Dataset"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset ID, a unique identifier for the asset"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the resource",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asset description text."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_projects#DatasetVersionTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DatasetVersion Definition"
+      }
+    },
+    "com.azure.ai_projects#DatasetVersionTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+      }
+    },
+    "com.azure.ai_projects#DatasetType": {
+      "type": "enum",
+      "members": {
+        "URI_FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uri_file"
+          }
+        },
+        "URI_FOLDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uri_folder"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to determine the type of data."
+      }
+    },
+    "com.azure.ai_projects#DatasetsCreateOrUpdateVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The specific version id of the DatasetVersion to create or update."
+          }
+        },
+        "dataUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URI of the data ([example](https://go.microsoft.com/fwlink/?linkid=2202330))",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.ai_projects#DatasetType",
+          "traits": {
+            "smithy.api#documentation": "Dataset type",
+            "smithy.api#required": {}
+          }
+        },
+        "connectionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Storage Account connection name. Required if startPendingUploadVersion was not called before creating the Dataset"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asset description text."
+          }
+        },
+        "tags": {
+          "target": "com.azure.ai_projects#DatasetsCreateOrUpdateVersionRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DatasetsCreateOrUpdateVersionRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
+      }
+    },
+    "com.azure.ai_projects#DatasetsGetVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DatasetsGetVersionRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#DatasetVersion"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/datasets/{name}/versions/{version}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Get the specific version of the DatasetVersion. The service returns 404 Not Found error if the DatasetVersion does not exist."
+      }
+    },
+    "com.azure.ai_projects#DatasetsGetVersionRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The specific version id of the DatasetVersion to retrieve."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DatasetsListVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DatasetsListVersionsRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#PagedDatasetVersion"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/datasets/{name}/versions",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "List all versions of the given DatasetVersion"
+      }
+    },
+    "com.azure.ai_projects#PagedDatasetVersion": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.ai_projects#PagedDatasetVersionValueList",
+          "traits": {
+            "smithy.api#documentation": "The DatasetVersion items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of DatasetVersion items"
+      }
+    },
+    "com.azure.ai_projects#PagedDatasetVersionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_projects#DatasetVersion"
+      },
+      "traits": {
+        "smithy.api#documentation": "The DatasetVersion items on this page"
+      }
+    },
+    "com.azure.ai_projects#DatasetsListVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#DatasetsListLatest": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#DatasetsListLatestRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#PagedDatasetVersion"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/datasets",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "List the latest version of each DatasetVersion"
+      }
+    },
+    "com.azure.ai_projects#DatasetsListLatestRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#ConnectionsGetWithCredentials": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#ConnectionsGetWithCredentialsRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#Connection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/connections/{name}/getConnectionWithCredentials",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Get a connection by name, with its connection credentials"
+      }
+    },
+    "com.azure.ai_projects#Connection": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The friendly name of the connection, provided by the user.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier for the connection, generated by the service",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.ai_projects#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "Category of the connection",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The connection URL to be used for this service",
+            "smithy.api#required": {}
+          }
+        },
+        "isDefault": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the connection is tagged as the default connection of its type",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials": {
+          "target": "com.azure.ai_projects#BaseCredentials",
+          "traits": {
+            "smithy.api#documentation": "The credentials used by the connection",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.azure.ai_projects#ConnectionMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata of the connection",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response from the list and get connections operations"
+      }
+    },
+    "com.azure.ai_projects#ConnectionMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata of the connection"
+      }
+    },
+    "com.azure.ai_projects#BaseCredentials": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.ai_projects#CredentialType",
+          "traits": {
+            "smithy.api#documentation": "The type of credential used by the connection",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A base class for connection credentials"
+      }
+    },
+    "com.azure.ai_projects#CredentialType": {
+      "type": "enum",
+      "members": {
+        "APIKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApiKey"
+          }
+        },
+        "AAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAD"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "CUSTOMKEYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomKeys"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The credential type used by the connection"
+      }
+    },
+    "com.azure.ai_projects#ConnectionType": {
+      "type": "enum",
+      "members": {
+        "AZUREOPENAI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureOpenAI"
+          }
+        },
+        "AZUREBLOB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureBlob"
+          }
+        },
+        "AZURESTORAGEACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureStorageAccount"
+          }
+        },
+        "COGNITIVESEARCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CognitiveSearch"
+          }
+        },
+        "COSMOSDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CosmosDB"
+          }
+        },
+        "APIKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApiKey"
+          }
+        },
+        "APPCONFIG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppConfig"
+          }
+        },
+        "APPINSIGHTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppInsights"
+          }
+        },
+        "CUSTOMKEYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomKeys"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Type (or category) of the connection"
+      }
+    },
+    "com.azure.ai_projects#ConnectionsGetWithCredentialsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The friendly name of the connection, provided by the user."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#ConnectionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#ConnectionsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#Connection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/connections/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "Get a connection by name, without populating connection credentials"
+      }
+    },
+    "com.azure.ai_projects#ConnectionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The friendly name of the connection, provided by the user."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#ConnectionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_projects#ConnectionsListRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_projects#PagedConnection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/connections",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-05-01"
+        },
+        "smithy.api#documentation": "List all connections in the project, without populating connection credentials"
+      }
+    },
+    "com.azure.ai_projects#PagedConnection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.ai_projects#PagedConnectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The Connection items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of Connection items"
+      }
+    },
+    "com.azure.ai_projects#PagedConnectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_projects#Connection"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Connection items on this page"
+      }
+    },
+    "com.azure.ai_projects#ConnectionsListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "connectionType": {
+          "target": "com.azure.ai_projects#ConnectionsListRequestConnectionType",
+          "traits": {
+            "smithy.api#httpQuery": "connectionType",
+            "smithy.api#documentation": "List connections of this specific type"
+          }
+        },
+        "defaultConnection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "defaultConnection",
+            "smithy.api#documentation": "List connections that are default connections"
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_projects#ConnectionsListRequestConnectionType": {
+      "type": "enum",
+      "members": {
+        "AZUREOPENAI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureOpenAI"
+          }
+        },
+        "AZUREBLOB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureBlob"
+          }
+        },
+        "AZURESTORAGEACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureStorageAccount"
+          }
+        },
+        "COGNITIVESEARCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CognitiveSearch"
+          }
+        },
+        "COSMOSDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CosmosDB"
+          }
+        },
+        "APIKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApiKey"
+          }
+        },
+        "APPCONFIG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppConfig"
+          }
+        },
+        "APPINSIGHTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppInsights"
+          }
+        },
+        "CUSTOMKEYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomKeys"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.ai_projects#AiProjects": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.ai_projects#IndexesDeleteVersion"
+        },
+        {
+          "target": "com.azure.ai_projects#IndexesCreateOrUpdateVersion"
+        },
+        {
+          "target": "com.azure.ai_projects#IndexesGetVersion"
+        },
+        {
+          "target": "com.azure.ai_projects#IndexesListVersions"
+        },
+        {
+          "target": "com.azure.ai_projects#IndexesListLatest"
+        },
+        {
+          "target": "com.azure.ai_projects#DeploymentsGet"
+        },
+        {
+          "target": "com.azure.ai_projects#DeploymentsList"
+        },
+        {
+          "target": "com.azure.ai_projects#DatasetsStartPendingUploadVersion"
+        },
+        {
+          "target": "com.azure.ai_projects#DatasetsGetCredentials"
+        },
+        {
+          "target": "com.azure.ai_projects#DatasetsDeleteVersion"
+        },
+        {
+          "target": "com.azure.ai_projects#DatasetsCreateOrUpdateVersion"
+        },
+        {
+          "target": "com.azure.ai_projects#DatasetsGetVersion"
+        },
+        {
+          "target": "com.azure.ai_projects#DatasetsListVersions"
+        },
+        {
+          "target": "com.azure.ai_projects#DatasetsListLatest"
+        },
+        {
+          "target": "com.azure.ai_projects#ConnectionsGetWithCredentials"
+        },
+        {
+          "target": "com.azure.ai_projects#ConnectionsGet"
+        },
+        {
+          "target": "com.azure.ai_projects#ConnectionsList"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure AIProjects data plane",
+        "smithy.api#documentation": "Azure ai data plane — ai/data-plane/AIProjects (latest stable api-version 2025-05-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://ai.azure.com/.default"
+      }
+    }
+  }
+}

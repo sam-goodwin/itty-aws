@@ -1,0 +1,1444 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.attestation_data#TcbBaselinesGet": "com.azure.attestation_data#GetTcbBaseline",
+      "com.azure.attestation_data#TcbBaselinesGetRequest": "com.azure.attestation_data#GetTcbBaselineRequest",
+      "com.azure.attestation_data#TcbBaselinesGetRequestAttestationType": "com.azure.attestation_data#GetTcbBaselineRequestAttestationType",
+      "com.azure.attestation_data#PolicyReset": "com.azure.attestation_data#ResetPolicy",
+      "com.azure.attestation_data#PolicyResetRequest": "com.azure.attestation_data#ResetPolicyRequest",
+      "com.azure.attestation_data#PolicyResetRequestAttestationType": "com.azure.attestation_data#ResetPolicyRequestAttestationType",
+      "com.azure.attestation_data#PolicySet": "com.azure.attestation_data#SetPolicy",
+      "com.azure.attestation_data#PolicySetRequest": "com.azure.attestation_data#SetPolicyRequest",
+      "com.azure.attestation_data#PolicySetRequestAttestationType": "com.azure.attestation_data#SetPolicyRequestAttestationType",
+      "com.azure.attestation_data#PolicyGet": "com.azure.attestation_data#GetPolicy",
+      "com.azure.attestation_data#PolicyGetRequest": "com.azure.attestation_data#GetPolicyRequest",
+      "com.azure.attestation_data#PolicyGetRequestAttestationType": "com.azure.attestation_data#GetPolicyRequestAttestationType",
+      "com.azure.attestation_data#SigningCertificatesGet": "com.azure.attestation_data#GetSigningCertificate",
+      "com.azure.attestation_data#SigningCertificatesGetRequest": "com.azure.attestation_data#GetSigningCertificateRequest",
+      "com.azure.attestation_data#PolicyCertificatesRemove": "com.azure.attestation_data#RemovePolicyCertificate",
+      "com.azure.attestation_data#PolicyCertificatesRemoveRequest": "com.azure.attestation_data#RemovePolicyCertificateRequest",
+      "com.azure.attestation_data#PolicyCertificatesAdd": "com.azure.attestation_data#AddPolicyCertificate",
+      "com.azure.attestation_data#PolicyCertificatesAddRequest": "com.azure.attestation_data#AddPolicyCertificateRequest",
+      "com.azure.attestation_data#PolicyCertificatesGet": "com.azure.attestation_data#GetPolicyCertificate",
+      "com.azure.attestation_data#PolicyCertificatesGetRequest": "com.azure.attestation_data#GetPolicyCertificateRequest",
+      "com.azure.attestation_data#MetadataConfigurationGet": "com.azure.attestation_data#GetMetadataConfiguration",
+      "com.azure.attestation_data#MetadataConfigurationGetRequest": "com.azure.attestation_data#GetMetadataConfigurationRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.attestation_data#TcbBaselinesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#TcbBaselinesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#TcbBaselineResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/tcbbaselines/{attestationType}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Retrieves a list of all Azure supported baseline details for the a TEE type\nalong with an indication of which one is in enforced for the attestation\nprovider.\n\nRetrieves a list of all Azure supported baseline details for the a TEE type\nalong with an indication of which one is in enforced for the attestation\nprovider."
+      }
+    },
+    "com.azure.attestation_data#TcbBaselineResult": {
+      "type": "structure",
+      "members": {
+        "tcbBaselines": {
+          "target": "com.azure.attestation_data#TcbBaselineResultTcbBaselinesList",
+          "traits": {
+            "smithy.api#documentation": "A list of all Azure supported baseline details for the a TEE type along with an\nindication of which one is in enforced for the attestation provider"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all Azure supported baseline details for the a TEE type along with an\nindication of which one is in enforced for the attestation provider"
+      }
+    },
+    "com.azure.attestation_data#TcbBaselineResultTcbBaselinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.attestation_data#TcbBaseline"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of all Azure supported baseline details for the a TEE type along with an\nindication of which one is in enforced for the attestation provider"
+      }
+    },
+    "com.azure.attestation_data#TcbBaseline": {
+      "type": "structure",
+      "members": {
+        "tcbIdentifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Tcb baseline Identifier used in attestation policy"
+          }
+        },
+        "tcbEvaluationDataNumber": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A monotonically increasing sequence number changed when Intel updates the\ncontent of the TCB evaluation data set. SGX TEE specific property"
+          }
+        },
+        "tcbReleaseDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the Tcb is released. SGX TEE specific property"
+          }
+        },
+        "minimumPswLinuxVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Minimum Linux PSW version required to support the corresponding Tcb baseline.\nSGX TEE specific property"
+          }
+        },
+        "minimumPswWindowsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Minimum Windows PSW version required to support the corresponding Tcb baseline.\nSGX TEE specific property"
+          }
+        },
+        "isSelectedTcb": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The corresponding Tcb baseline is set in attestation policy and is used in\nattestation request if set to true"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "TEE specific Tcb baseline used in attestation, and baseline details including\nbaseline identifier, release date and minimum required software version"
+      }
+    },
+    "com.azure.attestation_data#TcbBaselinesGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "attestationType": {
+          "target": "com.azure.attestation_data#TcbBaselinesGetRequestAttestationType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the trusted execution environment to be used to validate the evidence"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#TcbBaselinesGetRequestAttestationType": {
+      "type": "enum",
+      "members": {
+        "SGXENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SgxEnclave"
+          }
+        },
+        "OPENENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OpenEnclave"
+          }
+        },
+        "AZUREGUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureGuest"
+          }
+        },
+        "SEVSNPVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SevSnpVm"
+          }
+        },
+        "TPM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tpm"
+          }
+        },
+        "TDXVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TdxVm"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.attestation_data#PolicyReset": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#PolicyResetRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#PolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/policies/{attestationType}:reset",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Resets the attestation policy for the specified tenant and reverts to the\ndefault policy.\n\nResets the attestation policy for the specified tenant and reverts to the\ndefault policy."
+      }
+    },
+    "com.azure.attestation_data#PolicyResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An RFC7519 JSON Web Token structure whose body is an PolicyResult object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response to an attestation policy operation"
+      }
+    },
+    "com.azure.attestation_data#PolicyResetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "attestationType": {
+          "target": "com.azure.attestation_data#PolicyResetRequestAttestationType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the trusted execution environment to be used to validate the evidence"
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#PolicyResetRequestAttestationType": {
+      "type": "enum",
+      "members": {
+        "SGXENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SgxEnclave"
+          }
+        },
+        "OPENENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OpenEnclave"
+          }
+        },
+        "AZUREGUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureGuest"
+          }
+        },
+        "SEVSNPVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SevSnpVm"
+          }
+        },
+        "TPM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tpm"
+          }
+        },
+        "TDXVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TdxVm"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.attestation_data#PolicySet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#PolicySetRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#PolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/policies/{attestationType}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Sets the policy for a given attestation type.\n\nSets the policy for a given attestation type."
+      }
+    },
+    "com.azure.attestation_data#PolicySetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "attestationType": {
+          "target": "com.azure.attestation_data#PolicySetRequestAttestationType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the trusted execution environment to be used to validate the evidence"
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#PolicySetRequestAttestationType": {
+      "type": "enum",
+      "members": {
+        "SGXENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SgxEnclave"
+          }
+        },
+        "OPENENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OpenEnclave"
+          }
+        },
+        "AZUREGUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureGuest"
+          }
+        },
+        "SEVSNPVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SevSnpVm"
+          }
+        },
+        "TPM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tpm"
+          }
+        },
+        "TDXVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TdxVm"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.attestation_data#PolicyGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#PolicyGetRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#PolicyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/policies/{attestationType}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Retrieves the current policy for an attestation type.\n\nRetrieves the current policy for an attestation type."
+      }
+    },
+    "com.azure.attestation_data#PolicyGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "attestationType": {
+          "target": "com.azure.attestation_data#PolicyGetRequestAttestationType",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the trusted execution environment to be used to validate the evidence"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#PolicyGetRequestAttestationType": {
+      "type": "enum",
+      "members": {
+        "SGXENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SgxEnclave"
+          }
+        },
+        "OPENENCLAVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OpenEnclave"
+          }
+        },
+        "AZUREGUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureGuest"
+          }
+        },
+        "SEVSNPVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SevSnpVm"
+          }
+        },
+        "TPM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tpm"
+          }
+        },
+        "TDXVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TdxVm"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.attestation_data#SigningCertificatesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#SigningCertificatesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#JsonWebKeySet"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certs",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Retrieves the attestation signing keys in use by the attestation service\n\nRetrieves metadata signing certificates in use by the attestation service"
+      }
+    },
+    "com.azure.attestation_data#JsonWebKeySet": {
+      "type": "structure",
+      "members": {
+        "keys": {
+          "target": "com.azure.attestation_data#JsonWebKeySetKeysList",
+          "traits": {
+            "smithy.api#documentation": "The value of the \"keys\" parameter is an array of JWK values.  By\ndefault, the order of the JWK values within the array does not imply\nan order of preference among them, although applications of JWK Sets\ncan choose to assign a meaning to the order for their purposes, if\ndesired."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "JsonWebKeySet"
+      }
+    },
+    "com.azure.attestation_data#JsonWebKeySetKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.attestation_data#JsonWebKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "The value of the \"keys\" parameter is an array of JWK values.  By\ndefault, the order of the JWK values within the array does not imply\nan order of preference among them, although applications of JWK Sets\ncan choose to assign a meaning to the order for their purposes, if\ndesired."
+      }
+    },
+    "com.azure.attestation_data#JsonWebKey": {
+      "type": "structure",
+      "members": {
+        "alg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"alg\" (algorithm) parameter identifies the algorithm intended for\nuse with the key.  The values used should either be registered in the\nIANA \"JSON Web Signature and Encryption Algorithms\" registry\nestablished by [JWA] or be a value that contains a Collision-\nResistant Name."
+          }
+        },
+        "crv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"crv\" (curve) parameter identifies the curve type"
+          }
+        },
+        "d": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA private exponent or ECC private key"
+          }
+        },
+        "dp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA Private Key Parameter"
+          }
+        },
+        "dq": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA Private Key Parameter"
+          }
+        },
+        "e": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA public exponent, in Base64"
+          }
+        },
+        "k": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Symmetric key"
+          }
+        },
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"kid\" (key ID) parameter is used to match a specific key.  This\nis used, for instance, to choose among a set of keys within a JWK Set\nduring key rollover.  The structure of the \"kid\" value is\nunspecified.  When \"kid\" values are used within a JWK Set, different\nkeys within the JWK Set SHOULD use distinct \"kid\" values.  (One\nexample in which different keys might use the same \"kid\" value is if\nthey have different \"kty\" (key type) values but are considered to be\nequivalent alternatives by the application using them.)  The \"kid\"\nvalue is a case-sensitive string."
+          }
+        },
+        "kty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"kty\" (key type) parameter identifies the cryptographic algorithm\nfamily used with the key, such as \"RSA\" or \"EC\". \"kty\" values should\neither be registered in the IANA \"JSON Web Key Types\" registry\nestablished by [JWA] or be a value that contains a Collision-\nResistant Name.  The \"kty\" value is a case-sensitive string.",
+            "smithy.api#required": {}
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus, in Base64"
+          }
+        },
+        "p": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA secret prime"
+          }
+        },
+        "q": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA secret prime, with p < q"
+          }
+        },
+        "qi": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA Private Key Parameter"
+          }
+        },
+        "use": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use (\"public key use\") identifies the intended use of\nthe public key. The \"use\" parameter is employed to indicate whether\na public key is used for encrypting data or verifying the signature\non data. Values are commonly \"sig\" (signature) or \"enc\" (encryption)."
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X coordinate for the Elliptic Curve point"
+          }
+        },
+        "x5c": {
+          "target": "com.azure.attestation_data#JsonWebKeyX5cList",
+          "traits": {
+            "smithy.api#documentation": "The \"x5c\" (X.509 certificate chain) parameter contains a chain of one\nor more PKIX certificates [RFC5280].  The certificate chain is\nrepresented as a JSON array of certificate value strings.  Each\nstring in the array is a base64-encoded (Section 4 of [RFC4648] --\nnot base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.\nThe PKIX certificate containing the key value MUST be the first\ncertificate."
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y coordinate for the Elliptic Curve point"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "JsonWebKey"
+      }
+    },
+    "com.azure.attestation_data#JsonWebKeyX5cList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The \"x5c\" (X.509 certificate chain) parameter contains a chain of one\nor more PKIX certificates [RFC5280].  The certificate chain is\nrepresented as a JSON array of certificate value strings.  Each\nstring in the array is a base64-encoded (Section 4 of [RFC4648] --\nnot base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.\nThe PKIX certificate containing the key value MUST be the first\ncertificate."
+      }
+    },
+    "com.azure.attestation_data#SigningCertificatesGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesRemove": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#PolicyCertificatesRemoveRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#PolicyCertificatesModifyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificates:remove",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Removes the specified policy management certificate. Note that the final policy\nmanagement certificate cannot be removed.\n\nRemoves the specified policy management certificate. Note that the final policy\nmanagement certificate cannot be removed."
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesModifyResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An RFC7519 JSON Web Token structure whose body is a\nPolicyCertificatesModificationResult object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response to an attestation policy management API"
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesRemoveRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "policyCertificateToRemove": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate to remove, as a string (e.g., PEM or JWK)",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesAdd": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#PolicyCertificatesAddRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#PolicyCertificatesModifyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificates:add",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Adds a new attestation policy certificate to the set of policy management\ncertificates.\n\nAdds a new attestation policy certificate to the set of policy management\ncertificates."
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesAddRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "policyCertificateToAdd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate to add, as a string (e.g., PEM or JWK)",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#PolicyCertificatesGetRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#PolicyCertificatesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Retrieves the set of certificates used to express policy for the current tenant.\n\nRetrieves the set of certificates used to express policy for the current tenant."
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An RFC7519 JSON Web Token structure containing a PolicyCertificatesResults\nobject which contains the certificates used to validate policy changes"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response to an attestation policy management API"
+      }
+    },
+    "com.azure.attestation_data#PolicyCertificatesGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestTpm": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#AttestationAttestTpmRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#TpmAttestationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/attest/Tpm",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Attest a Virtualization-based Security (VBS) enclave.\n\nProcesses attestation evidence from a VBS enclave, producing an attestation\nresult. The attestation result produced is dependent upon the attestation\npolicy."
+      }
+    },
+    "com.azure.attestation_data#TpmAttestationResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol data containing attestation service response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Attestation response for Trusted Platform Module (TPM) attestation."
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestTpmRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol data containing artifacts for attestation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestTdxVm": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#AttestationAttestTdxVmRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#AttestationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/attest/TdxVm",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Attest to a TDX Virtual Machine.\n\nProcesses an TDX quote, producing an artifact. The type of artifact produced is\ndependent upon attestation policy."
+      }
+    },
+    "com.azure.attestation_data#AttestationResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An RFC 7519 JSON Web Token, the body of which is an AttestationResult object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of an attestation operation"
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestTdxVmRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "quote": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quote of the TDX virtual machine to be attested"
+          }
+        },
+        "runtimeData": {
+          "target": "com.azure.attestation_data#RuntimeData",
+          "traits": {
+            "smithy.api#documentation": "Runtime data provided by the enclave at the time of quote generation. The MAA\nwill verify that the first 32 bytes of the report_data field of the quote\ncontains the SHA256 hash of the decoded \"data\" field of the runtime data."
+          }
+        },
+        "initTimeData": {
+          "target": "com.azure.attestation_data#InitTimeData",
+          "traits": {
+            "smithy.api#documentation": "Initialization data provided when the enclave is created. MAA will verify that\nthe init data was known to the enclave."
+          }
+        },
+        "nonce": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Nonce for incoming request - emitted in the generated attestation token"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#InitTimeData": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Initialization time data are passed into the Trusted Execution Environment\n(TEE) when it is created. For an Icelake SGX quote, the SHA256 hash of the\nInitTimeData must match the lower 32 bytes of the quote's \"config id\"\nattribute. For a SEV-SNP quote, the SHA256 hash of the InitTimeData must match\nthe quote's \"host data\" attribute."
+          }
+        },
+        "dataType": {
+          "target": "com.azure.attestation_data#DataType",
+          "traits": {
+            "smithy.api#documentation": "The type of data contained within the \"data\" field"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Initialization time data are a conduit for any configuration information that\nis unknown when building the Trusted Execution Environment (TEE) and is defined\nat TEE launch time. This data can be used with confidential container or VM\nscenarios to capture configuration settings such as disk volume content,\nnetwork configuration, etc."
+      }
+    },
+    "com.azure.attestation_data#DataType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Binary"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JSON"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the type of the data encoded contained within the \"data\" field of a\n\"RuntimeData\" or \"InitTimeData\" object"
+      }
+    },
+    "com.azure.attestation_data#RuntimeData": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Runtime data are generated by the Trusted Execution Environment (TEE). For an\nSGX quote (Coffeelake or Icelake), the SHA256 hash of the RuntimeData must\nmatch the lower 32 bytes of the quote's \"report data\" attribute. For a SEV-SNP\nquote, the SHA256 hash of the RuntimeData must match the quote's \"report data\"\nattribute."
+          }
+        },
+        "dataType": {
+          "target": "com.azure.attestation_data#DataType",
+          "traits": {
+            "smithy.api#documentation": "The type of data contained within the \"data\" field"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Runtime data are a conduit for any information defined by the Trusted Execution\nEnvironment (TEE) when actually running."
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestSgxEnclave": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#AttestationAttestSgxEnclaveRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#AttestationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/attest/SgxEnclave",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Attest to an SGX enclave.\n\nProcesses an SGX enclave quote, producing an artifact. The type of artifact\nproduced is dependent upon attestation policy."
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestSgxEnclaveRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "quote": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quote of the enclave to be attested"
+          }
+        },
+        "runtimeData": {
+          "target": "com.azure.attestation_data#RuntimeData",
+          "traits": {
+            "smithy.api#documentation": "Runtime data provided by the enclave at the time of quote generation. The MAA\nwill verify that the first 32 bytes of the report_data field of the quote\ncontains the SHA256 hash of the decoded \"data\" field of the runtime data."
+          }
+        },
+        "initTimeData": {
+          "target": "com.azure.attestation_data#InitTimeData",
+          "traits": {
+            "smithy.api#documentation": "Initialization data provided when the enclave is created. MAA will verify that\nthe init data was known to the enclave. Note that InitTimeData is invalid for\nCoffeeLake processors."
+          }
+        },
+        "draftPolicyForAttestation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attest against the provided draft policy. Note that the resulting token cannot\nbe validated."
+          }
+        },
+        "nonce": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Nonce for incoming request - emitted in the generated attestation token"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestSevSnpVm": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#AttestationAttestSevSnpVmRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#AttestationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/attest/SevSnpVm",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Attest to an SEV SNP Virtual Machine.\n\nProcesses a SEV SNP Boot chain. The type of artifact produced is dependent upon\nattestation policy."
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestSevSnpVmRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "report": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hardware rooted report of the virtual machine being attested along with the\nsigning certificate chain and optionally, additional endorsements"
+          }
+        },
+        "runtimeData": {
+          "target": "com.azure.attestation_data#RuntimeData",
+          "traits": {
+            "smithy.api#documentation": "Runtime data provided by the enclave at the time of report generation. The MAA\nwill verify that the run time data is known to the attestation target."
+          }
+        },
+        "initTimeData": {
+          "target": "com.azure.attestation_data#InitTimeData",
+          "traits": {
+            "smithy.api#documentation": "Initialization data provided by the enclave at the time of report generation.\nThe MAA will verify that the init time data is known to the attestation target."
+          }
+        },
+        "draftPolicyForAttestation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attest against the provided draft policy. Note that the resulting token cannot\nbe validated."
+          }
+        },
+        "nonce": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Nonce for incoming request - emitted in the generated attestation token"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestOpenEnclave": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#AttestationAttestOpenEnclaveRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#AttestationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/attest/OpenEnclave",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Attest to an SGX enclave.\n\nProcesses an OpenEnclave report , producing an artifact. The type of artifact\nproduced is dependent upon attestation policy."
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestOpenEnclaveRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "report": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OpenEnclave report from the enclave to be attested"
+          }
+        },
+        "runtimeData": {
+          "target": "com.azure.attestation_data#RuntimeData",
+          "traits": {
+            "smithy.api#documentation": "Runtime data provided by the enclave at the time of report generation. The MAA\nwill verify that the first 32 bytes of the report_data field of the quote\ncontains the SHA256 hash of the decoded \"data\" field of the runtime data."
+          }
+        },
+        "initTimeData": {
+          "target": "com.azure.attestation_data#InitTimeData",
+          "traits": {
+            "smithy.api#documentation": "Base64Url encoded \"InitTime data\". The MAA will verify that the init data was\nknown to the enclave. Note that InitTimeData is invalid for CoffeeLake\nprocessors."
+          }
+        },
+        "draftPolicyForAttestation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attest against the provided draft policy. Note that the resulting token cannot\nbe validated."
+          }
+        },
+        "nonce": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Nonce for incoming request - emitted in the generated attestation token"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestAzureGuest": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#AttestationAttestAzureGuestRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#SealedAttestationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/attest/AzureGuest",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Attest to an Azure Guest VM.\n\nProcesses an Azure Guest TCG Log, producing an artifact. The type of artifact\nproduced is dependent upon attestation policy."
+      }
+    },
+    "com.azure.attestation_data#SealedAttestationResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A sealed RFC 7519 JSON Web Token, the body of which is an AttestationResult\nobject."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The sealed result of an attestation operation"
+      }
+    },
+    "com.azure.attestation_data#AttestationAttestAzureGuestRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "attestationInfo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attestation client information containing all artifacts required for Guest\nAttestation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#MetadataConfigurationGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.attestation_data#MetadataConfigurationGetRequest"
+      },
+      "output": {
+        "target": "com.azure.attestation_data#OpenIDConfigurationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/.well-known/openid-configuration",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2025-06-01"
+        },
+        "smithy.api#documentation": "Retrieves the OpenID Configuration data for the Azure Attestation Service\n\nRetrieves metadata about the attestation signing keys in use by the attestation\nservice"
+      }
+    },
+    "com.azure.attestation_data#OpenIDConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "response_types_supported": {
+          "target": "com.azure.attestation_data#OpenIDConfigurationResponseResponseTypesSupportedList",
+          "traits": {
+            "smithy.api#documentation": "Types supported in the OpenID metadata API"
+          }
+        },
+        "id_token_signing_alg_values_supported": {
+          "target": "com.azure.attestation_data#OpenIDConfigurationResponseIdTokenSigningAlgValuesSupportedList",
+          "traits": {
+            "smithy.api#documentation": "List of the supported signing algorithms"
+          }
+        },
+        "revocation_endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Revocation endpoint"
+          }
+        },
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Issuer tenant base endpoint"
+          }
+        },
+        "jwks_uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI to retrieve the signing keys"
+          }
+        },
+        "claims_supported": {
+          "target": "com.azure.attestation_data#OpenIDConfigurationResponseClaimsSupportedList",
+          "traits": {
+            "smithy.api#documentation": "Set of claims supported by the OpenID metadata endpoint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response to the OpenID metadata description document API"
+      }
+    },
+    "com.azure.attestation_data#OpenIDConfigurationResponseClaimsSupportedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of claims supported by the OpenID metadata endpoint"
+      }
+    },
+    "com.azure.attestation_data#OpenIDConfigurationResponseIdTokenSigningAlgValuesSupportedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the supported signing algorithms"
+      }
+    },
+    "com.azure.attestation_data#OpenIDConfigurationResponseResponseTypesSupportedList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Types supported in the OpenID metadata API"
+      }
+    },
+    "com.azure.attestation_data#MetadataConfigurationGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation_data#AttestationData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.attestation_data#TcbBaselinesGet"
+        },
+        {
+          "target": "com.azure.attestation_data#PolicyReset"
+        },
+        {
+          "target": "com.azure.attestation_data#PolicySet"
+        },
+        {
+          "target": "com.azure.attestation_data#PolicyGet"
+        },
+        {
+          "target": "com.azure.attestation_data#SigningCertificatesGet"
+        },
+        {
+          "target": "com.azure.attestation_data#PolicyCertificatesRemove"
+        },
+        {
+          "target": "com.azure.attestation_data#PolicyCertificatesAdd"
+        },
+        {
+          "target": "com.azure.attestation_data#PolicyCertificatesGet"
+        },
+        {
+          "target": "com.azure.attestation_data#AttestationAttestTpm"
+        },
+        {
+          "target": "com.azure.attestation_data#AttestationAttestTdxVm"
+        },
+        {
+          "target": "com.azure.attestation_data#AttestationAttestSgxEnclave"
+        },
+        {
+          "target": "com.azure.attestation_data#AttestationAttestSevSnpVm"
+        },
+        {
+          "target": "com.azure.attestation_data#AttestationAttestOpenEnclave"
+        },
+        {
+          "target": "com.azure.attestation_data#AttestationAttestAzureGuest"
+        },
+        {
+          "target": "com.azure.attestation_data#MetadataConfigurationGet"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Attestation data plane",
+        "smithy.api#documentation": "Azure attestation data plane — attestation/data-plane/Attestation (latest stable api-version 2025-06-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://attest.azure.net/.default"
+      }
+    }
+  }
+}

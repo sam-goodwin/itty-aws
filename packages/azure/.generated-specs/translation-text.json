@@ -1,0 +1,975 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.translation_text#Transliterate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_text#TransliterateRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_text#TransliterateResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/transliterate",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-06"
+        },
+        "smithy.api#documentation": "Transliterate Text\n\nTransliterate Text"
+      }
+    },
+    "com.azure.translation_text#TransliterateResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.translation_text#TransliterateResultValueList",
+          "traits": {
+            "smithy.api#documentation": "Array of transliterated texts",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response for the transliteration API."
+      }
+    },
+    "com.azure.translation_text#TransliterateResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#TransliteratedText"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of transliterated texts"
+      }
+    },
+    "com.azure.translation_text#TransliteratedText": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string which is the result of converting the input string to the output script.",
+            "smithy.api#required": {}
+          }
+        },
+        "script": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the script used in the output.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Transliterated text element."
+      }
+    },
+    "com.azure.translation_text#TransliterateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Text Translation endpoints (protocol and hostname, for example:\n    https://api.cognitive.microsofttranslator.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the language of the text to convert from one script to another. \nPossible languages are listed in the transliteration scope obtained by querying the service \nfor its supported languages."
+          }
+        },
+        "fromScript": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fromScript",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the script used by the input text. Look up supported languages using the transliteration scope,\nto find input scripts available for the selected language."
+          }
+        },
+        "toScript": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "toScript",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Specifies the output script. Look up supported languages using the transliteration scope, to find output \nscripts available for the selected combination of input language and input script."
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request."
+          }
+        },
+        "inputs": {
+          "target": "com.azure.translation_text#TransliterateRequestInputsList",
+          "traits": {
+            "smithy.api#documentation": "Array of the input text elements to transliterate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_text#TransliterateRequestInputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#InputTextItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of the input text elements to transliterate."
+      }
+    },
+    "com.azure.translation_text#InputTextItem": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text to translate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Element containing the text for translation."
+      }
+    },
+    "com.azure.translation_text#Translate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_text#TranslateRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_text#TranslationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/translate",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-06"
+        },
+        "smithy.api#documentation": "Translate Text\n\nTranslate Text"
+      }
+    },
+    "com.azure.translation_text#TranslationResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.translation_text#TranslationResultValueList",
+          "traits": {
+            "smithy.api#documentation": "Array of the translated text elements.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response for the translation API."
+      }
+    },
+    "com.azure.translation_text#TranslationResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#TranslatedTextItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of the translated text elements."
+      }
+    },
+    "com.azure.translation_text#TranslatedTextItem": {
+      "type": "structure",
+      "members": {
+        "detectedLanguage": {
+          "target": "com.azure.translation_text#DetectedLanguage",
+          "traits": {
+            "smithy.api#documentation": "The detectedLanguage property is only present in the result object when language auto-detection is requested."
+          }
+        },
+        "translations": {
+          "target": "com.azure.translation_text#TranslatedTextItemTranslationsList",
+          "traits": {
+            "smithy.api#documentation": "An array of translation results. The size of the array matches the number of target \nlanguages specified through the to query parameter.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Element containing the translated text"
+      }
+    },
+    "com.azure.translation_text#TranslatedTextItemTranslationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#TranslationText2"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of translation results. The size of the array matches the number of target \nlanguages specified through the to query parameter."
+      }
+    },
+    "com.azure.translation_text#TranslationText2": {
+      "type": "structure",
+      "members": {
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string representing the language code of the target language.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceCharacters": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer indicating the number of characters in the source text string"
+          }
+        },
+        "instructionTokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer indicating the number of tokens used in generating the translated text"
+          }
+        },
+        "sourceTokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer indicating the number of tokens used in the source sentence"
+          }
+        },
+        "responseTokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer indicating the number of tokens used in the translation response"
+          }
+        },
+        "targetTokens": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer indicating the number of tokens used in the target sentence"
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string giving the translated text.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Translation result"
+      }
+    },
+    "com.azure.translation_text#DetectedLanguage": {
+      "type": "structure",
+      "members": {
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string representing the code of the detected language.",
+            "smithy.api#required": {}
+          }
+        },
+        "score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A float value indicating the confidence in the result.\nThe score is between zero and one and a low score indicates a low confidence.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object describing the detected language."
+      }
+    },
+    "com.azure.translation_text#TranslateRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Text Translation endpoints (protocol and hostname, for example:\n    https://api.cognitive.microsofttranslator.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request."
+          }
+        },
+        "inputs": {
+          "target": "com.azure.translation_text#TranslateRequestInputsList",
+          "traits": {
+            "smithy.api#documentation": "Array of the input text elements to translate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_text#TranslateRequestInputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#TranslateInputItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of the input text elements to translate."
+      }
+    },
+    "com.azure.translation_text#TranslateInputItem": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text to translate.",
+            "smithy.api#required": {}
+          }
+        },
+        "script": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the script of the input text."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the language of the input text. Find which languages are available to translate by \nlooking up supported languages using the translation scope. If the language parameter isn't \nspecified, automatic language detection is applied to determine the source language.\n\nYou must use the language parameter rather than autodetection when using the dynamic dictionary feature. \nNote: the dynamic dictionary feature is case-sensitive."
+          }
+        },
+        "textType": {
+          "target": "com.azure.translation_text#TranslateInputItemTextType",
+          "traits": {
+            "smithy.api#documentation": "Defines whether the text being translated is plain text or HTML text. Any HTML needs to be a well-formed, \ncomplete element. Possible values are: plain (default) or html."
+          }
+        },
+        "targets": {
+          "target": "com.azure.translation_text#TranslateInputItemTargetsList",
+          "traits": {
+            "smithy.api#documentation": "Translation target parameters.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Element containing the text for translation."
+      }
+    },
+    "com.azure.translation_text#TranslateInputItemTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#TranslationTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "Translation target parameters."
+      }
+    },
+    "com.azure.translation_text#TranslationTarget": {
+      "type": "structure",
+      "members": {
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the language of the output text. The target language must be one of the supported languages included \nin the translation scope. It's possible to translate to multiple languages simultaneously by including \nmultiple string values in the targetsLanguage array.",
+            "smithy.api#required": {}
+          }
+        },
+        "script": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the script of the translated text."
+          }
+        },
+        "profanityAction": {
+          "target": "com.azure.translation_text#TranslationTargetProfanityAction",
+          "traits": {
+            "smithy.api#documentation": "Specifies how profanities should be treated in translations.\nPossible values are: NoAction (default), Marked or Deleted."
+          }
+        },
+        "profanityMarker": {
+          "target": "com.azure.translation_text#TranslationTargetProfanityMarker",
+          "traits": {
+            "smithy.api#documentation": "Specifies how profanities should be marked in translations.\nPossible values are: Asterisk (default) or Tag. "
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Default is 'general', which uses NMT system.\n'abc-inc-gpt-4o', and 'abc-inc-gpt-4o-mini' are examples of deployment names which use GPT-4o uses or\nGPT-4o-mini model. 'gpt-4o' uses GPT-4o model.\n\n'<custom model id>' uses the custom NMT model tuned by customer.\n'best' system determines which is the best model to use for the request. This intelligence could be introduced\nin future. Customer should have deployed it in their resource.\n"
+          }
+        },
+        "allowFallback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "In the case where a custom system is being used, specifies that the service is allowed to fall back to a\ngeneral system when a custom system doesn't exist. \nIn the case where a Large Language Model is being used, specifies that the service is allowed to fall\nback to a Small Language Model if an error occurs.\nPossible values are: true (default) or false.\n\nallowFallback=false specifies that the translation should only use systems trained for the category specified \nby the request. If a translation for language X to language Y requires chaining through a pivot language E, \nthen all the systems in the chain (X → E and E → Y) will need to be custom and have the same category. \nIf no system is found with the specific category, the request will return a 400 status code. allowFallback=true \nspecifies that the service is allowed to fall back to a general system when a custom system doesn't exist."
+          }
+        },
+        "tone": {
+          "target": "com.azure.translation_text#TranslationTone",
+          "traits": {
+            "smithy.api#documentation": "Desired tone of target translation. Accepted values are formal, informal, or neutral."
+          }
+        },
+        "gender": {
+          "target": "com.azure.translation_text#TranslationGender",
+          "traits": {
+            "smithy.api#documentation": "Desired gender of target translation. Accepted values are female, male, or neutral."
+          }
+        },
+        "adaptiveDatasetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference dataset ID having sentence pair to generate adaptive customized translation."
+          }
+        },
+        "referenceTextPairs": {
+          "target": "com.azure.translation_text#TranslationTargetReferenceTextPairsList",
+          "traits": {
+            "smithy.api#documentation": "Reference text pairs to generate adaptive customized translation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Target language and translation configuration parameters."
+      }
+    },
+    "com.azure.translation_text#TranslationTargetReferenceTextPairsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#ReferenceTextPair"
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference text pairs to generate adaptive customized translation."
+      }
+    },
+    "com.azure.translation_text#ReferenceTextPair": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source reference sentence.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target reference sentence.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference text pair to generate adaptive customized translation."
+      }
+    },
+    "com.azure.translation_text#TranslationGender": {
+      "type": "enum",
+      "members": {
+        "NEUTRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "neutral"
+          }
+        },
+        "MALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "male"
+          }
+        },
+        "FEMALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "female"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desired gender for the translated text."
+      }
+    },
+    "com.azure.translation_text#TranslationTone": {
+      "type": "enum",
+      "members": {
+        "NEUTRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "neutral"
+          }
+        },
+        "FORMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "formal"
+          }
+        },
+        "INFORMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "informal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desired tone for the translated text."
+      }
+    },
+    "com.azure.translation_text#TranslationTargetProfanityMarker": {
+      "type": "enum",
+      "members": {
+        "ASTERISK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Asterisk"
+          }
+        },
+        "TAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies how profanities should be marked in translations.\nPossible values are: Asterisk (default) or Tag. "
+      }
+    },
+    "com.azure.translation_text#TranslationTargetProfanityAction": {
+      "type": "enum",
+      "members": {
+        "NOACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoAction"
+          }
+        },
+        "MARKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Marked"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleted"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies how profanities should be treated in translations.\nPossible values are: NoAction (default), Marked or Deleted."
+      }
+    },
+    "com.azure.translation_text#TranslateInputItemTextType": {
+      "type": "enum",
+      "members": {
+        "PLAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Plain"
+          }
+        },
+        "HTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Html"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines whether the text being translated is plain text or HTML text. Any HTML needs to be a well-formed, \ncomplete element. Possible values are: plain (default) or html."
+      }
+    },
+    "com.azure.translation_text#GetSupportedLanguages": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.translation_text#GetSupportedLanguagesRequest"
+      },
+      "output": {
+        "target": "com.azure.translation_text#GetSupportedLanguagesResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/languages",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-06-06"
+        },
+        "smithy.api#documentation": "Gets the set of languages currently supported by other operations of the Translator.\n\nGets the set of languages currently supported by other operations of the Translator."
+      }
+    },
+    "com.azure.translation_text#GetSupportedLanguagesResult": {
+      "type": "structure",
+      "members": {
+        "translation": {
+          "target": "com.azure.translation_text#GetSupportedLanguagesResultTranslationMap",
+          "traits": {
+            "smithy.api#documentation": "Languages that support translate API."
+          }
+        },
+        "transliteration": {
+          "target": "com.azure.translation_text#GetSupportedLanguagesResultTransliterationMap",
+          "traits": {
+            "smithy.api#documentation": "Languages that support transliteration API."
+          }
+        },
+        "models": {
+          "target": "com.azure.translation_text#GetSupportedLanguagesResultModelsList",
+          "traits": {
+            "smithy.api#documentation": "LLM models supported."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "ETag",
+            "smithy.api#documentation": "Current value of the entity tag for the requested groups of supported languages. \nTo make subsequent requests more efficient, the client may send the `ETag` value in an \n`If-None-Match` header field."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response for the languages API."
+      }
+    },
+    "com.azure.translation_text#GetSupportedLanguagesResultModelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "LLM models supported."
+      }
+    },
+    "com.azure.translation_text#GetSupportedLanguagesResultTransliterationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.translation_text#TransliterationLanguage"
+      },
+      "traits": {
+        "smithy.api#documentation": "Languages that support transliteration API."
+      }
+    },
+    "com.azure.translation_text#TransliterationLanguage": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the language in the locale requested via Accept-Language header.",
+            "smithy.api#required": {}
+          }
+        },
+        "nativeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the language in the locale native for this language.",
+            "smithy.api#required": {}
+          }
+        },
+        "scripts": {
+          "target": "com.azure.translation_text#TransliterationLanguageScriptsList",
+          "traits": {
+            "smithy.api#documentation": "List of scripts to convert from.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The value of the transliteration property is a dictionary of (key, value) pairs. \nEach key is a BCP 47 language tag. A key identifies a language for which text can be converted from one script \nto another script."
+      }
+    },
+    "com.azure.translation_text#TransliterationLanguageScriptsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#TransliterableScript"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of scripts to convert from."
+      }
+    },
+    "com.azure.translation_text#TransliterableScript": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Code identifying the script.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the script in the locale requested via Accept-Language header.",
+            "smithy.api#required": {}
+          }
+        },
+        "nativeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the language in the locale native for the language.",
+            "smithy.api#required": {}
+          }
+        },
+        "dir": {
+          "target": "com.azure.translation_text#LanguageDirectionality",
+          "traits": {
+            "smithy.api#documentation": "Directionality, which is rtl for right-to-left languages or ltr for left-to-right languages.",
+            "smithy.api#required": {}
+          }
+        },
+        "toScripts": {
+          "target": "com.azure.translation_text#TransliterableScriptToScriptsList",
+          "traits": {
+            "smithy.api#documentation": "List of scripts available to convert text to.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Script definition with list of script into which given script can be translitered."
+      }
+    },
+    "com.azure.translation_text#TransliterableScriptToScriptsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.translation_text#LanguageScript"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of scripts available to convert text to."
+      }
+    },
+    "com.azure.translation_text#LanguageScript": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Code identifying the script.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the script in the locale requested via Accept-Language header.",
+            "smithy.api#required": {}
+          }
+        },
+        "nativeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the language in the locale native for the language.",
+            "smithy.api#required": {}
+          }
+        },
+        "dir": {
+          "target": "com.azure.translation_text#LanguageDirectionality",
+          "traits": {
+            "smithy.api#documentation": "Directionality, which is rtl for right-to-left languages or ltr for left-to-right languages.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Common properties of language script"
+      }
+    },
+    "com.azure.translation_text#LanguageDirectionality": {
+      "type": "enum",
+      "members": {
+        "LTR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ltr"
+          }
+        },
+        "RTL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rtl"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Language Directionality"
+      }
+    },
+    "com.azure.translation_text#GetSupportedLanguagesResultTranslationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.translation_text#TranslationLanguage"
+      },
+      "traits": {
+        "smithy.api#documentation": "Languages that support translate API."
+      }
+    },
+    "com.azure.translation_text#TranslationLanguage": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the language in the locale requested via Accept-Language header.",
+            "smithy.api#required": {}
+          }
+        },
+        "nativeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the language in the locale native for this language.",
+            "smithy.api#required": {}
+          }
+        },
+        "dir": {
+          "target": "com.azure.translation_text#LanguageDirectionality",
+          "traits": {
+            "smithy.api#documentation": "Directionality, which is rtl for right-to-left languages or ltr for left-to-right languages.",
+            "smithy.api#required": {}
+          }
+        },
+        "models": {
+          "target": "com.azure.translation_text#TranslationLanguageModelsList",
+          "traits": {
+            "smithy.api#documentation": "LLM models supported for translation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The value of the translation property is a dictionary of (key, value) pairs. Each key is a BCP 47 language tag.\nA key identifies a language for which text can be translated to or translated from."
+      }
+    },
+    "com.azure.translation_text#TranslationLanguageModelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "LLM models supported for translation."
+      }
+    },
+    "com.azure.translation_text#GetSupportedLanguagesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Text Translation endpoints (protocol and hostname, for example:\n    https://api.cognitive.microsofttranslator.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "scope",
+            "smithy.api#documentation": "A comma-separated list of names defining the group of languages to return.\nAllowed group names are: `translation`, `transliteration` and `dictionary`.\nIf no scope is given, then all groups are returned, which is equivalent to passing \n`scope=translation,transliteration,dictionary`. To decide which set of supported languages \nis appropriate for your scenario, see the description of the [response object](#response-body)."
+          }
+        },
+        "xClientTraceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "X-ClientTraceId",
+            "smithy.api#documentation": "A client-generated GUID to uniquely identify the request."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "The language to use for user interface strings. Some of the fields in the response are names of languages or \nnames of regions. Use this parameter to define the language in which these names are returned. \nThe language is specified by providing a well-formed BCP 47 language tag. For instance, use the value `fr` \nto request names in French or use the value `zh-Hant` to request names in Chinese Traditional.\nNames are provided in the English language when a target language is not specified or when localization \nis not available."
+          }
+        },
+        "ifNoneMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-None-Match",
+            "smithy.api#documentation": "Passing the value of the ETag response header in an If-None-Match field will allow the service to optimize the response. \nIf the resource has not been modified, the service will return status code 304 and an empty response body."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.translation_text#TranslationText": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.translation_text#Transliterate"
+        },
+        {
+          "target": "com.azure.translation_text#Translate"
+        },
+        {
+          "target": "com.azure.translation_text#GetSupportedLanguages"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure TextTranslation data plane",
+        "smithy.api#documentation": "Azure translation data plane — translation/data-plane/TextTranslation (latest stable api-version 2026-06-06).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

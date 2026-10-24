@@ -1,0 +1,570 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.confidentialledger_code_transparency#GetPublicKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_code_transparency#GetPublicKeysRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_code_transparency#JsonWebKeySet"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jwks",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-26"
+        },
+        "smithy.api#documentation": "Get the public keys used by the service to sign receipts, mentioned in IETF SCITT draft as part of jwks_uri implementation"
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#JsonWebKeySet": {
+      "type": "structure",
+      "members": {
+        "keys": {
+          "target": "com.azure.confidentialledger_code_transparency#JsonWebKeySetKeysList",
+          "traits": {
+            "smithy.api#documentation": "The service public keys used to verify receipts.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A JSON Web Key Set containing service receipt-verification keys."
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#JsonWebKeySetKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.confidentialledger_code_transparency#PublicJsonWebKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "The service public keys used to verify receipts."
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#PublicJsonWebKey": {
+      "type": "structure",
+      "members": {
+        "kty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The asymmetric key type, such as EC, RSA, or OKP.",
+            "smithy.api#required": {}
+          }
+        },
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The case-sensitive key ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "alg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The algorithm intended for use with the key."
+          }
+        },
+        "use": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The intended public-key use, such as signature verification."
+          }
+        },
+        "crv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The named curve for EC or OKP keys."
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The base64url-encoded X coordinate for EC keys, or public key for OKP keys."
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The base64url-encoded Y coordinate for EC keys."
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The base64url-encoded modulus for RSA keys."
+          }
+        },
+        "e": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The base64url-encoded exponent for RSA keys."
+          }
+        },
+        "x5c": {
+          "target": "com.azure.confidentialledger_code_transparency#PublicJsonWebKeyX5cList",
+          "traits": {
+            "smithy.api#documentation": "The base64-encoded X.509 certificate chain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A public asymmetric key represented as an RFC 7517 JSON Web Key."
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#PublicJsonWebKeyX5cList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The base64-encoded X.509 certificate chain."
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetPublicKeysRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetEntryStatement": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_code_transparency#GetEntryStatementRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_code_transparency#GetEntryStatementResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/entries/{entryId}/statement",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-26",
+          "headers": {
+            "accept": "application/scitt-statement+cose"
+          }
+        },
+        "smithy.api#documentation": "Get the transparent statement consisting of the signed statement and the receipt embedded in the header"
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetEntryStatementResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetEntryStatementRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "entryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the entry to retrieve."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_code_transparency#GetEntryRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_code_transparency#GetEntryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/entries/{entryId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-26",
+          "headers": {
+            "accept": "application/scitt-receipt+cose"
+          }
+        },
+        "smithy.api#documentation": "Get receipt"
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetEntryResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetEntryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "entryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the entry to retrieve."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#CreateEntry": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_code_transparency#CreateEntryRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_code_transparency#CreateEntryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/entries",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-26",
+          "headers": {
+            "accept": "application/cose; application/cbor"
+          }
+        },
+        "smithy.api#documentation": "Post an entry to be registered on the CodeTransparency instance, mandatory in IETF SCITT draft"
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#CreateEntryResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#CreateEntryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "waitForCommit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "waitForCommit",
+            "smithy.api#documentation": "If true, waits for the entry to be committed before returning. Returns 201 with receipt or 503 on rollback."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetTransparencyConfigCbor": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_code_transparency#GetTransparencyConfigCborRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_code_transparency#GetTransparencyConfigCborResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/.well-known/transparency-configuration",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-26",
+          "headers": {
+            "accept": "application/cbor"
+          }
+        },
+        "smithy.api#documentation": "Get the transparency service configuration, mandatory in IETF SCITT draft"
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetTransparencyConfigCborResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetTransparencyConfigCborRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetScittKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_code_transparency#GetScittKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_code_transparency#GetScittKeyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/.well-known/scitt-keys/{kid}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-26",
+          "headers": {
+            "accept": "application/cbor"
+          }
+        },
+        "smithy.api#documentation": "Get a single service key by kid, per Section 2.2 of draft-ietf-scitt-scrapi-09"
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetScittKeyResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#GetScittKeyRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Key ID (kid) of the SCITT key to retrieve."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#ListScittKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.confidentialledger_code_transparency#ListScittKeysRequest"
+      },
+      "output": {
+        "target": "com.azure.confidentialledger_code_transparency#ListScittKeysResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/.well-known/scitt-keys",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2026-03-26",
+          "headers": {
+            "accept": "application/cbor"
+          }
+        },
+        "smithy.api#documentation": "List all service keys in COSE_Key_Set format, per Section 2.1 of draft-ietf-scitt-scrapi-09"
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#ListScittKeysResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#ListScittKeysRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.confidentialledger_code_transparency#ConfidentialledgerCodeTransparency": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.confidentialledger_code_transparency#GetPublicKeys"
+        },
+        {
+          "target": "com.azure.confidentialledger_code_transparency#GetEntryStatement"
+        },
+        {
+          "target": "com.azure.confidentialledger_code_transparency#GetEntry"
+        },
+        {
+          "target": "com.azure.confidentialledger_code_transparency#CreateEntry"
+        },
+        {
+          "target": "com.azure.confidentialledger_code_transparency#GetTransparencyConfigCbor"
+        },
+        {
+          "target": "com.azure.confidentialledger_code_transparency#GetScittKey"
+        },
+        {
+          "target": "com.azure.confidentialledger_code_transparency#ListScittKeys"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure CodeTransparency data plane",
+        "smithy.api#documentation": "Azure confidentialledger data plane — confidentialledger/data-plane/CodeTransparency (latest stable api-version 2026-03-26).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://confidential-ledger.azure.com/.default"
+      }
+    }
+  }
+}

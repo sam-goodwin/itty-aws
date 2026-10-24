@@ -1,0 +1,3455 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectDeletionStatus": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectProjectDeletionStatus",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectDeletionStatusRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectProjectDeletionStatusRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJob": "com.azure.cognitiveservices_language_analyze_text_authoring#CancelTextAuthoringProjectTrainingJob",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJobResponse": "com.azure.cognitiveservices_language_analyze_text_authoring#CancelTextAuthoringProjectTrainingJobResponse",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJobRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#CancelTextAuthoringProjectTrainingJobRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetTrainingStatus": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectTrainingStatus",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetTrainingStatusRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectTrainingStatusRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetLoadSnapshotStatus": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelLoadSnapshotStatus",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetLoadSnapshotStatusRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelLoadSnapshotStatusRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationSummary": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelModelEvaluationSummary",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationSummaryRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelModelEvaluationSummaryRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationResults": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelModelEvaluationResults",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationResultsRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelModelEvaluationResultsRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelDeleteTrainedModel": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringTrainedModelTrainedModel",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelDeleteTrainedModelRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringTrainedModelTrainedModelRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetTrainedModel": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelTrainedModel",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetTrainedModelRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringTrainedModelTrainedModelRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetSwapDeploymentsStatus": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectSwapDeploymentsStatus",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetSwapDeploymentsStatusRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectSwapDeploymentsStatusRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeployments": "com.azure.cognitiveservices_language_analyze_text_authoring#SwapTextAuthoringProjectDeployments",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeploymentsResponse": "com.azure.cognitiveservices_language_analyze_text_authoring#SwapTextAuthoringProjectDeploymentsResponse",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeploymentsRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#SwapTextAuthoringProjectDeploymentsRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentStatus": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringDeploymentDeploymentStatus",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentStatusRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringDeploymentDeploymentStatusRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeployment": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringDeploymentDeployment",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeploymentResponse": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringDeploymentDeploymentResponse",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeploymentRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringDeploymentDeploymentRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProject": "com.azure.cognitiveservices_language_analyze_text_authoring#DeployTextAuthoringDeploymentProject",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProjectResponse": "com.azure.cognitiveservices_language_analyze_text_authoring#DeployTextAuthoringDeploymentProjectResponse",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProjectRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#DeployTextAuthoringDeploymentProjectRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeployment": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringDeploymentDeployment",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringDeploymentDeploymentRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImport": "com.azure.cognitiveservices_language_analyze_text_authoring#ImportTextAuthoringProject",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImportResponse": "com.azure.cognitiveservices_language_analyze_text_authoring#ImportTextAuthoringProjectResponse",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImportRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#ImportTextAuthoringProjectRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExport": "com.azure.cognitiveservices_language_analyze_text_authoring#ExportTextAuthoringProject",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExportResponse": "com.azure.cognitiveservices_language_analyze_text_authoring#ExportTextAuthoringProjectResponse",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExportRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#ExportTextAuthoringProjectRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProject": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringProjectProject",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProjectResponse": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringProjectProjectResponse",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProjectRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#DeleteTextAuthoringProjectProjectRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCreateProject": "com.azure.cognitiveservices_language_analyze_text_authoring#CreateTextAuthoringProjectProject",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCreateProjectRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#CreateTextAuthoringProjectProjectRequest",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProject": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectProject",
+      "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectRequest": "com.azure.cognitiveservices_language_analyze_text_authoring#GetTextAuthoringProjectProjectRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingConfigVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingConfigVersionsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingConfigVersion"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/global/training-config-versions",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Lists the support training config version for a given project type."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingConfigVersion": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingConfigVersionValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextAnalysisAuthoringTrainingConfigVersion items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextAnalysisAuthoringTrainingConfigVersion items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingConfigVersionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingConfigVersion"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextAnalysisAuthoringTrainingConfigVersion items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingConfigVersion": {
+      "type": "structure",
+      "members": {
+        "trainingConfigVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the version of the config.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelExpirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the training config version expiration date.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a training config version."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingConfigVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingConfigVersionsRequestProjectKind",
+          "traits": {
+            "smithy.api#httpQuery": "projectKind",
+            "smithy.api#documentation": "The project kind, default value is CustomSingleLabelClassification."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingConfigVersionsRequestProjectKind": {
+      "type": "enum",
+      "members": {
+        "CUSTOMSINGLELABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomSingleLabelClassification"
+          }
+        },
+        "CUSTOMMULTILABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomMultiLabelClassification"
+          }
+        },
+        "CUSTOMENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomEntityRecognition"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringGetSupportedLanguages": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringGetSupportedLanguagesRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringSupportedLanguage"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/global/languages",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Lists the supported languages."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringSupportedLanguage": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringSupportedLanguageValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextAnalysisAuthoringSupportedLanguage items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextAnalysisAuthoringSupportedLanguage items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringSupportedLanguageValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSupportedLanguage"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextAnalysisAuthoringSupportedLanguage items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSupportedLanguage": {
+      "type": "structure",
+      "members": {
+        "languageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The language name.",
+            "smithy.api#required": {}
+          }
+        },
+        "languageCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The language code. This is BCP-47 representation of a language. For example, \"en\" for English, \"en-gb\" for English (UK), \"es\" for Spanish etc.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a supported language."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringGetSupportedLanguagesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringGetSupportedLanguagesRequestProjectKind",
+          "traits": {
+            "smithy.api#httpQuery": "projectKind",
+            "smithy.api#documentation": "The project kind, default value is CustomSingleLabelClassification."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringGetSupportedLanguagesRequestProjectKind": {
+      "type": "enum",
+      "members": {
+        "CUSTOMSINGLELABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomSingleLabelClassification"
+          }
+        },
+        "CUSTOMMULTILABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomMultiLabelClassification"
+          }
+        },
+        "CUSTOMENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomEntityRecognition"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectDeletionStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectDeletionStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeletionJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/global/deletion-jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status for a project deletion job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeletionJobState": {
+      "type": "structure",
+      "members": {
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The job status.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeletionJobStateWarningsList",
+          "traits": {
+            "smithy.api#documentation": "The warnings that were encountered while executing the job."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeletionJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of a project deletion job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeletionJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeletionJobStateWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The warnings that were encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "CANCELLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelling"
+          }
+        },
+        "PARTIALLYCOMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "partiallyCompleted"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectDeletionStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJobRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJobResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/analyze-text/projects/{projectName}/train/jobs/{jobId}/:cancel",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Triggers a cancellation for a running training job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJobResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetTrainingStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetTrainingStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/train/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status for a training job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobState": {
+      "type": "structure",
+      "members": {
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The job status.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobStateWarningsList",
+          "traits": {
+            "smithy.api#documentation": "The warnings that were encountered while executing the job."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        },
+        "result": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobResult",
+          "traits": {
+            "smithy.api#documentation": "Represents training tasks detailed result.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of a training job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobResult": {
+      "type": "structure",
+      "members": {
+        "modelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents trained model label.",
+            "smithy.api#required": {}
+          }
+        },
+        "trainingConfigVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents training config version.",
+            "smithy.api#required": {}
+          }
+        },
+        "trainingStatus": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSubTrainingJobState",
+          "traits": {
+            "smithy.api#documentation": "Represents model train status.",
+            "smithy.api#required": {}
+          }
+        },
+        "evaluationStatus": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSubTrainingJobState",
+          "traits": {
+            "smithy.api#documentation": "Represents model evaluation status."
+          }
+        },
+        "estimatedEndDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the estimate end date time for training and evaluation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the output of a training job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSubTrainingJobState": {
+      "type": "structure",
+      "members": {
+        "percentComplete": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Represents progress percentage.",
+            "smithy.api#required": {}
+          }
+        },
+        "startDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the start date time."
+          }
+        },
+        "endDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the end date time."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "Represents the status of the sub-operation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the detailed state of a training sub-operation."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobStateWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The warnings that were encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetTrainingStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingJobsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/train/jobs",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Lists the non-expired training jobs created for a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingJobState": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingJobStateValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextAnalysisAuthoringTrainingJobState items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextAnalysisAuthoringTrainingJobState items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringTrainingJobStateValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringTrainingJobState"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextAnalysisAuthoringTrainingJobState items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingJobsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetLoadSnapshotStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetLoadSnapshotStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringLoadSnapshotJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/models/{trainedModelLabel}/load-snapshot/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status for loading a snapshot."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringLoadSnapshotJobState": {
+      "type": "structure",
+      "members": {
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The job status.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringLoadSnapshotJobStateWarningsList",
+          "traits": {
+            "smithy.api#documentation": "The warnings that were encountered while executing the job."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringLoadSnapshotJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of loading a snapshot job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringLoadSnapshotJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringLoadSnapshotJobStateWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The warnings that were encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetLoadSnapshotStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The trained model label."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationSummary": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationSummaryRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringEvaluationSummary"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/models/{trainedModelLabel}/evaluation/summary-result",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the evaluation summary of a trained model. The summary includes high level performance measurements of the model e.g., F1, Precision, Recall, etc."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringEvaluationSummary": {
+      "type": "structure",
+      "members": {
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#ProjectKind",
+          "traits": {
+            "smithy.api#documentation": "Represents the project type that the evaluation ran on.",
+            "smithy.api#required": {}
+          }
+        },
+        "evaluationOptions": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringEvaluationOptions",
+          "traits": {
+            "smithy.api#documentation": "Represents the options used running the evaluation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the summary for an evaluation operation."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringEvaluationOptions": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#EvaluationKind",
+          "traits": {
+            "smithy.api#documentation": "Represents the evaluation kind. By default, the evaluation kind is set to percentage."
+          }
+        },
+        "trainingSplitPercentage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Represents the training dataset split percentage. Only needed in case the evaluation kind is percentage."
+          }
+        },
+        "testingSplitPercentage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Represents the testing dataset split percentage. Only needed in case the evaluation kind is percentage."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the options used running the evaluation."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#EvaluationKind": {
+      "type": "enum",
+      "members": {
+        "PERCENTAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "percentage"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "manual"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#ProjectKind": {
+      "type": "enum",
+      "members": {
+        "CUSTOMSINGLELABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomSingleLabelClassification"
+          }
+        },
+        "CUSTOMMULTILABELCLASSIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomMultiLabelClassification"
+          }
+        },
+        "CUSTOMENTITYRECOGNITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomEntityRecognition"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationSummaryRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The trained model label."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationResults": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationResultsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringDocumentEvaluationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/models/{trainedModelLabel}/evaluation/result",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01",
+          "query": {
+            "stringIndexType": "Utf16CodeUnit"
+          }
+        },
+        "smithy.api#documentation": "Gets the detailed results of the evaluation for a trained model. This includes the raw inference results for the data included in the evaluation process."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringDocumentEvaluationResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringDocumentEvaluationResultValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextAnalysisAuthoringDocumentEvaluationResult items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextAnalysisAuthoringDocumentEvaluationResult items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringDocumentEvaluationResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDocumentEvaluationResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextAnalysisAuthoringDocumentEvaluationResult items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDocumentEvaluationResult": {
+      "type": "structure",
+      "members": {
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#ProjectKind",
+          "traits": {
+            "smithy.api#documentation": "Represents the project kind.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the document path.",
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the document language. This is BCP-47 representation of a language. For example, use \"en\" for English, \"en-gb\" for English (UK), \"es\" for Spanish etc.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the evaluation result of a document."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationResultsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The trained model label."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelLoadSnapshot": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelLoadSnapshotRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelLoadSnapshotResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/analyze-text/projects/{projectName}/models/{trainedModelLabel}/:load-snapshot",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Long-running operation."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelLoadSnapshotResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelLoadSnapshotRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The trained model label."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelDeleteTrainedModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelDeleteTrainedModelRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/authoring/analyze-text/projects/{projectName}/models/{trainedModelLabel}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Deletes an existing trained model."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelDeleteTrainedModelRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The trained model label."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetTrainedModel": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetTrainedModelRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectTrainedModel"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/models/{trainedModelLabel}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the details of a trained model."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectTrainedModel": {
+      "type": "structure",
+      "members": {
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The trained model label.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The model ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastTrainedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last trained date time of the model.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastTrainingDurationInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The duration of the model's last training request in seconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelExpirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The model expiration date.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelTrainingConfigVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The model training config version.",
+            "smithy.api#required": {}
+          }
+        },
+        "hasSnapshot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag to indicate if the trained model has a snapshot ready.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a trained model."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetTrainedModelRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The trained model label."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainedModels": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainedModelsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectTrainedModel"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/models",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Lists the trained models belonging to a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectTrainedModel": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectTrainedModelValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextAnalysisAuthoringProjectTrainedModel items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextAnalysisAuthoringProjectTrainedModel items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectTrainedModelValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectTrainedModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextAnalysisAuthoringProjectTrainedModel items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainedModelsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetImportStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetImportStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringImportProjectJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/import/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status for an import."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringImportProjectJobState": {
+      "type": "structure",
+      "members": {
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The job status.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringImportProjectJobStateWarningsList",
+          "traits": {
+            "smithy.api#documentation": "The warnings that were encountered while executing the job."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringImportProjectJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of an import job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringImportProjectJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringImportProjectJobStateWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The warnings that were encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetImportStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetExportStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetExportStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportProjectJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/export/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of an export job. Once job completes, returns the project metadata, and assets."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportProjectJobState": {
+      "type": "structure",
+      "members": {
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The job status.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportProjectJobStateWarningsList",
+          "traits": {
+            "smithy.api#documentation": "The warnings that were encountered while executing the job."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportProjectJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        },
+        "resultUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to use in order to download the exported project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of an export job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportProjectJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportProjectJobStateWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The warnings that were encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetExportStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetSwapDeploymentsStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetSwapDeploymentsStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSwapDeploymentsJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/deployments/swap/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of an existing swap deployment job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSwapDeploymentsJobState": {
+      "type": "structure",
+      "members": {
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The job status.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSwapDeploymentsJobStateWarningsList",
+          "traits": {
+            "smithy.api#documentation": "The warnings that were encountered while executing the job."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSwapDeploymentsJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of a deployment job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSwapDeploymentsJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringSwapDeploymentsJobStateWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The warnings that were encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetSwapDeploymentsStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeploymentsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeploymentsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/analyze-text/projects/{projectName}/deployments/:swap",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Swaps two existing deployments with each other."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeploymentsResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeploymentsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "firstDeploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the first deployment name.",
+            "smithy.api#required": {}
+          }
+        },
+        "secondDeploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the second deployment name.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDeploymentJobState"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/deployments/{deploymentName}/jobs/{jobId}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the status of an existing deployment job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDeploymentJobState": {
+      "type": "structure",
+      "members": {
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The job ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation date time of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last date time the job was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the job."
+          }
+        },
+        "status": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The job status.",
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDeploymentJobStateWarningsList",
+          "traits": {
+            "smithy.api#documentation": "The warnings that were encountered while executing the job."
+          }
+        },
+        "errors": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDeploymentJobStateErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The errors encountered while executing the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the state of a deployment job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDeploymentJobStateErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The errors encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringDeploymentJobStateWarningsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "The warnings that were encountered while executing the job."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentStatusRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Represents deployment name."
+          }
+        },
+        "jobId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The job ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeploymentRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeploymentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/authoring/analyze-text/projects/{projectName}/deployments/{deploymentName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Deletes a project deployment."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeploymentResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeploymentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the specific deployment of the project to use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProjectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProjectResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/authoring/analyze-text/projects/{projectName}/deployments/{deploymentName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Creates a new deployment or replaces an existing one."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProjectResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProjectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the specific deployment of the project to use."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the trained model label.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeployment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/deployments/{deploymentName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the details of a deployment."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeployment": {
+      "type": "structure",
+      "members": {
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents deployment name.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents deployment modelId.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastTrainedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents deployment last trained time.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastDeployedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents deployment last deployed time.",
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentExpirationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents deployment expiration date in the runtime.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelTrainingConfigVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents model training config version.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a project deployment."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "deploymentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Represents deployment name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListDeployments": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListDeploymentsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectDeployment"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}/deployments",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Lists the deployments belonging to a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectDeployment": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectDeploymentValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextAnalysisAuthoringProjectDeployment items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextAnalysisAuthoringProjectDeployment items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectDeploymentValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectDeployment"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextAnalysisAuthoringProjectDeployment items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListDeploymentsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectTrain": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectTrainRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectTrainResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/analyze-text/projects/{projectName}/:train",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Triggers a training job for a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectTrainResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectTrainRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "modelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the output model label.",
+            "smithy.api#required": {}
+          }
+        },
+        "trainingConfigVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents training config version.",
+            "smithy.api#required": {}
+          }
+        },
+        "evaluationOptions": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringEvaluationOptions",
+          "traits": {
+            "smithy.api#documentation": "Represents the evaluation options. By default, the evaluation kind is percentage, with training split percentage as 80, and testing split percentage as 20."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImportRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImportResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/analyze-text/projects/{projectName}/:import",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Triggers a job to import a project. If a project with the same name already exists, the data of that project is replaced."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImportResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImportRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "projectFileVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the exported file.",
+            "smithy.api#required": {}
+          }
+        },
+        "stringIndexType": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#StringIndexType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the method used to interpret string offsets. For additional information see https://aka.ms/text-analytics-offsets.",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringCreateProjectOptions",
+          "traits": {
+            "smithy.api#documentation": "Represents the project metadata.",
+            "smithy.api#required": {}
+          }
+        },
+        "assets": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportedProjectAssets",
+          "traits": {
+            "smithy.api#documentation": "Represents the project assets."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringExportedProjectAssets": {
+      "type": "structure",
+      "members": {
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#ProjectKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the assets of an exported project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringCreateProjectOptions": {
+      "type": "structure",
+      "members": {
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#ProjectKind",
+          "traits": {
+            "smithy.api#documentation": "The project kind.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageInputContainerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage container name.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSettings",
+          "traits": {
+            "smithy.api#documentation": "The project settings."
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The new project name.",
+            "smithy.api#required": {}
+          }
+        },
+        "multilingual": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the project would be used for multiple languages or not."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project description."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project language. This is BCP-47 representation of a language. For example, use \"en\" for English, \"en-gb\" for English (UK), \"es\" for Spanish etc.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the options used to create or update a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSettings": {
+      "type": "structure",
+      "members": {
+        "confidenceThreshold": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The threshold of the class with the highest confidence, at which the prediction will automatically be changed to \"None\". The value of the threshold should be between 0 and 1 inclusive."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the settings used to define the project behavior."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#StringIndexType": {
+      "type": "enum",
+      "members": {
+        "UTF16CODEUNIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Utf16CodeUnit"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExportRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExportResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/authoring/analyze-text/projects/{projectName}/:export",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01",
+          "query": {
+            "stringIndexType": "Utf16CodeUnit"
+          }
+        },
+        "smithy.api#documentation": "Triggers a job to export a project's data."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExportResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExportRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        },
+        "assetKind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "assetKind",
+            "smithy.api#documentation": "Kind of asset to export."
+          }
+        },
+        "trainedModelLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "trainedModelLabel",
+            "smithy.api#documentation": "Trained model label to export. If the trainedModelLabel is null, the default behavior is to export the current working copy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProjectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProjectResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/authoring/analyze-text/projects/{projectName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Deletes a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProjectResponse": {
+      "type": "structure",
+      "members": {
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProjectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the project to use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCreateProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCreateProjectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/authoring/analyze-text/projects/{projectName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "The most basic operation that applies to a resource."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectMetadata": {
+      "type": "structure",
+      "members": {
+        "createdDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the project creation datetime.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the project last modification datetime.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastTrainedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the project last training datetime."
+          }
+        },
+        "lastDeployedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the project last deployment datetime."
+          }
+        },
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#ProjectKind",
+          "traits": {
+            "smithy.api#documentation": "The project kind.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageInputContainerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage container name.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSettings",
+          "traits": {
+            "smithy.api#documentation": "The project settings."
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The new project name.",
+            "smithy.api#required": {}
+          }
+        },
+        "multilingual": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the project would be used for multiple languages or not."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project description."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project language. This is BCP-47 representation of a language. For example, use \"en\" for English, \"en-gb\" for English (UK), \"es\" for Spanish etc.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the metadata of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCreateProjectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        },
+        "projectKind": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#ProjectKind",
+          "traits": {
+            "smithy.api#documentation": "The project kind.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageInputContainerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage container name.",
+            "smithy.api#required": {}
+          }
+        },
+        "settings": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSettings",
+          "traits": {
+            "smithy.api#documentation": "The project settings."
+          }
+        },
+        "multilingual": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the project would be used for multiple languages or not."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project description."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The project language. This is BCP-47 representation of a language. For example, use \"en\" for English, \"en-gb\" for English (UK), \"es\" for Spanish etc.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects/{projectName}",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Gets the details of a project."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "projectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The new project name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListProjectsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/authoring/analyze-text/projects",
+          "code": 200,
+          "host": "{endpoint}/language",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2023-04-01"
+        },
+        "smithy.api#documentation": "Lists the existing projects."
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectMetadata": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectMetadataValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextAnalysisAuthoringProjectMetadata items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextAnalysisAuthoringProjectMetadata items"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#PagedTextAnalysisAuthoringProjectMetadataValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringProjectMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextAnalysisAuthoringProjectMetadata items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListProjectsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoint e.g., https://<resource-name>.api.cognitiveservices.azure.com.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_language_analyze_text_authoring#CognitiveservicesLanguageAnalyzeTextAuthoring": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingConfigVersions"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringGetSupportedLanguages"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProjectDeletionStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCancelTrainingJob"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetTrainingStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainingJobs"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetLoadSnapshotStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationSummary"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetModelEvaluationResults"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelLoadSnapshot"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelDeleteTrainedModel"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringTrainedModelGetTrainedModel"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListTrainedModels"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetImportStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetExportStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetSwapDeploymentsStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectSwapDeployments"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeploymentStatus"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeleteDeployment"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentDeployProject"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringDeploymentGetDeployment"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListDeployments"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectTrain"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectImport"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectExport"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectDeleteProject"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectCreateProject"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAuthoringProjectGetProject"
+        },
+        {
+          "target": "com.azure.cognitiveservices_language_analyze_text_authoring#TextAnalysisAuthoringListProjects"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure LanguageAnalyzeTextAuthoring data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/LanguageAnalyzeTextAuthoring (latest stable api-version 2023-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/language",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

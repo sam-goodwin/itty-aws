@@ -1,0 +1,3047 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.keyvault_certificates#RecoverDeletedCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#RecoverDeletedCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/deletedcertificates/{certificateName}/recover",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Recovers the deleted certificate back to its current version under /certificates.\n\nThe RecoverDeletedCertificate operation performs the reversal of the Delete operation. The operation is applicable in vaults enabled for soft-delete, and must be issued during the retention interval (available in the deleted certificate's attributes). This operation requires the certificates/recover permission."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateBundle": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate id."
+          }
+        },
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key id."
+          }
+        },
+        "sid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret id."
+          }
+        },
+        "x5t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Thumbprint of the certificate."
+          }
+        },
+        "policy": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicy",
+          "traits": {
+            "smithy.api#documentation": "The management policy."
+          }
+        },
+        "cer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CER contents of x509 certificate."
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the secret. eg. 'application/x-pem-file' or 'application/x-pkcs12'."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributes",
+          "traits": {
+            "smithy.api#documentation": "The certificate attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#CertificateBundleTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "preserveCertOrder": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the certificate chain preserves its original order. The default value is false, which sets the leaf certificate at index 0."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A certificate bundle consists of a certificate (X509) plus its attributes."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateBundleTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateAttributes": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether the object is enabled."
+          }
+        },
+        "nbf": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Not before date in UTC."
+          }
+        },
+        "exp": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Expiry date in UTC."
+          }
+        },
+        "created": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Creation time in UTC."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Last updated time in UTC."
+          }
+        },
+        "recoverableDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "softDelete data retention days. Value should be >=7 and <=90 when softDelete enabled, otherwise 0."
+          }
+        },
+        "recoveryLevel": {
+          "target": "com.azure.keyvault_certificates#DeletionRecoveryLevel",
+          "traits": {
+            "smithy.api#documentation": "Reflects the deletion recovery level currently in effect for certificates in the current vault. If it contains 'Purgeable', the certificate can be permanently deleted by a privileged user; otherwise, only the system can purge the certificate, at the end of the retention interval."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The certificate management attributes."
+      }
+    },
+    "com.azure.keyvault_certificates#DeletionRecoveryLevel": {
+      "type": "enum",
+      "members": {
+        "PURGEABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Purgeable"
+          }
+        },
+        "RECOVERABLE_PURGEABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recoverable+Purgeable"
+          }
+        },
+        "RECOVERABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recoverable"
+          }
+        },
+        "RECOVERABLE_PROTECTEDSUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recoverable+ProtectedSubscription"
+          }
+        },
+        "CUSTOMIZEDRECOVERABLE_PURGEABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomizedRecoverable+Purgeable"
+          }
+        },
+        "CUSTOMIZEDRECOVERABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomizedRecoverable"
+          }
+        },
+        "CUSTOMIZEDRECOVERABLE_PROTECTEDSUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomizedRecoverable+ProtectedSubscription"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reflects the deletion recovery level currently in effect for secrets in the current vault. If it contains 'Purgeable', the secret can be permanently deleted by a privileged user; otherwise, only the system can purge the secret, at the end of the retention interval."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificatePolicy": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate id."
+          }
+        },
+        "key_props": {
+          "target": "com.azure.keyvault_certificates#KeyProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the key backing a certificate."
+          }
+        },
+        "secret_props": {
+          "target": "com.azure.keyvault_certificates#SecretProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the secret backing a certificate."
+          }
+        },
+        "x509_props": {
+          "target": "com.azure.keyvault_certificates#X509CertificateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the X509 component of a certificate."
+          }
+        },
+        "lifetime_actions": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicyLifetimeActionsList",
+          "traits": {
+            "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a certificate."
+          }
+        },
+        "issuer": {
+          "target": "com.azure.keyvault_certificates#IssuerParameters",
+          "traits": {
+            "smithy.api#documentation": "Parameters for the issuer of the X509 component of a certificate."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributes",
+          "traits": {
+            "smithy.api#documentation": "The certificate attributes."
+          }
+        },
+        "platformManaged": {
+          "target": "com.azure.keyvault_certificates#PlatformManaged",
+          "traits": {
+            "smithy.api#documentation": "Configuration that enables the platform to manage the certificate on behalf of the user. This feature is currently intended for internal use only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Management policy for a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#PlatformManaged": {
+      "type": "structure",
+      "members": {
+        "certificateUsage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The intended usage of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.azure.keyvault_certificates#PlatformManagedMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "JSON-formatted platform managed metadata. The schema is intentionally undefined as this feature is currently intended for internal use only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the platform managed certificate. This feature is currently intended for internal use only."
+      }
+    },
+    "com.azure.keyvault_certificates#PlatformManagedMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "JSON-formatted platform managed metadata. The schema is intentionally undefined as this feature is currently intended for internal use only."
+      }
+    },
+    "com.azure.keyvault_certificates#IssuerParameters": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the referenced issuer object or reserved names; for example, 'Self' or 'Unknown'."
+          }
+        },
+        "cty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate type as supported by the provider (optional); for example 'OV-SSL', 'EV-SSL'"
+          }
+        },
+        "cert_transparency": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the certificates generated under this policy should be published to certificate transparency logs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters for the issuer of the X509 component of a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificatePolicyLifetimeActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#LifetimeAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#LifetimeAction": {
+      "type": "structure",
+      "members": {
+        "trigger": {
+          "target": "com.azure.keyvault_certificates#Trigger",
+          "traits": {
+            "smithy.api#documentation": "The condition that will execute the action."
+          }
+        },
+        "action": {
+          "target": "com.azure.keyvault_certificates#Action",
+          "traits": {
+            "smithy.api#documentation": "The action that will be executed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Action and its trigger that will be performed by Key Vault over the lifetime of a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#Action": {
+      "type": "structure",
+      "members": {
+        "action_type": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicyAction",
+          "traits": {
+            "smithy.api#documentation": "The type of the action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The action that will be executed."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificatePolicyAction": {
+      "type": "enum",
+      "members": {
+        "EMAILCONTACTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EmailContacts"
+          }
+        },
+        "AUTORENEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AutoRenew"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the action."
+      }
+    },
+    "com.azure.keyvault_certificates#Trigger": {
+      "type": "structure",
+      "members": {
+        "lifetime_percentage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Percentage of lifetime at which to trigger. Value should be between 1 and 99."
+          }
+        },
+        "days_before_expiry": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Days before expiry to attempt renewal. Value should be between 1 and validity_in_months multiplied by 27. If validity_in_months is 36, then value should be between 1 and 972 (36 * 27)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A condition to be satisfied for an action to be executed."
+      }
+    },
+    "com.azure.keyvault_certificates#X509CertificateProperties": {
+      "type": "structure",
+      "members": {
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subject name. Should be a valid X509 distinguished Name."
+          }
+        },
+        "ekus": {
+          "target": "com.azure.keyvault_certificates#X509CertificatePropertiesEkusList",
+          "traits": {
+            "smithy.api#documentation": "The enhanced key usage."
+          }
+        },
+        "sans": {
+          "target": "com.azure.keyvault_certificates#SubjectAlternativeNames",
+          "traits": {
+            "smithy.api#documentation": "The subject alternative names."
+          }
+        },
+        "key_usage": {
+          "target": "com.azure.keyvault_certificates#X509CertificatePropertiesKeyUsageList",
+          "traits": {
+            "smithy.api#documentation": "Defines how the certificate's key may be used."
+          }
+        },
+        "validity_months": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The duration that the certificate is valid in months."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the X509 component of a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#X509CertificatePropertiesKeyUsageList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#KeyUsageType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines how the certificate's key may be used."
+      }
+    },
+    "com.azure.keyvault_certificates#KeyUsageType": {
+      "type": "enum",
+      "members": {
+        "DIGITALSIGNATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "digitalSignature"
+          }
+        },
+        "NONREPUDIATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nonRepudiation"
+          }
+        },
+        "KEYENCIPHERMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyEncipherment"
+          }
+        },
+        "DATAENCIPHERMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dataEncipherment"
+          }
+        },
+        "KEYAGREEMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyAgreement"
+          }
+        },
+        "KEYCERTSIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyCertSign"
+          }
+        },
+        "CRLSIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cRLSign"
+          }
+        },
+        "ENCIPHERONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encipherOnly"
+          }
+        },
+        "DECIPHERONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decipherOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Supported usages of a certificate key."
+      }
+    },
+    "com.azure.keyvault_certificates#SubjectAlternativeNames": {
+      "type": "structure",
+      "members": {
+        "emails": {
+          "target": "com.azure.keyvault_certificates#SubjectAlternativeNamesEmailsList",
+          "traits": {
+            "smithy.api#documentation": "Email addresses."
+          }
+        },
+        "dns_names": {
+          "target": "com.azure.keyvault_certificates#SubjectAlternativeNamesDnsNamesList",
+          "traits": {
+            "smithy.api#documentation": "Domain Names."
+          }
+        },
+        "upns": {
+          "target": "com.azure.keyvault_certificates#SubjectAlternativeNamesUpnsList",
+          "traits": {
+            "smithy.api#documentation": "User Principal Names."
+          }
+        },
+        "uris": {
+          "target": "com.azure.keyvault_certificates#SubjectAlternativeNamesUrisList",
+          "traits": {
+            "smithy.api#documentation": "Uniform Resource Identifiers."
+          }
+        },
+        "ipAddresses": {
+          "target": "com.azure.keyvault_certificates#SubjectAlternativeNamesIpAddressesList",
+          "traits": {
+            "smithy.api#documentation": "IP addresses; supports IPv4 and IPv6."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Subject Alternative Names of a X509 object."
+      }
+    },
+    "com.azure.keyvault_certificates#SubjectAlternativeNamesIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IP addresses; supports IPv4 and IPv6."
+      }
+    },
+    "com.azure.keyvault_certificates#SubjectAlternativeNamesUrisList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Uniform Resource Identifiers."
+      }
+    },
+    "com.azure.keyvault_certificates#SubjectAlternativeNamesUpnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "User Principal Names."
+      }
+    },
+    "com.azure.keyvault_certificates#SubjectAlternativeNamesDnsNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Domain Names."
+      }
+    },
+    "com.azure.keyvault_certificates#SubjectAlternativeNamesEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Email addresses."
+      }
+    },
+    "com.azure.keyvault_certificates#X509CertificatePropertiesEkusList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The enhanced key usage."
+      }
+    },
+    "com.azure.keyvault_certificates#SecretProperties": {
+      "type": "structure",
+      "members": {
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The media type (MIME type)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the key backing a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#KeyProperties": {
+      "type": "structure",
+      "members": {
+        "exportable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the private key can be exported. Release policy must be provided when creating the first version of an exportable key."
+          }
+        },
+        "kty": {
+          "target": "com.azure.keyvault_certificates#JsonWebKeyType",
+          "traits": {
+            "smithy.api#documentation": "The type of key pair to be used for the certificate."
+          }
+        },
+        "key_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The key size in bits. For example: 2048, 3072, or 4096 for RSA."
+          }
+        },
+        "reuse_key": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the same key pair will be used on certificate renewal."
+          }
+        },
+        "crv": {
+          "target": "com.azure.keyvault_certificates#JsonWebKeyCurveName",
+          "traits": {
+            "smithy.api#documentation": "Elliptic curve name. For valid values, see JsonWebKeyCurveName."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the key pair backing a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#JsonWebKeyCurveName": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        },
+        "P_384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-384"
+          }
+        },
+        "P_521": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-521"
+          }
+        },
+        "P_256K": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256K"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Elliptic curve name. For valid values, see JsonWebKeyCurveName."
+      }
+    },
+    "com.azure.keyvault_certificates#JsonWebKeyType": {
+      "type": "enum",
+      "members": {
+        "EC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EC"
+          }
+        },
+        "EC_HSM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EC-HSM"
+          }
+        },
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        },
+        "RSA_HSM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA-HSM"
+          }
+        },
+        "OCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oct"
+          }
+        },
+        "OCT_HSM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oct-HSM"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of key pair to be used for the certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#RecoverDeletedCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the deleted certificate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#PurgeDeletedCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#PurgeDeletedCertificateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/deletedcertificates/{certificateName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Permanently deletes the specified deleted certificate.\n\nThe PurgeDeletedCertificate operation performs an irreversible deletion of the specified certificate, without possibility for recovery. The operation is not available if the recovery level does not specify 'Purgeable'. This operation requires the certificate/purge permission."
+      }
+    },
+    "com.azure.keyvault_certificates#PurgeDeletedCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#GetDeletedCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetDeletedCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#DeletedCertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/deletedcertificates/{certificateName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Retrieves information about the specified deleted certificate.\n\nThe GetDeletedCertificate operation retrieves the deleted certificate information plus its attributes, such as retention interval, scheduled permanent deletion and the current deletion recovery level. This operation requires the certificates/get permission."
+      }
+    },
+    "com.azure.keyvault_certificates#DeletedCertificateBundle": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate id."
+          }
+        },
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key id."
+          }
+        },
+        "sid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret id."
+          }
+        },
+        "x5t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Thumbprint of the certificate."
+          }
+        },
+        "policy": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicy",
+          "traits": {
+            "smithy.api#documentation": "The management policy."
+          }
+        },
+        "cer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CER contents of x509 certificate."
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the secret. eg. 'application/x-pem-file' or 'application/x-pkcs12'."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributes",
+          "traits": {
+            "smithy.api#documentation": "The certificate attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#DeletedCertificateBundleTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "preserveCertOrder": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the certificate chain preserves its original order. The default value is false, which sets the leaf certificate at index 0."
+          }
+        },
+        "recoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The url of the recovery object, used to identify and recover the deleted certificate."
+          }
+        },
+        "scheduledPurgeDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the certificate is scheduled to be purged, in UTC"
+          }
+        },
+        "deletedDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the certificate was deleted, in UTC"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Deleted Certificate consisting of its previous id, attributes and its tags, as well as information on when it will be purged."
+      }
+    },
+    "com.azure.keyvault_certificates#DeletedCertificateBundleTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#GetDeletedCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#GetDeletedCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetDeletedCertificatesRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#DeletedCertificateListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/deletedcertificates",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Lists the deleted certificates in the specified vault currently available for recovery.\n\nThe GetDeletedCertificates operation retrieves the certificates in the current vault which are in a deleted state and ready for recovery or purging. This operation includes deletion-specific information. This operation requires the certificates/get/list permission. This operation can only be enabled on soft-delete enabled vaults."
+      }
+    },
+    "com.azure.keyvault_certificates#DeletedCertificateListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.keyvault_certificates#DeletedCertificateListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "A response message containing a list of deleted certificates in the vault along with a link to the next page of deleted certificates."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to get the next set of deleted certificates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of certificates that have been deleted in this vault."
+      }
+    },
+    "com.azure.keyvault_certificates#DeletedCertificateListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#DeletedCertificateItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A response message containing a list of deleted certificates in the vault along with a link to the next page of deleted certificates."
+      }
+    },
+    "com.azure.keyvault_certificates#DeletedCertificateItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate identifier."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributes",
+          "traits": {
+            "smithy.api#documentation": "The certificate management attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#DeletedCertificateItemTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "x5t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Thumbprint of the certificate."
+          }
+        },
+        "recoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The url of the recovery object, used to identify and recover the deleted certificate."
+          }
+        },
+        "scheduledPurgeDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the certificate is scheduled to be purged, in UTC"
+          }
+        },
+        "deletedDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the certificate was deleted, in UTC"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The deleted certificate item containing metadata about the deleted certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#DeletedCertificateItemTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#GetDeletedCertificatesRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        },
+        "includePending": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includePending",
+            "smithy.api#documentation": "Specifies whether to include certificates which are not completely provisioned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#RestoreCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#RestoreCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificates/restore",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Restores a backed up certificate to a vault.\n\nRestores a backed up certificate, and all its versions, to a vault. This operation requires the certificates/restore permission."
+      }
+    },
+    "com.azure.keyvault_certificates#RestoreCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The backup blob associated with a certificate bundle.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#DeleteCertificateIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#DeleteCertificateIssuerRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#IssuerBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/certificates/issuers/{issuerName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes the specified certificate issuer.\n\nThe DeleteCertificateIssuer operation permanently removes the specified certificate issuer from the vault. This operation requires the certificates/manageissuers/deleteissuers permission."
+      }
+    },
+    "com.azure.keyvault_certificates#IssuerBundle": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the issuer object."
+          }
+        },
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issuer provider."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.keyvault_certificates#IssuerCredentials",
+          "traits": {
+            "smithy.api#documentation": "The credentials to be used for the issuer."
+          }
+        },
+        "org_details": {
+          "target": "com.azure.keyvault_certificates#OrganizationDetails",
+          "traits": {
+            "smithy.api#documentation": "Details of the organization as provided to the issuer."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#IssuerAttributes",
+          "traits": {
+            "smithy.api#documentation": "Attributes of the issuer object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The issuer for Key Vault certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#IssuerAttributes": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether the issuer is enabled."
+          }
+        },
+        "created": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Creation time in UTC."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Last updated time in UTC."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The attributes of an issuer managed by the Key Vault service."
+      }
+    },
+    "com.azure.keyvault_certificates#OrganizationDetails": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the organization."
+          }
+        },
+        "admin_details": {
+          "target": "com.azure.keyvault_certificates#OrganizationDetailsAdminDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Details of the organization administrator."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the organization of the certificate issuer."
+      }
+    },
+    "com.azure.keyvault_certificates#OrganizationDetailsAdminDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#AdministratorDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the organization administrator."
+      }
+    },
+    "com.azure.keyvault_certificates#AdministratorDetails": {
+      "type": "structure",
+      "members": {
+        "first_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "First name."
+          }
+        },
+        "last_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last name."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address."
+          }
+        },
+        "phone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Phone number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the organization administrator of the certificate issuer."
+      }
+    },
+    "com.azure.keyvault_certificates#IssuerCredentials": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user name/account name/account id."
+          }
+        },
+        "pwd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password/secret/account key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The credentials to be used for the certificate issuer."
+      }
+    },
+    "com.azure.keyvault_certificates#DeleteCertificateIssuerRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "issuerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the issuer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificateIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#UpdateCertificateIssuerRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#IssuerBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/certificates/issuers/{issuerName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates the specified certificate issuer.\n\nThe UpdateCertificateIssuer operation performs an update on the specified certificate issuer entity. This operation requires the certificates/setissuers permission."
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificateIssuerRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "issuerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the issuer."
+          }
+        },
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issuer provider."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.keyvault_certificates#IssuerCredentials",
+          "traits": {
+            "smithy.api#documentation": "The credentials to be used for the issuer."
+          }
+        },
+        "org_details": {
+          "target": "com.azure.keyvault_certificates#OrganizationDetails",
+          "traits": {
+            "smithy.api#documentation": "Details of the organization as provided to the issuer."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#IssuerAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "Attributes of the issuer object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#IssuerAttributesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether the issuer is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The attributes of an issuer managed by the Key Vault service."
+      }
+    },
+    "com.azure.keyvault_certificates#SetCertificateIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#SetCertificateIssuerRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#IssuerBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/certificates/issuers/{issuerName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Sets the specified certificate issuer.\n\nThe SetCertificateIssuer operation adds or updates the specified certificate issuer. This operation requires the certificates/setissuers permission."
+      }
+    },
+    "com.azure.keyvault_certificates#SetCertificateIssuerRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "issuerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the issuer. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information."
+          }
+        },
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issuer provider.",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials": {
+          "target": "com.azure.keyvault_certificates#IssuerCredentials",
+          "traits": {
+            "smithy.api#documentation": "The credentials to be used for the issuer."
+          }
+        },
+        "org_details": {
+          "target": "com.azure.keyvault_certificates#OrganizationDetails",
+          "traits": {
+            "smithy.api#documentation": "Details of the organization as provided to the issuer."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#IssuerAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "Attributes of the issuer object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateIssuer": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificateIssuerRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#IssuerBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates/issuers/{issuerName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Lists the specified certificate issuer.\n\nThe GetCertificateIssuer operation returns the specified certificate issuer resources in the specified key vault. This operation requires the certificates/manageissuers/getissuers permission."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateIssuerRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "issuerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the issuer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateIssuers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificateIssuersRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateIssuerListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates/issuers",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "List certificate issuers for a specified key vault.\n\nThe GetCertificateIssuers operation returns the set of certificate issuer resources in the specified key vault. This operation requires the certificates/manageissuers/getissuers permission."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateIssuerListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.keyvault_certificates#CertificateIssuerListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "A response message containing a list of certificate issuers in the key vault along with a link to the next page of certificate issuers."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to get the next set of certificate issuers."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The certificate issuer list result."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateIssuerListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#CertificateIssuerItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A response message containing a list of certificate issuers in the key vault along with a link to the next page of certificate issuers."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateIssuerItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate Identifier."
+          }
+        },
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issuer provider."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The certificate issuer item containing certificate issuer metadata."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateIssuersRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#DeleteCertificateContacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#DeleteCertificateContactsRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#Contacts"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/certificates/contacts",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes the certificate contacts for a specified key vault.\n\nDeletes the certificate contacts for a specified key vault certificate. This operation requires the certificates/managecontacts permission."
+      }
+    },
+    "com.azure.keyvault_certificates#Contacts": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the contacts collection."
+          }
+        },
+        "contacts": {
+          "target": "com.azure.keyvault_certificates#ContactsContactsList",
+          "traits": {
+            "smithy.api#documentation": "The contact list for the vault certificates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The contacts for the vault certificates."
+      }
+    },
+    "com.azure.keyvault_certificates#ContactsContactsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#Contact"
+      },
+      "traits": {
+        "smithy.api#documentation": "The contact list for the vault certificates."
+      }
+    },
+    "com.azure.keyvault_certificates#Contact": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name."
+          }
+        },
+        "phone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Phone number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The contact information for the vault certificates."
+      }
+    },
+    "com.azure.keyvault_certificates#DeleteCertificateContactsRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#SetCertificateContacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#SetCertificateContactsRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#Contacts"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/certificates/contacts",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Sets the certificate contacts for the specified key vault.\n\nSets the certificate contacts for the specified key vault. This operation requires the certificates/managecontacts permission."
+      }
+    },
+    "com.azure.keyvault_certificates#SetCertificateContactsRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "contacts": {
+          "target": "com.azure.keyvault_certificates#SetCertificateContactsRequestContactsList",
+          "traits": {
+            "smithy.api#documentation": "The contact list for the vault certificates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#SetCertificateContactsRequestContactsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#Contact"
+      },
+      "traits": {
+        "smithy.api#documentation": "The contact list for the vault certificates."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateContacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificateContactsRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#Contacts"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates/contacts",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Lists the certificate contacts for a specified key vault.\n\nThe GetCertificateContacts operation returns the set of certificate contact resources in the specified key vault. This operation requires the certificates/managecontacts permission."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateContactsRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificateVersionsRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates/{certificateName}/versions",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "List the versions of a certificate.\n\nThe GetCertificateVersions operation returns the versions of a certificate in the specified key vault. This operation requires the certificates/list permission."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.keyvault_certificates#CertificateListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "A response message containing a list of certificates in the key vault along with a link to the next page of certificates."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to get the next set of certificates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The certificate list result."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#CertificateItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A response message containing a list of certificates in the key vault along with a link to the next page of certificates."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate identifier."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributes",
+          "traits": {
+            "smithy.api#documentation": "The certificate management attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#CertificateItemTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "x5t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Thumbprint of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The certificate item containing certificate metadata."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateItemTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate."
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#UpdateCertificatePolicyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificatePolicy"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/certificates/{certificateName}/policy",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates the policy for a certificate.\n\nSet specified members in the certificate policy. Leave others as null. This operation requires the certificates/update permission."
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificatePolicyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate in the given vault."
+          }
+        },
+        "key_props": {
+          "target": "com.azure.keyvault_certificates#KeyProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the key backing a certificate."
+          }
+        },
+        "secret_props": {
+          "target": "com.azure.keyvault_certificates#SecretProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the secret backing a certificate."
+          }
+        },
+        "x509_props": {
+          "target": "com.azure.keyvault_certificates#X509CertificateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the X509 component of a certificate."
+          }
+        },
+        "lifetime_actions": {
+          "target": "com.azure.keyvault_certificates#UpdateCertificatePolicyRequestLifetimeActionsList",
+          "traits": {
+            "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a certificate."
+          }
+        },
+        "issuer": {
+          "target": "com.azure.keyvault_certificates#IssuerParameters",
+          "traits": {
+            "smithy.api#documentation": "Parameters for the issuer of the X509 component of a certificate."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The certificate attributes."
+          }
+        },
+        "platformManaged": {
+          "target": "com.azure.keyvault_certificates#PlatformManaged",
+          "traits": {
+            "smithy.api#documentation": "Configuration that enables the platform to manage the certificate on behalf of the user. This feature is currently intended for internal use only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateAttributesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether the object is enabled."
+          }
+        },
+        "nbf": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Not before date in UTC."
+          }
+        },
+        "exp": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Expiry date in UTC."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The certificate management attributes."
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificatePolicyRequestLifetimeActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#LifetimeAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificatePolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificatePolicyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificatePolicy"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates/{certificateName}/policy",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Lists the policy for a certificate.\n\nThe GetCertificatePolicy operation returns the specified certificate policy resources in the specified key vault. This operation requires the certificates/get permission."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificatePolicyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate in a given key vault."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#MergeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#MergeCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificates/{certificateName}/pending/merge",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Merges a certificate or a certificate chain with a key pair existing on the server.\n\nThe MergeCertificate operation performs the merging of a certificate or certificate chain with a key pair currently available in the service. This operation requires the certificates/create permission."
+      }
+    },
+    "com.azure.keyvault_certificates#MergeCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate."
+          }
+        },
+        "x5c": {
+          "target": "com.azure.keyvault_certificates#MergeCertificateRequestX5cList",
+          "traits": {
+            "smithy.api#documentation": "The certificate or the certificate chain to merge.",
+            "smithy.api#required": {}
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the certificate (optional)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#MergeCertificateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#MergeCertificateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#MergeCertificateRequestX5cList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The certificate or the certificate chain to merge."
+      }
+    },
+    "com.azure.keyvault_certificates#DeleteCertificateOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#DeleteCertificateOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/certificates/{certificateName}/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes the creation operation for a specific certificate.\n\nDeletes the creation operation for a specified certificate that is in the process of being created. The certificate is no longer created. This operation requires the certificates/update permission."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificateOperation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate id."
+          }
+        },
+        "issuer": {
+          "target": "com.azure.keyvault_certificates#IssuerParameters",
+          "traits": {
+            "smithy.api#documentation": "Parameters for the issuer of the X509 component of a certificate."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate signing request (CSR) that is being used in the certificate operation."
+          }
+        },
+        "cancellation_requested": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if cancellation was requested on the certificate operation."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Status of the certificate operation."
+          }
+        },
+        "status_details": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status details of the certificate operation."
+          }
+        },
+        "error": {
+          "target": "com.azure.keyvault_certificates#Error",
+          "traits": {
+            "smithy.api#documentation": "Error encountered, if any, during the certificate operation.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location which contains the result of the certificate operation."
+          }
+        },
+        "preserveCertOrder": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the certificate chain preserves its original order. The default value is false, which sets the leaf certificate at index 0."
+          }
+        },
+        "request_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the certificate operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A certificate operation is returned in case of asynchronous requests."
+      }
+    },
+    "com.azure.keyvault_certificates#Error": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.keyvault_certificates#Error",
+          "traits": {
+            "smithy.api#documentation": "The key vault server error."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.keyvault_certificates#DeleteCertificateOperationRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificateOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#UpdateCertificateOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/certificates/{certificateName}/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates a certificate operation.\n\nUpdates a certificate creation operation that is already in progress. This operation requires the certificates/update permission."
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificateOperationRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate."
+          }
+        },
+        "cancellation_requested": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if cancellation was requested on the certificate operation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificateOperationRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateOperation"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates/{certificateName}/pending",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets the creation operation of a certificate.\n\nGets the creation operation associated with a specified certificate. This operation requires the certificates/get permission."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateOperationRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#ImportCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#ImportCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificates/{certificateName}/import",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Imports a certificate into a specified key vault.\n\nImports an existing valid certificate, containing a private key, into Azure Key Vault. This operation requires the certificates/import permission. The certificate to be imported can be in either PFX or PEM format. If the certificate is in PEM format the PEM file must contain the key as well as x509 certificates. Key Vault will only accept a key in PKCS#8 format."
+      }
+    },
+    "com.azure.keyvault_certificates#ImportCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.",
+            "smithy.api#required": {}
+          }
+        },
+        "pwd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the private key in base64EncodedCertificate is encrypted, the password used for encryption."
+          }
+        },
+        "policy": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicyInput",
+          "traits": {
+            "smithy.api#documentation": "The management policy for the certificate."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the certificate (optional)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#ImportCertificateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "preserveCertOrder": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the certificate chain preserves its original order. The default value is false, which sets the leaf certificate at index 0."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#ImportCertificateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificatePolicyInput": {
+      "type": "structure",
+      "members": {
+        "key_props": {
+          "target": "com.azure.keyvault_certificates#KeyProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the key backing a certificate."
+          }
+        },
+        "secret_props": {
+          "target": "com.azure.keyvault_certificates#SecretProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the secret backing a certificate."
+          }
+        },
+        "x509_props": {
+          "target": "com.azure.keyvault_certificates#X509CertificateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the X509 component of a certificate."
+          }
+        },
+        "lifetime_actions": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicyInputLifetimeActionsList",
+          "traits": {
+            "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a certificate."
+          }
+        },
+        "issuer": {
+          "target": "com.azure.keyvault_certificates#IssuerParameters",
+          "traits": {
+            "smithy.api#documentation": "Parameters for the issuer of the X509 component of a certificate."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The certificate attributes."
+          }
+        },
+        "platformManaged": {
+          "target": "com.azure.keyvault_certificates#PlatformManaged",
+          "traits": {
+            "smithy.api#documentation": "Configuration that enables the platform to manage the certificate on behalf of the user. This feature is currently intended for internal use only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Management policy for a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#CertificatePolicyInputLifetimeActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_certificates#LifetimeAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a certificate."
+      }
+    },
+    "com.azure.keyvault_certificates#CreateCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#CreateCertificateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificates/{certificateName}/create",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a new certificate.\n\nIf this is the first version, the certificate resource is created. This operation requires the certificates/create permission."
+      }
+    },
+    "com.azure.keyvault_certificates#CreateCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information."
+          }
+        },
+        "policy": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicyInput",
+          "traits": {
+            "smithy.api#documentation": "The management policy for the certificate."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the certificate (optional)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#CreateCertificateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "preserveCertOrder": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the certificate chain preserves its original order. The default value is false, which sets the leaf certificate at index 0."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#CreateCertificateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#BackupCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#BackupCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#BackupCertificateResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/certificates/{certificateName}/backup",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Backs up the specified certificate.\n\nRequests that a backup of the specified certificate be downloaded to the client. All versions of the certificate will be downloaded. This operation requires the certificates/backup permission."
+      }
+    },
+    "com.azure.keyvault_certificates#BackupCertificateResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The backup blob containing the backed up certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The backup certificate result, containing the backup blob."
+      }
+    },
+    "com.azure.keyvault_certificates#BackupCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#UpdateCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/certificates/{certificateName}/{certificateVersion}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates the specified attributes associated with the given certificate.\n\nThe UpdateCertificate operation applies the specified update on the given certificate; the only elements updated are the certificate's attributes. This operation requires the certificates/update permission."
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate in the given key vault."
+          }
+        },
+        "certificateVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the certificate."
+          }
+        },
+        "policy": {
+          "target": "com.azure.keyvault_certificates#CertificatePolicyInput",
+          "traits": {
+            "smithy.api#documentation": "The management policy for the certificate."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_certificates#CertificateAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of the certificate (optional)."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_certificates#UpdateCertificateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#UpdateCertificateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates/{certificateName}/{certificateVersion}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets information about a certificate.\n\nGets information about a specific certificate. This operation requires the certificates/get permission."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate in the given vault."
+          }
+        },
+        "certificateVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the certificate. This URI fragment is optional. If not specified, the latest version of the certificate is returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#DeleteCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#DeleteCertificateRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#DeletedCertificateBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/certificates/{certificateName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes a certificate from a specified key vault.\n\nDeletes all versions of a certificate object along with its associated policy. Delete certificate cannot be used to remove individual versions of a certificate object. This operation requires the certificates/delete permission."
+      }
+    },
+    "com.azure.keyvault_certificates#DeleteCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "certificateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_certificates#GetCertificatesRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_certificates#CertificateListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/certificates",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "List certificates in a specified key vault\n\nThe GetCertificates operation returns the set of certificates resources in the specified key vault. This operation requires the certificates/list permission."
+      }
+    },
+    "com.azure.keyvault_certificates#GetCertificatesRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        },
+        "includePending": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includePending",
+            "smithy.api#documentation": "Specifies whether to include certificates which are not completely provisioned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_certificates#KeyvaultCertificates": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.keyvault_certificates#RecoverDeletedCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#PurgeDeletedCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetDeletedCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetDeletedCertificates"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#RestoreCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#DeleteCertificateIssuer"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#UpdateCertificateIssuer"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#SetCertificateIssuer"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificateIssuer"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificateIssuers"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#DeleteCertificateContacts"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#SetCertificateContacts"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificateContacts"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificateVersions"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#UpdateCertificatePolicy"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificatePolicy"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#MergeCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#DeleteCertificateOperation"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#UpdateCertificateOperation"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificateOperation"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#ImportCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#CreateCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#BackupCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#UpdateCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#DeleteCertificate"
+        },
+        {
+          "target": "com.azure.keyvault_certificates#GetCertificates"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Certificates data plane",
+        "smithy.api#documentation": "Azure keyvault data plane — keyvault/data-plane/Certificates (latest stable api-version 2026-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{vaultBaseUrl}",
+          "parameters": [
+            {
+              "name": "vaultBaseUrl",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://vault.azure.net/.default"
+      }
+    }
+  }
+}

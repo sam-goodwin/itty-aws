@@ -1,0 +1,1043 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_unified_vision#ImageAnalysisResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/imageanalysis:analyze",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-02-01"
+        },
+        "smithy.api#documentation": "Analyze the input image. The request contains image stream with any content type ['image/*', 'application/octet-stream']."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ImageAnalysisResult": {
+      "type": "structure",
+      "members": {
+        "captionResult": {
+          "target": "com.azure.cognitiveservices_unified_vision#CaptionResult"
+        },
+        "objectsResult": {
+          "target": "com.azure.cognitiveservices_unified_vision#ObjectsResult"
+        },
+        "readResult": {
+          "target": "com.azure.cognitiveservices_unified_vision#ReadResult"
+        },
+        "denseCaptionsResult": {
+          "target": "com.azure.cognitiveservices_unified_vision#DenseCaptionsResult"
+        },
+        "modelVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Model Version.",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.azure.cognitiveservices_unified_vision#ImageMetadata",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tagsResult": {
+          "target": "com.azure.cognitiveservices_unified_vision#TagsResult"
+        },
+        "smartCropsResult": {
+          "target": "com.azure.cognitiveservices_unified_vision#SmartCropsResult"
+        },
+        "peopleResult": {
+          "target": "com.azure.cognitiveservices_unified_vision#PeopleResult"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describe the combined results of different types of image analysis."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#PeopleResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.cognitiveservices_unified_vision#PeopleResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "An array of detected people.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object describing whether the image contains people."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#PeopleResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#DetectedPerson"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of detected people."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedPerson": {
+      "type": "structure",
+      "members": {
+        "boundingBox": {
+          "target": "com.azure.cognitiveservices_unified_vision#BoundingBox",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence score of having observed the person in the image. Confidence scores span the range of 0.0 to 1.0 (inclusive), with higher values indicating a higher confidence of a match.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A person detected in an image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#BoundingBox": {
+      "type": "structure",
+      "members": {
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Left-coordinate of the top left point of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Top-coordinate of the top left point of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "w": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Width measured from the top-left point of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "h": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Height measured from the top-left point of the area, in pixels.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A bounding box for an area inside an image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#SmartCropsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.cognitiveservices_unified_vision#SmartCropsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "Recommended regions for cropping the image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Smart cropping result."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#SmartCropsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#CropRegion"
+      },
+      "traits": {
+        "smithy.api#documentation": "Recommended regions for cropping the image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#CropRegion": {
+      "type": "structure",
+      "members": {
+        "aspectRatio": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The aspect ratio of the crop region.",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingBox": {
+          "target": "com.azure.cognitiveservices_unified_vision#BoundingBox",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A region identified for smart cropping. There will be one region returned for each requested aspect ratio."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#TagsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.cognitiveservices_unified_vision#TagsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "A list of tags with confidence level.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags with confidence level."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#TagsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#ContentTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tags with confidence level."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ContentTag": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the entity.",
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The level of confidence that the entity was observed. Confidence scores span the range of 0.0 to 1.0 (inclusive), with higher values indicating a higher confidence of a match.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An entity observation in the image, along with the confidence score."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ImageMetadata": {
+      "type": "structure",
+      "members": {
+        "width": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The width of the image in pixels.",
+            "smithy.api#required": {}
+          }
+        },
+        "height": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The height of the image in pixels.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The image metadata information such as height and width."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DenseCaptionsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.cognitiveservices_unified_vision#DenseCaptionsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "A list of captions.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of captions."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DenseCaptionsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#DenseCaption"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of captions."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DenseCaption": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text of the caption.",
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The level of confidence the service has in the caption. Confidence scores span the range of 0.0 to 1.0 (inclusive), with higher values indicating a higher confidence of a match.",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingBox": {
+          "target": "com.azure.cognitiveservices_unified_vision#BoundingBox"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A brief description of what the image depicts."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ReadResult": {
+      "type": "structure",
+      "members": {
+        "blocks": {
+          "target": "com.azure.cognitiveservices_unified_vision#ReadResultBlocksList",
+          "traits": {
+            "smithy.api#documentation": "A list of text blocks.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The results of an Read operation."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ReadResultBlocksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#DetectedTextBlock"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of text blocks."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedTextBlock": {
+      "type": "structure",
+      "members": {
+        "lines": {
+          "target": "com.azure.cognitiveservices_unified_vision#DetectedTextBlockLinesList",
+          "traits": {
+            "smithy.api#documentation": "List of text lines in the text block.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A detected text block."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedTextBlockLinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#DetectedTextLine"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of text lines in the text block."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedTextLine": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text content of the detected text line.",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingPolygon": {
+          "target": "com.azure.cognitiveservices_unified_vision#DetectedTextLineBoundingPolygonList",
+          "traits": {
+            "smithy.api#documentation": "Bounding polygon of the text line.",
+            "smithy.api#required": {}
+          }
+        },
+        "words": {
+          "target": "com.azure.cognitiveservices_unified_vision#DetectedTextLineWordsList",
+          "traits": {
+            "smithy.api#documentation": "List of words in the text line.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A detected text line."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedTextLineWordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#DetectedTextWord"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of words in the text line."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedTextWord": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text content of the word.",
+            "smithy.api#required": {}
+          }
+        },
+        "boundingPolygon": {
+          "target": "com.azure.cognitiveservices_unified_vision#DetectedTextWordBoundingPolygonList",
+          "traits": {
+            "smithy.api#documentation": "Bounding polygon of the word.",
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The level of confidence that the word was detected. Confidence scores span the range of 0.0 to 1.0 (inclusive), with higher values indicating a higher confidence of a match.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A detected word consisting of a contiguous sequence of characters. For non-space delimited languages,\r\nsuch as Chinese, Japanese, and Korean, each character is represented as its own word."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedTextWordBoundingPolygonList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#ImagePoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounding polygon of the word."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ImagePoint": {
+      "type": "structure",
+      "members": {
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The x-coordinate of this point.",
+            "smithy.api#required": {}
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The y-coordinate of this point.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object representing a point in the image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedTextLineBoundingPolygonList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#ImagePoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounding polygon of the text line."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ObjectsResult": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "com.azure.cognitiveservices_unified_vision#ObjectsResultValuesList",
+          "traits": {
+            "smithy.api#documentation": "An array of detected objects.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes detected objects in an image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#ObjectsResultValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#DetectedObject"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of detected objects."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedObject": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the detected object."
+          }
+        },
+        "boundingBox": {
+          "target": "com.azure.cognitiveservices_unified_vision#BoundingBox",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.cognitiveservices_unified_vision#DetectedObjectTagsList",
+          "traits": {
+            "smithy.api#documentation": "Classification confidences of the detected object.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a detected object in an image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#DetectedObjectTagsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#ContentTag"
+      },
+      "traits": {
+        "smithy.api#documentation": "Classification confidences of the detected object."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#CaptionResult": {
+      "type": "structure",
+      "members": {
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text of the caption.",
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The level of confidence the service has in the caption. Confidence scores span the range of 0.0 to 1.0 (inclusive), with higher values indicating a higher confidence of a match.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A brief description of what the image depicts."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequestFeaturesList",
+          "traits": {
+            "smithy.api#httpQuery": "features",
+            "smithy.api#documentation": "The visual features requested. At least one visual feature must be specified."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#documentation": "The desired language for output generation. If this parameter is not specified, the default value is \"en\". See https://aka.ms/cv-languages for a list of supported languages."
+          }
+        },
+        "smartcrops_aspect_ratios": {
+          "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequestSmartcropsAspectRatiosList",
+          "traits": {
+            "smithy.api#httpQuery": "smartcrops-aspect-ratios",
+            "smithy.api#documentation": "A list of aspect ratios to use for smartCrops feature. Aspect ratios are calculated by dividing the target crop width by the height. Supported values are between 0.75 and 1.8 (inclusive). Multiple values should be comma-separated. If this parameter is not specified, the service will return one crop suggestion with an aspect ratio it sees fit between 0.5 and 2.0 (inclusive)."
+          }
+        },
+        "gender_neutral_caption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "gender-neutral-caption",
+            "smithy.api#documentation": "Boolean flag for enabling gender-neutral captioning for caption and denseCaptions features. If this parameter is not specified, the default value is \"false\"."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequestSmartcropsAspectRatiosList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequestFeaturesItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageStreamRequestFeaturesItem": {
+      "type": "enum",
+      "members": {
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "CAPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "caption"
+          }
+        },
+        "DENSECAPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "denseCaptions"
+          }
+        },
+        "OBJECTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "objects"
+          }
+        },
+        "READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "read"
+          }
+        },
+        "SMARTCROPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smartCrops"
+          }
+        },
+        "PEOPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "people"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_unified_vision#VectorizeImageStream": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_unified_vision#VectorizeImageStreamRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_unified_vision#SingleVectorResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/retrieval:vectorizeImage",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-02-01"
+        },
+        "smithy.api#documentation": "Return vector from an image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#SingleVectorResult": {
+      "type": "structure",
+      "members": {
+        "vector": {
+          "target": "com.azure.cognitiveservices_unified_vision#SingleVectorResultVectorList",
+          "traits": {
+            "smithy.api#documentation": "Vector of the image."
+          }
+        },
+        "modelVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Model version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Results of image vectorization."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#SingleVectorResultVectorList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Vector of the image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#VectorizeImageStreamRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "model_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "model-version",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Model version. Please refer https://aka.ms/image-retrieval for supported model versions."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_unified_vision#ImageAnalysisResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/imageanalysis:analyze",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-02-01"
+        },
+        "smithy.api#documentation": "Analyze the input image. The request either contains image stream with any content type ['image/*', 'application/octet-stream'], or a JSON payload which includes an url property to be used to retrieve the image stream."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "features": {
+          "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequestFeaturesList",
+          "traits": {
+            "smithy.api#httpQuery": "features",
+            "smithy.api#documentation": "The visual features requested. At least one visual feature must be specified."
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "language",
+            "smithy.api#documentation": "The desired language for output generation. If this parameter is not specified, the default value is \"en\". See https://aka.ms/cv-languages for a list of supported languages."
+          }
+        },
+        "model_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "model-version",
+            "smithy.api#documentation": "Model version."
+          }
+        },
+        "smartcrops_aspect_ratios": {
+          "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequestSmartcropsAspectRatiosList",
+          "traits": {
+            "smithy.api#httpQuery": "smartcrops-aspect-ratios",
+            "smithy.api#documentation": "A list of aspect ratios to use for smartCrops feature. Aspect ratios are calculated by dividing the target crop width by the height. Supported values are between 0.75 and 1.8 (inclusive). Multiple values should be comma-separated. If this parameter is not specified, the service will return one crop suggestion with an aspect ratio it sees fit between 0.5 and 2.0 (inclusive)."
+          }
+        },
+        "gender_neutral_caption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "gender-neutral-caption",
+            "smithy.api#documentation": "Boolean flag for enabling gender-neutral captioning for caption and denseCaptions features. If this parameter is not specified, the default value is \"false\"."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Publicly reachable URL of an image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequestSmartcropsAspectRatiosList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequestFeaturesItem"
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_unified_vision#AnalyzeImageRequestFeaturesItem": {
+      "type": "enum",
+      "members": {
+        "TAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tags"
+          }
+        },
+        "CAPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "caption"
+          }
+        },
+        "DENSECAPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "denseCaptions"
+          }
+        },
+        "OBJECTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "objects"
+          }
+        },
+        "READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "read"
+          }
+        },
+        "SMARTCROPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smartCrops"
+          }
+        },
+        "PEOPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "people"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cognitiveservices_unified_vision#VectorizeImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_unified_vision#VectorizeImageRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_unified_vision#SingleVectorResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/retrieval:vectorizeImage",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-02-01"
+        },
+        "smithy.api#documentation": "Return vector from an image."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#VectorizeImageRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "model_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "model-version",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Model version. Please refer https://aka.ms/image-retrieval for supported model versions."
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Publicly reachable URL of an image.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#VectorizeText": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_unified_vision#VectorizeTextRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_unified_vision#SingleVectorResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/retrieval:vectorizeText",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-02-01"
+        },
+        "smithy.api#documentation": "Return vector from a text."
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#VectorizeTextRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service endpoint URL.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "model_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "model-version",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Model version. Please refer https://aka.ms/image-retrieval for supported model versions."
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text for vectorization.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_unified_vision#CognitiveservicesUnifiedVision": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImageStream"
+        },
+        {
+          "target": "com.azure.cognitiveservices_unified_vision#VectorizeImageStream"
+        },
+        {
+          "target": "com.azure.cognitiveservices_unified_vision#AnalyzeImage"
+        },
+        {
+          "target": "com.azure.cognitiveservices_unified_vision#VectorizeImage"
+        },
+        {
+          "target": "com.azure.cognitiveservices_unified_vision#VectorizeText"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure UnifiedVision data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/UnifiedVision (latest stable api-version 2024-02-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

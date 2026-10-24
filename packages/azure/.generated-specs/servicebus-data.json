@@ -1,0 +1,1241 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.servicebus_data#NamespaceGet": "com.azure.servicebus_data#GetNamespace",
+      "com.azure.servicebus_data#NamespaceGetRequest": "com.azure.servicebus_data#GetNamespaceRequest",
+      "com.azure.servicebus_data#RuleDelete": "com.azure.servicebus_data#DeleteRule",
+      "com.azure.servicebus_data#RuleDeleteResponse": "com.azure.servicebus_data#DeleteRuleResponse",
+      "com.azure.servicebus_data#RuleDeleteRequest": "com.azure.servicebus_data#DeleteRuleRequest",
+      "com.azure.servicebus_data#RulePut": "com.azure.servicebus_data#PutRule",
+      "com.azure.servicebus_data#RulePutResponse": "com.azure.servicebus_data#PutRuleResponse",
+      "com.azure.servicebus_data#RulePutRequest": "com.azure.servicebus_data#PutRuleRequest",
+      "com.azure.servicebus_data#RuleGet": "com.azure.servicebus_data#GetRule",
+      "com.azure.servicebus_data#RuleGetResponse": "com.azure.servicebus_data#GetRuleResponse",
+      "com.azure.servicebus_data#RuleGetRequest": "com.azure.servicebus_data#GetRuleRequest",
+      "com.azure.servicebus_data#SubscriptionDelete": "com.azure.servicebus_data#DeleteSubscription",
+      "com.azure.servicebus_data#SubscriptionDeleteResponse": "com.azure.servicebus_data#DeleteSubscriptionResponse",
+      "com.azure.servicebus_data#SubscriptionDeleteRequest": "com.azure.servicebus_data#DeleteSubscriptionRequest",
+      "com.azure.servicebus_data#SubscriptionPut": "com.azure.servicebus_data#PutSubscription",
+      "com.azure.servicebus_data#SubscriptionPutResponse": "com.azure.servicebus_data#PutSubscriptionResponse",
+      "com.azure.servicebus_data#SubscriptionPutRequest": "com.azure.servicebus_data#PutSubscriptionRequest",
+      "com.azure.servicebus_data#SubscriptionGet": "com.azure.servicebus_data#GetSubscription",
+      "com.azure.servicebus_data#SubscriptionGetResponse": "com.azure.servicebus_data#GetSubscriptionResponse",
+      "com.azure.servicebus_data#SubscriptionGetRequest": "com.azure.servicebus_data#GetSubscriptionRequest",
+      "com.azure.servicebus_data#EntityDelete": "com.azure.servicebus_data#DeleteEntity",
+      "com.azure.servicebus_data#EntityDeleteResponse": "com.azure.servicebus_data#DeleteEntityResponse",
+      "com.azure.servicebus_data#EntityDeleteRequest": "com.azure.servicebus_data#DeleteEntityRequest",
+      "com.azure.servicebus_data#EntityPut": "com.azure.servicebus_data#PutEntity",
+      "com.azure.servicebus_data#EntityPutResponse": "com.azure.servicebus_data#PutEntityResponse",
+      "com.azure.servicebus_data#EntityPutRequest": "com.azure.servicebus_data#PutEntityRequest",
+      "com.azure.servicebus_data#EntityGet": "com.azure.servicebus_data#GetEntity",
+      "com.azure.servicebus_data#EntityGetResponse": "com.azure.servicebus_data#GetEntityResponse",
+      "com.azure.servicebus_data#EntityGetRequest": "com.azure.servicebus_data#GetEntityRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.servicebus_data#ListEntities": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#ListEntitiesRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#ListEntitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/$Resources/{entityType}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Get Queues or topics\n\nGet the details about the entities of the given Service Bus namespace."
+      }
+    },
+    "com.azure.servicebus_data#ListEntitiesResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#ListEntitiesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "entityType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "List all queues or all topics of the service bus. Value can be \"queues\" or \"topics\" "
+          }
+        },
+        "_skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip"
+          }
+        },
+        "_top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#NamespaceGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#NamespaceGetRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#NamespacePropertiesEntry"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/$namespaceinfo",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Get Namespace Properties\n\nGet the details about the Service Bus namespace."
+      }
+    },
+    "com.azure.servicebus_data#NamespacePropertiesEntry": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the GET request"
+          }
+        },
+        "title": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The name of the namespace.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp for when this namespace was last updated"
+          }
+        },
+        "author": {
+          "target": "com.azure.servicebus_data#ResponseAuthor"
+        },
+        "link": {
+          "target": "com.azure.servicebus_data#ResponseLink"
+        },
+        "content": {
+          "target": "com.azure.servicebus_data#NamespacePropertiesEntryContent",
+          "traits": {
+            "smithy.api#documentation": "Information about the namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents an entry in the feed when querying namespace info"
+      }
+    },
+    "com.azure.servicebus_data#NamespacePropertiesEntryContent": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of content in namespace info response",
+            "smithy.api#required": {}
+          }
+        },
+        "NamespaceProperties": {
+          "target": "com.azure.servicebus_data#NamespaceProperties",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the namespace."
+      }
+    },
+    "com.azure.servicebus_data#NamespaceProperties": {
+      "type": "structure",
+      "members": {
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Alias for the geo-disaster recovery Service Bus namespace."
+          }
+        },
+        "createdTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exact time the namespace was created."
+          }
+        },
+        "messagingSku": {
+          "target": "com.azure.servicebus_data#MessagingSku"
+        },
+        "messagingUnits": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of messaging units allocated to the namespace."
+          }
+        },
+        "modifiedTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exact time the namespace was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the namespace"
+          }
+        },
+        "namespaceType": {
+          "target": "com.azure.servicebus_data#NamespaceType"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata related to a Service Bus namespace."
+      }
+    },
+    "com.azure.servicebus_data#NamespaceType": {
+      "type": "enum",
+      "members": {
+        "MESSAGING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Messaging"
+          }
+        },
+        "NOTIFICATIONHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotificationHub"
+          }
+        },
+        "MIXED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Mixed"
+          }
+        },
+        "EVENTHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventHub"
+          }
+        },
+        "RELAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Relay"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of entities the namespace can contain."
+      }
+    },
+    "com.azure.servicebus_data#MessagingSku": {
+      "type": "enum",
+      "members": {
+        "BASIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basic"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU for the messaging entity."
+      }
+    },
+    "com.azure.servicebus_data#ResponseLink": {
+      "type": "structure",
+      "members": {
+        "href": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the GET request"
+          }
+        },
+        "rel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "What the link href is relative to"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The URL for the HTTP request"
+      }
+    },
+    "com.azure.servicebus_data#ResponseAuthor": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Service Bus namespace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The author that created this resource"
+      }
+    },
+    "com.azure.servicebus_data#NamespaceGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#RuleDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#RuleDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#RuleDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Delete Subscription\n\nDelete the rule with the given topicName, subscriptionName and ruleName."
+      }
+    },
+    "com.azure.servicebus_data#RuleDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#RuleDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the subscription."
+          }
+        },
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the filter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#RulePut": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#RulePutRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#RulePutResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Create or update a rule"
+      }
+    },
+    "com.azure.servicebus_data#RulePutResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#RulePutRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the subscription."
+          }
+        },
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the filter."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Match condition for an entity to be updated. If specified and a matching entity is not found, an error will be raised. To force an unconditional update, set to the wildcard character (*). If not specified, an insert will be performed when no existing entity is found to update and a replace will be performed if an existing entity is found."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#RuleGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#RuleGetRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#RuleGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{topicName}/subscriptions/{subscriptionName}/rules/{ruleName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Get Rule\n\nGet the details about the rule of a subscription of a topic."
+      }
+    },
+    "com.azure.servicebus_data#RuleGetResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#RuleGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the subscription."
+          }
+        },
+        "ruleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the filter."
+          }
+        },
+        "enrich": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "enrich",
+            "smithy.api#documentation": "A query parameter that sets enrich to true or false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#ListRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#ListRulesRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#ListRulesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{topicName}/subscriptions/{subscriptionName}/rules",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Get rules of a topic subscription\n\nGet the details about the rules of the given topic subscription."
+      }
+    },
+    "com.azure.servicebus_data#ListRulesResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#ListRulesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the subscription."
+          }
+        },
+        "_skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip"
+          }
+        },
+        "_top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#SubscriptionDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#SubscriptionDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{topicName}/subscriptions/{subscriptionName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Delete Subscription\n\nDelete the subscription with the given topicName and subscriptionName."
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionPut": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#SubscriptionPutRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#SubscriptionPutResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{topicName}/subscriptions/{subscriptionName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Create or update a subscription"
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionPutResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionPutRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the subscription."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Match condition for an entity to be updated. If specified and a matching entity is not found, an error will be raised. To force an unconditional update, set to the wildcard character (*). If not specified, an insert will be performed when no existing entity is found to update and a replace will be performed if an existing entity is found."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#SubscriptionGetRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#SubscriptionGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{topicName}/subscriptions/{subscriptionName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Get Subscription\n\nGet the details about the subscription of a topic."
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionGetResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#SubscriptionGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the subscription."
+          }
+        },
+        "enrich": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "enrich",
+            "smithy.api#documentation": "A query parameter that sets enrich to true or false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#ListSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#ListSubscriptionsRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#ListSubscriptionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{topicName}/subscriptions",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Get subscriptions\n\nGet the details about the subscriptions of the given topic."
+      }
+    },
+    "com.azure.servicebus_data#ListSubscriptionsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#ListSubscriptionsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "topicName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the topic."
+          }
+        },
+        "_skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip"
+          }
+        },
+        "_top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#EntityDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#EntityDeleteRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#EntityDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{entityName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Delete Queue or Topic\n\nDelete the Queue or Topic with the given entityName."
+      }
+    },
+    "com.azure.servicebus_data#EntityDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#EntityDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "entityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the queue or topic relative to the Service Bus namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#EntityPut": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#EntityPutRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#EntityPutResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{entityName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Create or update a queue or topic at the provided entityName"
+      }
+    },
+    "com.azure.servicebus_data#EntityPutResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#EntityPutRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "entityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the queue or topic relative to the Service Bus namespace."
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "Match condition for an entity to be updated. If specified and a matching entity is not found, an error will be raised. To force an unconditional update, set to the wildcard character (*). If not specified, an insert will be performed when no existing entity is found to update and a replace will be performed if an existing entity is found."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#EntityGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.servicebus_data#EntityGetRequest"
+      },
+      "output": {
+        "target": "com.azure.servicebus_data#EntityGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{entityName}",
+          "code": 200,
+          "host": "https://{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2021-05"
+        },
+        "smithy.api#documentation": "Get Queue or Topic\n\nGet the details about the Queue or Topic with the given entityName."
+      }
+    },
+    "com.azure.servicebus_data#EntityGetResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.servicebus_data#EntityGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Service Bus fully qualified domain name.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "entityName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the queue or topic relative to the Service Bus namespace."
+          }
+        },
+        "enrich": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "enrich",
+            "smithy.api#documentation": "A query parameter that sets enrich to true or false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicebus_data#ServicebusData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.servicebus_data#ListEntities"
+        },
+        {
+          "target": "com.azure.servicebus_data#NamespaceGet"
+        },
+        {
+          "target": "com.azure.servicebus_data#RuleDelete"
+        },
+        {
+          "target": "com.azure.servicebus_data#RulePut"
+        },
+        {
+          "target": "com.azure.servicebus_data#RuleGet"
+        },
+        {
+          "target": "com.azure.servicebus_data#ListRules"
+        },
+        {
+          "target": "com.azure.servicebus_data#SubscriptionDelete"
+        },
+        {
+          "target": "com.azure.servicebus_data#SubscriptionPut"
+        },
+        {
+          "target": "com.azure.servicebus_data#SubscriptionGet"
+        },
+        {
+          "target": "com.azure.servicebus_data#ListSubscriptions"
+        },
+        {
+          "target": "com.azure.servicebus_data#EntityDelete"
+        },
+        {
+          "target": "com.azure.servicebus_data#EntityPut"
+        },
+        {
+          "target": "com.azure.servicebus_data#EntityGet"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure ServiceBus data plane",
+        "smithy.api#documentation": "Azure servicebus data plane — servicebus/data-plane/ServiceBus (latest stable api-version 2021-05).",
+        "com.azure.protocols#host": {
+          "template": "https://{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://servicebus.azure.net/.default"
+      }
+    }
+  }
+}

@@ -1,0 +1,2056 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationTemplate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "categories": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationTemplateCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.  Supports $filter (contains)."
+          }
+        },
+        "deprecationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecation date for this application. If specified, the application will be removed from the Microsoft Entra application gallery on this date.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the application. Supports $filter (contains).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endpoints": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationTemplateEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "A collection of string URLs representing various domains that are used by this application."
+          }
+        },
+        "homePageUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The home page URL of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isEntraIntegrated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application is integrated with Entra ID (for example, through single sign-on or user provisioning)."
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the data for the application was last updated, represented using ISO 8601 format and always in UTC time.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "logoUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to get the logo for this application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the publisher for this application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "riskFactors": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactors",
+          "traits": {
+            "smithy.api#documentation": "A comprehensive set of risk assessment data for the application, including general, security, compliance, and legal dimensions. Returned only when $select is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "riskScore": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskScore",
+          "traits": {
+            "smithy.api#documentation": "Represents the Microsoft-generated numerical risk score assessment for the application. Supported $orderby on total (for example, $orderby=riskScore/total desc). Returned only when $select is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedProvisioningTypes": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationTemplateSupportedProvisioningTypesList",
+          "traits": {
+            "smithy.api#documentation": "The list of provisioning modes supported by this application. The only valid value is sync."
+          }
+        },
+        "supportedSingleSignOnModes": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationTemplateSupportedSingleSignOnModesList",
+          "traits": {
+            "smithy.api#documentation": "The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationTemplateCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.  Supports $filter (contains)."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationTemplateEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of string URLs representing various domains that are used by this application."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskFactors": {
+      "type": "structure",
+      "members": {
+        "compliance": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationSecurityCompliance",
+          "traits": {
+            "smithy.api#documentation": "Provides information about the application's adherence to security frameworks, certifications, and industry compliance standards.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "general": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorGeneralInfo",
+          "traits": {
+            "smithy.api#documentation": "Contains general business, operational, and data handling details that influence the application's risk assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "legal": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorLegalInfo",
+          "traits": {
+            "smithy.api#documentation": "Provides legal and regulatory compliance information, including data ownership, retention, and GDPR adherence.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "security": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorSecurityInfo",
+          "traits": {
+            "smithy.api#documentation": "Contains information related to the application's security posture, such as encryption, authentication, and vulnerability management practices.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationSecurityCompliance": {
+      "type": "structure",
+      "members": {
+        "cobit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application adheres to the Control Objectives for Information and Related Technologies (COBIT) framework.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "coppa": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with the Children’s Online Privacy Protection Act (COPPA).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "csaStar": {
+          "target": "com.microsoft.graph.applicationTemplates#CsaStarLevel",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Cloud Security Alliance (CSA) Security, Trust & Assurance Registry (STAR) certification level. The possible values are: none, attestation, certification, continuousMonitoring, cStarAssessment, selfAssessment, notSupported, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "fedRamp": {
+          "target": "com.microsoft.graph.applicationTemplates#FedRampLevel",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Federal Risk and Authorization Management Program (FedRAMP) certification level. The possible values are: none, high, liSaas, low, moderate, notSupported, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ferpa": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with the Family Educational Rights and Privacy Act (FERPA).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ffiec": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application meets Federal Financial Institutions Examination Council (FFIEC) requirements.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "finra": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with Financial Industry Regulatory Authority (FINRA) standards.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "fisma": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with the Federal Information Security Management Act (FISMA).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "gaap": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application provider adheres to Generally Accepted Accounting Principles (GAAP).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "gapp": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application adheres to Generally Accepted Privacy Principles (GAPP).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "glba": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with the Gramm–Leach–Bliley Act (GLBA) for financial data protection.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hipaa": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with the Health Insurance Portability and Accountability Act (HIPAA).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hitrust": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application holds HITRUST certification, demonstrating alignment with healthcare and data security standards.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isae3402": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with International Standard on Assurance Engagements (ISAE) 3402 requirements.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "iso27001": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application is certified against ISO/IEC 27001 for information security management systems (ISMS).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "iso27002": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application follows ISO/IEC 27002 security control best practices.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "iso27017": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with ISO/IEC 27017 standards for cloud security controls.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "iso27018": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with ISO/IEC 27018 standards for protecting personally identifiable information (PII) in cloud environments.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "itar": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with International Traffic in Arms Regulations (ITAR).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "jerichoForumCommandments": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application aligns with Jericho Forum security principles for deperimeterized environments.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "pci": {
+          "target": "com.microsoft.graph.applicationTemplates#PciVersion",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Payment Card Industry (PCI) Data Security Standard (DSS) version the application complies with. The possible values are: none, v321, v4, notSupported, unknownFutureValue.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "privacyShield": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with the EU–U.S. Privacy Shield framework for cross-border data transfers.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "safeHarbor": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application previously adhered to the U.S.–EU Safe Harbor data transfer framework.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "soc1": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application provider undergoes a Service Organization Control (SOC) one audit report.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "soc2": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application provider undergoes a Service Organization Control (SOC) two audit report.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "soc3": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application provider undergoes a Service Organization Control (SOC) three audit report.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sox": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with the Sarbanes–Oxley Act (SOX) financial reporting requirements.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "sp800_53": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application aligns with National Institute of Standards and Technology (NIST) Special Publication 800-53 security and privacy controls.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ssae16": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application adheres to Statement on Standards for Attestation Engagements (SSAE) No. 16.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ustr": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application complies with U.S. Trade Representative (USTR) data and trade protection requirements.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#CsaStarLevel": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "ATTESTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "attestation"
+          }
+        },
+        "CERTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "certification"
+          }
+        },
+        "CONTINUOUSMONITORING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "continuousMonitoring"
+          }
+        },
+        "CSTARASSESSMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cStarAssessment"
+          }
+        },
+        "SELFASSESSMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "selfAssessment"
+          }
+        },
+        "NOTSUPPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notSupported"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#FedRampLevel": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "LISAAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "liSaas"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MODERATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moderate"
+          }
+        },
+        "NOTSUPPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notSupported"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#PciVersion": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "V3_2_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v3_2_1"
+          }
+        },
+        "V4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v4"
+          }
+        },
+        "NOTSUPPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notSupported"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorGeneralInfo": {
+      "type": "structure",
+      "members": {
+        "consumerPopularity": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the relative popularity or adoption of the application based on the user or tenant usage metrics.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "domainRegistrationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the date when the application's primary domain was registered, used to assess domain maturity and legitimacy.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "founded": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Year the company or organization behind the application was founded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasDisasterRecoveryPlan": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application provider maintains a disaster recovery or business continuity plan.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hold": {
+          "target": "com.microsoft.graph.applicationTemplates#HoldType"
+        },
+        "hostingCompanyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name of the company or provider that hosts the application's infrastructure.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "location": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationLocation",
+          "traits": {
+            "smithy.api#documentation": "Provides the geographical and operational location information for the application, including data center and headquarters regions.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "privacyPolicy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the URL of the application's privacy policy.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "processedDataTypes": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationDataType"
+        },
+        "termsOfService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the URL of the application's terms of service.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#HoldType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "private"
+          }
+        },
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "public"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationLocation": {
+      "type": "structure",
+      "members": {
+        "dataCenter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the region or physical location where the application's primary data center is hosted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "headquarters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the city, country or region where the application's owning organization is headquartered.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationDataType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "CODINGFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "codingFiles"
+          }
+        },
+        "CREDITCARDS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "creditCards"
+          }
+        },
+        "DATABASEFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "databaseFiles"
+          }
+        },
+        "DOCUMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "documents"
+          }
+        },
+        "MEDIAFILES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mediaFiles"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorLegalInfo": {
+      "type": "structure",
+      "members": {
+        "dataRetention": {
+          "target": "com.microsoft.graph.applicationTemplates#DataRetentionLevel"
+        },
+        "gdpr": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorLegalInfoGdpr"
+        },
+        "hasDataOwnership": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether customers maintain ownership and control of their data processed or stored by the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasDmca": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application or organization complies with the Digital Millennium Copyright Act (DMCA) or equivalent copyright protection frameworks.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#DataRetentionLevel": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "DATARETAINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dataRetained"
+          }
+        },
+        "DELETEDIMMEDIATELY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletedImmediately"
+          }
+        },
+        "DELETEDWITHIN1MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletedWithin1Month"
+          }
+        },
+        "DELETEDWITHIN2WEEKS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletedWithin2Weeks"
+          }
+        },
+        "DELETEDWITHIN3MONTHS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletedWithin3Months"
+          }
+        },
+        "DELETEDWITHINMORETHAN3MONTHS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletedWithinMoreThan3Months"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorLegalInfoGdpr": {
+      "type": "structure",
+      "members": {
+        "dataProtection": {
+          "target": "com.microsoft.graph.applicationTemplates#DataProtection"
+        },
+        "hasRightToErasure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application provides users with the ability to request deletion of their personal data (the right to be forgotten).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isReportingDataBreaches": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the organization reports personal data breaches to authorities and affected users in accordance with GDPR requirements.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "statementUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the URL of the application's GDPR or privacy compliance statement, outlining how user data is handled.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userOwnership": {
+          "target": "com.microsoft.graph.applicationTemplates#UserOwnership"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#DataProtection": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "IMPACTASSESSMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "impactAssessments"
+          }
+        },
+        "OFFICERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "officers"
+          }
+        },
+        "SECURECROSSBORDERDATATRANSFER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secureCrossBorderDataTransfer"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#UserOwnership": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LAWFULBASISFORPROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lawfulBasisForProcessing"
+          }
+        },
+        "RIGHTTOACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rightToAccess"
+          }
+        },
+        "RIGHTTOBEINFORMED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rightToBeInformed"
+          }
+        },
+        "RIGHTTODATAPORTABILITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rightToDataPortability"
+          }
+        },
+        "RIGHTTOOBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rightToObject"
+          }
+        },
+        "RIGHTTORECTIFICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rightToRectification"
+          }
+        },
+        "RIGHTTORESTRICTIONOFPROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rightToRestrictionOfProcessing"
+          }
+        },
+        "RIGHTSRELATEDTOAUTOMATEDDECISIONMAKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rightsRelatedToAutomatedDecisionMaking"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorSecurityInfo": {
+      "type": "structure",
+      "members": {
+        "certificate": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorCertificateInfo"
+        },
+        "domainToCheck": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the domain or hostname evaluated during the security assessment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasAdminAuditTrail": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application maintains an audit trail for administrative actions.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasAnonymousUsage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application allows anonymous or unauthenticated usage.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasDataAuditTrail": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application logs access or modification of customer data for audit purposes.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasDataClassification": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application classifies and labels data based on sensitivity levels.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasDataEncrypted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether data at rest and in transit are encrypted using approved algorithms.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasEnforceTransportEnc": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether HTTPS or equivalent secure transport is enforced for all communication channels.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasIpRestriction": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether access to the application can be restricted based on IP address or network range.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasMFA": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application supports or enforces multi-factor authentication (MFA).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasPenTest": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application undergoes periodic penetration testing or external security reviews.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasRememberPassword": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application supports password-saving functionality, which may pose a security risk.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasSamlSupport": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application supports SAML-based single sign-on (SSO).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasUserAuditLogs": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether user activity is logged for security or compliance monitoring.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasUserDataUpload": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether users can upload or store personal or organizational data within the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasUserRolesSupport": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application supports role-based access control (RBAC).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasValidCertName": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate’s common name matches the application’s verified domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "httpsSecurityHeaders": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorSecurityInfoHttpsSecurityHeadersList",
+          "traits": {
+            "smithy.api#documentation": "Lists the HTTP security headers detected for the application (for example, HSTS, X-Frame-Options, or CSP)."
+          }
+        },
+        "isCertTrusted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application’s certificate is signed by a trusted certificate authority (CA).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isDrownVulnerable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application is vulnerable to the DROWN (Decrypting RSA with Obsolete and Weakened eNcryption) attack.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isHeartbleedProof": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application’s SSL implementation is protected from the Heartbleed vulnerability.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastBreachDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the date of the last publicly reported data breach or security incident related to the application, if known.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "latestValidSSL": {
+          "target": "com.microsoft.graph.applicationTemplates#SslVersion"
+        },
+        "passwordPolicy": {
+          "target": "com.microsoft.graph.applicationTemplates#PasswordPolicy"
+        },
+        "restEncryptionType": {
+          "target": "com.microsoft.graph.applicationTemplates#RestEncryptionType"
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorCertificateInfo": {
+      "type": "structure",
+      "members": {
+        "hasBadCommonName": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate's common name doesn't match the expected domain name.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasInsecureSignature": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate uses a weak or insecure signature algorithm (for example, MD5 or SHA-1).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasNoChainOfTrust": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate chain of trust is incomplete or invalid.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isDenylisted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate is on a known denylist or associated with compromised issuers.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isHostnameMismatch": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate's hostname doesn't match the domain it was issued for.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isNotAfter": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate is expired and no longer valid.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isNotBefore": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate isn't yet valid based on its activation date.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isRevoked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the issuing certificate authority revoked the certificate.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isSelfSigned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the certificate is self-signed rather than issued by a trusted certificate authority.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskFactorSecurityInfoHttpsSecurityHeadersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Lists the HTTP security headers detected for the application (for example, HSTS, X-Frame-Options, or CSP)."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#SslVersion": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "SSL3_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssl3_0"
+          }
+        },
+        "TLS1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tls1_0"
+          }
+        },
+        "TLS1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tls1_1"
+          }
+        },
+        "TLS1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tls1_2"
+          }
+        },
+        "TLS1_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tls1_3"
+          }
+        },
+        "NOTSUPPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notSupported"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#PasswordPolicy": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "CHANGEPASSWORDPERIOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "changePasswordPeriod"
+          }
+        },
+        "CHARACTERSCOMBINATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "charactersCombination"
+          }
+        },
+        "PASSWORDHISTORYANDREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "passwordHistoryAndReuse"
+          }
+        },
+        "PASSWORDLENGTHLIMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "passwordLengthLimit"
+          }
+        },
+        "PERSONALINFORMATIONUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "personalInformationUse"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#RestEncryptionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "AES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aes"
+          }
+        },
+        "BITLOCKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bitlocker"
+          }
+        },
+        "BLOWFISH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blowfish"
+          }
+        },
+        "DES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "des"
+          }
+        },
+        "RC4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rc4"
+          }
+        },
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rsa"
+          }
+        },
+        "NOTSUPPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notSupported"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskScore": {
+      "type": "structure",
+      "members": {
+        "compliance": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreCompliance",
+          "traits": {
+            "smithy.api#documentation": "Specifies the compliance risk score based on the application's alignment with regulatory standards and industry certifications such as HIPAA, CSA, and PCI-DSS."
+          }
+        },
+        "legal": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreLegal",
+          "traits": {
+            "smithy.api#documentation": "Specifies the legal risk score based on data protection practices, privacy policy transparency, and jurisdictional compliance to regulations and policies such as DMCA and data retention policy."
+          }
+        },
+        "provider": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreProvider",
+          "traits": {
+            "smithy.api#documentation": "Specifies the provider risk score based on vendor credibility, operational maturity, and trustworthiness."
+          }
+        },
+        "security": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreSecurity",
+          "traits": {
+            "smithy.api#documentation": "Specifies the security risk score based on authentication strength, encryption, vulnerability management, and overall security hygiene."
+          }
+        },
+        "total": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreTotal",
+          "traits": {
+            "smithy.api#documentation": "Represents the composite risk score derived from all risk categories."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ReferenceNumeric": {
+      "type": "enum",
+      "members": {
+        "INF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "-INF"
+          }
+        },
+        "INF_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INF"
+          }
+        },
+        "NAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NaN"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreCompliance": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.applicationTemplates#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the compliance risk score based on the application's alignment with regulatory standards and industry certifications such as HIPAA, CSA, and PCI-DSS."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreLegal": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.applicationTemplates#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the legal risk score based on data protection practices, privacy policy transparency, and jurisdictional compliance to regulations and policies such as DMCA and data retention policy."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreProvider": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.applicationTemplates#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the provider risk score based on vendor credibility, operational maturity, and trustworthiness."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreSecurity": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.applicationTemplates#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the security risk score based on authentication strength, encryption, vulnerability management, and overall security hygiene."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationRiskScoreTotal": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Double"
+        },
+        "Case1": {
+          "target": "smithy.api#String"
+        },
+        "ReferenceNumeric": {
+          "target": "com.microsoft.graph.applicationTemplates#ReferenceNumeric"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the composite risk score derived from all risk categories."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationTemplateSupportedProvisioningTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of provisioning modes supported by this application. The only valid value is sync."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationTemplateSupportedSingleSignOnModesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ListApplicationTemplateResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.applicationTemplates#ApplicationTemplate"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#ListApplicationTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.applicationTemplates#ListApplicationTemplateResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ListApplicationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.applicationTemplates#ListApplicationTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.applicationTemplates#ListApplicationTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/applicationTemplates",
+          "code": 200
+        },
+        "smithy.api#documentation": "List applicationTemplates\n\nRetrieve a list of applicationTemplate objects from the Microsoft Entra application gallery. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license. If a risk property is included in the request without appropriate license, a @microsoft.graph.licenseRequired OData annotation is returned in the response.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateRequest": {
+      "type": "structure",
+      "members": {
+        "applicationTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of applicationTemplate"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.  Supports $filter (contains)."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of string URLs representing various domains that are used by this application."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseSupportedProvisioningTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of provisioning modes supported by this application. The only valid value is sync."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseSupportedSingleSignOnModesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String",
+        "traits": {
+          "com.distilled.openapi#nullable": {}
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "categories": {
+          "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.  Supports $filter (contains)."
+          }
+        },
+        "deprecationDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecation date for this application. If specified, the application will be removed from the Microsoft Entra application gallery on this date.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the application. Supports $filter (contains).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "endpoints": {
+          "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "A collection of string URLs representing various domains that are used by this application."
+          }
+        },
+        "homePageUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The home page URL of the application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isEntraIntegrated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the application is integrated with Entra ID (for example, through single sign-on or user provisioning)."
+          }
+        },
+        "lastModifiedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the data for the application was last updated, represented using ISO 8601 format and always in UTC time.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "logoUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to get the logo for this application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the publisher for this application.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "riskFactors": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskFactors",
+          "traits": {
+            "smithy.api#documentation": "A comprehensive set of risk assessment data for the application, including general, security, compliance, and legal dimensions. Returned only when $select is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "riskScore": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationRiskScore",
+          "traits": {
+            "smithy.api#documentation": "Represents the Microsoft-generated numerical risk score assessment for the application. Supported $orderby on total (for example, $orderby=riskScore/total desc). Returned only when $select is used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "supportedProvisioningTypes": {
+          "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseSupportedProvisioningTypesList",
+          "traits": {
+            "smithy.api#documentation": "The list of provisioning modes supported by this application. The only valid value is sync."
+          }
+        },
+        "supportedSingleSignOnModes": {
+          "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponseSupportedSingleSignOnModesList",
+          "traits": {
+            "smithy.api#documentation": "The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetApplicationTemplate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/applicationTemplates/{applicationTemplateId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get applicationTemplate\n\nRetrieve the properties of an applicationTemplate object. Details about optional risk properties such as riskScore and riskFactors are available with either the Microsoft Entra Suite or Microsoft Entra Internet Access license."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#InstantiateRequest": {
+      "type": "structure",
+      "members": {
+        "applicationTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of applicationTemplate"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "serviceManagementReference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationServicePrincipal": {
+      "type": "structure",
+      "members": {
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.applicationTemplates#InstantiateResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.microsoft.graph.applicationTemplates#ApplicationServicePrincipal",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#Instantiate": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.applicationTemplates#InstantiateRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.applicationTemplates#InstantiateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/applicationTemplates/{applicationTemplateId}/instantiate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Invoke action instantiate\n\nAdd an instance of an application from the Microsoft Entra application gallery into your directory. For non-gallery apps, use an application template with one of the following IDs to configure different single sign-on (SSO) modes like SAML SSO and password-based SSO."
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetCountRequest": {
+      "type": "structure",
+      "members": {
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#GetCount": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.applicationTemplates#GetCountRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/applicationTemplates/$count",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the number of the resource"
+      }
+    },
+    "com.microsoft.graph.applicationTemplates#ApplicationTemplates": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.applicationTemplates#ListApplicationTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.applicationTemplates#GetApplicationTemplate"
+        },
+        {
+          "target": "com.microsoft.graph.applicationTemplates#Instantiate"
+        },
+        {
+          "target": "com.microsoft.graph.applicationTemplates#GetCount"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

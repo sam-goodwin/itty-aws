@@ -1,0 +1,766 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsers": "com.azure.playwrighttesting_auth_manager#GetAccountBrowsers",
+      "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsersRequest": "com.azure.playwrighttesting_auth_manager#GetAccountBrowsersRequest",
+      "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsersRequestOs": "com.azure.playwrighttesting_auth_manager#GetAccountBrowsersRequestOs",
+      "com.azure.playwrighttesting_auth_manager#AccessTokensDelete": "com.azure.playwrighttesting_auth_manager#DeleteAccessToken",
+      "com.azure.playwrighttesting_auth_manager#AccessTokensDeleteRequest": "com.azure.playwrighttesting_auth_manager#DeleteAccessTokenRequest",
+      "com.azure.playwrighttesting_auth_manager#AccessTokensGet": "com.azure.playwrighttesting_auth_manager#GetAccessToken",
+      "com.azure.playwrighttesting_auth_manager#AccessTokensGetRequest": "com.azure.playwrighttesting_auth_manager#GetAccessTokenRequest",
+      "com.azure.playwrighttesting_auth_manager#AccessTokensList": "com.azure.playwrighttesting_auth_manager#ListAccessTokens",
+      "com.azure.playwrighttesting_auth_manager#AccessTokensListRequest": "com.azure.playwrighttesting_auth_manager#ListAccessTokensRequest",
+      "com.azure.playwrighttesting_auth_manager#AccountsGet": "com.azure.playwrighttesting_auth_manager#GetAccount",
+      "com.azure.playwrighttesting_auth_manager#AccountsGetRequest": "com.azure.playwrighttesting_auth_manager#GetAccountRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsers": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsersRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{accountId}/browsers",
+          "code": 200,
+          "host": "{endpoint}",
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Gets remote browsers corresponding to given account id and redirects the client for running Playwright tests. Authorization required is Bearer JWT Access token provided by EntraID or Microsoft Playwright Testing Service."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsersRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Azure Playwright Service API Endpoints (protocol and hostname, for example:\n  https://{region}.api.playwright.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The account id."
+          }
+        },
+        "runId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "runId",
+            "smithy.api#documentation": "The run id provided by client for corresponding remote test run."
+          }
+        },
+        "os": {
+          "target": "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsersRequestOs",
+          "traits": {
+            "smithy.api#httpQuery": "os",
+            "smithy.api#documentation": "The os provided by client for remote test runs."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsersRequestOs": {
+      "type": "enum",
+      "members": {
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccessTokensDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{accountId}/access-tokens/{accessTokenId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Deletes an access-token for the account with given access-token id. Authorization required is Bearer JWT Access token provided by EntraID."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Azure Playwright Service API Endpoints (protocol and hostname, for example:\n  https://{region}.api.playwright.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The account id."
+          }
+        },
+        "accessTokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The access-token id."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensCreateOrReplace": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccessTokensCreateOrReplaceRequest"
+      },
+      "output": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{accountId}/access-tokens/{accessTokenId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Creates an access-token for the account with given access-token id. Authorization required is Bearer JWT Access token provided by EntraID."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessToken": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access-token id.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access-token name.",
+            "smithy.api#required": {}
+          }
+        },
+        "jwtToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access-token value in JWT format."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access-token createdAt utcDateTime.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiryAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access-token expiryAt utcDateTime.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.playwrighttesting_auth_manager#AccessTokenState",
+          "traits": {
+            "smithy.api#documentation": "The access-token state - Active | Expired.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model of an access-token linked to an account."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokenState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Expired"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The access-token state."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensCreateOrReplaceRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Azure Playwright Service API Endpoints (protocol and hostname, for example:\n  https://{region}.api.playwright.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The account id."
+          }
+        },
+        "accessTokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The access-token id."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access-token name.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiryAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access-token expiryAt utcDateTime.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccessTokensGetRequest"
+      },
+      "output": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{accountId}/access-tokens/{accessTokenId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Gets an access-token for the account with given access-token id. Authorization required is Bearer JWT Access token provided by EntraID."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Azure Playwright Service API Endpoints (protocol and hostname, for example:\n  https://{region}.api.playwright.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The account id."
+          }
+        },
+        "accessTokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The access-token id."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccessTokensListRequest"
+      },
+      "output": {
+        "target": "com.azure.playwrighttesting_auth_manager#PagedAccessToken"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{accountId}/access-tokens",
+          "code": 200,
+          "host": "{endpoint}",
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Lists access-tokens for the given account id. It can use OData query params like $select, $filter, $orderby, $top and $skip. The default page size is 10. Use nextLink in response to fetch more objects in the list. Authorization required is Bearer JWT Access token provided by EntraID."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#PagedAccessToken": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.playwrighttesting_auth_manager#PagedAccessTokenValueList",
+          "traits": {
+            "smithy.api#documentation": "The AccessToken items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of AccessToken items"
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#PagedAccessTokenValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccessToken"
+      },
+      "traits": {
+        "smithy.api#documentation": "The AccessToken items on this page"
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccessTokensListRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Azure Playwright Service API Endpoints (protocol and hostname, for example:\n  https://{region}.api.playwright.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The account id."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccountsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.playwrighttesting_auth_manager#AccountsGetRequest"
+      },
+      "output": {
+        "target": "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccount"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{accountId}",
+          "code": 200,
+          "host": "{endpoint}",
+          "apiVersion": "2024-12-01"
+        },
+        "smithy.api#documentation": "Get details of the Azure resource mapped to an account for the given account id. Authorization required is Bearer JWT Access token provided by EntraID."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account id.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully-qualified Azure resource id for the account.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account name.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountState",
+          "traits": {
+            "smithy.api#documentation": "The state of account - Active | Inactive",
+            "smithy.api#required": {}
+          }
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure subscription id for the account.",
+            "smithy.api#required": {}
+          }
+        },
+        "subscriptionState": {
+          "target": "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedSubscriptionState",
+          "traits": {
+            "smithy.api#documentation": "The Azure subscription state - Registered | Unregistered | Warned | Suspended | Deleted",
+            "smithy.api#required": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure tenant id of the account.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account resource location in Azure, for eg. eastus, southeastasia.",
+            "smithy.api#required": {}
+          }
+        },
+        "regionalAffinity": {
+          "target": "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountRegionalAffinity",
+          "traits": {
+            "smithy.api#documentation": "This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created."
+          }
+        },
+        "scalableExecution": {
+          "target": "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountScalableExecution",
+          "traits": {
+            "smithy.api#documentation": "When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations."
+          }
+        },
+        "reporting": {
+          "target": "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountReporting",
+          "traits": {
+            "smithy.api#documentation": "When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting."
+          }
+        },
+        "localAuth": {
+          "target": "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountLocalAuth",
+          "traits": {
+            "smithy.api#documentation": "When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An account is a parent resource for most of the other service resources. It's directly mapped to an Azure resource."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountLocalAuth": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountReporting": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountScalableExecution": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountRegionalAffinity": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedSubscriptionState": {
+      "type": "enum",
+      "members": {
+        "REGISTERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Registered"
+          }
+        },
+        "WARNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warned"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Suspended"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleted"
+          }
+        },
+        "UNREGISTERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unregistered"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Azure subscription state."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#MicrosoftPlaywrightTestingSharedAccountState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The account state."
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#AccountsGetRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Azure Playwright Service API Endpoints (protocol and hostname, for example:\n  https://{region}.api.playwright.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The account id."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting_auth_manager#PlaywrighttestingAuthManager": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.playwrighttesting_auth_manager#AccountsGetBrowsers"
+        },
+        {
+          "target": "com.azure.playwrighttesting_auth_manager#AccessTokensDelete"
+        },
+        {
+          "target": "com.azure.playwrighttesting_auth_manager#AccessTokensCreateOrReplace"
+        },
+        {
+          "target": "com.azure.playwrighttesting_auth_manager#AccessTokensGet"
+        },
+        {
+          "target": "com.azure.playwrighttesting_auth_manager#AccessTokensList"
+        },
+        {
+          "target": "com.azure.playwrighttesting_auth_manager#AccountsGet"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Microsoft.PlaywrightTesting.AuthManager data plane",
+        "smithy.api#documentation": "Azure playwrighttesting data plane — playwrighttesting/data-plane/Microsoft.PlaywrightTesting.AuthManager (latest stable api-version 2024-12-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://playwright.microsoft.com/.default"
+      }
+    }
+  }
+}

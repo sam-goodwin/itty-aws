@@ -15,16 +15,67 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.standbypool#StandbyVirtualMachinesGet": "com.azure.standbypool#GetStandbyVirtualMachine",
+      "com.azure.standbypool#StandbyVirtualMachinesGetResponse": "com.azure.standbypool#GetStandbyVirtualMachineResponse",
+      "com.azure.standbypool#StandbyVirtualMachinesGetRequest": "com.azure.standbypool#GetStandbyVirtualMachineRequest",
+      "com.azure.standbypool#StandbyVirtualMachinesListByStandbyVirtualMachinePoolResource": "com.azure.standbypool#ListStandbyVirtualMachineByStandbyVirtualMachinePoolResource",
+      "com.azure.standbypool#StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceRequest": "com.azure.standbypool#ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest",
+      "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGet": "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeView",
+      "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGetResponse": "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeViewResponse",
+      "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGetRequest": "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeViewRequest",
+      "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool": "com.azure.standbypool#ListStandbyVirtualMachinePoolRuntimeViewByStandbyPool",
+      "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolRequest": "com.azure.standbypool#ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsDelete": "com.azure.standbypool#DeleteStandbyVirtualMachinePool",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsDeleteResponse": "com.azure.standbypool#DeleteStandbyVirtualMachinePoolResponse",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsDeleteRequest": "com.azure.standbypool#DeleteStandbyVirtualMachinePoolRequest",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsUpdate": "com.azure.standbypool#UpdateStandbyVirtualMachinePool",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateResponse": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolResponse",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateResponseTagsMap": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolResponseTagsMap",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequest": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolRequest",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequestTagsMap": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolRequestTagsMap",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsGet": "com.azure.standbypool#GetStandbyVirtualMachinePool",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsGetResponse": "com.azure.standbypool#GetStandbyVirtualMachinePoolResponse",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsGetResponseTagsMap": "com.azure.standbypool#GetStandbyVirtualMachinePoolResponseTagsMap",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsGetRequest": "com.azure.standbypool#GetStandbyVirtualMachinePoolRequest",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsListByResourceGroup": "com.azure.standbypool#ListStandbyVirtualMachinePoolByResourceGroup",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsListByResourceGroupRequest": "com.azure.standbypool#ListStandbyVirtualMachinePoolByResourceGroupRequest",
+      "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGet": "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeView",
+      "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGetResponse": "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeViewResponse",
+      "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGetRequest": "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeViewRequest",
+      "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsListByStandbyPool": "com.azure.standbypool#ListStandbyContainerGroupPoolRuntimeViewByStandbyPool",
+      "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolRequest": "com.azure.standbypool#ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest",
+      "com.azure.standbypool#StandbyContainerGroupPoolsDelete": "com.azure.standbypool#DeleteStandbyContainerGroupPool",
+      "com.azure.standbypool#StandbyContainerGroupPoolsDeleteResponse": "com.azure.standbypool#DeleteStandbyContainerGroupPoolResponse",
+      "com.azure.standbypool#StandbyContainerGroupPoolsDeleteRequest": "com.azure.standbypool#DeleteStandbyContainerGroupPoolRequest",
+      "com.azure.standbypool#StandbyContainerGroupPoolsUpdate": "com.azure.standbypool#UpdateStandbyContainerGroupPool",
+      "com.azure.standbypool#StandbyContainerGroupPoolsUpdateResponse": "com.azure.standbypool#UpdateStandbyContainerGroupPoolResponse",
+      "com.azure.standbypool#StandbyContainerGroupPoolsUpdateResponseTagsMap": "com.azure.standbypool#UpdateStandbyContainerGroupPoolResponseTagsMap",
+      "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequest": "com.azure.standbypool#UpdateStandbyContainerGroupPoolRequest",
+      "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequestTagsMap": "com.azure.standbypool#UpdateStandbyContainerGroupPoolRequestTagsMap",
+      "com.azure.standbypool#StandbyContainerGroupPoolsGet": "com.azure.standbypool#GetStandbyContainerGroupPool",
+      "com.azure.standbypool#StandbyContainerGroupPoolsGetResponse": "com.azure.standbypool#GetStandbyContainerGroupPoolResponse",
+      "com.azure.standbypool#StandbyContainerGroupPoolsGetResponseTagsMap": "com.azure.standbypool#GetStandbyContainerGroupPoolResponseTagsMap",
+      "com.azure.standbypool#StandbyContainerGroupPoolsGetRequest": "com.azure.standbypool#GetStandbyContainerGroupPoolRequest",
+      "com.azure.standbypool#StandbyContainerGroupPoolsListByResourceGroup": "com.azure.standbypool#ListStandbyContainerGroupPoolByResourceGroup",
+      "com.azure.standbypool#StandbyContainerGroupPoolsListByResourceGroupRequest": "com.azure.standbypool#ListStandbyContainerGroupPoolByResourceGroupRequest",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsListBySubscription": "com.azure.standbypool#ListStandbyVirtualMachinePoolBySubscription",
+      "com.azure.standbypool#StandbyVirtualMachinePoolsListBySubscriptionRequest": "com.azure.standbypool#ListStandbyVirtualMachinePoolBySubscriptionRequest",
+      "com.azure.standbypool#StandbyContainerGroupPoolsListBySubscription": "com.azure.standbypool#ListStandbyContainerGroupPoolBySubscription",
+      "com.azure.standbypool#StandbyContainerGroupPoolsListBySubscriptionRequest": "com.azure.standbypool#ListStandbyContainerGroupPoolBySubscriptionRequest",
+      "com.azure.standbypool#OperationsList": "com.azure.standbypool#ListOperations",
+      "com.azure.standbypool#OperationsListResponse": "com.azure.standbypool#ListOperationsResponse",
+      "com.azure.standbypool#OperationsListResponseValueList": "com.azure.standbypool#ListOperationsResponseValueList"
+    }
   },
   "shapes": {
-    "com.azure.standbypool#GetStandbyVirtualMachine": {
+    "com.azure.standbypool#StandbyVirtualMachinesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#GetStandbyVirtualMachineRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinesGetRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#GetStandbyVirtualMachineResponse"
+        "target": "com.azure.standbypool#StandbyVirtualMachinesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +88,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachineResponse": {
+    "com.azure.standbypool#StandbyVirtualMachinesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -236,7 +287,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachineRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -276,10 +327,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachineByStandbyVirtualMachinePoolResource": {
+    "com.azure.standbypool#StandbyVirtualMachinesListByStandbyVirtualMachinePoolResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceRequest"
       },
       "output": {
         "target": "com.azure.standbypool#StandbyVirtualMachineResourceListResult"
@@ -363,7 +414,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -395,13 +446,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeView": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeViewRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGetRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeViewResponse"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -414,7 +465,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeViewResponse": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -696,7 +747,7 @@
         "smithy.api#documentation": "The state of the pooled virtual machines."
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeViewRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -736,10 +787,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachinePoolRuntimeViewByStandbyPool": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolRequest"
       },
       "output": {
         "target": "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewResourceListResult"
@@ -823,7 +874,7 @@
         "smithy.api#documentation": "Contains information about a standby virtual machine pool as last known by the StandbyPool resource provider."
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -855,13 +906,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#DeleteStandbyVirtualMachinePool": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#DeleteStandbyVirtualMachinePoolRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#DeleteStandbyVirtualMachinePoolResponse"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -874,7 +925,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#DeleteStandbyVirtualMachinePoolResponse": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -896,7 +947,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.standbypool#DeleteStandbyVirtualMachinePoolRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -928,13 +979,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#UpdateStandbyVirtualMachinePool": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolResponse"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -947,7 +998,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#UpdateStandbyVirtualMachinePoolResponse": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -975,7 +1026,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolResponseTagsMap",
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1142,7 +1193,7 @@
         "smithy.api#documentation": "Specifies the dynamic sizing configuration."
       }
     },
-    "com.azure.standbypool#UpdateStandbyVirtualMachinePoolResponseTagsMap": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1154,7 +1205,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#UpdateStandbyVirtualMachinePoolRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1182,7 +1233,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.standbypool#UpdateStandbyVirtualMachinePoolRequestTagsMap",
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1230,7 +1281,7 @@
         "smithy.api#documentation": "The updatable properties of the StandbyVirtualMachinePoolResource."
       }
     },
-    "com.azure.standbypool#UpdateStandbyVirtualMachinePoolRequestTagsMap": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1427,13 +1478,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachinePool": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#GetStandbyVirtualMachinePoolRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsGetRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#GetStandbyVirtualMachinePoolResponse"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1446,7 +1497,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachinePoolResponse": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1474,7 +1525,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.standbypool#GetStandbyVirtualMachinePoolResponseTagsMap",
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1497,7 +1548,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachinePoolResponseTagsMap": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1509,7 +1560,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#GetStandbyVirtualMachinePoolRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1541,10 +1592,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachinePoolByResourceGroup": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#ListStandbyVirtualMachinePoolByResourceGroupRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.standbypool#StandbyVirtualMachinePoolResourceListResult"
@@ -1653,7 +1704,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachinePoolByResourceGroupRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1677,13 +1728,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeView": {
+    "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeViewRequest"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGetRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeViewResponse"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1696,7 +1747,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeViewResponse": {
+    "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1907,7 +1958,7 @@
         "smithy.api#documentation": "The state of the pooled container groups."
       }
     },
-    "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeViewRequest": {
+    "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1947,10 +1998,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListStandbyContainerGroupPoolRuntimeViewByStandbyPool": {
+    "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsListByStandbyPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolRequest"
       },
       "output": {
         "target": "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewResourceListResult"
@@ -2034,7 +2085,7 @@
         "smithy.api#documentation": "Contains information about a standby container group pool as last known by the StandbyPool resource provider."
       }
     },
-    "com.azure.standbypool#ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest": {
+    "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2066,13 +2117,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#DeleteStandbyContainerGroupPool": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#DeleteStandbyContainerGroupPoolRequest"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#DeleteStandbyContainerGroupPoolResponse"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2085,7 +2136,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#DeleteStandbyContainerGroupPoolResponse": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2107,7 +2158,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.standbypool#DeleteStandbyContainerGroupPoolRequest": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2139,13 +2190,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#UpdateStandbyContainerGroupPool": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#UpdateStandbyContainerGroupPoolRequest"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#UpdateStandbyContainerGroupPoolResponse"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2158,7 +2209,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#UpdateStandbyContainerGroupPoolResponse": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2186,7 +2237,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.standbypool#UpdateStandbyContainerGroupPoolResponseTagsMap",
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2359,7 +2410,7 @@
         "smithy.api#documentation": "Refill policy of standby pool"
       }
     },
-    "com.azure.standbypool#UpdateStandbyContainerGroupPoolResponseTagsMap": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2371,7 +2422,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#UpdateStandbyContainerGroupPoolRequest": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2399,7 +2450,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.standbypool#UpdateStandbyContainerGroupPoolRequestTagsMap",
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2450,7 +2501,7 @@
         "smithy.api#documentation": "Specifies zones of standby container group pools."
       }
     },
-    "com.azure.standbypool#UpdateStandbyContainerGroupPoolRequestTagsMap": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2651,13 +2702,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#GetStandbyContainerGroupPool": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#GetStandbyContainerGroupPoolRequest"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsGetRequest"
       },
       "output": {
-        "target": "com.azure.standbypool#GetStandbyContainerGroupPoolResponse"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2670,7 +2721,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#GetStandbyContainerGroupPoolResponse": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2698,7 +2749,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.standbypool#GetStandbyContainerGroupPoolResponseTagsMap",
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2721,7 +2772,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.standbypool#GetStandbyContainerGroupPoolResponseTagsMap": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2733,7 +2784,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#GetStandbyContainerGroupPoolRequest": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2765,10 +2816,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListStandbyContainerGroupPoolByResourceGroup": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#ListStandbyContainerGroupPoolByResourceGroupRequest"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.standbypool#StandbyContainerGroupPoolResourceListResult"
@@ -2877,7 +2928,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.standbypool#ListStandbyContainerGroupPoolByResourceGroupRequest": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2901,10 +2952,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachinePoolBySubscription": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#ListStandbyVirtualMachinePoolBySubscriptionRequest"
+        "target": "com.azure.standbypool#StandbyVirtualMachinePoolsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.standbypool#StandbyVirtualMachinePoolResourceListResult"
@@ -2920,7 +2971,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#ListStandbyVirtualMachinePoolBySubscriptionRequest": {
+    "com.azure.standbypool#StandbyVirtualMachinePoolsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2936,10 +2987,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListStandbyContainerGroupPoolBySubscription": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.standbypool#ListStandbyContainerGroupPoolBySubscriptionRequest"
+        "target": "com.azure.standbypool#StandbyContainerGroupPoolsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.standbypool#StandbyContainerGroupPoolResourceListResult"
@@ -2955,7 +3006,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#ListStandbyContainerGroupPoolBySubscriptionRequest": {
+    "com.azure.standbypool#StandbyContainerGroupPoolsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2971,13 +3022,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.standbypool#ListOperations": {
+    "com.azure.standbypool#OperationsList": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.standbypool#ListOperationsResponse"
+        "target": "com.azure.standbypool#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2990,11 +3041,11 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.standbypool#ListOperationsResponse": {
+    "com.azure.standbypool#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.standbypool#ListOperationsResponseValueList",
+          "target": "com.azure.standbypool#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -3010,7 +3061,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.standbypool#ListOperationsResponseValueList": {
+    "com.azure.standbypool#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.standbypool#Operation"
@@ -3134,61 +3185,61 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.standbypool#GetStandbyVirtualMachine"
+          "target": "com.azure.standbypool#StandbyVirtualMachinesGet"
         },
         {
-          "target": "com.azure.standbypool#ListStandbyVirtualMachineByStandbyVirtualMachinePoolResource"
+          "target": "com.azure.standbypool#StandbyVirtualMachinesListByStandbyVirtualMachinePoolResource"
         },
         {
-          "target": "com.azure.standbypool#GetStandbyVirtualMachinePoolRuntimeView"
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsGet"
         },
         {
-          "target": "com.azure.standbypool#ListStandbyVirtualMachinePoolRuntimeViewByStandbyPool"
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool"
         },
         {
-          "target": "com.azure.standbypool#DeleteStandbyVirtualMachinePool"
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsDelete"
         },
         {
-          "target": "com.azure.standbypool#UpdateStandbyVirtualMachinePool"
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsUpdate"
         },
         {
           "target": "com.azure.standbypool#StandbyVirtualMachinePoolsCreateOrUpdate"
         },
         {
-          "target": "com.azure.standbypool#GetStandbyVirtualMachinePool"
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsGet"
         },
         {
-          "target": "com.azure.standbypool#ListStandbyVirtualMachinePoolByResourceGroup"
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsListByResourceGroup"
         },
         {
-          "target": "com.azure.standbypool#GetStandbyContainerGroupPoolRuntimeView"
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsGet"
         },
         {
-          "target": "com.azure.standbypool#ListStandbyContainerGroupPoolRuntimeViewByStandbyPool"
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolRuntimeViewsListByStandbyPool"
         },
         {
-          "target": "com.azure.standbypool#DeleteStandbyContainerGroupPool"
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsDelete"
         },
         {
-          "target": "com.azure.standbypool#UpdateStandbyContainerGroupPool"
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsUpdate"
         },
         {
           "target": "com.azure.standbypool#StandbyContainerGroupPoolsCreateOrUpdate"
         },
         {
-          "target": "com.azure.standbypool#GetStandbyContainerGroupPool"
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsGet"
         },
         {
-          "target": "com.azure.standbypool#ListStandbyContainerGroupPoolByResourceGroup"
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsListByResourceGroup"
         },
         {
-          "target": "com.azure.standbypool#ListStandbyVirtualMachinePoolBySubscription"
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsListBySubscription"
         },
         {
-          "target": "com.azure.standbypool#ListStandbyContainerGroupPoolBySubscription"
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsListBySubscription"
         },
         {
-          "target": "com.azure.standbypool#ListOperations"
+          "target": "com.azure.standbypool#OperationsList"
         }
       ],
       "traits": {

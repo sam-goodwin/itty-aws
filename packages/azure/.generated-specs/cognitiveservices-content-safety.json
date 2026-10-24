@@ -1,0 +1,1283 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItem": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItem",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItemRequest": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItemRequest",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItems": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItems",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItemsRequest": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItemsRequest",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItems": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItems",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequest": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequest",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequestBlocklistItemIdsList": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequestBlocklistItemIdsList",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklist": "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklist",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklistRequest": "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklistRequest",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklist": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklist",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistRequest": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistRequest",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklists": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklists",
+      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistsRequest": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistsRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.cognitiveservices_content_safety#TextOperationsShieldPrompt": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextOperationsShieldPromptRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#ShieldPromptResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text:shieldPrompt",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Shield Prompt\n\nA synchronous API for shielding prompt from direct and indirect injection attacks."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ShieldPromptResult": {
+      "type": "structure",
+      "members": {
+        "userPromptAnalysis": {
+          "target": "com.azure.cognitiveservices_content_safety#UserPromptInjectionAnalysisResult",
+          "traits": {
+            "smithy.api#documentation": "Direct injection attacks analysis result for the given user prompt."
+          }
+        },
+        "documentsAnalysis": {
+          "target": "com.azure.cognitiveservices_content_safety#ShieldPromptResultDocumentsAnalysisList",
+          "traits": {
+            "smithy.api#documentation": "Direct and indirect injection attacks analysis result for the given documents."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The combined analysis results of potential direct or indirect injection attacks."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ShieldPromptResultDocumentsAnalysisList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#DocumentInjectionAnalysisResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "Direct and indirect injection attacks analysis result for the given documents."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#DocumentInjectionAnalysisResult": {
+      "type": "structure",
+      "members": {
+        "attackDetected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a potential injection attack is detected or not.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The individual analysis result of potential injection attacks in the given documents."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#UserPromptInjectionAnalysisResult": {
+      "type": "structure",
+      "members": {
+        "attackDetected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a potential injection attack is detected or not.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The individual analysis result of potential injection attacks in the given user prompt."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsShieldPromptRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "userPrompt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user prompt to be analyzed, which may contain direct injection attacks."
+          }
+        },
+        "documents": {
+          "target": "com.azure.cognitiveservices_content_safety#TextOperationsShieldPromptRequestDocumentsList",
+          "traits": {
+            "smithy.api#documentation": "The documents to be analyzed, which may contain direct or indirect injection attacks."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsShieldPromptRequestDocumentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The documents to be analyzed, which may contain direct or indirect injection attacks."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsDetectTextProtectedMaterial": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextOperationsDetectTextProtectedMaterialRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#DetectTextProtectedMaterialResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text:detectProtectedMaterial",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Detect Protected Material for Text\n\nA synchronous API for detecting protected material in the given text."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#DetectTextProtectedMaterialResult": {
+      "type": "structure",
+      "members": {
+        "protectedMaterialAnalysis": {
+          "target": "com.azure.cognitiveservices_content_safety#TextProtectedMaterialAnalysisResult",
+          "traits": {
+            "smithy.api#documentation": "Analysis result for the given text.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The combined detection results of potential protected material."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextProtectedMaterialAnalysisResult": {
+      "type": "structure",
+      "members": {
+        "detected": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether potential protected material is detected or not.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The individual detection result of potential protected material."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsDetectTextProtectedMaterialRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text to be analyzed, which may contain protected material. The characters will be counted in Unicode code points.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeText": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#AnalyzeTextResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text:analyze",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Analyze Text\n\nA synchronous API for the analysis of potentially harmful text content. Currently, it supports four categories: Hate, SelfHarm, Sexual, and Violence."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#AnalyzeTextResult": {
+      "type": "structure",
+      "members": {
+        "blocklistsMatch": {
+          "target": "com.azure.cognitiveservices_content_safety#AnalyzeTextResultBlocklistsMatchList",
+          "traits": {
+            "smithy.api#documentation": "The blocklist match details."
+          }
+        },
+        "categoriesAnalysis": {
+          "target": "com.azure.cognitiveservices_content_safety#AnalyzeTextResultCategoriesAnalysisList",
+          "traits": {
+            "smithy.api#documentation": "Analysis result for categories.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The text analysis response."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#AnalyzeTextResultCategoriesAnalysisList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#TextCategoriesAnalysis"
+      },
+      "traits": {
+        "smithy.api#documentation": "Analysis result for categories."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextCategoriesAnalysis": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.azure.cognitiveservices_content_safety#TextCategory",
+          "traits": {
+            "smithy.api#documentation": "The text analysis category.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value increases with the severity of the input content. The value of this field is determined by the output type specified in the request. The output type could be ‘FourSeverityLevels’ or ‘EightSeverity Levels’, and the output value can be 0, 2, 4, 6 or 0, 1, 2, 3, 4, 5, 6, or 7."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text analysis result."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextCategory": {
+      "type": "enum",
+      "members": {
+        "HATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hate"
+          }
+        },
+        "SELFHARM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SelfHarm"
+          }
+        },
+        "SEXUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Sexual"
+          }
+        },
+        "VIOLENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Violence"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The harm category supported in Text content analysis."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#AnalyzeTextResultBlocklistsMatchList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistMatch"
+      },
+      "traits": {
+        "smithy.api#documentation": "The blocklist match details."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistMatch": {
+      "type": "structure",
+      "members": {
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the matched blocklist.",
+            "smithy.api#required": {}
+          }
+        },
+        "blocklistItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the matched item.",
+            "smithy.api#required": {}
+          }
+        },
+        "blocklistItemText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the matched item.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of blocklist match."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The text to be analyzed. We support a maximum of 10k Unicode characters (Unicode code points) in the text of one request.",
+            "smithy.api#required": {}
+          }
+        },
+        "categories": {
+          "target": "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequestCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The categories will be analyzed. If they are not assigned, a default set of analysis results for the categories will be returned."
+          }
+        },
+        "blocklistNames": {
+          "target": "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequestBlocklistNamesList",
+          "traits": {
+            "smithy.api#documentation": "The names of blocklists."
+          }
+        },
+        "haltOnBlocklistHit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true, further analyses of harmful content will not be performed in cases where blocklists are hit. When set to false, all analyses of harmful content will be performed, whether or not blocklists are hit."
+          }
+        },
+        "outputType": {
+          "target": "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequestOutputType",
+          "traits": {
+            "smithy.api#documentation": "This refers to the type of text analysis output. If no value is assigned, the default value will be \"FourSeverityLevels\"."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequestOutputType": {
+      "type": "enum",
+      "members": {
+        "FOURSEVERITYLEVELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FourSeverityLevels"
+          }
+        },
+        "EIGHTSEVERITYLEVELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EightSeverityLevels"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This refers to the type of text analysis output. If no value is assigned, the default value will be \"FourSeverityLevels\"."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequestBlocklistNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The names of blocklists."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeTextRequestCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#TextCategory"
+      },
+      "traits": {
+        "smithy.api#documentation": "The categories will be analyzed. If they are not assigned, a default set of analysis results for the categories will be returned."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItemRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistItem"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/text/blocklists/{blocklistName}/blocklistItems/{blocklistItemId}",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Get BlocklistItem By blocklistName And blocklistItemId\n\nGet blocklistItem by blocklistName and blocklistItemId from a text blocklist."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistItem": {
+      "type": "structure",
+      "members": {
+        "blocklistItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service will generate a BlocklistItemId, which will be a UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "BlocklistItem description."
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "BlocklistItem content. The length is counted using Unicode code point.",
+            "smithy.api#required": {}
+          }
+        },
+        "isRegex": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An optional properties indicating whether this item is to be matched as a regular expression."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Item in a TextBlocklist."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItemRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Text blocklist name."
+          }
+        },
+        "blocklistItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The service will generate a BlocklistItemId, which will be a UUID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItemsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#PagedTextBlocklistItem"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/text/blocklists/{blocklistName}/blocklistItems",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Get All BlocklistItems By blocklistName\n\nGet all blocklistItems in a text blocklist."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#PagedTextBlocklistItem": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_content_safety#PagedTextBlocklistItemValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextBlocklistItem items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextBlocklistItem items"
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#PagedTextBlocklistItemValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextBlocklistItem items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItemsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Text blocklist name."
+          }
+        },
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "top",
+            "smithy.api#documentation": "The number of result items to return."
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "skip",
+            "smithy.api#documentation": "The number of result items to skip."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text/blocklists/{blocklistName}:removeBlocklistItems",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Remove BlocklistItems From Text Blocklist\n\nRemove blocklistItems from a text blocklist. You can remove at most 100 BlocklistItems in one request."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Text blocklist name."
+          }
+        },
+        "blocklistItemIds": {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequestBlocklistItemIdsList",
+          "traits": {
+            "smithy.api#documentation": "Array of blocklistItemIds to remove.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequestBlocklistItemIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of blocklistItemIds to remove."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsAddOrUpdateBlocklistItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsAddOrUpdateBlocklistItemsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#AddOrUpdateTextBlocklistItemsResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/text/blocklists/{blocklistName}:addOrUpdateBlocklistItems",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Add or update BlocklistItems To Text Blocklist\n\nAdd or update blocklistItems to a text blocklist. You can add or update at most 100 blocklistItems in one request."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#AddOrUpdateTextBlocklistItemsResult": {
+      "type": "structure",
+      "members": {
+        "blocklistItems": {
+          "target": "com.azure.cognitiveservices_content_safety#AddOrUpdateTextBlocklistItemsResultBlocklistItemsList",
+          "traits": {
+            "smithy.api#documentation": "Array of blocklistItems have been added.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response of adding blocklistItems to the text blocklist."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#AddOrUpdateTextBlocklistItemsResultBlocklistItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of blocklistItems have been added."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsAddOrUpdateBlocklistItemsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Text blocklist name."
+          }
+        },
+        "blocklistItems": {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsAddOrUpdateBlocklistItemsRequestBlocklistItemsList",
+          "traits": {
+            "smithy.api#documentation": "Array of blocklistItems to add.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsAddOrUpdateBlocklistItemsRequestBlocklistItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistItemInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of blocklistItems to add."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistItemInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "BlocklistItem description."
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "BlocklistItem content. The length is counted using Unicode code point.",
+            "smithy.api#required": {}
+          }
+        },
+        "isRegex": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An optional properties indicating whether this item is to be matched as a regular expression."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Item in a TextBlocklist."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklist": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklistRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/text/blocklists/{blocklistName}",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Delete Text Blocklist By blocklistName\n\nDeletes a text blocklist."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklistRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Text blocklist name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsCreateOrUpdateTextBlocklist": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsCreateOrUpdateTextBlocklistRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklist"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/text/blocklists/{blocklistName}",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Create Or Update Text Blocklist\n\nUpdates a text blocklist. If the blocklistName does not exist, a new blocklist will be created."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklist": {
+      "type": "structure",
+      "members": {
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text blocklist name.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text blocklist description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Text Blocklist."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsCreateOrUpdateTextBlocklistRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Text blocklist name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text blocklist description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklist": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklist"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/text/blocklists/{blocklistName}",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Get Text Blocklist By blocklistName\n\nReturns text blocklist details."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "blocklistName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Text blocklist name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklists": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistsRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#PagedTextBlocklist"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/text/blocklists",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Get All Text Blocklists\n\nGet all text blocklists details."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#PagedTextBlocklist": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.cognitiveservices_content_safety#PagedTextBlocklistValueList",
+          "traits": {
+            "smithy.api#documentation": "The TextBlocklist items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of TextBlocklist items"
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#PagedTextBlocklistValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#TextBlocklist"
+      },
+      "traits": {
+        "smithy.api#documentation": "The TextBlocklist items on this page"
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImage": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImageRequest"
+      },
+      "output": {
+        "target": "com.azure.cognitiveservices_content_safety#AnalyzeImageResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/image:analyze",
+          "code": 200,
+          "host": "{endpoint}/contentsafety",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-09-01"
+        },
+        "smithy.api#documentation": "Analyze Image\n\nA synchronous API for the analysis of potentially harmful image content. Currently, it supports four categories: Hate, SelfHarm, Sexual, and Violence."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#AnalyzeImageResult": {
+      "type": "structure",
+      "members": {
+        "categoriesAnalysis": {
+          "target": "com.azure.cognitiveservices_content_safety#AnalyzeImageResultCategoriesAnalysisList",
+          "traits": {
+            "smithy.api#documentation": "Analysis result for categories.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The image analysis response."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#AnalyzeImageResultCategoriesAnalysisList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#ImageCategoriesAnalysis"
+      },
+      "traits": {
+        "smithy.api#documentation": "Analysis result for categories."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ImageCategoriesAnalysis": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.azure.cognitiveservices_content_safety#ImageCategory",
+          "traits": {
+            "smithy.api#documentation": "The image analysis category.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The value increases with the severity of the input content. The value of this field is determined by the output type specified in the request. The output type could be ‘FourSeverityLevels’, and the output value can be 0, 2, 4, 6."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image analysis result."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ImageCategory": {
+      "type": "enum",
+      "members": {
+        "HATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hate"
+          }
+        },
+        "SELFHARM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SelfHarm"
+          }
+        },
+        "SEXUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Sexual"
+          }
+        },
+        "VIOLENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Violence"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The harm category supported in Image content analysis."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImageRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "image": {
+          "target": "com.azure.cognitiveservices_content_safety#ImageData",
+          "traits": {
+            "smithy.api#documentation": "The image to be analyzed.",
+            "smithy.api#required": {}
+          }
+        },
+        "categories": {
+          "target": "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImageRequestCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The categories will be analyzed. If they are not assigned, a default set of analysis results for the categories will be returned."
+          }
+        },
+        "outputType": {
+          "target": "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImageRequestOutputType",
+          "traits": {
+            "smithy.api#documentation": "This refers to the type of image analysis output. If no value is assigned, the default value will be \"FourSeverityLevels\"."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImageRequestOutputType": {
+      "type": "enum",
+      "members": {
+        "FOURSEVERITYLEVELS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FourSeverityLevels"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This refers to the type of image analysis output. If no value is assigned, the default value will be \"FourSeverityLevels\"."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImageRequestCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cognitiveservices_content_safety#ImageCategory"
+      },
+      "traits": {
+        "smithy.api#documentation": "The categories will be analyzed. If they are not assigned, a default set of analysis results for the categories will be returned."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#ImageData": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Base64 encoding of the image."
+          }
+        },
+        "blobUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The blob url of the image."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The image can be either base64 encoded bytes or a blob URL. You can choose only one of these options. If both are provided, the request will be refused. The maximum image size is 2048 x 2048 pixels and should not exceed 4 MB, while the minimum image size is 50 x 50 pixels."
+      }
+    },
+    "com.azure.cognitiveservices_content_safety#CognitiveservicesContentSafety": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextOperationsShieldPrompt"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextOperationsDetectTextProtectedMaterial"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeText"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItem"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItems"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItems"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsAddOrUpdateBlocklistItems"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklist"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsCreateOrUpdateTextBlocklist"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklist"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklists"
+        },
+        {
+          "target": "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImage"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure ContentSafety data plane",
+        "smithy.api#documentation": "Azure cognitiveservices data plane — cognitiveservices/data-plane/ContentSafety (latest stable api-version 2024-09-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/contentsafety",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

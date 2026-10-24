@@ -1,0 +1,508 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.maps_traffic#TrafficGetTrafficIncident": "com.azure.maps_traffic#GetTrafficTrafficIncident",
+      "com.azure.maps_traffic#TrafficGetTrafficIncidentRequest": "com.azure.maps_traffic#GetTrafficTrafficIncidentRequest",
+      "com.azure.maps_traffic#TrafficGetTrafficIncidentRequestBboxList": "com.azure.maps_traffic#GetTrafficTrafficIncidentRequestBboxList",
+      "com.azure.maps_traffic#TrafficGetTrafficIncidentRequestIncidentType": "com.azure.maps_traffic#GetTrafficTrafficIncidentRequestIncidentType"
+    }
+  },
+  "shapes": {
+    "com.azure.maps_traffic#TrafficGetTrafficIncident": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.maps_traffic#TrafficGetTrafficIncidentRequest"
+      },
+      "output": {
+        "target": "com.azure.maps_traffic#TrafficIncidentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/traffic/incident",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "hostDefaults": {
+            "endpoint": "https://atlas.microsoft.com"
+          },
+          "apiVersion": "2025-01-01"
+        },
+        "smithy.api#documentation": "The Traffic Incident API provides traffic incidents like construction, traffic\ncongestion and accidents, etc. within a bounding box. It also provides traffic\nmetadata for detailed information about each incident.\n\nThe API provides a GeoJSON feature collection of traffic incidents. Each\nincident includes two point features: the location where you encounter the\nincident and the end location of a traffic incident like the end of a\nconstruction zone. For traffic incident coverage by country/region, see\n[traffic\ncoverage](https://learn.microsoft.com/azure/azure-maps/traffic-coverage?pivots=latest)."
+      }
+    },
+    "com.azure.maps_traffic#TrafficIncidentResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_traffic#FeatureTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "features": {
+          "target": "com.azure.maps_traffic#TrafficIncidentResponseFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A GeoJSON feature collection object that contains a list of traffic incidents\nfeatures."
+      }
+    },
+    "com.azure.maps_traffic#TrafficIncidentResponseFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.maps_traffic#TrafficIncidentFeaturesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "`GeoJSON` feature object that contains Geometry object and additional\nproperties. Refer to [RFC 7946, Section\n3.2](https://www.rfc-editor.org/rfc/rfc7946#section-3.2) for details."
+      }
+    },
+    "com.azure.maps_traffic#TrafficIncidentFeaturesItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_traffic#FeaturesItemTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+          }
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique ID for the incident."
+          }
+        },
+        "geometry": {
+          "target": "com.azure.maps_traffic#GeoJsonPoint",
+          "traits": {
+            "smithy.api#documentation": "A valid `GeoJSON Point` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.2) for details."
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps_traffic#TrafficIncidentFeatureProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies detailed information about the traffic incidents."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "GeoJSON feature object that contains Geometry object and additional properties\nof traffic incidents."
+      }
+    },
+    "com.azure.maps_traffic#TrafficIncidentFeatureProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the incident that includes the road name and the event\nimpacting the traffic flow.\n\nExamples:\n\n• W 95th St between Switzer Rd and Bluejacket Dr - construction\n\n• WB Johnson Dr at I-435 - bridge repair"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time in UTC when the incident occurred, formatted as a dateTime\nvalue as defined in [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6)."
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time in UTC when the traffic incident will end, formatted as a\ndateTime value as defined in [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6)."
+          }
+        },
+        "lastModifiedTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time in UTC when the incident information was last updated,\nformatted as a dateTime value as defined in [RFC 3339, section\n5.6](https://www.rfc-editor.org/rfc/rfc3339#section-5.6)."
+          }
+        },
+        "isRoadClosed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value of `true` indicates that there is a road closure."
+          }
+        },
+        "severity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Specifies the level of importance of the incident.\n\n- 0: Unknown\n\n- 1: Minor\n\n- 2: Moderate\n\n- 3: Major\n\n- 4: Undefined (used for road closures and other indefinite delays)"
+          }
+        },
+        "incidentType": {
+          "target": "com.azure.maps_traffic#IncidentType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of traffic incident. This can be used to request and\ndifferentiate between various types of incidents."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the road names and direction of affected roads."
+          }
+        },
+        "delay": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The delay caused by the incident in seconds. If no delay or not applicable, it\nreturns zero."
+          }
+        },
+        "endPoint": {
+          "target": "com.azure.maps_traffic#TrafficIncidentFeaturePropertiesEndPointMap",
+          "traits": {
+            "smithy.api#documentation": "A GeoJson Point object that specified the end location of a traffic incident\nsuch as end of a construction zone.\n\nThis location is part of the incident properties object and by default, cannot\nbe interpreted by parsers for display on the map."
+          }
+        },
+        "isTrafficJam": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value of `true` indicates that the area of road covered by this incident is\nexperiencing abnormal traffic conditions resulting in non-typical delays."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies detailed information about the traffic incidents."
+      }
+    },
+    "com.azure.maps_traffic#TrafficIncidentFeaturePropertiesEndPointMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A GeoJson Point object that specified the end location of a traffic incident\nsuch as end of a construction zone.\n\nThis location is part of the incident properties object and by default, cannot\nbe interpreted by parsers for display on the map."
+      }
+    },
+    "com.azure.maps_traffic#IncidentType": {
+      "type": "enum",
+      "members": {
+        "ACCIDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Accident"
+          }
+        },
+        "CONGESTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Congestion"
+          }
+        },
+        "DISABLEDVEHICLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DisabledVehicle"
+          }
+        },
+        "MISCELLANEOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Miscellaneous"
+          }
+        },
+        "ROADHAZARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RoadHazard"
+          }
+        },
+        "CONSTRUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Construction"
+          }
+        },
+        "WEATHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Weather"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the type of traffic incident. This can be used to request and\ndifferentiate between various types of incidents."
+      }
+    },
+    "com.azure.maps_traffic#GeoJsonPoint": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps_traffic#GeoJsonObjectType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection.",
+            "smithy.api#required": {}
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_traffic#GeoJsonPointBboxList",
+          "traits": {
+            "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+          }
+        },
+        "coordinates": {
+          "target": "com.azure.maps_traffic#GeoJsonPointCoordinatesList",
+          "traits": {
+            "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A valid `GeoJSON Point` geometry type. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.2) for details."
+      }
+    },
+    "com.azure.maps_traffic#GeoJsonPointCoordinatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "A `Position` is an array of numbers with two or more elements. The first two\nelements are _longitude_ and _latitude_, precisely in that order.\n_Altitude/Elevation_ is an optional third element. Please refer to [RFC\n7946](https://tools.ietf.org/html/rfc7946#section-3.1.1) for details."
+      }
+    },
+    "com.azure.maps_traffic#GeoJsonPointBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Bounding box. Projection used - EPSG:3857. Please refer to [RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946#section-5) for details."
+      }
+    },
+    "com.azure.maps_traffic#GeoJsonObjectType": {
+      "type": "enum",
+      "members": {
+        "POINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Point"
+          }
+        },
+        "MULTIPOINT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiPoint"
+          }
+        },
+        "LINESTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LineString"
+          }
+        },
+        "MULTILINESTRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiLineString"
+          }
+        },
+        "POLYGON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Polygon"
+          }
+        },
+        "MULTIPOLYGON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiPolygon"
+          }
+        },
+        "GEOMETRYCOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GeometryCollection"
+          }
+        },
+        "FEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Feature"
+          }
+        },
+        "FEATURECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeatureCollection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` type. Must be one of the nine valid GeoJSON object\ntypes - Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon,\nGeometryCollection, Feature and FeatureCollection."
+      }
+    },
+    "com.azure.maps_traffic#FeaturesItemTypeEnum": {
+      "type": "enum",
+      "members": {
+        "FEATURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Feature"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is Feature. For\nmore information, see [RFC 7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_traffic#FeatureTypeEnum": {
+      "type": "enum",
+      "members": {
+        "FEATURECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeatureCollection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the `GeoJSON` type. The only supported object type is\n`FeatureCollection`. For more information, see [RFC\n7946](https://www.rfc-editor.org/rfc/rfc7946)."
+      }
+    },
+    "com.azure.maps_traffic#TrafficGetTrafficIncidentRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Maps service hostname. Use `https://atlas.microsoft.com` for the Azure public cloud. To target a specific Azure Maps geography or a sovereign cloud, see [Azure Maps geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "incidentType": {
+          "target": "com.azure.maps_traffic#TrafficGetTrafficIncidentRequestIncidentType",
+          "traits": {
+            "smithy.api#httpQuery": "incidentType",
+            "smithy.api#documentation": "Specifies the type of traffic incident to be returned. Multiple incident types\nwithin a single request are supported. If not specified, the results will\ninclude all incident types within the provided bounding box.\n\nExample, '&incidentType=Accident' or '&incidentType=Accident,Construction'."
+          }
+        },
+        "bbox": {
+          "target": "com.azure.maps_traffic#TrafficGetTrafficIncidentRequestBboxList",
+          "traits": {
+            "smithy.api#httpQuery": "bbox",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Defines a rectangular area of interest on the Earth's surface. The sides of the\nrectangle are specified by longitude and latitude values and must adhere to the\nGeoJSON format: [minLon, minLat, maxLon, maxLat]. For more information, see\n[RFC 7946, Section 5](https://www.rfc-editor.org/rfc/rfc7946#section-5).\n<ul><li>**Minimum Dimensions**: The height or width of the bounding box must be\nat least 12 meters.</li><li>**Maximum Area**: The bounding box can cover an\narea up to 10,000 square kilometers.</li><li>**Incident Inclusion**: Traffic\nincidents will be included in the response if they overlap with the bounding\nbox, or if their start, end, or any part of the incident passes through the\nbounding box. The start and end locations of the incident can be outside the\nbounding box.</li></ul>**Example**: `bbox=-105,37,-94,45`"
+          }
+        },
+        "xMsClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-id",
+            "smithy.api#documentation": "Specifies which account is intended for usage in conjunction with the Azure AD\nsecurity model.  It represents a unique ID for the Azure Maps account and can\nbe retrieved from the Azure Maps management plane Account API. For more\ninformation on using Microsoft Entra ID security in Azure Maps, see [Manage\nauthentication in Azure Maps](/azure/azure-maps/how-to-manage-authentication)."
+          }
+        },
+        "acceptLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Accept-Language",
+            "smithy.api#documentation": "Language in which traffic incident results should be returned.\n\nFor more information, see [Supported\nLanguages](https://docs.microsoft.com/azure/azure-maps/supported-languages) for\nreference."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps_traffic#TrafficGetTrafficIncidentRequestBboxList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {}
+    },
+    "com.azure.maps_traffic#TrafficGetTrafficIncidentRequestIncidentType": {
+      "type": "enum",
+      "members": {
+        "ACCIDENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Accident"
+          }
+        },
+        "CONGESTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Congestion"
+          }
+        },
+        "DISABLEDVEHICLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DisabledVehicle"
+          }
+        },
+        "MISCELLANEOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Miscellaneous"
+          }
+        },
+        "ROADHAZARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RoadHazard"
+          }
+        },
+        "CONSTRUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Construction"
+          }
+        },
+        "WEATHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Weather"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.maps_traffic#MapsTraffic": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.maps_traffic#TrafficGetTrafficIncident"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Traffic data plane",
+        "smithy.api#documentation": "Azure maps data plane — maps/data-plane/Traffic (latest stable api-version 2025-01-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true,
+              "default": "https://atlas.microsoft.com"
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://atlas.microsoft.com/.default"
+      }
+    }
+  }
+}

@@ -1,0 +1,1410 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.healthdataaiservices_data#ListJobDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.healthdataaiservices_data#ListJobDocumentsRequest"
+      },
+      "output": {
+        "target": "com.azure.healthdataaiservices_data#PagedDeidentificationDocumentDetails"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jobs/{name}/documents",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-15"
+        },
+        "smithy.api#documentation": "List processed documents within a job.\n\nResource list operation template."
+      }
+    },
+    "com.azure.healthdataaiservices_data#PagedDeidentificationDocumentDetails": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.healthdataaiservices_data#PagedDeidentificationDocumentDetailsValueList",
+          "traits": {
+            "smithy.api#documentation": "The DeidentificationDocumentDetails items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of DeidentificationDocumentDetails items"
+      }
+    },
+    "com.azure.healthdataaiservices_data#PagedDeidentificationDocumentDetailsValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.healthdataaiservices_data#DeidentificationDocumentDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "The DeidentificationDocumentDetails items on this page"
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationDocumentDetails": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the document details.",
+            "smithy.api#required": {}
+          }
+        },
+        "input": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationDocumentLocation",
+          "traits": {
+            "smithy.api#documentation": "Location for the input.",
+            "smithy.api#required": {}
+          }
+        },
+        "output": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationDocumentLocation",
+          "traits": {
+            "smithy.api#documentation": "Location for the output."
+          }
+        },
+        "status": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "Status of the document.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error when document fails."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of a single document in a job."
+      }
+    },
+    "com.azure.healthdataaiservices_data#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.healthdataaiservices_data#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.healthdataaiservices_data#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.healthdataaiservices_data#AzureCoreFoundationsOperationState": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum describing allowed operation states."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationDocumentLocation": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of document in storage.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity tag for this resource.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Location of a document."
+      }
+    },
+    "com.azure.healthdataaiservices_data#ListJobDocumentsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Url of your De-identification Service.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of a job."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Token to continue a previous query."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#CancelJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.healthdataaiservices_data#CancelJobRequest"
+      },
+      "output": {
+        "target": "com.azure.healthdataaiservices_data#DeidentificationJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/jobs/{name}:cancel",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-15"
+        },
+        "smithy.api#documentation": "Cancel a de-identification job.\n\nCancels a job that is in progress. \n\nThe job will be marked as canceled and the service will stop processing the job. The service will not delete any documents that have already been processed.\n\nIf the job is already complete, this will have no effect."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationJob": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of a job.",
+            "smithy.api#required": {}
+          }
+        },
+        "operation": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationJobOperation",
+          "traits": {
+            "smithy.api#documentation": "Operation to perform on the input documents."
+          }
+        },
+        "sourceLocation": {
+          "target": "com.azure.healthdataaiservices_data#SourceStorageLocation",
+          "traits": {
+            "smithy.api#documentation": "Storage location to perform the operation on.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetLocation": {
+          "target": "com.azure.healthdataaiservices_data#TargetStorageLocation",
+          "traits": {
+            "smithy.api#documentation": "Target location to store output of operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "customizations": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationJobCustomizationOptions",
+          "traits": {
+            "smithy.api#documentation": "Customization parameters to override default service behaviors."
+          }
+        },
+        "status": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "Current status of a job.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error when job fails in it's entirety."
+          }
+        },
+        "lastUpdatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the job was completed.\n\nIf the job is canceled, this is the time when the job was canceled.\n\nIf the job failed, this is the time when the job failed.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the job was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "startedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the job was started."
+          }
+        },
+        "summary": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationJobSummary",
+          "traits": {
+            "smithy.api#documentation": "Summary of a job. Exists only when the job is completed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A job containing a batch of documents to de-identify."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationJobSummary": {
+      "type": "structure",
+      "members": {
+        "successful": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of documents that have completed.",
+            "smithy.api#required": {}
+          }
+        },
+        "failed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of documents that have failed.",
+            "smithy.api#required": {}
+          }
+        },
+        "canceled": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of documents that have been canceled.",
+            "smithy.api#required": {}
+          }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of documents total.",
+            "smithy.api#required": {}
+          }
+        },
+        "bytesProcessed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of bytes processed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Summary metrics of a job."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationJobCustomizationOptions": {
+      "type": "structure",
+      "members": {
+        "redactionFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Format of the redacted output. Only valid when Operation is Redact. \nPlease refer to https://learn.microsoft.com/azure/healthcare-apis/deidentification/redaction-format for more details."
+          }
+        },
+        "surrogateLocale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Locale in which the output surrogates are written."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Customizations options to override default service behaviors for job usage."
+      }
+    },
+    "com.azure.healthdataaiservices_data#TargetStorageLocation": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to storage location.",
+            "smithy.api#required": {}
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Replaces the input prefix of a file path with the output prefix, preserving the rest of the path structure.\n\nExample:\nFile full path: documents/user/note.txt\nInput Prefix: \"documents/user/\"\nOutput Prefix: \"output_docs/\"\n\nOutput file: \"output_docs/note.txt\"",
+            "smithy.api#required": {}
+          }
+        },
+        "overwrite": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true during a job, the service will overwrite the output location if it already exists."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage location."
+      }
+    },
+    "com.azure.healthdataaiservices_data#SourceStorageLocation": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to storage location.",
+            "smithy.api#required": {}
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Prefix to filter path by.",
+            "smithy.api#required": {}
+          }
+        },
+        "extensions": {
+          "target": "com.azure.healthdataaiservices_data#SourceStorageLocationExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "List of extensions to filter path by."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage location."
+      }
+    },
+    "com.azure.healthdataaiservices_data#SourceStorageLocationExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of extensions to filter path by."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationJobOperation": {
+      "type": "enum",
+      "members": {
+        "REDACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Redact"
+          }
+        },
+        "SURROGATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Surrogate"
+          }
+        },
+        "TAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operation to perform on the input documents."
+      }
+    },
+    "com.azure.healthdataaiservices_data#CancelJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Url of your De-identification Service.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of a job."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeleteJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.healthdataaiservices_data#DeleteJobRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/jobs/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-15"
+        },
+        "smithy.api#documentation": "Delete a de-identification job.\n\nRemoves the record of the job from the service. Does not delete any documents."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeleteJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Url of your De-identification Service.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of a job."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentifyDocuments": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.healthdataaiservices_data#DeidentifyDocumentsRequest"
+      },
+      "output": {
+        "target": "com.azure.healthdataaiservices_data#DeidentifyDocumentsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/jobs/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-15"
+        },
+        "smithy.api#documentation": "Create a de-identification job.\n\nLong-running resource create or replace operation template."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentifyDocumentsResponse": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of a job.",
+            "smithy.api#required": {}
+          }
+        },
+        "operation": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationJobOperation",
+          "traits": {
+            "smithy.api#documentation": "Operation to perform on the input documents."
+          }
+        },
+        "sourceLocation": {
+          "target": "com.azure.healthdataaiservices_data#SourceStorageLocation",
+          "traits": {
+            "smithy.api#documentation": "Storage location to perform the operation on.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetLocation": {
+          "target": "com.azure.healthdataaiservices_data#TargetStorageLocation",
+          "traits": {
+            "smithy.api#documentation": "Target location to store output of operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "customizations": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationJobCustomizationOptions",
+          "traits": {
+            "smithy.api#documentation": "Customization parameters to override default service behaviors."
+          }
+        },
+        "status": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsOperationState",
+          "traits": {
+            "smithy.api#documentation": "Current status of a job.",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.healthdataaiservices_data#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error when job fails in it's entirety."
+          }
+        },
+        "lastUpdatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the job was completed.\n\nIf the job is canceled, this is the time when the job was canceled.\n\nIf the job failed, this is the time when the job failed.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the job was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "startedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the job was started."
+          }
+        },
+        "summary": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationJobSummary",
+          "traits": {
+            "smithy.api#documentation": "Summary of a job. Exists only when the job is completed."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A job containing a batch of documents to de-identify.",
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentifyDocumentsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Url of your De-identification Service.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of a job."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "operation": {
+          "target": "com.azure.healthdataaiservices_data#DeidentifyDocumentsRequestOperation",
+          "traits": {
+            "smithy.api#documentation": "Operation to perform on the input documents."
+          }
+        },
+        "sourceLocation": {
+          "target": "com.azure.healthdataaiservices_data#SourceStorageLocation",
+          "traits": {
+            "smithy.api#documentation": "Storage location to perform the operation on.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetLocation": {
+          "target": "com.azure.healthdataaiservices_data#TargetStorageLocation",
+          "traits": {
+            "smithy.api#documentation": "Target location to store output of operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "customizations": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationJobCustomizationOptions",
+          "traits": {
+            "smithy.api#documentation": "Customization parameters to override default service behaviors."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentifyDocumentsRequestOperation": {
+      "type": "enum",
+      "members": {
+        "REDACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Redact"
+          }
+        },
+        "SURROGATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Surrogate"
+          }
+        },
+        "TAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operation to perform on the input documents."
+      }
+    },
+    "com.azure.healthdataaiservices_data#GetJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.healthdataaiservices_data#GetJobRequest"
+      },
+      "output": {
+        "target": "com.azure.healthdataaiservices_data#DeidentificationJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jobs/{name}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-15"
+        },
+        "smithy.api#documentation": "Get a de-identification job.\n\nResource read operation template."
+      }
+    },
+    "com.azure.healthdataaiservices_data#GetJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Url of your De-identification Service.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of a job."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#ListJobs": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.healthdataaiservices_data#ListJobsRequest"
+      },
+      "output": {
+        "target": "com.azure.healthdataaiservices_data#PagedDeidentificationJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/jobs",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-15"
+        },
+        "smithy.api#documentation": "List de-identification jobs.\n\nResource list operation template."
+      }
+    },
+    "com.azure.healthdataaiservices_data#PagedDeidentificationJob": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.healthdataaiservices_data#PagedDeidentificationJobValueList",
+          "traits": {
+            "smithy.api#documentation": "The DeidentificationJob items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of DeidentificationJob items"
+      }
+    },
+    "com.azure.healthdataaiservices_data#PagedDeidentificationJobValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.healthdataaiservices_data#DeidentificationJob"
+      },
+      "traits": {
+        "smithy.api#documentation": "The DeidentificationJob items on this page"
+      }
+    },
+    "com.azure.healthdataaiservices_data#ListJobsRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Url of your De-identification Service.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "The maximum number of result items per page."
+          }
+        },
+        "continuationToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continuationToken",
+            "smithy.api#documentation": "Token to continue a previous query."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentifyText": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.healthdataaiservices_data#DeidentifyTextRequest"
+      },
+      "output": {
+        "target": "com.azure.healthdataaiservices_data#DeidentificationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/deid",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-11-15"
+        },
+        "smithy.api#documentation": "De-identify text.\n\nA remote procedure call (RPC) operation."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationResult": {
+      "type": "structure",
+      "members": {
+        "outputText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output text after de-identification. Not available for \"Tag\" operation."
+          }
+        },
+        "taggerResult": {
+          "target": "com.azure.healthdataaiservices_data#PhiTaggerResult",
+          "traits": {
+            "smithy.api#documentation": "Result of the \"Tag\" operation. Only available for \"Tag\" Operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response body for de-identification operation."
+      }
+    },
+    "com.azure.healthdataaiservices_data#PhiTaggerResult": {
+      "type": "structure",
+      "members": {
+        "entities": {
+          "target": "com.azure.healthdataaiservices_data#PhiTaggerResultEntitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of entities detected in the input.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Result of the \"Tag\" operation."
+      }
+    },
+    "com.azure.healthdataaiservices_data#PhiTaggerResultEntitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.healthdataaiservices_data#PhiEntity"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of entities detected in the input."
+      }
+    },
+    "com.azure.healthdataaiservices_data#PhiEntity": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.azure.healthdataaiservices_data#PhiCategory",
+          "traits": {
+            "smithy.api#documentation": "PHI Category of the entity.",
+            "smithy.api#required": {}
+          }
+        },
+        "offset": {
+          "target": "com.azure.healthdataaiservices_data#StringIndex",
+          "traits": {
+            "smithy.api#documentation": "Starting index of the location from within the input text.",
+            "smithy.api#required": {}
+          }
+        },
+        "length": {
+          "target": "com.azure.healthdataaiservices_data#StringIndex",
+          "traits": {
+            "smithy.api#documentation": "Length of the input text.",
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text of the entity."
+          }
+        },
+        "confidenceScore": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence score of the category match."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PHI Entity tag in the input."
+      }
+    },
+    "com.azure.healthdataaiservices_data#StringIndex": {
+      "type": "structure",
+      "members": {
+        "utf8": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The offset or length of the substring in UTF-8 encoding",
+            "smithy.api#required": {}
+          }
+        },
+        "utf16": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The offset or length of the substring in UTF-16 encoding.\n\nPrimary encoding used by .NET, Java, and JavaScript.",
+            "smithy.api#required": {}
+          }
+        },
+        "codePoint": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The offset or length of the substring in CodePoint encoding.\n\nPrimary encoding used by Python.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "String index encoding model."
+      }
+    },
+    "com.azure.healthdataaiservices_data#PhiCategory": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Account"
+          }
+        },
+        "AGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Age"
+          }
+        },
+        "BIOID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BioID"
+          }
+        },
+        "CITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "City"
+          }
+        },
+        "COUNTRYORREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CountryOrRegion"
+          }
+        },
+        "DATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Date"
+          }
+        },
+        "DEVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Device"
+          }
+        },
+        "DOCTOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Doctor"
+          }
+        },
+        "EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Email"
+          }
+        },
+        "FAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fax"
+          }
+        },
+        "HEALTHPLAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HealthPlan"
+          }
+        },
+        "HOSPITAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hospital"
+          }
+        },
+        "IDNUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IDNum"
+          }
+        },
+        "IPADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IPAddress"
+          }
+        },
+        "LICENSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "License"
+          }
+        },
+        "LOCATIONOTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LocationOther"
+          }
+        },
+        "MEDICALRECORD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MedicalRecord"
+          }
+        },
+        "ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Organization"
+          }
+        },
+        "PATIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Patient"
+          }
+        },
+        "PHONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Phone"
+          }
+        },
+        "PROFESSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Profession"
+          }
+        },
+        "SOCIALSECURITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SocialSecurity"
+          }
+        },
+        "STATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "State"
+          }
+        },
+        "STREET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Street"
+          }
+        },
+        "URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Url"
+          }
+        },
+        "USERNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Username"
+          }
+        },
+        "VEHICLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Vehicle"
+          }
+        },
+        "ZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Zip"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of PHI Entities."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentifyTextRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Url of your De-identification Service.",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "inputText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Input text to de-identify.",
+            "smithy.api#required": {}
+          }
+        },
+        "operation": {
+          "target": "com.azure.healthdataaiservices_data#DeidentifyTextRequestOperation",
+          "traits": {
+            "smithy.api#documentation": "Operation to perform on the input documents."
+          }
+        },
+        "customizations": {
+          "target": "com.azure.healthdataaiservices_data#DeidentificationCustomizationOptions",
+          "traits": {
+            "smithy.api#documentation": "Customization parameters to override default service behaviors."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentificationCustomizationOptions": {
+      "type": "structure",
+      "members": {
+        "redactionFormat": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Format of the redacted output. Only valid when Operation is Redact. \nPlease refer to https://learn.microsoft.com/azure/healthcare-apis/deidentification/redaction-format for more details."
+          }
+        },
+        "surrogateLocale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Locale in which the output surrogates are written."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Customizations options to override default service behaviors for synchronous usage."
+      }
+    },
+    "com.azure.healthdataaiservices_data#DeidentifyTextRequestOperation": {
+      "type": "enum",
+      "members": {
+        "REDACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Redact"
+          }
+        },
+        "SURROGATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Surrogate"
+          }
+        },
+        "TAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operation to perform on the input documents."
+      }
+    },
+    "com.azure.healthdataaiservices_data#HealthdataaiservicesData": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.healthdataaiservices_data#ListJobDocuments"
+        },
+        {
+          "target": "com.azure.healthdataaiservices_data#CancelJob"
+        },
+        {
+          "target": "com.azure.healthdataaiservices_data#DeleteJob"
+        },
+        {
+          "target": "com.azure.healthdataaiservices_data#DeidentifyDocuments"
+        },
+        {
+          "target": "com.azure.healthdataaiservices_data#GetJob"
+        },
+        {
+          "target": "com.azure.healthdataaiservices_data#ListJobs"
+        },
+        {
+          "target": "com.azure.healthdataaiservices_data#DeidentifyText"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure HealthDataAIServices data plane",
+        "smithy.api#documentation": "Azure healthdataaiservices data plane — healthdataaiservices/data-plane/HealthDataAIServices (latest stable api-version 2024-11-15).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://deid.azure.com/.default"
+      }
+    }
+  }
+}

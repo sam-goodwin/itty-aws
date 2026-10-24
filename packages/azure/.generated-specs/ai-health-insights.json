@@ -1,0 +1,2079 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.ai_health_insights#RadiologyInsightsCreateJob": "com.azure.ai_health_insights#CreateRadiologyInsightJob",
+      "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequest": "com.azure.ai_health_insights#CreateRadiologyInsightJobRequest",
+      "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequestExpandList": "com.azure.ai_health_insights#CreateRadiologyInsightJobRequestExpandList",
+      "com.azure.ai_health_insights#RadiologyInsightsGetJob": "com.azure.ai_health_insights#GetRadiologyInsightJob",
+      "com.azure.ai_health_insights#RadiologyInsightsGetJobRequest": "com.azure.ai_health_insights#GetRadiologyInsightJobRequest",
+      "com.azure.ai_health_insights#RadiologyInsightsGetJobRequestExpandList": "com.azure.ai_health_insights#GetRadiologyInsightJobRequestExpandList"
+    }
+  },
+  "shapes": {
+    "com.azure.ai_health_insights#RadiologyInsightsCreateJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_health_insights#RadiologyInsightsJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/radiology-insights/jobs/{id}",
+          "code": 200,
+          "host": "{endpoint}/health-insights",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-01"
+        },
+        "smithy.api#documentation": "Create Radiology Insights job\n\nCreates a Radiology Insights job with the given request body."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsJob": {
+      "type": "structure",
+      "members": {
+        "jobData": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsData",
+          "traits": {
+            "smithy.api#documentation": "The request data for the operation."
+          }
+        },
+        "result": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsInferenceResult",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.ai_health_insights#JobStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the job.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the processing job was created."
+          }
+        },
+        "expiresAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the processing job is set to expire."
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the processing job was last updated."
+          }
+        },
+        "error": {
+          "target": "com.azure.ai_health_insights#AzureCoreFoundationsError",
+          "traits": {
+            "smithy.api#documentation": "Error object that describes the error when status is \"Failed\"."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        },
+        "operationLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Operation-Location",
+            "smithy.api#documentation": "The location for monitoring the operation state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response for the Radiology Insights request."
+      }
+    },
+    "com.azure.ai_health_insights#AzureCoreFoundationsError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable representation of the error.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the error."
+          }
+        },
+        "details": {
+          "target": "com.azure.ai_health_insights#AzureCoreFoundationsErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.ai_health_insights#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "An object containing more specific information than the current object about the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error object."
+      }
+    },
+    "com.azure.ai_health_insights#AzureCoreFoundationsInnerError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "One of a server-defined set of error codes."
+          }
+        },
+        "innererror": {
+          "target": "com.azure.ai_health_insights#AzureCoreFoundationsInnerError",
+          "traits": {
+            "smithy.api#documentation": "Inner error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing more specific information about the error. As per Azure REST API guidelines - https://aka.ms/AzureRestApiGuidelines#handling-errors."
+      }
+    },
+    "com.azure.ai_health_insights#AzureCoreFoundationsErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#AzureCoreFoundationsError"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of details about specific errors that led to this reported error."
+      }
+    },
+    "com.azure.ai_health_insights#JobStatus": {
+      "type": "enum",
+      "members": {
+        "NOTSTARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notStarted"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the processing job."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsInferenceResult": {
+      "type": "structure",
+      "members": {
+        "patientResults": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsInferenceResultPatientResultsList",
+          "traits": {
+            "smithy.api#documentation": "Results for the patients given in the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "modelVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the model used for inference, expressed as the model date.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The inference results for the Radiology Insights request. If field 'status' has value 'succeeded', then field 'result' will contain an instance of RadiologyInsightsInferenceResult."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsInferenceResultPatientResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#RadiologyInsightsPatientResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "Results for the patients given in the request."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsPatientResult": {
+      "type": "structure",
+      "members": {
+        "patientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier given for the patient in the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "inferences": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsPatientResultInferencesList",
+          "traits": {
+            "smithy.api#documentation": "The model's inferences for the given patient.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Results of the model's work for a single patient."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsPatientResultInferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#RadiologyInsightsInference"
+      },
+      "traits": {
+        "smithy.api#documentation": "The model's inferences for the given patient."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsInference": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Discriminator property for RadiologyInsightsInference.",
+            "smithy.api#required": {}
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsInferenceExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An inference made by the Radiology Insights model regarding a patient.\n  - AgeMismatch\n  - SexMismatch\n  - LateralityDiscrepancy\n  - CompleteOrderDiscrepancy\n  - LimitedOrderDiscrepancy\n  - Finding\n  - CriticalResult\n  - FollowupRecommendation\n  - RadiologyProcedure\n  - FollowupCommunication"
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsInferenceExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Extension": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4ExtensionExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of the definition for the extension code - a logical name or a URL.",
+            "smithy.api#required": {}
+          }
+        },
+        "valueQuantity": {
+          "target": "com.azure.ai_health_insights#FhirR4Quantity",
+          "traits": {
+            "smithy.api#documentation": "Value as Quantity"
+          }
+        },
+        "valueCodeableConcept": {
+          "target": "com.azure.ai_health_insights#FhirR4CodeableConcept",
+          "traits": {
+            "smithy.api#documentation": "Value as CodeableConcept"
+          }
+        },
+        "valueString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value as string"
+          }
+        },
+        "valueBoolean": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Value as boolean"
+          }
+        },
+        "valueInteger": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Value as integer"
+          }
+        },
+        "valueRange": {
+          "target": "com.azure.ai_health_insights#FhirR4Range",
+          "traits": {
+            "smithy.api#documentation": "Value as Range."
+          }
+        },
+        "valueRatio": {
+          "target": "com.azure.ai_health_insights#FhirR4Ratio",
+          "traits": {
+            "smithy.api#documentation": "Value as Ratio."
+          }
+        },
+        "valueSampledData": {
+          "target": "com.azure.ai_health_insights#FhirR4SampledData",
+          "traits": {
+            "smithy.api#documentation": "Value as SampledData."
+          }
+        },
+        "valueTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value as time (hh:mm:ss)"
+          }
+        },
+        "valueDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value as dateTime."
+          }
+        },
+        "valuePeriod": {
+          "target": "com.azure.ai_health_insights#FhirR4Period",
+          "traits": {
+            "smithy.api#documentation": "Value as Period."
+          }
+        },
+        "valueReference": {
+          "target": "com.azure.ai_health_insights#FhirR4Reference",
+          "traits": {
+            "smithy.api#documentation": "Value as reference."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base for all elements\nBased on [FHIR Element](https://www.hl7.org/fhir/R4/element.html)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Reference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4ReferenceExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Literal reference, Relative, internal or absolute URL"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type the reference refers to (e.g. \"Patient\")"
+          }
+        },
+        "identifier": {
+          "target": "com.azure.ai_health_insights#FhirR4Identifier",
+          "traits": {
+            "smithy.api#documentation": "Logical reference, when literal reference is not known"
+          }
+        },
+        "display": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text alternative for the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A reference from one resource to another\nBased on [FHIR Reference](https://www.hl7.org/fhir/R4/references.html)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Identifier": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4IdentifierExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "use": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "usual | official | temp | secondary | old (If known)"
+          }
+        },
+        "type": {
+          "target": "com.azure.ai_health_insights#FhirR4CodeableConcept",
+          "traits": {
+            "smithy.api#documentation": "Description of identifier"
+          }
+        },
+        "system": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The namespace for the identifier value"
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value that is unique"
+          }
+        },
+        "period": {
+          "target": "com.azure.ai_health_insights#FhirR4Period",
+          "traits": {
+            "smithy.api#documentation": "Time period when id is/was valid for use"
+          }
+        },
+        "assigner": {
+          "target": "com.azure.ai_health_insights#FhirR4Reference",
+          "traits": {
+            "smithy.api#documentation": "Organization that issued id (may be just text)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An identifier intended for computation\nBased on [FHIR Identifier](https://www.hl7.org/fhir/R4/identifier.html)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Period": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4PeriodExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Starting time with inclusive boundary"
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time with inclusive boundary, if not ongoing"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A time period defined by a start and end date and optionally time\nBased on [FHIR Period](https://www.hl7.org/fhir/R4/datatypes.html#Period)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4PeriodExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4CodeableConcept": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4CodeableConceptExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "coding": {
+          "target": "com.azure.ai_health_insights#FhirR4CodeableConceptCodingList",
+          "traits": {
+            "smithy.api#documentation": "Code defined by a terminology system"
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Plain text representation of the concept"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Concept - reference to a terminology or just text\nBased on [FHIR CodeableConcept](https://www.hl7.org/fhir/R4/datatypes.html#CodeableConcept)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4CodeableConceptCodingList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Coding"
+      },
+      "traits": {
+        "smithy.api#documentation": "Code defined by a terminology system"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Coding": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4CodingExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "system": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identity of the terminology system"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the system - if relevant"
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Symbol in syntax defined by the system"
+          }
+        },
+        "display": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Representation defined by the system"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Coding is a representation of a defined concept using a symbol from a defined \"code system\".\nBased on [FHIR Coding](https://www.hl7.org/fhir/R4/datatypes.html#Coding)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4CodingExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4CodeableConceptExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4IdentifierExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4ReferenceExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4SampledData": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4SampledDataExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "origin": {
+          "target": "com.azure.ai_health_insights#FhirR4Quantity",
+          "traits": {
+            "smithy.api#documentation": "Zero value and units",
+            "smithy.api#required": {}
+          }
+        },
+        "period": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of milliseconds between samples",
+            "smithy.api#required": {}
+          }
+        },
+        "factor": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Multiply data by this before adding to origin"
+          }
+        },
+        "lowerLimit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lower limit of detection"
+          }
+        },
+        "upperLimit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Upper limit of detection"
+          }
+        },
+        "dimensions": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of sample points at each time point",
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Decimal values with spaces, or \"E\" | \"U\" | \"L\""
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A series of measurements taken by a device\nBased on [FHIR SampledData](https://www.hl7.org/fhir/R4/datatypes.html#SampledData)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Quantity": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4QuantityExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "value": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Numerical value (with implicit precision)"
+          }
+        },
+        "comparator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "< | <= | >= | > - how to understand the value"
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unit representation"
+          }
+        },
+        "system": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "System that defines coded unit form"
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Coded form of the unit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A measured or measurable amount\nBased on [FHIR Quantity](https://www.hl7.org/fhir/R4/datatypes.html#Quantity)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4QuantityExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4SampledDataExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Ratio": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4RatioExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "numerator": {
+          "target": "com.azure.ai_health_insights#FhirR4Quantity",
+          "traits": {
+            "smithy.api#documentation": "Numerator value"
+          }
+        },
+        "denominator": {
+          "target": "com.azure.ai_health_insights#FhirR4Quantity",
+          "traits": {
+            "smithy.api#documentation": "Denominator value"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A ratio of two Quantity values - a numerator and a denominator\nBased on [FHIR Ratio](https://www.hl7.org/fhir/R4/datatypes.html#Ratio)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4RatioExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Range": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id for inter-element referencing"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#FhirR4RangeExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        },
+        "low": {
+          "target": "com.azure.ai_health_insights#FhirR4Quantity",
+          "traits": {
+            "smithy.api#documentation": "Low limit"
+          }
+        },
+        "high": {
+          "target": "com.azure.ai_health_insights#FhirR4Quantity",
+          "traits": {
+            "smithy.api#documentation": "High limit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of ordered Quantities defined by a low and high limit\nBased on [FHIR Range](https://www.hl7.org/fhir/R4/datatypes.html#Range)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4RangeExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4ExtensionExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsData": {
+      "type": "structure",
+      "members": {
+        "patients": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsDataPatientsList",
+          "traits": {
+            "smithy.api#documentation": "The list of patients, including their clinical information and data.",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsModelConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Configuration affecting the Radiology Insights model's inference."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains the list of patients, and configuration data."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsModelConfiguration": {
+      "type": "structure",
+      "members": {
+        "verbose": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An indication whether the model should produce verbose output."
+          }
+        },
+        "includeEvidence": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An indication whether the model's output should include evidence for the inferences."
+          }
+        },
+        "inferenceTypes": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsModelConfigurationInferenceTypesList",
+          "traits": {
+            "smithy.api#documentation": "This is a list of inference types to be inferred for the current request. It could be used if only part of the Radiology Insights inferences are required. If this list is omitted or empty, the model will return all the inference types."
+          }
+        },
+        "inferenceOptions": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsInferenceOptions",
+          "traits": {
+            "smithy.api#documentation": "Options regarding follow up recommendation inferences and finding inferences."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Local for the model to use. If not specified, the model will use the default locale."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration affecting the Radiology Insights model's inference."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsInferenceOptions": {
+      "type": "structure",
+      "members": {
+        "followupRecommendationOptions": {
+          "target": "com.azure.ai_health_insights#FollowupRecommendationOptions",
+          "traits": {
+            "smithy.api#documentation": "Follow-up recommendation options."
+          }
+        },
+        "findingOptions": {
+          "target": "com.azure.ai_health_insights#FindingOptions",
+          "traits": {
+            "smithy.api#documentation": "Finding options."
+          }
+        },
+        "guidanceOptions": {
+          "target": "com.azure.ai_health_insights#GuidanceOptions",
+          "traits": {
+            "smithy.api#documentation": "Guidance options."
+          }
+        },
+        "qualityMeasureOptions": {
+          "target": "com.azure.ai_health_insights#QualityMeasureOptions",
+          "traits": {
+            "smithy.api#documentation": "QualityMeasureOptions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options regarding follow up recommendation inferences and finding inferences."
+      }
+    },
+    "com.azure.ai_health_insights#QualityMeasureOptions": {
+      "type": "structure",
+      "members": {
+        "measureTypes": {
+          "target": "com.azure.ai_health_insights#QualityMeasureOptionsMeasureTypesList",
+          "traits": {
+            "smithy.api#documentation": "Id(s) of the MIPS measures that need to be evaluated in the document",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Quality Measure Options."
+      }
+    },
+    "com.azure.ai_health_insights#QualityMeasureOptionsMeasureTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#QualityMeasureType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Id(s) of the MIPS measures that need to be evaluated in the document"
+      }
+    },
+    "com.azure.ai_health_insights#QualityMeasureType": {
+      "type": "enum",
+      "members": {
+        "MIPS76": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips76"
+          }
+        },
+        "MIPS147": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips147"
+          }
+        },
+        "MIPS195": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips195"
+          }
+        },
+        "MIPS360": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips360"
+          }
+        },
+        "MIPS364": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips364"
+          }
+        },
+        "MIPS405": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips405"
+          }
+        },
+        "MIPS406": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips406"
+          }
+        },
+        "MIPS436": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips436"
+          }
+        },
+        "MIPS145": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mips145"
+          }
+        },
+        "ACRAD36": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acrad36"
+          }
+        },
+        "ACRAD37": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acrad37"
+          }
+        },
+        "ACRAD38": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acrad38"
+          }
+        },
+        "ACRAD39": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acrad39"
+          }
+        },
+        "ACRAD40": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acrad40"
+          }
+        },
+        "ACRAD41": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acrad41"
+          }
+        },
+        "ACRAD42": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acrad42"
+          }
+        },
+        "MEDNAX55": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mednax55"
+          }
+        },
+        "MSN13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "msn13"
+          }
+        },
+        "MSN15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "msn15"
+          }
+        },
+        "QMM26": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmm26"
+          }
+        },
+        "QMM17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmm17"
+          }
+        },
+        "QMM18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmm18"
+          }
+        },
+        "QMM19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmm19"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mips types that can be checked by the engine."
+      }
+    },
+    "com.azure.ai_health_insights#GuidanceOptions": {
+      "type": "structure",
+      "members": {
+        "showGuidanceInHistory": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this is true, also show guidances from a clinical history section i.e. if the first token of the associated finding's clinical indicator is in this section. Default is false.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Guidance options."
+      }
+    },
+    "com.azure.ai_health_insights#FindingOptions": {
+      "type": "structure",
+      "members": {
+        "provideFocusedSentenceEvidence": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this is true, provide the sentence that contains the first token of the finding's clinical indicator (i.e. the medical problem), if there is one. This sentence is provided as an extension with url 'ci_sentence', next to the token evidence. Default is false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Finding options."
+      }
+    },
+    "com.azure.ai_health_insights#FollowupRecommendationOptions": {
+      "type": "structure",
+      "members": {
+        "includeRecommendationsWithNoSpecifiedModality": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Include/Exclude follow-up recommendations without a specific radiology procedure. Default is false."
+          }
+        },
+        "includeRecommendationsInReferences": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Include/Exclude follow-up recommendations in references to a guideline or article. Default is false."
+          }
+        },
+        "provideFocusedSentenceEvidence": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this is true, provide one or more sentences as evidence for the recommendation, next to the token evidence. The start and end positions of these sentences will be put in an extension with url 'modality_sentences'. Default is false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Follow-up recommendation options."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsModelConfigurationInferenceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#RadiologyInsightsInferenceType"
+      },
+      "traits": {
+        "smithy.api#documentation": "This is a list of inference types to be inferred for the current request. It could be used if only part of the Radiology Insights inferences are required. If this list is omitted or empty, the model will return all the inference types."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsInferenceType": {
+      "type": "enum",
+      "members": {
+        "AGEMISMATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ageMismatch"
+          }
+        },
+        "LATERALITYDISCREPANCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lateralityDiscrepancy"
+          }
+        },
+        "SEXMISMATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sexMismatch"
+          }
+        },
+        "COMPLETEORDERDISCREPANCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completeOrderDiscrepancy"
+          }
+        },
+        "LIMITEDORDERDISCREPANCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "limitedOrderDiscrepancy"
+          }
+        },
+        "FINDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "finding"
+          }
+        },
+        "CRITICALRESULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "criticalResult"
+          }
+        },
+        "FOLLOWUPRECOMMENDATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "followupRecommendation"
+          }
+        },
+        "FOLLOWUPCOMMUNICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "followupCommunication"
+          }
+        },
+        "RADIOLOGYPROCEDURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "radiologyProcedure"
+          }
+        },
+        "SCORINGANDASSESSMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scoringAndAssessment"
+          }
+        },
+        "GUIDANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "guidance"
+          }
+        },
+        "QUALITYMEASURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qualityMeasure"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Radiology Insights inference types."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsDataPatientsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#PatientRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of patients, including their clinical information and data."
+      }
+    },
+    "com.azure.ai_health_insights#PatientRecord": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A given identifier for the patient. Has to be unique across all patients in a single request.",
+            "smithy.api#required": {}
+          }
+        },
+        "details": {
+          "target": "com.azure.ai_health_insights#PatientDetails",
+          "traits": {
+            "smithy.api#documentation": "Patient structured information, including demographics and known structured clinical information."
+          }
+        },
+        "encounters": {
+          "target": "com.azure.ai_health_insights#PatientRecordEncountersList",
+          "traits": {
+            "smithy.api#documentation": "Patient encounters/visits."
+          }
+        },
+        "patientDocuments": {
+          "target": "com.azure.ai_health_insights#PatientRecordPatientDocumentsList",
+          "traits": {
+            "smithy.api#documentation": "Patient unstructured clinical data, given as documents."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A patient record, including their clinical information and data."
+      }
+    },
+    "com.azure.ai_health_insights#PatientRecordPatientDocumentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#PatientDocument"
+      },
+      "traits": {
+        "smithy.api#documentation": "Patient unstructured clinical data, given as documents."
+      }
+    },
+    "com.azure.ai_health_insights#PatientDocument": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.ai_health_insights#DocumentType",
+          "traits": {
+            "smithy.api#documentation": "The type of the patient document, such as 'note' (text document) or 'fhirBundle' (FHIR JSON document).",
+            "smithy.api#required": {}
+          }
+        },
+        "clinicalType": {
+          "target": "com.azure.ai_health_insights#ClinicalDocumentType",
+          "traits": {
+            "smithy.api#documentation": "The type of the clinical document."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A given identifier for the document. Has to be unique across all documents for a single patient.",
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A 2 letter ISO 639-1 representation of the language of the document."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the document was created."
+          }
+        },
+        "authors": {
+          "target": "com.azure.ai_health_insights#PatientDocumentAuthorsList",
+          "traits": {
+            "smithy.api#documentation": "Document author(s)"
+          }
+        },
+        "specialtyType": {
+          "target": "com.azure.ai_health_insights#SpecialtyType",
+          "traits": {
+            "smithy.api#documentation": "specialty type the document"
+          }
+        },
+        "administrativeMetadata": {
+          "target": "com.azure.ai_health_insights#DocumentAdministrativeMetadata",
+          "traits": {
+            "smithy.api#documentation": "Administrative metadata for the document."
+          }
+        },
+        "content": {
+          "target": "com.azure.ai_health_insights#DocumentContent",
+          "traits": {
+            "smithy.api#documentation": "The content of the patient document.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A clinical document related to a patient. Document here is in the wide sense - not just a text document (note)."
+      }
+    },
+    "com.azure.ai_health_insights#DocumentContent": {
+      "type": "structure",
+      "members": {
+        "sourceType": {
+          "target": "com.azure.ai_health_insights#DocumentContentSourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the content's source.\nIn case the source type is 'inline', the content is given as a string (for instance, text).\nIn case the source type is 'reference', the content is given as a URI.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content of the document, given either inline (as a string) or as a reference (URI).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The content of the patient document."
+      }
+    },
+    "com.azure.ai_health_insights#DocumentContentSourceType": {
+      "type": "enum",
+      "members": {
+        "INLINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inline"
+          }
+        },
+        "REFERENCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reference"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the content's source.\nIn case the source type is 'inline', the content is given as a string (for instance, text).\nIn case the source type is 'reference', the content is given as a URI."
+      }
+    },
+    "com.azure.ai_health_insights#DocumentAdministrativeMetadata": {
+      "type": "structure",
+      "members": {
+        "orderedProcedures": {
+          "target": "com.azure.ai_health_insights#DocumentAdministrativeMetadataOrderedProceduresList",
+          "traits": {
+            "smithy.api#documentation": "List of procedure information associated with the document."
+          }
+        },
+        "encounterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference to the encounter associated with the document."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Document administrative metadata"
+      }
+    },
+    "com.azure.ai_health_insights#DocumentAdministrativeMetadataOrderedProceduresList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#OrderedProcedure"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of procedure information associated with the document."
+      }
+    },
+    "com.azure.ai_health_insights#OrderedProcedure": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.azure.ai_health_insights#FhirR4CodeableConcept",
+          "traits": {
+            "smithy.api#documentation": "Procedure code"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Procedure description"
+          }
+        },
+        "extension": {
+          "target": "com.azure.ai_health_insights#OrderedProcedureExtensionList",
+          "traits": {
+            "smithy.api#documentation": "Additional Content defined by implementations"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Procedure information"
+      }
+    },
+    "com.azure.ai_health_insights#OrderedProcedureExtensionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Extension"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Content defined by implementations"
+      }
+    },
+    "com.azure.ai_health_insights#SpecialtyType": {
+      "type": "enum",
+      "members": {
+        "PATHOLOGY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pathology"
+          }
+        },
+        "RADIOLOGY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "radiology"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Known values codes that can be used to indicate the type of the Specialty."
+      }
+    },
+    "com.azure.ai_health_insights#PatientDocumentAuthorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#DocumentAuthor"
+      },
+      "traits": {
+        "smithy.api#documentation": "Document author(s)"
+      }
+    },
+    "com.azure.ai_health_insights#DocumentAuthor": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "author id"
+          }
+        },
+        "fullName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text representation of the full name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Document author"
+      }
+    },
+    "com.azure.ai_health_insights#ClinicalDocumentType": {
+      "type": "enum",
+      "members": {
+        "CONSULTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "consultation"
+          }
+        },
+        "DISCHARGESUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dischargeSummary"
+          }
+        },
+        "HISTORYANDPHYSICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "historyAndPhysical"
+          }
+        },
+        "RADIOLOGYREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "radiologyReport"
+          }
+        },
+        "PROCEDURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "procedure"
+          }
+        },
+        "PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "progress"
+          }
+        },
+        "LABORATORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "laboratory"
+          }
+        },
+        "PATHOLOGYREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pathologyReport"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the clinical document."
+      }
+    },
+    "com.azure.ai_health_insights#DocumentType": {
+      "type": "enum",
+      "members": {
+        "NOTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "note"
+          }
+        },
+        "FHIRBUNDLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhirBundle"
+          }
+        },
+        "DICOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dicom"
+          }
+        },
+        "GENOMICSEQUENCING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "genomicSequencing"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the patient document, such as 'note' (text document) or 'fhirBundle' (FHIR JSON document)."
+      }
+    },
+    "com.azure.ai_health_insights#PatientRecordEncountersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#PatientEncounter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Patient encounters/visits."
+      }
+    },
+    "com.azure.ai_health_insights#PatientEncounter": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the visit.",
+            "smithy.api#required": {}
+          }
+        },
+        "period": {
+          "target": "com.azure.ai_health_insights#TimePeriod",
+          "traits": {
+            "smithy.api#documentation": "Time period of the visit.\nIn case of admission, use timePeriod.start to indicate the admission time and timePeriod.end to indicate the discharge time."
+          }
+        },
+        "class": {
+          "target": "com.azure.ai_health_insights#EncounterClass",
+          "traits": {
+            "smithy.api#documentation": "The class of the encounter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "visit/encounter information"
+      }
+    },
+    "com.azure.ai_health_insights#EncounterClass": {
+      "type": "enum",
+      "members": {
+        "INPATIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inpatient"
+          }
+        },
+        "AMBULATORY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ambulatory"
+          }
+        },
+        "OBSERVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "observation"
+          }
+        },
+        "EMERGENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emergency"
+          }
+        },
+        "VIRTUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "virtual"
+          }
+        },
+        "HEALTHHOME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "healthHome"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Known values codes that can be used to indicate the class of encounter (TODO://Based on FHIR value set--http://....)."
+      }
+    },
+    "com.azure.ai_health_insights#TimePeriod": {
+      "type": "structure",
+      "members": {
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Starting time with inclusive boundary"
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time with inclusive boundary, if not ongoing"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A duration of time during which an event is happening"
+      }
+    },
+    "com.azure.ai_health_insights#PatientDetails": {
+      "type": "structure",
+      "members": {
+        "sex": {
+          "target": "com.azure.ai_health_insights#PatientSex",
+          "traits": {
+            "smithy.api#documentation": "The patient's sex."
+          }
+        },
+        "birthDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The patient's date of birth."
+          }
+        },
+        "clinicalInfo": {
+          "target": "com.azure.ai_health_insights#PatientDetailsClinicalInfoList",
+          "traits": {
+            "smithy.api#documentation": "Known clinical information for the patient, structured."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Patient structured information, including demographics and known structured clinical information."
+      }
+    },
+    "com.azure.ai_health_insights#PatientDetailsClinicalInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Resource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Known clinical information for the patient, structured."
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Resource": {
+      "type": "structure",
+      "members": {
+        "resourceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of resource",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id"
+          }
+        },
+        "meta": {
+          "target": "com.azure.ai_health_insights#FhirR4Meta",
+          "traits": {
+            "smithy.api#documentation": "Metadata about the resource"
+          }
+        },
+        "implicitRules": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A set of rules under which this content was created"
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of the resource content"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource is the ancestor of DomainResource from which most resources are derived. Bundle, Parameters, and Binary extend Resource directly.\nBased on [FHIR Resource](https://www.hl7.org/fhir/r4/resource.html",
+        "com.distilled.openapi#additionalProperties": {}
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4Meta": {
+      "type": "structure",
+      "members": {
+        "versionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version specific identifier, as it appears in the version portion of the URL. This value changes when the resource is created, updated, or deleted."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the resource last changed - e.g. when the version changed."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A uri that identifies the source system of the resource. This provides a minimal amount of Provenance information that can be used to track or differentiate the source of information in the resource. The source may identify another FHIR server, document, message, database, etc."
+          }
+        },
+        "profile": {
+          "target": "com.azure.ai_health_insights#FhirR4MetaProfileList",
+          "traits": {
+            "smithy.api#documentation": "A list of profiles (references to [StructureDefinition](https://www.hl7.org/fhir/structuredefinition.html) resources) that this resource claims to conform to. The URL is a reference to [StructureDefinition.url](https://www.hl7.org/fhir/structuredefinition-definitions.html#StructureDefinition.url)."
+          }
+        },
+        "security": {
+          "target": "com.azure.ai_health_insights#FhirR4MetaSecurityList",
+          "traits": {
+            "smithy.api#documentation": "Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure."
+          }
+        },
+        "tag": {
+          "target": "com.azure.ai_health_insights#FhirR4MetaTagList",
+          "traits": {
+            "smithy.api#documentation": "Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about a resource\nBased on [FHIR Meta](https://www.hl7.org/fhir/R4/resource.html#Meta)"
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4MetaTagList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Coding"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource."
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4MetaSecurityList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.ai_health_insights#FhirR4Coding"
+      },
+      "traits": {
+        "smithy.api#documentation": "Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure."
+      }
+    },
+    "com.azure.ai_health_insights#FhirR4MetaProfileList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of profiles (references to [StructureDefinition](https://www.hl7.org/fhir/structuredefinition.html) resources) that this resource claims to conform to. The URL is a reference to [StructureDefinition.url](https://www.hl7.org/fhir/structuredefinition-definitions.html#StructureDefinition.url)."
+      }
+    },
+    "com.azure.ai_health_insights#PatientSex": {
+      "type": "enum",
+      "members": {
+        "FEMALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "female"
+          }
+        },
+        "MALE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "male"
+          }
+        },
+        "UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unspecified"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The patient's sex."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus2.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the job."
+          }
+        },
+        "expand": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "expand",
+            "smithy.api#documentation": "Expand the indicated resources into the response."
+          }
+        },
+        "jobData": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsData",
+          "traits": {
+            "smithy.api#documentation": "The request data for the operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsGetJob": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.ai_health_insights#RadiologyInsightsGetJobRequest"
+      },
+      "output": {
+        "target": "com.azure.ai_health_insights#RadiologyInsightsJob"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/radiology-insights/jobs/{id}",
+          "code": 200,
+          "host": "{endpoint}/health-insights",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-10-01"
+        },
+        "smithy.api#documentation": "Get Radiology Insights job details\n\nGets the status and details of the Radiology Insights job."
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsGetJobRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus2.api.cognitive.microsoft.com).",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the job."
+          }
+        },
+        "expand": {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsGetJobRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "expand",
+            "smithy.api#documentation": "Expand the indicated resources into the response."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.ai_health_insights#RadiologyInsightsGetJobRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.ai_health_insights#AiHealthInsights": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsCreateJob"
+        },
+        {
+          "target": "com.azure.ai_health_insights#RadiologyInsightsGetJob"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure HealthInsights data plane",
+        "smithy.api#documentation": "Azure ai data plane — ai/data-plane/HealthInsights (latest stable api-version 2024-10-01).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}/health-insights",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://cognitiveservices.azure.com/.default"
+      }
+    }
+  }
+}

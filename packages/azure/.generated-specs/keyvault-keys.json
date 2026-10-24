@@ -1,0 +1,3156 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.azure.keyvault_keys#GetRandomBytes": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetRandomBytesRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#RandomBytes"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/rng",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Get the requested number of bytes containing random values.\n\nGet the requested number of bytes containing random values from a managed HSM."
+      }
+    },
+    "com.azure.keyvault_keys#RandomBytes": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The bytes encoded as a base64url string.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The get random bytes response object containing the bytes."
+      }
+    },
+    "com.azure.keyvault_keys#GetRandomBytesRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The requested number of random bytes.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#RestoreKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#RestoreKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/restore",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Restores a backed up key to a vault.\n\nImports a previously backed up key into Azure Key Vault, restoring the key, its key identifier, attributes and access control policies. The RESTORE operation may be used to import a previously backed up key. Individual versions of a key cannot be restored. The key is restored in its entirety with the same key name as it had when it was backed up. If the key name is not available in the target Key Vault, the RESTORE operation will be rejected. While the key name is retained during restore, the final key identifier will change if the key is restored to a different vault. Restore will restore all versions and preserve version identifiers. The RESTORE operation is subject to security constraints: The target Key Vault must be owned by the same Microsoft Azure Subscription as the source Key Vault The user must have RESTORE permission in the target Key Vault. This operation requires the keys/restore permission."
+      }
+    },
+    "com.azure.keyvault_keys#KeyBundle": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "com.azure.keyvault_keys#JsonWebKey",
+          "traits": {
+            "smithy.api#documentation": "The Json web key."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyAttributes",
+          "traits": {
+            "smithy.api#documentation": "The key management attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_keys#KeyBundleTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the key's lifetime is managed by key vault. If this is a key backing a certificate, then managed will be true."
+          }
+        },
+        "release_policy": {
+          "target": "com.azure.keyvault_keys#KeyReleasePolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy rules under which the key can be exported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A KeyBundle consisting of a WebKey plus its attributes."
+      }
+    },
+    "com.azure.keyvault_keys#KeyReleasePolicy": {
+      "type": "structure",
+      "members": {
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content type and version of key release policy"
+          }
+        },
+        "immutable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Defines the mutability state of the policy. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances."
+          }
+        },
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Blob encoding the policy rules under which the key can be released. Blob must be base64 URL encoded."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy rules under which the key can be exported."
+      }
+    },
+    "com.azure.keyvault_keys#KeyBundleTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_keys#KeyAttributes": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether the object is enabled."
+          }
+        },
+        "nbf": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Not before date in UTC."
+          }
+        },
+        "exp": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Expiry date in UTC."
+          }
+        },
+        "created": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Creation time in UTC."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Last updated time in UTC."
+          }
+        },
+        "recoverableDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "softDelete data retention days. Value should be >=7 and <=90 when softDelete enabled, otherwise 0."
+          }
+        },
+        "recoveryLevel": {
+          "target": "com.azure.keyvault_keys#DeletionRecoveryLevel",
+          "traits": {
+            "smithy.api#documentation": "Reflects the deletion recovery level currently in effect for keys in the current vault. If it contains 'Purgeable' the key can be permanently deleted by a privileged user; otherwise, only the system can purge the key, at the end of the retention interval."
+          }
+        },
+        "exportable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the private key can be exported. Release policy must be provided when creating the first version of an exportable key."
+          }
+        },
+        "hsmPlatform": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The underlying HSM Platform."
+          }
+        },
+        "attestation": {
+          "target": "com.azure.keyvault_keys#KeyAttestation",
+          "traits": {
+            "smithy.api#documentation": "The key or key version attestation information."
+          }
+        },
+        "external_key": {
+          "target": "com.azure.keyvault_keys#ExternalKey",
+          "traits": {
+            "smithy.api#documentation": "The external key information."
+          }
+        },
+        "key_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The optional key size in bits for symmetric keys. For example: 128, 192, or 256 for AES keys."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The attributes of a key managed by the key vault service."
+      }
+    },
+    "com.azure.keyvault_keys#ExternalKey": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external key identifier. The valid id can only contain characters in the set [a-zA-Z0-9-]. Maximum length is 64 characters.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "External Key parameters."
+      }
+    },
+    "com.azure.keyvault_keys#KeyAttestation": {
+      "type": "structure",
+      "members": {
+        "certificatePemFile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A base64url-encoded string containing certificates in PEM format, used for attestation validation."
+          }
+        },
+        "privateKeyAttestation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The attestation blob bytes encoded as base64url string corresponding to a private key."
+          }
+        },
+        "publicKeyAttestation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The attestation blob bytes encoded as base64url string corresponding to a public key in case of asymmetric key."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the attestation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key attestation information."
+      }
+    },
+    "com.azure.keyvault_keys#DeletionRecoveryLevel": {
+      "type": "enum",
+      "members": {
+        "PURGEABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Purgeable"
+          }
+        },
+        "RECOVERABLE_PURGEABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recoverable+Purgeable"
+          }
+        },
+        "RECOVERABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recoverable"
+          }
+        },
+        "RECOVERABLE_PROTECTEDSUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recoverable+ProtectedSubscription"
+          }
+        },
+        "CUSTOMIZEDRECOVERABLE_PURGEABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomizedRecoverable+Purgeable"
+          }
+        },
+        "CUSTOMIZEDRECOVERABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomizedRecoverable"
+          }
+        },
+        "CUSTOMIZEDRECOVERABLE_PROTECTEDSUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomizedRecoverable+ProtectedSubscription"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reflects the deletion recovery level currently in effect for certificates in the current vault. If it contains 'Purgeable', the certificate can be permanently deleted by a privileged user; otherwise, only the system can purge the certificate, at the end of the retention interval."
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKey": {
+      "type": "structure",
+      "members": {
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key identifier."
+          }
+        },
+        "kty": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyType",
+          "traits": {
+            "smithy.api#documentation": "JsonWebKey Key Type (kty), as defined in https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40."
+          }
+        },
+        "key_ops": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyKeyOpsList",
+          "traits": {
+            "smithy.api#documentation": "Json web key operations. For more information on possible key operations, see JsonWebKeyOperation."
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus."
+          }
+        },
+        "e": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA public exponent."
+          }
+        },
+        "d": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA private exponent, or the D component of an EC private key."
+          }
+        },
+        "dp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA private key parameter."
+          }
+        },
+        "dq": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA private key parameter."
+          }
+        },
+        "qi": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA private key parameter."
+          }
+        },
+        "p": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA secret prime."
+          }
+        },
+        "q": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA secret prime, with p < q."
+          }
+        },
+        "k": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Symmetric key."
+          }
+        },
+        "key_hsm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protected Key, used with 'Bring Your Own Key'."
+          }
+        },
+        "crv": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyCurveName",
+          "traits": {
+            "smithy.api#documentation": "Elliptic curve name. For valid values, see JsonWebKeyCurveName."
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X component of an EC public key."
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y component of an EC public key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18"
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKeyCurveName": {
+      "type": "enum",
+      "members": {
+        "P_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256"
+          }
+        },
+        "P_384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-384"
+          }
+        },
+        "P_521": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-521"
+          }
+        },
+        "P_256K": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "P-256K"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Elliptic curve name. For valid values, see JsonWebKeyCurveName."
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKeyKeyOpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Json web key operations. For more information on possible key operations, see JsonWebKeyOperation."
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKeyType": {
+      "type": "enum",
+      "members": {
+        "EC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EC"
+          }
+        },
+        "EC_HSM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EC-HSM"
+          }
+        },
+        "RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA"
+          }
+        },
+        "RSA_HSM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA-HSM"
+          }
+        },
+        "OCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oct"
+          }
+        },
+        "OCT_HSM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oct-HSM"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "JsonWebKey Key Type (kty), as defined in https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40."
+      }
+    },
+    "com.azure.keyvault_keys#RestoreKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The backup blob associated with a key bundle.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#GetKeyVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetKeyVersionsRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/keys/{keyName}/versions",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Retrieves a list of individual key versions with the same key name.\n\nThe full key identifier, attributes, and tags are provided in the response. This operation requires the keys/list permission."
+      }
+    },
+    "com.azure.keyvault_keys#KeyListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.keyvault_keys#KeyListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "A response message containing a list of keys in the key vault along with a link to the next page of keys."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to get the next set of keys."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key list result."
+      }
+    },
+    "com.azure.keyvault_keys#KeyListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_keys#KeyItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A response message containing a list of keys in the key vault along with a link to the next page of keys."
+      }
+    },
+    "com.azure.keyvault_keys#KeyItem": {
+      "type": "structure",
+      "members": {
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key identifier."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyAttributes",
+          "traits": {
+            "smithy.api#documentation": "The key management attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_keys#KeyItemTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the key's lifetime is managed by key vault. If this is a key backing a certificate, then managed will be true."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key item containing key metadata."
+      }
+    },
+    "com.azure.keyvault_keys#KeyItemTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_keys#GetKeyVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#UpdateKeyRotationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#UpdateKeyRotationPolicyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyRotationPolicy"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/keys/{keyName}/rotationpolicy",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Updates the rotation policy for a key.\n\nSet specified members in the key policy. Leave others as undefined. This operation requires the keys/update permission."
+      }
+    },
+    "com.azure.keyvault_keys#KeyRotationPolicy": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key policy id."
+          }
+        },
+        "lifetimeActions": {
+          "target": "com.azure.keyvault_keys#KeyRotationPolicyLifetimeActionsList",
+          "traits": {
+            "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a key. For preview, lifetimeActions can only have two items at maximum: one for rotate, one for notify. Notification time would be default to 30 days before expiry and it is not configurable."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyRotationPolicyAttributes",
+          "traits": {
+            "smithy.api#documentation": "The key rotation policy attributes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Management policy for a key."
+      }
+    },
+    "com.azure.keyvault_keys#KeyRotationPolicyAttributes": {
+      "type": "structure",
+      "members": {
+        "expiryTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiryTime will be applied on the new key version. It should be at least 28 days. It will be in ISO 8601 Format. Examples: 90 days: P90D, 3 months: P3M, 48 hours: PT48H, 1 year and 10 days: P1Y10D"
+          }
+        },
+        "created": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The key rotation policy created time in UTC."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The key rotation policy's last updated time in UTC."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key rotation policy attributes."
+      }
+    },
+    "com.azure.keyvault_keys#KeyRotationPolicyLifetimeActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_keys#LifetimeActions"
+      },
+      "traits": {
+        "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a key. For preview, lifetimeActions can only have two items at maximum: one for rotate, one for notify. Notification time would be default to 30 days before expiry and it is not configurable."
+      }
+    },
+    "com.azure.keyvault_keys#LifetimeActions": {
+      "type": "structure",
+      "members": {
+        "trigger": {
+          "target": "com.azure.keyvault_keys#LifetimeActionsTrigger",
+          "traits": {
+            "smithy.api#documentation": "The condition that will execute the action."
+          }
+        },
+        "action": {
+          "target": "com.azure.keyvault_keys#LifetimeActionsType",
+          "traits": {
+            "smithy.api#documentation": "The action that will be executed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Action and its trigger that will be performed by Key Vault over the lifetime of a key."
+      }
+    },
+    "com.azure.keyvault_keys#LifetimeActionsType": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.keyvault_keys#KeyRotationPolicyAction",
+          "traits": {
+            "smithy.api#documentation": "The type of the action. The value should be compared case-insensitively."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The action that will be executed."
+      }
+    },
+    "com.azure.keyvault_keys#KeyRotationPolicyAction": {
+      "type": "enum",
+      "members": {
+        "ROTATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Rotate"
+          }
+        },
+        "NOTIFY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Notify"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the action. The value should be compared case-insensitively."
+      }
+    },
+    "com.azure.keyvault_keys#LifetimeActionsTrigger": {
+      "type": "structure",
+      "members": {
+        "timeAfterCreate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time after creation to attempt to rotate. It only applies to rotate. It will be in ISO 8601 duration format. Example: 90 days : \"P90D\""
+          }
+        },
+        "timeBeforeExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time before expiry to attempt to rotate or notify. It will be in ISO 8601 duration format. Example: 90 days : \"P90D\""
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A condition to be satisfied for an action to be executed."
+      }
+    },
+    "com.azure.keyvault_keys#UpdateKeyRotationPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key in the given vault."
+          }
+        },
+        "lifetimeActions": {
+          "target": "com.azure.keyvault_keys#UpdateKeyRotationPolicyRequestLifetimeActionsList",
+          "traits": {
+            "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a key. For preview, lifetimeActions can only have two items at maximum: one for rotate, one for notify. Notification time would be default to 30 days before expiry and it is not configurable."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyRotationPolicyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The key rotation policy attributes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#KeyRotationPolicyAttributesInput": {
+      "type": "structure",
+      "members": {
+        "expiryTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiryTime will be applied on the new key version. It should be at least 28 days. It will be in ISO 8601 Format. Examples: 90 days: P90D, 3 months: P3M, 48 hours: PT48H, 1 year and 10 days: P1Y10D"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key rotation policy attributes."
+      }
+    },
+    "com.azure.keyvault_keys#UpdateKeyRotationPolicyRequestLifetimeActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_keys#LifetimeActions"
+      },
+      "traits": {
+        "smithy.api#documentation": "Actions that will be performed by Key Vault over the lifetime of a key. For preview, lifetimeActions can only have two items at maximum: one for rotate, one for notify. Notification time would be default to 30 days before expiry and it is not configurable."
+      }
+    },
+    "com.azure.keyvault_keys#GetKeyRotationPolicy": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetKeyRotationPolicyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyRotationPolicy"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/keys/{keyName}/rotationpolicy",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Lists the policy for a key.\n\nThe GetKeyRotationPolicy operation returns the specified key policy resources in the specified key vault. This operation requires the keys/get permission."
+      }
+    },
+    "com.azure.keyvault_keys#GetKeyRotationPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key in a given key vault."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#RotateKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#RotateKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/rotate",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a new key version, stores it, then returns key parameters, attributes and policy to the client.\n\nThe operation will rotate the key based on the key policy. It requires the keys/rotate permission."
+      }
+    },
+    "com.azure.keyvault_keys#RotateKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of key to be rotated. The system will generate a new version in the specified key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#CreateKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#CreateKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/create",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a new key, stores it, then returns key parameters and attributes to the client.\n\nThe create key operation can be used to create any key type in Azure Key Vault. If the named key already exists, Azure Key Vault creates a new version of the key. It requires the keys/create permission."
+      }
+    },
+    "com.azure.keyvault_keys#CreateKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name for the new key. The system will generate the version name for the new key. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information."
+          }
+        },
+        "kty": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyType",
+          "traits": {
+            "smithy.api#documentation": "The type of key to create. For valid values, see JsonWebKeyType.",
+            "smithy.api#required": {}
+          }
+        },
+        "key_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The key size in bits. For example: 2048, 3072, or 4096 for RSA."
+          }
+        },
+        "public_exponent": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The public exponent for a RSA key."
+          }
+        },
+        "key_ops": {
+          "target": "com.azure.keyvault_keys#CreateKeyRequestKeyOpsList",
+          "traits": {
+            "smithy.api#documentation": "Json web key operations. For more information on possible key operations, see JsonWebKeyOperation."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of a key managed by the key vault service."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_keys#CreateKeyRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "crv": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyCurveName",
+          "traits": {
+            "smithy.api#documentation": "Elliptic curve name. For valid values, see JsonWebKeyCurveName."
+          }
+        },
+        "release_policy": {
+          "target": "com.azure.keyvault_keys#KeyReleasePolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy rules under which the key can be exported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#CreateKeyRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_keys#KeyAttributesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether the object is enabled."
+          }
+        },
+        "nbf": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Not before date in UTC."
+          }
+        },
+        "exp": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Expiry date in UTC."
+          }
+        },
+        "exportable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the private key can be exported. Release policy must be provided when creating the first version of an exportable key."
+          }
+        },
+        "external_key": {
+          "target": "com.azure.keyvault_keys#ExternalKey",
+          "traits": {
+            "smithy.api#documentation": "The external key information."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The attributes of a key managed by the key vault service."
+      }
+    },
+    "com.azure.keyvault_keys#CreateKeyRequestKeyOpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_keys#JsonWebKeyOperation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Json web key operations. For more information on possible key operations, see JsonWebKeyOperation."
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKeyOperation": {
+      "type": "enum",
+      "members": {
+        "ENCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "encrypt"
+          }
+        },
+        "DECRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decrypt"
+          }
+        },
+        "SIGN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sign"
+          }
+        },
+        "VERIFY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "verify"
+          }
+        },
+        "WRAPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wrapKey"
+          }
+        },
+        "UNWRAPKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unwrapKey"
+          }
+        },
+        "IMPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import"
+          }
+        },
+        "EXPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "export"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "JSON web key operations. For more information, see JsonWebKeyOperation."
+      }
+    },
+    "com.azure.keyvault_keys#BackupKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#BackupKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#BackupKeyResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/backup",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Requests that a backup of the specified key be downloaded to the client.\n\nThe Key Backup operation exports a key from Azure Key Vault in a protected form. Note that this operation does NOT return key material in a form that can be used outside the Azure Key Vault system, the returned key material is either protected to a Azure Key Vault HSM or to Azure Key Vault itself. The intent of this operation is to allow a client to GENERATE a key in one Azure Key Vault instance, BACKUP the key, and then RESTORE it into another Azure Key Vault instance. The BACKUP operation may be used to export, in protected form, any key type from Azure Key Vault. Individual versions of a key cannot be backed up. BACKUP / RESTORE can be performed within geographical boundaries only; meaning that a BACKUP from one geographical area cannot be restored to another geographical area. For example, a backup from the US geographical area cannot be restored in an EU geographical area. This operation requires the key/backup permission."
+      }
+    },
+    "com.azure.keyvault_keys#BackupKeyResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The backup blob containing the backed up key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The backup key result, containing the backup blob."
+      }
+    },
+    "com.azure.keyvault_keys#BackupKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#WrapKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#WrapKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/wrapkey",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Wraps a symmetric key using a specified key.\n\nThe WRAP operation supports encryption of a symmetric key using a key encryption key that has previously been stored in an Azure Key Vault. The WRAP operation is only strictly necessary for symmetric keys stored in Azure Key Vault since protection with an asymmetric key can be performed using the public portion of the key. This operation is supported for asymmetric keys as a convenience for callers that have a key-reference but do not have access to the public key material. This operation requires the keys/wrapKey permission."
+      }
+    },
+    "com.azure.keyvault_keys#KeyOperationResult": {
+      "type": "structure",
+      "members": {
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key identifier"
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation."
+          }
+        },
+        "iv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cryptographically random, non-repeating initialization vector for symmetric algorithms."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tag to authenticate when performing decryption with an authenticated algorithm."
+          }
+        },
+        "aad": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional data to authenticate but not encrypt/decrypt when using authenticated crypto algorithms."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key operation result."
+      }
+    },
+    "com.azure.keyvault_keys#WrapKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyEncryptionAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "algorithm identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to operate on.",
+            "smithy.api#required": {}
+          }
+        },
+        "iv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cryptographically random, non-repeating initialization vector for symmetric algorithms."
+          }
+        },
+        "aad": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional data to authenticate but not encrypt/decrypt when using authenticated crypto algorithms."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tag to authenticate when performing decryption with an authenticated algorithm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKeyEncryptionAlgorithm": {
+      "type": "enum",
+      "members": {
+        "RSA_OAEP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA-OAEP"
+          }
+        },
+        "RSA_OAEP_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA-OAEP-256"
+          }
+        },
+        "RSA1_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA1_5"
+          }
+        },
+        "A128GCM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A128GCM"
+          }
+        },
+        "A192GCM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A192GCM"
+          }
+        },
+        "A256GCM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A256GCM"
+          }
+        },
+        "A128KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A128KW"
+          }
+        },
+        "A192KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A192KW"
+          }
+        },
+        "A256KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A256KW"
+          }
+        },
+        "A128CBC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A128CBC"
+          }
+        },
+        "A192CBC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A192CBC"
+          }
+        },
+        "A256CBC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A256CBC"
+          }
+        },
+        "A128CBCPAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A128CBCPAD"
+          }
+        },
+        "A192CBCPAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A192CBCPAD"
+          }
+        },
+        "A256CBCPAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A256CBCPAD"
+          }
+        },
+        "CKM_AES_KEY_WRAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CKM_AES_KEY_WRAP"
+          }
+        },
+        "CKM_AES_KEY_WRAP_PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CKM_AES_KEY_WRAP_PAD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An algorithm used for encryption and decryption."
+      }
+    },
+    "com.azure.keyvault_keys#Verify": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#VerifyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyVerifyResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/verify",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Verifies a signature using a specified key.\n\nThe VERIFY operation is applicable to symmetric keys stored in Azure Key Vault. VERIFY is not strictly necessary for asymmetric keys stored in Azure Key Vault since signature verification can be performed using the public portion of the key but this operation is supported as a convenience for callers that only have a key-reference and not the public portion of the key. This operation requires the keys/verify permission."
+      }
+    },
+    "com.azure.keyvault_keys#KeyVerifyResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the signature is verified, otherwise false."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key verify result."
+      }
+    },
+    "com.azure.keyvault_keys#VerifyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeySignatureAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "The signing/verification algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.",
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The digest used for signing.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The signature to be verified.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKeySignatureAlgorithm": {
+      "type": "enum",
+      "members": {
+        "PS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS256"
+          }
+        },
+        "PS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS384"
+          }
+        },
+        "PS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PS512"
+          }
+        },
+        "RS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS256"
+          }
+        },
+        "RS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS384"
+          }
+        },
+        "RS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RS512"
+          }
+        },
+        "HS256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HS256"
+          }
+        },
+        "HS384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HS384"
+          }
+        },
+        "HS512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HS512"
+          }
+        },
+        "RSNULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSNULL"
+          }
+        },
+        "ES256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES256"
+          }
+        },
+        "ES384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES384"
+          }
+        },
+        "ES512": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES512"
+          }
+        },
+        "ES256K": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ES256K"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The signing/verification algorithm identifier. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm."
+      }
+    },
+    "com.azure.keyvault_keys#UnwrapKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#UnwrapKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/unwrapkey",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Unwraps a symmetric key using the specified key that was initially used for wrapping that key.\n\nThe UNWRAP operation supports decryption of a symmetric key using the target key encryption key. This operation is the reverse of the WRAP operation. The UNWRAP operation applies to asymmetric and symmetric keys stored in Azure Key Vault since it uses the private portion of the key. This operation requires the keys/unwrapKey permission."
+      }
+    },
+    "com.azure.keyvault_keys#UnwrapKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyEncryptionAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "algorithm identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to operate on.",
+            "smithy.api#required": {}
+          }
+        },
+        "iv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cryptographically random, non-repeating initialization vector for symmetric algorithms."
+          }
+        },
+        "aad": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional data to authenticate but not encrypt/decrypt when using authenticated crypto algorithms."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tag to authenticate when performing decryption with an authenticated algorithm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#Sign": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#SignRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/sign",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a signature from a digest using the specified key.\n\nThe SIGN operation is applicable to asymmetric and symmetric keys stored in Azure Key Vault since this operation uses the private portion of the key. This operation requires the keys/sign permission."
+      }
+    },
+    "com.azure.keyvault_keys#SignRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeySignatureAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "The signing/verification algorithm identifier. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to operate on.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#Securewrapkey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#SecurewrapkeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#SecureKeyOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/securewrapkey",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Creates a new 256 bit AES key within the trusted execution environment and wraps this key using a specified key.\n\nThe SECURE WRAP operation creates a new 256 bit AES key within the trusted execution environment(TEE) and encrypts the same with a key encryption key that has previously been stored in an Azure Key Vault. The WRAP operation is only strictly necessary for symmetric keys stored in Azure Key Vault since protection with an asymmetric key can be performed using the public portion of the key. This operation is supported for asymmetric keys as a convenience for callers that have a key-reference but do not have access to the public key material. This operation requires the keys/wrapKey permission."
+      }
+    },
+    "com.azure.keyvault_keys#SecureKeyOperationResult": {
+      "type": "structure",
+      "members": {
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyWrapAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "The algorithm used for the operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result of the operation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The secure key wrap operation result."
+      }
+    },
+    "com.azure.keyvault_keys#JsonWebKeyWrapAlgorithm": {
+      "type": "enum",
+      "members": {
+        "RSA_OAEP_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA-OAEP-256"
+          }
+        },
+        "A128KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A128KW"
+          }
+        },
+        "A192KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A192KW"
+          }
+        },
+        "A256KW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A256KW"
+          }
+        },
+        "A128KWPAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A128KWPAD"
+          }
+        },
+        "A192KWPAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A192KWPAD"
+          }
+        },
+        "A256KWPAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A256KWPAD"
+          }
+        },
+        "CKM_AES_KEY_WRAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CKM_AES_KEY_WRAP"
+          }
+        },
+        "CKM_AES_KEY_WRAP_PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CKM_AES_KEY_WRAP_PAD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An algorithm used for key wrapping and unwrapping."
+      }
+    },
+    "com.azure.keyvault_keys#SecurewrapkeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyWrapAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "algorithm identifier",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#Secureunwrapkey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#SecureunwrapkeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#SecureKeyOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/secureunwrapkey",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Securely unwraps a previously wrapped symmetric key using a specified key, ensuring TEE attestation via Microsoft Azure Attestation (MAA) before unwrapping.\n\nThe SECURE UNWRAP operation supports decryption of a symmetric key using the target key encryption key. This operation is the reverse of the SECURE WRAP operation. The SECURE UNWRAP operation applies to asymmetric and symmetric keys stored in Azure Key Vault since it uses the private portion of the key. This operation requires the keys/unwrapKey permission.\nThe SECURE UNWRAP operation ensures that MAA (Microsoft Azure Attestation Service) is used to attest the TEE (Trusted Execution Environment) before the key is unwrapped."
+      }
+    },
+    "com.azure.keyvault_keys#SecureunwrapkeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyWrapAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "algorithm identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to operate on.",
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The attestation assertion for the target of the key release.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#Release": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#ReleaseRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyReleaseResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/release",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Releases a key.\n\nThe release key operation is applicable to all key types. The target key must be marked exportable. This operation requires the keys/release permission."
+      }
+    },
+    "com.azure.keyvault_keys#KeyReleaseResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A signed object containing the released key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The release result, containing the released key."
+      }
+    },
+    "com.azure.keyvault_keys#ReleaseRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key to get."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Adding the version parameter retrieves a specific version of a key."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The attestation assertion for the target of the key release.",
+            "smithy.api#required": {}
+          }
+        },
+        "nonce": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A client provided nonce for freshness."
+          }
+        },
+        "enc": {
+          "target": "com.azure.keyvault_keys#KeyEncryptionAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "The encryption algorithm to use to protected the exported key material"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#KeyEncryptionAlgorithm": {
+      "type": "enum",
+      "members": {
+        "CKM_RSA_AES_KEY_WRAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CKM_RSA_AES_KEY_WRAP"
+          }
+        },
+        "RSA_AES_KEY_WRAP_256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA_AES_KEY_WRAP_256"
+          }
+        },
+        "RSA_AES_KEY_WRAP_384": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RSA_AES_KEY_WRAP_384"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption algorithm to use to protected the exported key material"
+      }
+    },
+    "com.azure.keyvault_keys#Encrypt": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#EncryptRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/encrypt",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Encrypts an arbitrary sequence of bytes using an encryption key that is stored in a key vault.\n\nThe ENCRYPT operation encrypts an arbitrary sequence of bytes using an encryption key that is stored in Azure Key Vault. Note that the ENCRYPT operation only supports a single block of data, the size of which is dependent on the target key and the encryption algorithm to be used. The ENCRYPT operation is only strictly necessary for symmetric keys stored in Azure Key Vault since protection with an asymmetric key can be performed using public portion of the key. This operation is supported for asymmetric keys as a convenience for callers that have a key-reference but do not have access to the public key material. This operation requires the keys/encrypt permission."
+      }
+    },
+    "com.azure.keyvault_keys#EncryptRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyEncryptionAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "algorithm identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to operate on.",
+            "smithy.api#required": {}
+          }
+        },
+        "iv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cryptographically random, non-repeating initialization vector for symmetric algorithms."
+          }
+        },
+        "aad": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional data to authenticate but not encrypt/decrypt when using authenticated crypto algorithms."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tag to authenticate when performing decryption with an authenticated algorithm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#Decrypt": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#DecryptRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyOperationResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/keys/{keyName}/{keyVersion}/decrypt",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Decrypts a single block of encrypted data.\n\nThe DECRYPT operation decrypts a well-formed block of ciphertext using the target encryption key and specified algorithm. This operation is the reverse of the ENCRYPT operation; only a single block of data may be decrypted, the size of this block is dependent on the target key and the algorithm to be used. The DECRYPT operation applies to asymmetric and symmetric keys stored in Azure Key Vault since it uses the private portion of the key. This operation requires the keys/decrypt permission. Microsoft recommends not to use CBC algorithms for decryption without first ensuring the integrity of the ciphertext using an HMAC, for example. See https://learn.microsoft.com/dotnet/standard/security/vulnerabilities-cbc-mode for more information."
+      }
+    },
+    "com.azure.keyvault_keys#DecryptRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "alg": {
+          "target": "com.azure.keyvault_keys#JsonWebKeyEncryptionAlgorithm",
+          "traits": {
+            "smithy.api#documentation": "algorithm identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value to operate on.",
+            "smithy.api#required": {}
+          }
+        },
+        "iv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cryptographically random, non-repeating initialization vector for symmetric algorithms."
+          }
+        },
+        "aad": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional data to authenticate but not encrypt/decrypt when using authenticated crypto algorithms."
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tag to authenticate when performing decryption with an authenticated algorithm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#GetKeyAttestation": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetKeyAttestationRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/keys/{keyName}/{keyVersion}/attestation",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets the public part of a stored key along with its attestation blob.\n\nThe get key attestation operation returns the key along with its attestation blob. This operation requires the keys/get permission."
+      }
+    },
+    "com.azure.keyvault_keys#GetKeyAttestationRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key to retrieve attestation for."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Adding the version parameter retrieves attestation blob for specific version of a key. This URI fragment is optional. If not specified, the latest version of the key attestation blob is returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#UpdateKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#UpdateKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/keys/{keyName}/{keyVersion}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "The update key operation changes specified attributes of a stored key and can be applied to any key type and key version stored in Azure Key Vault.\n\nIn order to perform this operation, the key must already exist in the Key Vault. Note: The cryptographic material of a key itself cannot be changed. This operation requires the keys/update permission."
+      }
+    },
+    "com.azure.keyvault_keys#UpdateKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of key to update."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The version of the key to update."
+          }
+        },
+        "key_ops": {
+          "target": "com.azure.keyvault_keys#UpdateKeyRequestKeyOpsList",
+          "traits": {
+            "smithy.api#documentation": "Json web key operations. For more information on possible key operations, see JsonWebKeyOperation."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The attributes of a key managed by the key vault service."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_keys#UpdateKeyRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "release_policy": {
+          "target": "com.azure.keyvault_keys#KeyReleasePolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy rules under which the key can be exported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#UpdateKeyRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_keys#UpdateKeyRequestKeyOpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_keys#JsonWebKeyOperation"
+      },
+      "traits": {
+        "smithy.api#documentation": "Json web key operations. For more information on possible key operations, see JsonWebKeyOperation."
+      }
+    },
+    "com.azure.keyvault_keys#GetKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/keys/{keyName}/{keyVersion}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets the public part of a stored key.\n\nThe get key operation is applicable to all key types. If the requested key is symmetric, then no key material is released in the response. This operation requires the keys/get permission."
+      }
+    },
+    "com.azure.keyvault_keys#GetKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key to get."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Adding the version parameter retrieves a specific version of a key. This URI fragment is optional. If not specified, the latest version of the key is returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#DeleteKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#DeleteKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#DeletedKeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/keys/{keyName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Deletes a key of any type from storage in Azure Key Vault.\n\nThe delete key operation cannot be used to remove individual versions of a key. This operation removes the cryptographic material associated with the key, which means the key is not usable for Sign/Verify, Wrap/Unwrap or Encrypt/Decrypt operations. This operation requires the keys/delete permission."
+      }
+    },
+    "com.azure.keyvault_keys#DeletedKeyBundle": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "com.azure.keyvault_keys#JsonWebKey",
+          "traits": {
+            "smithy.api#documentation": "The Json web key."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyAttributes",
+          "traits": {
+            "smithy.api#documentation": "The key management attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_keys#DeletedKeyBundleTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the key's lifetime is managed by key vault. If this is a key backing a certificate, then managed will be true."
+          }
+        },
+        "release_policy": {
+          "target": "com.azure.keyvault_keys#KeyReleasePolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy rules under which the key can be exported."
+          }
+        },
+        "recoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The url of the recovery object, used to identify and recover the deleted key."
+          }
+        },
+        "scheduledPurgeDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the key is scheduled to be purged, in UTC"
+          }
+        },
+        "deletedDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the key was deleted, in UTC"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A DeletedKeyBundle consisting of a WebKey plus its Attributes and deletion info"
+      }
+    },
+    "com.azure.keyvault_keys#DeletedKeyBundleTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_keys#DeleteKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key to delete."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#ImportKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#ImportKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/keys/{keyName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Imports an externally created key, stores it, and returns key parameters and attributes to the client.\n\nThe import key operation may be used to import any key type into an Azure Key Vault. If the named key already exists, Azure Key Vault creates a new version of the key. This operation requires the keys/import permission."
+      }
+    },
+    "com.azure.keyvault_keys#ImportKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Name for the imported key. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information."
+          }
+        },
+        "Hsm": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to import as a hardware key (HSM) or software key."
+          }
+        },
+        "key": {
+          "target": "com.azure.keyvault_keys#JsonWebKey",
+          "traits": {
+            "smithy.api#documentation": "The Json web key",
+            "smithy.api#required": {}
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyAttributesInput",
+          "traits": {
+            "smithy.api#documentation": "The key management attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_keys#ImportKeyRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "release_policy": {
+          "target": "com.azure.keyvault_keys#KeyReleasePolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy rules under which the key can be exported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#ImportKeyRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_keys#GetKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetKeysRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/keys",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "List keys in the specified vault.\n\nRetrieves a list of the keys in the Key Vault as JSON Web Key structures that contain the public part of a stored key. The LIST operation is applicable to all key types, however only the base key identifier, attributes, and tags are provided in the response. Individual versions of a key are not listed in the response. This operation requires the keys/list permission."
+      }
+    },
+    "com.azure.keyvault_keys#GetKeysRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#RecoverDeletedKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#RecoverDeletedKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#KeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/deletedkeys/{keyName}/recover",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Recovers the deleted key to its latest version.\n\nThe Recover Deleted Key operation is applicable for deleted keys in soft-delete enabled vaults. It recovers the deleted key back to its latest version under /keys. An attempt to recover an non-deleted key will return an error. Consider this the inverse of the delete operation on soft-delete enabled vaults. This operation requires the keys/recover permission."
+      }
+    },
+    "com.azure.keyvault_keys#RecoverDeletedKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the deleted key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#PurgeDeletedKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#PurgeDeletedKeyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/deletedkeys/{keyName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Permanently deletes the specified key.\n\nThe Purge Deleted Key operation is applicable for soft-delete enabled vaults. While the operation can be invoked on any vault, it will return an error if invoked on a non soft-delete enabled vault. This operation requires the keys/purge permission."
+      }
+    },
+    "com.azure.keyvault_keys#PurgeDeletedKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#GetDeletedKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetDeletedKeyRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#DeletedKeyBundle"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/deletedkeys/{keyName}",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Gets the public part of a deleted key.\n\nThe Get Deleted Key operation is applicable for soft-delete enabled vaults. While the operation can be invoked on any vault, it will return an error if invoked on a non soft-delete enabled vault. This operation requires the keys/get permission."
+      }
+    },
+    "com.azure.keyvault_keys#GetDeletedKeyRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#GetDeletedKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.keyvault_keys#GetDeletedKeysRequest"
+      },
+      "output": {
+        "target": "com.azure.keyvault_keys#DeletedKeyListResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/deletedkeys",
+          "code": 200,
+          "host": "{vaultBaseUrl}",
+          "hostRaw": [
+            "vaultBaseUrl"
+          ],
+          "apiVersion": "2026-04-01"
+        },
+        "smithy.api#documentation": "Lists the deleted keys in the specified vault.\n\nRetrieves a list of the keys in the Key Vault as JSON Web Key structures that contain the public part of a deleted key. This operation includes deletion-specific information. The Get Deleted Keys operation is applicable for vaults enabled for soft-delete. While the operation can be invoked on any vault, it will return an error if invoked on a non soft-delete enabled vault. This operation requires the keys/list permission."
+      }
+    },
+    "com.azure.keyvault_keys#DeletedKeyListResult": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.keyvault_keys#DeletedKeyListResultValueList",
+          "traits": {
+            "smithy.api#documentation": "A response message containing a list of deleted keys in the key vault along with a link to the next page of deleted keys."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to get the next set of deleted keys."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of keys that have been deleted in this vault."
+      }
+    },
+    "com.azure.keyvault_keys#DeletedKeyListResultValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.keyvault_keys#DeletedKeyItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A response message containing a list of deleted keys in the key vault along with a link to the next page of deleted keys."
+      }
+    },
+    "com.azure.keyvault_keys#DeletedKeyItem": {
+      "type": "structure",
+      "members": {
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key identifier."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.keyvault_keys#KeyAttributes",
+          "traits": {
+            "smithy.api#documentation": "The key management attributes."
+          }
+        },
+        "tags": {
+          "target": "com.azure.keyvault_keys#DeletedKeyItemTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+          }
+        },
+        "managed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if the key's lifetime is managed by key vault. If this is a key backing a certificate, then managed will be true."
+          }
+        },
+        "recoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The url of the recovery object, used to identify and recover the deleted key."
+          }
+        },
+        "scheduledPurgeDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the key is scheduled to be purged, in UTC"
+          }
+        },
+        "deletedDate": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time when the key was deleted, in UTC"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The deleted key item containing the deleted key metadata and information about deletion."
+      }
+    },
+    "com.azure.keyvault_keys#DeletedKeyItemTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.keyvault_keys#GetDeletedKeysRequest": {
+      "type": "structure",
+      "members": {
+        "vaultBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "maxresults": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxresults",
+            "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.keyvault_keys#KeyvaultKeys": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.keyvault_keys#GetRandomBytes"
+        },
+        {
+          "target": "com.azure.keyvault_keys#RestoreKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#GetKeyVersions"
+        },
+        {
+          "target": "com.azure.keyvault_keys#UpdateKeyRotationPolicy"
+        },
+        {
+          "target": "com.azure.keyvault_keys#GetKeyRotationPolicy"
+        },
+        {
+          "target": "com.azure.keyvault_keys#RotateKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#CreateKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#BackupKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#WrapKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#Verify"
+        },
+        {
+          "target": "com.azure.keyvault_keys#UnwrapKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#Sign"
+        },
+        {
+          "target": "com.azure.keyvault_keys#Securewrapkey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#Secureunwrapkey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#Release"
+        },
+        {
+          "target": "com.azure.keyvault_keys#Encrypt"
+        },
+        {
+          "target": "com.azure.keyvault_keys#Decrypt"
+        },
+        {
+          "target": "com.azure.keyvault_keys#GetKeyAttestation"
+        },
+        {
+          "target": "com.azure.keyvault_keys#UpdateKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#GetKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#DeleteKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#ImportKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#GetKeys"
+        },
+        {
+          "target": "com.azure.keyvault_keys#RecoverDeletedKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#PurgeDeletedKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#GetDeletedKey"
+        },
+        {
+          "target": "com.azure.keyvault_keys#GetDeletedKeys"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Keys data plane",
+        "smithy.api#documentation": "Azure keyvault data plane — keyvault/data-plane/Keys (latest stable api-version 2026-04-01).",
+        "com.azure.protocols#host": {
+          "template": "{vaultBaseUrl}",
+          "parameters": [
+            {
+              "name": "vaultBaseUrl",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://vault.azure.net/.default"
+      }
+    }
+  }
+}

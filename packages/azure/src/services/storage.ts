@@ -614,10 +614,48 @@ export type BlobAccessPointSourceType =
   | "Commvault"
   | "Nasuni"
   | "S3Compatible";
+/** Details for connecting to a backing data source. */
+export interface BlobAccessPointConnection {
+  /** The connection type: `Endpoint` or `PrivateLink`. This value determines the remaining members. */
+  connectionType: string;
+  /** The endpoint URL of the S3-compatible data source. Fixed once the configuration is created. */
+  endpoint?: string;
+  /** TLS certificate verification behavior: `Perform` or `Skip`. */
+  tlsVerification?: string;
+  /** PrivateLink only. The type of `privateLinkId`; only `ResourceId` is supported. */
+  privateLinkIdType?: string;
+  /** PrivateLink only. ARM resource ID of the Microsoft.Network/privateLinkServices resource. */
+  privateLinkId?: string;
+  /** PrivateLink only. The group ID of the private link resource. */
+  privateLinkGroupId?: string;
+  /** PrivateLink only. The Azure region of the private link service. */
+  privateLinkLocation?: string;
+  /** PrivateLink only. The message sent with the private endpoint connection request. */
+  requestMessage?: string;
+  /** PrivateLink only. The name of the private endpoint the service created (read-only). */
+  privateEndpointName?: string;
+}
+/** Details for authenticating to a backing data source. */
+export interface BlobAccessPointRemoteAuth {
+  /** The authentication type; only `AccessKey` is supported. */
+  authType: string;
+  /** The access key ID. */
+  accessKeyId?: string;
+  /** The secret access key. This value is never returned by read or list operations. */
+  secretAccessKey?: string | Redacted.Redacted<string>;
+  /** The region used by the request-signing algorithm. Defaults to 'us-east-1' when not specified. */
+  signingRegion?: string;
+  /** The host used when computing request signatures. The endpoint host is used by default. */
+  hostOverride?: string;
+}
 /** Information about the data source exposed through a Blob Access Point. */
 export interface BlobAccessPointSourceProperties {
   /** The source type. This value determines the remaining shape of the source object. */
   sourceType: BlobAccessPointSourceType | (string & {});
+  /** Details for connecting to the backing data source. The connection target is fixed when the configuration is created; only the TLS verification behavior can be changed afterwards. */
+  connection?: BlobAccessPointConnection;
+  /** Details for authenticating to the backing data source. */
+  auth?: BlobAccessPointRemoteAuth;
 }
 /** Details of a Blob Access Point configuration. */
 export interface BlobAccessPointConfigurationPropertiesInput {
@@ -5737,7 +5775,14 @@ export type UpdateBlobAccessPointConfigurationRequestTagsMap = {
   [key: string]: string | undefined;
 };
 /** Information about the data source exposed through a Blob Access Point. */
-export type BlobAccessPointSourcePropertiesUpdate = BlobAccessPointSourceProperties;
+export interface BlobAccessPointSourcePropertiesUpdate {
+  /** The source type. This value determines the remaining shape of the source object. */
+  sourceType: BlobAccessPointSourceType | (string & {});
+  /** Details for connecting to the backing data source. Only the TLS verification behavior can be changed. */
+  connection?: BlobAccessPointConnection;
+  /** Details for authenticating to the backing data source. */
+  auth?: BlobAccessPointRemoteAuth;
+}
 /** Details of a Blob Access Point configuration. */
 export interface BlobAccessPointConfigurationPropertiesUpdate {
   /** The configuration state. A configuration is created in the Active state when this value is not specified. */
@@ -5745,7 +5790,7 @@ export interface BlobAccessPointConfigurationPropertiesUpdate {
   /** An arbitrary description of the Blob Access Point configuration. */
   description?: string;
   /** Information about the backing data source. */
-  source?: BlobAccessPointSourceProperties;
+  source?: BlobAccessPointSourcePropertiesUpdate;
 }
 export interface UpdateBlobAccessPointConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8957,7 +9002,7 @@ function __c24(j: number): any {
         S.Struct({
           state: S.optional(S.String),
           description: S.optional(S.String),
-          source: __S(800, __c25, 0),
+          source: __S(802, __c25, 2),
         }),
       ).annotate({ identifier: "BlobAccessPointConfigurationPropertiesInput" });
     case 1:
@@ -9000,7 +9045,33 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          connectionType: S.String,
+          endpoint: S.optional(S.String),
+          tlsVerification: S.optional(S.String),
+          privateLinkIdType: S.optional(S.String),
+          privateLinkId: S.optional(S.String),
+          privateLinkGroupId: S.optional(S.String),
+          privateLinkLocation: S.optional(S.String),
+          requestMessage: S.optional(S.String),
+          privateEndpointName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BlobAccessPointConnection" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authType: S.String,
+          accessKeyId: S.optional(S.String),
+          secretAccessKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          signingRegion: S.optional(S.String),
+          hostOverride: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BlobAccessPointRemoteAuth" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           sourceType: S.String,
+          connection: S.optional(__S(800, __c25, 0)),
+          auth: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "BlobAccessPointSourceProperties" });
   }
@@ -9016,7 +9087,7 @@ function __c26(j: number): any {
           lastConnectionTestStatus: S.optional(S.String),
           lastConnectionTestTimestamp: S.optional(S.String),
           lastConnectionTestErrorMessage: S.optional(S.String),
-          source: __S(800, __c25, 0),
+          source: __S(802, __c25, 2),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobAccessPointConfigurationProperties" });
@@ -9580,7 +9651,7 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          source: __S(800, __c25, 0),
+          source: __S(802, __c25, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9630,7 +9701,7 @@ function __c51(j: number): any {
         S.Struct({
           state: S.optional(S.String),
           description: S.optional(S.String),
-          source: S.optional(__S(800, __c25, 0)),
+          source: S.optional(__S(802, __c25, 2)),
         }),
       ).annotate({ identifier: "BlobAccessPointConfigurationPropertiesUpdate" });
     case 1:

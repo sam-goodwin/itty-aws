@@ -1,0 +1,1011 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.finalized": true
+  },
+  "shapes": {
+    "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequestOrderbyList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequestExpandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequest": {
+      "type": "structure",
+      "members": {
+        "top": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$top",
+            "smithy.api#documentation": "Show only the first n items"
+          }
+        },
+        "skip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "$skip",
+            "smithy.api#documentation": "Skip the first n items"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$search",
+            "smithy.api#documentation": "Search items by search phrases"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "$filter",
+            "smithy.api#documentation": "Filter items by property values"
+          }
+        },
+        "count": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "$count",
+            "smithy.api#documentation": "Include count of items"
+          }
+        },
+        "orderby": {
+          "target": "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequestOrderbyList",
+          "traits": {
+            "smithy.api#httpQuery": "$orderby",
+            "smithy.api#documentation": "Order items by property values"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        },
+        "expand": {
+          "target": "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequestExpandList",
+          "traits": {
+            "smithy.api#httpQuery": "$expand",
+            "smithy.api#documentation": "Expand related entities"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The `@odata.nextLink` of the previous page. When set, the request goes to this URL as-is and the other query members are ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#AgreementAcceptance": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agreementFileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement file accepted by the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agreementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the device used for accepting the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system version of the device used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "recordedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.agreementAcceptances#AgreementAcceptanceState",
+          "traits": {
+            "smithy.api#documentation": "The state of the agreement acceptance. The possible values are: accepted, declined. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the user who accepted the agreement. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UPN of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.agreementAcceptances#AgreementAcceptanceState": {
+      "type": "enum",
+      "members": {
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "DECLINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "declined"
+          }
+        },
+        "UNKNOWNFUTUREVALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknownFutureValue"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceResponseValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.microsoft.graph.agreementAcceptances#AgreementAcceptance"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceResponse": {
+      "type": "structure",
+      "members": {
+        "odataCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#jsonName": "@odata.count",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "odataNextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.nextLink",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceResponseValueList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptance": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptanceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/agreementAcceptances",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entities from agreementAcceptances",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odataNextLink",
+          "items": "value",
+          "pageSize": "top"
+        }
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#CreateAgreementAcceptanceRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agreementFileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement file accepted by the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agreementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the device used for accepting the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system version of the device used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "recordedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.agreementAcceptances#AgreementAcceptanceState",
+          "traits": {
+            "smithy.api#documentation": "The state of the agreement acceptance. The possible values are: accepted, declined. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the user who accepted the agreement. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UPN of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#CreateAgreementAcceptanceResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agreementFileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement file accepted by the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agreementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the device used for accepting the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system version of the device used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "recordedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.agreementAcceptances#AgreementAcceptanceState",
+          "traits": {
+            "smithy.api#documentation": "The state of the agreement acceptance. The possible values are: accepted, declined. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the user who accepted the agreement. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UPN of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#CreateAgreementAcceptance": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.agreementAcceptances#CreateAgreementAcceptanceRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.agreementAcceptances#CreateAgreementAcceptanceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/agreementAcceptances",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add new entity to agreementAcceptances"
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptanceRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptanceRequest": {
+      "type": "structure",
+      "members": {
+        "agreementAcceptanceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of agreementAcceptance"
+          }
+        },
+        "select": {
+          "target": "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptanceRequestSelectList",
+          "traits": {
+            "smithy.api#httpQuery": "$select",
+            "smithy.api#documentation": "Select properties to be returned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptanceResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agreementFileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement file accepted by the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agreementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the device used for accepting the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system version of the device used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "recordedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.agreementAcceptances#AgreementAcceptanceState",
+          "traits": {
+            "smithy.api#documentation": "The state of the agreement acceptance. The possible values are: accepted, declined. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the user who accepted the agreement. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UPN of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptance": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptanceRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptanceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/agreementAcceptances/{agreementAcceptanceId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get entity from agreementAcceptances by key"
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#UpdateAgreementAcceptanceRequest": {
+      "type": "structure",
+      "members": {
+        "agreementAcceptanceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of agreementAcceptance"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agreementFileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement file accepted by the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agreementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the device used for accepting the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system version of the device used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "recordedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.agreementAcceptances#AgreementAcceptanceState",
+          "traits": {
+            "smithy.api#documentation": "The state of the agreement acceptance. The possible values are: accepted, declined. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the user who accepted the agreement. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UPN of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#UpdateAgreementAcceptanceResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for an entity. Read-only."
+          }
+        },
+        "odataType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#jsonName": "@odata.type"
+          }
+        },
+        "agreementFileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement file accepted by the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agreementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the device used for accepting the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deviceOSVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operating system version of the device used to accept the agreement.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expirationDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "recordedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.microsoft.graph.agreementAcceptances#AgreementAcceptanceState",
+          "traits": {
+            "smithy.api#documentation": "The state of the agreement acceptance. The possible values are: accepted, declined. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier of the user who accepted the agreement. Supports $filter (eq).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UPN of the user when the acceptance was recorded.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#UpdateAgreementAcceptance": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.agreementAcceptances#UpdateAgreementAcceptanceRequest"
+      },
+      "output": {
+        "target": "com.microsoft.graph.agreementAcceptances#UpdateAgreementAcceptanceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/agreementAcceptances/{agreementAcceptanceId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update entity in agreementAcceptances"
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#DeleteAgreementAcceptanceRequest": {
+      "type": "structure",
+      "members": {
+        "agreementAcceptanceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of agreementAcceptance"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "If-Match",
+            "smithy.api#documentation": "ETag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#DeleteAgreementAcceptance": {
+      "type": "operation",
+      "input": {
+        "target": "com.microsoft.graph.agreementAcceptances#DeleteAgreementAcceptanceRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/agreementAcceptances/{agreementAcceptanceId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete entity from agreementAcceptances"
+      }
+    },
+    "com.microsoft.graph.agreementAcceptances#AgreementAcceptances": {
+      "type": "service",
+      "version": "v1.0",
+      "operations": [
+        {
+          "target": "com.microsoft.graph.agreementAcceptances#ListAgreementAcceptance"
+        },
+        {
+          "target": "com.microsoft.graph.agreementAcceptances#CreateAgreementAcceptance"
+        },
+        {
+          "target": "com.microsoft.graph.agreementAcceptances#GetAgreementAcceptance"
+        },
+        {
+          "target": "com.microsoft.graph.agreementAcceptances#UpdateAgreementAcceptance"
+        },
+        {
+          "target": "com.microsoft.graph.agreementAcceptances#DeleteAgreementAcceptance"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "OData Service for namespace microsoft.graph",
+        "smithy.api#documentation": "This OData service is located at https://graph.microsoft.com/v1.0"
+      }
+    }
+  }
+}

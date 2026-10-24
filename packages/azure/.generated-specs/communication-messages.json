@@ -1,0 +1,439 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ],
+    "distilled.rename": {
+      "com.azure.communication_messages#StreamOperationsGetMedia": "com.azure.communication_messages#GetStreamOperationMedia",
+      "com.azure.communication_messages#StreamOperationsGetMediaResponse": "com.azure.communication_messages#GetStreamOperationMediaResponse",
+      "com.azure.communication_messages#StreamOperationsGetMediaRequest": "com.azure.communication_messages#GetStreamOperationMediaRequest",
+      "com.azure.communication_messages#NotificationMessagesOperationsSend": "com.azure.communication_messages#SendNotificationMessagesOperation",
+      "com.azure.communication_messages#NotificationMessagesOperationsSendRequest": "com.azure.communication_messages#SendNotificationMessagesOperationRequest",
+      "com.azure.communication_messages#NotificationMessagesOperationsSendRequestToList": "com.azure.communication_messages#SendNotificationMessagesOperationRequestToList",
+      "com.azure.communication_messages#TemplateOperationsListTemplates": "com.azure.communication_messages#ListTemplateOperationTemplates",
+      "com.azure.communication_messages#TemplateOperationsListTemplatesRequest": "com.azure.communication_messages#ListTemplateOperationTemplatesRequest"
+    }
+  },
+  "shapes": {
+    "com.azure.communication_messages#StreamOperationsGetMedia": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_messages#StreamOperationsGetMediaRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_messages#StreamOperationsGetMediaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/messages/streams/{id}",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-08-30"
+        },
+        "smithy.api#documentation": "Download the Media payload from a User to Business message."
+      }
+    },
+    "com.azure.communication_messages#StreamOperationsGetMediaResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.communication_messages#StreamOperationsGetMediaRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The stream ID."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_messages#NotificationMessagesOperationsSend": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_messages#NotificationMessagesOperationsSendRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/messages/notifications:send",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-08-30"
+        },
+        "smithy.api#documentation": "Sends a notification message from Business to User."
+      }
+    },
+    "com.azure.communication_messages#NotificationMessagesOperationsSendRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "repeatabilityRequestID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-Request-ID",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "repeatabilityFirstSent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Repeatability-First-Sent",
+            "smithy.api#documentation": "Specifies the date and time at which the request was first created."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "channelRegistrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Channel Registration ID for the Business Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "to": {
+          "target": "com.azure.communication_messages#NotificationMessagesOperationsSendRequestToList",
+          "traits": {
+            "smithy.api#documentation": "The native external platform user identifiers of the recipient.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.communication_messages#CommunicationMessageKind",
+          "traits": {
+            "smithy.api#documentation": "The type discriminator describing a message type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_messages#CommunicationMessageKind": {
+      "type": "enum",
+      "members": {
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        },
+        "IMAGE_V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image_v0"
+          }
+        },
+        "DOCUMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "document"
+          }
+        },
+        "VIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "video"
+          }
+        },
+        "AUDIO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audio"
+          }
+        },
+        "TEMPLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "template"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of message."
+      }
+    },
+    "com.azure.communication_messages#NotificationMessagesOperationsSendRequestToList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The native external platform user identifiers of the recipient."
+      }
+    },
+    "com.azure.communication_messages#TemplateOperationsListTemplates": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.communication_messages#TemplateOperationsListTemplatesRequest"
+      },
+      "output": {
+        "target": "com.azure.communication_messages#PagedMessageTemplateItem"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/messages/channels/{channelId}/templates",
+          "code": 200,
+          "host": "{endpoint}",
+          "hostRaw": [
+            "endpoint"
+          ],
+          "apiVersion": "2024-08-30"
+        },
+        "smithy.api#documentation": "List all templates for given Azure Communication Services channel"
+      }
+    },
+    "com.azure.communication_messages#PagedMessageTemplateItem": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.communication_messages#PagedMessageTemplateItemValueList",
+          "traits": {
+            "smithy.api#documentation": "The MessageTemplateItem items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Paged collection of MessageTemplateItem items"
+      }
+    },
+    "com.azure.communication_messages#PagedMessageTemplateItemValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.communication_messages#MessageTemplateItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The MessageTemplateItem items on this page"
+      }
+    },
+    "com.azure.communication_messages#MessageTemplateItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The template's name.",
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The template's language, in the ISO 639 format, consist of a two-letter language code followed by an optional two-letter country code, e.g., 'en' or 'en_US'.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.communication_messages#MessageTemplateStatus",
+          "traits": {
+            "smithy.api#documentation": "The aggregated template status.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.communication_messages#CommunicationMessagesChannel",
+          "traits": {
+            "smithy.api#documentation": "The type discriminator describing a template type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The message template as returned from the service."
+      }
+    },
+    "com.azure.communication_messages#CommunicationMessagesChannel": {
+      "type": "enum",
+      "members": {
+        "WHATSAPP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whatsApp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the communication messages channel."
+      }
+    },
+    "com.azure.communication_messages#MessageTemplateStatus": {
+      "type": "enum",
+      "members": {
+        "APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "approved"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The aggregated template status."
+      }
+    },
+    "com.azure.communication_messages#TemplateOperationsListTemplatesRequest": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The communication resource, for example https://my-resource.communication.azure.com",
+            "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "channelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The registration ID of the channel."
+          }
+        },
+        "maxpagesize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "maxpagesize",
+            "smithy.api#documentation": "Number of objects to return per page."
+          }
+        },
+        "xMsClientRequestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "x-ms-client-request-id",
+            "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.communication_messages#CommunicationMessages": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.azure.communication_messages#StreamOperationsGetMedia"
+        },
+        {
+          "target": "com.azure.communication_messages#NotificationMessagesOperationsSend"
+        },
+        {
+          "target": "com.azure.communication_messages#TemplateOperationsListTemplates"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Azure Messages data plane",
+        "smithy.api#documentation": "Azure communication data plane — communication/data-plane/Messages (latest stable api-version 2024-08-30).",
+        "com.azure.protocols#host": {
+          "template": "{endpoint}",
+          "parameters": [
+            {
+              "name": "endpoint",
+              "skipUrlEncoding": true
+            }
+          ]
+        },
+        "com.azure.protocols#audience": "https://communication.azure.com/.default"
+      }
+    }
+  }
+}
