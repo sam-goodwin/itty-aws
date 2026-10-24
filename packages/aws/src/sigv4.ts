@@ -16,6 +16,8 @@ export {
   SigningKeyCache,
   sign,
   signSync,
+  signV4a,
+  signingPublicKeyV4a,
 } from "@distilled.cloud/aws4signer";
 export type {
   PresignOptions,
@@ -26,5 +28,6 @@ export type {
   SigningKeyScope,
   SigningKeyStore,
   SignOptions,
+  SignV4aOptions,
   WithoutScope,
 } from "@distilled.cloud/aws4signer";

@@ -3694,6 +3694,9 @@
         },
         {
           "target": "com.amazonaws.eventbridge#ResourceAlreadyExistsException"
+        },
+        {
+          "target": "aws.synthetic#EndpointRoleNotAssumable"
         }
       ],
       "traits": {
@@ -10366,6 +10369,9 @@
         },
         {
           "target": "com.amazonaws.eventbridge#ResourceNotFoundException"
+        },
+        {
+          "target": "aws.synthetic#EndpointRoleNotAssumable"
         }
       ],
       "traits": {
@@ -10589,6 +10595,18 @@
           "from": "ValidationException",
           "message": {
             "includes": "has rules"
+          }
+        }
+      }
+    },
+    "aws.synthetic#EndpointRoleNotAssumable": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "aws.codegen#synthetic": {
+          "from": "ValidationException",
+          "message": {
+            "includes": "cannot be assumed by principal"
           }
         }
       }
