@@ -48,6 +48,7 @@
  */
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
+import { writeModel } from "@distilled.cloud/core/codegen/models";
 import {
   convertOpenApiToSmithy,
   ERROR_MATCHERS_TRAIT,
@@ -358,9 +359,7 @@ const model = convertOpenApiToSmithy(spec, {
   // `X-Iceberg-Access-Delegation` are real per-call inputs.
   headerParams: true,
 });
-
-await fs.mkdir(outDir, { recursive: true });
-await fs.writeFile(path.join(outDir, `${MODEL}.json`), JSON.stringify(model, null, 2) + "\n");
+writeModel(path.join(outDir, `${MODEL}.json`), model);
 const opCount = Object.values<any>(model.shapes).filter((s) => s.type === "operation").length;
 console.log(
   `✅ ${MODEL}: ${opCount} operations (${skippedDeprecated} deprecated skipped), ${Object.keys(model.shapes).length} shapes`,

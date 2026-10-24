@@ -1,11 +1,12 @@
 /**
  * The generic generator CLI harness (dev-time only).
  *
- * Owns the smithy→SDK pipeline every SDK package shares: scan the model
- * directory (plus optional hand-authored manual specs), compile each model
- * through {@link generateService} with the provider's {@link SdkSpec}, write
- * the service modules and the namespaced barrel. Patches are already in
- * `.generated-specs` (convert applies them, see `codegen/patches`).
+ * Owns the smithy→SDK pipeline every SDK package shares: run the package's
+ * convert in-process with its models kept in memory (see `./models.ts`),
+ * add any hand-authored manual specs, compile each model through
+ * {@link generateService} with the provider's {@link SdkSpec}, write the
+ * service modules and the namespaced barrel. Convert applies the patches
+ * (see `codegen/patches`), so the models generate compiles are patched.
  *
  * A provider's `scripts/generate.ts` is: trait consts + an SdkSpec + a
  * `runGeneratorCli` call.
@@ -23,6 +24,7 @@ import { formatGenerated } from "./format.ts";
 import { stampGeneratedAt } from "./generated-at.ts";
 import { generateService, type SdkSpec } from "./generator.ts";
 import { toLatin1 } from "./latin1.ts";
+import { collectModels } from "./models.ts";
 import { privatizeSchemas, typeOnlyNamespaceImports } from "./privatize.ts";
 import { annotateNestedCalls } from "./pure.ts";
 import { tableSchemas } from "./table.ts";
@@ -32,27 +34,22 @@ export interface GeneratorCliOptions {
   readonly description: string;
   /** Absolute package root (usually `path.resolve(import.meta.dirname, "..")`). */
   readonly root: string;
-  /** Model directory default (relative to root). Default `.generated-specs`. */
+  /**
+   * Run the package's convert — usually `() => import("./convert.ts")`.
+   * Its models are collected in memory and never written to disk.
+   * `resource` is the `--resource` filter ("" for all), for a convert that
+   * can skip the rest.
+   */
+  readonly convert: (ctx: { readonly resource: string }) => unknown;
+  /**
+   * The directory convert writes the models to compile, relative to root.
+   * Default `.generated-specs`.
+   */
   readonly smithyDir?: string;
   /** Output directory default (relative to root). Default `src/services`. */
   readonly outDir?: string;
   /** Model files to skip (e.g. a shared protocols model). */
   readonly excludeModel?: (file: string) => boolean;
-  /**
-   * Where the models are, when they aren't a flat directory of `<resource>.json`.
-   * AWS vendors Amazon's own repo, whose models sit at
-   * `models/<service>/service/<version>/<service>-<version>.json`.
-   *
-   * Returns the model files to compile; manual specs are merged in after,
-   * as usual.
-   */
-  readonly discoverModels?: (ctx: {
-    readonly smithyDir: string;
-  }) => Effect.Effect<
-    ReadonlyArray<{ readonly file: string; readonly dir: string }>,
-    never,
-    FileSystem.FileSystem | Path.Path
-  >;
   /**
    * Side effects to run before generating — e.g. AWS copies `partitions.json`
    * out of the smithy submodule, runtime data its endpoint resolver reads.
@@ -84,15 +81,15 @@ export interface GeneratorCliOptions {
   /** Directory of hand-authored models merged after the generated ones. */
   readonly manualSpecsDir?: string;
   /**
-   * Generate never applies patches: convert does, so `.generated-specs` is
-   * the patched model. Only `false` is accepted so a path is a type error
-   * rather than a silently ignored setting.
+   * Generate never applies patches: convert does, so the models it hands
+   * generate are patched. Only `false` is accepted so a path is a type
+   * error rather than a silently ignored setting.
    */
   readonly patchesDir?: false;
   /**
    * Model transform applied before generation (e.g. AWS dropping
-   * unreachable foreign-namespace shapes from a vendored model). Does not
-   * write back to `.generated-specs` — convert owns the committed model.
+   * unreachable foreign-namespace shapes from a vendored model). Applies
+   * to generate's copy only — convert owns the model.
    */
   readonly transformModel?: (model: any, resource: string) => string | void;
   /** The provider spec — built per model (metadata may vary per model). */
@@ -106,7 +103,7 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
     {
       smithy: Flag.String("smithy").pipe(
         Flag.withDefault(options.smithyDir ?? ".generated-specs"),
-        Flag.withDescription("Directory of Smithy JSON models"),
+        Flag.withDescription("Directory convert writes the models to compile to"),
       ),
       out: Flag.String("out").pipe(
         Flag.withDefault(options.outDir ?? "src/services"),
@@ -131,14 +128,22 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
 
         yield* options.prepare?.({ root, outDir }) ?? Effect.void;
 
-        // Generated models plus optional manual-specs (hand-authored models
-        // for APIs the provider's spec source doesn't cover). A manual model
-        // must not shadow a generated one.
-        const generated = options.discoverModels
-          ? yield* options.discoverModels({ smithyDir })
-          : (yield* fs.readDirectory(smithyDir))
-              .filter((f) => f.endsWith(".json") && !(options.excludeModel?.(f) ?? false))
-              .map((f) => ({ file: f, dir: smithyDir }));
+        // Convert in-process: the models stay in memory. Then the optional
+        // manual-specs (hand-authored models for APIs the provider's spec
+        // source doesn't cover). A manual model must not shadow a generated
+        // one.
+        const converted = yield* Effect.promise(() =>
+          collectModels(() => options.convert({ resource: config.resource })),
+        );
+        const modelText = new Map<string, string>();
+        const generated: { file: string; dir: string }[] = [];
+        for (const [file, text] of converted) {
+          if (path.dirname(file) !== smithyDir) continue;
+          const name = path.basename(file);
+          if (options.excludeModel?.(name) ?? false) continue;
+          generated.push({ file: name, dir: smithyDir });
+          modelText.set(file, text);
+        }
         const manualDir = options.manualSpecsDir
           ? path.resolve(root, options.manualSpecsDir)
           : undefined;
@@ -158,6 +163,11 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           }
         }
         const entries = [...generated, ...manual].sort((a, b) => a.file.localeCompare(b.file));
+        if (entries.length === 0) {
+          return yield* Effect.die(
+            new Error(`convert wrote no models to ${path.relative(root, smithyDir)}`),
+          );
+        }
 
         yield* fs.makeDirectory(outDir, { recursive: true });
 
@@ -166,7 +176,10 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
         let totalOps = 0;
 
         for (const { file, dir } of entries) {
-          const model = JSON.parse(yield* fs.readFileString(path.join(dir, file)));
+          const modelPath = path.join(dir, file);
+          const model = JSON.parse(
+            modelText.get(modelPath) ?? (yield* fs.readFileString(modelPath)),
+          );
           // The module's name — the model's filename unless the provider
           // derives it from the model itself (AWS: the service's sdkId).
           const resource = options.resourceName?.({ model, file }) ?? file.replace(/\.json$/, "");

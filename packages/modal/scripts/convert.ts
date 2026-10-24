@@ -18,6 +18,7 @@
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { clearModels, writeModel } from "@distilled.cloud/core/codegen/models";
 import { finalizeConvert } from "@distilled.cloud/core/codegen/patches";
 import {
   convertProtoToSmithy,
@@ -57,14 +58,13 @@ const files = PROTO_FILES.map((name) => {
   return parseProto(fs.readFileSync(specPath, "utf-8"), name);
 });
 
-fs.rmSync(OUT_DIR, { recursive: true, force: true });
-fs.mkdirSync(OUT_DIR, { recursive: true });
+clearModels(OUT_DIR);
 
 let written = 0;
 let totalOps = 0;
 let totalStreaming = 0;
 
-const writeModel = (
+const convertService = (
   slug: string,
   serviceName: string,
   serviceTitle: string,
@@ -87,10 +87,7 @@ const writeModel = (
     totalStreaming += result.skippedStreaming;
     return;
   }
-  fs.writeFileSync(
-    path.join(OUT_DIR, `${slug}.json`),
-    `${JSON.stringify(result.model, null, 2)}\n`,
-  );
+  writeModel(path.join(OUT_DIR, `${slug}.json`), result.model);
   written++;
   totalOps += result.converted;
   totalStreaming += result.skippedStreaming;
@@ -113,7 +110,7 @@ for (const file of files) {
       }
       for (const group of [...groups.keys()].sort()) {
         const slug = toSlug(group);
-        writeModel(
+        convertService(
           slug,
           group,
           `Modal ${group}`,
@@ -125,7 +122,7 @@ for (const file of files) {
       }
     } else {
       const slug = toSlug(service.name);
-      writeModel(
+      convertService(
         slug,
         service.name,
         `Modal ${service.name}`,
