@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/aws",
-  "version": "1.0.0-rc.16",
+  "version": "1.0.0-rc.17",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -26,9 +26,8 @@
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "module": "./lib/services.full/*.js",
-      "module-sync": "./lib/services/*.js",
-      "default": "./lib/services.full/*.js"
+      "distilled-lazy": "./lib/services.lazy/*.js",
+      "default": "./lib/services/*.js"
     },
     "./Auth": {
       "types": "./lib/auth.d.ts",
@@ -187,7 +186,7 @@
     "effect": "catalog:"
   },
   "distilled": {
-    "generatedAt": "2026-10-22",
+    "generatedAt": "2026-10-24",
     "specUpdatedAt": "2026-10-14"
   }
 }

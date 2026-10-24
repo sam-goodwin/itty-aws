@@ -18,8 +18,10 @@
  *   index.js, services/*.js
  *                       real entry chunks; they import the group chunks directly.
  *   _chunks/*.js        lazily imported code (AWS protocols, credential providers).
- *   services.full/*.js  the service entry chunks, for bundlers; services/*.js
- *                       are then Node's lazy stubs (see lazy-services.ts).
+ *   services.lazy/*.js  lazy stubs of the service entry chunks, which a Node
+ *                       process opts in to with the `distilled-lazy`
+ *                       condition (see lazy-services.ts); every other
+ *                       condition resolves services/*.js.
  *
  * SDK chunks import core through `@distilled.cloud/core/_bundle/<group>`, never
  * through core's facades. Each source module lands in exactly one chunk, so
@@ -60,7 +62,7 @@ const { datafyOperations } = (await import(
   pathToFileURL(join(ROOT, "packages", "core", "src", "codegen", "datafy.ts")).href
 )) as typeof import("../packages/core/src/codegen/datafy.ts");
 
-const { lazyServices, lazyExports } = (await import(
+const { lazyServices, lazyExports, stubTargets } = (await import(
   pathToFileURL(join(ROOT, "scripts", "lazy-services.ts")).href
 )) as typeof import("./lazy-services.ts");
 
@@ -756,8 +758,13 @@ const buildPackage = async (
     );
     written.add(".lazy.json");
     const pkg = JSON.parse(readFileSync(join(plan.dir, "package.json"), "utf8"));
+    const bad = stubTargets(pkg.exports, r.dirs, r.twins);
     if (JSON.stringify(lazyExports(pkg.exports, r.dirs, r.twins)) !== JSON.stringify(pkg.exports))
       staleExports.push(rel(ROOT, plan.dir));
+    else if (bad.length)
+      throw new Error(
+        `bundle-lib: ${plan.name}: exports ${bad.join(", ")} reach a lazy stub without the distilled-lazy condition`,
+      );
     console.log(
       `bundle-lib: ${plan.name}: ${r.stubs} lazy service stubs${r.kept ? `, ${r.kept} kept whole` : ""}${r.twins.length ? `, twins: ${r.twins.join(", ")}` : ""}`,
     );
@@ -799,5 +806,5 @@ for (const dir of dirs) {
 }
 if (staleExports.length)
   throw new Error(
-    `bundle-lib: package.json exports do not route Node to the lazy service stubs; run: node scripts/lazy-services.ts --exports ${staleExports.join(" ")}`,
+    `bundle-lib: package.json exports do not match the lazy service layout; run: node scripts/lazy-services.ts --exports ${staleExports.join(" ")}`,
   );
