@@ -135,6 +135,15 @@ export class EndpointDisabledException
       /*@__PURE__*/ T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
+export class FifoTopicDataProtectionUnsupported
+  extends /*@__PURE__*/ S.TaggedError<FifoTopicDataProtectionUnsupported>()(
+    "FifoTopicDataProtectionUnsupported",
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "InvalidAction",
+      message: { includes: "is not supported on FIFO topics" },
+    }),
+  ) {}
 export class FilterPolicyLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<FilterPolicyLimitExceededException>()(
     "FilterPolicyLimitExceededException",
@@ -153,6 +162,10 @@ export class InternalErrorException
       /*@__PURE__*/ T.HttpError(500),
     ),
   ).pipe(C.withServerError) {}
+export class InvalidAction
+  extends /*@__PURE__*/ S.TaggedError<InvalidAction>()("InvalidAction", {
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
+  }) {}
 export class InvalidBatchEntryIdException
   extends /*@__PURE__*/ S.TaggedError<InvalidBatchEntryIdException>()(
     "InvalidBatchEntryIdException",
@@ -1244,6 +1257,8 @@ export type GetDataProtectionPolicyError =
   | NotFoundException
   | RequestLimitExceeded
   | InvalidClientTokenId
+  | InvalidAction
+  | FifoTopicDataProtectionUnsupported
   | CommonErrors;
 /**
  * Amazon SNS message data protection is no longer available to new customers.
@@ -1269,6 +1284,8 @@ export const getDataProtectionPolicy: API.OperationMethod<
     NotFoundException,
     RequestLimitExceeded,
     InvalidClientTokenId,
+    InvalidAction,
+    FifoTopicDataProtectionUnsupported,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2031,6 +2048,8 @@ export type PutDataProtectionPolicyError =
   | NotFoundException
   | RequestLimitExceeded
   | InvalidClientTokenId
+  | InvalidAction
+  | FifoTopicDataProtectionUnsupported
   | CommonErrors;
 /**
  * Amazon SNS message data protection is no longer available to new customers.
@@ -2056,6 +2075,8 @@ export const putDataProtectionPolicy: API.OperationMethod<
     NotFoundException,
     RequestLimitExceeded,
     InvalidClientTokenId,
+    InvalidAction,
+    FifoTopicDataProtectionUnsupported,
   ],
   protocol: AwsProtocol,
   retry: Retry,
